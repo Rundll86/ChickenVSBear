@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfwg750a47ggx"]
+
+[ext_resource type="PackedScene" uid="uid://ofpg5s3j7esv" path="res://components/UI/BossBar.tscn" id="1_2pe58"]
+[ext_resource type="Script" path="res://scripts/Statemachine/UIState.gd" id="1_f00a6"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_f00a6")
+
+[node name="root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bossbar" parent="root" instance=ExtResource("1_2pe58")]
+unique_name_in_owner = true
+layout_mode = 1

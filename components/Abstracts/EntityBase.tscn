@@ -121,4 +121,9 @@ unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_ce3to")
 
 [node name="statebar" parent="." instance=ExtResource("2_uje1g")]
+unique_name_in_owner = true
 position = Vector2(0, -100)
+
+[node name="damageAnchor" type="Node2D" parent="statebar"]
+unique_name_in_owner = true
+position = Vector2(0, -20)

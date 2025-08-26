@@ -1,8 +1,11 @@
 extends Area2D
 class_name BulletBase
 
-@export var speed: float = 1
-@export var damage: float = 10
+@export var fields = {
+	FieldStore.Bullet.SPEED: 10,
+	FieldStore.Bullet.DAMAGE: 10,
+	FieldStore.Bullet.PENERATE: 0
+}
 @export var lifeDistance: float = -1 # -1表示无限距离
 @export var lifeTime: float = -1 # -1表示无限时间
 
@@ -30,9 +33,13 @@ func hit(target: Node):
 	if entity == launcher: return
 	if GameRule.allowFriendlyFire:
 		if entity.isPlayer() == launcher.isPlayer(): return
-	entity.takeDamage(self)
+	entity.takeDamage(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE)))
+	if !MathTool.rate(fullPenerate()):
+		destroy()
 func forward(direction: Vector2):
-	position += direction.normalized() * speed * GameRule.bulletSpeedMultiplier
+	position += direction.normalized() * fields.get(FieldStore.Bullet.SPEED) * GameRule.bulletSpeedMultiplier
+func fullPenerate():
+	return fields.get(FieldStore.Bullet.PENERATE) * (1 + launcher.fields.get(FieldStore.Entity.PENERATE))
 
 func ai():
 	pass

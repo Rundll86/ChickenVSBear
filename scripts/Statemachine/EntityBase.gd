@@ -1,28 +1,34 @@
 extends CharacterBody2D
 class_name EntityBase # 这是个抽象类
 
-@export var fields: Dictionary = {
+var fields = {
 	FieldStore.Entity.MAX_HEALTH: 100,
 	FieldStore.Entity.DAMAGE_MULTIPILER: 1,
 	FieldStore.Entity.MOVEMENT_SPEED: 1,
 	FieldStore.Entity.ATTACK_SPEED: 1,
-	FieldStore.Entity.CRIT_RATE: 0.05, # 0.05 = 5%
-	FieldStore.Entity.CRIT_DAMAGE: 2 # 2 = 200%
-} # 存一下词条
+	FieldStore.Entity.CRIT_RATE: 0.05,
+	FieldStore.Entity.CRIT_DAMAGE: 1,
+	FieldStore.Entity.PENERATE: 0,
+}
+var cooldownUnit: float = 100 # 100毫秒每次攻击
+
 @export var isBoss: bool = false
-@export var cooldownUnit: float = 100 # 100毫秒每次攻击
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
 @onready var hurtbox: Area2D = $"%hurtbox"
+@onready var statebar: EntityStateBar = $"%statebar"
 
 var health: float = 0
 
 var lastDirection: int = 1
 var lastAttack: int = 0
+var currentFocusedBoss: EntityBase = null
+var sprinting: bool = false
 
 func _ready():
 	health = fields.get(FieldStore.Entity.MAX_HEALTH)
+	statebar.visible = !isBoss
 func _process(_delta):
 	health = clamp(health, 0, fields.get(FieldStore.Entity.MAX_HEALTH))
 	animatree.set("parameters/blend_position", lerpf(animatree.get("parameters/blend_position"), lastDirection, 0.1))
@@ -37,12 +43,19 @@ func move(direction: Vector2):
 	var currentDirection = sign(direction.x)
 	if currentDirection != 0:
 		lastDirection = currentDirection
-func takeDamage(bullet: BulletBase):
-	health -= bullet.damage
+func takeDamage(bullet: BulletBase, crit: bool):
+	var baseDamage: float = bullet.fields.get(FieldStore.Bullet.DAMAGE) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)
+	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
+	health -= damage
+	DamageLabel.create(damage, crit, $"%damageAnchor".global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
+	if isBoss:
+		bullet.launcher.setBoss(self)
 	if health <= 0:
+		if isBoss:
+			bullet.launcher.setBoss(null)
 		die()
 func isCooldowned():
-	return Time.get_ticks_msec() - lastAttack >= cooldownUnit
+	return Time.get_ticks_msec() - lastAttack >= cooldownUnit / fields.get(FieldStore.Entity.ATTACK_SPEED)
 func startCooldown():
 	var state = isCooldowned()
 	if state:
@@ -54,9 +67,13 @@ func tryAttack(type: int):
 func findWeaponAnchor(weaponName: String):
 	var anchor = $"%weapons".get_node(weaponName)
 	if anchor is Node2D:
-		return (anchor.position + texture.position) * Vector2(animatree.get("parameters/blend_position"), 1) + position
+		return anchor.global_position
 	else:
 		return Vector2.ZERO
+func setBoss(boss: EntityBase):
+	currentFocusedBoss = boss
+	if isPlayer():
+		UIState.bossbar.entity = boss
 
 # 关于分组
 func isPlayer():
@@ -75,11 +92,13 @@ static func generate(
 	spawnPosition: Vector2,
 	spawnRotation: float,
 	isMob: bool = true,
+	spawnAsBoss: bool = false,
 	addtoWorld: bool = true
 ):
 	var instance: EntityBase = entity.instance()
 	instance.position = spawnPosition
 	instance.rotation = spawnRotation
+	instance.isBoss = spawnAsBoss
 	if isMob:
 		instance.add_to_group("mobs")
 	if addtoWorld:

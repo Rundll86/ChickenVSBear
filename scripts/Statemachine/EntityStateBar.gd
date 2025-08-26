@@ -1,4 +1,5 @@
-extends Node2D
+extends Node
+class_name EntityStateBar
 
 @export var entity: EntityBase
 
@@ -6,5 +7,5 @@ extends Node2D
 
 func _process(_delta):
 	if entity:
-		healthBar.maxValue = entity.maxHealth
+		healthBar.maxValue = entity.fields.get(FieldStore.Entity.MAX_HEALTH)
 		healthBar.setCurrent(entity.health)

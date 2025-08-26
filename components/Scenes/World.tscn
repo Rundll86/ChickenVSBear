@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmxi1ikn6avig"]
+
+[ext_resource type="Script" path="res://scripts/Tools/WorldTool.gd" id="1_t2xvy"]
+[ext_resource type="PackedScene" uid="uid://dfwg750a47ggx" path="res://components/Scenes/UI.tscn" id="2_04cdd"]
+[ext_resource type="PackedScene" uid="uid://bm7ymrri6pykb" path="res://components/Characters/Rooster.tscn" id="3_5ui6q"]
+[ext_resource type="PackedScene" uid="uid://b0ncrvm8u4pox" path="res://components/Characters/Chick.tscn" id="4_tnil0"]
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_t2xvy")
+
+[node name="UI" parent="." instance=ExtResource("2_04cdd")]
+
+[node name="rooster" parent="." groups=["players"] instance=ExtResource("3_5ui6q")]
+position = Vector2(394, 274)
+
+[node name="chick" parent="." groups=["mobs"] instance=ExtResource("4_tnil0")]
+position = Vector2(644, 391)
+isBoss = true
+
+[node name="Chick" parent="." instance=ExtResource("4_tnil0")]
+position = Vector2(261, 468)
+
+[node name="Chick2" parent="." instance=ExtResource("4_tnil0")]
+position = Vector2(837, 492)
+
+[node name="Chick3" parent="." instance=ExtResource("4_tnil0")]
+position = Vector2(897, 185)

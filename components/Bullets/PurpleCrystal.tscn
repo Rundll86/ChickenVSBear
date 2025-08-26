@@ -19,12 +19,12 @@ animations = [{
 
 [node name="PurpleCrystal" instance=ExtResource("1_45mh7")]
 script = ExtResource("2_4lnlm")
-speed = 5.0
 lifeDistance = 700.0
 
 [node name="texture" parent="." index="0"]
+position = Vector2(22, 0)
 sprite_frames = SubResource("SpriteFrames_r86b3")
 
 [node name="hitbox" parent="." index="1"]
-position = Vector2(12, 0)
+position = Vector2(36, 0)
 shape = SubResource("CircleShape2D_ty1as")
