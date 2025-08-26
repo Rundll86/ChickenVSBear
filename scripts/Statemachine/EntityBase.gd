@@ -16,6 +16,10 @@ var fields = {
 @export var isBoss: bool = false
 @export var displayName: String = "未知实体"
 @export var sprintMultiplier: float = 7
+@export var inventory = {
+	ItemStore.ItemType.BASEBALL: 0,
+	ItemStore.ItemType.BASKETBALL: 0
+}
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"

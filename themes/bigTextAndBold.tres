@@ -1,0 +1,4 @@
+[gd_resource type="Theme" format=3 uid="uid://bje5cd08dyok7"]
+
+[resource]
+RichTextLabel/font_sizes/bold_font_size = 18

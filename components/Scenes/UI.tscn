@@ -1,7 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfwg750a47ggx"]
+[gd_scene load_steps=5 format=3 uid="uid://dfwg750a47ggx"]
 
 [ext_resource type="PackedScene" uid="uid://ofpg5s3j7esv" path="res://components/UI/BossBar.tscn" id="1_2pe58"]
 [ext_resource type="Script" path="res://scripts/Statemachine/UIState.gd" id="1_f00a6"]
+[ext_resource type="PackedScene" uid="uid://bbm8l3hr4ihar" path="res://components/UI/ItemShow.tscn" id="3_o2oi4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmgs2"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.5)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 0.75)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_f00a6")
@@ -17,3 +32,26 @@ grow_vertical = 2
 [node name="bossbar" parent="root" instance=ExtResource("1_2pe58")]
 unique_name_in_owner = true
 layout_mode = 1
+
+[node name="items" type="PanelContainer" parent="root"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_top = -3.0
+offset_right = 46.0
+offset_bottom = 37.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xmgs2")
+
+[node name="container" type="HBoxContainer" parent="root/items"]
+layout_mode = 2
+alignment = 1
+
+[node name="ItemShow" parent="root/items/container" instance=ExtResource("3_o2oi4")]
+layout_mode = 2
+
+[node name="ItemShow2" parent="root/items/container" instance=ExtResource("3_o2oi4")]
+layout_mode = 2
+type = 1

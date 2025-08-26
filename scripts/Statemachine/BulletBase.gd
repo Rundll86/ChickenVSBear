@@ -56,7 +56,7 @@ static func generate(
 	var instance: BulletBase = bullet.instantiate()
 	instance.launcher = launchBy
 	instance.position = spawnPosition
-	instance.rotation = spawnRotation + randf_range(-launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT), launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT))
+	instance.rotation = spawnRotation + deg_to_rad(randf_range(-launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT), launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT)))
 	if addToWorld:
 		WorldManager.rootNode.add_child(instance)
 	return instance

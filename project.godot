@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="ChickenVSBear"
 
+[gui]
+
+theme/custom_font="res://resources/fonts/HarmonyOS_Sans_Regular.ttf"
+
 [input]
 
 m_up={
