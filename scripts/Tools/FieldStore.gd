@@ -1,0 +1,10 @@
+class_name FieldStore
+
+enum Entity {
+	MAX_HEALTH,
+	DAMAGE_MULTIPILER,
+	MOVEMENT_SPEED,
+	ATTACK_SPEED,
+	CRIT_RATE,
+	CRIT_DAMAGE,
+}

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0ncrvm8u4pox"]
+
+[ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_goqmy"]
+[ext_resource type="Texture2D" uid="uid://7pkplcqqxvnp" path="res://resources/characters/chick/chick-a.svg" id="2_syddq"]
+[ext_resource type="Texture2D" uid="uid://dj5dvqb8gsedr" path="res://resources/characters/chick/chick-b.svg" id="3_064jv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xji3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_syddq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_syddq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_064jv")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Chick" instance=ExtResource("1_goqmy")]
+
+[node name="texture" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_xji3d")
+animation = &"walk"
+
+[node name="statebar" parent="." index="2" node_paths=PackedStringArray("entity")]
+entity = NodePath("..")

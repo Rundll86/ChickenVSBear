@@ -114,6 +114,9 @@ tree_root = SubResource("AnimationNodeBlendSpace1D_51ube")
 anim_player = NodePath("..")
 parameters/blend_position = 1.0
 
+[node name="weapons" type="Node2D" parent="texture"]
+unique_name_in_owner = true
+
 [node name="movebox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ce3to")
 

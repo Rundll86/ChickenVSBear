@@ -5,5 +5,5 @@ static var rootNode: Node2D
 static var tree: SceneTree
 
 func _ready():
-    tree = get_tree()
-    rootNode = self
+	tree = get_tree()
+	rootNode = self

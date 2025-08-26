@@ -1,10 +1,16 @@
 extends CharacterBody2D
 class_name EntityBase # 这是个抽象类
 
-@export var maxHealth: float = 100
-@export var movementSpeed: float = 1
+@export var fields: Dictionary = {
+	FieldStore.Entity.MAX_HEALTH: 100,
+	FieldStore.Entity.DAMAGE_MULTIPILER: 1,
+	FieldStore.Entity.MOVEMENT_SPEED: 1,
+	FieldStore.Entity.ATTACK_SPEED: 1,
+	FieldStore.Entity.CRIT_RATE: 0.05, # 0.05 = 5%
+	FieldStore.Entity.CRIT_DAMAGE: 2 # 2 = 200%
+} # 存一下词条
 @export var isBoss: bool = false
-@export var weapons: Array[Node2D] = []
+@export var cooldownUnit: float = 100 # 100毫秒每次攻击
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -13,11 +19,12 @@ class_name EntityBase # 这是个抽象类
 var health: float = 0
 
 var lastDirection: int = 1
+var lastAttack: int = 0
 
 func _ready():
-	health = maxHealth
+	health = fields.get(FieldStore.Entity.MAX_HEALTH)
 func _process(_delta):
-	health = clamp(health, 0, maxHealth)
+	health = clamp(health, 0, fields.get(FieldStore.Entity.MAX_HEALTH))
 	animatree.set("parameters/blend_position", lerpf(animatree.get("parameters/blend_position"), lastDirection, 0.1))
 func _physics_process(_delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -26,7 +33,7 @@ func _physics_process(_delta: float) -> void:
 
 # 通用方法
 func move(direction: Vector2):
-	velocity = direction.normalized() * movementSpeed * 150 * abs(animatree.get("parameters/blend_position"))
+	velocity = direction.normalized() * fields.get(FieldStore.Entity.MOVEMENT_SPEED) * 200 * abs(animatree.get("parameters/blend_position"))
 	var currentDirection = sign(direction.x)
 	if currentDirection != 0:
 		lastDirection = currentDirection
@@ -34,6 +41,22 @@ func takeDamage(bullet: BulletBase):
 	health -= bullet.damage
 	if health <= 0:
 		die()
+func isCooldowned():
+	return Time.get_ticks_msec() - lastAttack >= cooldownUnit
+func startCooldown():
+	var state = isCooldowned()
+	if state:
+		lastAttack = Time.get_ticks_msec()
+	return state
+func tryAttack(type: int):
+	if startCooldown():
+		attack(type)
+func findWeaponAnchor(weaponName: String):
+	var anchor = $"%weapons".get_node(weaponName)
+	if anchor is Node2D:
+		return (anchor.position + texture.position) * Vector2(animatree.get("parameters/blend_position"), 1) + position
+	else:
+		return Vector2.ZERO
 
 # 关于分组
 func isPlayer():
@@ -51,11 +74,14 @@ static func generate(
 	entity: PackedScene,
 	spawnPosition: Vector2,
 	spawnRotation: float,
+	isMob: bool = true,
 	addtoWorld: bool = true
 ):
-	var instance = entity.instance()
+	var instance: EntityBase = entity.instance()
 	instance.position = spawnPosition
 	instance.rotation = spawnRotation
+	if isMob:
+		instance.add_to_group("mobs")
 	if addtoWorld:
 		WorldTool.rootNode.add_child(instance)
 	return instance
