@@ -10,12 +10,20 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_q0j6j")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q0j6j")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_b0fgx")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -33,5 +41,6 @@ sprite_frames = SubResource("SpriteFrames_4v2ol")
 position = Vector2(12, 16)
 shape = SubResource("CircleShape2D_h1v0q")
 
-[node name="statebar" parent="." index="2"]
+[node name="statebar" parent="." index="2" node_paths=PackedStringArray("entity")]
 position = Vector2(0, -151)
+entity = NodePath("..")

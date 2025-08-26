@@ -2,11 +2,11 @@ extends CharacterBody2D
 class_name EntityBase # 这是个抽象类
 
 @export var maxHealth: float = 100
-@export var movementSpeed: float = 100
+@export var movementSpeed: float = 1
 
-@onready var animatree = $"%animatree"
-@onready var texture = $"%texture"
-@onready var hurtbox = $"%hurtbox"
+@onready var animatree: AnimationTree = $"%animatree"
+@onready var texture: AnimatedSprite2D = $"%texture"
+@onready var hurtbox: Area2D = $"%hurtbox"
 
 var health: float = 0
 
@@ -24,7 +24,7 @@ func _physics_process(_delta: float) -> void:
 
 # 通用方法
 func move(direction: Vector2):
-	velocity = direction.normalized() * movementSpeed
+	velocity = direction.normalized() * movementSpeed * 150 * abs(animatree.get("parameters/blend_position"))
 	var currentDirection = sign(direction.x)
 	if currentDirection != 0:
 		lastDirection = currentDirection

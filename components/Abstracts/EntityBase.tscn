@@ -4,6 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://dcjqjqere8ets" path="res://components/UI/EntityStateBar.tscn" id="2_uje1g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wcqpm"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_buhm1"]
 radius = 40.0
@@ -83,6 +94,7 @@ script = ExtResource("1_mvol6")
 unique_name_in_owner = true
 position = Vector2(0, -50)
 sprite_frames = SubResource("SpriteFrames_wcqpm")
+animation = &"idle"
 
 [node name="hurtbox" type="Area2D" parent="texture"]
 unique_name_in_owner = true
