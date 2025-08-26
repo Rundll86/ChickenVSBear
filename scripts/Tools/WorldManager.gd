@@ -9,4 +9,4 @@ func _ready():
 	rootNode = self
 func _physics_process(_delta):
 	if EntityBase.mobCount() == 0:
-		Wave.next()
+		UIState.setPanel("MakeFeed")

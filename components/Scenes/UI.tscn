@@ -20,6 +20,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="UI" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_f00a6")
 
 [node name="root" type="Control" parent="."]
@@ -59,7 +60,8 @@ unique_name_in_owner = true
 layout_mode = 2
 type = 1
 
-[node name="fullscreenPanels" type="Control" parent="root"]
+[node name="panels" type="Control" parent="root"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,6 +69,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MakeFeed" parent="root/fullscreenPanels" instance=ExtResource("4_kkki3")]
+[node name="MakeFeed" parent="root/panels" instance=ExtResource("4_kkki3")]
 visible = false
 layout_mode = 1

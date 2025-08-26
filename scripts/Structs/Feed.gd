@@ -18,10 +18,11 @@ class_name Feed
 func _ready():
 	selectButton.pressed.connect(
 		func():
-			apply(UIState.player)
-			queue_free()
+			if apply(UIState.player):
+				UIState.setPanel()
+				queue_free()
+				Wave.next()
 	)
-func _process(_delta):
 	avatarRect.texture = avatarTexture
 	nameLabel.text = "[b]" + displayName + "[/b]"
 	for i in fieldsBox.get_children():
@@ -64,3 +65,7 @@ func apply(entity: EntityBase):
 			var field = fields[i]
 			var value = fieldValues[i]
 			entity.fields[field] += value
+			if field == FieldStore.Entity.MAX_HEALTH:
+				entity.health += value
+		print(entity.fields)
+	return allHave

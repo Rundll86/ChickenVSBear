@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://1n28ji5sl6bx"]
+[gd_scene load_steps=4 format=3 uid="uid://1n28ji5sl6bx"]
 
 [ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_1wmro"]
-[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="2_ae402"]
+[ext_resource type="Script" path="res://scripts/Contents/Panels/MakeFeed.gd" id="2_pr610"]
+[ext_resource type="PackedScene" uid="uid://btisbc7ehj4fo" path="res://components/Feeds/Banana.tscn" id="3_f2lyw"]
 
 [node name="MakeFeed" instance=ExtResource("1_1wmro")]
+script = ExtResource("2_pr610")
 
 [node name="wrapper" parent="content" index="0"]
 theme_override_constants/separation = 50
@@ -53,15 +55,19 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="feedcards" type="HBoxContainer" parent="content/wrapper" index="1"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="FeedCard" parent="content/wrapper/feedcards" index="0" instance=ExtResource("2_ae402")]
-layout_mode = 2
+[node name="avaliableFeeds" type="Node" parent="content/wrapper" index="2"]
+unique_name_in_owner = true
 
-[node name="FeedCard2" parent="content/wrapper/feedcards" index="1" instance=ExtResource("2_ae402")]
-layout_mode = 2
+[node name="Banana" parent="content/wrapper/avaliableFeeds" index="0" instance=ExtResource("3_f2lyw")]
+visible = false
 
-[node name="FeedCard3" parent="content/wrapper/feedcards" index="2" instance=ExtResource("2_ae402")]
-layout_mode = 2
+[node name="Banana2" parent="content/wrapper/avaliableFeeds" index="1" instance=ExtResource("3_f2lyw")]
+visible = false
+
+[node name="Banana3" parent="content/wrapper/avaliableFeeds" index="2" instance=ExtResource("3_f2lyw")]
+visible = false

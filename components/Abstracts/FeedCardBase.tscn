@@ -28,7 +28,7 @@ script = ExtResource("1_2ea75")
 
 [node name="container" type="VBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 10
 
 [node name="selectBtn" type="Button" parent="container"]
 unique_name_in_owner = true

@@ -74,7 +74,7 @@ func move(direction: Vector2, isSprinting: bool = false):
 		lastDirection = currentDirection
 func takeDamage(bullet: BulletBase, crit: bool):
 	hurtAnimator.play("hurt")
-	var baseDamage: float = bullet.fields.get(FieldStore.Bullet.DAMAGE) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)
+	var baseDamage: float = bullet.fields.get(FieldStore.Bullet.DAMAGE) * bullet.launcher.fields.get(FieldStore.Entity.DAMAGE_MULTIPILER) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)
 	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
 	if sprinting:
 		playSound("miss")
