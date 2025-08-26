@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmxi1ikn6avig"]
+
+[ext_resource type="PackedScene" uid="uid://bm7ymrri6pykb" path="res://components/Characters/Rooster.tscn" id="1_7jr0n"]
+
+[node name="world" type="Node2D"]
+
+[node name="rooster" parent="." instance=ExtResource("1_7jr0n")]
+position = Vector2(394, 274)

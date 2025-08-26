@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1ulrvupa76ap"]
+
+[ext_resource type="Script" path="res://scripts/Statemachine/ColorBar.gd" id="1_a106p"]
+
+[node name="ColorBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 10.0
+script = ExtResource("1_a106p")
+backColor = Color(0, 0, 0, 0.5)
+middleColor = Color(1, 0, 0, 0.5)
+frontColor = Color(1, 1, 1, 1)
+speed2 = 0.05

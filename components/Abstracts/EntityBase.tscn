@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvogxi7mktumf"]
+
+[ext_resource type="Script" path="res://scripts/Statemachine/EntityBase.gd" id="1_mvol6"]
+[ext_resource type="PackedScene" uid="uid://dcjqjqere8ets" path="res://components/UI/EntityStateBar.tscn" id="2_uje1g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wcqpm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_buhm1"]
+radius = 43.2897
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ce3to"]
+size = Vector2(64, 14)
+
+[node name="EntityBase" type="CharacterBody2D"]
+script = ExtResource("1_mvol6")
+
+[node name="texture" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wcqpm")
+
+[node name="statebar" parent="texture" instance=ExtResource("2_uje1g")]
+position = Vector2(0, -51)
+
+[node name="hurtbox" type="Area2D" parent="texture"]
+
+[node name="hitbox" type="CollisionShape2D" parent="texture/hurtbox"]
+position = Vector2(7, 12)
+shape = SubResource("CircleShape2D_buhm1")
+
+[node name="movebox" type="CollisionShape2D" parent="."]
+position = Vector2(16, 69)
+shape = SubResource("RectangleShape2D_ce3to")
