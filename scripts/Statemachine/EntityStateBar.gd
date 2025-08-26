@@ -6,6 +6,6 @@ class_name EntityStateBar
 @onready var healthBar: ColorBar = $"%health"
 
 func _process(_delta):
-	if entity:
+	if is_instance_valid(entity):
 		healthBar.maxValue = entity.fields.get(FieldStore.Entity.MAX_HEALTH)
 		healthBar.setCurrent(entity.health)

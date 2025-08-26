@@ -6,6 +6,6 @@ class_name BossBar
 
 func _process(delta):
 	super._process(delta)
-	if entity:
+	if is_instance_valid(entity):
 		nameLabel.text = entity.displayName
 		valueLabel.text = "%.2f" % (entity.health / entity.fields[FieldStore.Entity.MAX_HEALTH] * 100)

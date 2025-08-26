@@ -30,6 +30,8 @@ var sprinting: bool = false
 func _ready():
 	health = fields.get(FieldStore.Entity.MAX_HEALTH)
 	statebar.visible = !isBoss
+	if !isPlayer():
+		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
 func _process(_delta):
 	health = clamp(health, 0, fields.get(FieldStore.Entity.MAX_HEALTH))
 	animatree.set("parameters/blend_position", lerpf(animatree.get("parameters/blend_position"), lastDirection, 0.1))
@@ -40,7 +42,8 @@ func _physics_process(_delta: float) -> void:
 			sprinting = false
 	else:
 		velocity = Vector2.ZERO
-		ai()
+		if isPlayer() or is_instance_valid(currentFocusedBoss):
+			ai()
 	move_and_slide()
 
 # 通用方法
@@ -70,8 +73,10 @@ func startCooldown():
 		lastAttack = Time.get_ticks_msec()
 	return state
 func tryAttack(type: int):
-	if startCooldown():
+	var state = startCooldown()
+	if state:
 		attack(type)
+	return state
 func trySprint():
 	sprint()
 	sprinting = true

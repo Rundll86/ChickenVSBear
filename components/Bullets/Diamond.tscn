@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbqrmirh6qi7s"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_8udva"]
+[ext_resource type="Texture2D" uid="uid://dfptmc7clhtx7" path="res://resources/bullets/diamond/frames/0.svg" id="2_txmup"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/Diamond.gd" id="2_yxtyj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oj6iy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_txmup")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Diamond" instance=ExtResource("1_8udva")]
+script = ExtResource("2_yxtyj")
+lifeDistance = 500.0
+
+[node name="texture" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_oj6iy")

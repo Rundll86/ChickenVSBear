@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8h1abpbe6cww"]
+
+[ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_twxai"]
+
+[node name="EntityBase" instance=ExtResource("1_twxai")]

@@ -31,7 +31,7 @@ func hit(target: Node):
 	var entity: EntityBase = EntityTool.fromHurtbox(target)
 	if !entity || !launcher: return
 	if entity == launcher: return
-	if GameRule.allowFriendlyFire:
+	if !GameRule.allowFriendlyFire:
 		if entity.isPlayer() == launcher.isPlayer(): return
 	entity.takeDamage(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE)))
 	if !MathTool.rate(fullPenerate()):

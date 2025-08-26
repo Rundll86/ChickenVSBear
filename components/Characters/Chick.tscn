@@ -39,6 +39,9 @@ position = Vector2(0, -37)
 sprite_frames = SubResource("SpriteFrames_xji3d")
 animation = &"walk"
 
+[node name="normal" type="Node2D" parent="texture/weapons" index="0"]
+position = Vector2(30, -12)
+
 [node name="movebox" parent="." index="1"]
 shape = SubResource("RectangleShape2D_rn84j")
 
