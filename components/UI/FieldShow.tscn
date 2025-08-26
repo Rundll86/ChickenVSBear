@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw5ip3rw4r3pp"]
+
+[ext_resource type="Script" path="res://scripts/Statemachine/FieldShow.gd" id="1_gwocj"]
+
+[node name="FieldShow" type="HBoxContainer"]
+script = ExtResource("1_gwocj")
+value = "0"
+
+[node name="name" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "最大生命值"
+
+[node name="value" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"

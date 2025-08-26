@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbm8l3hr4ihar"]
+
+[ext_resource type="Script" path="res://scripts/Statemachine/ItemShow.gd" id="1_2dhsb"]
+[ext_resource type="Texture2D" uid="uid://bks8jmctleina" path="res://resources/items/baseball.svg" id="1_hyowb"]
+
+[node name="ItemShow" type="HBoxContainer"]
+script = ExtResource("1_2dhsb")
+
+[node name="avatar" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("1_hyowb")
+expand_mode = 1
+
+[node name="count" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
