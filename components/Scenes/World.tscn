@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmxi1ikn6avig"]
 
-[ext_resource type="Script" path="res://scripts/Tools/WorldTool.gd" id="1_t2xvy"]
+[ext_resource type="Script" path="res://scripts/Tools/WorldManager.gd" id="1_lxsxj"]
 [ext_resource type="PackedScene" uid="uid://dfwg750a47ggx" path="res://components/Scenes/UI.tscn" id="2_04cdd"]
 [ext_resource type="PackedScene" uid="uid://bm7ymrri6pykb" path="res://components/Characters/Rooster.tscn" id="3_5ui6q"]
 [ext_resource type="Texture2D" uid="uid://ckk8kahhof06u" path="res://resources/maps/Castle 2.png" id="6_p0nkj"]
 
 [node name="world" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_t2xvy")
+script = ExtResource("1_lxsxj")
 
 [node name="UI" parent="." instance=ExtResource("2_04cdd")]
 

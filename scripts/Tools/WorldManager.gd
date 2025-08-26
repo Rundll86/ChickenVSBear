@@ -7,4 +7,6 @@ static var tree: SceneTree
 func _ready():
 	tree = get_tree()
 	rootNode = self
-	Wave.next()
+func _physics_process(_delta):
+	if EntityBase.mobCount() == 0:
+		Wave.next()
