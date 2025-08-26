@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=7 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
@@ -19,12 +19,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h1v0q"]
+radius = 41.0122
+
 [node name="Rooster" instance=ExtResource("1_e5pl8")]
 script = ExtResource("2_oqdqd")
 
 [node name="texture" parent="." index="0"]
+position = Vector2(0, -70)
 sprite_frames = SubResource("SpriteFrames_4v2ol")
 
-[node name="statebar" parent="texture" index="0" node_paths=PackedStringArray("entity")]
-position = Vector2(0, -83)
-entity = NodePath("../..")
+[node name="hitbox" parent="texture/hurtbox" index="0"]
+position = Vector2(12, 16)
+shape = SubResource("CircleShape2D_h1v0q")
+
+[node name="statebar" parent="." index="2"]
+position = Vector2(0, -151)
