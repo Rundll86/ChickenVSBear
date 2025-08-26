@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://uj0aqhm8wgy8"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_45mh7"]
+[ext_resource type="Texture2D" uid="uid://c7hyatbuieaj" path="res://resources/bullets/purple-crystal/frames/0.svg" id="2_ca3pq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r86b3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ca3pq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ty1as"]
+
+[node name="PurpleCrystal" instance=ExtResource("1_45mh7")]
+
+[node name="texture" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_r86b3")
+
+[node name="hitbox" parent="." index="1"]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_ty1as")

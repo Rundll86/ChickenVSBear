@@ -2,7 +2,7 @@ extends Node2D
 
 @export var entity: EntityBase
 
-@onready var healthBar = $"%health"
+@onready var healthBar: ColorBar = $"%health"
 
 func _process(_delta):
 	if entity:

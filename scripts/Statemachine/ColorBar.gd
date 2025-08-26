@@ -1,5 +1,6 @@
 @tool
 extends Control
+class_name ColorBar
 
 @export var minValue: float = 0
 @export var maxValue: float = 100

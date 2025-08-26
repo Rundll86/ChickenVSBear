@@ -3,6 +3,8 @@ class_name EntityBase # 这是个抽象类
 
 @export var maxHealth: float = 100
 @export var movementSpeed: float = 1
+@export var isBoss: bool = false
+@export var weapons: Array[Node2D] = []
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -28,9 +30,32 @@ func move(direction: Vector2):
 	var currentDirection = sign(direction.x)
 	if currentDirection != 0:
 		lastDirection = currentDirection
+func takeDamage(bullet: BulletBase):
+	health -= bullet.damage
+	if health <= 0:
+		die()
+
+# 关于分组
+func isPlayer():
+	return is_in_group("players")
 
 # 抽象方法
 func ai():
 	pass
 func attack(_type: int):
 	pass
+func die():
+	queue_free()
+
+static func generate(
+	entity: PackedScene,
+	spawnPosition: Vector2,
+	spawnRotation: float,
+	addtoWorld: bool = true
+):
+	var instance = entity.instance()
+	instance.position = spawnPosition
+	instance.rotation = spawnRotation
+	if addtoWorld:
+		WorldTool.rootNode.add_child(instance)
+	return instance
