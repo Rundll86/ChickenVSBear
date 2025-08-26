@@ -21,6 +21,7 @@ var fields = {
 @onready var hurtbox: Area2D = $"%hurtbox"
 @onready var statebar: EntityStateBar = $"%statebar"
 @onready var sounds: Node2D = $"%sounds"
+@onready var hurtAnimator: AnimationPlayer = $"%hurtAnimator"
 
 var health: float = 0
 
@@ -57,6 +58,7 @@ func move(direction: Vector2, isSprinting: bool = false):
 	if currentDirection != 0:
 		lastDirection = currentDirection
 func takeDamage(bullet: BulletBase, crit: bool):
+	hurtAnimator.play("hurt")
 	var baseDamage: float = bullet.fields.get(FieldStore.Bullet.DAMAGE) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)
 	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
 	if sprinting:
@@ -82,7 +84,7 @@ func startCooldown():
 func tryAttack(type: int):
 	var state = startCooldown()
 	if state:
-		playSound("attack")
+		playSound("attack" + str(type))
 		attack(type)
 	return state
 func trySprint():
@@ -125,17 +127,15 @@ func sprint():
 static func generate(
 	entity: PackedScene,
 	spawnPosition: Vector2,
-	spawnRotation: float,
 	isMob: bool = true,
 	spawnAsBoss: bool = false,
-	addtoWorld: bool = true
+	addToWorld: bool = true
 ):
-	var instance: EntityBase = entity.instance()
+	var instance: EntityBase = entity.instantiate()
 	instance.position = spawnPosition
-	instance.rotation = spawnRotation
 	instance.isBoss = spawnAsBoss
 	if isMob:
 		instance.add_to_group("mobs")
-	if addtoWorld:
-		WorldTool.rootNode.add_child(instance)
+	if addToWorld:
+		WorldManager.rootNode.add_child(instance)
 	return instance

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dny25qkcvtaa2"]
+[gd_scene load_steps=13 format=3 uid="uid://dny25qkcvtaa2"]
 
 [ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_k7ukc"]
 
@@ -22,6 +22,15 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_miml8"]
 gradient = SubResource("Gradient_g8be5")
 
+[sub_resource type="Curve" id="Curve_iaern"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, -200), 0.0, 0.0, 0, 0, Vector2(1, 200), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1flsn"]
+curve = SubResource("Curve_iaern")
+
 [sub_resource type="Curve" id="Curve_qy5ym"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -33,11 +42,13 @@ curve = SubResource("Curve_qy5ym")
 particle_flag_disable_z = true
 angle_min = 1.07288e-05
 angle_max = 360.0
-direction = Vector3(0, -1, 0)
 spread = 15.0
 initial_velocity_min = 10.0
-initial_velocity_max = 300.0
+initial_velocity_max = 500.0
 gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+linear_accel_curve = SubResource("CurveTexture_1flsn")
 scale_min = 2.0
 scale_max = 12.0
 scale_over_velocity_curve = SubResource("CurveTexture_wcx7i")

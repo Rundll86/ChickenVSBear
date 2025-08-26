@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0ncrvm8u4pox"]
+[gd_scene load_steps=9 format=3 uid="uid://b0ncrvm8u4pox"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_goqmy"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Chick.gd" id="2_r6bub"]
 [ext_resource type="Texture2D" uid="uid://7pkplcqqxvnp" path="res://resources/characters/chick/chick-a.svg" id="2_syddq"]
 [ext_resource type="Texture2D" uid="uid://dj5dvqb8gsedr" path="res://resources/characters/chick/chick-b.svg" id="3_064jv"]
 [ext_resource type="AudioStream" uid="uid://b7pxuov1id0ho" path="res://resources/sounds/effect/Pew.mp3" id="3_ik1xf"]
+[ext_resource type="AudioStream" uid="uid://bx3n11awokuyd" path="res://resources/sounds/effect/Rip.wav" id="4_oyq2p"]
 [ext_resource type="PackedScene" uid="uid://dny25qkcvtaa2" path="res://components/Effects/FirePot.tscn" id="6_kvx3n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xji3d"]
@@ -34,8 +35,11 @@ script = ExtResource("2_r6bub")
 cooldownUnit = 200.0
 displayName = "小鸡"
 
-[node name="hurt" parent="sounds" index="3"]
+[node name="hurt" parent="sounds" index="2"]
 stream = ExtResource("3_ik1xf")
+
+[node name="attack1" type="AudioStreamPlayer2D" parent="sounds" index="4"]
+stream = ExtResource("4_oyq2p")
 
 [node name="texture" parent="." index="1"]
 position = Vector2(0, -37)
@@ -46,6 +50,7 @@ animation = &"walk"
 position = Vector2(30, -12)
 
 [node name="firepot" parent="texture/weapons/normal" index="0" instance=ExtResource("6_kvx3n")]
+unique_name_in_owner = true
 
 [node name="statebar" parent="." index="2" node_paths=PackedStringArray("entity")]
 position = Vector2(0, -82)

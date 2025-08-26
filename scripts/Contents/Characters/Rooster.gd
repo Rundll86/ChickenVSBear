@@ -1,6 +1,10 @@
 extends EntityBase
 class_name Rooster
 
+func _ready():
+	fields[FieldStore.Entity.MAX_HEALTH] = 500
+	super._ready()
+
 func ai():
 	texture.play("walk")
 	var direction = Vector2(

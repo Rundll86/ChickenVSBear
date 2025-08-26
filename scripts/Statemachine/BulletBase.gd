@@ -58,5 +58,5 @@ static func generate(
 	instance.position = spawnPosition
 	instance.rotation = spawnRotation
 	if addToWorld:
-		WorldTool.rootNode.add_child(instance)
+		WorldManager.rootNode.add_child(instance)
 	return instance

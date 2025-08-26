@@ -35,7 +35,7 @@ radius = 40.0
 script = ExtResource("2_8u5a0")
 cooldownUnit = 500.0
 
-[node name="hurt" parent="sounds" index="3"]
+[node name="hurt" parent="sounds" index="2"]
 stream = ExtResource("3_ojyt7")
 
 [node name="texture" parent="." index="1"]

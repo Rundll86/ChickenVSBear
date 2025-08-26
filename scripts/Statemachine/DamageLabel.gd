@@ -22,5 +22,5 @@ static func create(spawnDamage: float, spawnCrit: bool, spawnPosition: Vector2, 
 	instance.crit = spawnCrit
 	instance.position = spawnPosition
 	if addToWorld:
-		WorldTool.rootNode.add_child(instance)
+		WorldManager.rootNode.add_child(instance)
 	return instance

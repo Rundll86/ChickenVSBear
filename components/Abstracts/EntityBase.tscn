@@ -1,11 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvogxi7mktumf"]
+[gd_scene load_steps=17 format=3 uid="uid://cvogxi7mktumf"]
 
 [ext_resource type="Script" path="res://scripts/Statemachine/EntityBase.gd" id="1_mvol6"]
+[ext_resource type="Texture2D" uid="uid://dwwpkn4q07ja2" path="res://icon.svg" id="2_7lpu0"]
 [ext_resource type="PackedScene" uid="uid://dcjqjqere8ets" path="res://components/UI/EntityStateBar.tscn" id="2_uje1g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wcqpm"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7lpu0")
+}],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
@@ -19,22 +23,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_buhm1"]
 radius = 40.0
 
-[sub_resource type="Animation" id="Animation_3wcjn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_4veur"]
+[sub_resource type="Animation" id="Animation_vxanw"]
 resource_name = "left"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -49,7 +38,7 @@ tracks/0/keys = {
 "values": [Vector2(-1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_fgeas"]
+[sub_resource type="Animation" id="Animation_nuh11"]
 resource_name = "left"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -64,11 +53,26 @@ tracks/0/keys = {
 "values": [Vector2(1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kbmff"]
+[sub_resource type="Animation" id="Animation_sxh2u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_daot2"]
 _data = {
-"RESET": SubResource("Animation_3wcjn"),
-"left": SubResource("Animation_4veur"),
-"right": SubResource("Animation_fgeas")
+"RESET": SubResource("Animation_sxh2u"),
+"left": SubResource("Animation_vxanw"),
+"right": SubResource("Animation_nuh11")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ao5k4"]
@@ -84,6 +88,86 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_611yr")
 blend_point_1/pos = 1.0
 snap = 1.0
 
+[sub_resource type="Animation" id="Animation_3wcjn"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_wl2we"]
+resource_name = "hurt"
+length = 0.4
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.2, 0, 0.2, 0, 10, -0.2, 0, 0.2, 0, 1, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.2, 0, 0.2, 0, 10, -0.2, 0, 0.2, 0, 1, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.2, 0, 0.2, 0, 10, -0.2, 0, 0.2, 0, 1, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kbmff"]
+_data = {
+"RESET": SubResource("Animation_3wcjn"),
+"hurt": SubResource("Animation_wl2we")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_34h7q"]
 
 [node name="EntityBase" type="CharacterBody2D"]
@@ -92,17 +176,18 @@ script = ExtResource("1_mvol6")
 [node name="sounds" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="attack" type="AudioStreamPlayer2D" parent="sounds"]
-
 [node name="sprint" type="AudioStreamPlayer2D" parent="sounds"]
 
 [node name="miss" type="AudioStreamPlayer2D" parent="sounds"]
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="sounds"]
 
+[node name="attack0" type="AudioStreamPlayer2D" parent="sounds"]
+
 [node name="texture" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -50)
+scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_wcqpm")
 animation = &"idle"
 
@@ -113,16 +198,23 @@ unique_name_in_owner = true
 shape = SubResource("CircleShape2D_buhm1")
 
 [node name="animator" type="AnimationPlayer" parent="texture"]
+unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_kbmff")
+"": SubResource("AnimationLibrary_daot2")
 }
 
 [node name="animatree" type="AnimationTree" parent="texture/animator"]
 unique_name_in_owner = true
-root_node = NodePath("%animatree/../..")
+root_node = NodePath("%animator/..")
 tree_root = SubResource("AnimationNodeBlendSpace1D_51ube")
 anim_player = NodePath("..")
-parameters/blend_position = 1.0
+parameters/blend_position = 1.36
+
+[node name="hurtAnimator" type="AnimationPlayer" parent="texture"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_kbmff")
+}
 
 [node name="weapons" type="Node2D" parent="texture"]
 unique_name_in_owner = true
@@ -137,4 +229,3 @@ position = Vector2(0, -20)
 
 [node name="movebox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_34h7q")
-disabled = true
