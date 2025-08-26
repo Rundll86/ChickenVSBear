@@ -45,7 +45,7 @@ texture = ExtResource("1_jonms")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "香蕉"
+text = "未命名饲料"
 
 [node name="fields" type="VBoxContainer" parent="container"]
 unique_name_in_owner = true

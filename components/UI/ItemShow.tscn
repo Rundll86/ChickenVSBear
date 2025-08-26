@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bks8jmctleina" path="res://resources/items/baseball.svg" id="1_hyowb"]
 
 [node name="ItemShow" type="HBoxContainer"]
+size_flags_horizontal = 6
+size_flags_vertical = 6
 script = ExtResource("1_2dhsb")
 
 [node name="avatar" type="TextureRect" parent="."]

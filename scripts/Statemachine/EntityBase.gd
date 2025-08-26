@@ -9,6 +9,7 @@ var fields = {
 	FieldStore.Entity.CRIT_RATE: 0.05,
 	FieldStore.Entity.CRIT_DAMAGE: 1,
 	FieldStore.Entity.PENERATE: 0,
+	FieldStore.Entity.OFFSET_SHOOT: 3
 }
 
 @export var cooldownUnit: float = 100 # 100毫秒每次攻击

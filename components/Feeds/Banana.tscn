@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://btisbc7ehj4fo"]
+
+[ext_resource type="PackedScene" uid="uid://b4cwipt17nh7g" path="res://components/Abstracts/FeedCardBase.tscn" id="1_tdrm3"]
+[ext_resource type="Texture2D" uid="uid://b7vxserbhskol" path="res://resources/feeds/banana.svg" id="2_2mlfi"]
+
+[node name="Banana" instance=ExtResource("1_tdrm3")]
+avatarTexture = ExtResource("2_2mlfi")
+displayName = "香蕉"
+fields = Array[int]([0, 3, 7])
+fieldValues = Array[float]([10.0, 0.1])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([5, 10])
+
+[node name="name" parent="container/info" index="1"]
+text = "香蕉"
