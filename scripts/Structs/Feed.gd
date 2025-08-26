@@ -24,7 +24,7 @@ func _ready():
 		var value = fieldValues[i]
 		var fieldShow: FieldShow = preload("res://components/UI/FieldShow.tscn").instantiate()
 		fieldShow.field = field
-		fieldShow.value = str(value)
+		fieldShow.value = value
 		fieldsBox.add_child(fieldShow)
 	for i in costsBox.get_children():
 		i.queue_free()
