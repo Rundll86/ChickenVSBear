@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://1n28ji5sl6bx"]
+
+[ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_1wmro"]
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="2_ae402"]
+
+[node name="MakeFeed" instance=ExtResource("1_1wmro")]
+
+[node name="wrapper" parent="content" index="0"]
+theme_override_constants/separation = 50
+
+[node name="tips" type="VBoxContainer" parent="content/wrapper" index="0"]
+layout_mode = 2
+
+[node name="title" type="RichTextLabel" parent="content/wrapper/tips" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
+text = "[b]天降鸡饲料[/b]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="tip" type="HBoxContainer" parent="content/wrapper/tips" index="1"]
+layout_mode = 2
+alignment = 1
+
+[node name="select" type="RichTextLabel" parent="content/wrapper/tips/tip" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "可选择"
+fit_content = true
+autowrap_mode = 0
+
+[node name="count" type="RichTextLabel" parent="content/wrapper/tips/tip" index="1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "1"
+fit_content = true
+autowrap_mode = 0
+
+[node name="feed" type="RichTextLabel" parent="content/wrapper/tips/tip" index="2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "项增益"
+fit_content = true
+autowrap_mode = 0
+
+[node name="feedcards" type="HBoxContainer" parent="content/wrapper" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="FeedCard" parent="content/wrapper/feedcards" index="0" instance=ExtResource("2_ae402")]
+layout_mode = 2
+
+[node name="FeedCard2" parent="content/wrapper/feedcards" index="1" instance=ExtResource("2_ae402")]
+layout_mode = 2
+
+[node name="FeedCard3" parent="content/wrapper/feedcards" index="2" instance=ExtResource("2_ae402")]
+layout_mode = 2

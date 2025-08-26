@@ -34,6 +34,8 @@ animations = [{
 script = ExtResource("2_r6bub")
 cooldownUnit = 200.0
 displayName = "小鸡"
+drops = Array[int]([0, 1])
+dropCounts = Array[Vector2]([Vector2(10, 20), Vector2(7, 14)])
 
 [node name="hurt" parent="sounds" index="2"]
 stream = ExtResource("3_ik1xf")

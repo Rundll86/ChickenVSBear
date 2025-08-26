@@ -6,8 +6,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ar00p"]
 content_margin_left = 10.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_55nrw"]
-font_size = 14
+[sub_resource type="LabelSettings" id="LabelSettings_esyuk"]
+font_size = 12
 font_color = Color(0, 0, 0, 1)
 
 [node name="BossBar" type="Control"]
@@ -48,16 +48,19 @@ layout_mode = 2
 [node name="name" type="Label" parent="health/panel/label"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 8
 text = "BossName"
-label_settings = SubResource("LabelSettings_55nrw")
+label_settings = SubResource("LabelSettings_esyuk")
 
 [node name="value" type="Label" parent="health/panel/label"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 8
 text = "percent"
-label_settings = SubResource("LabelSettings_55nrw")
+label_settings = SubResource("LabelSettings_esyuk")
 
 [node name="percent" type="Label" parent="health/panel/label"]
 layout_mode = 2
+size_flags_vertical = 8
 text = "%"
-label_settings = SubResource("LabelSettings_55nrw")
+label_settings = SubResource("LabelSettings_esyuk")

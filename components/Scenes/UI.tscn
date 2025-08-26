@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfwg750a47ggx"]
+[gd_scene load_steps=6 format=3 uid="uid://dfwg750a47ggx"]
 
 [ext_resource type="PackedScene" uid="uid://ofpg5s3j7esv" path="res://components/UI/BossBar.tscn" id="1_2pe58"]
 [ext_resource type="Script" path="res://scripts/Statemachine/UIState.gd" id="1_f00a6"]
 [ext_resource type="PackedScene" uid="uid://bbm8l3hr4ihar" path="res://components/UI/ItemShow.tscn" id="3_o2oi4"]
+[ext_resource type="PackedScene" uid="uid://1n28ji5sl6bx" path="res://components/Scenes/FullscreenPanels/MakeFeed.tscn" id="4_kkki3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmgs2"]
 content_margin_left = 10.0
@@ -49,9 +50,23 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_xmgs2")
 layout_mode = 2
 alignment = 1
 
-[node name="ItemShow" parent="root/items/container" instance=ExtResource("3_o2oi4")]
+[node name="baseball" parent="root/items/container" instance=ExtResource("3_o2oi4")]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ItemShow2" parent="root/items/container" instance=ExtResource("3_o2oi4")]
+[node name="basketball" parent="root/items/container" instance=ExtResource("3_o2oi4")]
+unique_name_in_owner = true
 layout_mode = 2
 type = 1
+
+[node name="fullscreenPanels" type="Control" parent="root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MakeFeed" parent="root/fullscreenPanels" instance=ExtResource("4_kkki3")]
+visible = false
+layout_mode = 1

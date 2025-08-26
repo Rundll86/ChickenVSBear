@@ -13,7 +13,14 @@ class_name Feed
 @onready var nameLabel: RichTextLabel = $"%name"
 @onready var fieldsBox: VBoxContainer = $"%fields"
 @onready var costsBox: GridContainer = $"%costs"
+@onready var selectButton: Button = $"%selectBtn"
 
+func _ready():
+	selectButton.pressed.connect(
+		func():
+			apply(UIState.player)
+			queue_free()
+	)
 func _process(_delta):
 	avatarRect.texture = avatarTexture
 	nameLabel.text = "[b]" + displayName + "[/b]"
@@ -39,6 +46,7 @@ func _process(_delta):
 		costShow.type = cost
 		costShow.count = count
 		costsBox.add_child(costShow)
+
 func apply(entity: EntityBase):
 	var allHave = true
 	for i in range(min(costs.size(), costCounts.size())):

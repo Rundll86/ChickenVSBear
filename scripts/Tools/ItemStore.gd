@@ -13,3 +13,5 @@ static var idMap = {
 	ItemType.BASEBALL: "baseball",
 	ItemType.BASKETBALL: "basketball"
 }
+static func getTexture(type: ItemType) -> Texture2D:
+	return load("res://resources/items/%s.svg" % idMap[type])

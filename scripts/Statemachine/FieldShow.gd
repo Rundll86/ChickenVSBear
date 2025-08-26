@@ -8,7 +8,7 @@ class_name FieldShow
 @onready var nameLabel: Label = $"%name"
 @onready var valueLabel: Label = $"%value"
 
-func _ready():
+func _physics_process(_delta):
 	nameLabel.text = FieldStore.entityMap[field]
 	var formattedValue: String
 	var dataType = FieldStore.entityMapType[field]

@@ -20,6 +20,8 @@ var fields = {
 	ItemStore.ItemType.BASEBALL: 0,
 	ItemStore.ItemType.BASKETBALL: 0
 }
+@export var drops: Array[ItemStore.ItemType] = []
+@export var dropCounts: Array[Vector2] = []
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -38,7 +40,15 @@ var sprinting: bool = false
 func _ready():
 	health = fields.get(FieldStore.Entity.MAX_HEALTH)
 	statebar.visible = !isBoss
-	if !isPlayer():
+	if isPlayer():
+		UIState.player = self
+		hurtbox.body_entered.connect(
+			func(body):
+				if body is ItemDropped:
+					inventory[body.item] += body.stackCount
+					body.queue_free()
+		)
+	else:
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
 func _process(_delta):
 	health = clamp(health, 0, fields.get(FieldStore.Entity.MAX_HEALTH))
@@ -78,7 +88,7 @@ func takeDamage(bullet: BulletBase, crit: bool):
 	if health <= 0:
 		if isBoss:
 			bullet.launcher.setBoss(null)
-		die()
+		tryDie()
 func isCooldowned():
 	return Time.get_ticks_msec() - lastAttack >= cooldownUnit / fields.get(FieldStore.Entity.ATTACK_SPEED)
 func startCooldown():
@@ -96,6 +106,13 @@ func trySprint():
 	playSound("sprint")
 	sprint()
 	sprinting = true
+func tryDie():
+	for drop in range(min(len(drops), len(dropCounts))):
+		var item = drops[drop]
+		var count = ceil(randf_range(dropCounts[drop].x, dropCounts[drop].y))
+		for i in range(count):
+			ItemDropped.generate(item, count, position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
+	die()
 func findWeaponAnchor(weaponName: String):
 	var anchor = $"%weapons".get_node(weaponName)
 	if anchor is Node2D:
