@@ -10,15 +10,17 @@ var fields = {
 	FieldStore.Entity.CRIT_DAMAGE: 1,
 	FieldStore.Entity.PENERATE: 0,
 }
-var cooldownUnit: float = 100 # 100毫秒每次攻击
 
+@export var cooldownUnit: float = 100 # 100毫秒每次攻击
 @export var isBoss: bool = false
 @export var displayName: String = "未知实体"
+@export var sprintMultiplier: float = 7
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
 @onready var hurtbox: Area2D = $"%hurtbox"
 @onready var statebar: EntityStateBar = $"%statebar"
+@onready var sounds: Node2D = $"%sounds"
 
 var health: float = 0
 
@@ -47,8 +49,10 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 # 通用方法
+func displace(direction: Vector2, isSprinting: bool = false):
+	return (direction if isSprinting else direction.normalized()) * fields.get(FieldStore.Entity.MOVEMENT_SPEED) * 400 * abs(animatree.get("parameters/blend_position"))
 func move(direction: Vector2, isSprinting: bool = false):
-	velocity = (direction if isSprinting else direction.normalized()) * fields.get(FieldStore.Entity.MOVEMENT_SPEED) * 200 * abs(animatree.get("parameters/blend_position"))
+	velocity = displace(direction, isSprinting)
 	var currentDirection = sign(direction.x)
 	if currentDirection != 0:
 		lastDirection = currentDirection
@@ -56,7 +60,10 @@ func takeDamage(bullet: BulletBase, crit: bool):
 	var baseDamage: float = bullet.fields.get(FieldStore.Bullet.DAMAGE) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)
 	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
 	if sprinting:
+		playSound("miss")
 		damage = 0
+	else:
+		playSound("hurt")
 	health -= damage
 	DamageLabel.create(damage, crit, $"%damageAnchor".global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
 	if isBoss:
@@ -75,9 +82,11 @@ func startCooldown():
 func tryAttack(type: int):
 	var state = startCooldown()
 	if state:
+		playSound("attack")
 		attack(type)
 	return state
 func trySprint():
+	playSound("sprint")
 	sprint()
 	sprinting = true
 func findWeaponAnchor(weaponName: String):
@@ -90,6 +99,14 @@ func setBoss(boss: EntityBase):
 	currentFocusedBoss = boss
 	if isPlayer():
 		UIState.bossbar.entity = boss
+func playSound(type: String):
+	var body = sounds.get_node_or_null(type)
+	if body is AudioStreamPlayer2D:
+		var cloned = body.duplicate() as AudioStreamPlayer2D
+		add_child(cloned)
+		cloned.play()
+		await cloned.finished
+		cloned.queue_free()
 
 # 关于分组
 func isPlayer():

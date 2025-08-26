@@ -84,11 +84,21 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_611yr")
 blend_point_1/pos = 1.0
 snap = 1.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ce3to"]
-size = Vector2(64, 14)
+[sub_resource type="CircleShape2D" id="CircleShape2D_34h7q"]
 
 [node name="EntityBase" type="CharacterBody2D"]
 script = ExtResource("1_mvol6")
+
+[node name="sounds" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="attack" type="AudioStreamPlayer2D" parent="sounds"]
+
+[node name="sprint" type="AudioStreamPlayer2D" parent="sounds"]
+
+[node name="miss" type="AudioStreamPlayer2D" parent="sounds"]
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="sounds"]
 
 [node name="texture" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -117,9 +127,6 @@ parameters/blend_position = 1.0
 [node name="weapons" type="Node2D" parent="texture"]
 unique_name_in_owner = true
 
-[node name="movebox" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ce3to")
-
 [node name="statebar" parent="." instance=ExtResource("2_uje1g")]
 unique_name_in_owner = true
 position = Vector2(0, -100)
@@ -127,3 +134,7 @@ position = Vector2(0, -100)
 [node name="damageAnchor" type="Node2D" parent="statebar"]
 unique_name_in_owner = true
 position = Vector2(0, -20)
+
+[node name="movebox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_34h7q")
+disabled = true

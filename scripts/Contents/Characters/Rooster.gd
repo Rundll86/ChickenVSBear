@@ -22,4 +22,4 @@ func sprint():
 	move(Vector2(
 		Input.get_axis("m_left", "m_right"),
 		Input.get_axis("m_up", "m_down")
-	) * 8, true)
+	) * sprintMultiplier, true)

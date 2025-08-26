@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmxi1ikn6avig"]
+[gd_scene load_steps=7 format=3 uid="uid://dmxi1ikn6avig"]
 
 [ext_resource type="Script" path="res://scripts/Tools/WorldTool.gd" id="1_t2xvy"]
 [ext_resource type="PackedScene" uid="uid://dfwg750a47ggx" path="res://components/Scenes/UI.tscn" id="2_04cdd"]
 [ext_resource type="PackedScene" uid="uid://bm7ymrri6pykb" path="res://components/Characters/Rooster.tscn" id="3_5ui6q"]
 [ext_resource type="PackedScene" uid="uid://b0ncrvm8u4pox" path="res://components/Characters/Chick.tscn" id="4_tnil0"]
+[ext_resource type="PackedScene" uid="uid://c8h1abpbe6cww" path="res://components/Characters/Hen.tscn" id="5_i6i4p"]
+[ext_resource type="Texture2D" uid="uid://ckk8kahhof06u" path="res://resources/maps/Castle 2.png" id="6_p0nkj"]
 
 [node name="world" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_t2xvy")
 
 [node name="UI" parent="." instance=ExtResource("2_04cdd")]
@@ -13,6 +16,20 @@ script = ExtResource("1_t2xvy")
 [node name="rooster" parent="." groups=["players"] instance=ExtResource("3_5ui6q")]
 position = Vector2(394, 274)
 
-[node name="chick" parent="." groups=["mobs"] instance=ExtResource("4_tnil0")]
-position = Vector2(644, 391)
+[node name="camera" type="Camera2D" parent="rooster"]
+position = Vector2(0, -100)
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="hen" parent="." groups=["mobs"] instance=ExtResource("5_i6i4p")]
+position = Vector2(210, 455)
+displayName = "母鸡"
+
+[node name="Chick" parent="." instance=ExtResource("4_tnil0")]
+position = Vector2(788, 513)
 isBoss = true
+
+[node name="Castle2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(468, 320)
+texture = ExtResource("6_p0nkj")

@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=11 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
 [ext_resource type="Texture2D" uid="uid://fn8qx72clh38" path="res://resources/characters/cock/rooster-a.svg" id="2_q0j6j"]
+[ext_resource type="AudioStream" uid="uid://dclinyhu256xi" path="res://resources/sounds/effect/Low Whoosh.mp3" id="3_4syso"]
 [ext_resource type="Texture2D" uid="uid://ci2ik43ce82uy" path="res://resources/characters/cock/rooster-b.svg" id="3_b0fgx"]
+[ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
+[ext_resource type="AudioStream" uid="uid://dmxh3bpk8vyy5" path="res://resources/sounds/effect/Coin.mp3" id="5_xnbhq"]
+[ext_resource type="AudioStream" uid="uid://des7x0l4f3ijc" path="res://resources/sounds/effect/Low Boing.mp3" id="6_nmmw2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4v2ol"]
 animations = [{
@@ -32,8 +36,21 @@ radius = 41.0122
 
 [node name="Rooster" instance=ExtResource("1_e5pl8")]
 script = ExtResource("2_oqdqd")
+cooldownUnit = 200.0
 
-[node name="texture" parent="." index="0"]
+[node name="attack" parent="sounds" index="0"]
+stream = ExtResource("3_4syso")
+
+[node name="sprint" parent="sounds" index="1"]
+stream = ExtResource("4_66s6c")
+
+[node name="miss" parent="sounds" index="2"]
+stream = ExtResource("5_xnbhq")
+
+[node name="hurt" parent="sounds" index="3"]
+stream = ExtResource("6_nmmw2")
+
+[node name="texture" parent="." index="1"]
 position = Vector2(0, -70)
 sprite_frames = SubResource("SpriteFrames_4v2ol")
 animation = &"walk"

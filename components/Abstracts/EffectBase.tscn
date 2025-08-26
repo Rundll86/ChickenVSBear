@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcvuuy2m0pke0"]
+
+[ext_resource type="Script" path="res://scripts/Statemachine/EffectController.gd" id="1_pt2rk"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tgxns"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[node name="EffectBase" type="Node2D"]
+script = ExtResource("1_pt2rk")
+
+[node name="particles" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_tgxns")
+explosiveness = 1.0

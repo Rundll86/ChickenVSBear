@@ -1,5 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8h1abpbe6cww"]
+[gd_scene load_steps=8 format=3 uid="uid://c8h1abpbe6cww"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_twxai"]
+[ext_resource type="Script" path="res://scripts/Contents/Characters/Hen.gd" id="2_8u5a0"]
+[ext_resource type="Texture2D" uid="uid://b5m0fpg3ewfum" path="res://resources/characters/hen/hen-a.svg" id="2_k7xxq"]
+[ext_resource type="Texture2D" uid="uid://3o0oqobnr3b2" path="res://resources/characters/hen/hen-b.svg" id="3_cpiwr"]
+[ext_resource type="AudioStream" uid="uid://cxhsnyjhrnicl" path="res://resources/sounds/effect/Glug.wav" id="3_ojyt7"]
 
-[node name="EntityBase" instance=ExtResource("1_twxai")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_xwexj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k7xxq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k7xxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cpiwr")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0uubu"]
+radius = 40.0
+
+[node name="Hen" instance=ExtResource("1_twxai")]
+script = ExtResource("2_8u5a0")
+cooldownUnit = 500.0
+
+[node name="hurt" parent="sounds" index="3"]
+stream = ExtResource("3_ojyt7")
+
+[node name="texture" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_xwexj")
+animation = &"walk"
+
+[node name="hitbox" parent="texture/hurtbox" index="0"]
+shape = SubResource("CircleShape2D_0uubu")
+
+[node name="normal" type="Node2D" parent="texture/weapons" index="0"]
+
+[node name="statebar" parent="." index="2" node_paths=PackedStringArray("entity")]
+position = Vector2(0, -114)
+entity = NodePath("..")

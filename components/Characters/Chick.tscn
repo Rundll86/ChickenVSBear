@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0ncrvm8u4pox"]
+[gd_scene load_steps=8 format=3 uid="uid://b0ncrvm8u4pox"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_goqmy"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Chick.gd" id="2_r6bub"]
 [ext_resource type="Texture2D" uid="uid://7pkplcqqxvnp" path="res://resources/characters/chick/chick-a.svg" id="2_syddq"]
 [ext_resource type="Texture2D" uid="uid://dj5dvqb8gsedr" path="res://resources/characters/chick/chick-b.svg" id="3_064jv"]
+[ext_resource type="AudioStream" uid="uid://b7pxuov1id0ho" path="res://resources/sounds/effect/Pew.mp3" id="3_ik1xf"]
+[ext_resource type="PackedScene" uid="uid://dny25qkcvtaa2" path="res://components/Effects/FirePot.tscn" id="6_kvx3n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xji3d"]
 animations = [{
@@ -27,14 +29,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rn84j"]
-size = Vector2(19.5, 14)
-
 [node name="Chick" instance=ExtResource("1_goqmy")]
 script = ExtResource("2_r6bub")
+cooldownUnit = 200.0
 displayName = "小鸡"
 
-[node name="texture" parent="." index="0"]
+[node name="hurt" parent="sounds" index="3"]
+stream = ExtResource("3_ik1xf")
+
+[node name="texture" parent="." index="1"]
 position = Vector2(0, -37)
 sprite_frames = SubResource("SpriteFrames_xji3d")
 animation = &"walk"
@@ -42,8 +45,7 @@ animation = &"walk"
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 position = Vector2(30, -12)
 
-[node name="movebox" parent="." index="1"]
-shape = SubResource("RectangleShape2D_rn84j")
+[node name="firepot" parent="texture/weapons/normal" index="0" instance=ExtResource("6_kvx3n")]
 
 [node name="statebar" parent="." index="2" node_paths=PackedStringArray("entity")]
 position = Vector2(0, -82)

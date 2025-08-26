@@ -4,7 +4,7 @@ class_name Chick
 var angle = 0
 func _ready():
 	fields[FieldStore.Entity.MAX_HEALTH] = 1000
-	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.25
+	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.1
 	super._ready()
 
 func ai():
