@@ -32,6 +32,7 @@ size = Vector2(19.5, 14)
 
 [node name="Chick" instance=ExtResource("1_goqmy")]
 script = ExtResource("2_r6bub")
+displayName = "小鸡"
 
 [node name="texture" parent="." index="0"]
 position = Vector2(0, -37)

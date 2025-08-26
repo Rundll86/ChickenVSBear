@@ -13,6 +13,7 @@ var fields = {
 var cooldownUnit: float = 100 # 100毫秒每次攻击
 
 @export var isBoss: bool = false
+@export var displayName: String = "未知实体"
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -33,19 +34,26 @@ func _process(_delta):
 	health = clamp(health, 0, fields.get(FieldStore.Entity.MAX_HEALTH))
 	animatree.set("parameters/blend_position", lerpf(animatree.get("parameters/blend_position"), lastDirection, 0.1))
 func _physics_process(_delta: float) -> void:
-	velocity = Vector2.ZERO
-	ai()
+	if sprinting:
+		velocity *= 0.9
+		if velocity.length() <= 100:
+			sprinting = false
+	else:
+		velocity = Vector2.ZERO
+		ai()
 	move_and_slide()
 
 # 通用方法
-func move(direction: Vector2):
-	velocity = direction.normalized() * fields.get(FieldStore.Entity.MOVEMENT_SPEED) * 200 * abs(animatree.get("parameters/blend_position"))
+func move(direction: Vector2, isSprinting: bool = false):
+	velocity = (direction if isSprinting else direction.normalized()) * fields.get(FieldStore.Entity.MOVEMENT_SPEED) * 200 * abs(animatree.get("parameters/blend_position"))
 	var currentDirection = sign(direction.x)
 	if currentDirection != 0:
 		lastDirection = currentDirection
 func takeDamage(bullet: BulletBase, crit: bool):
 	var baseDamage: float = bullet.fields.get(FieldStore.Bullet.DAMAGE) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)
 	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
+	if sprinting:
+		damage = 0
 	health -= damage
 	DamageLabel.create(damage, crit, $"%damageAnchor".global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
 	if isBoss:
@@ -64,6 +72,9 @@ func startCooldown():
 func tryAttack(type: int):
 	if startCooldown():
 		attack(type)
+func trySprint():
+	sprint()
+	sprinting = true
 func findWeaponAnchor(weaponName: String):
 	var anchor = $"%weapons".get_node(weaponName)
 	if anchor is Node2D:
@@ -86,6 +97,8 @@ func attack(_type: int):
 	pass
 func die():
 	queue_free()
+func sprint():
+	pass
 
 static func generate(
 	entity: PackedScene,

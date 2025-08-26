@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://ofpg5s3j7esv"]
+[gd_scene load_steps=5 format=3 uid="uid://ofpg5s3j7esv"]
 
-[ext_resource type="Script" path="res://scripts/Statemachine/EntityStateBar.gd" id="1_q4vrr"]
+[ext_resource type="Script" path="res://scripts/Statemachine/BossBar.gd" id="1_hkj6o"]
 [ext_resource type="PackedScene" uid="uid://d1ulrvupa76ap" path="res://components/UI/ColorBar.tscn" id="1_uxey7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ar00p"]
+content_margin_left = 10.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_55nrw"]
+font_size = 14
+font_color = Color(0, 0, 0, 1)
 
 [node name="BossBar" type="Control"]
 layout_mode = 3
@@ -10,7 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_q4vrr")
+script = ExtResource("1_hkj6o")
 
 [node name="health" parent="." instance=ExtResource("1_uxey7")]
 unique_name_in_owner = true
@@ -25,3 +32,32 @@ offset_right = 0.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="panel" type="PanelContainer" parent="health"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ar00p")
+
+[node name="label" type="HBoxContainer" parent="health/panel"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="health/panel/label"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "BossName"
+label_settings = SubResource("LabelSettings_55nrw")
+
+[node name="value" type="Label" parent="health/panel/label"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "percent"
+label_settings = SubResource("LabelSettings_55nrw")
+
+[node name="percent" type="Label" parent="health/panel/label"]
+layout_mode = 2
+text = "%"
+label_settings = SubResource("LabelSettings_55nrw")
