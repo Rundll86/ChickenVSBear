@@ -12,7 +12,7 @@ class_name ItemShow
 
 func _ready():
 	if autoFree:
-		await TickTool.millseconds(2000) # 等待1秒后自动隐藏
+		await TickTool.millseconds(GameRule.itemShowStayTime) # 等待几秒后自动隐藏
 		animator.play("hide")
 		await animator.animation_finished
 		queue_free()
