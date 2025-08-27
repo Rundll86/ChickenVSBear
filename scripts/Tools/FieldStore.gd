@@ -74,7 +74,7 @@ static var entityApplier = {
 		entity.inventoryMax[ItemStore.ItemType.APPLE] += value
 		,
 	Entity.EXTRA_BULLET_COUNT: func(entity, value):
-		entity.fields[Entity.OFFSET_SHOOT] += value * 5
+		entity.fields[Entity.OFFSET_SHOOT] += value * 2
 		,
 }
 
