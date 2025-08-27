@@ -10,7 +10,6 @@ fields = Array[int]([10, 5, 13])
 fieldValues = Array[float]([0.06, 0.12, 0.3])
 costs = Array[int]([0, 1])
 costCounts = Array[int]([250, 100])
-metadata/_edit_lock_ = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_p35iw")
