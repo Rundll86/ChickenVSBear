@@ -1,0 +1,68 @@
+[gd_scene load_steps=13 format=3 uid="uid://m60bwhdpbem8"]
+
+[ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_3ves7"]
+[ext_resource type="Script" path="res://scripts/Contents/Characters/Bear.gd" id="2_kh2af"]
+[ext_resource type="Texture2D" uid="uid://dmy5lfw3jy2u4" path="res://resources/characters/bear/bear-walk-a.svg" id="2_umdul"]
+[ext_resource type="Texture2D" uid="uid://dxlsg4p1xkqh0" path="res://resources/characters/bear/bear-walk-b.svg" id="3_o77du"]
+[ext_resource type="Texture2D" uid="uid://cd5vnifacsc8t" path="res://resources/characters/bear/bear-walk-c.svg" id="4_encki"]
+[ext_resource type="Texture2D" uid="uid://dsgtjdeggris7" path="res://resources/characters/bear/bear-walk-d.svg" id="5_mvydi"]
+[ext_resource type="Texture2D" uid="uid://d2mwi15jqmnek" path="res://resources/characters/bear/bear-walk-e.svg" id="6_rwuah"]
+[ext_resource type="Texture2D" uid="uid://cli2fyulk3dsg" path="res://resources/characters/bear/bear-walk-f.svg" id="7_f0c6w"]
+[ext_resource type="Texture2D" uid="uid://dadi3ud01bqxk" path="res://resources/characters/bear/bear-walk-g.svg" id="8_4c7bp"]
+[ext_resource type="Texture2D" uid="uid://017nthmejh3g" path="res://resources/characters/bear/bear-walk-h.svg" id="9_bcby1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6tgxs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_bcby1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_umdul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o77du")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_encki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mvydi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rwuah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f0c6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4c7bp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bcby1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hekxf"]
+radius = 114.215
+
+[node name="Bear" instance=ExtResource("1_3ves7")]
+script = ExtResource("2_kh2af")
+
+[node name="texture" parent="." index="1"]
+position = Vector2(0, -80)
+sprite_frames = SubResource("SpriteFrames_6tgxs")
+
+[node name="hitbox" parent="texture/hurtbox" index="0"]
+shape = SubResource("CircleShape2D_hekxf")
+
+[node name="statebar" parent="." index="2"]
+position = Vector2(0, -175)
