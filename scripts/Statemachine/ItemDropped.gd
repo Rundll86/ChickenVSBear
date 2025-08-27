@@ -7,6 +7,8 @@ var targetPlayer: EntityBase = null
 
 @onready var texture: Sprite2D = $"%texture"
 
+func _ready():
+	apply_force(MathTool.randv2_range(20000), MathTool.randv2_range(10))
 func _process(_delta):
 	texture.texture = ItemStore.getTexture(item)
 func _physics_process(_delta):
@@ -14,6 +16,7 @@ func _physics_process(_delta):
 		targetPlayer = findPlayer()
 	if is_instance_valid(targetPlayer):
 		apply_central_force((targetPlayer.position - position).normalized() * 1000)
+
 func findPlayer() -> EntityBase:
 	var result = null
 	var lastDistance = INF

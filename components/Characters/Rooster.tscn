@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
 [ext_resource type="AudioStream" uid="uid://benyec5bqni0b" path="res://resources/sounds/effect/Chomp.wav" id="4_k0yme"]
 [ext_resource type="AudioStream" uid="uid://dmxh3bpk8vyy5" path="res://resources/sounds/effect/Coin.mp3" id="5_xnbhq"]
-[ext_resource type="AudioStream" uid="uid://des7x0l4f3ijc" path="res://resources/sounds/effect/Low Boing.mp3" id="6_nmmw2"]
+[ext_resource type="AudioStream" uid="uid://4wuuf1osk0yv" path="res://resources/sounds/effect/Low Boing.wav" id="6_m5px1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4v2ol"]
 animations = [{
@@ -50,7 +50,7 @@ stream = ExtResource("4_k0yme")
 stream = ExtResource("5_xnbhq")
 
 [node name="hurt" parent="sounds" index="3"]
-stream = ExtResource("6_nmmw2")
+stream = ExtResource("6_m5px1")
 
 [node name="attack0" parent="sounds" index="4"]
 stream = ExtResource("3_4syso")
@@ -70,6 +70,3 @@ position = Vector2(54, -45)
 [node name="statebar" parent="." index="2" node_paths=PackedStringArray("entity")]
 position = Vector2(0, -151)
 entity = NodePath("..")
-
-[node name="movebox" parent="." index="3"]
-disabled = true
