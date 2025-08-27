@@ -11,3 +11,9 @@ class_name ItemShow
 func _physics_process(_delta):
 	avatarTexture.texture = ItemStore.getTexture(type)
 	countLabel.text = str(count)
+
+static func generate(itemType: ItemStore.ItemType, itemCount: int = 1):
+	var item = preload("res://components/UI/ItemShow.tscn").instantiate()
+	item.type = itemType
+	item.count = itemCount
+	return item

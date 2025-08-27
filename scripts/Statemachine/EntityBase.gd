@@ -7,6 +7,8 @@ signal healthChanged(health: float)
 
 signal energyChanged(energy: float)
 
+signal itemCollected(itemType: ItemStore.ItemType, amount: int)
+
 var fields = {
 	FieldStore.Entity.MAX_HEALTH: 100,
 	FieldStore.Entity.DAMAGE_MULTIPILER: 1,
@@ -72,12 +74,17 @@ func _ready():
 				if body is ItemDropped:
 					inventory[body.item] += body.stackCount
 					playSound("collect")
+					itemCollected.emit(body.item, body.stackCount)
 					body.queue_free()
 		)
 		energyChanged.connect(
 			func(newEnergy):
 				UIState.energyPercent.maxValue = fields.get(FieldStore.Entity.MAX_ENERGY)
 				UIState.energyPercent.setCurrent(newEnergy)
+		)
+		itemCollected.connect(
+			func(itemType, amount):
+				UIState.itemCollect.add_child(ItemShow.generate(itemType, amount))
 		)
 	else:
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
