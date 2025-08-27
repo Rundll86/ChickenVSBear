@@ -8,6 +8,8 @@ class_name BulletBase
 }
 @export var lifeDistance: float = -1 # -1表示无限距离
 @export var lifeTime: float = -1 # -1表示无限时间
+@export var indisDamage: bool = false # 是否无差别伤害（不区分敌我）
+@export var canDamageSelf: bool = false # 是否可以伤害发射者
 
 var launcher: EntityBase = null
 var spawnInWhen: float = 0
@@ -31,8 +33,8 @@ func _physics_process(_delta: float) -> void:
 func hit(target: Node):
 	var entity: EntityBase = EntityTool.fromHurtbox(target)
 	if !entity || !launcher: return
-	if entity == launcher: return
-	if !GameRule.allowFriendlyFire:
+	if !canDamageSelf && entity == launcher: return
+	if !indisDamage && !GameRule.allowFriendlyFire:
 		if entity.isPlayer() == launcher.isPlayer(): return
 	entity.takeDamage(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE)))
 	if !MathTool.rate(fullPenerate()):

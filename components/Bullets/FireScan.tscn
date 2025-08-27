@@ -8,6 +8,11 @@ a = Vector2(0, -10)
 
 [node name="FireScan" instance=ExtResource("1_cqre5")]
 script = ExtResource("2_qprdp")
+fields = {
+0: 10,
+1: 30,
+2: 0
+}
 lifeDistance = 200.0
 
 [node name="hitbox" parent="." index="1"]

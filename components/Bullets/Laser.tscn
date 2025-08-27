@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvri0nv1jrigf"]
+[gd_scene load_steps=7 format=3 uid="uid://bvri0nv1jrigf"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_3u4op"]
 [ext_resource type="Shader" path="res://shaders/Laser.gdshader" id="2_h6cxi"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/Laser.gd" id="2_yy5sr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yip5k"]
 
@@ -15,12 +16,13 @@ shader_parameter/soft_edge = 0.5
 height = 300.0
 
 [node name="Laser" instance=ExtResource("1_3u4op")]
+script = ExtResource("2_yy5sr")
 fields = {
 0: 10,
-1: 5,
-2: 0
+1: 15,
+2: 1
 }
-lifeTime = 100.0
+lifeTime = 1000.0
 
 [node name="texture" parent="." index="0"]
 rotation = 1.5708

@@ -83,7 +83,7 @@ func takeDamage(bullet: BulletBase, crit: bool):
 		playSound("hurt")
 	health -= damage
 	DamageLabel.create(damage, crit, $"%damageAnchor".global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
-	if isBoss:
+	if isBoss and bullet.launcher.isPlayer():
 		bullet.launcher.setBoss(self)
 	if health <= 0:
 		if isBoss:

@@ -32,7 +32,7 @@ animations = [{
 
 [node name="Chick" instance=ExtResource("1_goqmy")]
 script = ExtResource("2_r6bub")
-cooldownUnit = 200.0
+cooldownUnit = 2000.0
 displayName = "小鸡"
 drops = Array[int]([0, 1])
 dropCounts = Array[Vector2]([Vector2(10, 20), Vector2(7, 14)])
