@@ -37,12 +37,12 @@ func hit(target: Node):
 	if !indisDamage && !GameRule.allowFriendlyFire:
 		if entity.isPlayer() == launcher.isPlayer(): return
 	entity.takeDamage(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE)))
-	if !MathTool.rate(fullPenerate()):
+	if !MathTool.rate(fullPenerate(entity)):
 		destroy()
 func forward(direction: Vector2):
 	position += direction.normalized() * fields.get(FieldStore.Bullet.SPEED) * GameRule.bulletSpeedMultiplier
-func fullPenerate():
-	return fields.get(FieldStore.Bullet.PENERATE) * (1 + launcher.fields.get(FieldStore.Entity.PENERATE))
+func fullPenerate(target: EntityBase):
+	return fields.get(FieldStore.Bullet.PENERATE) * (1 + launcher.fields.get(FieldStore.Entity.PENERATE)) - target.fields.get(FieldStore.Entity.PENARATION_RESISTANCE)
 
 func ai():
 	pass
@@ -56,10 +56,15 @@ static func generate(
 	  	spawnRotation: float,
 	   	addToWorld: bool = true
 	):
-	var instance: BulletBase = bullet.instantiate()
-	instance.launcher = launchBy
-	instance.position = spawnPosition
-	instance.rotation = spawnRotation + deg_to_rad(randf_range(-launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT), launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT)))
-	if addToWorld:
-		WorldManager.rootNode.add_child(instance)
-	return instance
+	var extraCount = launchBy.fields.get(FieldStore.Entity.EXTRA_BULLET_COUNT)
+	var count = 1 + floor(extraCount) + int(MathTool.rate(extraCount - floor(extraCount)))
+	var instances = []
+	for i in range(count):
+		var instance: BulletBase = bullet.instantiate()
+		instance.launcher = launchBy
+		instance.position = spawnPosition
+		instance.rotation = spawnRotation + deg_to_rad(randf_range(-launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT), launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT)))
+		if addToWorld:
+			WorldManager.rootNode.add_child(instance)
+		instances.append(instance)
+	return instances

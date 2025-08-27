@@ -1,23 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfwg750a47ggx"]
+[gd_scene load_steps=9 format=3 uid="uid://dfwg750a47ggx"]
 
 [ext_resource type="PackedScene" uid="uid://ofpg5s3j7esv" path="res://components/UI/BossBar.tscn" id="1_2pe58"]
 [ext_resource type="Script" path="res://scripts/Statemachine/UIState.gd" id="1_f00a6"]
+[ext_resource type="StyleBox" uid="uid://dx0udq8nv2ec0" path="res://styleboxes/topPanel.tres" id="3_kep0k"]
 [ext_resource type="PackedScene" uid="uid://bbm8l3hr4ihar" path="res://components/UI/ItemShow.tscn" id="3_o2oi4"]
 [ext_resource type="PackedScene" uid="uid://1n28ji5sl6bx" path="res://components/Scenes/FullscreenPanels/MakeFeed.tscn" id="4_kkki3"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmgs2"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
-bg_color = Color(0, 0, 0, 0.5)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0, 0, 0.75)
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[ext_resource type="Theme" uid="uid://b6nox1qqh50ub" path="res://themes/smallText.tres" id="5_widd7"]
+[ext_resource type="StyleBox" uid="uid://bsv1daadkv4eq" path="res://styleboxes/topLeftPanel.tres" id="6_8m0pt"]
+[ext_resource type="Texture2D" uid="uid://k13cte17httt" path="res://resources/items/energy.svg" id="7_2om12"]
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
@@ -34,8 +24,9 @@ grow_vertical = 2
 [node name="bossbar" parent="root" instance=ExtResource("1_2pe58")]
 unique_name_in_owner = true
 layout_mode = 1
+metadata/_edit_lock_ = true
 
-[node name="items" type="PanelContainer" parent="root"]
+[node name="container" type="PanelContainer" parent="root"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -45,22 +36,24 @@ offset_top = -3.0
 offset_right = 46.0
 offset_bottom = 37.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xmgs2")
+theme_override_styles/panel = ExtResource("3_kep0k")
+metadata/_edit_lock_ = true
 
-[node name="container" type="HBoxContainer" parent="root/items"]
+[node name="items" type="HBoxContainer" parent="root/container"]
+unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="baseball" parent="root/items/container" instance=ExtResource("3_o2oi4")]
+[node name="baseball" parent="root/container/items" instance=ExtResource("3_o2oi4")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="basketball" parent="root/items/container" instance=ExtResource("3_o2oi4")]
+[node name="basketball" parent="root/container/items" instance=ExtResource("3_o2oi4")]
 unique_name_in_owner = true
 layout_mode = 2
 type = 1
 
-[node name="apple" parent="root/items/container" instance=ExtResource("3_o2oi4")]
+[node name="apple" parent="root/container/items" instance=ExtResource("3_o2oi4")]
 unique_name_in_owner = true
 layout_mode = 2
 type = 2
@@ -73,7 +66,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="MakeFeed" parent="root/panels" instance=ExtResource("4_kkki3")]
 visible = false
 layout_mode = 1
+
+[node name="energy" type="PanelContainer" parent="root"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 97.0
+offset_bottom = 14.0
+theme_override_styles/panel = ExtResource("6_8m0pt")
+
+[node name="energy" type="HBoxContainer" parent="root/energy"]
+layout_mode = 2
+
+[node name="icon" type="TextureRect" parent="root/energy/energy"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_2om12")
+expand_mode = 1
+
+[node name="energy" type="Label" parent="root/energy/energy"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("5_widd7")
+text = "114514.0"

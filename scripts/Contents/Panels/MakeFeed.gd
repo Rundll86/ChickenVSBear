@@ -1,14 +1,14 @@
+@tool
 extends FullscreenPanelBase
 
 @onready var avaliableFeeds: Node = $"%avaliableFeeds"
 @onready var feedCards: HBoxContainer = $"%feedcards"
 
-func hideAll():
+func _ready():
 	for i in avaliableFeeds.get_children():
 		i.hide()
 
 func beforeOpen():
-	hideAll()
 	var feeds = []
 	for i in avaliableFeeds.get_children():
 		feeds.append(i)

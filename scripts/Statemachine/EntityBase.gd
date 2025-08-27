@@ -46,11 +46,12 @@ var inventoryMax = {
 @onready var damageAnchor: Node2D = $"%damageAnchor"
 
 var health: float = 0
+var energy: float = 0
+var sprinting: bool = false
 
 var lastDirection: int = 1
 var lastAttack: int = 0
 var currentFocusedBoss: EntityBase = null
-var sprinting: bool = false
 
 func _ready():
 	health = fields.get(FieldStore.Entity.MAX_HEALTH)
@@ -95,17 +96,22 @@ func takeDamage(bullet: BulletBase, crit: bool):
 	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
 	if sprinting:
 		playSound("miss")
+		storeEnergy(damage * 0.5)
 		damage = 0
 	else:
 		playSound("hurt")
+		bullet.launcher.storeEnergy(damage * 0.25)
 	health -= damage
 	DamageLabel.create(damage, crit, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
 	if isBoss and bullet.launcher.isPlayer():
 		bullet.launcher.setBoss(self)
 	if health <= 0:
 		if isBoss:
+			bullet.launcher.storeEnergy(energy)
 			bullet.launcher.setBoss(null)
 		tryDie(bullet)
+func storeEnergy(value: float):
+	energy += value * fields.get(FieldStore.Entity.ENERGY_MULTIPILER)
 func isCooldowned():
 	return Time.get_ticks_msec() - lastAttack >= cooldownUnit / fields.get(FieldStore.Entity.ATTACK_SPEED)
 func startCooldown():
@@ -137,7 +143,7 @@ func tryHeal(count: float):
 	if inventory[ItemStore.ItemType.APPLE] > 0 and health < fields.get(FieldStore.Entity.MAX_HEALTH):
 		inventory[ItemStore.ItemType.APPLE] -= 1
 		playSound("heal")
-		heal(count)
+		heal(count * fields.get(FieldStore.Entity.HEAL_ABILITY))
 func findWeaponAnchor(weaponName: String):
 	var anchor = $"%weapons".get_node(weaponName)
 	if anchor is Node2D:
