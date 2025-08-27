@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuxon4is2qqyp"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_v7ebs"]
+[ext_resource type="Texture2D" uid="uid://b8uh5md8o4ihf" path="res://resources/feeds/fortune cookie.png" id="2_or0st"]
+
+[node name="LuckyCookie" instance=ExtResource("1_v7ebs")]
+avatarTexture = ExtResource("2_or0st")
+displayName = "幸运签语饼"
+fields = Array[int]([14, 4, 6])
+fieldValues = Array[float]([0.1, 0.07, 0.12])
+costs = Array[int]([0, 1, 2])
+costCounts = Array[int]([200, 75, 1])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_or0st")
+
+[node name="name" parent="container/info" index="1"]
+text = "[b]幸运签语饼[/b]"

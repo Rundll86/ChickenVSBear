@@ -45,10 +45,10 @@ func _ready():
 		var count = costCounts[i]
 		var costShow: ItemShow = preload("res://components/UI/ItemShow.tscn").instantiate()
 		costShow.type = cost
-		costShow.count = count * multipiler()
+		costShow.count = int(count * multipiler())
 		costsBox.add_child(costShow)
 
-func apply(entity: EntityBase):
+func allHad(entity: EntityBase) -> bool:
 	var allHave = true
 	for i in range(min(costs.size(), costCounts.size())):
 		var item = costs[i]
@@ -56,6 +56,9 @@ func apply(entity: EntityBase):
 		if entity.inventory[item] < count:
 			allHave = false
 			break
+	return allHave
+func apply(entity: EntityBase):
+	var allHave = allHad(entity)
 	if allHave:
 		for i in range(min(costs.size(), costCounts.size())):
 			var item = costs[i]
@@ -68,5 +71,8 @@ func apply(entity: EntityBase):
 			if !applier or applier.call(entity, value):
 				entity.fields[field] += value
 	return allHave
-func multipiler():
-	return 1 - UIState.player.fields.get(FieldStore.Entity.PRICE_REDUCTION)
+func multipiler() -> float:
+	if is_instance_valid(UIState.player):
+		return 1 - UIState.player.fields.get(FieldStore.Entity.PRICE_REDUCTION)
+	else:
+		return 1

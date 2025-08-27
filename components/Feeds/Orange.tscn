@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://byfn3ruhh0fid"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_w5eks"]
+[ext_resource type="Texture2D" uid="uid://d3rkwlf75hvva" path="res://resources/feeds/jar-b.svg" id="2_0xfoo"]
+[ext_resource type="Texture2D" uid="uid://5xp54g568jbb" path="res://resources/feeds/orange2-b.svg" id="2_l6jnq"]
+
+[node name="FruitSalad" instance=ExtResource("1_w5eks")]
+avatarTexture = ExtResource("2_l6jnq")
+displayName = "橘子"
+fields = Array[int]([10, 3])
+fieldValues = Array[float]([0.1, 0.1])
+costs = Array[int]([1])
+costCounts = Array[int]([275])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_0xfoo")
+
+[node name="name" parent="container/info" index="1"]
+text = "[b]蜂蜜果酱[/b]"

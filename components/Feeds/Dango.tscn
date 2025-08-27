@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3aymxd848400"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_mwo1u"]
+[ext_resource type="Texture2D" uid="uid://bvkjvgxabqyvg" path="res://resources/feeds/dango.svg" id="2_ckr7l"]
+
+[node name="FruitSalad" instance=ExtResource("1_mwo1u")]
+avatarTexture = ExtResource("2_ckr7l")
+displayName = "团子"
+fields = Array[int]([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
+fieldValues = Array[float]([10.0, 0.1, 0.15, 0.12, 0.04, 0.1, 0.075, 5.0, 0.15, 3.0, 0.07, 0.15, 0.1, 0.4, 0.2])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([2000, 1500])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_ckr7l")
+
+[node name="name" parent="container/info" index="1"]
+text = "[b]团子[/b]"
