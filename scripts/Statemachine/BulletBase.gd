@@ -86,13 +86,11 @@ static func generate(
 	var instances = []
 	for i in range(count):
 		var instance: BulletBase = bullet.instantiate()
-		if launchBy.energy < instance.needEnergy:
-			continue
-		launchBy.energy -= instance.needEnergy
-		instance.launcher = launchBy
-		instance.position = spawnPosition
-		instance.rotation = spawnRotation + deg_to_rad(randf_range(-launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT), launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT)))
-		if addToWorld:
-			WorldManager.rootNode.add_child(instance)
-		instances.append(instance)
+		if launchBy.useEnergy(instance.needEnergy):
+			instance.launcher = launchBy
+			instance.position = spawnPosition
+			instance.rotation = spawnRotation + deg_to_rad(randf_range(-launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT), launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT)))
+			if addToWorld:
+				WorldManager.rootNode.add_child(instance)
+			instances.append(instance)
 	return len(instances)

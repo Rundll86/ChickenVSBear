@@ -5,10 +5,10 @@ class_name ColorBar
 @export var minValue: float = 0
 @export var maxValue: float = 100
 @export var currentValue: float = 50
-@export var backColor: Color
-@export var middleColor: Color
-@export var frontColor: Color
-@export var speed1: float = 0.9
+@export var backBox: StyleBox
+@export var middleBox: StyleBox
+@export var frontBox: StyleBox
+@export var speed1: float = 0.8
 @export var speed2: float = 0.01
 
 var middleValue = 0
@@ -25,10 +25,10 @@ func _ready():
 	middleValue = currentValue
 	frontValue = currentValue
 func _draw():
-	draw_rect(Rect2(0, 0, size.x, size.y), backColor)
-	draw_rect(Rect2(0, 0, size.x * getPercent(middleValue), size.y), middleColor)
-	draw_rect(Rect2(0, 0, size.x * getPercent(frontValue), size.y), frontColor)
-func _process(_delta: float) -> void:
+	draw_style_box(backBox, Rect2(0, 0, size.x, size.y))
+	draw_style_box(middleBox, Rect2(0, 0, size.x * getPercent(middleValue), size.y))
+	draw_style_box(frontBox, Rect2(0, 0, size.x * getPercent(frontValue), size.y))
+func _physics_process(_delta: float) -> void:
 	middleValue = lerpf(middleValue, currentValue, speed1 if forwardDirection > 0 else speed2)
 	frontValue = lerpf(frontValue, currentValue, speed1 if forwardDirection < 0 else speed2)
 	queue_redraw()

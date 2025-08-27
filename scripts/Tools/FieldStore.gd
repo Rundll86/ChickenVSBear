@@ -23,10 +23,11 @@ enum Entity {
 	EXTRA_BULLET_COUNT,
 	DROP_APPLE_RATE,
 	FEED_COUNT_SHOW,
-	FEED_COUNT_CAN_MADE
+	FEED_COUNT_CAN_MADE,
+	MAX_ENERGY
 }
 static var entityMap = {
-	Entity.MAX_HEALTH: "最大生命值",
+	Entity.MAX_HEALTH: "生命上限",
 	Entity.DAMAGE_MULTIPILER: "伤害倍率",
 	Entity.MOVEMENT_SPEED: "移动速度",
 	Entity.ATTACK_SPEED: "攻击速度",
@@ -42,7 +43,8 @@ static var entityMap = {
 	Entity.EXTRA_BULLET_COUNT: "额外子弹",
 	Entity.DROP_APPLE_RATE: "苹果掉落率",
 	Entity.FEED_COUNT_SHOW: "可选饲料数量",
-	Entity.FEED_COUNT_CAN_MADE: "可制作饲料数量"
+	Entity.FEED_COUNT_CAN_MADE: "可制作饲料数量",
+	Entity.MAX_ENERGY: "能量上限"
 }
 static var entityMapType = {
 	Entity.MAX_HEALTH: DataType.VALUE,
@@ -61,7 +63,8 @@ static var entityMapType = {
 	Entity.EXTRA_BULLET_COUNT: DataType.VALUE,
 	Entity.DROP_APPLE_RATE: DataType.PERCENT,
 	Entity.FEED_COUNT_SHOW: DataType.VALUE,
-	Entity.FEED_COUNT_CAN_MADE: DataType.VALUE
+	Entity.FEED_COUNT_CAN_MADE: DataType.VALUE,
+	Entity.MAX_ENERGY: DataType.VALUE
 }
 static var entityApplier = {
 	Entity.MAX_HEALTH: func(entity, value):

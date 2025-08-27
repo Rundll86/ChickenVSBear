@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1ulrvupa76ap"]
+[gd_scene load_steps=5 format=3 uid="uid://d1ulrvupa76ap"]
 
 [ext_resource type="Script" path="res://scripts/Statemachine/ColorBar.gd" id="1_a106p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kf2fc"]
+bg_color = Color(0, 0, 0, 0.5)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkydp"]
+bg_color = Color(1, 0, 0, 0.5)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x7p33"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="ColorBar" type="Control"]
 layout_mode = 3
@@ -8,7 +29,8 @@ anchors_preset = 0
 offset_right = 100.0
 offset_bottom = 10.0
 script = ExtResource("1_a106p")
-backColor = Color(0, 0, 0, 0.5)
-middleColor = Color(1, 0, 0, 0.5)
-frontColor = Color(1, 1, 1, 1)
+backBox = SubResource("StyleBoxFlat_kf2fc")
+middleBox = SubResource("StyleBoxFlat_gkydp")
+frontBox = SubResource("StyleBoxFlat_x7p33")
+speed1 = 0.9
 speed2 = 0.05

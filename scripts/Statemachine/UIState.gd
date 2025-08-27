@@ -6,6 +6,7 @@ class_name UIState
 @onready var apple = $"%apple"
 @onready var items = $"%items"
 @onready var energy = $"%energy"
+@onready var energyPercent: ColorBar = $"%percent"
 
 static var player: EntityBase = null
 static var bossbar: EntityStateBar
@@ -20,6 +21,8 @@ func _process(_delta):
 func _physics_process(_delta):
 	if is_instance_valid(player):
 		energy.text = "%.1f"%player.energy
+		energyPercent.maxValue = player.fields.get(FieldStore.Entity.MAX_ENERGY)
+		energyPercent.setCurrent(player.energy)
 		for i in items.get_children():
 			var item = i as ItemShow
 			item.count = player.inventory.get(item.type)

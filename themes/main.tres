@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dhvs6urgf6jr5"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dhvs6urgf6jr5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jby4"]
 content_margin_left = 5.0
@@ -78,6 +78,22 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a507o"]
+content_margin_top = 5.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 0.5)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ef7vq"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [resource]
 Button/font_sizes/font_size = 14
 Button/styles/disabled = SubResource("StyleBoxFlat_2jby4")
@@ -86,3 +102,5 @@ Button/styles/hover = SubResource("StyleBoxFlat_4j7ii")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_mt3v0")
 Button/styles/normal = SubResource("StyleBoxFlat_3nqwh")
 Button/styles/pressed = SubResource("StyleBoxFlat_iekfp")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_a507o")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_ef7vq")

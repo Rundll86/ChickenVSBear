@@ -18,7 +18,8 @@ var fields = {
 	FieldStore.Entity.EXTRA_BULLET_COUNT: 0,
 	FieldStore.Entity.DROP_APPLE_RATE: 0,
 	FieldStore.Entity.FEED_COUNT_SHOW: 3,
-	FieldStore.Entity.FEED_COUNT_CAN_MADE: 1
+	FieldStore.Entity.FEED_COUNT_CAN_MADE: 1,
+	FieldStore.Entity.MAX_ENERGY: 200,
 }
 var inventory = {
 	ItemStore.ItemType.BASEBALL: 100,
@@ -70,7 +71,7 @@ func _ready():
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
 func _process(_delta):
 	health = clamp(health, 0, fields.get(FieldStore.Entity.MAX_HEALTH))
-	energy = clamp(energy, 0, INF)
+	energy = clamp(energy, 0, fields.get(FieldStore.Entity.MAX_ENERGY))
 	for i in inventory:
 		inventory[i] = clamp(inventory[i], 0, inventoryMax[i])
 func _physics_process(_delta: float) -> void:
@@ -117,6 +118,11 @@ func takeDamage(bullet: BulletBase, crit: bool):
 		tryDie(bullet)
 func storeEnergy(value: float):
 	energy += value * fields.get(FieldStore.Entity.ENERGY_MULTIPILER)
+func useEnergy(value: float):
+	var state = energy >= value
+	if state:
+		energy -= value
+	return state
 func isCooldowned():
 	return Time.get_ticks_msec() - lastAttack >= cooldownUnit / fields.get(FieldStore.Entity.ATTACK_SPEED)
 func startCooldown():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfwg750a47ggx"]
+[gd_scene load_steps=10 format=3 uid="uid://dfwg750a47ggx"]
 
 [ext_resource type="PackedScene" uid="uid://ofpg5s3j7esv" path="res://components/UI/BossBar.tscn" id="1_2pe58"]
 [ext_resource type="Script" path="res://scripts/Statemachine/UIState.gd" id="1_f00a6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://b6nox1qqh50ub" path="res://themes/smallText.tres" id="5_widd7"]
 [ext_resource type="StyleBox" uid="uid://bsv1daadkv4eq" path="res://styleboxes/topLeftPanel.tres" id="6_8m0pt"]
 [ext_resource type="Texture2D" uid="uid://k13cte17httt" path="res://resources/items/energy.svg" id="7_2om12"]
+[ext_resource type="PackedScene" uid="uid://d1ulrvupa76ap" path="res://components/UI/ColorBar.tscn" id="9_44nw8"]
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
@@ -81,10 +82,13 @@ offset_right = 97.0
 offset_bottom = 14.0
 theme_override_styles/panel = ExtResource("6_8m0pt")
 
-[node name="energy" type="HBoxContainer" parent="root/energy"]
+[node name="container" type="VBoxContainer" parent="root/energy"]
 layout_mode = 2
 
-[node name="icon" type="TextureRect" parent="root/energy/energy"]
+[node name="energy" type="HBoxContainer" parent="root/energy/container"]
+layout_mode = 2
+
+[node name="icon" type="TextureRect" parent="root/energy/container/energy"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -92,8 +96,25 @@ size_flags_vertical = 4
 texture = ExtResource("7_2om12")
 expand_mode = 1
 
-[node name="energy" type="Label" parent="root/energy/energy"]
+[node name="energy" type="Label" parent="root/energy/container/energy"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("5_widd7")
-text = "114514.0"
+text = "50.0"
+
+[node name="sep" type="Label" parent="root/energy/container/energy"]
+layout_mode = 2
+theme = ExtResource("5_widd7")
+text = "/"
+
+[node name="energyMax" type="Label" parent="root/energy/container/energy"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("5_widd7")
+text = "100.0"
+
+[node name="percent" parent="root/energy/container" instance=ExtResource("9_44nw8")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+speed1 = 0.9
