@@ -36,6 +36,7 @@ anchors_preset = 0
 offset_right = 100.0
 offset_bottom = 10.0
 script = ExtResource("1_a106p")
+currentValue = 0.0
 backBox = SubResource("StyleBoxFlat_kf2fc")
 middleBox1 = SubResource("StyleBoxFlat_sh754")
 middleBox2 = SubResource("StyleBoxFlat_8n8i8")

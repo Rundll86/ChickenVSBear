@@ -202,8 +202,9 @@ func findWeaponAnchor(weaponName: String):
 		return Vector2.ZERO
 func setBoss(boss: EntityBase):
 	currentFocusedBoss = boss
-	if isPlayer():
+	if isPlayer() and boss and UIState.bossbar.entity != boss:
 		UIState.bossbar.entity = boss
+		boss.healthChanged.emit(boss.health)
 func playSound(type: String):
 	var body = sounds.get_node_or_null(type)
 	if body is AudioStreamPlayer2D:
