@@ -8,6 +8,6 @@ class_name ItemShow
 @onready var avatarTexture: TextureRect = $"%avatar"
 @onready var countLabel: Label = $"%count"
 
-func _ready():
+func _physics_process(_delta):
 	avatarTexture.texture = ItemStore.getTexture(type)
 	countLabel.text = str(count)

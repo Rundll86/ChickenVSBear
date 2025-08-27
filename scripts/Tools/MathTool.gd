@@ -7,3 +7,5 @@ static func randv2_range(offset: float):
 		randf_range(-offset, offset),
 		randf_range(-offset, offset)
 	)
+static func randc_from(array: Array):
+	return array[randi() % array.size()]

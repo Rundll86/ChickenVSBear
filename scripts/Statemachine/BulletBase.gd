@@ -25,7 +25,8 @@ func _process(_delta: float) -> void:
 		if position.distance_to(spawnInWhere) >= lifeDistance:
 			destroy()
 func _physics_process(_delta: float) -> void:
-	ai()
+	if is_instance_valid(launcher) and (launcher.isPlayer() or is_instance_valid(launcher.currentFocusedBoss)):
+		ai()
 
 func hit(target: Node):
 	var entity: EntityBase = EntityTool.fromHurtbox(target)
