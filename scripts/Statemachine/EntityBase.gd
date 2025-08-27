@@ -99,11 +99,12 @@ func takeDamage(bullet: BulletBase, crit: bool):
 	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
 	if sprinting:
 		playSound("miss")
-		storeEnergy(damage * 1.5)
+		storeEnergy(damage * 1.25)
 		damage = 0
 	else:
 		playSound("hurt")
-		bullet.launcher.storeEnergy(damage * 0.5)
+		bullet.launcher.storeEnergy(damage * 0.15)
+		storeEnergy(damage * -0.1)
 	health -= damage
 	DamageLabel.create(damage, crit, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
 	if isBoss and bullet.launcher.isPlayer():
