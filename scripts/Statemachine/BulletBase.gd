@@ -12,8 +12,9 @@ class_name BulletBase
 @export var canDamageSelf: bool = false # 是否可以伤害发射者
 @export var needEnergy: float = 4.0 # 发射时需要消耗的能量
 
-@onready var animator = $"%animator"
-@onready var hitbox = $"%hitbox"
+@onready var animator: AnimationPlayer = $"%animator"
+@onready var hitbox: CollisionShape2D = $"%hitbox"
+@onready var texture: AnimatedSprite2D = $"%texture"
 
 var launcher: EntityBase = null
 var spawnInWhen: float = 0
@@ -51,6 +52,8 @@ func forward(direction: Vector2):
 	position += direction.normalized() * fields.get(FieldStore.Bullet.SPEED) * GameRule.bulletSpeedMultiplier
 func fullPenerate():
 	return fields.get(FieldStore.Bullet.PENERATE) + launcher.fields.get(FieldStore.Entity.PENERATE)
+func timeLived():
+	return Time.get_ticks_msec() - spawnInWhen
 
 func ai():
 	pass

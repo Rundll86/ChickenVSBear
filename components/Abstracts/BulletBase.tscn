@@ -18,6 +18,7 @@ _data = {
 script = ExtResource("1_pklpq")
 
 [node name="texture" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_vypy3")
 
 [node name="animator" type="AnimationPlayer" parent="texture"]
