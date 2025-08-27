@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://u58mo875ipgg"]
+[gd_scene load_steps=3 format=3 uid="uid://u58mo875ipgg"]
 
 [ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_x5oju"]
-[ext_resource type="Texture2D" uid="uid://d3rkwlf75hvva" path="res://resources/feeds/jar-b.svg" id="2_jjjxx"]
 [ext_resource type="Texture2D" uid="uid://tp2scdjwalro" path="res://resources/feeds/muffin-a.svg" id="2_qojf3"]
 
-[node name="FruitSalad" instance=ExtResource("1_x5oju")]
+[node name="Cupcake" instance=ExtResource("1_x5oju")]
 avatarTexture = ExtResource("2_qojf3")
 displayName = "烘焙松糕"
 fields = Array[int]([12, 2])
@@ -13,7 +12,7 @@ costs = Array[int]([0])
 costCounts = Array[int]([125])
 
 [node name="avatar" parent="container/info" index="0"]
-texture = ExtResource("2_jjjxx")
+texture = ExtResource("2_qojf3")
 
 [node name="name" parent="container/info" index="1"]
-text = "[b]蜂蜜果酱[/b]"
+text = "[b]烘焙松糕[/b]"

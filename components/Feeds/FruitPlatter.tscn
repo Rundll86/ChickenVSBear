@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b45fcafxjacch"]
+[gd_scene load_steps=3 format=3 uid="uid://b45fcafxjacch"]
 
 [ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_rejfg"]
 [ext_resource type="Texture2D" uid="uid://b7g4nciiimp1t" path="res://resources/feeds/fruit platter.png" id="2_6i6sp"]
-[ext_resource type="Texture2D" uid="uid://b8uh5md8o4ihf" path="res://resources/feeds/fortune cookie.png" id="2_n0rfa"]
 
 [node name="FruitPlatter" instance=ExtResource("1_rejfg")]
 avatarTexture = ExtResource("2_6i6sp")
@@ -13,7 +12,7 @@ costs = Array[int]([0, 1])
 costCounts = Array[int]([150, 200])
 
 [node name="avatar" parent="container/info" index="0"]
-texture = ExtResource("2_n0rfa")
+texture = ExtResource("2_6i6sp")
 
 [node name="name" parent="container/info" index="1"]
-text = "[b]幸运签语饼[/b]"
+text = "[b]水果拼盘[/b]"

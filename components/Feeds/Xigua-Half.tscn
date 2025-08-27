@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ub2joo082noq"]
+[gd_scene load_steps=3 format=3 uid="uid://ub2joo082noq"]
 
 [ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_bbid3"]
 [ext_resource type="Texture2D" uid="uid://m2q78i18f1do" path="res://resources/feeds/watermelon-c.svg" id="2_htt7g"]
-[ext_resource type="Texture2D" uid="uid://ddxq46crf8s0b" path="res://resources/feeds/watermelon-a.svg" id="2_nwypg"]
 
-[node name="FruitSalad" instance=ExtResource("1_bbid3")]
+[node name="Xigua-Half" instance=ExtResource("1_bbid3")]
 avatarTexture = ExtResource("2_htt7g")
 displayName = "一片西瓜"
 fields = Array[int]([0])
@@ -13,7 +12,7 @@ costs = Array[int]([0])
 costCounts = Array[int]([50])
 
 [node name="avatar" parent="container/info" index="0"]
-texture = ExtResource("2_nwypg")
+texture = ExtResource("2_htt7g")
 
 [node name="name" parent="container/info" index="1"]
-text = "[b]西瓜[/b]"
+text = "[b]一片西瓜[/b]"

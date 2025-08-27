@@ -21,7 +21,9 @@ enum Entity {
 	PENARATION_RESISTANCE,
 	PRICE_REDUCTION,
 	EXTRA_BULLET_COUNT,
-	DROP_APPLE_RATE
+	DROP_APPLE_RATE,
+	FEED_COUNT_SHOW,
+	FEED_COUNT_CAN_MADE
 }
 static var entityMap = {
 	Entity.MAX_HEALTH: "最大生命值",
@@ -38,7 +40,9 @@ static var entityMap = {
 	Entity.PENARATION_RESISTANCE: "穿透抗性",
 	Entity.PRICE_REDUCTION: "饲料降价",
 	Entity.EXTRA_BULLET_COUNT: "额外子弹",
-	Entity.DROP_APPLE_RATE: "苹果掉落率"
+	Entity.DROP_APPLE_RATE: "苹果掉落率",
+	Entity.FEED_COUNT_SHOW: "可选饲料数量",
+	Entity.FEED_COUNT_CAN_MADE: "可制作饲料数量"
 }
 static var entityMapType = {
 	Entity.MAX_HEALTH: DataType.VALUE,
@@ -55,7 +59,9 @@ static var entityMapType = {
 	Entity.PENARATION_RESISTANCE: DataType.PERCENT,
 	Entity.PRICE_REDUCTION: DataType.PERCENT,
 	Entity.EXTRA_BULLET_COUNT: DataType.VALUE,
-	Entity.DROP_APPLE_RATE: DataType.PERCENT
+	Entity.DROP_APPLE_RATE: DataType.PERCENT,
+	Entity.FEED_COUNT_SHOW: DataType.VALUE,
+	Entity.FEED_COUNT_CAN_MADE: DataType.VALUE
 }
 static var entityApplier = {
 	Entity.MAX_HEALTH: func(entity, value):
@@ -63,6 +69,9 @@ static var entityApplier = {
 		,
 	Entity.EXTRA_APPLE_MAX: func(entity, value):
 		entity.inventoryMax[ItemStore.ItemType.APPLE] += value
+		,
+	Entity.EXTRA_BULLET_COUNT: func(entity, value):
+		entity.fields[Entity.OFFSET_SHOOT] += value * 5
 		,
 }
 

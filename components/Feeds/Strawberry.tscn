@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_wr2cd"]
 [ext_resource type="Texture2D" uid="uid://cbyfpwrg2e3ns" path="res://resources/feeds/strawberry-a.svg" id="2_82amy"]
 
-[node name="FruitSalad" instance=ExtResource("1_wr2cd")]
+[node name="Strawberry" instance=ExtResource("1_wr2cd")]
 avatarTexture = ExtResource("2_82amy")
 displayName = "草莓"
 fields = Array[int]([14])

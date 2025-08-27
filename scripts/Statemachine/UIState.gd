@@ -37,3 +37,5 @@ static func setPanel(targetName: String = ""):
 				panel.showPanel()
 			else:
 				panel.hidePanel()
+static func closeCurrentPanel():
+	setPanel()

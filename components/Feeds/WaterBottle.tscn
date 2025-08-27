@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_vfxjq"]
 [ext_resource type="Texture2D" uid="uid://doyq5mp7wvv7s" path="res://resources/feeds/glass water-a.svg" id="2_gsfud"]
 
-[node name="FruitSalad" instance=ExtResource("1_vfxjq")]
+[node name="WaterBottle" instance=ExtResource("1_vfxjq")]
 avatarTexture = ExtResource("2_gsfud")
 displayName = "一杯水"
 fields = Array[int]([3])

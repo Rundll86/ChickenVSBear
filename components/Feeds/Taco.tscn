@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c52nrkruwwhyd"]
+[gd_scene load_steps=3 format=3 uid="uid://c52nrkruwwhyd"]
 
 [ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_iixnt"]
 [ext_resource type="Texture2D" uid="uid://pvcwt58hsg5i" path="res://resources/feeds/Taco.svg" id="2_eed3c"]
-[ext_resource type="Texture2D" uid="uid://cbyfpwrg2e3ns" path="res://resources/feeds/strawberry-a.svg" id="2_kd8ai"]
 
-[node name="FruitSalad" instance=ExtResource("1_iixnt")]
+[node name="Taco" instance=ExtResource("1_iixnt")]
 avatarTexture = ExtResource("2_eed3c")
 displayName = "塔克"
 fields = Array[int]([13])
@@ -13,7 +12,7 @@ costs = Array[int]([1])
 costCounts = Array[int]([225])
 
 [node name="avatar" parent="container/info" index="0"]
-texture = ExtResource("2_kd8ai")
+texture = ExtResource("2_eed3c")
 
 [node name="name" parent="container/info" index="1"]
-text = "[b]草莓[/b]"
+text = "[b]塔克[/b]"

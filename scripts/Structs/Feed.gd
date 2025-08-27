@@ -2,6 +2,8 @@
 extends PanelContainer
 class_name Feed
 
+signal selected(applied: bool)
+
 @export var avatarTexture: Texture2D = preload("res://icon.svg")
 @export var displayName: String = "未命名饲料"
 @export var fields: Array[FieldStore.Entity] = []
@@ -18,10 +20,7 @@ class_name Feed
 func _ready():
 	selectButton.pressed.connect(
 		func():
-			if apply(UIState.player):
-				UIState.setPanel()
-				queue_free()
-				Wave.next()
+			apply(UIState.player)
 	)
 	avatarRect.texture = avatarTexture
 	nameLabel.text = "[b]" + displayName + "[/b]"
@@ -70,6 +69,8 @@ func apply(entity: EntityBase):
 			var applier = FieldStore.entityApplier.get(field, null)
 			if !applier or applier.call(entity, value):
 				entity.fields[field] += value
+		hide()
+	selected.emit(allHave)
 	return allHave
 func multipiler() -> float:
 	if is_instance_valid(UIState.player):

@@ -16,7 +16,9 @@ var fields = {
 	FieldStore.Entity.PENARATION_RESISTANCE: 0,
 	FieldStore.Entity.PRICE_REDUCTION: 0,
 	FieldStore.Entity.EXTRA_BULLET_COUNT: 0,
-	FieldStore.Entity.DROP_APPLE_RATE: 0
+	FieldStore.Entity.DROP_APPLE_RATE: 0,
+	FieldStore.Entity.FEED_COUNT_SHOW: 3,
+	FieldStore.Entity.FEED_COUNT_CAN_MADE: 1
 }
 var inventory = {
 	ItemStore.ItemType.BASEBALL: 100,

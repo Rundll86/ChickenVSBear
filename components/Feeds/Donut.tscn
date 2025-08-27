@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbmjur6cjmffo"]
+[gd_scene load_steps=3 format=3 uid="uid://bbmjur6cjmffo"]
 
 [ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_7gqm6"]
 [ext_resource type="Texture2D" uid="uid://bxqax0anr5a45" path="res://resources/feeds/donut.svg" id="2_bv6j5"]
-[ext_resource type="Texture2D" uid="uid://d3op67s1hysla" path="res://resources/feeds/cheesy puffs.png" id="2_q5fyh"]
 
 [node name="Donut" instance=ExtResource("1_7gqm6")]
 avatarTexture = ExtResource("2_bv6j5")
@@ -12,8 +11,5 @@ fieldValues = Array[float]([1.0, -3.0])
 costs = Array[int]([0])
 costCounts = Array[int]([100])
 
-[node name="avatar" parent="container/info" index="0"]
-texture = ExtResource("2_q5fyh")
-
 [node name="name" parent="container/info" index="1"]
-text = "[b]奶酪泡芙[/b]"
+text = "[b]甜甜圈[/b]"
