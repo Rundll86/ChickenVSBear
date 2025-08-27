@@ -5,6 +5,8 @@ signal hit(damage: float, bullet: BulletBase, crit: bool)
 signal healed(amount: float)
 signal healthChanged(health: float)
 
+signal energyChanged(energy: float)
+
 var fields = {
 	FieldStore.Entity.MAX_HEALTH: 100,
 	FieldStore.Entity.DAMAGE_MULTIPILER: 1,
@@ -39,7 +41,7 @@ var inventoryMax = {
 @export var cooldownUnit: float = 100 # 100毫秒每次攻击
 @export var isBoss: bool = false
 @export var displayName: String = "未知实体"
-@export var sprintMultiplier: float = 7
+@export var sprintMultiplier: float = 4
 @export var drops: Array[ItemStore.ItemType] = []
 @export var dropCounts: Array[Vector2] = []
 @export var appleCount: Vector2i = Vector2(0, 1) # 死亡后掉落的苹果数量
@@ -71,9 +73,15 @@ func _ready():
 					inventory[body.item] += body.stackCount
 					body.queue_free()
 		)
+		energyChanged.connect(
+			func(newEnergy):
+				UIState.energyPercent.maxValue = fields.get(FieldStore.Entity.MAX_ENERGY)
+				UIState.energyPercent.setCurrent(newEnergy)
+		)
 	else:
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
 	healthChanged.emit(health)
+	energyChanged.emit(energy)
 func _process(_delta):
 	health = clamp(health, 0, fields.get(FieldStore.Entity.MAX_HEALTH))
 	energy = clamp(energy, 0, fields.get(FieldStore.Entity.MAX_ENERGY))
@@ -125,10 +133,12 @@ func takeDamage(bullet: BulletBase, crit: bool):
 		tryDie(bullet)
 func storeEnergy(value: float):
 	energy += value * fields.get(FieldStore.Entity.ENERGY_MULTIPILER)
+	energyChanged.emit(energy)
 func useEnergy(value: float):
 	var state = energy >= value
 	if state:
 		energy -= value
+		energyChanged.emit(energy)
 	return state
 func isCooldowned():
 	return Time.get_ticks_msec() - lastAttack >= cooldownUnit / fields.get(FieldStore.Entity.ATTACK_SPEED)

@@ -74,6 +74,7 @@ visible = false
 layout_mode = 1
 
 [node name="energy" type="PanelContainer" parent="root"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = -1
 offset_left = -3.0
