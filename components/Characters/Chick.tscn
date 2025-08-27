@@ -35,7 +35,7 @@ script = ExtResource("2_r6bub")
 cooldownUnit = 3000.0
 displayName = "小鸡"
 drops = Array[int]([0, 1])
-dropCounts = Array[Vector2]([Vector2(10, 20), Vector2(7, 14)])
+dropCounts = Array[Vector2]([Vector2(10, 30), Vector2(15, 50)])
 appleCount = Vector2i(2, 6)
 energy = 1000.0
 

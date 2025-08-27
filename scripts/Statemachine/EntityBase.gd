@@ -83,7 +83,7 @@ func _physics_process(_delta: float) -> void:
 		if isPlayer() or is_instance_valid(currentFocusedBoss):
 			ai()
 	move_and_slide()
-	storeEnergy(0.05)
+	storeEnergy(0.01)
 
 # 通用方法
 func displace(direction: Vector2, isSprinting: bool = false):

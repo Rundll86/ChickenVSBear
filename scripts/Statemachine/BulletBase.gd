@@ -32,6 +32,7 @@ func _ready():
 		await animator.animation_finished
 	if autoLoopAnimation:
 		animator.play("loop")
+	dotLoop()
 func _process(_delta: float) -> void:
 	if lifeTime > 0:
 		if Time.get_ticks_msec() - spawnInWhen >= lifeTime:
@@ -60,12 +61,17 @@ func fullPenerate():
 	return fields.get(FieldStore.Bullet.PENERATE) + launcher.fields.get(FieldStore.Entity.PENERATE)
 func timeLived():
 	return Time.get_ticks_msec() - spawnInWhen
+func dotLoop():
+	if await applyDot():
+		await dotLoop()
 
 func ai():
 	pass
 func destroy():
 	queue_free()
 func spawn():
+	pass
+func applyDot():
 	pass
 
 static func generate(

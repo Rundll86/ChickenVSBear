@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=13 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://benyec5bqni0b" path="res://resources/sounds/effect/Chomp.wav" id="4_k0yme"]
 [ext_resource type="AudioStream" uid="uid://dmxh3bpk8vyy5" path="res://resources/sounds/effect/Coin.mp3" id="5_xnbhq"]
 [ext_resource type="AudioStream" uid="uid://4wuuf1osk0yv" path="res://resources/sounds/effect/Low Boing.wav" id="6_m5px1"]
+[ext_resource type="AudioStream" uid="uid://q65xjxxq1m4j" path="res://resources/sounds/effect/laserbig.ogg" id="8_pssdt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4v2ol"]
 animations = [{
@@ -54,6 +55,9 @@ stream = ExtResource("6_m5px1")
 
 [node name="attack0" parent="sounds" index="4"]
 stream = ExtResource("3_4syso")
+
+[node name="attack1" type="AudioStreamPlayer2D" parent="sounds" index="5"]
+stream = ExtResource("8_pssdt")
 
 [node name="texture" parent="." index="1"]
 position = Vector2(0, -70)

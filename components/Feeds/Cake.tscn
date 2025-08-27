@@ -6,10 +6,10 @@
 [node name="Cake" instance=ExtResource("1_f2mv8")]
 avatarTexture = ExtResource("2_ijk6h")
 displayName = "生日蛋糕"
-fields = Array[int]([4, 8])
-fieldValues = Array[float]([0.06, 0.075])
+fields = Array[int]([4, 8, 15])
+fieldValues = Array[float]([0.06, 0.075, 1.0])
 costs = Array[int]([1])
-costCounts = Array[int]([70])
+costCounts = Array[int]([125])
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_ijk6h")

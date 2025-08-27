@@ -11,7 +11,11 @@ func ai():
 	if direction.length() == 0:
 		texture.play("idle")
 	if Input.is_action_pressed("attack"):
+		cooldownUnit = 200
 		tryAttack(0)
+	elif Input.is_action_pressed("attack2"):
+		cooldownUnit = 6000
+		tryAttack(1)
 	if Input.is_action_just_pressed("sprint"):
 		trySprint()
 	if Input.is_action_just_pressed("heal"):
@@ -19,8 +23,10 @@ func ai():
 func attack(type):
 	if type == 0:
 		var weaponPos = findWeaponAnchor("normal")
-		# return BulletBase.generate(preload("res://components/Bullets/Pencil.tscn"), self, weaponPos, (get_global_mouse_position() - weaponPos).angle())
 		return BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, weaponPos, (get_global_mouse_position() - weaponPos).angle())
+	elif type == 1:
+		var weaponPos = findWeaponAnchor("normal")
+		return BulletBase.generate(preload("res://components/Bullets/BigLaser.tscn"), self, weaponPos, (get_global_mouse_position() - weaponPos).angle())
 func sprint():
 	move(Vector2(
 		Input.get_axis("m_left", "m_right"),
