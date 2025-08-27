@@ -70,6 +70,7 @@ func _ready():
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
 func _process(_delta):
 	health = clamp(health, 0, fields.get(FieldStore.Entity.MAX_HEALTH))
+	energy = clamp(energy, 0, INF)
 	for i in inventory:
 		inventory[i] = clamp(inventory[i], 0, inventoryMax[i])
 func _physics_process(_delta: float) -> void:
@@ -103,7 +104,7 @@ func takeDamage(bullet: BulletBase, crit: bool):
 		damage = 0
 	else:
 		playSound("hurt")
-		bullet.launcher.storeEnergy(damage * 0.15)
+		bullet.launcher.storeEnergy(damage * 0.05)
 		storeEnergy(damage * -0.1)
 	health -= damage
 	DamageLabel.create(damage, crit, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
