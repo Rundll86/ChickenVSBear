@@ -28,7 +28,7 @@ var fields = {
 var inventory = {
 	ItemStore.ItemType.BASEBALL: 100,
 	ItemStore.ItemType.BASKETBALL: 100,
-	ItemStore.ItemType.APPLE: 3,
+	ItemStore.ItemType.APPLE: 10,
 }
 var inventoryMax = {
 	ItemStore.ItemType.BASEBALL: INF, # 无限

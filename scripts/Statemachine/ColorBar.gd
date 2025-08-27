@@ -22,7 +22,7 @@ func setCurrent(value: float):
 	if value == currentValue:
 		return
 	forwardDirection = sign(value - currentValue)
-	currentValue = value
+	currentValue = clamp(value, minValue, maxValue)
 
 func _ready():
 	middleValue = currentValue
