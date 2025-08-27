@@ -3,6 +3,7 @@ class_name UIState
 
 @onready var baseball = $"%baseball"
 @onready var basketball = $"%basketball"
+@onready var apple = $"%apple"
 
 static var player: EntityBase = null
 static var bossbar: EntityStateBar
@@ -18,6 +19,7 @@ func _physics_process(_delta):
 	if is_instance_valid(player):
 		baseball.count = player.inventory[ItemStore.ItemType.BASEBALL]
 		basketball.count = player.inventory[ItemStore.ItemType.BASKETBALL]
+		apple.count = player.inventory[ItemStore.ItemType.APPLE]
 	if currentPanel:
 		WorldManager.rootNode.process_mode = Node.PROCESS_MODE_DISABLED
 	else:

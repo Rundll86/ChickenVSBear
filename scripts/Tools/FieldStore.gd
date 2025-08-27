@@ -14,7 +14,14 @@ enum Entity {
 	CRIT_RATE,
 	CRIT_DAMAGE,
 	PENERATE,
-	OFFSET_SHOOT
+	OFFSET_SHOOT,
+	HEAL_ABILITY,
+	EXTRA_APPLE_MAX,
+	ENERGY_MULTIPILER,
+	PENARATION_RESISTANCE,
+	PRICE_REDUCTION,
+	EXTRA_BULLET_COUNT,
+	DROP_APPLE_RATE
 }
 static var entityMap = {
 	Entity.MAX_HEALTH: "最大生命值",
@@ -24,7 +31,14 @@ static var entityMap = {
 	Entity.CRIT_RATE: "暴击率",
 	Entity.CRIT_DAMAGE: "暴击伤害",
 	Entity.PENERATE: "穿透",
-	Entity.OFFSET_SHOOT: "散射角"
+	Entity.OFFSET_SHOOT: "散射角",
+	Entity.HEAL_ABILITY: "治疗量",
+	Entity.EXTRA_APPLE_MAX: "苹果上限",
+	Entity.ENERGY_MULTIPILER: "能量倍率",
+	Entity.PENARATION_RESISTANCE: "穿透抗性",
+	Entity.PRICE_REDUCTION: "饲料降价",
+	Entity.EXTRA_BULLET_COUNT: "额外子弹",
+	Entity.DROP_APPLE_RATE: "苹果掉落率"
 }
 static var entityMapType = {
 	Entity.MAX_HEALTH: DataType.VALUE,
@@ -34,7 +48,22 @@ static var entityMapType = {
 	Entity.CRIT_RATE: DataType.PERCENT,
 	Entity.CRIT_DAMAGE: DataType.PERCENT,
 	Entity.PENERATE: DataType.PERCENT,
-	Entity.OFFSET_SHOOT: DataType.ANGLE
+	Entity.OFFSET_SHOOT: DataType.ANGLE,
+	Entity.HEAL_ABILITY: DataType.PERCENT,
+	Entity.EXTRA_APPLE_MAX: DataType.VALUE,
+	Entity.ENERGY_MULTIPILER: DataType.PERCENT,
+	Entity.PENARATION_RESISTANCE: DataType.PERCENT,
+	Entity.PRICE_REDUCTION: DataType.PERCENT,
+	Entity.EXTRA_BULLET_COUNT: DataType.VALUE,
+	Entity.DROP_APPLE_RATE: DataType.PERCENT
+}
+static var entityApplier = {
+	Entity.MAX_HEALTH: func(entity, value):
+		entity.health += value
+		,
+	Entity.EXTRA_APPLE_MAX: func(entity, value):
+		entity.inventoryMax[ItemStore.ItemType.APPLE] += value
+		,
 }
 
 enum Bullet {

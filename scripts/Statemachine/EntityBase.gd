@@ -9,19 +9,33 @@ var fields = {
 	FieldStore.Entity.CRIT_RATE: 0.05,
 	FieldStore.Entity.CRIT_DAMAGE: 1,
 	FieldStore.Entity.PENERATE: 0,
-	FieldStore.Entity.OFFSET_SHOOT: 3
+	FieldStore.Entity.OFFSET_SHOOT: 3,
+	FieldStore.Entity.HEAL_ABILITY: 1,
+	FieldStore.Entity.EXTRA_APPLE_MAX: 0,
+	FieldStore.Entity.ENERGY_MULTIPILER: 1,
+	FieldStore.Entity.PENARATION_RESISTANCE: 0,
+	FieldStore.Entity.PRICE_REDUCTION: 0,
+	FieldStore.Entity.EXTRA_BULLET_COUNT: 0,
+	FieldStore.Entity.DROP_APPLE_RATE: 0
+}
+var inventory = {
+	ItemStore.ItemType.BASEBALL: 100,
+	ItemStore.ItemType.BASKETBALL: 100,
+	ItemStore.ItemType.APPLE: 3,
+}
+var inventoryMax = {
+	ItemStore.ItemType.BASEBALL: INF, # 无限
+	ItemStore.ItemType.BASKETBALL: INF,
+	ItemStore.ItemType.APPLE: 20, # 最多20个苹果
 }
 
 @export var cooldownUnit: float = 100 # 100毫秒每次攻击
 @export var isBoss: bool = false
 @export var displayName: String = "未知实体"
 @export var sprintMultiplier: float = 7
-@export var inventory = {
-	ItemStore.ItemType.BASEBALL: 0,
-	ItemStore.ItemType.BASKETBALL: 0
-}
 @export var drops: Array[ItemStore.ItemType] = []
 @export var dropCounts: Array[Vector2] = []
+@export var appleCount: Vector2i = Vector2(0, 1) # 死亡后掉落的苹果数量
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -29,6 +43,7 @@ var fields = {
 @onready var statebar: EntityStateBar = $"%statebar"
 @onready var sounds: Node2D = $"%sounds"
 @onready var hurtAnimator: AnimationPlayer = $"%hurtAnimator"
+@onready var damageAnchor: Node2D = $"%damageAnchor"
 
 var health: float = 0
 
@@ -53,6 +68,8 @@ func _ready():
 func _process(_delta):
 	health = clamp(health, 0, fields.get(FieldStore.Entity.MAX_HEALTH))
 	animatree.set("parameters/blend_position", lerpf(animatree.get("parameters/blend_position"), lastDirection, 0.1))
+	for i in inventory:
+		inventory[i] = clamp(inventory[i], 0, inventoryMax[i])
 func _physics_process(_delta: float) -> void:
 	if sprinting:
 		velocity *= 0.9
@@ -82,13 +99,13 @@ func takeDamage(bullet: BulletBase, crit: bool):
 	else:
 		playSound("hurt")
 	health -= damage
-	DamageLabel.create(damage, crit, $"%damageAnchor".global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
+	DamageLabel.create(damage, crit, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
 	if isBoss and bullet.launcher.isPlayer():
 		bullet.launcher.setBoss(self)
 	if health <= 0:
 		if isBoss:
 			bullet.launcher.setBoss(null)
-		tryDie()
+		tryDie(bullet)
 func isCooldowned():
 	return Time.get_ticks_msec() - lastAttack >= cooldownUnit / fields.get(FieldStore.Entity.ATTACK_SPEED)
 func startCooldown():
@@ -106,13 +123,21 @@ func trySprint():
 	playSound("sprint")
 	sprint()
 	sprinting = true
-func tryDie():
+func tryDie(by: BulletBase):
 	for drop in range(min(len(drops), len(dropCounts))):
 		var item = drops[drop]
 		var count = ceil(randf_range(dropCounts[drop].x, dropCounts[drop].y))
 		for i in range(count):
 			ItemDropped.generate(item, count, position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
+	if MathTool.rate(GameRule.appleDropRate + by.launcher.fields.get(FieldStore.Entity.DROP_APPLE_RATE)) or isBoss:
+		for i in randi_range(appleCount.x, appleCount.y):
+			ItemDropped.generate(ItemStore.ItemType.APPLE, 1, position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
 	die()
+func tryHeal(count: float):
+	if inventory[ItemStore.ItemType.APPLE] > 0 and health < fields.get(FieldStore.Entity.MAX_HEALTH):
+		inventory[ItemStore.ItemType.APPLE] -= 1
+		playSound("heal")
+		heal(count)
 func findWeaponAnchor(weaponName: String):
 	var anchor = $"%weapons".get_node(weaponName)
 	if anchor is Node2D:
@@ -144,6 +169,8 @@ func attack(_type: int):
 func die():
 	queue_free()
 func sprint():
+	pass
+func heal(_count: float):
 	pass
 
 static func generate(

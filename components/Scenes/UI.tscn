@@ -60,6 +60,11 @@ unique_name_in_owner = true
 layout_mode = 2
 type = 1
 
+[node name="apple" parent="root/items/container" instance=ExtResource("3_o2oi4")]
+unique_name_in_owner = true
+layout_mode = 2
+type = 2
+
 [node name="panels" type="Control" parent="root"]
 unique_name_in_owner = true
 layout_mode = 1

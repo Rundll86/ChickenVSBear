@@ -6,10 +6,10 @@
 [node name="Banana" instance=ExtResource("1_vapev")]
 avatarTexture = ExtResource("2_2mlfi")
 displayName = "香蕉"
-fields = Array[int]([0, 3, 1])
-fieldValues = Array[float]([10.0, 0.1, 0.1])
+fields = Array[int]([0, 3])
+fieldValues = Array[float]([10.0, 0.12])
 costs = Array[int]([0, 1])
-costCounts = Array[int]([10, 5])
+costCounts = Array[int]([100, 55])
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_2mlfi")

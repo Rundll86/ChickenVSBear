@@ -3,15 +3,25 @@ class_name DamageLabel
 
 @export var damage: float = 0
 @export var crit: bool = false
+@export var color1: Color = Color(1, 0, 0, 1)
+@export var color2: Color = Color(0, 1, 0, 1)
+@export var color3: Color = Color(0.5, 0.5, 0.5, 1)
 
 @onready var label: Label = $"%label"
 @onready var animator: AnimationPlayer = $"%animator"
 
 func _ready():
-	if damage == 0:
-		label.text = "MISS"
+	var damageValue = round(abs(damage))
+	var damageSign = sign(damage)
+	if damageSign > 0:
+		label.label_settings.font_color = color1
+		label.text = "%s%s" % [damageValue, "!!!" if crit else ""]
+	elif damageSign < 0:
+		label.label_settings.font_color = color2
+		label.text = "+%s%s" % [damageValue, "!!!" if crit else ""]
 	else:
-		label.text = str(round(damage)) + ("!!!" if crit else "")
+		label.label_settings.font_color = color3
+		label.text = "MISS"
 	animator.play("show")
 	await animator.animation_finished
 	queue_free()

@@ -65,6 +65,7 @@ layout_mode = 2
 [node name="costs" type="GridContainer" parent="container"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 10
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2

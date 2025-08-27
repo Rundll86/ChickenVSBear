@@ -64,8 +64,7 @@ func apply(entity: EntityBase):
 		for i in range(min(fields.size(), fieldValues.size())):
 			var field = fields[i]
 			var value = fieldValues[i]
-			entity.fields[field] += value
-			if field == FieldStore.Entity.MAX_HEALTH:
-				entity.health += value
-		print(entity.fields)
+			var applier = FieldStore.entityApplier.get(field, null)
+			if !applier or applier.call(entity, value):
+				entity.fields[field] += value
 	return allHave

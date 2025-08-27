@@ -17,6 +17,8 @@ func ai():
 		tryAttack(0)
 	if Input.is_action_just_pressed("sprint"):
 		trySprint()
+	if Input.is_action_just_pressed("heal"):
+		tryHeal(20)
 func attack(type):
 	if type == 0:
 		var weaponPos = findWeaponAnchor("normal")
@@ -26,3 +28,6 @@ func sprint():
 		Input.get_axis("m_left", "m_right"),
 		Input.get_axis("m_up", "m_down")
 	) * sprintMultiplier, true)
+func heal(count: float):
+	health += count
+	DamageLabel.create(-count, false, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))

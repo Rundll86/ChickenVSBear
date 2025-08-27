@@ -23,6 +23,21 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_buhm1"]
 radius = 40.0
 
+[sub_resource type="Animation" id="Animation_sxh2u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_vxanw"]
 resource_name = "left"
 tracks/0/type = "value"
@@ -51,21 +66,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_sxh2u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_daot2"]
@@ -177,6 +177,8 @@ script = ExtResource("1_mvol6")
 unique_name_in_owner = true
 
 [node name="sprint" type="AudioStreamPlayer2D" parent="sounds"]
+
+[node name="heal" type="AudioStreamPlayer2D" parent="sounds"]
 
 [node name="miss" type="AudioStreamPlayer2D" parent="sounds"]
 

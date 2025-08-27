@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl34e70hpckp0"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_f2mv8"]
+[ext_resource type="Texture2D" uid="uid://b7vxserbhskol" path="res://resources/feeds/banana.svg" id="2_1wmlm"]
+[ext_resource type="Texture2D" uid="uid://bfioxi3ehf4kv" path="res://resources/feeds/cake-a.svg" id="2_ijk6h"]
+
+[node name="Cake" instance=ExtResource("1_f2mv8")]
+avatarTexture = ExtResource("2_ijk6h")
+displayName = "生日蛋糕"
+fields = Array[int]([4, 8])
+fieldValues = Array[float]([0.06, 0.075])
+costs = Array[int]([1])
+costCounts = Array[int]([70])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_1wmlm")
+
+[node name="name" parent="container/info" index="1"]
+text = "[b]香蕉[/b]"
