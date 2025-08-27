@@ -24,7 +24,7 @@ fields = {
 2: 1
 }
 lifeTime = 5000.0
-needEnergy = 50.0
+needEnergy = 100.0
 
 [node name="texture" parent="." index="0"]
 rotation = 1.5708

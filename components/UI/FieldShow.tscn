@@ -30,5 +30,5 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 8
 theme = ExtResource("2_x62bb")
-text = "+0"
+text = "0"
 horizontal_alignment = 1
