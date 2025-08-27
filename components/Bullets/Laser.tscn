@@ -8,6 +8,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5n8cv"]
 shader = ExtResource("2_h6cxi")
+shader_parameter/color = Color(0.654902, 1, 1, 1)
+shader_parameter/laser_width = 0.01
+shader_parameter/soft_edge = 0.5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y85id"]
 height = 300.0
@@ -29,10 +32,9 @@ sprite_frames = SubResource("SpriteFrames_yip5k")
 material = SubResource("ShaderMaterial_5n8cv")
 offset_left = -10.0
 offset_top = -300.0
-offset_right = 19.0
+offset_right = 10.0
 
 [node name="hitbox" parent="." index="1"]
-visible = false
 position = Vector2(150, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_y85id")
