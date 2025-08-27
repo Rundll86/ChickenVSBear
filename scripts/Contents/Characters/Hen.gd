@@ -12,4 +12,4 @@ func ai():
 func attack(type):
 	if type == 0:
 		var weaponPos = findWeaponAnchor("normal")
-		BulletBase.generate(preload("res://components/Bullets/HenBomb.tscn"), self, weaponPos, 0)
+		return BulletBase.generate(preload("res://components/Bullets/HenBomb.tscn"), self, weaponPos, 0)

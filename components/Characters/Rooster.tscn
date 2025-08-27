@@ -38,6 +38,7 @@ radius = 41.0122
 [node name="Rooster" instance=ExtResource("1_e5pl8")]
 script = ExtResource("2_oqdqd")
 cooldownUnit = 200.0
+energy = 50.0
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")

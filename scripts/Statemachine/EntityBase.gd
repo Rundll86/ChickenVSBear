@@ -46,7 +46,7 @@ var inventoryMax = {
 @onready var damageAnchor: Node2D = $"%damageAnchor"
 
 var health: float = 0
-var energy: float = 0
+@export var energy: float = 0
 var sprinting: bool = false
 
 var lastDirection: int = 1
@@ -68,10 +68,10 @@ func _ready():
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
 func _process(_delta):
 	health = clamp(health, 0, fields.get(FieldStore.Entity.MAX_HEALTH))
-	animatree.set("parameters/blend_position", lerpf(animatree.get("parameters/blend_position"), lastDirection, 0.1))
 	for i in inventory:
 		inventory[i] = clamp(inventory[i], 0, inventoryMax[i])
 func _physics_process(_delta: float) -> void:
+	animatree.set("parameters/blend_position", lerpf(animatree.get("parameters/blend_position"), lastDirection, 0.1))
 	if sprinting:
 		velocity *= 0.9
 		if velocity.length() <= 100:
@@ -81,6 +81,7 @@ func _physics_process(_delta: float) -> void:
 		if isPlayer() or is_instance_valid(currentFocusedBoss):
 			ai()
 	move_and_slide()
+	storeEnergy(0.05)
 
 # 通用方法
 func displace(direction: Vector2, isSprinting: bool = false):
@@ -96,11 +97,11 @@ func takeDamage(bullet: BulletBase, crit: bool):
 	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
 	if sprinting:
 		playSound("miss")
-		storeEnergy(damage * 0.5)
+		storeEnergy(damage * 1.5)
 		damage = 0
 	else:
 		playSound("hurt")
-		bullet.launcher.storeEnergy(damage * 0.25)
+		bullet.launcher.storeEnergy(damage * 0.5)
 	health -= damage
 	DamageLabel.create(damage, crit, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
 	if isBoss and bullet.launcher.isPlayer():
@@ -122,8 +123,8 @@ func startCooldown():
 func tryAttack(type: int):
 	var state = startCooldown()
 	if state:
-		playSound("attack" + str(type))
-		attack(type)
+		if attack(type):
+			playSound("attack" + str(type))
 	return state
 func trySprint():
 	playSound("sprint")

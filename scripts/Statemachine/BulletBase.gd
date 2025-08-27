@@ -10,6 +10,7 @@ class_name BulletBase
 @export var lifeTime: float = -1 # -1表示无限时间
 @export var indisDamage: bool = false # 是否无差别伤害（不区分敌我）
 @export var canDamageSelf: bool = false # 是否可以伤害发射者
+@export var needEnergy: float = 4.0 # 发射时需要消耗的能量
 
 var launcher: EntityBase = null
 var spawnInWhen: float = 0
@@ -37,12 +38,14 @@ func hit(target: Node):
 	if !indisDamage && !GameRule.allowFriendlyFire:
 		if entity.isPlayer() == launcher.isPlayer(): return
 	entity.takeDamage(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE)))
-	if !MathTool.rate(fullPenerate(entity)):
+	if MathTool.rate(fullPenerate()):
+		fields[FieldStore.Bullet.PENERATE] -= entity.fields[FieldStore.Entity.PENARATION_RESISTANCE]
+	else:
 		destroy()
 func forward(direction: Vector2):
 	position += direction.normalized() * fields.get(FieldStore.Bullet.SPEED) * GameRule.bulletSpeedMultiplier
-func fullPenerate(target: EntityBase):
-	return fields.get(FieldStore.Bullet.PENERATE) * (1 + launcher.fields.get(FieldStore.Entity.PENERATE)) - target.fields.get(FieldStore.Entity.PENARATION_RESISTANCE)
+func fullPenerate():
+	return fields.get(FieldStore.Bullet.PENERATE) + launcher.fields.get(FieldStore.Entity.PENERATE)
 
 func ai():
 	pass
@@ -61,10 +64,13 @@ static func generate(
 	var instances = []
 	for i in range(count):
 		var instance: BulletBase = bullet.instantiate()
+		if launchBy.energy < instance.needEnergy:
+			continue
+		launchBy.energy -= instance.needEnergy
 		instance.launcher = launchBy
 		instance.position = spawnPosition
 		instance.rotation = spawnRotation + deg_to_rad(randf_range(-launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT), launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT)))
 		if addToWorld:
 			WorldManager.rootNode.add_child(instance)
 		instances.append(instance)
-	return instances
+	return len(instances)
