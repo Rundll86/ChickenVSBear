@@ -4,10 +4,17 @@ class_name ItemShow
 
 @export var type: ItemStore.ItemType = ItemStore.ItemType.BASEBALL
 @export var count: int = 0
+@export var autoFree: bool = false
 
 @onready var avatarTexture: TextureRect = $"%avatar"
 @onready var countLabel: Label = $"%count"
+@onready var animator: AnimationPlayer = $"%animator"
 
+func _ready():
+	if autoFree:
+		animator.play("hide")
+		await animator.animation_finished
+		queue_free()
 func _physics_process(_delta):
 	avatarTexture.texture = ItemStore.getTexture(type)
 	countLabel.text = str(count)
