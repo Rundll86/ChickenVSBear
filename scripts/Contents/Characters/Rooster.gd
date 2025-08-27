@@ -1,9 +1,6 @@
 extends EntityBase
 class_name Rooster
 
-func _ready():
-	super._ready()
-
 func ai():
 	texture.play("walk")
 	var direction = Vector2(

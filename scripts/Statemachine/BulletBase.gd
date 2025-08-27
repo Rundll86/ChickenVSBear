@@ -12,6 +12,9 @@ class_name BulletBase
 @export var canDamageSelf: bool = false # 是否可以伤害发射者
 @export var needEnergy: float = 4.0 # 发射时需要消耗的能量
 
+@onready var animator = $"%animator"
+@onready var hitbox = $"%hitbox"
+
 var launcher: EntityBase = null
 var spawnInWhen: float = 0
 var spawnInWhere: Vector2 = Vector2.ZERO
@@ -20,6 +23,8 @@ func _ready():
 	area_entered.connect(hit)
 	spawnInWhen = Time.get_ticks_msec()
 	spawnInWhere = position
+	animator.play("spawn")
+	spawn()
 func _process(_delta: float) -> void:
 	if lifeTime > 0:
 		if Time.get_ticks_msec() - spawnInWhen >= lifeTime:
@@ -51,6 +56,8 @@ func ai():
 	pass
 func destroy():
 	queue_free()
+func spawn():
+	pass
 
 static func generate(
 		bullet: PackedScene,

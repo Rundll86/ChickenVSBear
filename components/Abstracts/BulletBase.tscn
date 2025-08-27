@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://crtdkysmnkith"]
+[gd_scene load_steps=6 format=3 uid="uid://crtdkysmnkith"]
 
 [ext_resource type="Script" path="res://scripts/Statemachine/BulletBase.gd" id="1_pklpq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vypy3"]
+
+[sub_resource type="Animation" id="Animation_kmogx"]
+resource_name = "spawn"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dxweq"]
+_data = {
+"spawn": SubResource("Animation_kmogx")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ecl7m"]
 
@@ -12,5 +20,12 @@ script = ExtResource("1_pklpq")
 [node name="texture" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vypy3")
 
+[node name="animator" type="AnimationPlayer" parent="texture"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_dxweq")
+}
+
 [node name="hitbox" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_ecl7m")
