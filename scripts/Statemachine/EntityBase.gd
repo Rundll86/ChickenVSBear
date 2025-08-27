@@ -84,7 +84,7 @@ func _ready():
 		)
 		itemCollected.connect(
 			func(itemType, amount):
-				UIState.itemCollect.add_child(ItemShow.generate(itemType, amount))
+				UIState.itemCollect.add_child(ItemShow.generate(itemType, amount, true))
 		)
 	else:
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]

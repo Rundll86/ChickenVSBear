@@ -19,8 +19,9 @@ func _physics_process(_delta):
 	avatarTexture.texture = ItemStore.getTexture(type)
 	countLabel.text = str(count)
 
-static func generate(itemType: ItemStore.ItemType, itemCount: int = 1):
+static func generate(itemType: ItemStore.ItemType, itemCount: int = 1, isAutoFree: bool = false):
 	var item = preload("res://components/UI/ItemShow.tscn").instantiate()
 	item.type = itemType
 	item.count = itemCount
+	item.autoFree = isAutoFree
 	return item
