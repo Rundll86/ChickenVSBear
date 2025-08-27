@@ -20,6 +20,7 @@ texture = ExtResource("6_p0nkj")
 position = Vector2(394, 274)
 
 [node name="camera" type="Camera2D" parent="rooster"]
+process_mode = 3
 position = Vector2(0, -100)
 process_callback = 0
 position_smoothing_enabled = true

@@ -6,3 +6,4 @@ static var damageOffset: float = 0.2 # 伤害随机浮动比例，默认20%，�
 static var damageLabelSpawnOffset: float = 10 # 伤害标签生成位置的随机偏移
 static var itemDroppedSpawnOffset: float = 30 # 掉落物生成位置的随机偏移
 static var appleDropRate: float = 0.1 # 苹果掉落概率
+static var refreshCountIncreasePercent: Vector2 = Vector2(0.4, 1.1) # 刷新所需的棒球数量的增加的百分比，随机，默认为40%~110%

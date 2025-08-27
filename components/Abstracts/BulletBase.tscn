@@ -4,9 +4,6 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vypy3"]
 
-[sub_resource type="Animation" id="Animation_kmogx"]
-resource_name = "spawn"
-
 [sub_resource type="Animation" id="Animation_ynxlt"]
 resource_name = "loop"
 loop_mode = 1
@@ -23,6 +20,9 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 6.28319]
 }
+
+[sub_resource type="Animation" id="Animation_kmogx"]
+resource_name = "spawn"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dxweq"]
 _data = {

@@ -8,7 +8,7 @@ var targetPlayer: EntityBase = null
 @onready var texture: Sprite2D = $"%texture"
 
 func _ready():
-	apply_force(MathTool.randv2_range(20000), MathTool.randv2_range(10))
+	apply_force(MathTool.randv2_range(30000), MathTool.randv2_range(10))
 func _process(_delta):
 	texture.texture = ItemStore.getTexture(item)
 func _physics_process(_delta):

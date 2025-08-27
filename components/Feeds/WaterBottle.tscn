@@ -5,11 +5,11 @@
 
 [node name="WaterBottle" instance=ExtResource("1_vfxjq")]
 avatarTexture = ExtResource("2_gsfud")
-displayName = "一杯水"
+displayName = "水杯"
 fields = Array[int]([3])
 fieldValues = Array[float]([0.25])
 costs = Array[int]([1])
-costCounts = Array[int]([500])
+costCounts = Array[int]([300])
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_gsfud")

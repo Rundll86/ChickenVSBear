@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://1n28ji5sl6bx"]
+[gd_scene load_steps=5 format=3 uid="uid://1n28ji5sl6bx"]
 
 [ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_1wmro"]
 [ext_resource type="Script" path="res://scripts/Contents/Panels/MakeFeed.gd" id="2_pr610"]
 [ext_resource type="Theme" uid="uid://dhvs6urgf6jr5" path="res://themes/main.tres" id="3_q1rym"]
+[ext_resource type="PackedScene" uid="uid://bbm8l3hr4ihar" path="res://components/UI/ItemShow.tscn" id="4_kei5t"]
 
 [node name="MakeFeed" instance=ExtResource("1_1wmro")]
 script = ExtResource("2_pr610")
@@ -81,6 +82,19 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("3_q1rym")
 text = "跳过"
+
+[node name="refreshBtn" type="Button" parent="content/wrapper/tips/tip" index="6"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_q1rym")
+text = "刷新"
+
+[node name="needBB" parent="content/wrapper/tips/tip" index="7" instance=ExtResource("4_kei5t")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="feedcards" type="HBoxContainer" parent="content/wrapper" index="1"]
 unique_name_in_owner = true

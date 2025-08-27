@@ -2,17 +2,27 @@
 extends FullscreenPanelBase
 
 var selectedCount: int = 0
+var refreshNeedBaseballCount = 100
 
 @onready var avaliableFeeds: Node2D = $"%avaliableFeeds"
 @onready var feedCards: HBoxContainer = $"%feedcards"
 @onready var waveLabel: RichTextLabel = $"%wave"
 @onready var countLabel: RichTextLabel = $"%count"
 @onready var skipBtn: Button = $"%skipBtn"
+@onready var refreshBtn: Button = $"%refreshBtn"
+@onready var needBB: ItemShow = $"%needBB"
 
 func _ready():
 	skipBtn.pressed.connect(
 		func():
 			finish()
+	)
+	refreshBtn.pressed.connect(
+		func():
+			if UIState.player.inventory[ItemStore.ItemType.BASEBALL] >= refreshNeedBaseballCount:
+				UIState.player.inventory[ItemStore.ItemType.BASEBALL] -= refreshNeedBaseballCount
+				refreshNeedBaseballCount *= 1 + randf_range(GameRule.refreshCountIncreasePercent.x, GameRule.refreshCountIncreasePercent.y)
+				regenerateCards()
 	)
 	for file in DirTool.listdir("res://components/Feeds/"):
 		var i = load(file).instantiate() as Feed
@@ -28,8 +38,22 @@ func _ready():
 
 func beforeOpen():
 	selectedCount = 0
-	afterClose()
+	regenerateCards()
+
+func clearCards():
+	for i in feedCards.get_children():
+		feedCards.remove_child(i)
+		avaliableFeeds.add_child(i)
+func updateValue():
+	waveLabel.text = str(Wave.current + 1)
+	countLabel.text = str(UIState.player.fields[FieldStore.Entity.FEED_COUNT_CAN_MADE] - selectedCount)
+	needBB.count = refreshNeedBaseballCount
+func finish():
+	Wave.next()
+	UIState.closeCurrentPanel()
+func regenerateCards():
 	updateValue()
+	clearCards()
 	var feeds: Array[Feed] = []
 	for i in avaliableFeeds.get_children():
 		feeds.append(i)
@@ -38,14 +62,3 @@ func beforeOpen():
 		var feed = feeds[i] as Feed
 		avaliableFeeds.remove_child(feed)
 		feedCards.add_child(feed)
-func afterClose():
-	for i in feedCards.get_children():
-		feedCards.remove_child(i)
-		avaliableFeeds.add_child(i)
-
-func updateValue():
-	waveLabel.text = str(Wave.current + 1)
-	countLabel.text = str(UIState.player.fields[FieldStore.Entity.FEED_COUNT_CAN_MADE] - selectedCount)
-func finish():
-	Wave.next()
-	UIState.closeCurrentPanel()
