@@ -117,4 +117,3 @@ text = "100.0"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
-speed1 = 0.9

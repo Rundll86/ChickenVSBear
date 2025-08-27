@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name EntityBase # 这是个抽象类
 
+signal hit(damage: float, bullet: BulletBase, crit: bool)
+signal healed(amount: float)
+signal healthChanged(health: float)
+
 var fields = {
 	FieldStore.Entity.MAX_HEALTH: 100,
 	FieldStore.Entity.DAMAGE_MULTIPILER: 1,
@@ -69,6 +73,7 @@ func _ready():
 		)
 	else:
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
+	healthChanged.emit(health)
 func _process(_delta):
 	health = clamp(health, 0, fields.get(FieldStore.Entity.MAX_HEALTH))
 	energy = clamp(energy, 0, fields.get(FieldStore.Entity.MAX_ENERGY))
@@ -107,6 +112,8 @@ func takeDamage(bullet: BulletBase, crit: bool):
 		playSound("hurt")
 		bullet.launcher.storeEnergy(damage * 0.05)
 		storeEnergy(damage * -0.1)
+	hit.emit(damage, bullet, crit)
+	healthChanged.emit(health)
 	health -= damage
 	DamageLabel.create(damage, crit, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
 	if isBoss and bullet.launcher.isPlayer():
@@ -154,7 +161,8 @@ func tryHeal(count: float):
 	if inventory[ItemStore.ItemType.APPLE] > 0 and health < fields.get(FieldStore.Entity.MAX_HEALTH):
 		inventory[ItemStore.ItemType.APPLE] -= 1
 		playSound("heal")
-		heal(count * fields.get(FieldStore.Entity.HEAL_ABILITY))
+		healed.emit(heal(count * fields.get(FieldStore.Entity.HEAL_ABILITY)))
+		healthChanged.emit(health)
 func findWeaponAnchor(weaponName: String):
 	var anchor = $"%weapons".get_node(weaponName)
 	if anchor is Node2D:
@@ -187,8 +195,9 @@ func die():
 	queue_free()
 func sprint():
 	pass
-func heal(_count: float):
-	pass
+func heal(count: float):
+	health += count
+	return count
 
 static func generate(
 	entity: PackedScene,

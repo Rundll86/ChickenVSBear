@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1ulrvupa76ap"]
+[gd_scene load_steps=6 format=3 uid="uid://d1ulrvupa76ap"]
 
 [ext_resource type="Script" path="res://scripts/Statemachine/ColorBar.gd" id="1_a106p"]
 
@@ -9,8 +9,15 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkydp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh754"]
 bg_color = Color(1, 0, 0, 0.5)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8n8i8"]
+bg_color = Color(0, 1, 0, 0.5)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -30,7 +37,8 @@ offset_right = 100.0
 offset_bottom = 10.0
 script = ExtResource("1_a106p")
 backBox = SubResource("StyleBoxFlat_kf2fc")
-middleBox = SubResource("StyleBoxFlat_gkydp")
+middleBox1 = SubResource("StyleBoxFlat_sh754")
+middleBox2 = SubResource("StyleBoxFlat_8n8i8")
 frontBox = SubResource("StyleBoxFlat_x7p33")
 speed1 = 0.9
 speed2 = 0.05

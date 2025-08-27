@@ -5,7 +5,8 @@ class_name UIState
 @onready var basketball = $"%basketball"
 @onready var apple = $"%apple"
 @onready var items = $"%items"
-@onready var energy = $"%energy"
+@onready var energyLabel: Label = $"%energy"
+@onready var energyMaxLabel: Label = $"%energyMax"
 @onready var energyPercent: ColorBar = $"%percent"
 
 static var player: EntityBase = null
@@ -20,7 +21,8 @@ func _process(_delta):
 	bossbar.visible = !!bossbar.entity
 func _physics_process(_delta):
 	if is_instance_valid(player):
-		energy.text = "%.1f"%player.energy
+		energyLabel.text = "%.1f" % player.energy
+		energyMaxLabel.text = "%.1f" % player.fields.get(FieldStore.Entity.MAX_ENERGY)
 		energyPercent.maxValue = player.fields.get(FieldStore.Entity.MAX_ENERGY)
 		energyPercent.setCurrent(player.energy)
 		for i in items.get_children():

@@ -35,3 +35,4 @@ func sprint():
 func heal(count: float):
 	health += count
 	DamageLabel.create(-count, false, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
+	return count
