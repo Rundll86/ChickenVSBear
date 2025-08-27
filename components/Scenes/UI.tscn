@@ -48,19 +48,16 @@ alignment = 1
 [node name="baseball" parent="root/container/items" instance=ExtResource("3_o2oi4")]
 unique_name_in_owner = true
 layout_mode = 2
-autoFree = null
 
 [node name="basketball" parent="root/container/items" instance=ExtResource("3_o2oi4")]
 unique_name_in_owner = true
 layout_mode = 2
 type = 1
-autoFree = null
 
 [node name="apple" parent="root/container/items" instance=ExtResource("3_o2oi4")]
 unique_name_in_owner = true
 layout_mode = 2
 type = 2
-autoFree = null
 
 [node name="panels" type="Control" parent="root"]
 unique_name_in_owner = true

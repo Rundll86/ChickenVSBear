@@ -36,7 +36,6 @@ script = ExtResource("2_8u5a0")
 cooldownUnit = 1000.0
 drops = Array[int]([0, 1])
 dropCounts = Array[Vector2]([Vector2(6, 12), Vector2(3, 8)])
-energy = 1000.0
 
 [node name="hurt" parent="sounds" index="3"]
 stream = ExtResource("3_ojyt7")

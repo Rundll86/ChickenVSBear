@@ -32,7 +32,7 @@ var fields = {
 var inventory = {
 	ItemStore.ItemType.BASEBALL: 100,
 	ItemStore.ItemType.BASKETBALL: 100,
-	ItemStore.ItemType.APPLE: 10,
+	ItemStore.ItemType.APPLE: 5, # 初始苹果数量
 }
 var inventoryMax = {
 	ItemStore.ItemType.BASEBALL: INF, # 无限
@@ -46,7 +46,7 @@ var inventoryMax = {
 @export var sprintMultiplier: float = 4
 @export var drops: Array[ItemStore.ItemType] = []
 @export var dropCounts: Array[Vector2] = []
-@export var appleCount: Vector2i = Vector2(0, 1) # 死亡后掉落的苹果数量
+@export var appleCount: Vector2i = Vector2(0, 3) # 死亡后掉落的苹果数量
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -57,7 +57,7 @@ var inventoryMax = {
 var statebar: EntityStateBar
 
 var health: float = 0
-@export var energy: float = 0
+var energy: float = 0
 var sprinting: bool = false
 
 var lastDirection: int = 1
@@ -72,6 +72,7 @@ func _ready():
 		statebar = selfStatebar
 		statebar.entity = self
 	health = fields.get(FieldStore.Entity.MAX_HEALTH)
+	energy = fields.get(FieldStore.Entity.MAX_ENERGY) * 0.5
 	if isPlayer():
 		UIState.player = self
 		hurtbox.body_entered.connect(
