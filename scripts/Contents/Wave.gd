@@ -13,7 +13,7 @@ static var countBoost: float = 0.1 # 每波增加的敌人数量百分比，指�
 static var data: Array[Wave] = [
 	# entity, minCount, maxCount, isBoss, from, to, per
 	create(preload("res://components/Characters/Hen.tscn"), 1, 5, false, 0, INF, 1),
-	create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 8, INF, 4)
+	create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 1, INF, 4)
 ]
 
 static func create(

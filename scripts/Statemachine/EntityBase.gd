@@ -51,10 +51,10 @@ var inventoryMax = {
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
 @onready var hurtbox: Area2D = $"%hurtbox"
-@onready var statebar: EntityStateBar = $"%statebar"
 @onready var sounds: Node2D = $"%sounds"
 @onready var hurtAnimator: AnimationPlayer = $"%hurtAnimator"
 @onready var damageAnchor: Node2D = $"%damageAnchor"
+var statebar: EntityStateBar
 
 var health: float = 0
 @export var energy: float = 0
@@ -65,8 +65,13 @@ var lastAttack: int = 0
 var currentFocusedBoss: EntityBase = null
 
 func _ready():
+	var selfStatebar: EntityStateBar = $"%statebar"
+	if isBoss:
+		selfStatebar.hide()
+	else:
+		statebar = selfStatebar
+		statebar.entity = self
 	health = fields.get(FieldStore.Entity.MAX_HEALTH)
-	statebar.visible = !isBoss
 	if isPlayer():
 		UIState.player = self
 		hurtbox.body_entered.connect(
@@ -88,6 +93,14 @@ func _ready():
 		)
 	else:
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
+	healthChanged.connect(
+		func(newHealth):
+			if is_instance_valid(statebar) or UIState.bossbar.entity == self:
+				if isBoss:
+					statebar = UIState.bossbar
+				statebar.healthBar.maxValue = fields.get(FieldStore.Entity.MAX_HEALTH)
+				statebar.healthBar.setCurrent(newHealth)
+	)
 	healthChanged.emit(health)
 	energyChanged.emit(energy)
 func _process(_delta):
