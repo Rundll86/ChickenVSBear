@@ -22,7 +22,7 @@ fields = {
 1: 15,
 2: 1
 }
-lifeTime = 1000.0
+lifeTime = 2000.0
 
 [node name="texture" parent="." index="0"]
 rotation = 1.5708

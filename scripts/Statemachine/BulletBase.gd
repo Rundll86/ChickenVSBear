@@ -10,7 +10,9 @@ class_name BulletBase
 @export var lifeTime: float = -1 # -1表示无限时间
 @export var indisDamage: bool = false # 是否无差别伤害（不区分敌我）
 @export var canDamageSelf: bool = false # 是否可以伤害发射者
-@export var needEnergy: float = 4.0 # 发射时需要消耗的能量
+@export var needEnergy: float = 0.0 # 发射时需要消耗的能量
+@export var autoSpawnAnimation: bool = false
+@export var autoLoopAnimation: bool = false
 
 @onready var animator: AnimationPlayer = $"%animator"
 @onready var hitbox: CollisionShape2D = $"%hitbox"
@@ -24,8 +26,12 @@ func _ready():
 	area_entered.connect(hit)
 	spawnInWhen = Time.get_ticks_msec()
 	spawnInWhere = position
-	animator.play("spawn")
 	spawn()
+	if autoSpawnAnimation:
+		animator.play("spawn")
+		await animator.animation_finished
+	if autoLoopAnimation:
+		animator.play("loop")
 func _process(_delta: float) -> void:
 	if lifeTime > 0:
 		if Time.get_ticks_msec() - spawnInWhen >= lifeTime:

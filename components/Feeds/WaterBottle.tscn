@@ -1,19 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://droytqrm4swm1"]
+[gd_scene load_steps=3 format=3 uid="uid://droytqrm4swm1"]
 
 [ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_vfxjq"]
-[ext_resource type="Texture2D" uid="uid://bdknu6rkkpoyd" path="res://resources/feeds/fruitsalad.svg" id="2_8w6xu"]
 [ext_resource type="Texture2D" uid="uid://doyq5mp7wvv7s" path="res://resources/feeds/glass water-a.svg" id="2_gsfud"]
 
 [node name="FruitSalad" instance=ExtResource("1_vfxjq")]
 avatarTexture = ExtResource("2_gsfud")
 displayName = "一杯水"
 fields = Array[int]([3])
-fieldValues = Array[float]([0.22])
-costs = Array[int]([0])
-costCounts = Array[int]([400])
+fieldValues = Array[float]([0.25])
+costs = Array[int]([1])
+costCounts = Array[int]([500])
 
 [node name="avatar" parent="container/info" index="0"]
-texture = ExtResource("2_8w6xu")
+texture = ExtResource("2_gsfud")
 
 [node name="name" parent="container/info" index="1"]
-text = "[b]水果沙拉[/b]"
+text = "[b]一杯水[/b]"

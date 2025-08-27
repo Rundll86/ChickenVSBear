@@ -19,8 +19,8 @@ func ai():
 func attack(type):
 	if type == 0:
 		var weaponPos = findWeaponAnchor("normal")
-		return BulletBase.generate(preload("res://components/Bullets/Pencil.tscn"), self, weaponPos, (get_global_mouse_position() - weaponPos).angle())
-		# return BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, weaponPos, (get_global_mouse_position() - weaponPos).angle())
+		# return BulletBase.generate(preload("res://components/Bullets/Pencil.tscn"), self, weaponPos, (get_global_mouse_position() - weaponPos).angle())
+		return BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, weaponPos, (get_global_mouse_position() - weaponPos).angle())
 func sprint():
 	move(Vector2(
 		Input.get_axis("m_left", "m_right"),

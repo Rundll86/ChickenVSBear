@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://dm6viyjsje6yj"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_x6yf7"]
+[ext_resource type="Texture2D" uid="uid://csdjmin6g22sw" path="res://resources/bullets/star/frames/star.svg" id="2_cke7d"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/Star.gd" id="2_y4b0l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t53gb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cke7d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_kmogx"]
+resource_name = "spawn"
+
+[sub_resource type="Animation" id="Animation_ynxlt"]
+resource_name = "loop"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_cig5u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.38234]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ls1ie"]
+_data = {
+"RESET": SubResource("Animation_cig5u"),
+"loop": SubResource("Animation_ynxlt"),
+"spawn": SubResource("Animation_kmogx")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tietk"]
+radius = 19.2354
+
+[node name="Star" instance=ExtResource("1_x6yf7")]
+script = ExtResource("2_y4b0l")
+fields = {
+0: 10,
+1: 5,
+2: 0
+}
+lifeTime = 1000.0
+autoLoopAnimation = true
+
+[node name="texture" parent="." index="0"]
+rotation = 4.38234
+sprite_frames = SubResource("SpriteFrames_t53gb")
+
+[node name="animator" parent="texture" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_ls1ie")
+}
+
+[node name="hitbox" parent="." index="1"]
+shape = SubResource("CircleShape2D_tietk")

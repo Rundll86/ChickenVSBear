@@ -71,7 +71,7 @@ func _process(_delta):
 	for i in inventory:
 		inventory[i] = clamp(inventory[i], 0, inventoryMax[i])
 func _physics_process(_delta: float) -> void:
-	animatree.set("parameters/blend_position", lerpf(animatree.get("parameters/blend_position"), lastDirection, 0.1))
+	animatree.set("parameters/blend_position", lerpf(animatree.get("parameters/blend_position"), lastDirection, 0.2))
 	if sprinting:
 		velocity *= 0.9
 		if velocity.length() <= 100:

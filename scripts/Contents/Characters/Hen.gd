@@ -12,4 +12,6 @@ func ai():
 func attack(type):
 	if type == 0:
 		var weaponPos = findWeaponAnchor("normal")
-		return BulletBase.generate(preload("res://components/Bullets/HenBomb.tscn"), self, weaponPos, 0)
+		for i in randi_range(1, 4):
+			BulletBase.generate(preload("res://components/Bullets/Star.tscn"), self, weaponPos, randf_range(0, PI * 2))
+	return true

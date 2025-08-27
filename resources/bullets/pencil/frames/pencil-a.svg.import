@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnpqfqfg6dwt4"
-path="res://.godot/imported/pencil-a.svg-280308b2cbe43bf6b55157df2b4e5c5f.ctex"
+path="res://.godot/imported/pencil-a.svg-96396af0fe49ebefbf40b2464d79c347.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/bullets/pencil/pencil-a.svg"
-dest_files=["res://.godot/imported/pencil-a.svg-280308b2cbe43bf6b55157df2b4e5c5f.ctex"]
+source_file="res://resources/bullets/pencil/frames/pencil-a.svg"
+dest_files=["res://.godot/imported/pencil-a.svg-96396af0fe49ebefbf40b2464d79c347.ctex"]
 
 [params]
 
