@@ -71,6 +71,7 @@ func _ready():
 			func(body):
 				if body is ItemDropped:
 					inventory[body.item] += body.stackCount
+					playSound("collect")
 					body.queue_free()
 		)
 		energyChanged.connect(

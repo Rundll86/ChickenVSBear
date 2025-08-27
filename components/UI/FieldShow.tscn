@@ -4,17 +4,31 @@
 [ext_resource type="Theme" uid="uid://b6nox1qqh50ub" path="res://themes/smallText.tres" id="2_x62bb"]
 
 [node name="FieldShow" type="HBoxContainer"]
+offset_right = 144.0
+offset_bottom = 18.0
 script = ExtResource("1_gwocj")
+metadata/_edit_horizontal_guides_ = [18.0]
 
 [node name="name" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 11
 theme = ExtResource("2_x62bb")
-text = "最大生命值"
+text = "生命上限"
+horizontal_alignment = 1
+
+[node name="sep" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(20, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 16.0
 
 [node name="value" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_vertical = 8
 theme = ExtResource("2_x62bb")
-text = "0"
+text = "+0"
+horizontal_alignment = 1

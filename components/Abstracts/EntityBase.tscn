@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvogxi7mktumf"]
+[gd_scene load_steps=18 format=3 uid="uid://cvogxi7mktumf"]
 
 [ext_resource type="Script" path="res://scripts/Statemachine/EntityBase.gd" id="1_mvol6"]
 [ext_resource type="Texture2D" uid="uid://dwwpkn4q07ja2" path="res://icon.svg" id="2_7lpu0"]
+[ext_resource type="AudioStream" uid="uid://cn876dtp1ypqx" path="res://resources/sounds/effect/Collect.wav" id="2_qt0aq"]
 [ext_resource type="PackedScene" uid="uid://dcjqjqere8ets" path="res://components/UI/EntityStateBar.tscn" id="2_uje1g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wcqpm"]
@@ -183,6 +184,9 @@ unique_name_in_owner = true
 [node name="miss" type="AudioStreamPlayer2D" parent="sounds"]
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="sounds"]
+
+[node name="collect" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("2_qt0aq")
 
 [node name="attack0" type="AudioStreamPlayer2D" parent="sounds"]
 

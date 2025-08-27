@@ -60,5 +60,6 @@ func regenerateCards():
 	feeds.shuffle()
 	for i in range(UIState.player.fields[FieldStore.Entity.FEED_COUNT_SHOW]):
 		var feed = feeds[i] as Feed
+		feed.show()
 		avaliableFeeds.remove_child(feed)
 		feedCards.add_child(feed)

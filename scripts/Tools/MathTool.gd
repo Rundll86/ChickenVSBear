@@ -9,3 +9,5 @@ static func randv2_range(offset: float):
 	)
 static func randc_from(array: Array):
 	return array[randi() % array.size()]
+static func signBeforeStr(value: float):
+	return ("+" if value > 0 else "-" if value < 0 else "") + str(abs(value))

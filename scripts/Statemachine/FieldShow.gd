@@ -13,9 +13,9 @@ func _ready():
 	var formattedValue: String
 	var dataType = FieldStore.entityMapType[field]
 	if dataType == FieldStore.DataType.VALUE:
-		formattedValue = str(value)
+		formattedValue = MathTool.signBeforeStr(value)
 	elif dataType == FieldStore.DataType.ANGLE:
-		formattedValue = str(value) + "°"
+		formattedValue = MathTool.signBeforeStr(value) + "°"
 	elif dataType == FieldStore.DataType.PERCENT:
-		formattedValue = "%.1f" % (value * 100) + "%"
+		formattedValue = MathTool.signBeforeStr(float("%.1f" % (value * 100))) + "%"
 	valueLabel.text = formattedValue
