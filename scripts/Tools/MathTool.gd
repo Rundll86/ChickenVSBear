@@ -11,3 +11,5 @@ static func randc_from(array: Array):
 	return array[randi() % array.size()]
 static func signBeforeStr(value: float):
 	return ("+" if value > 0 else "-" if value < 0 else "") + str(abs(value))
+static func percent(value: float):
+	return value / 100
