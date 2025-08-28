@@ -86,7 +86,6 @@ libraries = {
 
 [node name="background" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(630, 320)
 texture = ExtResource("6_p0nkj")
 
 [node name="rooster" parent="." groups=["players"] instance=ExtResource("3_5ui6q")]

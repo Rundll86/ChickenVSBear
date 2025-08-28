@@ -24,17 +24,12 @@ func _ready():
 				refreshNeedBaseballCount *= 1 + randf_range(GameRule.refreshCountIncreasePercent.x, GameRule.refreshCountIncreasePercent.y)
 				regenerateCards()
 	)
-	for file in DirTool.listdir("res://components/Feeds/"):
-		var i = load(file).instantiate() as Feed
-		i.selected.connect(
-			func(applied: bool):
-				if applied:
-					selectedCount += 1
-					updateValue()
-					if selectedCount >= UIState.player.fields[FieldStore.Entity.FEED_COUNT_CAN_MADE]:
-						finish()
-		)
-		avaliableFeeds.add_child(i)
+	for feedScene in DirTool.listdir("res://components/Feeds/"):
+		if feedScene.get_extension() == "remap":
+			feedScene = feedScene.substr(0, len(feedScene) - 6)
+		print("正在从", feedScene, "加载饲料卡")
+		var feed = load(feedScene).instantiate()
+		avaliableFeeds.add_child(feed)
 
 func beforeOpen():
 	selectedCount = 0

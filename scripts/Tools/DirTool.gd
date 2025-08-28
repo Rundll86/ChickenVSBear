@@ -13,4 +13,5 @@ static func listdir(path: String) -> Array[String]:
 		dir.list_dir_end()
 		return files
 	else:
+		print("无法打开目录: ", path)
 		return []
