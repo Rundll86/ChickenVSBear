@@ -9,8 +9,8 @@ displayName = "幸运签语饼"
 quality = 2
 fields = Array[int]([14, 4, 6, 18])
 fieldValues = Array[float]([0.1, 0.07, 0.12, 3.0])
-costs = Array[int]([0, 1, 2])
-costCounts = Array[int]([200, 75, 1])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([165, 50])
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_or0st")
