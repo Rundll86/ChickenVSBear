@@ -41,5 +41,5 @@ void fragment() {
     vec3 color = base_color + vec3(wave_intensity);
     
     // 设置最终颜色（加法混合模式会忽略alpha）
-    COLOR = vec4(color, 0.5-x_dist);
+    COLOR = vec4(color, (0.5-x_dist)*2.0);
 }

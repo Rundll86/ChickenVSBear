@@ -28,7 +28,15 @@ func _ready():
 		if feedScene.get_extension() == "remap":
 			feedScene = feedScene.substr(0, len(feedScene) - 6)
 		print("正在从 %s 加载饲料卡" % feedScene)
-		var feed = load(feedScene).instantiate()
+		var feed = load(feedScene).instantiate() as Feed
+		feed.selected.connect(
+			func(applied: bool):
+				if applied:
+					selectedCount += 1
+					updateValue()
+					if selectedCount >= UIState.player.fields[FieldStore.Entity.FEED_COUNT_CAN_MADE]:
+						finish()
+		)
 		avaliableFeeds.add_child(feed)
 
 func beforeOpen():
