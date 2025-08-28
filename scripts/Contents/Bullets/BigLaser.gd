@@ -1,9 +1,10 @@
 extends BulletBase
-class_name BigLaser
+class_name BigLaser # 这个子弹是玩家的超级武器，耗能高，dps也高
 
 func spawn():
-	CameraManager.shake(5000, 100)
+	CameraManager.shake(5000, 100) # 激光会运行5秒，期间震屏100强度
 	CameraManager.playAnimation("bigLaser")
+	fields[FieldStore.Bullet.DAMAGE] *= launcher.fields[FieldStore.Entity.ATTACK_SPEED]
 func ai():
 	rotation = lerp_angle(rotation, ((get_global_mouse_position() - position).angle()), 0.1)
 	position = launcher.texture.global_position

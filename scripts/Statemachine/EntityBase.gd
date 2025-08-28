@@ -134,7 +134,7 @@ func takeDamage(bullet: BulletBase, crit: bool):
 	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
 	if sprinting:
 		playSound("miss")
-		storeEnergy(damage * 0.25)
+		storeEnergy(damage * 0.35)
 		damage = 0
 	else:
 		playSound("hurt")
