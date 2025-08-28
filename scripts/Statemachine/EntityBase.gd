@@ -149,12 +149,11 @@ func takeDamage(bullet: BulletBase, crit: bool):
 	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
 	if sprinting:
 		playSound("miss")
-		storeEnergy(damage * 0.5)
+		storeEnergy(damage * 0.25)
 		damage = 0
 	else:
 		playSound("hurt")
-		bullet.launcher.storeEnergy(damage * 0.05)
-		storeEnergy(damage * -0.25)
+		storeEnergy(damage * -0.5)
 	position += Vector2.from_angle(bullet.position.angle_to_point(position)) * bullet.knockback
 	hit.emit(damage, bullet, crit)
 	healthChanged.emit(health)
@@ -164,7 +163,7 @@ func takeDamage(bullet: BulletBase, crit: bool):
 		bullet.launcher.setBoss(self)
 	if health <= 0:
 		if isBoss:
-			bullet.launcher.storeEnergy(energy * 0.5)
+			bullet.launcher.storeEnergy(energy * 0.35)
 			bullet.launcher.setBoss(null)
 		tryDie(bullet)
 func storeEnergy(value: float):
