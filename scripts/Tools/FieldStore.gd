@@ -69,6 +69,14 @@ static var entityMapType = {
 	Entity.MAX_ENERGY: DataType.VALUE,
 	Entity.LUCK_VALUE: DataType.VALUE
 }
+static var entityMaxValueMap = {
+	Entity.CRIT_RATE: 1,
+	Entity.PENERATE: 1,
+	Entity.PENARATION_RESISTANCE: 1,
+	Entity.PRICE_REDUCTION: 0.8,
+	Entity.DROP_APPLE_RATE: 0.5,
+	Entity.FEED_COUNT_SHOW: 6
+}
 static var entityApplier = {
 	Entity.MAX_HEALTH: func(entity, value):
 		entity.health += value

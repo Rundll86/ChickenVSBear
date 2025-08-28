@@ -71,6 +71,7 @@ func apply(entity: EntityBase):
 			var applier = FieldStore.entityApplier.get(field, null)
 			if !applier or applier.call(entity, value):
 				entity.fields[field] += value
+				entity.fields[field] = clamp(entity.fields[field], 0, FieldStore.entityMaxValueMap.get(field, INF))
 		hide()
 	selected.emit(allHave)
 	return allHave
