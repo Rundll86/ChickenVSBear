@@ -25,4 +25,3 @@ offset = Vector2(0, -80)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("5_mk7bv")
-shakeOffset = 100.0
