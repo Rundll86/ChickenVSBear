@@ -48,6 +48,7 @@ var inventoryMax = {
 @export var drops: Array[ItemStore.ItemType] = []
 @export var dropCounts: Array[Vector2] = []
 @export var appleCount: Vector2i = Vector2(0, 3) # 死亡后掉落的苹果数量
+@export var level: int = 1 # 等级
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -72,6 +73,7 @@ func _ready():
 	else:
 		statebar = selfStatebar
 		statebar.entity = self
+	applyLevel()
 	health = fields.get(FieldStore.Entity.MAX_HEALTH)
 	energy = fields.get(FieldStore.Entity.MAX_ENERGY) * 0.5
 	if isPlayer():
@@ -98,9 +100,7 @@ func _ready():
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
 	healthChanged.connect(
 		func(newHealth):
-			if is_instance_valid(statebar) or UIState.bossbar.entity == self:
-				if isBoss:
-					statebar = UIState.bossbar
+			if is_instance_valid(statebar):
 				statebar.healthBar.maxValue = fields.get(FieldStore.Entity.MAX_HEALTH)
 				statebar.healthBar.setCurrent(newHealth)
 	)
@@ -111,6 +111,13 @@ func _process(_delta):
 	energy = clamp(energy, 0, fields.get(FieldStore.Entity.MAX_ENERGY))
 	for i in inventory:
 		inventory[i] = clamp(inventory[i], 0, inventoryMax[i])
+	if isBoss:
+		if UIState.player.currentFocusedBoss == self:
+			statebar = UIState.bossbar
+		else:
+			statebar = null
+	if is_instance_valid(statebar):
+		statebar.levelLabel.text = str(level)
 func _physics_process(_delta: float) -> void:
 	animatree.set("parameters/blend_position", lerpf(animatree.get("parameters/blend_position"), lastDirection, 0.2))
 	if sprinting:
@@ -125,6 +132,9 @@ func _physics_process(_delta: float) -> void:
 	storeEnergy(0.01)
 
 # 通用方法
+func applyLevel():
+	fields[FieldStore.Entity.MAX_HEALTH] *= (1 + GameRule.entityHealthIncreasePerWave * (GameRule.difficulty + 1)) ** level
+	fields[FieldStore.Entity.DAMAGE_MULTIPILER] *= (1 + GameRule.entityDamageIncreasePerWave * (GameRule.difficulty + 1)) ** level
 func displace(direction: Vector2, isSprinting: bool = false):
 	return (direction if isSprinting else direction.normalized()) * fields.get(FieldStore.Entity.MOVEMENT_SPEED) * 400 * abs(animatree.get("parameters/blend_position"))
 func move(direction: Vector2, isSprinting: bool = false):
@@ -246,6 +256,7 @@ static func generate(
 	var instance: EntityBase = entity.instantiate()
 	instance.position = spawnPosition
 	instance.isBoss = spawnAsBoss
+	instance.level = clamp((round(Wave.current * (1 + GameRule.entityLevelOffsetByWave * randf_range(-1, 1)))), 1, INF)
 	if isMob:
 		instance.add_to_group("mobs")
 	if addToWorld:

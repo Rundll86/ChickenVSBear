@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcjqjqere8ets"]
+[gd_scene load_steps=4 format=3 uid="uid://dcjqjqere8ets"]
 
 [ext_resource type="PackedScene" uid="uid://d1ulrvupa76ap" path="res://components/UI/ColorBar.tscn" id="1_0ngbn"]
 [ext_resource type="Script" path="res://scripts/Statemachine/EntityStateBar.gd" id="1_ovbjr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ih2pl"]
+font_size = 13
 
 [node name="EntityStateBar" type="Node2D"]
 script = ExtResource("1_ovbjr")
@@ -12,3 +15,27 @@ offset_left = -50.0
 offset_top = -5.0
 offset_right = 50.0
 offset_bottom = 5.0
+
+[node name="levelLabel" type="HBoxContainer" parent="health"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -2.0
+anchor_right = 0.5
+anchor_bottom = -2.0
+offset_left = -25.0
+offset_right = 26.0
+offset_bottom = 19.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="tip" type="Label" parent="health/levelLabel"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Lv."
+label_settings = SubResource("LabelSettings_ih2pl")
+
+[node name="level" type="Label" parent="health/levelLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
