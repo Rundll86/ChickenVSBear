@@ -83,7 +83,7 @@ func _ready():
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
 		applyLevel()
 	health = fields.get(FieldStore.Entity.MAX_HEALTH)
-	energy = fields.get(FieldStore.Entity.MAX_ENERGY) * 0.5
+	energy = fields.get(FieldStore.Entity.MAX_ENERGY)
 	healthChanged.connect(
 		func(newHealth):
 			if is_instance_valid(statebar):

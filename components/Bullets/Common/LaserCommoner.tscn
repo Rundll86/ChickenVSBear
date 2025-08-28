@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://8gjjfju6p3fh"]
+[gd_scene load_steps=18 format=3 uid="uid://8gjjfju6p3fh"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_f67dy"]
 [ext_resource type="Script" path="res://scripts/Contents/Bullets/BigLaser.gd" id="2_tdbxh"]
@@ -31,14 +31,8 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_nimkb"]
 curve = SubResource("Curve_7w1gn")
 
-[sub_resource type="Gradient" id="Gradient_ki7oc"]
-colors = PackedColorArray(0.546875, 0.546875, 0.546875, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_csn21"]
-gradient = SubResource("Gradient_ki7oc")
-
 [sub_resource type="Gradient" id="Gradient_krx08"]
-offsets = PackedFloat32Array(0, 0.450382)
+offsets = PackedFloat32Array(0, 0.553435)
 colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_l66oc"]
@@ -58,7 +52,6 @@ gravity = Vector3(0, 0, 0)
 scale_min = 3.0
 scale_max = 15.0
 color_ramp = SubResource("GradientTexture1D_l66oc")
-color_initial_ramp = SubResource("GradientTexture1D_csn21")
 alpha_curve = SubResource("CurveTexture_iykvy")
 
 [sub_resource type="Animation" id="Animation_1rif1"]
@@ -218,10 +211,8 @@ fields = {
 1: 25,
 2: 1
 }
-needEnergy = 100.0
 autoSpawnAnimation = true
 freeAfterSpawn = true
-knockback = 10.0
 
 [node name="texture" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_yip5k")

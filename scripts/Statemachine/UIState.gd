@@ -26,7 +26,7 @@ func _process(_delta):
 	bossbar.visible = !!bossbar.entity
 func _physics_process(_delta):
 	if is_instance_valid(player):
-		energyLabel.text = "%.2f" % player.energy
+		energyLabel.text = "%.2f" % clamp(player.energy, 0, player.fields.get(FieldStore.Entity.MAX_ENERGY))
 		energyMaxLabel.text = "%.1f" % player.fields.get(FieldStore.Entity.MAX_ENERGY)
 		for i in items.get_children():
 			var item = i as ItemShow

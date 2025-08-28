@@ -15,6 +15,7 @@ class_name BulletBase
 @export var autoLoopAnimation: bool = false
 @export var freeAfterSpawn: bool = false
 @export var knockback: float = 0 # 击退力，物理引擎单位
+@export var recoil: float = 0 # 后坐力，物理引擎单位
 
 @onready var animator: AnimationPlayer = $"%animator"
 @onready var hitbox: CollisionShape2D = $"%hitbox"
@@ -46,6 +47,7 @@ func _process(_delta: float) -> void:
 			destroy()
 func _physics_process(_delta: float) -> void:
 	if is_instance_valid(launcher) and (launcher.isPlayer() or is_instance_valid(launcher.currentFocusedBoss)):
+		launcher.position -= Vector2.from_angle(rotation) * recoil
 		ai()
 
 func hit(target: Node):

@@ -15,4 +15,4 @@ func applyDot():
 	await TickTool.millseconds(100 / launcher.fields[FieldStore.Entity.ATTACK_SPEED])
 	return true
 func succeedToHit(_dmg: float):
-	fields[FieldStore.Bullet.DAMAGE] *= 1.05
+	fields[FieldStore.Bullet.DAMAGE] *= 1.03

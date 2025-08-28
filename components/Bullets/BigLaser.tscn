@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://8gjjfju6p3fh" path="res://components/Bullets/Common/LaserCommoner.tscn" id="1_ukbip"]
 
 [node name="BigLaser" instance=ExtResource("1_ukbip")]
+needEnergy = 100.0
+knockback = 10.0
+recoil = 4.0
