@@ -54,7 +54,7 @@ func hit(target: Node):
 	if !canDamageSelf && entity == launcher: return
 	if !indisDamage && !GameRule.allowFriendlyFire:
 		if entity.isPlayer() == launcher.isPlayer(): return
-	entity.takeDamage(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE)))
+	entity.takeDamage(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE) + GameRule.critRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]))
 	if MathTool.rate(fullPenerate()):
 		fields[FieldStore.Bullet.PENERATE] -= entity.fields[FieldStore.Entity.PENARATION_RESISTANCE]
 	else:
@@ -62,7 +62,7 @@ func hit(target: Node):
 func forward(direction: Vector2):
 	position += direction.normalized() * fields.get(FieldStore.Bullet.SPEED) * GameRule.bulletSpeedMultiplier
 func fullPenerate():
-	return fields.get(FieldStore.Bullet.PENERATE) + launcher.fields.get(FieldStore.Entity.PENERATE)
+	return fields.get(FieldStore.Bullet.PENERATE) + launcher.fields.get(FieldStore.Entity.PENERATE) + GameRule.penerateRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]
 func timeLived():
 	return Time.get_ticks_msec() - spawnInWhen
 func dotLoop():

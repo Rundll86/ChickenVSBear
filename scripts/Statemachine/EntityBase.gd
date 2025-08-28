@@ -198,7 +198,11 @@ func tryDie(by: BulletBase):
 		var count = ceil(randf_range(dropCounts[drop].x, dropCounts[drop].y))
 		for i in range(count):
 			ItemDropped.generate(item, count, position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
-	if MathTool.rate(GameRule.appleDropRate + by.launcher.fields.get(FieldStore.Entity.DROP_APPLE_RATE)) or isBoss:
+	if MathTool.rate(
+		GameRule.appleDropRate +
+		by.launcher.fields.get(FieldStore.Entity.DROP_APPLE_RATE) +
+		GameRule.appleDropRateInfluenceByLuckValue * by.launcher.fields[FieldStore.Entity.LUCK_VALUE]
+	) or isBoss:
 		for i in randi_range(appleCount.x, appleCount.y):
 			ItemDropped.generate(ItemStore.ItemType.APPLE, 1, position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
 	await die()
