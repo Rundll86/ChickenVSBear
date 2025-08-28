@@ -80,12 +80,15 @@ static var entityMaxValueMap = {
 static var entityApplier = {
 	Entity.MAX_HEALTH: func(entity, value):
 		entity.health += value
+		return true
 		,
 	Entity.EXTRA_APPLE_MAX: func(entity, value):
 		entity.inventoryMax[ItemStore.ItemType.APPLE] += value
+		return true
 		,
 	Entity.EXTRA_BULLET_COUNT: func(entity, value):
 		entity.fields[Entity.OFFSET_SHOOT] += value * 5
+		return true
 		,
 }
 

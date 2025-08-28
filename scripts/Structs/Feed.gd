@@ -68,7 +68,7 @@ func apply(entity: EntityBase):
 		for i in range(min(fields.size(), fieldValues.size())):
 			var field = fields[i]
 			var value = fieldValues[i]
-			var applier = FieldStore.entityApplier.get(field, null)
+			var applier = FieldStore.entityApplier.get(field)
 			if !applier or applier.call(entity, value):
 				entity.fields[field] += value
 				entity.fields[field] = clamp(entity.fields[field], 0, FieldStore.entityMaxValueMap.get(field, INF))
