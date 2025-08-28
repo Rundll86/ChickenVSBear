@@ -21,4 +21,4 @@ func applyDot():
 	)
 	return true
 func succeedToHit(_dmg: float):
-	fields[FieldStore.Bullet.DAMAGE] *= 1.01
+	fields[FieldStore.Bullet.DAMAGE] *= 1.05
