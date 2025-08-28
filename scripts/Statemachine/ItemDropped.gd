@@ -6,6 +6,7 @@ var stackCount: int = 1
 var targetPlayer: EntityBase = null
 
 @onready var texture: Sprite2D = $"%texture"
+@onready var animator: AnimationPlayer = $"%animator"
 
 func _ready():
 	apply_force(MathTool.randv2_range(30000), MathTool.randv2_range(10))
@@ -18,7 +19,7 @@ func _physics_process(_delta):
 		apply_central_force((targetPlayer.position - position).normalized() * 1000)
 		if position.distance_to(targetPlayer.position) < 60:
 			targetPlayer.collectItem(item, stackCount)
-			queue_free()
+			collect()
 
 func findPlayer() -> EntityBase:
 	var result = null
@@ -29,6 +30,10 @@ func findPlayer() -> EntityBase:
 				lastDistance = position.distance_to(player.position)
 				result = player
 	return result
+func collect():
+	animator.play("collect")
+	await animator.animation_finished
+	queue_free()
 
 static func generate(
 		itemType: ItemStore.ItemType,
