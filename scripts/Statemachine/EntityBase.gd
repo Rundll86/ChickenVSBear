@@ -28,6 +28,7 @@ var fields = {
 	FieldStore.Entity.FEED_COUNT_SHOW: 3,
 	FieldStore.Entity.FEED_COUNT_CAN_MADE: 1,
 	FieldStore.Entity.MAX_ENERGY: 200,
+	FieldStore.Entity.LUCK_VALUE: 1
 }
 var inventory = {
 	ItemStore.ItemType.BASEBALL: 100,

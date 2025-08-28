@@ -27,11 +27,18 @@ enum Quality {
 	Quality.LEGENDARY: "传说"
 }
 @export var qualityRandomWeight = {
-	Quality.WASTE: 5,
-	Quality.COMMON: 50,
-	Quality.RARE: 10,
-	Quality.EPIC: 5,
-	Quality.LEGENDARY: 1
+	Quality.WASTE: 20,
+	Quality.COMMON: 100,
+	Quality.RARE: 30,
+	Quality.EPIC: 10,
+	Quality.LEGENDARY: 5
+}
+@export var luckInfluence = {
+	Quality.WASTE: - 0.5,
+	Quality.COMMON: - 1,
+	Quality.RARE: 0,
+	Quality.EPIC: 1,
+	Quality.LEGENDARY: 2
 }
 
 @onready var qualityLabel: Label = $"%quality"
@@ -45,5 +52,5 @@ func _physics_process(_delta):
 	nameLabel.text = "[b]%s[/b]" % displayName
 func color():
 	return qualityColorMap[quality] as Color
-func weight() -> float:
-	return qualityRandomWeight[quality]
+func weight(player: EntityBase) -> int:
+	return floor(clamp(qualityRandomWeight[quality] + luckInfluence[quality] * player.fields[FieldStore.Entity.LUCK_VALUE], 1, INF))
