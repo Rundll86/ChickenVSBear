@@ -38,7 +38,7 @@ var inventory = {
 var inventoryMax = {
 	ItemStore.ItemType.BASEBALL: INF, # 无限
 	ItemStore.ItemType.BASKETBALL: INF,
-	ItemStore.ItemType.APPLE: 20, # 最多20个苹果
+	ItemStore.ItemType.APPLE: 10, # 最多10个苹果
 }
 
 @export var cooldownUnit: float = 100 # 100毫秒每次攻击
