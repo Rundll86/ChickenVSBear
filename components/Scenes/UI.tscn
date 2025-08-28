@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfwg750a47ggx"]
+[gd_scene load_steps=17 format=3 uid="uid://dfwg750a47ggx"]
 
 [ext_resource type="PackedScene" uid="uid://ofpg5s3j7esv" path="res://components/UI/BossBar.tscn" id="1_2pe58"]
 [ext_resource type="Script" path="res://scripts/Statemachine/UIState.gd" id="1_f00a6"]
@@ -10,6 +10,99 @@
 [ext_resource type="PackedScene" uid="uid://beo6s1kudbbve" path="res://components/Scenes/FullscreenPanels/GameOver.tscn" id="6_10ay6"]
 [ext_resource type="Texture2D" uid="uid://k13cte17httt" path="res://resources/items/energy.svg" id="7_2om12"]
 [ext_resource type="PackedScene" uid="uid://d1ulrvupa76ap" path="res://components/UI/ColorBar.tscn" id="9_44nw8"]
+[ext_resource type="StyleBox" uid="uid://ddnjus87wwlm8" path="res://styleboxes/leftPanel.tres" id="11_67ghp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ri8gw"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+
+[sub_resource type="Animation" id="Animation_5hjs3"]
+resource_name = "hide"
+length = 0.3
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -100, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_nqiiw"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-100, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_2xajo"]
+resource_name = "hide"
+length = 0.3
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-100, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_37e4s"]
+_data = {
+"RESET": SubResource("Animation_nqiiw"),
+"hide": SubResource("Animation_5hjs3"),
+"show": SubResource("Animation_2xajo")
+}
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
@@ -28,7 +121,9 @@ unique_name_in_owner = true
 layout_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="container" type="PanelContainer" parent="root"]
+[node name="items" type="PanelContainer" parent="root"]
+z_index = 1
+z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -41,44 +136,28 @@ grow_horizontal = 2
 theme_override_styles/panel = ExtResource("3_kep0k")
 metadata/_edit_lock_ = true
 
-[node name="items" type="HBoxContainer" parent="root/container"]
+[node name="items" type="HBoxContainer" parent="root/items"]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="baseball" parent="root/container/items" instance=ExtResource("3_o2oi4")]
+[node name="baseball" parent="root/items/items" instance=ExtResource("3_o2oi4")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="basketball" parent="root/container/items" instance=ExtResource("3_o2oi4")]
+[node name="basketball" parent="root/items/items" instance=ExtResource("3_o2oi4")]
 unique_name_in_owner = true
 layout_mode = 2
 type = 1
 
-[node name="apple" parent="root/container/items" instance=ExtResource("3_o2oi4")]
+[node name="apple" parent="root/items/items" instance=ExtResource("3_o2oi4")]
 unique_name_in_owner = true
 layout_mode = 2
 type = 2
 
-[node name="panels" type="Control" parent="root"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_lock_ = true
-
-[node name="MakeFeed" parent="root/panels" instance=ExtResource("4_kkki3")]
-visible = false
-layout_mode = 1
-
-[node name="GameOver" parent="root/panels" instance=ExtResource("6_10ay6")]
-visible = false
-layout_mode = 1
-
 [node name="energy" type="PanelContainer" parent="root"]
+z_index = 1
+z_as_relative = false
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -124,6 +203,35 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
+[node name="fields" type="PanelContainer" parent="root"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -30.0
+offset_right = -40.0
+offset_bottom = 30.0
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("11_67ghp")
+
+[node name="wrapper" type="PanelContainer" parent="root/fields"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ri8gw")
+
+[node name="fields" type="VBoxContainer" parent="root/fields/wrapper"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="fieldsAnimator" type="AnimationPlayer" parent="root/fields"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_37e4s")
+}
+
 [node name="itemCollect" type="VBoxContainer" parent="root"]
 unique_name_in_owner = true
 layout_mode = 1
@@ -138,3 +246,20 @@ offset_right = -80.8
 offset_bottom = 0.400024
 grow_vertical = 0
 theme_override_constants/separation = 10
+
+[node name="panels" type="Control" parent="root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="MakeFeed" parent="root/panels" instance=ExtResource("4_kkki3")]
+layout_mode = 1
+
+[node name="GameOver" parent="root/panels" instance=ExtResource("6_10ay6")]
+visible = false
+layout_mode = 1

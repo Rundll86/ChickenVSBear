@@ -7,6 +7,8 @@ class_name UIState
 @onready var items = $"%items"
 @onready var energyLabel: Label = $"%energy"
 @onready var energyMaxLabel: Label = $"%energyMax"
+@onready var fields: VBoxContainer = $"%fields"
+@onready var fieldsAnimator: AnimationPlayer = $"%fieldsAnimator"
 
 static var player: EntityBase = null
 static var bossbar: EntityStateBar
@@ -33,6 +35,14 @@ func _physics_process(_delta):
 		WorldManager.rootNode.process_mode = Node.PROCESS_MODE_DISABLED
 	else:
 		WorldManager.rootNode.process_mode = Node.PROCESS_MODE_INHERIT
+	if Input.is_action_just_pressed("showFields"):
+		for i in fields.get_children():
+			fields.remove_child(i)
+		for i in player.fields:
+			fields.add_child(FieldShow.create(i, player.fields[i], false))
+		fieldsAnimator.play("show")
+	if Input.is_action_just_released("showFields"):
+		fieldsAnimator.play("hide")
 
 static func setPanel(targetName: String = ""):
 	currentPanel = null
