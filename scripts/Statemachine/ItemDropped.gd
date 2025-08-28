@@ -21,7 +21,7 @@ func _physics_process(_delta):
 			linear_velocity = Vector2.ZERO
 		else:
 			var direction = (targetPlayer.position - position).normalized()
-			var speed = 4000.0 / ((targetPlayer.position - position).length() ** (1 / 3.0))
+			var speed = 5000.0 / ((targetPlayer.position - position).length() ** (1 / 3.0))
 			apply_central_force(direction * speed)
 			if position.distance_to(targetPlayer.position) < 60:
 				targetPlayer.collectItem(item, stackCount)

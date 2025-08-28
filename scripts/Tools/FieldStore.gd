@@ -25,7 +25,9 @@ enum Entity {
 	FEED_COUNT_SHOW,
 	FEED_COUNT_CAN_MADE,
 	MAX_ENERGY,
-	LUCK_VALUE
+	LUCK_VALUE,
+	DROPPED_ITEM_GRAVITY_MULTIPILER,
+	DROPPED_ITEM_GRAVITY_INFLUENCE_BY_DISTANCE_MULTIPILER
 }
 static var entityMap = {
 	Entity.MAX_HEALTH: "生命上限",
@@ -46,7 +48,9 @@ static var entityMap = {
 	Entity.FEED_COUNT_SHOW: "可选饲料数量",
 	Entity.FEED_COUNT_CAN_MADE: "可制作饲料数量",
 	Entity.MAX_ENERGY: "能量上限",
-	Entity.LUCK_VALUE: "幸运"
+	Entity.LUCK_VALUE: "幸运值",
+	Entity.DROPPED_ITEM_GRAVITY_MULTIPILER: "掉落物重力倍率",
+	Entity.DROPPED_ITEM_GRAVITY_INFLUENCE_BY_DISTANCE_MULTIPILER: "掉落物重力受距离影响"
 }
 static var entityMapType = {
 	Entity.MAX_HEALTH: DataType.VALUE,
@@ -67,7 +71,9 @@ static var entityMapType = {
 	Entity.FEED_COUNT_SHOW: DataType.VALUE,
 	Entity.FEED_COUNT_CAN_MADE: DataType.VALUE,
 	Entity.MAX_ENERGY: DataType.VALUE,
-	Entity.LUCK_VALUE: DataType.VALUE
+	Entity.LUCK_VALUE: DataType.VALUE,
+	Entity.DROPPED_ITEM_GRAVITY_MULTIPILER: DataType.PERCENT,
+	Entity.DROPPED_ITEM_GRAVITY_INFLUENCE_BY_DISTANCE_MULTIPILER: DataType.VALUE
 }
 static var entityMaxValueMap = {
 	Entity.CRIT_RATE: 1,
@@ -89,6 +95,11 @@ static var entityApplier = {
 	Entity.EXTRA_BULLET_COUNT: func(entity, value):
 		entity.fields[Entity.OFFSET_SHOOT] += value * 5
 		return true
+		,
+}
+static var entityViewCastMap = {
+	Entity.EXTRA_APPLE_MAX: func(entity, _value):
+		return entity.inventoryMax[ItemStore.ItemType.APPLE]
 		,
 }
 

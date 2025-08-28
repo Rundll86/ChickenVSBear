@@ -39,7 +39,7 @@ func _physics_process(_delta):
 		for i in fields.get_children():
 			fields.remove_child(i)
 		for i in player.fields:
-			fields.add_child(FieldShow.create(i, player.fields[i], false))
+			fields.add_child(FieldShow.create(i, player.fields[i], false, player, true))
 		fieldsAnimator.play("show")
 	if Input.is_action_just_released("showFields"):
 		fieldsAnimator.play("hide")
