@@ -2,7 +2,7 @@ extends BulletBase
 class_name BigLaser
 
 func spawn():
-	CameraManager.shake(5000)
+	CameraManager.shake(5000, 100)
 	CameraManager.playAnimation("bigLaser")
 func ai():
 	rotation = lerp_angle(rotation, ((get_global_mouse_position() - position).angle()), 0.1)

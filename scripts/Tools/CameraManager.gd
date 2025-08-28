@@ -2,11 +2,9 @@
 extends Camera2D
 class_name CameraManager
 
-@export var shakeOffset: float = 100
-
 @onready var animator: AnimationPlayer = $"%animator"
 
-var shaking: bool = false
+var shakeIntensity: float = 0
 
 static var instance: CameraManager = null
 
@@ -15,14 +13,11 @@ func _ready():
 func _physics_process(_delta):
 	if is_instance_valid(UIState.player):
 		position = UIState.player.position
-		if shaking:
-			position += MathTool.randv2_range(shakeOffset)
+		position += MathTool.randv2_range(shakeIntensity)
 
-static func shake(millseconds: int = 1000):
-	print("shake start")
-	instance.shaking = true
+static func shake(millseconds: int, intensity: float = 10):
+	instance.shakeIntensity += intensity
 	await TickTool.millseconds(millseconds)
-	instance.shaking = false
-	print("shake end")
+	instance.shakeIntensity -= intensity
 static func playAnimation(animation: String):
 	instance.animator.play(animation)

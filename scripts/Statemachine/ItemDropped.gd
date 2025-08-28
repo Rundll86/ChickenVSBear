@@ -16,6 +16,9 @@ func _physics_process(_delta):
 		targetPlayer = findPlayer()
 	if is_instance_valid(targetPlayer):
 		apply_central_force((targetPlayer.position - position).normalized() * 1000)
+		if position.distance_to(targetPlayer.position) < 60:
+			targetPlayer.collectItem(item, stackCount)
+			queue_free()
 
 func findPlayer() -> EntityBase:
 	var result = null

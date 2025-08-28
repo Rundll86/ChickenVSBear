@@ -7,8 +7,6 @@ signal healthChanged(health: float)
 
 signal energyChanged(energy: float)
 
-signal itemCollected(itemType: ItemStore.ItemType, amount: int)
-
 var fields = {
 	FieldStore.Entity.MAX_HEALTH: 100,
 	FieldStore.Entity.DAMAGE_MULTIPILER: 1,
@@ -76,23 +74,10 @@ func _ready():
 	if isPlayer():
 		statebar.levelLabels.hide()
 		UIState.player = self
-		hurtbox.body_entered.connect(
-			func(body):
-				if body is ItemDropped:
-					inventory[body.item] += body.stackCount
-					playSound("collect")
-					itemCollected.emit(body.item, body.stackCount)
-					body.queue_free()
-		)
 		energyChanged.connect(
 			func(newEnergy):
 				UIState.energyPercent.maxValue = fields.get(FieldStore.Entity.MAX_ENERGY)
 				UIState.energyPercent.setCurrent(newEnergy)
-		)
-		itemCollected.connect(
-			func(itemType, amount):
-				if MathTool.rate(GameRule.tipSpawnRateWhenGetDroppedItem):
-					UIState.itemCollect.add_child(ItemShow.generate(itemType, amount, true))
 		)
 	else:
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
@@ -166,6 +151,9 @@ func takeDamage(bullet: BulletBase, crit: bool):
 			bullet.launcher.storeEnergy(energy * 0.35)
 			bullet.launcher.setBoss(null)
 		tryDie(bullet)
+func collectItem(itemType: ItemStore.ItemType, amount: int):
+	inventory[itemType] += amount
+	playSound("collect")
 func storeEnergy(value: float):
 	energy += value * fields.get(FieldStore.Entity.ENERGY_MULTIPILER)
 	energyChanged.emit(energy)
