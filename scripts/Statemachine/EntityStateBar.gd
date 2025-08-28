@@ -5,3 +5,4 @@ class_name EntityStateBar
 
 @onready var healthBar: ColorBar = $"%health"
 @onready var levelLabel: Label = $"%level"
+@onready var levelLabels: HBoxContainer = $"%levelLabel"

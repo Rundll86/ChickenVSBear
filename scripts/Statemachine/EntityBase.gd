@@ -77,7 +77,7 @@ func _ready():
 	health = fields.get(FieldStore.Entity.MAX_HEALTH)
 	energy = fields.get(FieldStore.Entity.MAX_ENERGY) * 0.5
 	if isPlayer():
-		statebar.levelLabel.hide()
+		statebar.levelLabels.hide()
 		UIState.player = self
 		hurtbox.body_entered.connect(
 			func(body):
