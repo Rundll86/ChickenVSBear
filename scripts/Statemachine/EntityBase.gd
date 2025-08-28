@@ -188,7 +188,9 @@ func tryDie(by: BulletBase):
 	if MathTool.rate(GameRule.appleDropRate + by.launcher.fields.get(FieldStore.Entity.DROP_APPLE_RATE)) or isBoss:
 		for i in randi_range(appleCount.x, appleCount.y):
 			ItemDropped.generate(ItemStore.ItemType.APPLE, 1, position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
-	die()
+	await die()
+	if isPlayer() and UIState.player == self:
+		UIState.setPanel("GameOver")
 func tryHeal(count: float):
 	if inventory[ItemStore.ItemType.APPLE] > 0 and health < fields.get(FieldStore.Entity.MAX_HEALTH):
 		inventory[ItemStore.ItemType.APPLE] -= 1

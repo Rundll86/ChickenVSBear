@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://beo6s1kudbbve"]
+
+[ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_u2ynr"]
+[ext_resource type="FontFile" uid="uid://db2jl4bq8idec" path="res://resources/fonts/swyc.ttf" id="3_oynlg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gbuu"]
+bg_color = Color(1, 0, 0, 0.3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_17i5j"]
+font = ExtResource("3_oynlg")
+font_size = 50
+
+[node name="GameOver" instance=ExtResource("1_u2ynr")]
+
+[node name="wrapper" parent="content" index="0"]
+theme_override_constants/separation = 50
+
+[node name="container" type="PanelContainer" parent="content/wrapper" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7gbuu")
+
+[node name="text" type="Label" parent="content/wrapper/container" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "败北"
+label_settings = SubResource("LabelSettings_17i5j")

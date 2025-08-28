@@ -18,11 +18,10 @@ position = Vector2(468, 320)
 texture = ExtResource("6_p0nkj")
 
 [node name="rooster" parent="." groups=["players"] instance=ExtResource("3_5ui6q")]
-position = Vector2(394, 274)
 
-[node name="camera" type="Camera2D" parent="rooster"]
+[node name="camera" type="Camera2D" parent="."]
 process_mode = 3
-position = Vector2(0, -100)
+offset = Vector2(0, -80)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("5_mk7bv")
