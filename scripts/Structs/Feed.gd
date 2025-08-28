@@ -6,13 +6,14 @@ signal selected(applied: bool)
 
 @export var avatarTexture: Texture2D = preload("res://icon.svg")
 @export var displayName: String = "未命名饲料"
+@export var quality: FeedName.Quality = FeedName.Quality.COMMON
 @export var fields: Array[FieldStore.Entity] = []
 @export var fieldValues: Array[float] = []
 @export var costs: Array[ItemStore.ItemType] = []
 @export var costCounts: Array[int] = []
 
 @onready var avatarRect: TextureRect = $"%avatar"
-@onready var nameLabel: RichTextLabel = $"%name"
+@onready var nameLabel: FeedName = $"%name"
 @onready var fieldsBox: VBoxContainer = $"%fields"
 @onready var costsBox: GridContainer = $"%costs"
 @onready var selectButton: Button = $"%selectBtn"
@@ -23,7 +24,8 @@ func _ready():
 			apply(UIState.player)
 	)
 	avatarRect.texture = avatarTexture
-	nameLabel.text = "[b]" + displayName + "[/b]"
+	nameLabel.displayName = displayName
+	nameLabel.quality = quality
 	for i in fieldsBox.get_children():
 		i.queue_free()
 	var noField = true

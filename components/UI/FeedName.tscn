@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt370a1djjg5p"]
+
+[ext_resource type="Script" path="res://scripts/Statemachine/FeedName.gd" id="1_wfxme"]
+
+[node name="FeedName" type="CenterContainer"]
+offset_right = 107.0
+offset_bottom = 19.0
+script = ExtResource("1_wfxme")
+quality = 0
+colorStore = {
+0: Color(0.5, 0.5, 0.5, 1),
+1: Color(1, 1, 1, 1),
+2: Color(0, 0.609284, 1, 1),
+3: Color(0.561523, 0, 1, 1),
+4: Color(1, 0.866475, 0, 1)
+}
+
+[node name="label" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "[b][color=#808080]未命名饲料[/color][/b]"
+fit_content = true
+autowrap_mode = 0
