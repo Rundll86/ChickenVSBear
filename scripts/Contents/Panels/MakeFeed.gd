@@ -27,7 +27,7 @@ func _ready():
 	for feedScene in DirTool.listdir("res://components/Feeds/"):
 		if feedScene.get_extension() == "remap":
 			feedScene = feedScene.substr(0, len(feedScene) - 6)
-		print("正在从", feedScene, "加载饲料卡")
+		print("正在从 %s 加载饲料卡" % feedScene)
 		var feed = load(feedScene).instantiate()
 		avaliableFeeds.add_child(feed)
 

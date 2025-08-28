@@ -185,7 +185,7 @@ expand_mode = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("5_widd7")
-text = "50.0"
+text = "%current%"
 
 [node name="sep" type="Label" parent="root/energy/container/energy"]
 layout_mode = 2
@@ -196,7 +196,7 @@ text = "/"
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("5_widd7")
-text = "100.0"
+text = "%max%"
 
 [node name="percent" parent="root/energy/container" instance=ExtResource("9_44nw8")]
 unique_name_in_owner = true
