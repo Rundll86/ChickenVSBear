@@ -7,7 +7,7 @@
 avatarTexture = ExtResource("2_j4m35")
 displayName = "西瓜"
 fields = Array[int]([2, 0])
-fieldValues = Array[float]([-0.1, 75.0])
+fieldValues = Array[float]([-0.15, 30.0])
 costs = Array[int]([0, 1])
 costCounts = Array[int]([100, 125])
 
