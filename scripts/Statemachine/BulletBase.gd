@@ -13,6 +13,8 @@ class_name BulletBase
 @export var needEnergy: float = 0.0 # 发射时需要消耗的能量
 @export var autoSpawnAnimation: bool = false
 @export var autoLoopAnimation: bool = false
+@export var freeAfterSpawn: bool = false
+@export var knockback: float = 0 # 击退力，物理引擎单位
 
 @onready var animator: AnimationPlayer = $"%animator"
 @onready var hitbox: CollisionShape2D = $"%hitbox"
@@ -30,6 +32,8 @@ func _ready():
 	if autoSpawnAnimation:
 		animator.play("spawn")
 		await animator.animation_finished
+		if freeAfterSpawn:
+			destroy()
 	if autoLoopAnimation:
 		animator.play("loop")
 	dotLoop()

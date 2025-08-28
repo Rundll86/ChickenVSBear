@@ -12,4 +12,10 @@ func applyDot():
 	await TickTool.millseconds(50)
 	hitbox.disabled = false
 	await TickTool.millseconds(50)
+	BulletBase.generate(
+		preload("res://components/Bullets/LaserPluse.tscn"),
+		launcher,
+		position,
+		rotation
+	)
 	return true

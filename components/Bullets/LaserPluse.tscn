@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bx4guw2vkxgw4"]
+[gd_scene load_steps=9 format=3 uid="uid://bx4guw2vkxgw4"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_k5wxk"]
 [ext_resource type="Texture2D" uid="uid://ry8d7pst4ihf" path="res://resources/bullets/laser-pluse/frames/ball-a.svg" id="2_ob1rp"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/Common/LockLauncher.gd" id="2_ropvu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_83opd"]
 animations = [{
@@ -25,7 +26,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/1/type = "bezier"
@@ -36,7 +37,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/2/type = "bezier"
@@ -47,7 +48,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5, 1)
 }
 
@@ -93,7 +94,15 @@ _data = {
 "spawn": SubResource("Animation_hjoni")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ts2ht"]
+radius = 35.0571
+
 [node name="LaserPluse" instance=ExtResource("1_k5wxk")]
+z_index = -1
+script = ExtResource("2_ropvu")
+target = 1
+autoSpawnAnimation = true
+freeAfterSpawn = true
 
 [node name="texture" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_83opd")
@@ -102,3 +111,6 @@ sprite_frames = SubResource("SpriteFrames_83opd")
 libraries = {
 "": SubResource("AnimationLibrary_tbgxn")
 }
+
+[node name="hitbox" parent="." index="1"]
+shape = SubResource("CircleShape2D_ts2ht")
