@@ -9,3 +9,4 @@ static var appleDropRate: float = 0.1 # 苹果掉落概率
 static var refreshCountIncreasePercent: Vector2 = Vector2(0.4, 1.1) # 刷新所需的棒球数量的增加的百分比，随机，默认为40%~110%
 static var entityCountBoostPerWave: float = 0.1 # 每波敌人数量增加的百分比，倍数级
 static var itemShowStayTime: int = 1500 # 物品展示组件如果设置了自动隐藏，那么隐藏前可以存活的时间
+static var tipSpawnRateWhenGetDroppedItem: float = 0.25 # 当玩家获取到掉落物时，提示的概率

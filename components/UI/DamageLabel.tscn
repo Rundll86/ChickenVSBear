@@ -111,6 +111,7 @@ _data = {
 }
 
 [node name="DamageLabel" type="Node2D"]
+z_index = 1
 script = ExtResource("1_0q15u")
 color1 = Color(1, 1, 1, 1)
 
@@ -122,7 +123,7 @@ offset_left = -100.0
 offset_top = -100.0
 offset_right = 100.0
 offset_bottom = 100.0
-text = "114514"
+text = "%dmg%"
 label_settings = SubResource("LabelSettings_valp2")
 horizontal_alignment = 1
 vertical_alignment = 1
