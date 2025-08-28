@@ -71,13 +71,6 @@ metadata/_edit_vertical_guides_ = [-1.0, 57.0]
 
 [node name="UI" parent="." instance=ExtResource("2_04cdd")]
 
-[node name="background" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(468, 320)
-texture = ExtResource("6_p0nkj")
-
-[node name="rooster" parent="." groups=["players"] instance=ExtResource("3_5ui6q")]
-
 [node name="camera" type="Camera2D" parent="."]
 process_mode = 3
 offset = Vector2(0, -80)
@@ -90,3 +83,10 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_44ixa")
 }
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(630, 320)
+texture = ExtResource("6_p0nkj")
+
+[node name="rooster" parent="." groups=["players"] instance=ExtResource("3_5ui6q")]
