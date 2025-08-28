@@ -151,6 +151,7 @@ func takeDamage(bullet: BulletBase, crit: bool):
 			bullet.launcher.storeEnergy(energy * 0.35)
 			bullet.launcher.setBoss(null)
 		tryDie(bullet)
+	return damage
 func collectItem(itemType: ItemStore.ItemType, amount: int):
 	inventory[itemType] += amount
 	playSound("collect")

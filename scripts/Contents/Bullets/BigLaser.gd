@@ -10,9 +10,9 @@ func ai():
 	position = launcher.texture.global_position
 func applyDot():
 	hitbox.disabled = true
-	await TickTool.millseconds(50)
+	await TickTool.millseconds(100 / launcher.fields[FieldStore.Entity.ATTACK_SPEED])
 	hitbox.disabled = false
-	await TickTool.millseconds(50)
+	await TickTool.millseconds(100 / launcher.fields[FieldStore.Entity.ATTACK_SPEED])
 	BulletBase.generate(
 		preload("res://components/Bullets/LaserPluse.tscn"),
 		launcher,
@@ -20,3 +20,5 @@ func applyDot():
 		rotation
 	)
 	return true
+func succeedToHit(_dmg: float):
+	fields[FieldStore.Bullet.DAMAGE] *= 1.1
