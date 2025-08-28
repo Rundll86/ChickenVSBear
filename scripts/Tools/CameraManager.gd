@@ -2,10 +2,23 @@
 extends Camera2D
 class_name CameraManager
 
-static var camera: Camera2D = null
+@export var shakeOffset: float = 100
+
+var shaking: bool = false
+
+static var instance: CameraManager = null
 
 func _ready():
-	camera = self
+	instance = self
 func _physics_process(_delta):
 	if is_instance_valid(UIState.player):
 		position = UIState.player.position
+		if shaking:
+			position += MathTool.randv2_range(shakeOffset)
+
+static func shake(millseconds: int = 1000):
+	print("shake start")
+	instance.shaking = true
+	await TickTool.millseconds(millseconds)
+	instance.shaking = false
+	print("shake end")
