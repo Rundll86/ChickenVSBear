@@ -53,12 +53,16 @@ layout_mode = 2
 text = "BossName"
 label_settings = SubResource("LabelSettings_esyuk")
 
-[node name="lv" type="Label" parent="health/panel/label"]
+[node name="levelLabel" type="HBoxContainer" parent="health/panel/label"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="lv" type="Label" parent="health/panel/label/levelLabel"]
 layout_mode = 2
 text = "Lv."
 label_settings = SubResource("LabelSettings_esyuk")
 
-[node name="level" type="Label" parent="health/panel/label"]
+[node name="level" type="Label" parent="health/panel/label/levelLabel"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "100"
