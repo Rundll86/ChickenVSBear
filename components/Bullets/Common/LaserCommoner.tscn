@@ -1,0 +1,263 @@
+[gd_scene load_steps=20 format=3 uid="uid://8gjjfju6p3fh"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_f67dy"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/BigLaser.gd" id="2_tdbxh"]
+[ext_resource type="Shader" path="res://shaders/BigLaser1.gdshader" id="3_km2v1"]
+[ext_resource type="Texture2D" uid="uid://dy4op6n6vxef3" path="res://resources/bullets/laser-circle/circle.svg" id="4_rs8hf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yip5k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2oy8"]
+shader = ExtResource("3_km2v1")
+shader_parameter/laser_color = Color(1, 0, 0, 1)
+shader_parameter/width = 1.0
+shader_parameter/softness = 0.237
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_frequency = 13.154
+shader_parameter/wave_amplitude = 1.151
+shader_parameter/wave_width = 0.032
+
+[sub_resource type="Curve" id="Curve_m7ued"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iykvy"]
+curve = SubResource("Curve_m7ued")
+
+[sub_resource type="Curve" id="Curve_7w1gn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nimkb"]
+curve = SubResource("Curve_7w1gn")
+
+[sub_resource type="Gradient" id="Gradient_ki7oc"]
+colors = PackedColorArray(0.546875, 0.546875, 0.546875, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_csn21"]
+gradient = SubResource("Gradient_ki7oc")
+
+[sub_resource type="Gradient" id="Gradient_krx08"]
+offsets = PackedFloat32Array(0, 0.450382)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l66oc"]
+gradient = SubResource("Gradient_krx08")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n3bsp"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(0, 1000, 1)
+angle_min = 1.07288e-05
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_nimkb")
+spread = 15.0
+initial_velocity_min = -500.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 15.0
+color_ramp = SubResource("GradientTexture1D_l66oc")
+color_initial_ramp = SubResource("GradientTexture1D_csn21")
+alpha_curve = SubResource("CurveTexture_iykvy")
+
+[sub_resource type="Animation" id="Animation_1rif1"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rect:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rect:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("circle:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("circle:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("circle:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("circle:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ep0ow"]
+resource_name = "spawn"
+length = 5.0
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rect:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 50, -0.25, 0, 0.25, 0, 50, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 4.5, 5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rect:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 4.5, 5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("circle:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 12.5664, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("circle:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 4.5, 5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("circle:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 4.5, 5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("circle:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 4.5, 5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s7tee"]
+_data = {
+"RESET": SubResource("Animation_1rif1"),
+"spawn": SubResource("Animation_ep0ow")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x66th"]
+radius = 40.0
+height = 2000.0
+
+[node name="LaserSummoner" instance=ExtResource("1_f67dy")]
+script = ExtResource("2_tdbxh")
+fields = {
+0: 0,
+1: 25,
+2: 1
+}
+needEnergy = 100.0
+autoSpawnAnimation = true
+freeAfterSpawn = true
+knockback = 10.0
+
+[node name="texture" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_yip5k")
+
+[node name="rect" type="ColorRect" parent="texture" index="0"]
+material = SubResource("ShaderMaterial_b2oy8")
+offset_left = 233.0
+offset_right = 333.0
+offset_bottom = 2000.0
+rotation = -1.5708
+scale = Vector2(1e-05, 1)
+
+[node name="particles" type="GPUParticles2D" parent="texture/rect" index="0"]
+position = Vector2(50, 1000)
+amount = 400
+process_material = SubResource("ParticleProcessMaterial_n3bsp")
+lifetime = 0.25
+visibility_rect = Rect2(-100, -1000, 200, 2000)
+
+[node name="launcher" type="Polygon2D" parent="texture/rect" index="1"]
+position = Vector2(50, -21)
+rotation = 1.5708
+color = Color(1, 0.6, 0, 1)
+polygon = PackedVector2Array(-50, -25, 0, 0, -50, 25)
+
+[node name="animator" parent="texture" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_s7tee")
+}
+
+[node name="circle" type="Sprite2D" parent="texture" index="2"]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_rs8hf")
+
+[node name="hitbox" parent="." index="1"]
+position = Vector2(1234, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_x66th")

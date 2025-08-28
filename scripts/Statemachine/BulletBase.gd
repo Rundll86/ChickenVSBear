@@ -29,6 +29,7 @@ func _ready():
 	spawnInWhen = Time.get_ticks_msec()
 	spawnInWhere = position
 	spawn()
+	dotLoop()
 	if autoSpawnAnimation:
 		animator.play("spawn")
 		await animator.animation_finished
@@ -36,7 +37,6 @@ func _ready():
 			destroy()
 	if autoLoopAnimation:
 		animator.play("loop")
-	dotLoop()
 func _process(_delta: float) -> void:
 	if lifeTime > 0:
 		if Time.get_ticks_msec() - spawnInWhen >= lifeTime:
