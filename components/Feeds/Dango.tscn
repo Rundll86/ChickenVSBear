@@ -6,8 +6,9 @@
 [node name="Dango" instance=ExtResource("1_mwo1u")]
 avatarTexture = ExtResource("2_ckr7l")
 displayName = "团子"
+quality = 4
 fields = Array[int]([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
-fieldValues = Array[float]([20.0, 0.21, 0.1, 0.33, 0.08, 0.15, 0.1, -5.0, 0.25, 4.0, 0.12, 0.15, 0.18, 0.6, 0.15, 2.0, 2.0, 35.0])
+fieldValues = Array[float]([80.0, 0.21, 0.1, 0.33, 0.08, 0.15, 0.1, -5.0, 0.25, 4.0, 0.12, 0.15, 0.18, 0.6, 0.15, 2.0, 2.0, 35.0])
 costs = Array[int]([0, 1])
 costCounts = Array[int]([5000, 6750])
 
@@ -15,4 +16,5 @@ costCounts = Array[int]([5000, 6750])
 texture = ExtResource("2_ckr7l")
 
 [node name="name" parent="container/info" index="1"]
-text = "[b]团子[/b]"
+displayName = "团子"
+quality = 4

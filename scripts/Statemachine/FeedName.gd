@@ -1,5 +1,5 @@
 @tool
-extends CenterContainer
+extends HBoxContainer
 class_name FeedName
 
 enum Quality {
@@ -34,9 +34,14 @@ enum Quality {
 	Quality.LEGENDARY: 1
 }
 
-@onready var label: RichTextLabel = $"%label"
+@onready var qualityLabel: Label = $"%quality"
+@onready var nameLabel: RichTextLabel = $"%label"
 
+func _ready():
+	qualityLabel.label_settings = qualityLabel.label_settings.duplicate()
 func _physics_process(_delta):
-	label.text = "[b][color=%s]%s[/color][/b]" % ["#" + color().to_html(false), displayName]
+	qualityLabel.text = "[%s]" % qualityNameMap[quality]
+	qualityLabel.label_settings.font_color = color()
+	nameLabel.text = "[b]%s[/b]" % displayName
 func color():
 	return qualityColorMap[quality] as Color

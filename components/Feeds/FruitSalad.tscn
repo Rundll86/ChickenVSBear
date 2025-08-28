@@ -6,13 +6,14 @@
 [node name="FruitSalad" instance=ExtResource("1_mvycn")]
 avatarTexture = ExtResource("2_2oxe7")
 displayName = "水果沙拉"
+quality = 0
 fields = Array[int]([1])
-fieldValues = Array[float]([0.13])
+fieldValues = Array[float]([0.05])
 costs = Array[int]([1])
-costCounts = Array[int]([200])
+costCounts = Array[int]([350])
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_2oxe7")
 
 [node name="name" parent="container/info" index="1"]
-text = "[b]水果沙拉[/b]"
+displayName = "水果沙拉"

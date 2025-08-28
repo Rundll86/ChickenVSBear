@@ -6,10 +6,14 @@
 [node name="Donut" instance=ExtResource("1_7gqm6")]
 avatarTexture = ExtResource("2_bv6j5")
 displayName = "甜甜圈"
+quality = 2
 fields = Array[int]([9, 7, 16])
 fieldValues = Array[float]([1.0, -3.0, 1.0])
 costs = Array[int]([0, 1])
 costCounts = Array[int]([300, 100])
 
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_bv6j5")
+
 [node name="name" parent="container/info" index="1"]
-text = "[b]甜甜圈[/b]"
+displayName = "甜甜圈"

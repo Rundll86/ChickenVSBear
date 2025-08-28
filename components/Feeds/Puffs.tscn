@@ -6,6 +6,7 @@
 [node name="Puffs" instance=ExtResource("1_1jl1i")]
 avatarTexture = ExtResource("2_p35iw")
 displayName = "奶酪泡芙"
+quality = 3
 fields = Array[int]([10, 5, 13])
 fieldValues = Array[float]([0.06, 0.12, 0.3])
 costs = Array[int]([0, 1])
@@ -15,4 +16,4 @@ costCounts = Array[int]([250, 100])
 texture = ExtResource("2_p35iw")
 
 [node name="name" parent="container/info" index="1"]
-text = "[b]奶酪泡芙[/b]"
+displayName = "奶酪泡芙"

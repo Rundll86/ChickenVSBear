@@ -1,24 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt370a1djjg5p"]
+[gd_scene load_steps=4 format=3 uid="uid://bt370a1djjg5p"]
 
 [ext_resource type="Script" path="res://scripts/Statemachine/FeedName.gd" id="1_wfxme"]
+[ext_resource type="Theme" uid="uid://bje5cd08dyok7" path="res://themes/bigTextAndBold.tres" id="2_k71he"]
 
-[node name="FeedName" type="CenterContainer"]
-offset_right = 107.0
-offset_bottom = 19.0
+[sub_resource type="LabelSettings" id="LabelSettings_sby55"]
+font_size = 12
+font_color = Color(1, 0.442751, 0, 1)
+
+[node name="FeedName" type="HBoxContainer"]
+offset_right = 205.0
+offset_bottom = 25.0
+alignment = 1
 script = ExtResource("1_wfxme")
-quality = 0
-colorStore = {
+quality = 4
+qualityColorMap = {
 0: Color(0.5, 0.5, 0.5, 1),
 1: Color(1, 1, 1, 1),
-2: Color(0, 0.609284, 1, 1),
-3: Color(0.561523, 0, 1, 1),
-4: Color(1, 0.866475, 0, 1)
+2: Color(0, 0.493446, 1, 1),
+3: Color(0.507763, 0, 1, 1),
+4: Color(1, 0.442751, 0, 1)
 }
+metadata/_edit_horizontal_guides_ = [25.0]
+
+[node name="quality" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "[传说]"
+label_settings = SubResource("LabelSettings_sby55")
 
 [node name="label" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("2_k71he")
 bbcode_enabled = true
-text = "[b][color=#808080]未命名饲料[/color][/b]"
+text = "[b]未命名饲料[/b]"
 fit_content = true
 autowrap_mode = 0

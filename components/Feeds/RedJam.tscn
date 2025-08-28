@@ -15,4 +15,4 @@ costCounts = Array[int]([100, 50])
 texture = ExtResource("2_o2o56")
 
 [node name="name" parent="container/info" index="1"]
-text = "[b]草莓果酱[/b]"
+displayName = "草莓果酱"
