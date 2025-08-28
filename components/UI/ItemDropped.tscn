@@ -63,4 +63,4 @@ shape = SubResource("CircleShape2D_7lt1c")
 [node name="particles" type="GPUParticles2D" parent="."]
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_jfwfg")
-lifetime = 3.0
+lifetime = 2.0
