@@ -68,6 +68,8 @@ func generateCardByQuality():
 	var result = []
 	for i in range(UIState.player.fields[FieldStore.Entity.FEED_COUNT_SHOW]):
 		feeds.shuffle()
-		result.append(avaliableFeeds.get_children()[feeds[0]])
+		var feed = avaliableFeeds.get_children()[feeds[0]] as Feed
+		feed.rebuildInfo()
+		result.append(feed)
 		feeds = ArrayTool.removeAll(feeds, feeds[0])
 	return result

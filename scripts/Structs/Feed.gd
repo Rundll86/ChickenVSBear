@@ -23,31 +23,7 @@ func _ready():
 		func():
 			apply(UIState.player)
 	)
-	avatarRect.texture = avatarTexture
-	nameLabel.displayName = displayName
-	nameLabel.quality = quality
-	for i in fieldsBox.get_children():
-		i.queue_free()
-	var noField = true
-	for i in range(min(fields.size(), fieldValues.size())):
-		noField = false
-		var field = fields[i]
-		var value = fieldValues[i]
-		var fieldShow: FieldShow = preload("res://components/UI/FieldShow.tscn").instantiate()
-		fieldShow.field = field
-		fieldShow.value = value
-		fieldsBox.add_child(fieldShow)
-	if noField:
-		fieldsBox.add_child(QuickUI.smallText("无词条"))
-	for i in costsBox.get_children():
-		i.queue_free()
-	for i in range(min(costs.size(), costCounts.size())):
-		var cost = costs[i]
-		var count = costCounts[i]
-		var costShow: ItemShow = preload("res://components/UI/ItemShow.tscn").instantiate()
-		costShow.type = cost
-		costShow.count = int(count * multipiler())
-		costsBox.add_child(costShow)
+	rebuildInfo()
 
 func allHad(entity: EntityBase) -> bool:
 	var allHave = true
@@ -80,3 +56,29 @@ func multipiler() -> float:
 		return 1 - UIState.player.fields.get(FieldStore.Entity.PRICE_REDUCTION)
 	else:
 		return 1
+func rebuildInfo():
+	avatarRect.texture = avatarTexture
+	nameLabel.displayName = displayName
+	nameLabel.quality = quality
+	for i in fieldsBox.get_children():
+		i.queue_free()
+	var noField = true
+	for i in range(min(fields.size(), fieldValues.size())):
+		noField = false
+		var field = fields[i]
+		var value = fieldValues[i]
+		var fieldShow: FieldShow = preload("res://components/UI/FieldShow.tscn").instantiate()
+		fieldShow.field = field
+		fieldShow.value = value
+		fieldsBox.add_child(fieldShow)
+	if noField:
+		fieldsBox.add_child(QuickUI.smallText("无词条"))
+	for i in costsBox.get_children():
+		i.queue_free()
+	for i in range(min(costs.size(), costCounts.size())):
+		var cost = costs[i]
+		var count = costCounts[i]
+		var costShow: ItemShow = preload("res://components/UI/ItemShow.tscn").instantiate()
+		costShow.type = cost
+		costShow.count = int(count * multipiler())
+		costsBox.add_child(costShow)
