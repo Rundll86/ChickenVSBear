@@ -4,6 +4,7 @@ class_name ItemDropped
 var item: ItemStore.ItemType = ItemStore.ItemType.BASEBALL
 var stackCount: int = 1
 var targetPlayer: EntityBase = null
+var collecting: bool = false
 
 @onready var texture: Sprite2D = $"%texture"
 @onready var animator: AnimationPlayer = $"%animator"
@@ -16,10 +17,15 @@ func _physics_process(_delta):
 	if !is_instance_valid(targetPlayer):
 		targetPlayer = findPlayer()
 	if is_instance_valid(targetPlayer):
-		apply_central_force((targetPlayer.position - position).normalized() * 1000)
-		if position.distance_to(targetPlayer.position) < 60:
-			targetPlayer.collectItem(item, stackCount)
-			collect()
+		if collecting:
+			linear_velocity = Vector2.ZERO
+		else:
+			var direction = (targetPlayer.position - position).normalized()
+			var speed = 4000.0 / ((targetPlayer.position - position).length() ** (1 / 3.0))
+			apply_central_force(direction * speed)
+			if position.distance_to(targetPlayer.position) < 60:
+				targetPlayer.collectItem(item, stackCount)
+				collect()
 
 func findPlayer() -> EntityBase:
 	var result = null
@@ -31,6 +37,7 @@ func findPlayer() -> EntityBase:
 				result = player
 	return result
 func collect():
+	collecting = true
 	animator.play("collect")
 	await animator.animation_finished
 	queue_free()
