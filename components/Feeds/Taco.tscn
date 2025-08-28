@@ -6,15 +6,15 @@
 [node name="Taco" instance=ExtResource("1_iixnt")]
 avatarTexture = ExtResource("2_eed3c")
 displayName = "塔克"
-quality = 3
+quality = 4
 fields = Array[int]([13])
-fieldValues = Array[float]([0.24])
+fieldValues = Array[float]([0.36])
 costs = Array[int]([1])
-costCounts = Array[int]([200])
+costCounts = Array[int]([400])
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_eed3c")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "塔克"
-quality = 2
+quality = 3
