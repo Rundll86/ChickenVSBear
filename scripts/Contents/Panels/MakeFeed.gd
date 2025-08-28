@@ -63,7 +63,7 @@ func generateCardByQuality():
 	var feeds = []
 	for i in range(len(avaliableFeeds.get_children())):
 		var feed = avaliableFeeds.get_children()[i] as Feed
-		for j in range(feed.nameLabel.weight()):
+		for j in range(feed.nameLabel.weight(UIState.player)):
 			feeds.append(i)
 	var result = []
 	for i in range(UIState.player.fields[FieldStore.Entity.FEED_COUNT_SHOW]):

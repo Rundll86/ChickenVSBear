@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxcvc1rjvm8i2"]
+[gd_scene load_steps=13 format=3 uid="uid://cxcvc1rjvm8i2"]
 
 [ext_resource type="Script" path="res://scripts/Statemachine/ItemDropped.gd" id="1_v2djl"]
 [ext_resource type="Texture2D" uid="uid://bks8jmctleina" path="res://resources/items/baseball.svg" id="2_4hl42"]
@@ -6,8 +6,51 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_7lt1c"]
 radius = 2.0
 
+[sub_resource type="Curve" id="Curve_11h7l"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u4ger"]
+curve = SubResource("Curve_11h7l")
+
+[sub_resource type="Curve" id="Curve_h22hm"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_orbge"]
+curve = SubResource("Curve_h22hm")
+
+[sub_resource type="Gradient" id="Gradient_2h3cl"]
+colors = PackedColorArray(0.44, 0.44, 0.44, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5p7rs"]
+gradient = SubResource("Gradient_2h3cl")
+
+[sub_resource type="Curve" id="Curve_pp2gs"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1ot48"]
+curve = SubResource("Curve_pp2gs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jfwfg"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 15.0
+angle_min = 1.07288e-05
+angle_max = 720.0
+angle_curve = SubResource("CurveTexture_orbge")
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_1ot48")
+color_initial_ramp = SubResource("GradientTexture1D_5p7rs")
+alpha_curve = SubResource("CurveTexture_u4ger")
+
 [node name="ItemDropped" type="RigidBody2D"]
 script = ExtResource("1_v2djl")
+metadata/_edit_vertical_guides_ = [15.0, -15.0]
 
 [node name="texture" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -16,3 +59,8 @@ texture = ExtResource("2_4hl42")
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7lt1c")
+
+[node name="particles" type="GPUParticles2D" parent="."]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_jfwfg")
+lifetime = 3.0
