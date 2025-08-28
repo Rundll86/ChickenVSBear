@@ -11,6 +11,7 @@ class_name DamageLabel
 @onready var animator: AnimationPlayer = $"%animator"
 
 func _ready():
+	label.label_settings = label.label_settings.duplicate()
 	var damageValue = round(abs(damage))
 	var damageSign = sign(damage)
 	if damageSign > 0:
