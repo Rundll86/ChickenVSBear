@@ -8,25 +8,31 @@ signal healthChanged(health: float)
 signal energyChanged(energy: float)
 
 var fields = {
+	# 数值上限
 	FieldStore.Entity.MAX_HEALTH: 100,
-	FieldStore.Entity.DAMAGE_MULTIPILER: 1,
+	FieldStore.Entity.MAX_ENERGY: 200,
+	FieldStore.Entity.EXTRA_APPLE_MAX: 0,
+	FieldStore.Entity.EXTRA_BULLET_COUNT: 0,
+	# 速度
 	FieldStore.Entity.MOVEMENT_SPEED: 1,
 	FieldStore.Entity.ATTACK_SPEED: 1,
-	FieldStore.Entity.CRIT_RATE: 0.05,
+	# 伤害
+	FieldStore.Entity.DAMAGE_MULTIPILER: 1,
 	FieldStore.Entity.CRIT_DAMAGE: 1,
+	# 概率相关
+	FieldStore.Entity.CRIT_RATE: 0.05,
 	FieldStore.Entity.PENERATE: 0,
 	FieldStore.Entity.OFFSET_SHOOT: 3,
-	FieldStore.Entity.HEAL_ABILITY: 1,
-	FieldStore.Entity.EXTRA_APPLE_MAX: 0,
-	FieldStore.Entity.ENERGY_MULTIPILER: 1,
-	FieldStore.Entity.PENARATION_RESISTANCE: 0,
-	FieldStore.Entity.PRICE_REDUCTION: 0,
-	FieldStore.Entity.EXTRA_BULLET_COUNT: 0,
 	FieldStore.Entity.DROP_APPLE_RATE: 0,
+	FieldStore.Entity.PENARATION_RESISTANCE: 0,
+	FieldStore.Entity.LUCK_VALUE: 1,
+	# 倍率
+	FieldStore.Entity.HEAL_ABILITY: 1,
+	FieldStore.Entity.ENERGY_MULTIPILER: 1,
+	FieldStore.Entity.PRICE_REDUCTION: 0,
+	# 饲料
 	FieldStore.Entity.FEED_COUNT_SHOW: 3,
 	FieldStore.Entity.FEED_COUNT_CAN_MADE: 1,
-	FieldStore.Entity.MAX_ENERGY: 200,
-	FieldStore.Entity.LUCK_VALUE: 1
 }
 var inventory = {
 	ItemStore.ItemType.BASEBALL: 100,

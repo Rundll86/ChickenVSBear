@@ -26,8 +26,6 @@ enum Entity {
 	FEED_COUNT_CAN_MADE,
 	MAX_ENERGY,
 	LUCK_VALUE,
-	DROPPED_ITEM_GRAVITY_MULTIPILER,
-	DROPPED_ITEM_GRAVITY_INFLUENCE_BY_DISTANCE_MULTIPILER
 }
 static var entityMap = {
 	Entity.MAX_HEALTH: "生命上限",
@@ -45,12 +43,10 @@ static var entityMap = {
 	Entity.PRICE_REDUCTION: "饲料降价",
 	Entity.EXTRA_BULLET_COUNT: "额外子弹",
 	Entity.DROP_APPLE_RATE: "苹果掉落率",
-	Entity.FEED_COUNT_SHOW: "可选饲料数量",
-	Entity.FEED_COUNT_CAN_MADE: "可制作饲料数量",
+	Entity.FEED_COUNT_SHOW: "饲料列表",
+	Entity.FEED_COUNT_CAN_MADE: "可制作饲料",
 	Entity.MAX_ENERGY: "能量上限",
 	Entity.LUCK_VALUE: "幸运值",
-	Entity.DROPPED_ITEM_GRAVITY_MULTIPILER: "掉落物重力倍率",
-	Entity.DROPPED_ITEM_GRAVITY_INFLUENCE_BY_DISTANCE_MULTIPILER: "掉落物重力受距离影响"
 }
 static var entityMapType = {
 	Entity.MAX_HEALTH: DataType.VALUE,
@@ -72,8 +68,6 @@ static var entityMapType = {
 	Entity.FEED_COUNT_CAN_MADE: DataType.VALUE,
 	Entity.MAX_ENERGY: DataType.VALUE,
 	Entity.LUCK_VALUE: DataType.VALUE,
-	Entity.DROPPED_ITEM_GRAVITY_MULTIPILER: DataType.PERCENT,
-	Entity.DROPPED_ITEM_GRAVITY_INFLUENCE_BY_DISTANCE_MULTIPILER: DataType.VALUE
 }
 static var entityMaxValueMap = {
 	Entity.CRIT_RATE: 1,
