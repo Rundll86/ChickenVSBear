@@ -54,12 +54,20 @@ func finish():
 func regenerateCards():
 	updateValue()
 	clearCards()
-	var feeds: Array[Feed] = []
-	for i in avaliableFeeds.get_children():
-		feeds.append(i)
-	feeds.shuffle()
-	for i in range(UIState.player.fields[FieldStore.Entity.FEED_COUNT_SHOW]):
-		var feed = feeds[i] as Feed
+	var feeds = generateCardByQuality()
+	for feed in feeds:
 		feed.show()
 		avaliableFeeds.remove_child(feed)
 		feedCards.add_child(feed)
+func generateCardByQuality():
+	var feeds = []
+	for i in range(len(avaliableFeeds.get_children())):
+		var feed = avaliableFeeds.get_children()[i] as Feed
+		for j in range(feed.nameLabel.weight()):
+			feeds.append(i)
+	var result = []
+	for i in range(UIState.player.fields[FieldStore.Entity.FEED_COUNT_SHOW]):
+		feeds.shuffle()
+		result.append(avaliableFeeds.get_children()[feeds[0]])
+		feeds = ArrayTool.removeAll(feeds, feeds[0])
+	return result

@@ -45,3 +45,5 @@ func _physics_process(_delta):
 	nameLabel.text = "[b]%s[/b]" % displayName
 func color():
 	return qualityColorMap[quality] as Color
+func weight() -> float:
+	return qualityRandomWeight[quality]
