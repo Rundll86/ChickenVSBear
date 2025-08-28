@@ -43,6 +43,12 @@ func _physics_process(_delta):
 		fieldsAnimator.play("show")
 	if Input.is_action_just_released("showFields"):
 		fieldsAnimator.play("hide")
+	if Input.is_action_just_pressed("pause"):
+		if currentPanel:
+			if currentPanel.name == "Pause":
+				closeCurrentPanel()
+		else:
+			setPanel("Pause")
 
 static func setPanel(targetName: String = ""):
 	currentPanel = null

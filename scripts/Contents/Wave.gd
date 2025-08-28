@@ -11,9 +11,8 @@ var per: int = 0
 static var current: int = 0
 static var data: Array[Wave] = [
 	# entity, minCount, maxCount, isBoss, from, to, per
-	# create(preload("res://components/Characters/Hen.tscn"), 1, 5, false, 0, INF, 1),
-	# create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 8, INF, 5),
-	create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 0, INF, 1000000)
+	create(preload("res://components/Characters/Hen.tscn"), 1, 5, false, 0, INF, 1),
+	create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 8, INF, 5),
 ]
 
 static func create(

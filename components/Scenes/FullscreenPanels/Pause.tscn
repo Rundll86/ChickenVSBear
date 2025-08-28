@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cksonrrx38k36"]
+
+[ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_q0gd0"]
+[ext_resource type="FontFile" uid="uid://db2jl4bq8idec" path="res://resources/fonts/swyc.ttf" id="2_rf3pp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_17i5j"]
+font = ExtResource("2_rf3pp")
+font_size = 50
+
+[node name="Pause" instance=ExtResource("1_q0gd0")]
+
+[node name="wrapper" parent="content" index="0"]
+theme_override_constants/separation = 50
+
+[node name="text" type="Label" parent="content/wrapper" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "已暂停"
+label_settings = SubResource("LabelSettings_17i5j")
