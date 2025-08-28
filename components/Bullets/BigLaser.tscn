@@ -13,8 +13,8 @@ shader_parameter/laser_width = 0.01
 shader_parameter/soft_edge = 0.5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y85id"]
-radius = 40.0
-height = 1000.0
+radius = 60.0
+height = 2000.0
 
 [node name="BigLaser" instance=ExtResource("1_cqnkd")]
 script = ExtResource("2_oqfvl")
@@ -32,11 +32,11 @@ sprite_frames = SubResource("SpriteFrames_yip5k")
 
 [node name="rect" type="ColorRect" parent="texture" index="0"]
 material = SubResource("ShaderMaterial_5n8cv")
-offset_left = -40.0
-offset_top = -1000.0
-offset_right = 40.0
+offset_left = -60.0
+offset_top = -2000.0
+offset_right = 60.0
 
 [node name="hitbox" parent="." index="1"]
-position = Vector2(500, 0)
+position = Vector2(1000, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_y85id")

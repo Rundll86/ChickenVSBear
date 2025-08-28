@@ -4,6 +4,8 @@ class_name CameraManager
 
 @export var shakeOffset: float = 100
 
+@onready var animator: AnimationPlayer = $"%animator"
+
 var shaking: bool = false
 
 static var instance: CameraManager = null
@@ -22,3 +24,5 @@ static func shake(millseconds: int = 1000):
 	await TickTool.millseconds(millseconds)
 	instance.shaking = false
 	print("shake end")
+static func playAnimation(animation: String):
+	instance.animator.play(animation)

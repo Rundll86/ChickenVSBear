@@ -3,6 +3,7 @@ class_name BigLaser
 
 func spawn():
 	CameraManager.shake(5000)
+	CameraManager.playAnimation("bigLaser")
 func ai():
 	rotation = lerp_angle(rotation, ((get_global_mouse_position() - position).angle()), 0.1)
 	position = launcher.texture.global_position
