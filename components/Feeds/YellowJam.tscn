@@ -6,8 +6,8 @@
 [node name="YellowJam" instance=ExtResource("1_evi6p")]
 avatarTexture = ExtResource("2_bea7w")
 displayName = "蜂蜜果酱"
-fields = Array[int]([3, 1])
-fieldValues = Array[float]([-0.11, 0.16])
+fields = Array[int]([3, 1, 12])
+fieldValues = Array[float]([-0.11, 0.16, 0.03])
 costs = Array[int]([0, 1])
 costCounts = Array[int]([200, 125])
 

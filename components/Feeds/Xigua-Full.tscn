@@ -6,8 +6,8 @@
 [node name="Xigua-Full" instance=ExtResource("1_sw8vc")]
 avatarTexture = ExtResource("2_j4m35")
 displayName = "西瓜"
-fields = Array[int]([2, 0])
-fieldValues = Array[float]([-0.15, 30.0])
+fields = Array[int]([2, 0, 11])
+fieldValues = Array[float]([-0.15, 30.0, 0.1])
 costs = Array[int]([0, 1])
 costCounts = Array[int]([100, 125])
 

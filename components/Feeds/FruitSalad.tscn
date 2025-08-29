@@ -8,12 +8,13 @@ avatarTexture = ExtResource("2_2oxe7")
 displayName = "水果沙拉"
 quality = 0
 fields = Array[int]([1])
-fieldValues = Array[float]([0.05])
+fieldValues = Array[float]([0.1])
 costs = Array[int]([1])
-costCounts = Array[int]([350])
+costCounts = Array[int]([200])
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_2oxe7")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "水果沙拉"
+quality = 0

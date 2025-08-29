@@ -76,11 +76,11 @@ static var entityMapType = {
 	Entity.ENERGY_REGENERATION: DataType.PERCENT,
 }
 static var entityMaxValueMap = {
-	Entity.CRIT_RATE: 1,
-	Entity.PENERATE: 1,
-	Entity.PENARATION_RESISTANCE: 1,
-	Entity.PRICE_REDUCTION: 0.8,
-	Entity.DROP_APPLE_RATE: 0.5,
+	Entity.CRIT_RATE: 0.8,
+	Entity.PENERATE: 0.8,
+	Entity.PENARATION_RESISTANCE: 0.5,
+	Entity.PRICE_REDUCTION: 0.4,
+	Entity.DROP_APPLE_RATE: 0.4,
 	Entity.FEED_COUNT_SHOW: 6
 }
 static var entityApplier = {
