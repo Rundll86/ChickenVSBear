@@ -11,7 +11,7 @@
 shader = ExtResource("3_ow2gn")
 shader_parameter/laser_color = Color(1, 0, 0, 1)
 shader_parameter/width = 1.0
-shader_parameter/softness = 0.2
+shader_parameter/softness = 0.3
 shader_parameter/wave_speed = 3.0
 shader_parameter/wave_frequency = 13.154
 shader_parameter/wave_amplitude = 1.151
