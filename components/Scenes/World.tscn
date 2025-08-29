@@ -106,6 +106,6 @@ position = Vector2(251, 118)
 shape = SubResource("CircleShape2D_4y8st")
 
 [node name="shan2" type="CollisionPolygon2D" parent="map"]
-polygon = PackedVector2Array(-2427, -357, -2419, 1803, 2429, 1825, 2391, -266, 2731, -266, 2723, 2241, -3318, 2158, -2797, -2582, 2959, -2528, 2753, -292, 2570, -225, 2401, -267, 2441, -1834, -2438, -1792)
+polygon = PackedVector2Array(-2419, 1803, 2429, 1825, 2392, -366, 2867, -318, 2723, 2241, -2879, 2193, -2797, -2582, 2959, -2528, 2858, -347, 2420, -337, 2441, -1834, -2438, -1792)
 
 [node name="rooster" parent="." groups=["players"] instance=ExtResource("3_5ui6q")]
