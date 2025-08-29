@@ -8,8 +8,18 @@ enum ComposeMode {
 
 @export var targetFields: Array[FieldStore.Entity] = []
 @export var composeMode: ComposeMode = ComposeMode.ALL
+@export var clickToRefresh: bool = false
+
+var lastState: bool = false
 
 func _ready():
+	rebuild()
+func _physics_process(_delta):
+	if clickToRefresh != lastState:
+		lastState = clickToRefresh
+		rebuild()
+
+func rebuild():
 	for i in get_children():
 		i.queue_free()
 	var files = DirTool.listdir("res://components/Feeds/")

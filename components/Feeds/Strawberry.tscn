@@ -6,9 +6,9 @@
 [node name="Strawberry" instance=ExtResource("1_wr2cd")]
 avatarTexture = ExtResource("2_82amy")
 displayName = "草莓"
-quality = 2
+quality = 3
 fields = Array[int]([14])
-fieldValues = Array[float]([0.25])
+fieldValues = Array[float]([0.05])
 costs = Array[int]([1])
 costCounts = Array[int]([375])
 
@@ -17,3 +17,4 @@ texture = ExtResource("2_82amy")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "草莓"
+quality = 2

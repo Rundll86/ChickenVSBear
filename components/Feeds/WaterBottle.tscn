@@ -10,11 +10,11 @@ quality = 4
 fields = Array[int]([3])
 fieldValues = Array[float]([0.25])
 costs = Array[int]([1])
-costCounts = Array[int]([250])
+costCounts = Array[int]([400])
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_gsfud")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "水杯"
-quality = 3
+quality = 4

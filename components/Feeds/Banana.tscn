@@ -7,7 +7,7 @@
 avatarTexture = ExtResource("2_2mlfi")
 displayName = "香蕉"
 fields = Array[int]([0, 3])
-fieldValues = Array[float]([10.0, 0.12])
+fieldValues = Array[float]([15.0, 0.07])
 costs = Array[int]([0, 1])
 costCounts = Array[int]([100, 55])
 
