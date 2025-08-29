@@ -51,7 +51,7 @@ var inventoryMax = {
 @export var sprintMultiplier: float = 4
 @export var drops: Array[ItemStore.ItemType] = []
 @export var dropCounts: Array[Vector2] = []
-@export var appleCount: Vector2i = Vector2(0, 3) # 死亡后掉落的苹果数量
+@export var appleCount: Vector2i = Vector2(0, 2) # 死亡后掉落的苹果数量
 @export var level: int = 1 # 等级
 
 @onready var animatree: AnimationTree = $"%animatree"
