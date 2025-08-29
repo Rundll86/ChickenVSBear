@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmxi1ikn6avig"]
+[gd_scene load_steps=11 format=3 uid="uid://dmxi1ikn6avig"]
 
 [ext_resource type="Script" path="res://scripts/Tools/WorldManager.gd" id="1_lxsxj"]
 [ext_resource type="PackedScene" uid="uid://dfwg750a47ggx" path="res://components/Scenes/UI.tscn" id="2_04cdd"]
 [ext_resource type="PackedScene" uid="uid://bm7ymrri6pykb" path="res://components/Characters/Rooster.tscn" id="3_5ui6q"]
+[ext_resource type="Texture2D" uid="uid://dk7u1x1e8ptj7" path="res://resources/maps/Desert.png" id="4_04do5"]
 [ext_resource type="Script" path="res://scripts/Tools/CameraManager.gd" id="5_mk7bv"]
-[ext_resource type="Texture2D" uid="uid://ckk8kahhof06u" path="res://resources/maps/Castle 2.png" id="6_p0nkj"]
 
 [sub_resource type="Animation" id="Animation_ykpvi"]
 length = 0.001
@@ -64,6 +64,12 @@ _data = {
 "bigLaser": SubResource("Animation_kii8h")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4hkht"]
+radius = 126.89
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4y8st"]
+radius = 46.1736
+
 [node name="world" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_lxsxj")
@@ -84,8 +90,25 @@ libraries = {
 "": SubResource("AnimationLibrary_44ixa")
 }
 
-[node name="background" type="Sprite2D" parent="."]
+[node name="map" type="StaticBody2D" parent="."]
+
+[node name="background" type="Sprite2D" parent="map"]
 z_index = -100
-texture = ExtResource("6_p0nkj")
+scale = Vector2(5, 5)
+texture = ExtResource("4_04do5")
+
+[node name="xrz1" type="CollisionShape2D" parent="map"]
+position = Vector2(-1827, 575)
+shape = SubResource("CircleShape2D_4hkht")
+
+[node name="xrz2" type="CollisionShape2D" parent="map"]
+position = Vector2(251, 118)
+shape = SubResource("CircleShape2D_4y8st")
+
+[node name="shan" type="CollisionPolygon2D" parent="map"]
+polygon = PackedVector2Array(-2391, -370, -1721, -405, -1307, -662, -1217, -1181, -995, -1272, -531, -1146, -486, -1050, -461, -838, -380, -778, -325, -476, -229, -571, -123, -592, -22, -279, 129, -188, 527, -138, 764, -183, 920, -466, 1036, -627, 1167, -617, 1182, -219, 1364, -123, 1414, -309, 1454, -823, 1747, -793, 1691, -319, 1721, -148, 2039, -17, 2377, 13, 2417, -1821, -2411, -1846)
+
+[node name="shan2" type="CollisionPolygon2D" parent="map"]
+polygon = PackedVector2Array(-2427, -357, -2419, 1803, 2429, 1825, 2391, -266, 2731, -266, 2723, 2241, -3318, 2158, -2910, -923, -2427, -863)
 
 [node name="rooster" parent="." groups=["players"] instance=ExtResource("3_5ui6q")]
