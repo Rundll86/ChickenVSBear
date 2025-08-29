@@ -6,4 +6,4 @@ func register():
 	damage = 5
 
 func ai():
-	PresetsAI.forward(self, rotation)
+	PresetAIs.forward(self, rotation)

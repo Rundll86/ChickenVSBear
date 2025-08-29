@@ -12,6 +12,7 @@ class_name BulletBase
 @export var autoSpawnAnimation: bool = false
 @export var autoLoopAnimation: bool = false
 @export var autoDestroyAnimation: bool = false
+@export var autoDestroyOnHitMap: bool = true
 @export var freeAfterSpawn: bool = false
 @export var knockback: float = 0 # 击退力，物理引擎单位
 @export var recoil: float = 0 # 后坐力，物理引擎单位
@@ -39,6 +40,12 @@ func _ready():
 			tryDestroy()
 	if autoLoopAnimation:
 		animator.play("loop")
+	body_entered.connect(
+		func(body):
+			if body.is_in_group("map"):
+				if autoDestroyOnHitMap:
+					tryDestroy(true)
+	)
 func _process(_delta: float) -> void:
 	if destroying: return
 	if lifeTime > 0:
@@ -74,10 +81,10 @@ func timeLived():
 func dotLoop():
 	if await applyDot():
 		await dotLoop()
-func tryDestroy():
+func tryDestroy(becauseMap: bool = false):
 	if destroying: return
 	destroying = true
-	await destroy()
+	await destroy(becauseMap)
 	if autoDestroyAnimation:
 		animator.play("destroy")
 		await animator.animation_finished
@@ -86,7 +93,7 @@ func tryDestroy():
 # 抽象方法
 func ai():
 	pass
-func destroy():
+func destroy(_beacuseMap: bool):
 	pass
 func spawn():
 	pass

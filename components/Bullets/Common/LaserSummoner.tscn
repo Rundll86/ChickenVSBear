@@ -208,6 +208,7 @@ height = 2000.0
 [node name="LaserSummoner" instance=ExtResource("1_pnxoq")]
 script = ExtResource("2_nk2p8")
 autoSpawnAnimation = true
+autoDestroyOnHitMap = false
 freeAfterSpawn = true
 
 [node name="texture" parent="." index="0"]

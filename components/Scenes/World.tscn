@@ -90,7 +90,7 @@ libraries = {
 "": SubResource("AnimationLibrary_44ixa")
 }
 
-[node name="map" type="StaticBody2D" parent="."]
+[node name="map" type="StaticBody2D" parent="." groups=["map"]]
 
 [node name="background" type="Sprite2D" parent="map"]
 z_index = -100
