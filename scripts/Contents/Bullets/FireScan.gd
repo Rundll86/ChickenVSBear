@@ -6,4 +6,4 @@ func register():
 	damage = 20
 
 func ai():
-	forward(Vector2.from_angle(rotation))
+	PresetsAI.forward(self, rotation)

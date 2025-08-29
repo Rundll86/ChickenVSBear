@@ -62,11 +62,6 @@ radius = 19.2354
 
 [node name="Star" instance=ExtResource("1_x6yf7")]
 script = ExtResource("2_y4b0l")
-fields = {
-0: 10,
-1: 1,
-2: 0
-}
 lifeTime = 1000.0
 autoLoopAnimation = true
 

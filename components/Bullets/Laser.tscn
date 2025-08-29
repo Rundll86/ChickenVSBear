@@ -17,11 +17,6 @@ height = 300.0
 
 [node name="Laser" instance=ExtResource("1_3u4op")]
 script = ExtResource("2_yy5sr")
-fields = {
-0: 10,
-1: 15,
-2: 1
-}
 lifeTime = 2000.0
 
 [node name="texture" parent="." index="0"]

@@ -8,4 +8,4 @@ func register():
 func ai():
 	rotation = lerp_angle(rotation, position.angle_to_point(launcher.currentFocusedBoss.position), 0.1 * clamp((traceTime - timeLived()) / traceTime, 0, INF))
 	canDamageSelf = !(timeLived() >= traceTime)
-	forward(Vector2.from_angle(rotation))
+	PresetsAI.forward(self, rotation)

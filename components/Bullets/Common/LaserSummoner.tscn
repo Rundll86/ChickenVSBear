@@ -207,11 +207,6 @@ height = 2000.0
 
 [node name="LaserSummoner" instance=ExtResource("1_pnxoq")]
 script = ExtResource("2_nk2p8")
-fields = {
-0: 0,
-1: 25,
-2: 1
-}
 autoSpawnAnimation = true
 freeAfterSpawn = true
 
