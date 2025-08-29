@@ -23,7 +23,7 @@ func ai():
 	elif currentFocusedBoss.position.distance_to(position) < 700:
 		tryAttack(1)
 	else:
-		var method = MathTool.randc_from([0, 3])
+		var method = MathTool.randc_from([3, 3, 0, 3, 3])
 		tryAttack(method, method == 3)
 func attack(type):
 	if type == 0:
