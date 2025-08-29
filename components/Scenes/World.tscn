@@ -105,10 +105,7 @@ shape = SubResource("CircleShape2D_4hkht")
 position = Vector2(251, 118)
 shape = SubResource("CircleShape2D_4y8st")
 
-[node name="shan" type="CollisionPolygon2D" parent="map"]
-polygon = PackedVector2Array(-2391, -370, -1721, -405, -1307, -662, -1217, -1181, -995, -1272, -531, -1146, -486, -1050, -461, -838, -380, -778, -325, -476, -229, -571, -123, -592, -22, -279, 129, -188, 527, -138, 764, -183, 920, -466, 1036, -627, 1167, -617, 1182, -219, 1364, -123, 1414, -309, 1454, -823, 1747, -793, 1691, -319, 1721, -148, 2039, -17, 2377, 13, 2417, -1821, -2411, -1846)
-
 [node name="shan2" type="CollisionPolygon2D" parent="map"]
-polygon = PackedVector2Array(-2427, -357, -2419, 1803, 2429, 1825, 2391, -266, 2731, -266, 2723, 2241, -3318, 2158, -2910, -923, -2427, -863)
+polygon = PackedVector2Array(-2427, -357, -2419, 1803, 2429, 1825, 2391, -266, 2731, -266, 2723, 2241, -3318, 2158, -2797, -2582, 2959, -2528, 2753, -292, 2570, -225, 2401, -267, 2441, -1834, -2438, -1792)
 
 [node name="rooster" parent="." groups=["players"] instance=ExtResource("3_5ui6q")]
