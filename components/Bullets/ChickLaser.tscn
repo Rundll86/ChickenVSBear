@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvri0nv1jrigf"]
+[gd_scene load_steps=17 format=3 uid="uid://bvri0nv1jrigf"]
 
 [ext_resource type="PackedScene" uid="uid://8gjjfju6p3fh" path="res://components/Bullets/Common/LaserSummoner.tscn" id="1_eb54j"]
 [ext_resource type="Script" path="res://scripts/Contents/Bullets/ChickLaser.gd" id="2_7g0f0"]
 [ext_resource type="Shader" path="res://shaders/BigLaser.gdshader" id="3_4y0mm"]
+[ext_resource type="Texture2D" uid="uid://cv8yl3ncek4ap" path="res://resources/bullets/laser-circle/blue-circle.svg" id="4_cws6l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x6ivr"]
 shader = ExtResource("3_4y0mm")
@@ -223,11 +224,15 @@ visibility_rect = Rect2(-50, -250, 100, 500)
 [node name="launcher" parent="texture/rect" index="1"]
 position = Vector2(25, -13.9999)
 scale = Vector2(0.525, 0.525)
+color = Color(0, 0.701961, 1, 1)
 
 [node name="animator" parent="texture" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_7qqtc")
 }
+
+[node name="circle" parent="texture" index="2"]
+texture = ExtResource("4_cws6l")
 
 [node name="hitbox" parent="." index="1"]
 visible = true
