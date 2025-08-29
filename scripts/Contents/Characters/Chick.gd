@@ -18,7 +18,7 @@ func spawn():
 
 func ai():
 	move(currentFocusedBoss.position - position)
-	if currentFocusedBoss.position.distance_to(position) < 300:
+	if currentFocusedBoss.position.distance_to(position) < 200:
 		tryAttack(2)
 	elif currentFocusedBoss.position.distance_to(position) < 700:
 		tryAttack(1)
