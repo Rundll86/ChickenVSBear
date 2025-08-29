@@ -11,6 +11,7 @@ class_name BulletBase
 @export var needEnergy: float = 0.0 # 发射时需要消耗的能量
 @export var autoSpawnAnimation: bool = false
 @export var autoLoopAnimation: bool = false
+@export var autoDestroyAnimation: bool = false
 @export var freeAfterSpawn: bool = false
 @export var knockback: float = 0 # 击退力，物理引擎单位
 @export var recoil: float = 0 # 后坐力，物理引擎单位
@@ -74,6 +75,9 @@ func dotLoop():
 func ai():
 	pass
 func destroy():
+	if autoDestroyAnimation:
+		animator.play("destroy")
+		await animator.animation_finished
 	queue_free()
 func spawn():
 	pass

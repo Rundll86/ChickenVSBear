@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://crtdkysmnkith"]
+[gd_scene load_steps=8 format=3 uid="uid://crtdkysmnkith"]
 
 [ext_resource type="Script" path="res://scripts/Statemachine/BulletBase.gd" id="1_pklpq"]
 
@@ -24,8 +24,14 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_kmogx"]
 resource_name = "spawn"
 
+[sub_resource type="Animation" id="Animation_oinqg"]
+resource_name = "destroy"
+length = 0.5
+step = 0.1
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dxweq"]
 _data = {
+"destroy": SubResource("Animation_oinqg"),
 "loop": SubResource("Animation_ynxlt"),
 "spawn": SubResource("Animation_kmogx")
 }
