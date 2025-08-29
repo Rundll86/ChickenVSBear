@@ -59,8 +59,7 @@ var inventoryMax = {
 @export var drops: Array[ItemStore.ItemType] = []
 @export var dropCounts: Array[Vector2] = []
 @export var appleCount: Vector2i = Vector2(0, 2) # 死亡后掉落的苹果数量
-@export var level: int = 1 # 等级
-@export var sprintEnergy: float = 5
+@export var level: int = 1
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -194,10 +193,9 @@ func tryAttack(type: int):
 			playSound("attack" + str(type))
 	return state
 func trySprint():
-	if useEnergy(sprintEnergy):
-		playSound("sprint")
-		sprint()
-		sprinting = true
+	playSound("sprint")
+	sprint()
+	sprinting = true
 func tryDie(by: BulletBase):
 	for drop in range(min(len(drops), len(dropCounts))):
 		var item = drops[drop]
