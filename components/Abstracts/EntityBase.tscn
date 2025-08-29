@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cvogxi7mktumf"]
+[gd_scene load_steps=36 format=3 uid="uid://cvogxi7mktumf"]
 
 [ext_resource type="Script" path="res://scripts/Statemachine/EntityBase.gd" id="1_mvol6"]
 [ext_resource type="Texture2D" uid="uid://dwwpkn4q07ja2" path="res://icon.svg" id="2_7lpu0"]
@@ -212,6 +212,47 @@ color_ramp = SubResource("GradientTexture1D_j8vyx")
 color_initial_ramp = SubResource("GradientTexture1D_j74g5")
 alpha_curve = SubResource("CurveTexture_r5gvu")
 
+[sub_resource type="Curve" id="Curve_bdwpn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vvfxd"]
+curve = SubResource("Curve_bdwpn")
+
+[sub_resource type="Curve" id="Curve_kwqoa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_065by"]
+curve = SubResource("Curve_kwqoa")
+
+[sub_resource type="Gradient" id="Gradient_futl5"]
+colors = PackedColorArray(1, 0, 0, 1, 0.394531, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4n0se"]
+gradient = SubResource("Gradient_futl5")
+
+[sub_resource type="Gradient" id="Gradient_qttew"]
+colors = PackedColorArray(1, 1, 1, 1, 0.597656, 0.597656, 0.597656, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_joqdg"]
+gradient = SubResource("Gradient_qttew")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f3xas"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_065by")
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 200, 0)
+scale_min = 3.0
+scale_max = 8.0
+color_ramp = SubResource("GradientTexture1D_joqdg")
+color_initial_ramp = SubResource("GradientTexture1D_4n0se")
+alpha_curve = SubResource("CurveTexture_vvfxd")
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_34h7q"]
 
 [node name="EntityBase" type="CharacterBody2D"]
@@ -273,6 +314,14 @@ unique_name_in_owner = true
 z_index = -1
 amount = 300
 process_material = SubResource("ParticleProcessMaterial_kndb2")
+
+[node name="deadParticle" type="GPUParticles2D" parent="texture"]
+unique_name_in_owner = true
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_f3xas")
+one_shot = true
+explosiveness = 1.0
 
 [node name="statebar" parent="." instance=ExtResource("2_uje1g")]
 unique_name_in_owner = true

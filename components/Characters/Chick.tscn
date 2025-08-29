@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0ncrvm8u4pox"]
+[gd_scene load_steps=12 format=3 uid="uid://b0ncrvm8u4pox"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_goqmy"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Chick.gd" id="2_r6bub"]
 [ext_resource type="Texture2D" uid="uid://7pkplcqqxvnp" path="res://resources/characters/chick/chick-a.svg" id="2_syddq"]
 [ext_resource type="Texture2D" uid="uid://dj5dvqb8gsedr" path="res://resources/characters/chick/chick-b.svg" id="3_064jv"]
 [ext_resource type="AudioStream" uid="uid://b7pxuov1id0ho" path="res://resources/sounds/effect/Pew.mp3" id="3_ik1xf"]
+[ext_resource type="AudioStream" uid="uid://bgo8p1l77xrbe" path="res://resources/sounds/effect/Magic Spell.wav" id="4_2qabh"]
 [ext_resource type="AudioStream" uid="uid://b10u6iir6uvqn" path="res://resources/sounds/effect/BigLaser.wav" id="4_mrsne"]
+[ext_resource type="AudioStream" uid="uid://cee6rxv2uqynh" path="res://resources/sounds/effect/Flame.ogg" id="5_vcsbb"]
 [ext_resource type="PackedScene" uid="uid://dny25qkcvtaa2" path="res://components/Effects/FirePot.tscn" id="6_kvx3n"]
+[ext_resource type="AudioStream" uid="uid://dn6bijr513wyp" path="res://resources/sounds/effect/Drum Boing.wav" id="7_qjhwc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xji3d"]
 animations = [{
@@ -41,9 +44,18 @@ appleCount = Vector2i(2, 4)
 [node name="hurt" parent="sounds" index="3"]
 stream = ExtResource("3_ik1xf")
 
+[node name="attack0" parent="sounds" index="5"]
+stream = ExtResource("4_2qabh")
+
 [node name="attack1" type="AudioStreamPlayer2D" parent="sounds" index="6"]
 stream = ExtResource("4_mrsne")
 volume_db = -10.0
+
+[node name="attack2" type="AudioStreamPlayer2D" parent="sounds" index="7"]
+stream = ExtResource("5_vcsbb")
+
+[node name="attack3" type="AudioStreamPlayer2D" parent="sounds" index="8"]
+stream = ExtResource("7_qjhwc")
 
 [node name="texture" parent="." index="1"]
 position = Vector2(0, -37)

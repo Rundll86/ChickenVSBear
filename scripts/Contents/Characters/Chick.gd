@@ -40,10 +40,8 @@ func attack(type):
 		firepot.shot()
 		BulletBase.generate(preload("res://components/Bullets/FireScan.tscn"), self, weaponPos, target)
 	elif type == 3:
-		trailing = true
 		BulletBase.generate(preload("res://components/Bullets/ChickSprint.tscn"), self, position, 0)
-		await trySprint()
-		trailing = false
+		trySprint()
 	return true
 func sprint():
 	move((currentFocusedBoss.position - position).normalized() * sprintMultiplier, true)

@@ -1,0 +1,57 @@
+[gd_scene load_steps=12 format=3 uid="uid://b3hoapgh61w3e"]
+
+[ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_neao1"]
+[ext_resource type="AudioStream" uid="uid://bjtxl0ec0dfw5" path="res://resources/sounds/effect/Squish Pop.wav" id="2_sjht3"]
+
+[sub_resource type="Curve" id="Curve_w5fhr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_py1or"]
+curve = SubResource("Curve_w5fhr")
+
+[sub_resource type="Curve" id="Curve_ux33m"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kt65p"]
+curve = SubResource("Curve_ux33m")
+
+[sub_resource type="Gradient" id="Gradient_ydyr0"]
+colors = PackedColorArray(1, 0, 0, 1, 0.394531, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8qmb3"]
+gradient = SubResource("Gradient_ydyr0")
+
+[sub_resource type="Gradient" id="Gradient_4t65b"]
+colors = PackedColorArray(1, 1, 1, 1, 0.597656, 0.597656, 0.597656, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ltuue"]
+gradient = SubResource("Gradient_4t65b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g7bcr"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_kt65p")
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 200, 0)
+scale_min = 5.0
+scale_max = 10.0
+color_ramp = SubResource("GradientTexture1D_ltuue")
+color_initial_ramp = SubResource("GradientTexture1D_8qmb3")
+alpha_curve = SubResource("CurveTexture_py1or")
+
+[node name="DeadBlood" instance=ExtResource("1_neao1")]
+spawnSound = "spawn"
+
+[node name="spawn" parent="sounds" index="0"]
+stream = ExtResource("2_sjht3")
+
+[node name="particles" parent="." index="1"]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_g7bcr")

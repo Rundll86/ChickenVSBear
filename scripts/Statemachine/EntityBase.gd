@@ -55,7 +55,7 @@ var inventoryMax = {
 @export var defaultCooldownUnit: float = 100
 @export var isBoss: bool = false
 @export var displayName: String = "未知实体"
-@export var sprintMultiplier: float = 3
+@export var sprintMultiplier: float = 5
 @export var drops: Array[ItemStore.ItemType] = []
 @export var dropCounts: Array[Vector2] = []
 @export var appleCount: Vector2i = Vector2(0, 2) # 死亡后掉落的苹果数量
@@ -203,10 +203,12 @@ func tryAttack(type: int, needChargeUp: bool = false):
 		attack(type)
 	return state
 func trySprint():
+	trailing = true
 	playSound("sprint")
 	sprint()
 	sprinting = true
 	await TickTool.until(func(): return !sprinting)
+	trailing = false
 func tryDie(by: BulletBase):
 	for drop in range(min(len(drops), len(dropCounts))):
 		var item = drops[drop]
@@ -220,6 +222,7 @@ func tryDie(by: BulletBase):
 	) or isBoss:
 		for i in randi_range(appleCount.x, appleCount.y):
 			ItemDropped.generate(ItemStore.ItemType.APPLE, 1, position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
+	EffectController.create(preload("res://components/Effects/DeadBlood.tscn"), texture.global_position).shot()
 	await die()
 	if isPlayer() and UIState.player == self:
 		UIState.setPanel("GameOver")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjtxl0ec0dfw5"
+path="res://.godot/imported/Squish Pop.wav-f3096dbf743894be425e11fe0e37111d.sample"
+
+[deps]
+
+source_file="res://resources/sounds/effect/Squish Pop.wav"
+dest_files=["res://.godot/imported/Squish Pop.wav-f3096dbf743894be425e11fe0e37111d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
