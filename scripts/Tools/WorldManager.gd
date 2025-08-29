@@ -9,7 +9,7 @@ func _ready():
 	tree = get_tree()
 	rootNode = self
 func _physics_process(delta):
-	runningTime += delta
+	runningTime += delta * 1000
 	if EntityBase.mobCount() == 0:
 		UIState.setPanel("MakeFeed")
 
