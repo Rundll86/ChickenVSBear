@@ -14,9 +14,9 @@ func register():
 
 func ai():
 	move(currentFocusedBoss.position - position)
-	if currentFocusedBoss.position.distance_to(position) < 200:
+	if currentFocusedBoss.position.distance_to(position) < 300:
 		tryAttack(2)
-	elif currentFocusedBoss.position.distance_to(position) < 500:
+	elif currentFocusedBoss.position.distance_to(position) < 700:
 		tryAttack(1)
 	else:
 		tryAttack(0)
