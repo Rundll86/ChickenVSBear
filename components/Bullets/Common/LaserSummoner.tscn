@@ -216,9 +216,8 @@ sprite_frames = SubResource("SpriteFrames_yip5k")
 [node name="rect" type="ColorRect" parent="texture" index="0"]
 material = SubResource("ShaderMaterial_b2oy8")
 offset_left = 233.0
-offset_top = 50.0
 offset_right = 333.0
-offset_bottom = 2050.0
+offset_bottom = 2000.0
 rotation = -1.5708
 scale = Vector2(1e-05, 1)
 
