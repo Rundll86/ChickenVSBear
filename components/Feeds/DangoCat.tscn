@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4fgrf0av1wxw"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_niyn3"]
+[ext_resource type="Texture2D" uid="uid://dye4dai4tem2" path="res://resources/feeds/dango cat.svg" id="2_lxrba"]
+
+[node name="DangoCat" instance=ExtResource("1_niyn3")]
+avatarTexture = ExtResource("2_lxrba")
+displayName = "团子猫"
+quality = 3
+fields = Array[int]([17, 19, 10, 20])
+fieldValues = Array[float]([20.0, 0.05, 0.12, 0.1])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([600, 400])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_lxrba")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "团子猫"
+quality = 3

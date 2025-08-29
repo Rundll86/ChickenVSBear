@@ -26,13 +26,17 @@ var fields = {
 	FieldStore.Entity.DROP_APPLE_RATE: 0,
 	FieldStore.Entity.PENARATION_RESISTANCE: 0,
 	FieldStore.Entity.LUCK_VALUE: 1,
-	# 倍率
+	# 治疗
 	FieldStore.Entity.HEAL_ABILITY: 1,
-	FieldStore.Entity.ENERGY_MULTIPILER: 1,
+	# 价格减免
 	FieldStore.Entity.PRICE_REDUCTION: 0,
 	# 饲料
 	FieldStore.Entity.FEED_COUNT_SHOW: 3,
 	FieldStore.Entity.FEED_COUNT_CAN_MADE: 1,
+	# 储能
+	FieldStore.Entity.ENERGY_MULTIPILER: 1,
+	FieldStore.Entity.SAVE_ENERGY: 1,
+	FieldStore.Entity.ENERGY_REGENERATION: 1,
 }
 var inventory = {
 	ItemStore.ItemType.BASEBALL: 100,
@@ -42,7 +46,7 @@ var inventory = {
 var inventoryMax = {
 	ItemStore.ItemType.BASEBALL: INF, # 无限
 	ItemStore.ItemType.BASKETBALL: INF,
-	ItemStore.ItemType.APPLE: 10, # 最多10个苹果
+	ItemStore.ItemType.APPLE: 5, # 最多5个苹果
 }
 
 @export var cooldownUnit: float = 100 # 100毫秒每次攻击
@@ -121,7 +125,7 @@ func _physics_process(_delta: float) -> void:
 		if isPlayer() or is_instance_valid(currentFocusedBoss):
 			ai()
 	move_and_slide()
-	storeEnergy(0.01)
+	storeEnergy(0.01 * fields.get(FieldStore.Entity.ENERGY_REGENERATION))
 
 # 通用方法
 func applyLevel():
@@ -165,6 +169,7 @@ func storeEnergy(value: float):
 	energy += value * fields.get(FieldStore.Entity.ENERGY_MULTIPILER)
 	energyChanged.emit(energy)
 func useEnergy(value: float):
+	value /= fields.get(FieldStore.Entity.SAVE_ENERGY)
 	var state = energy >= value
 	if state:
 		energy -= value

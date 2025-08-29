@@ -26,6 +26,8 @@ enum Entity {
 	FEED_COUNT_CAN_MADE,
 	MAX_ENERGY,
 	LUCK_VALUE,
+	SAVE_ENERGY,
+	ENERGY_REGENERATION,
 }
 static var entityMap = {
 	Entity.MAX_HEALTH: "生命上限",
@@ -38,7 +40,7 @@ static var entityMap = {
 	Entity.OFFSET_SHOOT: "散射角",
 	Entity.HEAL_ABILITY: "治疗量",
 	Entity.EXTRA_APPLE_MAX: "苹果上限",
-	Entity.ENERGY_MULTIPILER: "能量倍率",
+	Entity.ENERGY_MULTIPILER: "储能倍率",
 	Entity.PENARATION_RESISTANCE: "穿透抗性",
 	Entity.PRICE_REDUCTION: "饲料降价",
 	Entity.EXTRA_BULLET_COUNT: "额外子弹",
@@ -47,6 +49,8 @@ static var entityMap = {
 	Entity.FEED_COUNT_CAN_MADE: "可制作饲料",
 	Entity.MAX_ENERGY: "能量上限",
 	Entity.LUCK_VALUE: "幸运值",
+	Entity.SAVE_ENERGY: "节能",
+	Entity.ENERGY_REGENERATION: "能量再生效率",
 }
 static var entityMapType = {
 	Entity.MAX_HEALTH: DataType.VALUE,
@@ -68,6 +72,8 @@ static var entityMapType = {
 	Entity.FEED_COUNT_CAN_MADE: DataType.VALUE,
 	Entity.MAX_ENERGY: DataType.VALUE,
 	Entity.LUCK_VALUE: DataType.VALUE,
+	Entity.SAVE_ENERGY: DataType.PERCENT,
+	Entity.ENERGY_REGENERATION: DataType.PERCENT,
 }
 static var entityMaxValueMap = {
 	Entity.CRIT_RATE: 1,
