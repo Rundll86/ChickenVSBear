@@ -2,8 +2,8 @@ extends BulletBase
 class_name FireScan
 
 func register():
-	speed = 5
-	damage = 20
+	speed = 2
+	damage = 1
 
 func ai():
 	PresetsAI.forward(self, rotation)

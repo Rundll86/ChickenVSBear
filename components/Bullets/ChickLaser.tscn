@@ -1,15 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://8gjjfju6p3fh"]
+[gd_scene load_steps=15 format=3 uid="uid://bvri0nv1jrigf"]
 
-[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_pnxoq"]
-[ext_resource type="Script" path="res://scripts/Contents/Bullets/BigLaser.gd" id="2_nk2p8"]
-[ext_resource type="Shader" path="res://shaders/BigLaser.gdshader" id="3_ow2gn"]
-[ext_resource type="Texture2D" uid="uid://dy4op6n6vxef3" path="res://resources/bullets/laser-circle/circle.svg" id="4_sewyb"]
+[ext_resource type="PackedScene" uid="uid://8gjjfju6p3fh" path="res://components/Bullets/Common/LaserSummoner.tscn" id="1_eb54j"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/ChickLaser.gd" id="2_7g0f0"]
+[ext_resource type="Shader" path="res://shaders/BigLaser.gdshader" id="3_4y0mm"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_yip5k"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2oy8"]
-shader = ExtResource("3_ow2gn")
-shader_parameter/laser_color = Color(1, 0, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x6ivr"]
+shader = ExtResource("3_4y0mm")
+shader_parameter/laser_color = Color(0, 0.507813, 1, 1)
 shader_parameter/width = 1.0
 shader_parameter/softness = 0.5
 shader_parameter/wave_speed = 1.0
@@ -18,42 +15,42 @@ shader_parameter/wave_amplitude = 0.5
 shader_parameter/wave_width = 0.5
 shader_parameter/edge_nonalpha = 0.6
 
-[sub_resource type="Curve" id="Curve_itlbo"]
+[sub_resource type="Curve" id="Curve_4f20s"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_xathl"]
-curve = SubResource("Curve_itlbo")
+[sub_resource type="CurveTexture" id="CurveTexture_ftxbx"]
+curve = SubResource("Curve_4f20s")
 
-[sub_resource type="Curve" id="Curve_75ctq"]
+[sub_resource type="Curve" id="Curve_ffsha"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_my7uy"]
-curve = SubResource("Curve_75ctq")
+[sub_resource type="CurveTexture" id="CurveTexture_5b6jo"]
+curve = SubResource("Curve_ffsha")
 
-[sub_resource type="Gradient" id="Gradient_62xhh"]
-offsets = PackedFloat32Array(0, 0.60687)
-colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_rbqh5"]
+offsets = PackedFloat32Array(0, 0.553435)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.695313, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_yix5j"]
-gradient = SubResource("Gradient_62xhh")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y1x3v"]
+gradient = SubResource("Gradient_rbqh5")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m7jvq"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vb8yw"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(0, 1000, 1)
+emission_box_extents = Vector3(0, 250, 1)
 angle_min = 1.07288e-05
 angle_max = 360.0
-angle_curve = SubResource("CurveTexture_my7uy")
+angle_curve = SubResource("CurveTexture_5b6jo")
 spread = 15.0
 initial_velocity_min = -500.0
 initial_velocity_max = 500.0
 gravity = Vector3(0, 0, 0)
 scale_min = 3.0
 scale_max = 15.0
-color_ramp = SubResource("GradientTexture1D_yix5j")
-alpha_curve = SubResource("CurveTexture_xathl")
+color_ramp = SubResource("GradientTexture1D_y1x3v")
+alpha_curve = SubResource("CurveTexture_ftxbx")
 
 [sub_resource type="Animation" id="Animation_1rif1"]
 length = 0.001
@@ -195,58 +192,34 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.5, 4.5, 5)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_s7tee"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7qqtc"]
 _data = {
 "RESET": SubResource("Animation_1rif1"),
 "spawn": SubResource("Animation_ep0ow")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x66th"]
-radius = 40.0
-height = 2000.0
+[node name="ChickLaser" instance=ExtResource("1_eb54j")]
+script = ExtResource("2_7g0f0")
 
-[node name="LaserSummoner" instance=ExtResource("1_pnxoq")]
-script = ExtResource("2_nk2p8")
-autoSpawnAnimation = true
-freeAfterSpawn = true
+[node name="rect" parent="texture" index="0"]
+material = SubResource("ShaderMaterial_x6ivr")
+offset_left = 204.0
+offset_top = 0.0
+offset_right = 254.0
+offset_bottom = 500.0
 
-[node name="texture" parent="." index="0"]
-sprite_frames = SubResource("SpriteFrames_yip5k")
+[node name="particles" parent="texture/rect" index="0"]
+position = Vector2(25, 250)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_vb8yw")
+lifetime = 0.1
+visibility_rect = Rect2(-50, -250, 100, 500)
 
-[node name="rect" type="ColorRect" parent="texture" index="0"]
-material = SubResource("ShaderMaterial_b2oy8")
-offset_left = 233.0
-offset_top = 50.0
-offset_right = 333.0
-offset_bottom = 2050.0
-rotation = -1.5708
-scale = Vector2(1e-05, 1)
-
-[node name="particles" type="GPUParticles2D" parent="texture/rect" index="0"]
-position = Vector2(50, 1000)
-amount = 400
-process_material = SubResource("ParticleProcessMaterial_m7jvq")
-lifetime = 0.25
-visibility_rect = Rect2(-100, -1000, 200, 2000)
-
-[node name="launcher" type="Polygon2D" parent="texture/rect" index="1"]
-position = Vector2(50, -21)
-rotation = 1.5708
-color = Color(1, 0.6, 0, 1)
-polygon = PackedVector2Array(-50, -25, 0, 0, -50, 25)
+[node name="launcher" parent="texture/rect" index="1"]
+position = Vector2(25, -21)
+scale = Vector2(0.525, 0.525)
 
 [node name="animator" parent="texture" index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_s7tee")
+"": SubResource("AnimationLibrary_7qqtc")
 }
-
-[node name="circle" type="Sprite2D" parent="texture" index="2"]
-modulate = Color(1, 1, 1, 0)
-scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("4_sewyb")
-
-[node name="hitbox" parent="." index="1"]
-visible = false
-position = Vector2(1234, 0)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_x66th")

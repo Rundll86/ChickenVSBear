@@ -1,4 +1,12 @@
 class_name PresetsAI
 
+static func lockLauncher(bullet: BulletBase, launcher: EntityBase, onTexture: bool = false):
+	bullet.position = launcher.texture.global_position if onTexture else launcher.position
 static func forward(bullet: BulletBase, rotation: float):
 	bullet.forward(Vector2.from_angle(rotation))
+static func trace(bullet: BulletBase, target: Vector2, speed: float):
+	bullet.rotation = lerp_angle(
+		bullet.rotation,
+		bullet.position.angle_to_point(target),
+		speed
+	)
