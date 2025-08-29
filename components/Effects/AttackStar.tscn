@@ -32,7 +32,7 @@ spawnSound = "spawn"
 
 [node name="spawn" parent="sounds" index="0"]
 stream = ExtResource("2_nxkfo")
-volume_db = 10.0
+volume_db = 20.0
 
 [node name="particles" parent="." index="1"]
 amount = 1
