@@ -204,7 +204,7 @@ height = 500.0
 
 [node name="ChickLaser" instance=ExtResource("1_eb54j")]
 script = ExtResource("2_7g0f0")
-metadata/_edit_vertical_guides_ = [705.0]
+metadata/_edit_vertical_guides_ = [705.0, 187.0]
 
 [node name="rect" parent="texture" index="0"]
 material = SubResource("ShaderMaterial_x6ivr")
