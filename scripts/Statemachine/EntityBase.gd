@@ -106,6 +106,7 @@ func _ready():
 	)
 	healthChanged.emit(health)
 	energyChanged.emit(energy)
+	spawn()
 func _process(_delta):
 	health = clamp(health, 0, fields.get(FieldStore.Entity.MAX_HEALTH))
 	energy = clamp(energy, 0, fields.get(FieldStore.Entity.MAX_ENERGY))
@@ -255,6 +256,8 @@ func heal(count: float):
 	health += count
 	return count
 func register():
+	pass
+func spawn():
 	pass
 
 static func generate(

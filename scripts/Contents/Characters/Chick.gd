@@ -11,6 +11,8 @@ func register():
 	attackCooldownMap[0] = 2000
 	attackCooldownMap[1] = 6000
 	attackCooldownMap[2] = 100
+func spawn():
+	texture.play("walk")
 
 func ai():
 	move(currentFocusedBoss.position - position)
