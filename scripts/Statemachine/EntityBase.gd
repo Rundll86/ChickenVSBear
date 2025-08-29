@@ -200,9 +200,8 @@ func tryAttack(type: int, needChargeUp: bool = false):
 			charginup = true
 			await EffectController.create(preload("res://components/Effects/AttackStar.tscn"), damageAnchor.global_position).shot()
 			charginup = false
-		else:
+		if attack(type):
 			playSound("attack" + str(type))
-		attack(type)
 	return state
 func trySprint():
 	trailing = true
