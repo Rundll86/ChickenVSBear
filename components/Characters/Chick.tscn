@@ -48,7 +48,6 @@ volume_db = -10.0
 [node name="texture" parent="." index="1"]
 position = Vector2(0, -37)
 sprite_frames = SubResource("SpriteFrames_xji3d")
-animation = &"walk"
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 position = Vector2(30, -12)

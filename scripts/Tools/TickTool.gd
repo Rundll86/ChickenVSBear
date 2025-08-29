@@ -5,3 +5,6 @@ static func millseconds(ms: int):
 static func frame(count: int = 1):
 	for i in range(count):
 		await WorldManager.tree.physics_frame
+static func until(predicate: Callable):
+	while not predicate.call():
+		await frame()

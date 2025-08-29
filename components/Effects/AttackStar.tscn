@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkwy3rwkihf4m"]
+
+[ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_gbycc"]
+[ext_resource type="Texture2D" uid="uid://chqmaeivt84b5" path="res://components/UI/attackstar.svg" id="2_2ws80"]
+[ext_resource type="AudioStream" uid="uid://cn876dtp1ypqx" path="res://resources/sounds/effect/Collect.wav" id="2_nxkfo"]
+
+[sub_resource type="Curve" id="Curve_2biku"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_77moo"]
+curve = SubResource("Curve_2biku")
+
+[sub_resource type="Curve" id="Curve_e8ols"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3oeed"]
+curve = SubResource("Curve_e8ols")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bt5eu"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_3oeed")
+alpha_curve = SubResource("CurveTexture_77moo")
+
+[node name="AttackStar" instance=ExtResource("1_gbycc")]
+spawnSound = "spawn"
+
+[node name="spawn" parent="sounds" index="0"]
+stream = ExtResource("2_nxkfo")
+volume_db = 10.0
+
+[node name="particles" parent="." index="1"]
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_bt5eu")
+texture = ExtResource("2_2ws80")

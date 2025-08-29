@@ -55,7 +55,7 @@ var inventoryMax = {
 @export var defaultCooldownUnit: float = 100
 @export var isBoss: bool = false
 @export var displayName: String = "未知实体"
-@export var sprintMultiplier: float = 4
+@export var sprintMultiplier: float = 3
 @export var drops: Array[ItemStore.ItemType] = []
 @export var dropCounts: Array[Vector2] = []
 @export var appleCount: Vector2i = Vector2(0, 2) # 死亡后掉落的苹果数量
@@ -67,15 +67,18 @@ var inventoryMax = {
 @onready var sounds: Node2D = $"%sounds"
 @onready var hurtAnimator: AnimationPlayer = $"%hurtAnimator"
 @onready var damageAnchor: Node2D = $"%damageAnchor"
+@onready var trailParticle: GPUParticles2D = $"%trailParticle"
 var statebar: EntityStateBar
 
 var health: float = 0
 var energy: float = 0
 var sprinting: bool = false
+var trailing: bool = false
 
 var lastDirection: int = 1
 var lastAttack: int = 0
 var currentFocusedBoss: EntityBase = null
+var charginup: bool = false
 
 func _ready():
 	register()
@@ -127,10 +130,11 @@ func _physics_process(_delta: float) -> void:
 			sprinting = false
 	else:
 		velocity = Vector2.ZERO
-		if isPlayer() or is_instance_valid(currentFocusedBoss):
+		if (isPlayer() or is_instance_valid(currentFocusedBoss)) and not charginup:
 			ai()
 	move_and_slide()
 	storeEnergy(0.01 * fields.get(FieldStore.Entity.ENERGY_REGENERATION))
+	trailParticle.emitting = trailing
 
 # 通用方法
 func applyLevel():
@@ -187,16 +191,22 @@ func startCooldown(type: int):
 	if state:
 		lastAttack = WorldManager.getTime()
 	return state
-func tryAttack(type: int):
+func tryAttack(type: int, needChargeUp: bool = false):
 	var state = startCooldown(type)
 	if state:
-		if attack(type):
+		if needChargeUp:
+			charginup = true
+			await EffectController.create(preload("res://components/Effects/AttackStar.tscn"), damageAnchor.global_position).shot()
+			charginup = false
+		else:
 			playSound("attack" + str(type))
+		attack(type)
 	return state
 func trySprint():
 	playSound("sprint")
 	sprint()
 	sprinting = true
+	await TickTool.until(func(): return !sprinting)
 func tryDie(by: BulletBase):
 	for drop in range(min(len(drops), len(dropCounts))):
 		var item = drops[drop]
