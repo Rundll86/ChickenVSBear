@@ -176,11 +176,11 @@ func useEnergy(value: float):
 		energyChanged.emit(energy)
 	return state
 func isCooldowned():
-	return Time.get_ticks_msec() - lastAttack >= cooldownUnit / fields.get(FieldStore.Entity.ATTACK_SPEED)
+	return WorldManager.getTime() - lastAttack >= cooldownUnit / fields.get(FieldStore.Entity.ATTACK_SPEED)
 func startCooldown():
 	var state = isCooldowned()
 	if state:
-		lastAttack = Time.get_ticks_msec()
+		lastAttack = WorldManager.getTime()
 	return state
 func tryAttack(type: int):
 	var state = startCooldown()

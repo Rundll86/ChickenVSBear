@@ -27,7 +27,7 @@ var spawnInWhere: Vector2 = Vector2.ZERO
 
 func _ready():
 	area_entered.connect(hit)
-	spawnInWhen = Time.get_ticks_msec()
+	spawnInWhen = WorldManager.getTime()
 	spawnInWhere = position
 	spawn()
 	dotLoop()
@@ -40,7 +40,7 @@ func _ready():
 		animator.play("loop")
 func _process(_delta: float) -> void:
 	if lifeTime > 0:
-		if Time.get_ticks_msec() - spawnInWhen >= lifeTime:
+		if WorldManager.getTime() - spawnInWhen >= lifeTime:
 			destroy()
 	if lifeDistance > 0:
 		if position.distance_to(spawnInWhere) >= lifeDistance:
@@ -67,7 +67,7 @@ func forward(direction: Vector2):
 func fullPenerate():
 	return fields.get(FieldStore.Bullet.PENERATE) + launcher.fields.get(FieldStore.Entity.PENERATE) + GameRule.penerateRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]
 func timeLived():
-	return Time.get_ticks_msec() - spawnInWhen
+	return WorldManager.getTime() - spawnInWhen
 func dotLoop():
 	if await applyDot():
 		await dotLoop()
