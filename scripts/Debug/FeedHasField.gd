@@ -24,7 +24,7 @@ func rebuild():
 		i.queue_free()
 	var files = DirTool.listdir("res://components/Feeds/")
 	for file in files:
-		var passed: bool
+		var passed: bool = true
 		var feed = load(file).instantiate() as Feed
 		for targetField in targetFields:
 			var haveThis = false
