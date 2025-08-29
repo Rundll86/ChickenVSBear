@@ -333,4 +333,3 @@ position = Vector2(0, -20)
 
 [node name="movebox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_34h7q")
-disabled = true
