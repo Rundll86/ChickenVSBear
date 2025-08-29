@@ -15,3 +15,12 @@ func shot():
 	if oneShot:
 		await cloned.finished
 		cloned.queue_free()
+
+static func create(scene: PackedScene, spawnPosition: Vector2, parent: Node2D = null) -> EffectController:
+	var cloned = scene.instantiate() as EffectController
+	cloned.global_position = spawnPosition
+	if parent:
+		parent.add_child(cloned)
+	else:
+		WorldManager.rootNode.add_child(cloned)
+	return cloned

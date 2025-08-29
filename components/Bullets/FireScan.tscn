@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/Contents/Bullets/FireScan.gd" id="2_qprdp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qcsn"]
+size = Vector2(50, 50)
 
 [node name="FireScan" instance=ExtResource("1_cqre5")]
 script = ExtResource("2_qprdp")

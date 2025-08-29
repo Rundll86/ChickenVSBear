@@ -23,6 +23,7 @@ class_name BulletBase
 var launcher: EntityBase = null
 var spawnInWhen: float = 0
 var spawnInWhere: Vector2 = Vector2.ZERO
+var destroying: bool = false
 
 func _ready():
 	register()
@@ -35,17 +36,19 @@ func _ready():
 		animator.play("spawn")
 		await animator.animation_finished
 		if freeAfterSpawn:
-			destroy()
+			tryDestroy()
 	if autoLoopAnimation:
 		animator.play("loop")
 func _process(_delta: float) -> void:
+	if destroying: return
 	if lifeTime > 0:
 		if WorldManager.getTime() - spawnInWhen >= lifeTime:
-			destroy()
+			tryDestroy()
 	if lifeDistance > 0:
 		if position.distance_to(spawnInWhere) >= lifeDistance:
-			destroy()
+			tryDestroy()
 func _physics_process(_delta: float) -> void:
+	if destroying: return
 	if is_instance_valid(launcher) and (launcher.isPlayer() or is_instance_valid(launcher.currentFocusedBoss)):
 		launcher.position -= Vector2.from_angle(rotation) * recoil
 		ai()
@@ -61,7 +64,7 @@ func hit(target: Node):
 	if MathTool.rate(fullPenerate()):
 		penerate -= entity.fields[FieldStore.Entity.PENARATION_RESISTANCE]
 	else:
-		destroy()
+		tryDestroy()
 func forward(direction: Vector2):
 	position += direction.normalized() * speed * GameRule.bulletSpeedMultiplier
 func fullPenerate():
@@ -71,15 +74,20 @@ func timeLived():
 func dotLoop():
 	if await applyDot():
 		await dotLoop()
+func tryDestroy():
+	if destroying: return
+	destroying = true
+	await destroy()
+	if autoDestroyAnimation:
+		animator.play("destroy")
+		await animator.animation_finished
+	queue_free()
 
 # 抽象方法
 func ai():
 	pass
 func destroy():
-	if autoDestroyAnimation:
-		animator.play("destroy")
-		await animator.animation_finished
-	queue_free()
+	pass
 func spawn():
 	pass
 func applyDot():
