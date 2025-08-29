@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_pnxoq"]
 [ext_resource type="Script" path="res://scripts/Contents/Bullets/BigLaser.gd" id="2_nk2p8"]
-[ext_resource type="Shader" path="res://shaders/BigLaser1.gdshader" id="3_ow2gn"]
+[ext_resource type="Shader" path="res://shaders/BigLaser.gdshader" id="3_ow2gn"]
 [ext_resource type="Texture2D" uid="uid://dy4op6n6vxef3" path="res://resources/bullets/laser-circle/circle.svg" id="4_sewyb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yip5k"]
@@ -11,11 +11,12 @@
 shader = ExtResource("3_ow2gn")
 shader_parameter/laser_color = Color(1, 0, 0, 1)
 shader_parameter/width = 1.0
-shader_parameter/softness = 0.3
-shader_parameter/wave_speed = 3.0
-shader_parameter/wave_frequency = 13.154
-shader_parameter/wave_amplitude = 1.151
-shader_parameter/wave_width = 0.032
+shader_parameter/softness = 0.5
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_frequency = 1.0
+shader_parameter/wave_amplitude = 0.5
+shader_parameter/wave_width = 0.5
+shader_parameter/edge_nonalpha = 0.6
 
 [sub_resource type="Curve" id="Curve_m7ued"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
