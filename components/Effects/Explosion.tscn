@@ -1,0 +1,91 @@
+[gd_scene load_steps=14 format=3 uid="uid://dn0iwwnq3n8e2"]
+
+[ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_1mab3"]
+
+[sub_resource type="Curve" id="Curve_jf41v"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8rfho"]
+curve = SubResource("Curve_jf41v")
+
+[sub_resource type="Curve" id="Curve_cxxkf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fp3qe"]
+curve = SubResource("Curve_cxxkf")
+
+[sub_resource type="Gradient" id="Gradient_v1v0w"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.796875, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7jhwh"]
+gradient = SubResource("Gradient_v1v0w")
+
+[sub_resource type="Gradient" id="Gradient_jbp28"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_30y3h"]
+gradient = SubResource("Gradient_jbp28")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w52ko"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_fp3qe")
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 300, 0)
+scale_min = 3.0
+scale_max = 8.0
+color_ramp = SubResource("GradientTexture1D_30y3h")
+color_initial_ramp = SubResource("GradientTexture1D_7jhwh")
+alpha_curve = SubResource("CurveTexture_8rfho")
+
+[sub_resource type="Animation" id="Animation_pa4et"]
+resource_name = "explosion"
+length = 2.0
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/explosion_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="Animation" id="Animation_rcc6g"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/explosion_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n7i5u"]
+_data = {
+"RESET": SubResource("Animation_rcc6g"),
+"explosion": SubResource("Animation_pa4et")
+}
+
+[node name="Explosion" instance=ExtResource("1_1mab3")]
+
+[node name="particles" parent="." index="0"]
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_w52ko")
+
+[node name="animator" parent="stage" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_n7i5u")
+}

@@ -72,6 +72,7 @@ func dotLoop():
 	if await applyDot():
 		await dotLoop()
 
+# 抽象方法
 func ai():
 	pass
 func destroy():
