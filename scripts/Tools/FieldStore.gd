@@ -102,19 +102,3 @@ static var entityViewCastMap = {
 		return entity.inventoryMax[ItemStore.ItemType.APPLE]
 		,
 }
-
-enum Bullet {
-	SPEED,
-	DAMAGE,
-	PENERATE
-}
-static var bulletMap = {
-	Bullet.SPEED: "速度",
-	Bullet.DAMAGE: "伤害",
-	Bullet.PENERATE: "穿透"
-}
-static var bulletMapType = {
-	Bullet.SPEED: DataType.VALUE,
-	Bullet.DAMAGE: DataType.VALUE,
-	Bullet.PENERATE: DataType.PERCENT
-}

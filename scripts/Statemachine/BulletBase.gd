@@ -1,11 +1,9 @@
 extends Area2D
 class_name BulletBase
 
-@export var fields = {
-	FieldStore.Bullet.SPEED: 10,
-	FieldStore.Bullet.DAMAGE: 10,
-	FieldStore.Bullet.PENERATE: 0
-}
+@export var speed: float = 10.0
+@export var damage: float = 10.0
+@export var penerate: float = 0.0
 @export var lifeDistance: float = -1 # -1表示无限距离
 @export var lifeTime: float = -1 # -1表示无限时间
 @export var indisDamage: bool = false # 是否无差别伤害（不区分敌我）
@@ -26,6 +24,7 @@ var spawnInWhen: float = 0
 var spawnInWhere: Vector2 = Vector2.ZERO
 
 func _ready():
+	register()
 	area_entered.connect(hit)
 	spawnInWhen = WorldManager.getTime()
 	spawnInWhere = position
@@ -56,16 +55,16 @@ func hit(target: Node):
 	if !canDamageSelf && entity == launcher: return
 	if !indisDamage && !GameRule.allowFriendlyFire:
 		if entity.isPlayer() == launcher.isPlayer(): return
-	var damage = entity.takeDamage(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE) + GameRule.critRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]))
-	succeedToHit(damage)
+	var damages = entity.takeDamage(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE) + GameRule.critRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]))
+	succeedToHit(damages)
 	if MathTool.rate(fullPenerate()):
-		fields[FieldStore.Bullet.PENERATE] -= entity.fields[FieldStore.Entity.PENARATION_RESISTANCE]
+		penerate -= entity.fields[FieldStore.Entity.PENARATION_RESISTANCE]
 	else:
 		destroy()
 func forward(direction: Vector2):
-	position += direction.normalized() * fields.get(FieldStore.Bullet.SPEED) * GameRule.bulletSpeedMultiplier
+	position += direction.normalized() * speed * GameRule.bulletSpeedMultiplier
 func fullPenerate():
-	return fields.get(FieldStore.Bullet.PENERATE) + launcher.fields.get(FieldStore.Entity.PENERATE) + GameRule.penerateRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]
+	return penerate + launcher.fields.get(FieldStore.Entity.PENERATE) + GameRule.penerateRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]
 func timeLived():
 	return WorldManager.getTime() - spawnInWhen
 func dotLoop():
@@ -81,6 +80,8 @@ func spawn():
 func applyDot():
 	pass
 func succeedToHit(_dmg: float):
+	pass
+func register():
 	pass
 
 static func generate(

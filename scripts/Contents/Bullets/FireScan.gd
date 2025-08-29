@@ -1,10 +1,9 @@
 extends BulletBase
 class_name FireScan
 
-func _ready():
-	fields[FieldStore.Bullet.SPEED] = 5
-	fields[FieldStore.Bullet.DAMAGE] = 20
-	super._ready()
+func register():
+	speed = 5
+	damage = 20
 
 func ai():
 	forward(Vector2.from_angle(rotation))

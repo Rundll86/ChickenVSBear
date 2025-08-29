@@ -38,6 +38,9 @@ var fields = {
 	FieldStore.Entity.SAVE_ENERGY: 1,
 	FieldStore.Entity.ENERGY_REGENERATION: 1,
 }
+var attackCooldownMap = {
+	0: 100
+}
 var inventory = {
 	ItemStore.ItemType.BASEBALL: 100,
 	ItemStore.ItemType.BASKETBALL: 100,
@@ -49,7 +52,7 @@ var inventoryMax = {
 	ItemStore.ItemType.APPLE: 5, # 最多5个苹果
 }
 
-@export var cooldownUnit: float = 100 # 100毫秒每次攻击
+@export var defaultCooldownUnit: float = 100
 @export var isBoss: bool = false
 @export var displayName: String = "未知实体"
 @export var sprintMultiplier: float = 4
@@ -57,6 +60,7 @@ var inventoryMax = {
 @export var dropCounts: Array[Vector2] = []
 @export var appleCount: Vector2i = Vector2(0, 2) # 死亡后掉落的苹果数量
 @export var level: int = 1 # 等级
+@export var sprintEnergy: float = 5
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -75,6 +79,7 @@ var lastAttack: int = 0
 var currentFocusedBoss: EntityBase = null
 
 func _ready():
+	register()
 	var selfStatebar: EntityStateBar = $"%statebar"
 	if isBoss:
 		selfStatebar.hide()
@@ -140,7 +145,7 @@ func move(direction: Vector2, isSprinting: bool = false):
 		lastDirection = currentDirection
 func takeDamage(bullet: BulletBase, crit: bool):
 	hurtAnimator.play("hurt")
-	var baseDamage: float = bullet.fields.get(FieldStore.Bullet.DAMAGE) * bullet.launcher.fields.get(FieldStore.Entity.DAMAGE_MULTIPILER) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)
+	var baseDamage: float = bullet.damage * bullet.launcher.fields.get(FieldStore.Entity.DAMAGE_MULTIPILER) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)
 	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
 	if sprinting:
 		playSound("miss")
@@ -175,23 +180,24 @@ func useEnergy(value: float):
 		energy -= value
 		energyChanged.emit(energy)
 	return state
-func isCooldowned():
-	return WorldManager.getTime() - lastAttack >= cooldownUnit / fields.get(FieldStore.Entity.ATTACK_SPEED)
-func startCooldown():
-	var state = isCooldowned()
+func isCooldowned(type: int):
+	return WorldManager.getTime() - lastAttack >= attackCooldownMap.get(type, defaultCooldownUnit) / fields.get(FieldStore.Entity.ATTACK_SPEED)
+func startCooldown(type: int):
+	var state = isCooldowned(type)
 	if state:
 		lastAttack = WorldManager.getTime()
 	return state
 func tryAttack(type: int):
-	var state = startCooldown()
+	var state = startCooldown(type)
 	if state:
 		if attack(type):
 			playSound("attack" + str(type))
 	return state
 func trySprint():
-	playSound("sprint")
-	sprint()
-	sprinting = true
+	if useEnergy(sprintEnergy):
+		playSound("sprint")
+		sprint()
+		sprinting = true
 func tryDie(by: BulletBase):
 	for drop in range(min(len(drops), len(dropCounts))):
 		var item = drops[drop]
@@ -250,6 +256,8 @@ func sprint():
 func heal(count: float):
 	health += count
 	return count
+func register():
+	pass
 
 static func generate(
 	entity: PackedScene,

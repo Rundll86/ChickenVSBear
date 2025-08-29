@@ -5,10 +5,12 @@ class_name Chick
 
 const laserCount = 4
 
-func _ready():
+func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 2000
-	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.1
-	super._ready()
+	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.35
+	attackCooldownMap[0] = 2000
+	attackCooldownMap[1] = 3000
+	attackCooldownMap[2] = 100
 
 func ai():
 	move(currentFocusedBoss.position - position)

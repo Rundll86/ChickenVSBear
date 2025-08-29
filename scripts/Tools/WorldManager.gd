@@ -3,7 +3,7 @@ class_name WorldManager
 
 static var rootNode: Node2D
 static var tree: SceneTree
-static var runningTime: float = 0
+static var runningTime: int = 0
 
 func _ready():
 	tree = get_tree()
