@@ -28,6 +28,7 @@ enum Entity {
 	LUCK_VALUE,
 	SAVE_ENERGY,
 	ENERGY_REGENERATION,
+	DROPPED_ITEM_COLLECT_RADIUS
 }
 static var entityMap = {
 	Entity.MAX_HEALTH: "生命上限",
@@ -51,6 +52,7 @@ static var entityMap = {
 	Entity.LUCK_VALUE: "幸运值",
 	Entity.SAVE_ENERGY: "节能",
 	Entity.ENERGY_REGENERATION: "能量再生效率",
+	Entity.DROPPED_ITEM_COLLECT_RADIUS: "掉落物拾取距离",
 }
 static var entityMapType = {
 	Entity.MAX_HEALTH: DataType.VALUE,
@@ -74,6 +76,7 @@ static var entityMapType = {
 	Entity.LUCK_VALUE: DataType.VALUE,
 	Entity.SAVE_ENERGY: DataType.PERCENT,
 	Entity.ENERGY_REGENERATION: DataType.PERCENT,
+	Entity.DROPPED_ITEM_COLLECT_RADIUS: DataType.VALUE,
 }
 static var entityMaxValueMap = {
 	Entity.CRIT_RATE: 0.8,

@@ -37,19 +37,21 @@ var fields = {
 	FieldStore.Entity.ENERGY_MULTIPILER: 1,
 	FieldStore.Entity.SAVE_ENERGY: 1,
 	FieldStore.Entity.ENERGY_REGENERATION: 1,
+	# 掉落物
+	FieldStore.Entity.DROPPED_ITEM_COLLECT_RADIUS: 60,
 }
 var attackCooldownMap = {
 	0: 100
 }
 var inventory = {
-	ItemStore.ItemType.BASEBALL: 100,
-	ItemStore.ItemType.BASKETBALL: 100,
-	ItemStore.ItemType.APPLE: 5, # 初始苹果数量
+	ItemStore.ItemType.BASEBALL: 500,
+	ItemStore.ItemType.BASKETBALL: 500,
+	ItemStore.ItemType.APPLE: 5,
 }
 var inventoryMax = {
 	ItemStore.ItemType.BASEBALL: INF, # 无限
 	ItemStore.ItemType.BASKETBALL: INF,
-	ItemStore.ItemType.APPLE: 5, # 最多5个苹果
+	ItemStore.ItemType.APPLE: 5,
 }
 
 @export var defaultCooldownUnit: float = 100

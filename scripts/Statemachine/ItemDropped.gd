@@ -23,7 +23,7 @@ func _physics_process(_delta):
 			var direction = (targetPlayer.position - position).normalized()
 			var speed = 5000.0 / ((targetPlayer.position - position).length() ** (1 / 3.0))
 			apply_central_force(direction * speed)
-			if position.distance_to(targetPlayer.position) < 60:
+			if position.distance_to(targetPlayer.position) < targetPlayer.fields.get(FieldStore.Entity.DROPPED_ITEM_COLLECT_RADIUS):
 				targetPlayer.collectItem(item, stackCount)
 				collect()
 
