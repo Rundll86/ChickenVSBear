@@ -209,9 +209,9 @@ metadata/_edit_vertical_guides_ = [705.0]
 [node name="rect" parent="texture" index="0"]
 material = SubResource("ShaderMaterial_x6ivr")
 offset_left = 188.0
-offset_top = 25.0
+offset_top = 0.0
 offset_right = 238.0
-offset_bottom = 525.0
+offset_bottom = 500.0
 
 [node name="particles" parent="texture/rect" index="0"]
 position = Vector2(25, 250)
@@ -231,5 +231,5 @@ libraries = {
 
 [node name="hitbox" parent="." index="1"]
 visible = true
-position = Vector2(454, 0)
+position = Vector2(437, 0)
 shape = SubResource("CapsuleShape2D_sg52j")
