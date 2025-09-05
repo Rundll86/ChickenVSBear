@@ -258,6 +258,9 @@ alpha_curve = SubResource("CurveTexture_vvfxd")
 [node name="EntityBase" type="CharacterBody2D"]
 script = ExtResource("1_mvol6")
 
+[node name="weaponStore" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [node name="sounds" type="Node2D" parent="."]
 unique_name_in_owner = true
 

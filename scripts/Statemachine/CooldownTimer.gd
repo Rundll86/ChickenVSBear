@@ -5,7 +5,7 @@ var lastStart: int = 0
 
 func isCooldowned():
 	return WorldManager.getTime() - lastStart >= cooldown
-func startCooldown():
+func start():
 	var state = isCooldowned()
 	if state:
 		lastStart = WorldManager.getTime()

@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=15 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
 [ext_resource type="Texture2D" uid="uid://fn8qx72clh38" path="res://resources/characters/cock/rooster-a.svg" id="2_q0j6j"]
 [ext_resource type="AudioStream" uid="uid://dclinyhu256xi" path="res://resources/sounds/effect/Low Whoosh.mp3" id="3_4syso"]
 [ext_resource type="Texture2D" uid="uid://ci2ik43ce82uy" path="res://resources/characters/cock/rooster-b.svg" id="3_b0fgx"]
+[ext_resource type="PackedScene" uid="uid://c0n3igy4hucrg" path="res://components/Weapons/PurpleCrystal.tscn" id="3_ms5sq"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
+[ext_resource type="PackedScene" uid="uid://cxabqjo7skxev" path="res://components/Weapons/BigLaser.tscn" id="4_0862n"]
 [ext_resource type="AudioStream" uid="uid://benyec5bqni0b" path="res://resources/sounds/effect/Chomp.wav" id="4_k0yme"]
 [ext_resource type="AudioStream" uid="uid://dmxh3bpk8vyy5" path="res://resources/sounds/effect/Coin.mp3" id="5_xnbhq"]
 [ext_resource type="AudioStream" uid="uid://4wuuf1osk0yv" path="res://resources/sounds/effect/Low Boing.wav" id="6_m5px1"]
@@ -38,8 +40,13 @@ radius = 41.0122
 
 [node name="Rooster" instance=ExtResource("1_e5pl8")]
 script = ExtResource("2_oqdqd")
-cooldownUnit = 200.0
-energy = 50.0
+
+[node name="weaponStore" parent="." index="0"]
+process_mode = 4
+
+[node name="PurpleCrystal" parent="weaponStore" index="0" instance=ExtResource("3_ms5sq")]
+
+[node name="BigLaser" parent="weaponStore" index="1" instance=ExtResource("4_0862n")]
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")
@@ -53,13 +60,13 @@ stream = ExtResource("5_xnbhq")
 [node name="hurt" parent="sounds" index="3"]
 stream = ExtResource("6_m5px1")
 
-[node name="attack0" parent="sounds" index="4"]
-stream = ExtResource("3_4syso")
-
 [node name="attack1" type="AudioStreamPlayer2D" parent="sounds" index="5"]
 stream = ExtResource("8_7dhim")
 
-[node name="texture" parent="." index="1"]
+[node name="attack0" parent="sounds" index="6"]
+stream = ExtResource("3_4syso")
+
+[node name="texture" parent="." index="2"]
 position = Vector2(0, -70)
 sprite_frames = SubResource("SpriteFrames_4v2ol")
 animation = &"walk"
@@ -71,6 +78,6 @@ shape = SubResource("CircleShape2D_h1v0q")
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 position = Vector2(54, -45)
 
-[node name="statebar" parent="." index="2" node_paths=PackedStringArray("entity")]
+[node name="statebar" parent="." index="3" node_paths=PackedStringArray("entity")]
 position = Vector2(0, -151)
 entity = NodePath("..")

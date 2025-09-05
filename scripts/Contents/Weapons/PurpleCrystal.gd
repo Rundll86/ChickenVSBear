@@ -7,3 +7,5 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")
 	BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), entity, weaponPos, (get_global_mouse_position() - weaponPos).angle())
+	print("test2")
+	return true

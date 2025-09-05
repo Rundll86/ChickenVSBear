@@ -24,11 +24,14 @@ signal selected(applied: bool)
 @onready var costsBox: GridContainer = $"%costs"
 @onready var selectButton: Button = $"%selectBtn"
 
+var cooldownTimer = CooldownTimer.new()
+
 func _ready():
 	selectButton.pressed.connect(
 		func():
 			apply(UIState.player)
 	)
+	cooldownTimer.cooldown = cooldown
 	rebuildInfo()
 func _physics_process(_delta: float):
 	descriptionLabel.text = buildDescription()
@@ -76,7 +79,7 @@ func buildDescription():
 	var result = descriptionTemplate
 	for key in store.keys():
 		result = result.replace("$" + key, "[color=cyan]%.1f[/color]" % readStore(key))
-	return result
+	return "[center]%s[/center]" % result
 func readStore(key: String, default: Variant = null):
 	return store.get(key, default)
 

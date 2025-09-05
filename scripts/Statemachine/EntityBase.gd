@@ -64,7 +64,6 @@ var inventoryMax = {
 @export var dropCounts: Array[Vector2] = []
 @export var appleCount: Vector2i = Vector2(0, 2) # 死亡后掉落的苹果数量
 @export var level: int = 1
-@export var weapons: Array[Weapon] = []
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -73,6 +72,7 @@ var inventoryMax = {
 @onready var hurtAnimator: AnimationPlayer = $"%hurtAnimator"
 @onready var damageAnchor: Node2D = $"%damageAnchor"
 @onready var trailParticle: GPUParticles2D = $"%trailParticle"
+@onready var weaponStore = $"%weaponStore"
 var statebar: EntityStateBar
 
 var health: float = 0
@@ -84,6 +84,7 @@ var lastDirection: int = 1
 var currentFocusedBoss: EntityBase = null
 var charginup: bool = false
 var cooldownTimer = CooldownTimer.new()
+var weapons: Array[Weapon] = []
 
 func _ready():
 	register()
@@ -94,6 +95,9 @@ func _ready():
 		statebar = selfStatebar
 		statebar.entity = self
 	if isPlayer():
+		for i in weaponStore.get_children():
+			i.hide()
+			weapons.append(i)
 		statebar.levelLabels.hide()
 		UIState.player = self
 		energyChanged.connect(
@@ -190,16 +194,27 @@ func useEnergy(value: float):
 		energyChanged.emit(energy)
 	return state
 func tryAttack(type: int, needChargeUp: bool = false):
+	var weapon: Weapon
+	if isPlayer():
+		weapon = weapons[type]
 	var state
-	if !isPlayer():
+	if isPlayer():
+		state = weapon.cooldownTimer.start()
+	else:
 		cooldownTimer.cooldown = attackCooldownMap.get(type, defaultCooldownUnit)
-		state = cooldownTimer.startCooldown()
+		state = cooldownTimer.start()
 	if state:
 		if needChargeUp:
 			charginup = true
 			await EffectController.create(preload("res://components/Effects/AttackStar.tscn"), damageAnchor.global_position).shot()
 			charginup = false
-		if attack(type):
+		var done
+		if isPlayer():
+			done = weapon.attack(self)
+			print("test", done, weapon.name)
+		else:
+			done = attack(type)
+		if done:
 			playSound("attack" + str(type))
 	return state
 func trySprint():
