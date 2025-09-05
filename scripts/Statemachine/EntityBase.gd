@@ -64,6 +64,7 @@ var inventoryMax = {
 @export var dropCounts: Array[Vector2] = []
 @export var appleCount: Vector2i = Vector2(0, 2) # 死亡后掉落的苹果数量
 @export var level: int = 1
+@export var weapons: Array[Weapon] = []
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -80,9 +81,9 @@ var sprinting: bool = false
 var trailing: bool = false
 
 var lastDirection: int = 1
-var lastAttack: int = 0
 var currentFocusedBoss: EntityBase = null
 var charginup: bool = false
+var cooldownTimer = CooldownTimer.new()
 
 func _ready():
 	register()
@@ -188,15 +189,11 @@ func useEnergy(value: float):
 		energy -= value
 		energyChanged.emit(energy)
 	return state
-func isCooldowned(type: int):
-	return WorldManager.getTime() - lastAttack >= attackCooldownMap.get(type, defaultCooldownUnit) / fields.get(FieldStore.Entity.ATTACK_SPEED)
-func startCooldown(type: int):
-	var state = isCooldowned(type)
-	if state:
-		lastAttack = WorldManager.getTime()
-	return state
 func tryAttack(type: int, needChargeUp: bool = false):
-	var state = startCooldown(type)
+	var state
+	if !isPlayer():
+		cooldownTimer.cooldown = attackCooldownMap.get(type, defaultCooldownUnit)
+		state = cooldownTimer.startCooldown()
 	if state:
 		if needChargeUp:
 			charginup = true
