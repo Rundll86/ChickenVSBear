@@ -213,9 +213,9 @@ anchors_preset = -1
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -30.0
-offset_right = -40.0
-offset_bottom = 30.0
+offset_top = -82.5
+offset_right = 48.0
+offset_bottom = 82.5
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("11_67ghp")
 
@@ -263,9 +263,7 @@ visible = false
 layout_mode = 1
 
 [node name="GameOver" parent="root/panels" instance=ExtResource("6_10ay6")]
-visible = false
 layout_mode = 1
 
 [node name="Pause" parent="root/panels" instance=ExtResource("12_jkm6o")]
-visible = false
 layout_mode = 1

@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmxi1ikn6avig"]
+[gd_scene load_steps=10 format=3 uid="uid://dmxi1ikn6avig"]
 
 [ext_resource type="Script" path="res://scripts/Tools/WorldManager.gd" id="1_lxsxj"]
 [ext_resource type="PackedScene" uid="uid://dfwg750a47ggx" path="res://components/Scenes/UI.tscn" id="2_04cdd"]
 [ext_resource type="PackedScene" uid="uid://bm7ymrri6pykb" path="res://components/Characters/Rooster.tscn" id="3_5ui6q"]
-[ext_resource type="Texture2D" uid="uid://dk7u1x1e8ptj7" path="res://resources/maps/Desert.png" id="4_04do5"]
+[ext_resource type="Texture2D" uid="uid://c33c8mtm4x3e3" path="res://resources/maps/Galaxy.png" id="4_oy4jj"]
 [ext_resource type="Script" path="res://scripts/Tools/CameraManager.gd" id="5_mk7bv"]
 
 [sub_resource type="Animation" id="Animation_ykpvi"]
@@ -65,10 +65,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hkht"]
-radius = 126.89
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4y8st"]
-radius = 46.1736
+radius = 57.3149
 
 [node name="world" type="Node2D"]
 y_sort_enabled = true
@@ -91,19 +88,16 @@ libraries = {
 }
 
 [node name="map" type="StaticBody2D" parent="." groups=["map"]]
+metadata/_edit_lock_ = true
 
 [node name="background" type="Sprite2D" parent="map"]
 z_index = -100
 scale = Vector2(5, 5)
-texture = ExtResource("4_04do5")
+texture = ExtResource("4_oy4jj")
 
-[node name="xrz1" type="CollisionShape2D" parent="map"]
-position = Vector2(-1827, 575)
+[node name="star1" type="CollisionShape2D" parent="map"]
+position = Vector2(-2057, 1298)
 shape = SubResource("CircleShape2D_4hkht")
-
-[node name="xrz2" type="CollisionShape2D" parent="map"]
-position = Vector2(251, 118)
-shape = SubResource("CircleShape2D_4y8st")
 
 [node name="shan2" type="CollisionPolygon2D" parent="map"]
 polygon = PackedVector2Array(-2419, 1803, 2429, 1825, 2392, -366, 2867, -318, 2723, 2241, -2879, 2193, -2797, -2582, 2959, -2528, 2858, -347, 2420, -337, 2441, -1834, -2438, -1792)

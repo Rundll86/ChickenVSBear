@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0n3igy4hucrg"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_hyubh"]
+[ext_resource type="Texture2D" uid="uid://16yhngg3jpun" path="res://resources/weapons/purple-crystal.svg" id="2_wgtcw"]
+
+[node name="PurpleCrystal" instance=ExtResource("1_hyubh")]
+offset_right = 208.0
+offset_bottom = 280.0
+avatarTexture = ExtResource("2_wgtcw")
+displayName = "紫水晶簇"
+costs = Array[int]([0, 1])
+costCounts = Array[int]([50, 10])
+descriptionTemplate = "撞击造成$atk点伤害。"
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_wgtcw")
+
+[node name="name" parent="container/info" index="2"]
+displayName = "紫水晶簇"
+
+[node name="description" parent="container" index="2"]
+text = "撞击造成[color=cyan]10.0[/color]点伤害。"

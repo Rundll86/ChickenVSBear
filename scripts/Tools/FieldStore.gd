@@ -28,7 +28,9 @@ enum Entity {
 	LUCK_VALUE,
 	SAVE_ENERGY,
 	ENERGY_REGENERATION,
-	DROPPED_ITEM_COLLECT_RADIUS
+	DROPPED_ITEM_COLLECT_RADIUS,
+	BULLET_SPLIT,
+	BULLET_REFRACTION
 }
 static var entityMap = {
 	Entity.MAX_HEALTH: "生命上限",
@@ -44,7 +46,7 @@ static var entityMap = {
 	Entity.ENERGY_MULTIPILER: "储能倍率",
 	Entity.PENARATION_RESISTANCE: "穿透抗性",
 	Entity.PRICE_REDUCTION: "饲料降价",
-	Entity.EXTRA_BULLET_COUNT: "额外子弹",
+	Entity.EXTRA_BULLET_COUNT: "多重射击",
 	Entity.DROP_APPLE_RATE: "苹果掉落率",
 	Entity.FEED_COUNT_SHOW: "饲料列表",
 	Entity.FEED_COUNT_CAN_MADE: "可制作饲料",
@@ -53,6 +55,8 @@ static var entityMap = {
 	Entity.SAVE_ENERGY: "节能",
 	Entity.ENERGY_REGENERATION: "能量再生效率",
 	Entity.DROPPED_ITEM_COLLECT_RADIUS: "掉落物拾取距离",
+	Entity.BULLET_SPLIT: "分裂",
+	Entity.BULLET_REFRACTION: "折射",
 }
 static var entityMapType = {
 	Entity.MAX_HEALTH: DataType.VALUE,
@@ -77,6 +81,8 @@ static var entityMapType = {
 	Entity.SAVE_ENERGY: DataType.PERCENT,
 	Entity.ENERGY_REGENERATION: DataType.PERCENT,
 	Entity.DROPPED_ITEM_COLLECT_RADIUS: DataType.VALUE,
+	Entity.BULLET_SPLIT: DataType.VALUE,
+	Entity.BULLET_REFRACTION: DataType.VALUE,
 }
 static var entityMaxValueMap = {
 	Entity.CRIT_RATE: 0.8,
@@ -96,7 +102,7 @@ static var entityApplier = {
 		return true
 		,
 	Entity.EXTRA_BULLET_COUNT: func(entity, value):
-		entity.fields[Entity.OFFSET_SHOOT] += value * 5
+		entity.fields[Entity.OFFSET_SHOOT] += value * 3
 		return true
 		,
 }

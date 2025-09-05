@@ -24,7 +24,7 @@ func ai():
 func attack(type):
 	if type == 0:
 		var weaponPos = findWeaponAnchor("normal")
-		return BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, weaponPos, (get_global_mouse_position() - weaponPos).angle())
+		BulletBase.generate(preload("res://components/Bullets/LGBTBullet.tscn"), self, weaponPos, deg_to_rad(randf_range(0, 360)))
 	elif type == 1:
 		var weaponPos = findWeaponAnchor("normal")
 		return BulletBase.generate(preload("res://components/Bullets/BigLaser.tscn"), self, weaponPos, (get_global_mouse_position() - weaponPos).angle())

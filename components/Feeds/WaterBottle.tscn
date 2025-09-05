@@ -8,7 +8,7 @@ avatarTexture = ExtResource("2_gsfud")
 displayName = "水杯"
 quality = 4
 fields = Array[int]([3, 7])
-fieldValues = Array[float]([0.25, 3.0])
+fieldValues = Array[float]([0.09, 3.0])
 costs = Array[int]([1])
 costCounts = Array[int]([400])
 

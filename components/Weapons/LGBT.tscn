@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://wl8u5m52708w"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_jwtmd"]
+[ext_resource type="Texture2D" uid="uid://cwfyi61xkt4bt" path="res://resources/weapons/lgbt.jpeg" id="2_ou6jo"]
+
+[node name="LGBT" instance=ExtResource("1_jwtmd")]
+offset_right = 190.0
+offset_bottom = 324.0
+avatarTexture = ExtResource("2_ou6jo")
+displayName = "彩虹旗"
+quality = 4
+costs = Array[int]([0, 1])
+costCounts = Array[int]([200, 100])
+store = {
+"atk": 20,
+"count": 7.0,
+"power": 0.3,
+"trace": 2.0
+}
+descriptionTemplate = "发射$count条可追踪$trace秒，效率为$power的带状彩虹，每条造成$atk点伤害。"
+needEnergy = 150.0
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_ou6jo")
+
+[node name="energy" parent="container/info/energyInfo" index="1"]
+text = "150.0"
+
+[node name="name" parent="container/info" index="2"]
+displayName = "彩虹旗"
+quality = 4
+
+[node name="description" parent="container" index="2"]
+size_flags_vertical = 3
+text = "发射[color=cyan]7.0[/color]条可追踪[color=cyan]2.0[/color]秒，效率为[color=cyan]0.3[/color]的带状彩虹，每条造成[color=cyan]20.0[/color]点伤害。"
+autowrap_mode = 2

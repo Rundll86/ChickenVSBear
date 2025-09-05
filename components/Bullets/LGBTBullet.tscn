@@ -1,0 +1,110 @@
+[gd_scene load_steps=20 format=3 uid="uid://nys5bp6hogls"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_bnhy4"]
+[ext_resource type="Texture2D" uid="uid://d2pndtow16635" path="res://resources/bullets/lgbt-bullet/造型2.svg" id="2_cnsbx"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/LGBTBullet.gd" id="2_iakgr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rdak6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cnsbx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4pjb3"]
+radius = 32.249
+
+[sub_resource type="Curve" id="Curve_6bq7i"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_303mb"]
+curve = SubResource("Curve_6bq7i")
+
+[sub_resource type="Curve" id="Curve_6iu81"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3uomf"]
+curve = SubResource("Curve_6iu81")
+
+[sub_resource type="Gradient" id="Gradient_0tq38"]
+offsets = PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.447059, 0, 1, 1, 0.890625, 0, 1, 0, 0.820313, 0.128174, 1, 0, 1, 0.859375, 1, 0, 0.53125, 1, 1, 0.429688, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bd4id"]
+gradient = SubResource("Gradient_0tq38")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4q0mc"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_3uomf")
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 10.0
+color_ramp = SubResource("GradientTexture1D_bd4id")
+alpha_curve = SubResource("CurveTexture_303mb")
+
+[sub_resource type="Curve" id="Curve_7mfgg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tnhr3"]
+curve = SubResource("Curve_7mfgg")
+
+[sub_resource type="Curve" id="Curve_ha3m1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_snnuj"]
+curve = SubResource("Curve_ha3m1")
+
+[sub_resource type="Curve" id="Curve_p75kb"]
+_data = [Vector2(0, 0.25), 0.0, 0.0, 0, 0, Vector2(0.5, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_cytp5"]
+curve = SubResource("Curve_p75kb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xktft"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_snnuj")
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_cytp5")
+alpha_curve = SubResource("CurveTexture_tnhr3")
+
+[node name="LGBTBullet" instance=ExtResource("1_bnhy4")]
+script = ExtResource("2_iakgr")
+lifeTime = 2000.0
+
+[node name="texture" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_rdak6")
+
+[node name="hitbox" parent="." index="1"]
+shape = SubResource("CircleShape2D_4pjb3")
+
+[node name="particles" type="GPUParticles2D" parent="." index="2"]
+z_index = -1
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_4q0mc")
+
+[node name="particles2" type="GPUParticles2D" parent="." index="3"]
+z_index = -1
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_xktft")
+texture = ExtResource("2_cnsbx")

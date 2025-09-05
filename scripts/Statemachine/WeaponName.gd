@@ -1,6 +1,6 @@
 @tool
 extends HBoxContainer
-class_name FeedName
+class_name WeaponName
 
 enum Quality {
 	WASTE,
@@ -9,20 +9,15 @@ enum Quality {
 	EPIC,
 	LEGENDARY,
 }
-enum Topic {
-	SURVIVAL,
+enum TypeTopic {
+	IMPACT,
 	ENERGY,
-	BULLET,
-	SPEED,
-	DAMAGE,
-	PROBABILITY,
-	FEED,
-	DROP,
+	TEMPERATURE,
 }
 
-@export var displayName: String = "未命名饲料"
+@export var displayName: String = "未命名武器"
 @export var quality: Quality = Quality.COMMON
-@export var topic: Topic = Topic.SURVIVAL
+@export var typeTopic: TypeTopic = TypeTopic.IMPACT
 @export var qualityColorMap = {
 	Quality.WASTE: Color(),
 	Quality.COMMON: Color(),
@@ -51,43 +46,33 @@ enum Topic {
 	Quality.EPIC: 1,
 	Quality.LEGENDARY: 2,
 }
-@export var topicNameMap = {
-	Topic.SURVIVAL: "生存",
-	Topic.ENERGY: "储能",
-	Topic.BULLET: "子弹",
-	Topic.SPEED: "速度",
-	Topic.DAMAGE: "伤害",
-	Topic.PROBABILITY: "概率",
-	Topic.FEED: "饲料",
-	Topic.DROP: "掉落物",
+@export var typeTopicNameMap = {
+	TypeTopic.IMPACT: "冲击",
+	TypeTopic.ENERGY: "能量",
+	TypeTopic.TEMPERATURE: "熔融",
 }
-@export var topicColorMap = {
-	Topic.SURVIVAL: Color(),
-	Topic.ENERGY: Color(),
-	Topic.BULLET: Color(),
-	Topic.SPEED: Color(),
-	Topic.DAMAGE: Color(),
-	Topic.PROBABILITY: Color(),
-	Topic.FEED: Color(),
-	Topic.DROP: Color(),
+@export var typeTopicColorMap = {
+	TypeTopic.IMPACT: Color(),
+	TypeTopic.ENERGY: Color(),
+	TypeTopic.TEMPERATURE: Color(),
 }
 
 @onready var qualityLabel: Label = $"%quality"
-@onready var topicLabel: Label = $"%topic"
+@onready var typeTopicLabel: Label = $"%typeTopic"
 @onready var nameLabel: RichTextLabel = $"%label"
 
 func _ready():
 	qualityLabel.label_settings = qualityLabel.label_settings.duplicate()
-	topicLabel.label_settings = topicLabel.label_settings.duplicate()
+	typeTopicLabel.label_settings = typeTopicLabel.label_settings.duplicate()
 func _physics_process(_delta):
 	qualityLabel.text = "[%s]" % qualityNameMap[quality]
 	qualityLabel.label_settings.font_color = qualityColor()
-	topicLabel.text = "[%s]" % topicNameMap[topic]
-	topicLabel.label_settings.font_color = topicColor()
+	typeTopicLabel.text = "[%s]" % typeTopicNameMap[typeTopic]
+	typeTopicLabel.label_settings.font_color = typeTopicColor()
 	nameLabel.text = "[b]%s[/b]" % displayName
 func qualityColor():
 	return qualityColorMap[quality] as Color
-func topicColor():
-	return topicColorMap[topic] as Color
+func typeTopicColor():
+	return typeTopicColorMap[typeTopic] as Color
 func weight(player: EntityBase) -> int:
 	return floor(clamp(qualityRandomWeight[quality] + luckInfluence[quality] * player.fields[FieldStore.Entity.LUCK_VALUE], 1, INF))

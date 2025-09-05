@@ -8,9 +8,9 @@ avatarTexture = ExtResource("2_htt7g")
 displayName = "一片西瓜"
 quality = 0
 fields = Array[int]([0])
-fieldValues = Array[float]([10.0])
-costs = Array[int]([0])
-costCounts = Array[int]([50])
+fieldValues = Array[float]([5.0])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([100, 20])
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_htt7g")

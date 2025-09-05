@@ -1,21 +1,26 @@
 @tool
 extends PanelContainer
-class_name Feed
+class_name Weapon
 
 signal selected(applied: bool)
 
 @export var avatarTexture: Texture2D = preload("res://icon.svg")
 @export var displayName: String = "未命名饲料"
-@export var quality: FeedName.Quality = FeedName.Quality.COMMON
-@export var topic: FeedName.Topic = FeedName.Topic.SURVIVAL
-@export var fields: Array[FieldStore.Entity] = []
-@export var fieldValues: Array[float] = []
+@export var quality: WeaponName.Quality = WeaponName.Quality.COMMON
+@export var typeTopic: WeaponName.TypeTopic = WeaponName.TypeTopic.IMPACT
 @export var costs: Array[ItemStore.ItemType] = []
 @export var costCounts: Array[int] = []
+@export var store: Dictionary = {
+	"atk": 10
+}
+@export var descriptionTemplate: String = "造成$atk点伤害。"
+@export var needEnergy: float = 0
+@export var cooldown: float = 100
 
 @onready var avatarRect: TextureRect = $"%avatar"
-@onready var nameLabel: FeedName = $"%name"
-@onready var fieldsBox: VBoxContainer = $"%fields"
+@onready var nameLabel: WeaponName = $"%name"
+@onready var energyLabel: Label = $"%energy"
+@onready var descriptionLabel: RichTextLabel = $"%description"
 @onready var costsBox: GridContainer = $"%costs"
 @onready var selectButton: Button = $"%selectBtn"
 
@@ -25,6 +30,8 @@ func _ready():
 			apply(UIState.player)
 	)
 	rebuildInfo()
+func _physics_process(_delta: float):
+	descriptionLabel.text = buildDescription()
 
 func allHad(entity: EntityBase) -> bool:
 	var allHave = true
@@ -42,13 +49,6 @@ func apply(entity: EntityBase):
 			var item = costs[i]
 			var count = costCounts[i] * multipiler()
 			entity.inventory[item] -= count
-		for i in range(min(fields.size(), fieldValues.size())):
-			var field = fields[i]
-			var value = fieldValues[i]
-			var applier = FieldStore.entityApplier.get(field)
-			if !applier or applier.call(entity, value):
-				entity.fields[field] += value
-				entity.fields[field] = clamp(entity.fields[field], 0, FieldStore.entityMaxValueMap.get(field, INF))
 		hide()
 	selected.emit(allHave)
 	return allHave
@@ -61,20 +61,8 @@ func rebuildInfo():
 	avatarRect.texture = avatarTexture
 	nameLabel.displayName = displayName
 	nameLabel.quality = quality
-	nameLabel.topic = topic
-	for i in fieldsBox.get_children():
-		i.queue_free()
-	var noField = true
-	for i in range(min(fields.size(), fieldValues.size())):
-		noField = false
-		var field = fields[i]
-		var value = fieldValues[i]
-		var fieldShow: FieldShow = preload("res://components/UI/FieldShow.tscn").instantiate()
-		fieldShow.field = field
-		fieldShow.value = value
-		fieldsBox.add_child(fieldShow)
-	if noField:
-		fieldsBox.add_child(QuickUI.smallText("无词条"))
+	nameLabel.typeTopic = typeTopic
+	energyLabel.text = "%.1f" % needEnergy
 	for i in costsBox.get_children():
 		i.queue_free()
 	for i in range(min(costs.size(), costCounts.size())):
@@ -84,3 +72,16 @@ func rebuildInfo():
 		costShow.type = cost
 		costShow.count = int(count * multipiler())
 		costsBox.add_child(costShow)
+func buildDescription():
+	var result = descriptionTemplate
+	for key in store.keys():
+		result = result.replace("$" + key, "[color=cyan]%.1f[/color]" % readStore(key))
+	return result
+func readStore(key: String, default: Variant = null):
+	return store.get(key, default)
+
+# 抽象
+func update(_to: int, _origin: Dictionary, _entity: EntityBase):
+	pass
+func attack(_entity: EntityBase):
+	pass

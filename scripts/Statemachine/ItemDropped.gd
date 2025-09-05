@@ -10,32 +10,34 @@ var collecting: bool = false
 @onready var animator: AnimationPlayer = $"%animator"
 
 func _ready():
-	apply_force(MathTool.randv2_range(30000), MathTool.randv2_range(10))
+	await TickTool.millseconds(100)
+	body_entered.connect(
+		func(body):
+			if body is ItemDropped and !body.collecting:
+				if body.item == item:
+					body.stackCount += stackCount
+					collect()
+	)
 func _process(_delta):
 	texture.texture = ItemStore.getTexture(item)
 func _physics_process(_delta):
 	if !is_instance_valid(targetPlayer):
-		targetPlayer = findPlayer()
+		targetPlayer = EntityTool.findClosetPlayer(position, WorldManager.tree)
 	if is_instance_valid(targetPlayer):
 		if collecting:
 			linear_velocity = Vector2.ZERO
 		else:
 			var direction = (targetPlayer.position - position).normalized()
-			var speed = 5000.0 / ((targetPlayer.position - position).length() ** (1 / 3.0))
+			var speed = 10000.0 / ((targetPlayer.position - position).length() ** (1 / 3.0))
 			apply_central_force(direction * speed)
+			angular_velocity = linear_velocity.length() ** (1.0 / 2.25) # 角速度=线速度的2.25次根号
 			if position.distance_to(targetPlayer.position) < targetPlayer.fields.get(FieldStore.Entity.DROPPED_ITEM_COLLECT_RADIUS):
-				targetPlayer.collectItem(item, stackCount)
-				collect()
+				if targetPlayer.sprinting:
+					apply_central_force((position - targetPlayer.texture.global_position).normalized() * targetPlayer.velocity.length() * 10)
+				else:
+					targetPlayer.collectItem(item, stackCount)
+					collect()
 
-func findPlayer() -> EntityBase:
-	var result = null
-	var lastDistance = INF
-	for player in get_tree().get_nodes_in_group("players"):
-		if player is EntityBase:
-			if position.distance_to(player.position) < lastDistance:
-				lastDistance = position.distance_to(player.position)
-				result = player
-	return result
 func collect():
 	collecting = true
 	animator.play("collect")

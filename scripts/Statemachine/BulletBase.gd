@@ -25,6 +25,8 @@ var launcher: EntityBase = null
 var spawnInWhen: float = 0
 var spawnInWhere: Vector2 = Vector2.ZERO
 var destroying: bool = false
+var isChildSplit: bool = false
+var isChildRefract: bool = false
 
 func _ready():
 	register()
@@ -59,6 +61,8 @@ func _physics_process(_delta: float) -> void:
 	if is_instance_valid(launcher) and (launcher.isPlayer() or is_instance_valid(launcher.currentFocusedBoss)):
 		launcher.position -= Vector2.from_angle(rotation) * recoil
 		ai()
+	else:
+		tryDestroy()
 
 func hit(target: Node):
 	var entity: EntityBase = EntityTool.fromHurtbox(target)
@@ -84,11 +88,24 @@ func dotLoop():
 func tryDestroy(becauseMap: bool = false):
 	if destroying: return
 	destroying = true
+	trySplit()
+	tryRefract()
 	await destroy(becauseMap)
 	if autoDestroyAnimation:
 		animator.play("destroy")
 		await animator.animation_finished
 	queue_free()
+func trySplit():
+	if is_instance_valid(launcher) and !isChildSplit:
+		var launcherSplit = launcher.fields.get(FieldStore.Entity.BULLET_SPLIT)
+		for i in range(MathTool.shrimpRate(launcherSplit)):
+			split(i, launcherSplit, launcherSplit - floor(launcherSplit))
+func tryRefract():
+	if is_instance_valid(launcher) and !isChildRefract:
+		var value = launcher.fields.get(FieldStore.Entity.BULLET_REFRACTION)
+		var entity = EntityTool.findClosetEntity(position, get_tree(), !launcher.isPlayer(), launcher.isPlayer())
+		for i in range(MathTool.shrimpRate(value)):
+			refract(entity, i, value, value - floor(value))
 
 # 抽象方法
 func ai():
@@ -103,24 +120,32 @@ func succeedToHit(_dmg: float):
 	pass
 func register():
 	pass
+func split(_index: int, _total: int, _lastBullet: float):
+	pass
+func refract(_entity: EntityBase, _index: int, _total: int, _lastBullet: float):
+	pass
 
 static func generate(
 		bullet: PackedScene,
 	 	launchBy: EntityBase,
 	  	spawnPosition: Vector2,
 	  	spawnRotation: float,
+		asChildSplit: bool = false,
+		asChildRefract: bool = false,
 	   	addToWorld: bool = true
 	):
 	var extraCount = launchBy.fields.get(FieldStore.Entity.EXTRA_BULLET_COUNT)
-	var count = 1 + floor(extraCount) + int(MathTool.rate(extraCount - floor(extraCount)))
+	var count = 1 + MathTool.shrimpRate(extraCount)
 	var instances = []
 	for i in range(count):
 		var instance: BulletBase = bullet.instantiate()
 		if launchBy.useEnergy(instance.needEnergy):
+			instance.isChildSplit = asChildSplit
+			instance.isChildRefract = asChildRefract
 			instance.launcher = launchBy
 			instance.position = spawnPosition
 			instance.rotation = spawnRotation + deg_to_rad(randf_range(-launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT), launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT)))
 			if addToWorld:
-				WorldManager.rootNode.add_child(instance)
+				WorldManager.rootNode.call_deferred("add_child", instance)
 			instances.append(instance)
 	return len(instances)

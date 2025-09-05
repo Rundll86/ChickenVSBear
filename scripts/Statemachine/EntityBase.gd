@@ -7,37 +7,39 @@ signal healthChanged(health: float)
 
 signal energyChanged(energy: float)
 
+const TITLE_FLAG = INF
 var fields = {
-	# 数值上限
+	"生存": TITLE_FLAG,
+	FieldStore.Entity.HEAL_ABILITY: 1,
 	FieldStore.Entity.MAX_HEALTH: 100,
-	FieldStore.Entity.MAX_ENERGY: 200,
 	FieldStore.Entity.EXTRA_APPLE_MAX: 0,
-	FieldStore.Entity.EXTRA_BULLET_COUNT: 0,
-	# 速度
-	FieldStore.Entity.MOVEMENT_SPEED: 1,
-	FieldStore.Entity.ATTACK_SPEED: 1,
-	# 伤害
-	FieldStore.Entity.DAMAGE_MULTIPILER: 1,
-	FieldStore.Entity.CRIT_DAMAGE: 1,
-	# 概率相关
-	FieldStore.Entity.CRIT_RATE: 0.05,
-	FieldStore.Entity.PENERATE: 0,
-	FieldStore.Entity.OFFSET_SHOOT: 3,
 	FieldStore.Entity.DROP_APPLE_RATE: 0,
 	FieldStore.Entity.PENARATION_RESISTANCE: 0,
-	FieldStore.Entity.LUCK_VALUE: 1,
-	# 治疗
-	FieldStore.Entity.HEAL_ABILITY: 1,
-	# 价格减免
-	FieldStore.Entity.PRICE_REDUCTION: 0,
-	# 饲料
-	FieldStore.Entity.FEED_COUNT_SHOW: 3,
-	FieldStore.Entity.FEED_COUNT_CAN_MADE: 1,
-	# 储能
+	"储能": TITLE_FLAG,
 	FieldStore.Entity.ENERGY_MULTIPILER: 1,
 	FieldStore.Entity.SAVE_ENERGY: 1,
 	FieldStore.Entity.ENERGY_REGENERATION: 1,
-	# 掉落物
+	FieldStore.Entity.MAX_ENERGY: 200,
+	"子弹": TITLE_FLAG,
+	FieldStore.Entity.PENERATE: 0,
+	FieldStore.Entity.OFFSET_SHOOT: 3,
+	FieldStore.Entity.EXTRA_BULLET_COUNT: 0,
+	FieldStore.Entity.BULLET_SPLIT: 0,
+	FieldStore.Entity.BULLET_REFRACTION: 0,
+	"速度": TITLE_FLAG,
+	FieldStore.Entity.MOVEMENT_SPEED: 1,
+	FieldStore.Entity.ATTACK_SPEED: 1,
+	"伤害": TITLE_FLAG,
+	FieldStore.Entity.DAMAGE_MULTIPILER: 1,
+	FieldStore.Entity.CRIT_RATE: 0.05,
+	FieldStore.Entity.CRIT_DAMAGE: 1,
+	"概率": TITLE_FLAG,
+	FieldStore.Entity.LUCK_VALUE: 1,
+	"饲料": TITLE_FLAG,
+	FieldStore.Entity.PRICE_REDUCTION: 0,
+	FieldStore.Entity.FEED_COUNT_SHOW: 3,
+	FieldStore.Entity.FEED_COUNT_CAN_MADE: 1,
+	"掉落物": TITLE_FLAG,
 	FieldStore.Entity.DROPPED_ITEM_COLLECT_RADIUS: 60,
 }
 var attackCooldownMap = {
@@ -211,6 +213,7 @@ func trySprint():
 	await TickTool.until(func(): return !sprinting)
 	trailing = false
 func tryDie(by: BulletBase):
+	if is_queued_for_deletion(): return
 	for drop in range(min(len(drops), len(dropCounts))):
 		var item = drops[drop]
 		var count = ceil(randf_range(dropCounts[drop].x, dropCounts[drop].y))
@@ -233,6 +236,7 @@ func tryHeal(count: float):
 		playSound("heal")
 		healed.emit(heal(count * fields.get(FieldStore.Entity.HEAL_ABILITY)))
 		healthChanged.emit(health)
+
 func findWeaponAnchor(weaponName: String):
 	var anchor = $"%weapons".get_node(weaponName)
 	if anchor is Node2D:

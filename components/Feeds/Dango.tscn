@@ -8,7 +8,7 @@ avatarTexture = ExtResource("2_ckr7l")
 displayName = "团子"
 quality = 4
 fields = Array[int]([0, 8, 9])
-fieldValues = Array[float]([30.0, 0.1, 2.0])
+fieldValues = Array[float]([15.0, 0.05, 1.0])
 costs = Array[int]([0, 1])
 costCounts = Array[int]([500, 150])
 

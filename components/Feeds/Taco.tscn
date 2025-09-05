@@ -7,8 +7,8 @@
 avatarTexture = ExtResource("2_eed3c")
 displayName = "塔克"
 quality = 4
-fields = Array[int]([13])
-fieldValues = Array[float]([0.36])
+fields = Array[int]([13, 3])
+fieldValues = Array[float]([0.18, 0.02])
 costs = Array[int]([1])
 costCounts = Array[int]([400])
 
@@ -17,4 +17,4 @@ texture = ExtResource("2_eed3c")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "塔克"
-quality = 3
+quality = 4
