@@ -60,6 +60,7 @@ func regenerateCards():
 	var feeds = generateCardByQuality()
 	for feed in feeds:
 		feed.show()
+		feed.rebuildInfo()
 		avaliableFeeds.remove_child(feed)
 		feedCards.add_child(feed)
 func generateCardByQuality():

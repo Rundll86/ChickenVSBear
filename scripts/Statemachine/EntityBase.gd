@@ -32,7 +32,7 @@ var fields = {
 	FieldStore.Entity.MOVEMENT_SPEED: 1,
 	"伤害": TITLE_FLAG,
 	FieldStore.Entity.DAMAGE_MULTIPILER: 1,
-	FieldStore.Entity.CRIT_RATE: 0.05,
+	FieldStore.Entity.CRIT_RATE: 0.8,
 	FieldStore.Entity.CRIT_DAMAGE: 1,
 	"概率": TITLE_FLAG,
 	FieldStore.Entity.LUCK_VALUE: 1,

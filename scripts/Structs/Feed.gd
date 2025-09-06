@@ -72,6 +72,8 @@ func rebuildInfo():
 		var fieldShow: FieldShow = preload("res://components/UI/FieldShow.tscn").instantiate()
 		fieldShow.field = field
 		fieldShow.value = value
+		if is_instance_valid(UIState.player):
+			fieldShow.maxed = value + UIState.player.fields[field] > FieldStore.entityMaxValueMap.get(field, INF)
 		fieldsBox.add_child(fieldShow)
 	if noField:
 		fieldsBox.add_child(QuickUI.smallText("无词条"))

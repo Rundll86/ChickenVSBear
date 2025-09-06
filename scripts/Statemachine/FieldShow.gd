@@ -7,6 +7,7 @@ class_name FieldShow
 @export var showSign: bool = true
 @export var entity: EntityBase = null
 @export var useViewCast: bool = false
+@export var maxed: bool = false
 
 @onready var nameLabel: Label = $"%name"
 @onready var valueLabel: Label = $"%value"
@@ -27,7 +28,13 @@ func _ready():
 		formattedValue = "%s°" % (MathTool.signBeforeStr(value) if showSign else str(value))
 	elif dataType == FieldStore.DataType.PERCENT:
 		formattedValue = (MathTool.signBeforeStr(value * 100) if showSign else str(value * 100)) + "%"
+	valueLabel.label_settings = valueLabel.label_settings.duplicate()
 	valueLabel.text = formattedValue
+	if maxed:
+		valueLabel.label_settings.font_color = Color(1, 0.3, 0.3)
+		valueLabel.text = "MAX%s" % valueLabel.text
+	else:
+		valueLabel.label_settings.font_color = Color(1, 1, 1)
 
 static func create(newField: FieldStore.Entity, newValue: float, newShowSign: bool, newEntity: EntityBase, newUseViewCast: bool) -> FieldShow:
 	var fieldShow = preload("res://components/UI/FieldShow.tscn").instantiate()

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw5ip3rw4r3pp"]
+[gd_scene load_steps=5 format=3 uid="uid://cw5ip3rw4r3pp"]
 
 [ext_resource type="Script" path="res://scripts/Statemachine/FieldShow.gd" id="1_gwocj"]
 [ext_resource type="Texture2D" uid="uid://iu5i8ullbhf6" path="res://resources/items/apple.svg" id="2_q02yi"]
 [ext_resource type="Theme" uid="uid://b6nox1qqh50ub" path="res://themes/smallText.tres" id="2_x62bb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ossj7"]
+font_size = 13
 
 [node name="FieldShow" type="HBoxContainer"]
 offset_right = 144.0
@@ -39,6 +42,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 8
-theme = ExtResource("2_x62bb")
 text = "0"
+label_settings = SubResource("LabelSettings_ossj7")
 horizontal_alignment = 1
