@@ -50,8 +50,11 @@ func allHad(entity: EntityBase) -> bool:
 func apply(entity: EntityBase):
 	var allHave = allHad(entity)
 	if allHave:
+		level += 1
 		entity.inventory[ItemStore.ItemType.BEACHBALL] -= costBeachball
-		store = update(level + 1, originalStore.duplicate(), entity)
+		store = update(level, originalStore.duplicate(), entity)
+		costBeachball *= 2
+		rebuildInfo()
 	return allHave
 func multipiler() -> float:
 	if is_instance_valid(UIState.player):
@@ -63,6 +66,7 @@ func rebuildInfo():
 	nameLabel.displayName = displayName
 	nameLabel.quality = quality
 	nameLabel.typeTopic = typeTopic
+	nameLabel.level = level
 	energyLabel.text = "%.1f" % needEnergy
 	beachballLabel.text = str(costBeachball)
 	descriptionLabel.text = buildDescription()

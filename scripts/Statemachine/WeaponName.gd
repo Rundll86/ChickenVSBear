@@ -19,6 +19,7 @@ enum TypeTopic {
 @export var displayName: String = "未命名武器"
 @export var quality: Quality = Quality.COMMON
 @export var typeTopic: TypeTopic = TypeTopic.IMPACT
+@export var level: int = 0
 @export var qualityColorMap = {
 	Quality.WASTE: Color(),
 	Quality.COMMON: Color(),
@@ -63,6 +64,7 @@ enum TypeTopic {
 @onready var qualityLabel: Label = $"%quality"
 @onready var typeTopicLabel: Label = $"%typeTopic"
 @onready var nameLabel: RichTextLabel = $"%label"
+@onready var levelLabel: RichTextLabel = $"%level"
 
 func _ready():
 	qualityLabel.label_settings = qualityLabel.label_settings.duplicate()
@@ -73,6 +75,7 @@ func _physics_process(_delta):
 	typeTopicLabel.text = "[%s]" % typeTopicNameMap[typeTopic]
 	typeTopicLabel.label_settings.font_color = typeTopicColor()
 	nameLabel.text = "[b]%s[/b]" % displayName
+	levelLabel.text = "[b]Lv.%d[/b]" % (level + 1)
 func qualityColor():
 	return qualityColorMap[quality] as Color
 func typeTopicColor():

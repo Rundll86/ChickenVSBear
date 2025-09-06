@@ -3,11 +3,11 @@ extends Weapon
 class_name LGBTWeapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-	origin["atk"] += 5 * to
+	origin["atk"] += 2 * to
 	origin["count"] += 1
-	origin["power"] += 0.05
+	origin["power"] += 0.03
 	origin["trace"] += 0.25
-	origin["angle"] /= 1.1
+	origin["angle"] -= 0.1
 	return origin
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")
