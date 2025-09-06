@@ -145,7 +145,7 @@ func _physics_process(_delta: float) -> void:
 		if (isPlayer() or is_instance_valid(currentFocusedBoss)) and not charginup:
 			ai()
 	move_and_slide()
-	storeEnergy(0.01 * fields.get(FieldStore.Entity.ENERGY_REGENERATION))
+	storeEnergy(0.05 * fields.get(FieldStore.Entity.ENERGY_REGENERATION))
 	trailParticle.emitting = trailing
 
 # 通用方法
