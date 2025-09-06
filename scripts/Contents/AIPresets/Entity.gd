@@ -8,3 +8,14 @@ static func follow(entity: EntityBase, target: EntityBase, minDistance: float = 
 			entity.move(-delta)
 		else:
 			entity.move(delta)
+static func distanceAttack(entity: EntityBase, target: EntityBase, minDistance: float, maxDistance: float, index: int = 0):
+	var distance = (entity.position - target.position).length()
+	if minDistance <= distance and distance <= maxDistance:
+		entity.tryAttack(index)
+static func distanceAction(entity: EntityBase, target: EntityBase, minDistance: float, maxDistance: float, action: Callable):
+	var distance = (entity.position - target.position).length()
+	if minDistance <= distance and distance <= maxDistance:
+		action.call()
+static func weightAttack(entity: EntityBase, indexes: Array[int], weight: Array[int], chargeUp: Callable):
+	var method = MathTool.randc_from_weights(indexes, weight)
+	entity.tryAttack(method, chargeUp.call(method))

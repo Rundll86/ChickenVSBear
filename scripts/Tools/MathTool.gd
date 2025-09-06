@@ -9,6 +9,12 @@ static func randv2_range(offset: float):
 	)
 static func randc_from(array: Array):
 	return array[randi() % array.size()]
+static func randc_from_weights(indexes: Array, weights: Array[int]):
+	var totals: Array = []
+	for i in indexes:
+		for j in range(weights[i]):
+			totals.append(i)
+	return randc_from(totals)
 static func signBeforeStr(value: float):
 	return ("+" if value > 0 else "-" if value < 0 else "") + str(abs(value))
 static func percent(value: float):

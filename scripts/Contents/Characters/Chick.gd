@@ -18,13 +18,12 @@ func spawn():
 
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 0)
-	if currentFocusedBoss.position.distance_to(position) < 200:
-		tryAttack(2)
-	elif currentFocusedBoss.position.distance_to(position) < 700:
-		tryAttack(1)
-	else:
-		var method = MathTool.randc_from([0, 0, 0, 0, 3])
-		tryAttack(method, method == 3)
+	PresetEntityAI.distanceAttack(self, currentFocusedBoss, 0, 200, 2)
+	PresetEntityAI.distanceAttack(self, currentFocusedBoss, 200, 700, 1)
+	PresetEntityAI.distanceAction(self, currentFocusedBoss, 700, INF,
+		func():
+			PresetEntityAI.weightAttack(self, [0, 3], [5, 1], func(index): return index == 3)
+	)
 func attack(type):
 	if type == 0:
 		var weaponPos = findWeaponAnchor("normal")
