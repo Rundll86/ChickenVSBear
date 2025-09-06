@@ -9,7 +9,7 @@ displayName = "塔克"
 quality = 3
 topic = 2
 fields = Array[int]([13, 3, 24])
-fieldValues = Array[float]([0.18, 0.02, 0.01])
+fieldValues = Array[float]([0.18, 0.02, 0.05])
 costs = Array[int]([1])
 costCounts = Array[int]([400])
 
@@ -18,5 +18,5 @@ texture = ExtResource("2_eed3c")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "塔克"
-quality = 2
+quality = 3
 topic = 2
