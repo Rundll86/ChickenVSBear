@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnf0o8rmin5v4"]
+[gd_scene load_steps=4 format=3 uid="uid://bnf0o8rmin5v4"]
 
-[ext_resource type="Texture2D" uid="uid://b7vxserbhskol" path="res://resources/feeds/banana.svg" id="1_omrjh"]
+[ext_resource type="Shader" path="res://shaders/CooldownProgress.gdshader" id="1_vncc3"]
+[ext_resource type="Texture2D" uid="uid://16yhngg3jpun" path="res://resources/weapons/purple-crystal.svg" id="2_gmp7s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jyenr"]
+shader = ExtResource("1_vncc3")
+shader_parameter/progress = 0.5
+shader_parameter/backAlpha = 0.25
+shader_parameter/edgeHeight = 0.05
+shader_parameter/trailHeight = 0.3
+shader_parameter/trailAlpha = 0.5
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_omrjh")
+material = SubResource("ShaderMaterial_jyenr")
+texture = ExtResource("2_gmp7s")
