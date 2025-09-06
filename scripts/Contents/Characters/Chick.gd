@@ -23,7 +23,7 @@ func ai():
 	elif currentFocusedBoss.position.distance_to(position) < 700:
 		tryAttack(1)
 	else:
-		var method = MathTool.randc_from([0, 3, 0]) # 0: 钻石, 1: 激光, 2: 喷火, 3: 冲刺，这里随机到钻石的概率比冲刺大一倍
+		var method = MathTool.randc_from([0, 0, 0, 0, 3])
 		tryAttack(method, method == 3)
 func attack(type):
 	if type == 0:
