@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ufl4kek8hrmt"]
+[gd_scene load_steps=6 format=3 uid="uid://ufl4kek8hrmt"]
 
 [ext_resource type="Shader" path="res://shaders/CooldownProgress.gdshader" id="1_jaivk"]
+[ext_resource type="Script" path="res://scripts/Statemachine/SkillIcon.gd" id="1_l7say"]
 [ext_resource type="Texture2D" uid="uid://cp4ypuarjoshp" path="res://resources/skillIcons/purple-crystal.png" id="2_hh1bl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a60wd"]
@@ -16,15 +17,18 @@ corner_radius_bottom_left = 15
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ew32n"]
 shader = ExtResource("1_jaivk")
-shader_parameter/progress = 0.58
+shader_parameter/progress = 0.25
+shader_parameter/backAlpha = 0.25
 
 [node name="SkillIconBase" type="PanelContainer"]
 custom_minimum_size = Vector2(30, 30)
 offset_right = 30.0
 offset_bottom = 30.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_a60wd")
+script = ExtResource("1_l7say")
 
-[node name="icon" type="TextureRect" parent="."]
+[node name="texture" type="TextureRect" parent="."]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_ew32n")
 layout_mode = 2
 texture = ExtResource("2_hh1bl")
