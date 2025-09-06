@@ -26,6 +26,7 @@ var fields = {
 	FieldStore.Entity.EXTRA_BULLET_COUNT: 0,
 	FieldStore.Entity.BULLET_SPLIT: 0,
 	FieldStore.Entity.BULLET_REFRACTION: 0,
+	FieldStore.Entity.BULLET_TRACE: 0,
 	"速度": TITLE_FLAG,
 	FieldStore.Entity.MOVEMENT_SPEED: 1,
 	FieldStore.Entity.ATTACK_SPEED: 1,

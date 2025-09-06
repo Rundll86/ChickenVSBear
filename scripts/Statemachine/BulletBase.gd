@@ -59,6 +59,15 @@ func _physics_process(_delta: float) -> void:
 	if destroying: return
 	if is_instance_valid(launcher) and (launcher.isPlayer() or is_instance_valid(launcher.currentFocusedBoss)):
 		launcher.position -= Vector2.from_angle(rotation) * recoil
+		PresetAIs.trace(
+			self,
+			EntityTool.findClosetEntity(position, get_tree(),
+			!launcher.isPlayer(),
+			launcher.isPlayer(),
+			[launcher]
+			).position,
+			launcher.fields.get(FieldStore.Entity.BULLET_TRACE) / 10
+		)
 		ai()
 	else:
 		tryDestroy()
