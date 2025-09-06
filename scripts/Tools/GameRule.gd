@@ -26,4 +26,4 @@ static var entityLevelOffsetByWave: float = MathTool.percent(30) # 每波敌人�
 static var appleDropRateInfluenceByLuckValue: float = MathTool.percent(2) # 幸运值对苹果掉率的影响
 static var critRateInfluenceByLuckValue: float = MathTool.percent(2.5) # 幸运值对暴击率的影响
 static var penerateRateInfluenceByLuckValue: float = MathTool.percent(3) # 幸运值对穿透率的影响
-static var detainTime: float = 500 # 血量如果在这个时间内没有改变才会开始播放降低动画
+static var detainTime: float = 250 # 血量如果在这个时间内没有改变才会开始播放降低动画
