@@ -11,8 +11,6 @@ script = ExtResource("2_0tyah")
 avatarTexture = ExtResource("2_ou6jo")
 displayName = "彩虹旗"
 quality = 4
-costs = Array[int]([0, 1])
-costCounts = Array[int]([200, 100])
 store = {
 "angle": 30.0,
 "atk": 20,
@@ -31,7 +29,7 @@ stream = ExtResource("4_c5xse")
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_ou6jo")
 
-[node name="energy" parent="container/info/energyInfo" index="1"]
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
 text = "50.0"
 
 [node name="name" parent="container/info" index="2"]

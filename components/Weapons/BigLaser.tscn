@@ -29,7 +29,7 @@ stream = ExtResource("4_cb5nh")
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_qe8gb")
 
-[node name="energy" parent="container/info/energyInfo" index="1"]
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
 text = "100.0"
 
 [node name="name" parent="container/info" index="2"]

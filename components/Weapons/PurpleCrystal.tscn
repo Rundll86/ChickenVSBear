@@ -10,8 +10,6 @@ offset_bottom = 302.0
 script = ExtResource("2_0xgcv")
 avatarTexture = ExtResource("2_wgtcw")
 displayName = "紫水晶簇"
-costs = Array[int]([0, 1])
-costCounts = Array[int]([50, 10])
 descriptionTemplate = "撞击造成$atk点伤害。"
 cooldown = 200.0
 
