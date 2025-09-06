@@ -11,6 +11,5 @@ void fragment() {
 		COLOR.rgb*=255.0;
 	}else if(progress-UV.y<=trailHeight){
 		COLOR.rgb*=1.0+(trailHeight/(progress-UV.y)-1.0)*0.5;
-		//COLOR.a*=(progress-UV.y)/trailHeight;
 	}
 }
