@@ -123,7 +123,7 @@ func _ready():
 				statebar.healthBar.setCurrent(newHealth)
 	)
 	healthChanged.emit(health)
-	energyChanged.emit(energy)
+	energyChanged.emit(energy, false)
 	spawn()
 func _process(_delta):
 	health = clamp(health, 0, fields.get(FieldStore.Entity.MAX_HEALTH))
@@ -197,7 +197,7 @@ func useEnergy(value: float):
 	var state = energy >= value
 	if state:
 		energy -= value
-		energyChanged.emit(energy)
+		energyChanged.emit(energy, false)
 	return state
 func tryAttack(type: int, needChargeUp: bool = false):
 	var weapon: Weapon
