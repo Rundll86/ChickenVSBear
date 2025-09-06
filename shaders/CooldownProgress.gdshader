@@ -4,7 +4,6 @@ uniform float backAlpha:hint_range(0.0, 1.0, 0.01)=0.25;
 uniform float edgeHeight:hint_range(0.0, 1.0, 0.01)=0.05;
 uniform float trailHeight:hint_range(0.0, 1.0, 0.01)=0.3;
 void fragment() {
-	COLOR=texture(TEXTURE,UV);
 	if(UV.y>=progress){
 		COLOR.a*=backAlpha;
 	}else if(distance(UV.y,progress)<edgeHeight){

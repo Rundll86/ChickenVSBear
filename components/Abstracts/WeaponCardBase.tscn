@@ -100,7 +100,7 @@ stretch_mode = 5
 [node name="beachball" type="Label" parent="container/info/infos/beachballInfo"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "100"
+text = "500"
 
 [node name="name" parent="container/info" instance=ExtResource("3_qv0b1")]
 unique_name_in_owner = true

@@ -8,7 +8,7 @@
 [node name="MakeFeed" instance=ExtResource("1_1wmro")]
 script = ExtResource("2_pr610")
 
-[node name="wrapper" parent="content" index="0"]
+[node name="wrapper" parent="content" index="1"]
 theme_override_constants/separation = 50
 
 [node name="tips" type="VBoxContainer" parent="content/wrapper" index="0"]

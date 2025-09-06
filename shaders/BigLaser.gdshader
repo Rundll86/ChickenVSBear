@@ -20,6 +20,5 @@ void fragment() {
     wave_intensity *= sin(wave_dist * wave_frequency * 3.14159) * wave_amplitude;
     vec3 base_color = mix(vec3(1.0), laser_color.rgb, 1.0 - laser_intensity);
     vec3 color = base_color + vec3(wave_intensity);
-    //COLOR = vec4(color, (0.5-x_dist)/0.5);
 	COLOR = vec4(color,smoothstep(0,1.0-edge_nonalpha,(0.5-x_dist)/0.5));
 }
