@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfwg750a47ggx"]
+[gd_scene load_steps=20 format=3 uid="uid://dfwg750a47ggx"]
 
 [ext_resource type="PackedScene" uid="uid://ofpg5s3j7esv" path="res://components/UI/BossBar.tscn" id="1_2pe58"]
 [ext_resource type="Script" path="res://scripts/Statemachine/UIState.gd" id="1_f00a6"]
@@ -105,6 +105,9 @@ _data = {
 "hide": SubResource("Animation_5hjs3"),
 "show": SubResource("Animation_2xajo")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_12otr"]
+content_margin_right = 10.0
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
@@ -238,6 +241,22 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_37e4s")
 }
+
+[node name="skills" type="PanelContainer" parent="root"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -10.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_12otr")
+
+[node name="skillContainer" type="VBoxContainer" parent="root/skills"]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="itemCollect" type="VBoxContainer" parent="root"]
 unique_name_in_owner = true

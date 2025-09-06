@@ -27,16 +27,17 @@ class_name Weapon
 @onready var updateButton: Button = $"%updateBtn"
 @onready var sounds: Node2D = $"%sounds"
 
-var cooldownTimer = CooldownTimer.new()
+var cooldownTimer: CooldownTimer = null
 var originalStore: Dictionary = {}
 
 func _ready():
+	cooldownTimer = CooldownTimer.new()
+	cooldownTimer.cooldown = cooldown
 	originalStore = store
 	updateButton.pressed.connect(
 		func():
 			apply(UIState.player)
 	)
-	cooldownTimer.cooldown = cooldown
 	for i in sounds.get_children():
 		i.process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 	rebuildInfo()

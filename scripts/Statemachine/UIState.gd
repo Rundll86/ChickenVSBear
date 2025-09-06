@@ -13,12 +13,14 @@ static var currentPanel: FullscreenPanelBase = null
 static var panels: Control
 static var energyPercent: ColorBar
 static var itemCollect: VBoxContainer
+static var skillIconContainer: VBoxContainer
 
 func _ready():
 	bossbar = $"%bossbar"
 	panels = $"%panels"
 	energyPercent = $"%percent"
 	itemCollect = $"%itemCollect"
+	skillIconContainer = $"%skillContainer"
 func _process(_delta):
 	bossbar.visible = !!bossbar.entity
 func _physics_process(_delta):

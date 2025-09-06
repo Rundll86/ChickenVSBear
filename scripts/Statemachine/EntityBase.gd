@@ -111,6 +111,10 @@ func _ready():
 				else:
 					UIState.energyPercent.setCurrent(newEnergy)
 		)
+		for i in weapons:
+			var icon: SkillIcon = preload("res://components/Abstracts/SkillIconBase.tscn").instantiate()
+			icon.weapon = i
+			UIState.skillIconContainer.add_child(icon)
 	else:
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
 		applyLevel()
