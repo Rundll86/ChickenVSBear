@@ -11,9 +11,11 @@ static func randc_from(array: Array):
 	return array[randi() % array.size()]
 static func randc_from_weights(indexes: Array, weights: Array[int]):
 	var totals: Array = []
+	var index = 0
 	for i in indexes:
-		for j in range(weights[i]):
+		for j in range(weights[index]):
 			totals.append(i)
+		index += 1
 	return randc_from(totals)
 static func signBeforeStr(value: float):
 	return ("+" if value > 0 else "-" if value < 0 else "") + str(abs(value))
