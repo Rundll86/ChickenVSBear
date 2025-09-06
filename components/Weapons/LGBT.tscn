@@ -21,14 +21,17 @@ store = {
 }
 storeType = Array[int]([2, 0, 0, 1, 0])
 descriptionTemplate = "发射$count条，每条间分隔$angle，可追踪$trace秒，效率为$power的带状彩虹，每条造成$atk点伤害。"
-needEnergy = 50.0
+needEnergy = 25.0
 cooldown = 500.0
+
+[node name="attack" parent="sounds" index="0"]
+process_mode = 3
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_ou6jo")
 
 [node name="energy" parent="container/info/energyInfo" index="1"]
-text = "150.0"
+text = "50.0"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "彩虹旗"

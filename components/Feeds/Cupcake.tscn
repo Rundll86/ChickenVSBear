@@ -17,3 +17,4 @@ texture = ExtResource("2_qojf3")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "烘焙松糕"
+topic = 6

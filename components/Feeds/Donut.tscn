@@ -19,3 +19,4 @@ texture = ExtResource("2_bv6j5")
 [node name="name" parent="container/info" index="1"]
 displayName = "甜甜圈"
 quality = 2
+topic = 2

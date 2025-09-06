@@ -7,8 +7,9 @@
 avatarTexture = ExtResource("2_bea7w")
 displayName = "蜂蜜果酱"
 quality = 2
+topic = 4
 fields = Array[int]([3, 1, 12])
-fieldValues = Array[float]([-0.08, 0.15, 0.03])
+fieldValues = Array[float]([-0.08, 0.15, 0.01])
 costs = Array[int]([0, 1])
 costCounts = Array[int]([200, 125])
 
@@ -17,3 +18,4 @@ texture = ExtResource("2_bea7w")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "蜂蜜果酱"
+quality = 2

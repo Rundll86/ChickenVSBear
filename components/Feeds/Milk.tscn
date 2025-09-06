@@ -7,10 +7,11 @@
 avatarTexture = ExtResource("2_15plv")
 displayName = "牛奶"
 quality = 2
-fields = Array[int]([13, 11, 19, 4])
-fieldValues = Array[float]([0.1, 0.08, 0.02, 0.02])
+topic = 1
+fields = Array[int]([20, 17])
+fieldValues = Array[float]([0.03, 10.0])
 costs = Array[int]([0, 1])
-costCounts = Array[int]([355, 200])
+costCounts = Array[int]([200, 100])
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_15plv")

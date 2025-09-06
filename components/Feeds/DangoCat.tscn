@@ -19,3 +19,4 @@ texture = ExtResource("2_lxrba")
 [node name="name" parent="container/info" index="1"]
 displayName = "团子猫"
 quality = 3
+topic = 1
