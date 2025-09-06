@@ -11,7 +11,7 @@ func ai():
 	if timeLived() <= forwardTime:
 		speed = 10 * ((forwardTime - timeLived()) / forwardTime)
 	elif forwarded:
-		speed = (timeLived() - forwardTime) / 20
+		speed = (timeLived() - forwardTime) / 30
 	else:
 		forwarded = true
 		if is_instance_valid(tracer):

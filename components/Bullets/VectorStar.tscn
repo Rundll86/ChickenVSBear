@@ -43,7 +43,7 @@ alpha_curve = SubResource("CurveTexture_c22if")
 
 [node name="VectorStar" instance=ExtResource("1_fyvdf")]
 script = ExtResource("2_1u5ed")
-lifeDistance = 3000.0
+lifeDistance = 2000.0
 
 [node name="texture" parent="." index="0"]
 rotation = 0.0174533
