@@ -13,9 +13,9 @@ displayName = "彩虹旗"
 quality = 4
 store = {
 "angle": 30.0,
-"atk": 20,
+"atk": 20.0,
 "count": 7.0,
-"power": 0.3,
+"power": 0.15,
 "trace": 2.0
 }
 storeType = Array[int]([2, 0, 0, 1, 0])
@@ -43,5 +43,5 @@ typeTopicNameMap = {
 
 [node name="description" parent="container" index="2"]
 size_flags_vertical = 3
-text = "[center]发射[color=cyan]7.0[/color]条，每条间分隔[color=cyan]30.0°[/color]，可追踪[color=cyan]2.0[/color]秒，效率为[color=cyan]30.0%[/color]的带状彩虹，每条造成[color=cyan]20.0[/color]点伤害。[/center]"
+text = "[center]发射[color=cyan]7.0[/color]条，每条间分隔[color=cyan]30.0°[/color]，可追踪[color=cyan]2.0[/color]秒，效率为[color=cyan]15.0%[/color]的带状彩虹，每条造成[color=cyan]20.0[/color]点伤害。[/center]"
 autowrap_mode = 2

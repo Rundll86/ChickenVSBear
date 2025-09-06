@@ -4,10 +4,10 @@ class_name LGBTWeapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["atk"] += 2 * to
-	origin["count"] += 1
-	origin["power"] += 0.03
-	origin["trace"] += 0.25
-	origin["angle"] -= 0.1
+	origin["count"] += to
+	origin["power"] += 0.01 * level
+	origin["trace"] += 0.25 * level
+	origin["angle"] /= 1.05 * level
 	return origin
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")

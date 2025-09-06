@@ -93,7 +93,7 @@ shape = SubResource("CircleShape2D_1e8f0")
 
 [node name="particles" type="GPUParticles2D" parent="." index="2"]
 z_index = -1
-amount = 500
+amount = 200
 process_material = SubResource("ParticleProcessMaterial_4q0mc")
 
 [node name="particles2" type="GPUParticles2D" parent="." index="3"]
