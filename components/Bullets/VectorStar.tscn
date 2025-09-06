@@ -36,8 +36,8 @@ spread = 0.0
 initial_velocity_min = 100.0
 initial_velocity_max = 200.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.5
-scale_max = 0.5
+scale_min = 0.6
+scale_max = 0.8
 scale_curve = SubResource("CurveTexture_6bcs1")
 alpha_curve = SubResource("CurveTexture_c22if")
 
