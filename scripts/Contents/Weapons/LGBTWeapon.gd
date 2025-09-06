@@ -4,9 +4,15 @@ class_name LGBTWeapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["atk"] += 5 * to
-	origin["time"] /= 1.1
+	origin["count"] += 1
+	origin["power"] += 0.05
+	origin["trace"] += 0.25
+	origin["angle"] /= 1.1
 	return origin
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")
-	BulletBase.generate(preload("res://components/Bullets/BigLaser.tscn"), entity, weaponPos, (get_global_mouse_position() - weaponPos).angle())
+	var facingAngle = (get_global_mouse_position() - weaponPos).angle()
+	var startAngle = facingAngle - deg_to_rad(readStore("angle") * (readStore("count") / 2))
+	for i in range(int(readStore("count"))):
+		BulletBase.generate(preload("res://components/Bullets/LGBTBullet.tscn"), entity, weaponPos, startAngle + deg_to_rad(readStore("angle") * i))
 	return true

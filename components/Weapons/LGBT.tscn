@@ -13,14 +13,16 @@ quality = 4
 costs = Array[int]([0, 1])
 costCounts = Array[int]([200, 100])
 store = {
+"angle": 15.0,
 "atk": 20,
 "count": 7.0,
 "power": 0.3,
 "trace": 2.0
 }
-storeType = Array[int]([0, 0, 1, 0])
-descriptionTemplate = "发射$count条可追踪$trace秒，效率为$power的带状彩虹，每条造成$atk点伤害。"
+storeType = Array[int]([0, 0, 1, 0, 2])
+descriptionTemplate = "发射$count条，每条间分隔$angle，可追踪$trace秒，效率为$power的带状彩虹，每条造成$atk点伤害。"
 needEnergy = 150.0
+debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_ou6jo")
@@ -34,5 +36,5 @@ quality = 4
 
 [node name="description" parent="container" index="2"]
 size_flags_vertical = 3
-text = "[center]发射[color=cyan]7.0[/color]条可追踪[color=cyan]2.0[/color]秒，效率为[color=cyan]30.0%[/color]的带状彩虹，每条造成[color=cyan]20.0[/color]点伤害。[/center]"
+text = "[center]发射[color=cyan]7.0[/color]条，每条间分隔[color=cyan]15.0°[/color]，可追踪[color=cyan]2.0[/color]秒，效率为[color=cyan]30.0%[/color]的带状彩虹，每条造成[color=cyan]20.0[/color]点伤害。[/center]"
 autowrap_mode = 2
