@@ -27,8 +27,7 @@ storeType = {
 }
 descriptionTemplate = "每$angle发射1/$count条以$power效率追踪$trace秒的飞星，造成$atk点伤害。"
 needEnergy = 30.0
-cooldown = 500.0
-debugRebuild = true
+cooldown = 1000.0
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_c5xse")
