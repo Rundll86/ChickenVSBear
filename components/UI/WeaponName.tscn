@@ -3,10 +3,10 @@
 [ext_resource type="Theme" uid="uid://bje5cd08dyok7" path="res://themes/bigTextAndBold.tres" id="2_y8dft"]
 [ext_resource type="Script" path="res://scripts/Statemachine/WeaponName.gd" id="3_g750e"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_1vypy"]
+[sub_resource type="LabelSettings" id="LabelSettings_fglo5"]
 font_size = 12
 
-[sub_resource type="LabelSettings" id="LabelSettings_pyxdw"]
+[sub_resource type="LabelSettings" id="LabelSettings_3tmci"]
 font_size = 12
 
 [node name="WeaponName" type="HBoxContainer"]
@@ -34,7 +34,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 text = "[普通]"
-label_settings = SubResource("LabelSettings_1vypy")
+label_settings = SubResource("LabelSettings_fglo5")
 
 [node name="label" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
@@ -60,4 +60,4 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 text = "[冲击]"
-label_settings = SubResource("LabelSettings_pyxdw")
+label_settings = SubResource("LabelSettings_3tmci")

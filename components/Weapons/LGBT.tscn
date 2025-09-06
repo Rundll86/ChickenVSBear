@@ -11,6 +11,7 @@ script = ExtResource("2_0tyah")
 avatarTexture = ExtResource("2_ou6jo")
 displayName = "彩虹旗"
 quality = 4
+typeTopic = 3
 store = {
 "angle": 30.0,
 "atk": 20.0,
@@ -28,7 +29,6 @@ storeType = {
 descriptionTemplate = "每$angle发射1/$count条以$power效率追踪$trace秒的[b]彩虹飞星[/b]，每条造成$atk点伤害。"
 needEnergy = 30.0
 cooldown = 1000.0
-debugRebuild = true
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_c5xse")
@@ -45,11 +45,7 @@ text = "500"
 [node name="name" parent="container/info" index="2"]
 displayName = "彩虹旗"
 quality = 4
-typeTopicNameMap = {
-0: "冲击",
-1: "能量",
-2: "熔融"
-}
+typeTopic = 3
 
 [node name="description" parent="container" index="2"]
 size_flags_vertical = 3
