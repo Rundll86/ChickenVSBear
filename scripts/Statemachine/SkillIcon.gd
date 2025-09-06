@@ -3,9 +3,12 @@ class_name SkillIcon
 
 @export var weapon: Weapon = null;
 
-@onready var textureRect = $"%texture"
+@onready var textureRect: TextureRect = $"%texture"
 
+func _ready():
+	textureRect.material = textureRect.material.duplicate()
 func _physics_process(_delta):
 	if is_instance_valid(weapon):
 		textureRect.texture = weapon.avatarTexture
-		textureRect.material.set_shader_parameter("progress", clamp(weapon.cooldownTimer.timeSinceLastStart() / weapon.cooldownTimer.cooldown, 0, 1))
+		var progress = weapon.cooldownTimer.timeSinceLastStart() / weapon.cooldownTimer.cooldown
+		textureRect.material.set_shader_parameter("progress", clamp(progress, 0, 1))
