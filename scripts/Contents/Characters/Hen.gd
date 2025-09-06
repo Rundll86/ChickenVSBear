@@ -3,7 +3,7 @@ class_name Hen
 
 func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 75
-	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.15
+	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.25
 	fields[FieldStore.Entity.OFFSET_SHOOT] = 10
 
 func ai():

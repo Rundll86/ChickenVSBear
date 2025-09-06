@@ -7,7 +7,7 @@ const laserCount = 4
 
 func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 2000
-	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.35
+	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.5
 	attackCooldownMap[0] = 500
 	attackCooldownMap[1] = 6000
 	attackCooldownMap[2] = 100
