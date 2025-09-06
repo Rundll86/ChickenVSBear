@@ -5,4 +5,5 @@
 [node name="Debug" type="HBoxContainer"]
 theme_override_constants/separation = 0
 script = ExtResource("1_2hikw")
-targetTopics = Array[int]([6])
+targetTopics = Array[int]([2])
+clickToRefresh = true

@@ -1,9 +1,6 @@
 extends CanvasLayer
 class_name UIState
 
-@onready var baseball = $"%baseball"
-@onready var basketball = $"%basketball"
-@onready var apple = $"%apple"
 @onready var items = $"%items"
 @onready var energyLabel: Label = $"%energy"
 @onready var energyMaxLabel: Label = $"%energyMax"

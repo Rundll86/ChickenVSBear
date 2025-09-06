@@ -33,6 +33,7 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 
 [node name="attack" type="AudioStreamPlayer2D" parent="sounds"]
+process_mode = 3
 
 [node name="container" type="VBoxContainer" parent="."]
 layout_mode = 2

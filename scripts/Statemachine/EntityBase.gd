@@ -50,11 +50,13 @@ var inventory = {
 	ItemStore.ItemType.BASEBALL: 500,
 	ItemStore.ItemType.BASKETBALL: 500,
 	ItemStore.ItemType.APPLE: 5,
+	ItemStore.ItemType.BEACHBALL: 0,
 }
 var inventoryMax = {
 	ItemStore.ItemType.BASEBALL: INF, # 无限
 	ItemStore.ItemType.BASKETBALL: INF,
 	ItemStore.ItemType.APPLE: 5,
+	ItemStore.ItemType.BEACHBALL: INF,
 }
 
 @export var defaultCooldownUnit: float = 100
@@ -237,6 +239,7 @@ func tryDie(by: BulletBase):
 	) or isBoss:
 		for i in randi_range(appleCount.x, appleCount.y):
 			ItemDropped.generate(ItemStore.ItemType.APPLE, 1, position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
+	ItemDropped.generate(ItemStore.ItemType.BEACHBALL, fields[FieldStore.Entity.MAX_HEALTH], position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
 	EffectController.create(preload("res://components/Effects/DeadBlood.tscn"), texture.global_position).shot()
 	await die()
 	if isPlayer() and UIState.player == self:

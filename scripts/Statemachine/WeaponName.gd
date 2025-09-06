@@ -13,6 +13,7 @@ enum TypeTopic {
 	IMPACT,
 	ENERGY,
 	TEMPERATURE,
+	MAGIC,
 }
 
 @export var displayName: String = "未命名武器"
@@ -50,11 +51,13 @@ enum TypeTopic {
 	TypeTopic.IMPACT: "冲击",
 	TypeTopic.ENERGY: "能量",
 	TypeTopic.TEMPERATURE: "熔融",
+	TypeTopic.MAGIC: "魔法",
 }
 @export var typeTopicColorMap = {
 	TypeTopic.IMPACT: Color(),
 	TypeTopic.ENERGY: Color(),
 	TypeTopic.TEMPERATURE: Color(),
+	TypeTopic.MAGIC: Color(),
 }
 
 @onready var qualityLabel: Label = $"%quality"

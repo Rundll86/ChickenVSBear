@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://wl8u5m52708w"]
+[gd_scene load_steps=5 format=3 uid="uid://wl8u5m52708w"]
 
 [ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_jwtmd"]
 [ext_resource type="Script" path="res://scripts/Contents/Weapons/LGBTWeapon.gd" id="2_0tyah"]
 [ext_resource type="Texture2D" uid="uid://cwfyi61xkt4bt" path="res://resources/weapons/lgbt.jpeg" id="2_ou6jo"]
+[ext_resource type="AudioStream" uid="uid://bgo8p1l77xrbe" path="res://resources/sounds/effect/Magic Spell.wav" id="4_c5xse"]
 
 [node name="LGBT" instance=ExtResource("1_jwtmd")]
 offset_bottom = 346.0
@@ -25,17 +26,22 @@ needEnergy = 50.0
 cooldown = 500.0
 
 [node name="attack" parent="sounds" index="0"]
-process_mode = 3
+stream = ExtResource("4_c5xse")
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_ou6jo")
 
 [node name="energy" parent="container/info/energyInfo" index="1"]
-text = "25.0"
+text = "50.0"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "彩虹旗"
 quality = 4
+typeTopicNameMap = {
+0: "冲击",
+1: "能量",
+2: "熔融"
+}
 
 [node name="description" parent="container" index="2"]
 size_flags_vertical = 3
