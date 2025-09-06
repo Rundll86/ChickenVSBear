@@ -5,7 +5,7 @@ signal hit(damage: float, bullet: BulletBase, crit: bool)
 signal healed(amount: float)
 signal healthChanged(health: float)
 
-signal energyChanged(energy: float)
+signal energyChanged(energy: float, dontChangeDirection: bool)
 
 const TITLE_FLAG = INF
 var fields = {
@@ -104,9 +104,12 @@ func _ready():
 		statebar.levelLabels.hide()
 		UIState.player = self
 		energyChanged.connect(
-			func(newEnergy):
+			func(newEnergy, dontChangeDirection):
 				UIState.energyPercent.maxValue = fields.get(FieldStore.Entity.MAX_ENERGY)
-				UIState.energyPercent.setCurrent(newEnergy)
+				if dontChangeDirection:
+					UIState.energyPercent.currentValue = newEnergy
+				else:
+					UIState.energyPercent.setCurrent(newEnergy)
 		)
 	else:
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
@@ -186,9 +189,9 @@ func takeDamage(bullet: BulletBase, crit: bool):
 func collectItem(itemType: ItemStore.ItemType, amount: int):
 	inventory[itemType] += amount
 	playSound("collect")
-func storeEnergy(value: float):
+func storeEnergy(value: float, dontChangeDirection: bool = false):
 	energy += value * fields.get(FieldStore.Entity.ENERGY_MULTIPILER)
-	energyChanged.emit(energy)
+	energyChanged.emit(energy, dontChangeDirection)
 func useEnergy(value: float):
 	value /= fields.get(FieldStore.Entity.SAVE_ENERGY)
 	var state = energy >= value
