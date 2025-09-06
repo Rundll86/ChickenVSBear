@@ -22,8 +22,7 @@ storeType = {
 "mincount": 1.0
 }
 descriptionTemplate = "发射$mincount~$maxcount个[b]无主[/b]的矢量星，在$forwardtime秒后向目标冲刺并造成$atk点伤害。"
-needEnergy = 20.0
-debugRebuild = true
+needEnergy = 25.0
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("3_wfty8")

@@ -15,7 +15,7 @@ store = {
 "angle": 30.0,
 "atk": 20.0,
 "count": 7.0,
-"power": 0.15,
+"power": 0.2,
 "trace": 2.0
 }
 storeType = {
@@ -26,9 +26,8 @@ storeType = {
 "trace": 0.0
 }
 descriptionTemplate = "发射$count条，每条间分隔$angle，可追踪$trace秒，效率为$power的带状彩虹，每条造成$atk点伤害。"
-needEnergy = 50.0
+needEnergy = 30.0
 cooldown = 500.0
-debugRebuild = true
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_c5xse")
