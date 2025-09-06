@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxabqjo7skxev"]
+[gd_scene load_steps=4 format=3 uid="uid://cxabqjo7skxev"]
 
 [ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_wrvv5"]
+[ext_resource type="Script" path="res://scripts/Contents/Weapons/BigLaser.gd" id="2_gmch0"]
 [ext_resource type="Texture2D" uid="uid://dy4op6n6vxef3" path="res://resources/bullets/laser-circle/circle.svg" id="2_qe8gb"]
 
 [node name="BigLaser" instance=ExtResource("1_wrvv5")]
+script = ExtResource("2_gmch0")
 avatarTexture = ExtResource("2_qe8gb")
 displayName = "湮灭激光"
 quality = 2
@@ -16,12 +18,13 @@ store = {
 }
 descriptionTemplate = "每$time秒造成$atk点伤害。"
 needEnergy = 100.0
+cooldown = 6000.0
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_qe8gb")
 
 [node name="energy" parent="container/info/energyInfo" index="1"]
-text = "50.0"
+text = "100.0"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "湮灭激光"
@@ -29,4 +32,4 @@ quality = 2
 typeTopic = 1
 
 [node name="description" parent="container" index="2"]
-text = "每[color=cyan]0.1[/color]秒造成[color=cyan]35.0[/color]点伤害。"
+text = "[center]每[color=cyan]0.1[/color]秒造成[color=cyan]35.0[/color]点伤害。[/center]"

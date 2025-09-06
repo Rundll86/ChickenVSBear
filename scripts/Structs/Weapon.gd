@@ -22,12 +22,12 @@ signal selected(applied: bool)
 @onready var energyLabel: Label = $"%energy"
 @onready var descriptionLabel: RichTextLabel = $"%description"
 @onready var costsBox: GridContainer = $"%costs"
-@onready var selectButton: Button = $"%selectBtn"
+@onready var updateButton: Button = $"%updateBtn"
 
 var cooldownTimer = CooldownTimer.new()
 
 func _ready():
-	selectButton.pressed.connect(
+	updateButton.pressed.connect(
 		func():
 			apply(UIState.player)
 	)

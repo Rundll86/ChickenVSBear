@@ -34,7 +34,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="selectBtn" type="Button" parent="container"]
+[node name="updateBtn" type="Button" parent="container"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_fwkd3")
@@ -82,7 +82,7 @@ quality = 1
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
-text = "造成[color=cyan]10.0[/color]点伤害。"
+text = "[center]造成[color=cyan]10.0[/color]点伤害。[/center]"
 fit_content = true
 
 [node name="costs" type="GridContainer" parent="container"]
