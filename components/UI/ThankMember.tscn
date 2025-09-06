@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://hvbt4p0beker"]
+
+[ext_resource type="PackedScene" uid="uid://c4ovgkhjpsc15" path="res://components/UI/CircleTextureRect.tscn" id="1_pdtwd"]
+[ext_resource type="Script" path="res://scripts/Statemachine/ThankMember.gd" id="1_tso8w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eced8"]
+font_size = 13
+
+[node name="ThankMember" type="VBoxContainer"]
+offset_right = 80.0
+offset_bottom = 116.0
+script = ExtResource("1_tso8w")
+
+[node name="avatar" parent="." instance=ExtResource("1_pdtwd")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="name" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未命名成员"
+horizontal_alignment = 1
+
+[node name="description" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未知描述"
+label_settings = SubResource("LabelSettings_eced8")
+horizontal_alignment = 1

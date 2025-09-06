@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4ovgkhjpsc15"]
+
+[ext_resource type="Script" path="res://scripts/Statemachine/Circle.gd" id="1_6qqj4"]
+[ext_resource type="Texture2D" uid="uid://dwwpkn4q07ja2" path="res://icon.svg" id="2_jkqx1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ueu7s"]
+bg_color = Color(0, 0, 0, 0.5)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="CircleTextureRect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("1_6qqj4")
+
+[node name="background" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ueu7s")
+
+[node name="polygon" type="Polygon2D" parent="."]
+unique_name_in_owner = true
+clip_children = 1
+position = Vector2(50, 50)
+polygon = PackedVector2Array(45, 0, 44.1353, 8.77906, 41.5746, 17.2208, 37.4161, 25.0007, 31.8198, 31.8198, 25.0007, 37.4161, 17.2208, 41.5746, 8.77906, 44.1353, 2.75536e-15, 45, -8.77906, 44.1353, -17.2208, 41.5746, -25.0007, 37.4161, -31.8198, 31.8198, -37.4161, 25.0007, -41.5746, 17.2208, -44.1353, 8.77906, -45, 5.51073e-15, -44.1353, -8.77906, -41.5746, -17.2208, -37.4161, -25.0007, -31.8198, -31.8198, -25.0007, -37.4161, -17.2208, -41.5746, -8.77906, -44.1353, -8.26609e-15, -45, 8.77906, -44.1353, 17.2208, -41.5746, 25.0007, -37.4161, 31.8198, -31.8198, 37.4161, -25.0007, 41.5746, -17.2208, 44.1353, -8.77906)
+
+[node name="texture" type="TextureRect" parent="polygon"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jkqx1")
+expand_mode = 1

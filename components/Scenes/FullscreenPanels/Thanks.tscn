@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://w2o3klbsssq3"]
+
+[ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_p58cm"]
+[ext_resource type="PackedScene" uid="uid://hvbt4p0beker" path="res://components/UI/ThankMember.tscn" id="2_4m1jv"]
+[ext_resource type="Texture2D" uid="uid://okeih4pdjvt6" path="res://resources/members/灵阁.jpg" id="3_1sqi2"]
+[ext_resource type="Texture2D" uid="uid://dm737iaabyg0n" path="res://resources/members/主核.jpg" id="4_31aos"]
+[ext_resource type="Texture2D" uid="uid://h75rhrl8ixwf" path="res://resources/members/陨落基围虾.jpg" id="5_1ofw3"]
+
+[node name="Thanks" instance=ExtResource("1_p58cm")]
+offset_top = 0.0
+offset_bottom = 0.0
+
+[node name="wrapper" parent="content" index="1"]
+theme_override_constants/separation = 30
+
+[node name="title" type="RichTextLabel" parent="content/wrapper" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+bbcode_enabled = true
+text = "[font_size=30][b]特别鸣谢[/b][/font_size]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="members" type="GridContainer" parent="content/wrapper" index="1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 4
+
+[node name="ling" parent="content/wrapper/members" index="0" instance=ExtResource("2_4m1jv")]
+layout_mode = 2
+memberName = "灵阁"
+memberAvatar = ExtResource("3_1sqi2")
+memberDescription = "技术交流群"
+
+[node name="fs" parent="content/wrapper/members" index="1" instance=ExtResource("2_4m1jv")]
+layout_mode = 2
+memberName = "陨落基围虾"
+memberAvatar = ExtResource("5_1ofw3")
+memberDescription = "程序开发"
+
+[node name="kernyr" parent="content/wrapper/members" index="2" instance=ExtResource("2_4m1jv")]
+layout_mode = 2
+memberName = "主核"
+memberAvatar = ExtResource("4_31aos")
+memberDescription = "艺术支持"
