@@ -13,7 +13,7 @@ static var data: Array[Wave] = [
 	# entity, minCount, maxCount, isBoss, from, to, per
 	create(preload("res://components/Characters/Hen.tscn"), 1, 5, false, 0, INF, 1),
 	create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 8, INF, 6),
-	create(preload("res://components/Characters/Chick.tscn"), 1, 1, true, 0, INF, 1),
+	# create(preload("res://components/Characters/Chick.tscn"), 1, 1, true, 0, INF, 1),
 ]
 
 static func create(

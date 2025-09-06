@@ -10,7 +10,7 @@ func split(index, total, _last):
 		preload("res://components/Bullets/PurpleCrystal.tscn"),
 		launcher,
 		position,
-		deg_to_rad(360 / total * index),
+		rotation + deg_to_rad(360 / total * index),
 		true,
 		isChildRefract
 	)
