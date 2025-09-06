@@ -1,5 +1,54 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddj4xiia81g28"]
+[gd_scene load_steps=12 format=3 uid="uid://ddj4xiia81g28"]
 
 [ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_qfayo"]
+[ext_resource type="Texture2D" uid="uid://d2pndtow16635" path="res://resources/bullets/lgbt-bullet/造型2.svg" id="2_g6mna"]
+
+[sub_resource type="Curve" id="Curve_fauhw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_va8eb"]
+curve = SubResource("Curve_fauhw")
+
+[sub_resource type="Curve" id="Curve_l2yd6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_i60ri"]
+curve = SubResource("Curve_l2yd6")
+
+[sub_resource type="Gradient" id="Gradient_sfjew"]
+offsets = PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.447059, 0, 1, 1, 0.890625, 0, 1, 0, 0.820313, 0.128174, 1, 0, 1, 0.859375, 1, 0, 0.53125, 1, 1, 0.429688, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lbwsr"]
+gradient = SubResource("Gradient_sfjew")
+
+[sub_resource type="Curve" id="Curve_g4ke1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cgdl1"]
+curve = SubResource("Curve_g4ke1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ynlvg"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_i60ri")
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_cgdl1")
+color_ramp = SubResource("GradientTexture1D_lbwsr")
+alpha_curve = SubResource("CurveTexture_va8eb")
 
 [node name="LGBTBoom" instance=ExtResource("1_qfayo")]
+
+[node name="particles" parent="." index="1"]
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_ynlvg")
+texture = ExtResource("2_g6mna")

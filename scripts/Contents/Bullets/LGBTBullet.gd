@@ -7,7 +7,6 @@ var tracePower: float
 
 func register():
 	speed = 1
-	damage = 5
 func ai():
 	texture.rotation_degrees += speed
 	speed *= 1.05
@@ -15,3 +14,5 @@ func ai():
 	if is_instance_valid(tracer) and timeLived() < maxTraceTime:
 		PresetAIs.trace(self, tracer.position, clamp(speed / 50 * tracePower, 0, 1))
 	PresetAIs.forward(self, rotation)
+func destroy(_b):
+	EffectController.create(preload("res://components/Effects/LGBTBoom.tscn"), position).shot()
