@@ -101,10 +101,6 @@ static var entityApplier = {
 		entity.inventoryMax[ItemStore.ItemType.APPLE] += value
 		return true
 		,
-	Entity.EXTRA_BULLET_COUNT: func(entity, value):
-		entity.fields[Entity.OFFSET_SHOOT] += value * 3
-		return true
-		,
 }
 static var entityViewCastMap = {
 	Entity.EXTRA_APPLE_MAX: func(entity, _value):
