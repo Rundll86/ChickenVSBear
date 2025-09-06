@@ -90,6 +90,8 @@ var cooldownTimer = CooldownTimer.new()
 var weapons: Array[Weapon] = []
 
 func _ready():
+	health = fields.get(FieldStore.Entity.MAX_HEALTH)
+	energy = fields.get(FieldStore.Entity.MAX_ENERGY)
 	register()
 	var selfStatebar: EntityStateBar = $"%statebar"
 	if isBoss:
@@ -97,6 +99,7 @@ func _ready():
 	else:
 		statebar = selfStatebar
 		statebar.entity = self
+		statebar.forceSync()
 	if isPlayer():
 		for i in weaponStore.get_children():
 			i.hide()
@@ -118,8 +121,6 @@ func _ready():
 	else:
 		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
 		applyLevel()
-	health = fields.get(FieldStore.Entity.MAX_HEALTH)
-	energy = fields.get(FieldStore.Entity.MAX_ENERGY)
 	healthChanged.connect(
 		func(newHealth):
 			if is_instance_valid(statebar):

@@ -15,6 +15,7 @@ class_name ColorBar
 var middleValue = 0
 var frontValue = 0
 var forwardDirection = -1
+var lastChangeTime = 0
 
 func getPercent(value: float):
 	return (value - minValue) / (maxValue - minValue)
@@ -23,13 +24,18 @@ func setCurrent(value: float):
 		return
 	forwardDirection = sign(value - currentValue)
 	currentValue = clamp(value, minValue, maxValue)
-
-func _ready():
+	lastChangeTime = WorldManager.getTime()
+func forceSync():
 	middleValue = currentValue
 	frontValue = currentValue
+
+func _ready():
+	forceSync()
+	lastChangeTime = WorldManager.getTime()
 func _draw():
 	draw_style_box(backBox, Rect2(0, 0, size.x, size.y))
-	draw_style_box(middleBox2 if forwardDirection > 0 else middleBox1, Rect2(0, 0, size.x * getPercent(middleValue), size.y))
+	if WorldManager.getTime() - lastChangeTime > GameRule.detainTime:
+		draw_style_box(middleBox2 if forwardDirection > 0 else middleBox1, Rect2(0, 0, size.x * getPercent(middleValue), size.y))
 	draw_style_box(frontBox, Rect2(0, 0, size.x * getPercent(frontValue), size.y))
 func _physics_process(_delta: float) -> void:
 	middleValue = lerpf(middleValue, currentValue, speed1 if forwardDirection > 0 else speed2)
