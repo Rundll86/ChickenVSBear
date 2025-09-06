@@ -277,6 +277,9 @@ func playSound(type: String):
 		await cloned.finished
 		cloned.queue_free()
 
+func getTrackingAnchor() -> Vector2:
+	return hurtbox.global_position
+
 # 关于分组
 func isPlayer():
 	return is_in_group("players")

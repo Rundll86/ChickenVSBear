@@ -48,12 +48,11 @@ process_mode = 4
 
 [node name="PurpleCrystal" parent="weaponStore" index="0" instance=ExtResource("3_ms5sq")]
 
-[node name="LGBT" parent="weaponStore" index="1" instance=ExtResource("4_pb8qn")]
+[node name="VectorStar" parent="weaponStore" index="1" instance=ExtResource("6_fvy5n")]
 
-[node name="BigLaser" parent="weaponStore" index="2" instance=ExtResource("4_plqwu")]
+[node name="LGBT" parent="weaponStore" index="2" instance=ExtResource("4_pb8qn")]
 
-[node name="VectorStar" parent="weaponStore" index="3" instance=ExtResource("6_fvy5n")]
-debugRebuild = false
+[node name="BigLaser" parent="weaponStore" index="3" instance=ExtResource("4_plqwu")]
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")

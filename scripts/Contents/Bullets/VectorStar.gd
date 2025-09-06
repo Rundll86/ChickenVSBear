@@ -15,4 +15,4 @@ func ai():
 	else:
 		forwarded = true
 		if is_instance_valid(tracer):
-			rotation = position.angle_to_point(tracer.position)
+			rotation = position.angle_to_point(tracer.getTrackingAnchor())

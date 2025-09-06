@@ -9,4 +9,4 @@ func ai():
 	canDamageSelf = !(timeLived() >= traceTime)
 	PresetAIs.forward(self, rotation)
 	if timeLived() < traceTime:
-		PresetAIs.trace(self, launcher.currentFocusedBoss.position, 0.05)
+		PresetAIs.trace(self, launcher.currentFocusedBoss.getTrackingAnchor(), 0.05)
