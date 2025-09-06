@@ -7,9 +7,9 @@
 avatarTexture = ExtResource("2_ijk6h")
 displayName = "生日蛋糕"
 quality = 2
-topic = 4
-fields = Array[int]([4, 1])
-fieldValues = Array[float]([0.03, 0.04])
+topic = 6
+fields = Array[int]([16])
+fieldValues = Array[float]([1.0])
 costs = Array[int]([0, 1])
 costCounts = Array[int]([300, 200])
 

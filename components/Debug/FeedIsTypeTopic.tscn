@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://5fbadcha65g4"]
+
+[ext_resource type="Script" path="res://scripts/Debug/FeedIsTopic.gd" id="1_2hikw"]
+
+[node name="Debug" type="HBoxContainer"]
+theme_override_constants/separation = 0
+script = ExtResource("1_2hikw")
+targetTopics = Array[int]([6])
