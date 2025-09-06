@@ -9,7 +9,7 @@ displayName = "橘子"
 quality = 2
 topic = 2
 fields = Array[int]([23, 7])
-fieldValues = Array[float]([0.05, 0.5])
+fieldValues = Array[float]([0.15, 1.0])
 costs = Array[int]([1])
 costCounts = Array[int]([300])
 
@@ -18,4 +18,5 @@ texture = ExtResource("2_l6jnq")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "橘子"
-quality = 3
+quality = 2
+topic = 2

@@ -5,5 +5,5 @@
 [node name="FeedHasField" type="HBoxContainer"]
 theme_override_constants/separation = 0
 script = ExtResource("1_7leag")
-targetFields = Array[int]([7])
-clickToRefresh = true
+targetFields = Array[int]([16])
+composeMode = 1
