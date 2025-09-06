@@ -3,7 +3,7 @@ extends Weapon
 class_name LGBTWeapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-	origin["atk"] += 2 * to
+	origin["atk"] += 5 * to
 	origin["count"] += to
 	origin["power"] += 0.05 * level
 	origin["trace"] += 0.25 * level
