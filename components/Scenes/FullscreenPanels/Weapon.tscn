@@ -1,25 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dekcqdhrjs07u"]
+[gd_scene load_steps=3 format=3 uid="uid://dekcqdhrjs07u"]
 
 [ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_yodmq"]
-[ext_resource type="PackedScene" uid="uid://c0n3igy4hucrg" path="res://components/Weapons/PurpleCrystal.tscn" id="2_5r0we"]
-[ext_resource type="PackedScene" uid="uid://cxabqjo7skxev" path="res://components/Weapons/BigLaser.tscn" id="3_6xf37"]
-[ext_resource type="PackedScene" uid="uid://wl8u5m52708w" path="res://components/Weapons/LGBT.tscn" id="4_s13oq"]
+[ext_resource type="Script" path="res://scripts/Contents/Panels/WeaponPanel.gd" id="2_6alu1"]
 
 [node name="Weapon" instance=ExtResource("1_yodmq")]
+script = ExtResource("2_6alu1")
 
 [node name="wrapper" parent="content" index="0"]
 theme_override_constants/separation = 50
 
 [node name="box" type="HBoxContainer" parent="content/wrapper" index="0"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
-
-[node name="PurpleCrystal" parent="content/wrapper/box" index="0" instance=ExtResource("2_5r0we")]
-layout_mode = 2
-
-[node name="BigLaser" parent="content/wrapper/box" index="1" instance=ExtResource("3_6xf37")]
-layout_mode = 2
-
-[node name="???" parent="content/wrapper/box" index="2" instance=ExtResource("4_s13oq")]
-layout_mode = 2

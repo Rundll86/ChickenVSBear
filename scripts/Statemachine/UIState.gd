@@ -49,6 +49,16 @@ func _physics_process(_delta):
 				closeCurrentPanel()
 		else:
 			setPanel("Pause")
+	if Input.is_action_just_pressed("openWeapon"):
+		var canOpen = true
+		if currentPanel:
+			if currentPanel.name == "Weapon":
+				closeCurrentPanel()
+				canOpen = false
+			elif ["MakeFeed", "GameOver"].has(currentPanel.name):
+				canOpen = false
+		if canOpen:
+			setPanel("Weapon")
 
 static func setPanel(targetName: String = ""):
 	currentPanel = null

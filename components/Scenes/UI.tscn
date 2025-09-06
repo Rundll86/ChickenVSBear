@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfwg750a47ggx"]
+[gd_scene load_steps=19 format=3 uid="uid://dfwg750a47ggx"]
 
 [ext_resource type="PackedScene" uid="uid://ofpg5s3j7esv" path="res://components/UI/BossBar.tscn" id="1_2pe58"]
 [ext_resource type="Script" path="res://scripts/Statemachine/UIState.gd" id="1_f00a6"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ulrvupa76ap" path="res://components/UI/ColorBar.tscn" id="9_44nw8"]
 [ext_resource type="StyleBox" uid="uid://ddnjus87wwlm8" path="res://styleboxes/leftPanel.tres" id="11_67ghp"]
 [ext_resource type="PackedScene" uid="uid://cksonrrx38k36" path="res://components/Scenes/FullscreenPanels/Pause.tscn" id="12_jkm6o"]
+[ext_resource type="PackedScene" uid="uid://dekcqdhrjs07u" path="res://components/Scenes/FullscreenPanels/Weapon.tscn" id="13_bmc24"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ri8gw"]
 content_margin_left = 20.0
@@ -271,4 +272,8 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="Pause" parent="root/panels" instance=ExtResource("12_jkm6o")]
+layout_mode = 1
+
+[node name="Weapon" parent="root/panels" instance=ExtResource("13_bmc24")]
+visible = false
 layout_mode = 1
