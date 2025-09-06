@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ro1df12asa6y"]
+[gd_scene load_steps=12 format=3 uid="uid://ro1df12asa6y"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_fyvdf"]
 [ext_resource type="Script" path="res://scripts/Contents/Bullets/VectorStar.gd" id="2_1u5ed"]
@@ -22,6 +22,13 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_c22if"]
 curve = SubResource("Curve_y5wc0")
 
+[sub_resource type="Curve" id="Curve_ji22g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_q44nv"]
+curve = SubResource("Curve_ji22g")
+
 [sub_resource type="Curve" id="Curve_r5tug"]
 _data = [Vector2(0.696697, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -31,13 +38,16 @@ curve = SubResource("Curve_r5tug")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bieyj"]
 particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_q44nv")
 direction = Vector3(-1, 0, 0)
-spread = 0.0
-initial_velocity_min = 100.0
-initial_velocity_max = 200.0
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.6
-scale_max = 0.8
+scale_min = 0.25
+scale_max = 0.75
 scale_curve = SubResource("CurveTexture_6bcs1")
 alpha_curve = SubResource("CurveTexture_c22if")
 

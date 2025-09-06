@@ -21,6 +21,8 @@ func _ready():
 	energyPercent = $"%percent"
 	itemCollect = $"%itemCollect"
 	skillIconContainer = $"%skillContainer"
+	# for i in FieldStore.entityMap:
+	# 	print(FieldStore.entityMap[i])
 func _process(_delta):
 	bossbar.visible = !!bossbar.entity
 func _physics_process(_delta):
@@ -47,7 +49,7 @@ func _physics_process(_delta):
 		fieldsAnimator.play("hide")
 	if Input.is_action_just_pressed("pause"):
 		if currentPanel:
-			if currentPanel.name == "Pause":
+			if currentPanel.name != "MakeFeed":
 				closeCurrentPanel()
 		else:
 			setPanel("Pause")
