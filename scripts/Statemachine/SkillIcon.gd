@@ -11,4 +11,4 @@ func _physics_process(_delta):
 	if is_instance_valid(weapon):
 		textureRect.texture = weapon.avatarTexture
 		var progress = weapon.cooldownTimer.timeSinceLastStart() / weapon.cooldownTimer.cooldown
-		textureRect.material.set_shader_parameter("progress", clamp(progress, 0, 1))
+		textureRect.material.set_shader_parameter("progress", progress)
