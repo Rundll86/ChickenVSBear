@@ -3,6 +3,7 @@ class_name FieldStore
 
 enum DataType {
 	VALUE,
+	INTEGER,
 	PERCENT,
 	ANGLE
 }
@@ -70,14 +71,14 @@ static var entityMapType = {
 	Entity.PENERATE: DataType.PERCENT,
 	Entity.OFFSET_SHOOT: DataType.ANGLE,
 	Entity.HEAL_ABILITY: DataType.PERCENT,
-	Entity.EXTRA_APPLE_MAX: DataType.VALUE,
+	Entity.EXTRA_APPLE_MAX: DataType.INTEGER,
 	Entity.ENERGY_MULTIPILER: DataType.PERCENT,
 	Entity.PENARATION_RESISTANCE: DataType.PERCENT,
 	Entity.PRICE_REDUCTION: DataType.PERCENT,
 	Entity.EXTRA_BULLET_COUNT: DataType.VALUE,
 	Entity.DROP_APPLE_RATE: DataType.PERCENT,
-	Entity.FEED_COUNT_SHOW: DataType.VALUE,
-	Entity.FEED_COUNT_CAN_MADE: DataType.VALUE,
+	Entity.FEED_COUNT_SHOW: DataType.INTEGER,
+	Entity.FEED_COUNT_CAN_MADE: DataType.INTEGER,
 	Entity.MAX_ENERGY: DataType.VALUE,
 	Entity.LUCK_VALUE: DataType.VALUE,
 	Entity.SAVE_ENERGY: DataType.PERCENT,

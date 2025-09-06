@@ -10,8 +10,12 @@ offset_bottom = 302.0
 script = ExtResource("2_0xgcv")
 avatarTexture = ExtResource("2_wgtcw")
 displayName = "紫水晶簇"
+storeType = {
+"atk": 1
+}
 descriptionTemplate = "撞击造成$atk点伤害。"
 cooldown = 200.0
+debugRebuild = true
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_16daa")
@@ -19,8 +23,11 @@ stream = ExtResource("4_16daa")
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_wgtcw")
 
+[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
+text = "500"
+
 [node name="name" parent="container/info" index="2"]
 displayName = "紫水晶簇"
 
 [node name="description" parent="container" index="2"]
-text = "[center]撞击造成[color=cyan]10.0[/color]点伤害。[/center]"
+text = "[center]撞击造成[color=cyan]10[/color]点伤害。[/center]"

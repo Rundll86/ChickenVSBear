@@ -28,7 +28,6 @@ offset_right = 350.0
 offset_bottom = 304.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_n2ewr")
 script = ExtResource("1_g802t")
-costBeachball = 100
 metadata/_edit_lock_ = true
 
 [node name="sounds" type="Node2D" parent="."]
@@ -112,7 +111,7 @@ displayName = "未命名饲料"
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
-text = "[center]造成[color=cyan]10.0[/color]点伤害。[/center]"
+text = "[center]造成[color=cyan]10.00[/color]点伤害。[/center]"
 fit_content = true
 
 [node name="costs" type="GridContainer" parent="container"]

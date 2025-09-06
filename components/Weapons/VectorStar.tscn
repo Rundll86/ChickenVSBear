@@ -15,9 +15,15 @@ store = {
 "maxcount": 6,
 "mincount": 3
 }
-storeType = Array[int]([0, 0, 0, 0])
-descriptionTemplate = "发射$mincount~$maxcount个[b]无主的矢量星[/b]，在$forwardtime秒后向目标冲刺并造成$atk点伤害。"
+storeType = {
+"atk": 1,
+"forwardtime": 0.0,
+"maxcount": 1.0,
+"mincount": 1.0
+}
+descriptionTemplate = "发射$mincount~$maxcount个[b]无主[/b]的矢量星，在$forwardtime秒后向目标冲刺并造成$atk点伤害。"
 needEnergy = 20.0
+debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("3_wfty8")
@@ -25,9 +31,12 @@ texture = ExtResource("3_wfty8")
 [node name="energy" parent="container/info/infos/energyInfo" index="1"]
 text = "20.0"
 
+[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
+text = "500"
+
 [node name="name" parent="container/info" index="2"]
 displayName = "星辰核心"
 quality = 2
 
 [node name="description" parent="container" index="2"]
-text = "[center]发射[color=cyan]3.0[/color]~[color=cyan]6.0[/color]个[b]无主的矢量星[/b]，在[color=cyan]1.0[/color]秒后向目标冲刺并造成[color=cyan]5.0[/color]点伤害。[/center]"
+text = "[center]发射[color=cyan]3[/color]~[color=cyan]6[/color]个[b]无主[/b]的矢量星，在[color=cyan]1.00[/color]秒后向目标冲刺并造成[color=cyan]5[/color]点伤害。[/center]"

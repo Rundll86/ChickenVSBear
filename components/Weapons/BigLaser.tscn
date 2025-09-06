@@ -11,19 +11,20 @@ avatarTexture = ExtResource("2_qe8gb")
 displayName = "湮灭激光"
 quality = 2
 typeTopic = 1
-costs = Array[int]([0, 1])
-costCounts = Array[int]([100, 50])
 store = {
 "atk": 40,
 "time": 0.1
 }
-storeType = Array[int]([0, 0])
+storeType = {
+"atk": 1,
+"time": 0.0
+}
 descriptionTemplate = "每$time秒造成$atk点伤害。"
 needEnergy = 100.0
 cooldown = 6000.0
+debugRebuild = true
 
 [node name="attack" parent="sounds" index="0"]
-process_mode = 3
 stream = ExtResource("4_cb5nh")
 
 [node name="avatar" parent="container/info" index="0"]
@@ -32,10 +33,13 @@ texture = ExtResource("2_qe8gb")
 [node name="energy" parent="container/info/infos/energyInfo" index="1"]
 text = "100.0"
 
+[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
+text = "500"
+
 [node name="name" parent="container/info" index="2"]
 displayName = "湮灭激光"
 quality = 2
 typeTopic = 1
 
 [node name="description" parent="container" index="2"]
-text = "[center]每[color=cyan]0.1[/color]秒造成[color=cyan]40.0[/color]点伤害。[/center]"
+text = "[center]每[color=cyan]0.10[/color]秒造成[color=cyan]40[/color]点伤害。[/center]"

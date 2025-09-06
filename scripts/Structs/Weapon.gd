@@ -6,13 +6,13 @@ class_name Weapon
 @export var displayName: String = "未命名饲料"
 @export var quality: WeaponName.Quality = WeaponName.Quality.COMMON
 @export var typeTopic: WeaponName.TypeTopic = WeaponName.TypeTopic.IMPACT
-@export var costBeachball: int = 0
+@export var costBeachball: int = 500
 @export var store: Dictionary = {
 	"atk": 10
 }
-@export var storeType: Array[FieldStore.DataType] = [
-	FieldStore.DataType.VALUE
-]
+@export var storeType: Dictionary = {
+	"atk": FieldStore.DataType.VALUE
+}
 @export var descriptionTemplate: String = "造成$atk点伤害。"
 @export var needEnergy: float = 0
 @export var cooldown: float = 100
@@ -73,18 +73,18 @@ func rebuildInfo():
 	descriptionLabel.text = buildDescription()
 func buildDescription() -> String:
 	var result = descriptionTemplate
-	var i = 0
 	for key in store.keys():
 		var data = store[key]
-		var type = storeType[i]
+		var type = storeType.get(key, FieldStore.DataType.VALUE)
 		if type == FieldStore.DataType.VALUE:
-			data = "%.1f" % data
+			data = "%.2f" % data
+		elif type == FieldStore.DataType.INTEGER:
+			data = "%d" % data
 		elif type == FieldStore.DataType.PERCENT:
-			data = ("%.1f" % (data * 100)) + "%"
+			data = ("%d" % (data * 100)) + "%"
 		elif type == FieldStore.DataType.ANGLE:
 			data = "%.1f°" % data
 		result = result.replace("$" + key, "[color=cyan]%s[/color]" % data)
-		i += 1
 	return "[center]%s[/center]" % result
 func readStore(key: String, default: Variant = null):
 	return store.get(key, default)

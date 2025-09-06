@@ -21,6 +21,8 @@ func _ready():
 	var dataType = FieldStore.entityMapType[field]
 	if dataType == FieldStore.DataType.VALUE:
 		formattedValue = "%s" % (MathTool.signBeforeStr(value) if showSign else str(value))
+	elif dataType == FieldStore.DataType.INTEGER:
+		formattedValue = "%s" % (MathTool.signBeforeStr(int(value)) if showSign else str(int(value)))
 	elif dataType == FieldStore.DataType.ANGLE:
 		formattedValue = "%s°" % (MathTool.signBeforeStr(value) if showSign else str(value))
 	elif dataType == FieldStore.DataType.PERCENT:

@@ -5,7 +5,6 @@ class_name VectorStarWeapon
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["atk"] += 2 * to
 	origin["forwardtime"] /= 1.05 * to
-	origin["mincount"] += 1 * level
 	origin["maxcount"] += 1 * level
 	return origin
 func attack(entity: EntityBase):

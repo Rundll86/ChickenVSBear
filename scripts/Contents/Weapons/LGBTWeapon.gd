@@ -5,7 +5,7 @@ class_name LGBTWeapon
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["atk"] += 2 * to
 	origin["count"] += to
-	origin["power"] += 0.01 * level
+	origin["power"] += 0.05 * level
 	origin["trace"] += 0.25 * level
 	origin["angle"] /= 1.05 * level
 	return origin
