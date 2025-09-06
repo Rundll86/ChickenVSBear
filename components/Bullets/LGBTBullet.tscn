@@ -3,20 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_bnhy4"]
 [ext_resource type="Texture2D" uid="uid://d2pndtow16635" path="res://resources/bullets/lgbt-bullet/造型2.svg" id="2_cnsbx"]
 [ext_resource type="Script" path="res://scripts/Contents/Bullets/LGBTBullet.gd" id="2_iakgr"]
+[ext_resource type="Script" path="res://scripts/Statemachine/LeadingMark.gd" id="3_rirwy"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rdak6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_cnsbx")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4pjb3"]
-radius = 32.249
+[sub_resource type="CircleShape2D" id="CircleShape2D_1e8f0"]
+radius = 12.3693
 
 [sub_resource type="Curve" id="Curve_6bq7i"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -93,10 +83,13 @@ script = ExtResource("2_iakgr")
 lifeTime = 2000.0
 
 [node name="texture" parent="." index="0"]
-sprite_frames = SubResource("SpriteFrames_rdak6")
+rotation = 1.5708
+script = ExtResource("3_rirwy")
+width = 30.0
+height = 40.0
 
 [node name="hitbox" parent="." index="1"]
-shape = SubResource("CircleShape2D_4pjb3")
+shape = SubResource("CircleShape2D_1e8f0")
 
 [node name="particles" type="GPUParticles2D" parent="." index="2"]
 z_index = -1

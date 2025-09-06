@@ -8,7 +8,6 @@ var tracePower: float
 func register():
 	speed = 1
 func ai():
-	texture.rotation_degrees += speed
 	speed *= 1.05
 	speed = clamp(speed, 0, 20)
 	if is_instance_valid(tracer) and timeLived() < maxTraceTime:

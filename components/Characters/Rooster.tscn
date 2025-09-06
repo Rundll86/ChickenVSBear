@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://ci2ik43ce82uy" path="res://resources/characters/cock/rooster-b.svg" id="3_b0fgx"]
 [ext_resource type="PackedScene" uid="uid://c0n3igy4hucrg" path="res://components/Weapons/PurpleCrystal.tscn" id="3_ms5sq"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
-[ext_resource type="PackedScene" uid="uid://cxabqjo7skxev" path="res://components/Weapons/BigLaser.tscn" id="4_0862n"]
 [ext_resource type="AudioStream" uid="uid://benyec5bqni0b" path="res://resources/sounds/effect/Chomp.wav" id="4_k0yme"]
+[ext_resource type="PackedScene" uid="uid://wl8u5m52708w" path="res://components/Weapons/LGBT.tscn" id="4_pb8qn"]
 [ext_resource type="AudioStream" uid="uid://dmxh3bpk8vyy5" path="res://resources/sounds/effect/Coin.mp3" id="5_xnbhq"]
 [ext_resource type="AudioStream" uid="uid://4wuuf1osk0yv" path="res://resources/sounds/effect/Low Boing.wav" id="6_m5px1"]
 [ext_resource type="AudioStream" uid="uid://b10u6iir6uvqn" path="res://resources/sounds/effect/BigLaser.wav" id="8_7dhim"]
@@ -46,7 +46,7 @@ process_mode = 4
 
 [node name="PurpleCrystal" parent="weaponStore" index="0" instance=ExtResource("3_ms5sq")]
 
-[node name="BigLaser" parent="weaponStore" index="1" instance=ExtResource("4_0862n")]
+[node name="LGBT" parent="weaponStore" index="1" instance=ExtResource("4_pb8qn")]
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")
