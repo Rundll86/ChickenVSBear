@@ -146,4 +146,4 @@ static func generate(
 		if addToWorld:
 			WorldManager.rootNode.call_deferred("add_child", instance)
 		instances.append(instance)
-	return len(instances)
+	return instances
