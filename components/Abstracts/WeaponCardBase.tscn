@@ -29,6 +29,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_n2ewr")
 script = ExtResource("1_g802t")
 metadata/_edit_lock_ = true
 
+[node name="sounds" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="attack" type="AudioStreamPlayer2D" parent="sounds"]
+
 [node name="container" type="VBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 10

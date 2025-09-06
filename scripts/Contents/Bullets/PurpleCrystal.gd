@@ -11,7 +11,8 @@ func split(index, total, _last):
 		launcher,
 		position,
 		deg_to_rad(360 / total * index),
-		true
+		true,
+		isChildRefract
 	)
 func refract(entity, _index, _total, _last):
 	BulletBase.generate(
@@ -19,6 +20,6 @@ func refract(entity, _index, _total, _last):
 		launcher,
 		position,
 		position.angle_to_point(entity.position) if is_instance_valid(entity) else randf_range(0, deg_to_rad(360)),
-		false,
+		isChildSplit,
 		true
 	)

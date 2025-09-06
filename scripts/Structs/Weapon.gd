@@ -27,6 +27,7 @@ signal selected(applied: bool)
 @onready var descriptionLabel: RichTextLabel = $"%description"
 @onready var costsBox: GridContainer = $"%costs"
 @onready var updateButton: Button = $"%updateBtn"
+@onready var sounds: Node2D = $"%sounds"
 
 var cooldownTimer = CooldownTimer.new()
 
@@ -36,6 +37,8 @@ func _ready():
 			apply(UIState.player)
 	)
 	cooldownTimer.cooldown = cooldown
+	for i in sounds.get_children():
+		i.process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 	rebuildInfo()
 	debugRebuild = false # 只能在编辑器里打开
 func _physics_process(_delta):
@@ -99,6 +102,18 @@ func buildDescription():
 	return "[center]%s[/center]" % result
 func readStore(key: String, default: Variant = null):
 	return store.get(key, default)
+func playSound(sound: String):
+	var body = sounds.get_node_or_null(sound)
+	if body is AudioStreamPlayer2D:
+		var cloned = body.duplicate() as AudioStreamPlayer2D
+		add_child(cloned)
+		cloned.play()
+		await cloned.finished
+		cloned.queue_free()
+func tryAttack(entity: EntityBase):
+	if cooldownTimer.start():
+		if entity.useEnergy(needEnergy):
+			attack(entity)
 
 # 抽象
 func update(_to: int, _origin: Dictionary, _entity: EntityBase):

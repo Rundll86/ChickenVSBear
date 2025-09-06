@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxabqjo7skxev"]
+[gd_scene load_steps=5 format=3 uid="uid://cxabqjo7skxev"]
 
 [ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_wrvv5"]
 [ext_resource type="Script" path="res://scripts/Contents/Weapons/BigLaser.gd" id="2_gmch0"]
 [ext_resource type="Texture2D" uid="uid://dy4op6n6vxef3" path="res://resources/bullets/laser-circle/circle.svg" id="2_qe8gb"]
+[ext_resource type="AudioStream" uid="uid://b10u6iir6uvqn" path="res://resources/sounds/effect/BigLaser.wav" id="4_cb5nh"]
 
 [node name="BigLaser" instance=ExtResource("1_wrvv5")]
 script = ExtResource("2_gmch0")
@@ -16,9 +17,13 @@ store = {
 "atk": 35,
 "time": 0.1
 }
+storeType = Array[int]([0, 0])
 descriptionTemplate = "每$time秒造成$atk点伤害。"
 needEnergy = 100.0
 cooldown = 6000.0
+
+[node name="attack" parent="sounds" index="0"]
+stream = ExtResource("4_cb5nh")
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_qe8gb")

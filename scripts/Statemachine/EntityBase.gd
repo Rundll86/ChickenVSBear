@@ -199,7 +199,7 @@ func tryAttack(type: int, needChargeUp: bool = false):
 		weapon = weapons[type]
 	var state
 	if isPlayer():
-		state = weapon.cooldownTimer.start()
+		state = true
 	else:
 		cooldownTimer.cooldown = attackCooldownMap.get(type, defaultCooldownUnit)
 		state = cooldownTimer.start()
@@ -208,13 +208,12 @@ func tryAttack(type: int, needChargeUp: bool = false):
 			charginup = true
 			await EffectController.create(preload("res://components/Effects/AttackStar.tscn"), damageAnchor.global_position).shot()
 			charginup = false
-		var done
 		if isPlayer():
-			done = weapon.attack(self)
+			if weapon.tryAttack(self):
+				weapon.playSound("attack")
 		else:
-			done = attack(type)
-		if done:
-			playSound("attack" + str(type))
+			if attack(type):
+				playSound("attack" + str(type))
 	return state
 func trySprint():
 	trailing = true

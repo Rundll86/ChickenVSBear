@@ -8,7 +8,6 @@ class_name BulletBase
 @export var lifeTime: float = -1 # -1表示无限时间
 @export var indisDamage: bool = false # 是否无差别伤害（不区分敌我）
 @export var canDamageSelf: bool = false # 是否可以伤害发射者
-@export var needEnergy: float = 0.0 # 发射时需要消耗的能量
 @export var autoSpawnAnimation: bool = false
 @export var autoLoopAnimation: bool = false
 @export var autoDestroyAnimation: bool = false
@@ -139,13 +138,12 @@ static func generate(
 	var instances = []
 	for i in range(count):
 		var instance: BulletBase = bullet.instantiate()
-		if launchBy.useEnergy(instance.needEnergy):
-			instance.isChildSplit = asChildSplit
-			instance.isChildRefract = asChildRefract
-			instance.launcher = launchBy
-			instance.position = spawnPosition
-			instance.rotation = spawnRotation + deg_to_rad(randf_range(-launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT), launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT)))
-			if addToWorld:
-				WorldManager.rootNode.call_deferred("add_child", instance)
-			instances.append(instance)
+		instance.isChildSplit = asChildSplit
+		instance.isChildRefract = asChildRefract
+		instance.launcher = launchBy
+		instance.position = spawnPosition
+		instance.rotation = spawnRotation + deg_to_rad(randf_range(-launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT), launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT)))
+		if addToWorld:
+			WorldManager.rootNode.call_deferred("add_child", instance)
+		instances.append(instance)
 	return len(instances)
