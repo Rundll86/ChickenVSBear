@@ -28,7 +28,7 @@ func _physics_process(_delta):
 			linear_velocity = Vector2.ZERO
 		else:
 			var direction = (targetPlayer.position - position).normalized()
-			var speed = 10000.0 / ((targetPlayer.position - position).length() ** (1 / 3.0))
+			var speed = 1000.0 * targetPlayer.fields.get(FieldStore.Entity.GRAVITY) / ((targetPlayer.position - position).length() ** (1 / 3.0))
 			apply_central_force(direction * speed)
 			angular_velocity = linear_velocity.length() ** (1.0 / 2.25) # 角速度=线速度的2.25次根号
 			if position.distance_to(targetPlayer.position) < targetPlayer.fields.get(FieldStore.Entity.DROPPED_ITEM_COLLECT_RADIUS):

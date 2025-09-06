@@ -32,7 +32,8 @@ enum Entity {
 	DROPPED_ITEM_COLLECT_RADIUS,
 	BULLET_SPLIT,
 	BULLET_REFRACTION,
-	BULLET_TRACE
+	BULLET_TRACE,
+	GRAVITY
 }
 static var entityMap = {
 	Entity.MAX_HEALTH: "生命上限",
@@ -56,10 +57,11 @@ static var entityMap = {
 	Entity.LUCK_VALUE: "幸运值",
 	Entity.SAVE_ENERGY: "节能",
 	Entity.ENERGY_REGENERATION: "能量再生效率",
-	Entity.DROPPED_ITEM_COLLECT_RADIUS: "掉落物拾取距离",
+	Entity.DROPPED_ITEM_COLLECT_RADIUS: "拾取距离",
 	Entity.BULLET_SPLIT: "分裂",
 	Entity.BULLET_REFRACTION: "折射",
 	Entity.BULLET_TRACE: "追踪",
+	Entity.GRAVITY: "引力",
 }
 static var entityMapType = {
 	Entity.MAX_HEALTH: DataType.VALUE,
@@ -87,6 +89,7 @@ static var entityMapType = {
 	Entity.BULLET_SPLIT: DataType.VALUE,
 	Entity.BULLET_REFRACTION: DataType.VALUE,
 	Entity.BULLET_TRACE: DataType.PERCENT,
+	Entity.GRAVITY: DataType.VALUE,
 }
 static var entityMaxValueMap = {
 	Entity.CRIT_RATE: 0.8,
