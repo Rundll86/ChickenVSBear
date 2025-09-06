@@ -13,9 +13,13 @@ signal selected(applied: bool)
 @export var store: Dictionary = {
 	"atk": 10
 }
+@export var storeType: Array[FieldStore.DataType] = [
+	FieldStore.DataType.VALUE
+]
 @export var descriptionTemplate: String = "造成$atk点伤害。"
 @export var needEnergy: float = 0
 @export var cooldown: float = 100
+@export var debugRebuild: bool = false
 
 @onready var avatarRect: TextureRect = $"%avatar"
 @onready var nameLabel: WeaponName = $"%name"
@@ -33,8 +37,10 @@ func _ready():
 	)
 	cooldownTimer.cooldown = cooldown
 	rebuildInfo()
-func _physics_process(_delta: float):
-	descriptionLabel.text = buildDescription()
+	debugRebuild = false # 只能在编辑器里打开
+func _physics_process(_delta):
+	if debugRebuild:
+		rebuildInfo()
 
 func allHad(entity: EntityBase) -> bool:
 	var allHave = true
@@ -66,6 +72,7 @@ func rebuildInfo():
 	nameLabel.quality = quality
 	nameLabel.typeTopic = typeTopic
 	energyLabel.text = "%.1f" % needEnergy
+	descriptionLabel.text = buildDescription()
 	for i in costsBox.get_children():
 		i.queue_free()
 	for i in range(min(costs.size(), costCounts.size())):
@@ -77,8 +84,18 @@ func rebuildInfo():
 		costsBox.add_child(costShow)
 func buildDescription():
 	var result = descriptionTemplate
+	var i = 0
 	for key in store.keys():
-		result = result.replace("$" + key, "[color=cyan]%.1f[/color]" % readStore(key))
+		var data = store[key]
+		var type = storeType[i]
+		if type == FieldStore.DataType.VALUE:
+			data = "%.1f" % data
+		elif type == FieldStore.DataType.PERCENT:
+			data = ("%.1f" % (data * 100)) + "%"
+		elif type == FieldStore.DataType.ANGLE:
+			data = "%.1f°" % data
+		result = result.replace("$" + key, "[color=cyan]%s[/color]" % data)
+		i += 1
 	return "[center]%s[/center]" % result
 func readStore(key: String, default: Variant = null):
 	return store.get(key, default)

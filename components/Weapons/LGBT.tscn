@@ -18,6 +18,7 @@ store = {
 "power": 0.3,
 "trace": 2.0
 }
+storeType = Array[int]([0, 0, 1, 0])
 descriptionTemplate = "发射$count条可追踪$trace秒，效率为$power的带状彩虹，每条造成$atk点伤害。"
 needEnergy = 150.0
 
@@ -33,5 +34,5 @@ quality = 4
 
 [node name="description" parent="container" index="2"]
 size_flags_vertical = 3
-text = "[center]发射[color=cyan]7.0[/color]条可追踪[color=cyan]2.0[/color]秒，效率为[color=cyan]0.3[/color]的带状彩虹，每条造成[color=cyan]20.0[/color]点伤害。[/center]"
+text = "[center]发射[color=cyan]7.0[/color]条可追踪[color=cyan]2.0[/color]秒，效率为[color=cyan]30.0%[/color]的带状彩虹，每条造成[color=cyan]20.0[/color]点伤害。[/center]"
 autowrap_mode = 2

@@ -211,7 +211,6 @@ func tryAttack(type: int, needChargeUp: bool = false):
 		var done
 		if isPlayer():
 			done = weapon.attack(self)
-			print("test", done, weapon.name)
 		else:
 			done = attack(type)
 		if done:

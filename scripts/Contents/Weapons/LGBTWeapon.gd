@@ -1,3 +1,4 @@
+@tool
 extends Weapon
 class_name LGBTWeapon
 
