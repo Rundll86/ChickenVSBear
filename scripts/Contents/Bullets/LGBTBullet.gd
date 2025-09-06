@@ -11,7 +11,7 @@ func ai():
 	speed *= 1.05
 	speed = clamp(speed, 0, 20)
 	if is_instance_valid(tracer) and timeLived() < maxTraceTime:
-		PresetAIs.trace(self, tracer.getTrackingAnchor(), clamp(speed / 50 * tracePower, 0, 1))
-	PresetAIs.forward(self, rotation)
+		PresetBulletAI.trace(self, tracer.getTrackingAnchor(), clamp(speed / 50 * tracePower, 0, 1))
+	PresetBulletAI.forward(self, rotation)
 func destroy(_b):
 	EffectController.create(preload("res://components/Effects/LGBTBoom.tscn"), position).shot()

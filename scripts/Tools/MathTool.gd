@@ -15,3 +15,14 @@ static func percent(value: float):
 	return value / 100
 static func shrimpRate(value: float):
 	return floor(value) + int(rate(value - floor(value)))
+static func getClosestIntersection(a: Vector2, b: Vector2, r: float) -> Vector2:
+	var ab = b - a
+	var distance = ab.length()
+	if distance < 0.00001:
+		return a + Vector2.RIGHT * r
+	var abNormalized = ab / distance
+	var distanceB = distance
+	if distanceB <= r:
+		return b
+	var intersection = a + abNormalized * r
+	return intersection

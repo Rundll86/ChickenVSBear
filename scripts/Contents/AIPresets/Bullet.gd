@@ -1,4 +1,4 @@
-class_name PresetAIs
+class_name PresetBulletAI
 
 static func lockLauncher(bullet: BulletBase, launcher: EntityBase, onTexture: bool = false):
 	bullet.position = launcher.texture.global_position if onTexture else launcher.position

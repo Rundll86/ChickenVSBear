@@ -17,7 +17,7 @@ func spawn():
 	texture.play("walk")
 
 func ai():
-	move(currentFocusedBoss.position - position)
+	PresetEntityAI.follow(self, currentFocusedBoss, 0)
 	if currentFocusedBoss.position.distance_to(position) < 200:
 		tryAttack(2)
 	elif currentFocusedBoss.position.distance_to(position) < 700:

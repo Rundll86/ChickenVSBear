@@ -5,4 +5,4 @@ func register():
 	penerate = 1
 func ai():
 	rotation_degrees += 1
-	PresetAIs.lockLauncher(self, launcher, true)
+	PresetBulletAI.lockLauncher(self, launcher, true)

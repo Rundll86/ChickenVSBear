@@ -6,7 +6,7 @@ func register():
 	damage = 20
 	penerate = 1
 func ai():
-	PresetAIs.lockLauncher(self, launcher, true)
+	PresetBulletAI.lockLauncher(self, launcher, true)
 	if !launcher.sprinting:
 		tryDestroy()
 func destroy(beacuseMap: bool):

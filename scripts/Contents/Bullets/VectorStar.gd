@@ -9,7 +9,7 @@ var rotateSpeed: float = 1
 func ai():
 	texture.rotation_degrees += rotateSpeed
 	rotateSpeed += 0.25
-	PresetAIs.forward(self, rotation)
+	PresetBulletAI.forward(self, rotation)
 	if timeLived() <= forwardTime:
 		speed = 10 * ((forwardTime - timeLived()) / forwardTime)
 	elif forwarded:

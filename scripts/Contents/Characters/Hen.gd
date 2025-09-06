@@ -8,7 +8,7 @@ func register():
 
 func ai():
 	attackCooldownMap[0] = randi_range(1500, 4000)
-	move(currentFocusedBoss.position - position)
+	PresetEntityAI.follow(self, currentFocusedBoss, 300)
 	tryAttack(0)
 func attack(type):
 	if type == 0:

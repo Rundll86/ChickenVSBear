@@ -7,6 +7,6 @@ func register():
 	damage = 2
 func ai():
 	canDamageSelf = !(timeLived() >= traceTime)
-	PresetAIs.forward(self, rotation)
+	PresetBulletAI.forward(self, rotation)
 	if timeLived() < traceTime:
-		PresetAIs.trace(self, launcher.currentFocusedBoss.getTrackingAnchor(), 0.05)
+		PresetBulletAI.trace(self, launcher.currentFocusedBoss.getTrackingAnchor(), 0.05)

@@ -62,9 +62,9 @@ func _physics_process(_delta: float) -> void:
 		var targetEntity = EntityTool.findClosetEntity(position, get_tree(),
 		!launcher.isPlayer(),
 		launcher.isPlayer(),
-		[launcher]		)
+		[launcher])
 		if is_instance_valid(targetEntity):
-			PresetAIs.trace(
+			PresetBulletAI.trace(
 				self,
 				targetEntity.getTrackingAnchor(),
 				launcher.fields.get(FieldStore.Entity.BULLET_TRACE) / 10

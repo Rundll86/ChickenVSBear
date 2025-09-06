@@ -2,7 +2,7 @@ extends BulletBase
 class_name PurpleCrystal
 
 func ai():
-	PresetAIs.forward(self, rotation)
+	PresetBulletAI.forward(self, rotation)
 func destroy(_beacuseMap: bool):
 	var eff = EffectController.create(preload("res://components/Effects/PurpleCrystalExplosion.tscn"), global_position)
 	eff.rotation = rotation
