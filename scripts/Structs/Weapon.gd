@@ -2,14 +2,11 @@
 extends PanelContainer
 class_name Weapon
 
-signal selected(applied: bool)
-
 @export var avatarTexture: Texture2D = preload("res://icon.svg")
 @export var displayName: String = "未命名饲料"
 @export var quality: WeaponName.Quality = WeaponName.Quality.COMMON
 @export var typeTopic: WeaponName.TypeTopic = WeaponName.TypeTopic.IMPACT
-@export var costs: Array[ItemStore.ItemType] = []
-@export var costCounts: Array[int] = []
+@export var costBeachball: int = 0
 @export var store: Dictionary = {
 	"atk": 10
 }
@@ -20,18 +17,21 @@ signal selected(applied: bool)
 @export var needEnergy: float = 0
 @export var cooldown: float = 100
 @export var debugRebuild: bool = false
+@export var level: int = 0
 
 @onready var avatarRect: TextureRect = $"%avatar"
 @onready var nameLabel: WeaponName = $"%name"
 @onready var energyLabel: Label = $"%energy"
+@onready var beachballLabel: Label = $"%beachball"
 @onready var descriptionLabel: RichTextLabel = $"%description"
-@onready var costsBox: GridContainer = $"%costs"
 @onready var updateButton: Button = $"%updateBtn"
 @onready var sounds: Node2D = $"%sounds"
 
 var cooldownTimer = CooldownTimer.new()
+var originalStore: Dictionary = {}
 
 func _ready():
+	originalStore = store
 	updateButton.pressed.connect(
 		func():
 			apply(UIState.player)
@@ -46,23 +46,12 @@ func _physics_process(_delta):
 		rebuildInfo()
 
 func allHad(entity: EntityBase) -> bool:
-	var allHave = true
-	for i in range(min(costs.size(), costCounts.size())):
-		var item = costs[i]
-		var count = costCounts[i] * multipiler()
-		if entity.inventory[item] < count:
-			allHave = false
-			break
-	return allHave
+	return entity.inventory[ItemStore.ItemType.BEACHBALL] >= costBeachball
 func apply(entity: EntityBase):
 	var allHave = allHad(entity)
 	if allHave:
-		for i in range(min(costs.size(), costCounts.size())):
-			var item = costs[i]
-			var count = costCounts[i] * multipiler()
-			entity.inventory[item] -= count
-		hide()
-	selected.emit(allHave)
+		entity.inventory[ItemStore.ItemType.BEACHBALL] -= costBeachball
+		store = update(level + 1, originalStore.duplicate(), entity)
 	return allHave
 func multipiler() -> float:
 	if is_instance_valid(UIState.player):
@@ -75,17 +64,9 @@ func rebuildInfo():
 	nameLabel.quality = quality
 	nameLabel.typeTopic = typeTopic
 	energyLabel.text = "%.1f" % needEnergy
+	beachballLabel.text = str(costBeachball)
 	descriptionLabel.text = buildDescription()
-	for i in costsBox.get_children():
-		i.queue_free()
-	for i in range(min(costs.size(), costCounts.size())):
-		var cost = costs[i]
-		var count = costCounts[i]
-		var costShow: ItemShow = preload("res://components/UI/ItemShow.tscn").instantiate()
-		costShow.type = cost
-		costShow.count = int(count * multipiler())
-		costsBox.add_child(costShow)
-func buildDescription():
+func buildDescription() -> String:
 	var result = descriptionTemplate
 	var i = 0
 	for key in store.keys():
@@ -116,7 +97,7 @@ func tryAttack(entity: EntityBase):
 			return attack(entity)
 
 # 抽象
-func update(_to: int, _origin: Dictionary, _entity: EntityBase):
-	pass
+func update(_to: int, origin: Dictionary, _entity: EntityBase):
+	return origin
 func attack(_entity: EntityBase):
 	pass

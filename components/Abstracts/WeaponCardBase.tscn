@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckq2cq6m23hq3"]
+[gd_scene load_steps=8 format=3 uid="uid://ckq2cq6m23hq3"]
 
 [ext_resource type="Script" path="res://scripts/Structs/Weapon.gd" id="1_g802t"]
 [ext_resource type="Theme" uid="uid://dhvs6urgf6jr5" path="res://themes/main.tres" id="2_fwkd3"]
 [ext_resource type="PackedScene" uid="uid://ch81vd3awkmhk" path="res://components/UI/WeaponName.tscn" id="3_qv0b1"]
 [ext_resource type="Texture2D" uid="uid://dwwpkn4q07ja2" path="res://icon.svg" id="3_vtucy"]
 [ext_resource type="Texture2D" uid="uid://k13cte17httt" path="res://resources/items/energy.svg" id="4_6gohw"]
+[ext_resource type="Texture2D" uid="uid://dw0g7cb4skd5s" path="res://resources/items/beachball.svg" id="5_pr18h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2ewr"]
 content_margin_left = 30.0
@@ -27,6 +28,7 @@ offset_right = 350.0
 offset_bottom = 304.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_n2ewr")
 script = ExtResource("1_g802t")
+costBeachball = 100
 metadata/_edit_lock_ = true
 
 [node name="sounds" type="Node2D" parent="."]
@@ -60,11 +62,16 @@ texture = ExtResource("3_vtucy")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="energyInfo" type="HBoxContainer" parent="container/info"]
+[node name="infos" type="HBoxContainer" parent="container/info"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="energyInfo" type="HBoxContainer" parent="container/info/infos"]
 layout_mode = 2
 alignment = 1
 
-[node name="icon" type="TextureRect" parent="container/info/energyInfo"]
+[node name="icon" type="TextureRect" parent="container/info/infos/energyInfo"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -73,16 +80,33 @@ texture = ExtResource("4_6gohw")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="energy" type="Label" parent="container/info/energyInfo"]
+[node name="energy" type="Label" parent="container/info/infos/energyInfo"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0.0"
+
+[node name="beachballInfo" type="HBoxContainer" parent="container/info/infos"]
+layout_mode = 2
+alignment = 1
+
+[node name="icon" type="TextureRect" parent="container/info/infos/beachballInfo"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_pr18h")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="beachball" type="Label" parent="container/info/infos/beachballInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
 
 [node name="name" parent="container/info" instance=ExtResource("3_qv0b1")]
 unique_name_in_owner = true
 layout_mode = 2
 displayName = "未命名饲料"
-quality = 1
 
 [node name="description" type="RichTextLabel" parent="container"]
 unique_name_in_owner = true
