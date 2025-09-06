@@ -4,7 +4,9 @@ class_name PurpleCrystal
 func ai():
 	PresetAIs.forward(self, rotation)
 func destroy(_beacuseMap: bool):
-	EffectController.create(preload("res://components/Effects/PurpleCrystalExplosion.tscn"), global_position).shot()
+	var eff = EffectController.create(preload("res://components/Effects/PurpleCrystalExplosion.tscn"), global_position)
+	eff.rotation = rotation
+	eff.shot()
 func split(index, total, _last):
 	BulletBase.generate(
 		preload("res://components/Bullets/PurpleCrystal.tscn"),

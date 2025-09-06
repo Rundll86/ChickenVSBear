@@ -33,9 +33,9 @@ particle_flag_disable_z = true
 angle_min = 1.07288e-05
 angle_max = 360.0
 angle_curve = SubResource("CurveTexture_fp3qe")
-direction = Vector3(0, -1, 0)
-spread = 180.0
-initial_velocity_max = 150.0
+direction = Vector3(-1, 0, 0)
+spread = 75.0
+initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 scale_min = 3.0
 scale_max = 8.0
@@ -81,8 +81,8 @@ _data = {
 
 [node name="Explosion" instance=ExtResource("1_sqdwd")]
 
-[node name="particles" parent="." index="0"]
-amount = 20
+[node name="particles" parent="." index="1"]
+amount = 25
 process_material = SubResource("ParticleProcessMaterial_w52ko")
 lifetime = 0.5
 
