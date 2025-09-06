@@ -4,9 +4,11 @@ class_name VectorStar
 var tracer: EntityBase = null
 var forwardTime: float = 1000
 var forwarded: bool = false
+var rotateSpeed: float = 1
 
 func ai():
-	texture.rotation_degrees *= 1.1
+	texture.rotation_degrees += rotateSpeed
+	rotateSpeed += 0.25
 	PresetAIs.forward(self, rotation)
 	if timeLived() <= forwardTime:
 		speed = 10 * ((forwardTime - timeLived()) / forwardTime)
