@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb1uh8k7gkhr7"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_tmgup"]
+[ext_resource type="Script" path="res://scripts/Contents/Weapons/VectorStarWeapon.gd" id="2_1dfg4"]
+[ext_resource type="Texture2D" uid="uid://d2pndtow16635" path="res://resources/bullets/lgbt-bullet/造型2.svg" id="3_wfty8"]
+
+[node name="VectorStar" instance=ExtResource("1_tmgup")]
+script = ExtResource("2_1dfg4")
+avatarTexture = ExtResource("3_wfty8")
+displayName = "星辰核心"
+quality = 2
+store = {
+"atk": 5,
+"forwardtime": 1,
+"maxcount": 6,
+"mincount": 3
+}
+storeType = Array[int]([0, 0, 0, 0])
+descriptionTemplate = "发射$mincount~$maxcount个[b]无主的矢量星[/b]，在$forwardtime秒后向目标冲刺并造成$atk点伤害。"
+needEnergy = 20.0
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("3_wfty8")
+
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
+text = "20.0"
+
+[node name="name" parent="container/info" index="2"]
+displayName = "星辰核心"
+quality = 2
+
+[node name="description" parent="container" index="2"]
+text = "[center]发射[color=cyan]3.0[/color]~[color=cyan]6.0[/color]个[b]无主的矢量星[/b]，在[color=cyan]1.0[/color]秒后向目标冲刺并造成[color=cyan]5.0[/color]点伤害。[/center]"

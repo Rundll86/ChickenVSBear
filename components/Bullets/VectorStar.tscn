@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ro1df12asa6y"]
+[gd_scene load_steps=10 format=3 uid="uid://ro1df12asa6y"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_fyvdf"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/VectorStar.gd" id="2_1u5ed"]
 [ext_resource type="Texture2D" uid="uid://d2pndtow16635" path="res://resources/bullets/lgbt-bullet/造型2.svg" id="2_7b7fr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jj20o"]
@@ -15,7 +16,7 @@ animations = [{
 }]
 
 [sub_resource type="Curve" id="Curve_y5wc0"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_c22if"]
@@ -32,17 +33,23 @@ curve = SubResource("Curve_r5tug")
 particle_flag_disable_z = true
 direction = Vector3(-1, 0, 0)
 spread = 0.0
-initial_velocity_min = 50.0
-initial_velocity_max = 100.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
 gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
 scale_curve = SubResource("CurveTexture_6bcs1")
 alpha_curve = SubResource("CurveTexture_c22if")
 
 [node name="VectorStar" instance=ExtResource("1_fyvdf")]
+script = ExtResource("2_1u5ed")
+lifeDistance = 3000.0
 
 [node name="texture" parent="." index="0"]
+rotation = 0.0174533
 sprite_frames = SubResource("SpriteFrames_jj20o")
 
 [node name="particles" type="GPUParticles2D" parent="." index="2"]
+amount = 20
 process_material = SubResource("ParticleProcessMaterial_bieyj")
 texture = ExtResource("2_7b7fr")

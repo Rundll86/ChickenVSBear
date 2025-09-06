@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=17 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://wl8u5m52708w" path="res://components/Weapons/LGBT.tscn" id="4_pb8qn"]
 [ext_resource type="PackedScene" uid="uid://cxabqjo7skxev" path="res://components/Weapons/BigLaser.tscn" id="4_plqwu"]
 [ext_resource type="AudioStream" uid="uid://dmxh3bpk8vyy5" path="res://resources/sounds/effect/Coin.mp3" id="5_xnbhq"]
+[ext_resource type="PackedScene" uid="uid://bb1uh8k7gkhr7" path="res://components/Weapons/VectorStar.tscn" id="6_fvy5n"]
 [ext_resource type="AudioStream" uid="uid://4wuuf1osk0yv" path="res://resources/sounds/effect/Low Boing.wav" id="6_m5px1"]
 [ext_resource type="AudioStream" uid="uid://b10u6iir6uvqn" path="res://resources/sounds/effect/BigLaser.wav" id="8_7dhim"]
 
@@ -50,6 +51,9 @@ process_mode = 4
 [node name="LGBT" parent="weaponStore" index="1" instance=ExtResource("4_pb8qn")]
 
 [node name="BigLaser" parent="weaponStore" index="2" instance=ExtResource("4_plqwu")]
+
+[node name="VectorStar" parent="weaponStore" index="3" instance=ExtResource("6_fvy5n")]
+debugRebuild = false
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")
