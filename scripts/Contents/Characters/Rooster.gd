@@ -17,6 +17,9 @@ func ai():
 		tryAttack(0)
 	elif Input.is_action_pressed("attack2"):
 		tryAttack(1)
+	for i in range(3):
+		if Input.is_action_pressed("skill" + str(i)):
+			tryAttack(2 + i)
 	if Input.is_action_just_pressed("sprint"):
 		trySprint()
 	if Input.is_action_just_pressed("heal"):

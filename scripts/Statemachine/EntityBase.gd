@@ -199,7 +199,10 @@ func useEnergy(value: float):
 func tryAttack(type: int, needChargeUp: bool = false):
 	var weapon: Weapon
 	if isPlayer():
-		weapon = weapons[type]
+		if len(weapons) > type:
+			weapon = weapons[type]
+		else:
+			return
 	var state
 	if isPlayer():
 		state = true
