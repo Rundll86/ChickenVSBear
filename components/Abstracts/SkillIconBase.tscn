@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ufl4kek8hrmt"]
+
+[ext_resource type="Shader" path="res://shaders/CooldownProgress.gdshader" id="1_jaivk"]
+[ext_resource type="Texture2D" uid="uid://cp4ypuarjoshp" path="res://resources/skillIcons/purple-crystal.png" id="2_hh1bl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a60wd"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0.5)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ew32n"]
+shader = ExtResource("1_jaivk")
+shader_parameter/progress = 0.58
+
+[node name="SkillIconBase" type="PanelContainer"]
+custom_minimum_size = Vector2(30, 30)
+offset_right = 30.0
+offset_bottom = 30.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a60wd")
+
+[node name="icon" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_ew32n")
+layout_mode = 2
+texture = ExtResource("2_hh1bl")
+expand_mode = 1
+stretch_mode = 5
