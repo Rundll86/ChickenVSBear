@@ -14,7 +14,7 @@ typeTopic = 1
 costs = Array[int]([0, 1])
 costCounts = Array[int]([100, 50])
 store = {
-"atk": 35,
+"atk": 40,
 "time": 0.1
 }
 storeType = Array[int]([0, 0])
@@ -23,6 +23,7 @@ needEnergy = 100.0
 cooldown = 6000.0
 
 [node name="attack" parent="sounds" index="0"]
+process_mode = 3
 stream = ExtResource("4_cb5nh")
 
 [node name="avatar" parent="container/info" index="0"]
@@ -37,4 +38,4 @@ quality = 2
 typeTopic = 1
 
 [node name="description" parent="container" index="2"]
-text = "[center]每[color=cyan]0.1[/color]秒造成[color=cyan]35.0[/color]点伤害。[/center]"
+text = "[center]每[color=cyan]0.1[/color]秒造成[color=cyan]40.0[/color]点伤害。[/center]"
