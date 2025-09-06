@@ -11,11 +11,12 @@ enum Difficulty {
 static var difficulty: Difficulty = Difficulty.NORMAL # 难度倍数，可以写小数
 static var allowFriendlyFire: bool = false # 是否允许友军伤害
 static var bulletSpeedMultiplier: float = 1 # 子弹速度倍率
-static var damageOffset: float = MathTool.percent(20) # 伤害随机浮动比例，如20%即10的基础伤害会应用为8~12
+static var damageOffset: float = MathTool.percent(20) # 伤害随机浮动比例
+static var beachballOffset: float = MathTool.percent(30) # 棒球掉落数随机浮动比例
 static var damageLabelSpawnOffset: float = 10 # 伤害标签生成位置的随机偏移
 static var itemDroppedSpawnOffset: float = 30 # 掉落物生成位置的随机偏移
 static var appleDropRate: float = MathTool.percent(10) # 苹果掉落概率
-static var refreshCountIncreasePercent: Vector2 = Vector2(MathTool.percent(20), MathTool.percent(75)) # 刷新所需的棒球数量的增加的百分比
+static var refreshCountIncreasePercent: Vector2 = Vector2(MathTool.percent(10), MathTool.percent(50)) # 刷新所需的棒球数量的增加的百分比
 static var entityCountBoostPerWave: float = MathTool.percent(10) # 每波敌人数量增加的百分比，倍数级
 static var itemShowLifetime: int = 1500 # 物品展示组件如果设置了自动隐藏，那么隐藏前可以存活的时间
 static var tipSpawnRateWhenGetDroppedItem: float = MathTool.percent(25) # 当玩家获取到掉落物时，提示的概率

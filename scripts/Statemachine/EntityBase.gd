@@ -249,7 +249,11 @@ func tryDie(by: BulletBase):
 	) or isBoss:
 		for i in randi_range(appleCount.x, appleCount.y):
 			ItemDropped.generate(ItemStore.ItemType.APPLE, 1, position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
-	ItemDropped.generate(ItemStore.ItemType.BEACHBALL, fields[FieldStore.Entity.MAX_HEALTH], position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
+	ItemDropped.generate(
+		ItemStore.ItemType.BEACHBALL,
+		fields[FieldStore.Entity.MAX_HEALTH] * randf_range(1 - GameRule.beachballOffset, 1 + GameRule.beachballOffset),
+		position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset)
+	)
 	EffectController.create(preload("res://components/Effects/DeadBlood.tscn"), texture.global_position).shot()
 	await die()
 	if isPlayer() and UIState.player == self:
