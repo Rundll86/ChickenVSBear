@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=17 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
@@ -13,7 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://dmxh3bpk8vyy5" path="res://resources/sounds/effect/Coin.mp3" id="5_xnbhq"]
 [ext_resource type="PackedScene" uid="uid://bb1uh8k7gkhr7" path="res://components/Weapons/VectorStar.tscn" id="6_fvy5n"]
 [ext_resource type="AudioStream" uid="uid://4wuuf1osk0yv" path="res://resources/sounds/effect/Low Boing.wav" id="6_m5px1"]
-[ext_resource type="PackedScene" uid="uid://ct2p0fbd5ktof" path="res://components/Weapons/Arrow7.tscn" id="7_jguvd"]
 [ext_resource type="AudioStream" uid="uid://b10u6iir6uvqn" path="res://resources/sounds/effect/BigLaser.wav" id="8_7dhim"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4v2ol"]
@@ -58,8 +57,6 @@ debugRebuild = false
 
 [node name="BigLaser" parent="weaponStore" index="3" instance=ExtResource("4_plqwu")]
 debugRebuild = false
-
-[node name="WeaponCard" parent="weaponStore" index="4" instance=ExtResource("7_jguvd")]
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")
