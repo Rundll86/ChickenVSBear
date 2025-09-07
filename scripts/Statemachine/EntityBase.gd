@@ -20,7 +20,7 @@ var fields = {
 	FieldStore.Entity.SAVE_ENERGY: 1,
 	FieldStore.Entity.ENERGY_MULTIPILER: 1,
 	FieldStore.Entity.ENERGY_REGENERATION: 1,
-	FieldStore.Entity.PERFECT_MISS_WINDOW: 0.15,
+	FieldStore.Entity.PERFECT_MISS_WINDOW: 0.05,
 	"子弹": TITLE_FLAG,
 	FieldStore.Entity.OFFSET_SHOOT: 3,
 	FieldStore.Entity.PENERATE: 0,
@@ -177,7 +177,7 @@ func takeDamage(bullet: BulletBase, crit: bool):
 	var perfectMiss = false
 	if sprinting:
 		playSound("miss")
-		if velocity.length() > (displace(velocity, true) * sprintMultiplier * (1 - fields.get(FieldStore.Entity.PERFECT_MISS_WINDOW))).length():
+		if velocity.length() > (displace(velocity) * sprintMultiplier * (1 - fields.get(FieldStore.Entity.PERFECT_MISS_WINDOW))).length():
 			perfectMiss = true
 		if perfectMiss:
 			storeEnergy(damage * 2)
