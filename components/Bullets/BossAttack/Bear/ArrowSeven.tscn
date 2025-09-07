@@ -1,0 +1,161 @@
+[gd_scene load_steps=24 format=3 uid="uid://bjskq2m1rrlks"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_dvf35"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/BossAttack/Bear/ArrowSeven.gd" id="2_uqsop"]
+[ext_resource type="Shader" path="res://shaders/Light.gdshader" id="3_j0g0m"]
+[ext_resource type="Texture2D" uid="uid://chq2rnqi00nbj" path="res://resources/bullets/light-express/Prismatic_Bolt.webp" id="3_tmrnu"]
+[ext_resource type="Shader" path="res://shaders/SuperLight.gdshader" id="5_lyybq"]
+[ext_resource type="Script" path="res://scripts/Statemachine/ShaderStage.gd" id="5_ppdpf"]
+
+[sub_resource type="Gradient" id="Gradient_wd04q"]
+offsets = PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.447059, 0, 1, 1, 0.890625, 0, 1, 0, 0.820313, 0.128174, 1, 0, 1, 0.859375, 1, 0, 0.53125, 1, 1, 0.429688, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e0qv5"]
+gradient = SubResource("Gradient_wd04q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nfgk"]
+shader = ExtResource("3_j0g0m")
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q4xus"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tmrnu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_usqjd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("superlight:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oinqg"]
+resource_name = "destroy"
+length = 0.5
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_ynxlt"]
+resource_name = "loop"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("superlight:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kmogx"]
+resource_name = "spawn"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f7cx6"]
+_data = {
+"RESET": SubResource("Animation_usqjd"),
+"destroy": SubResource("Animation_oinqg"),
+"loop": SubResource("Animation_ynxlt"),
+"spawn": SubResource("Animation_kmogx")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7e3fr"]
+shader = ExtResource("5_lyybq")
+shader_parameter/k = -0.223
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/scale = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3sk0"]
+shader = ExtResource("3_j0g0m")
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yjmap"]
+radius = 5.0
+height = 42.0
+
+[sub_resource type="Curve" id="Curve_n2t6r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wjo54"]
+curve = SubResource("Curve_n2t6r")
+
+[sub_resource type="Curve" id="Curve_uxwl3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_i5kg3"]
+curve = SubResource("Curve_uxwl3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7osnr"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+scale_min = 10.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_i5kg3")
+alpha_curve = SubResource("CurveTexture_wjo54")
+
+[node name="ArrowSeven" instance=ExtResource("1_dvf35")]
+position = Vector2(-34, -24)
+script = ExtResource("2_uqsop")
+allColor = SubResource("GradientTexture1D_e0qv5")
+autoLoopAnimation = true
+
+[node name="texture" parent="." index="0"]
+material = SubResource("ShaderMaterial_1nfgk")
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_q4xus")
+
+[node name="animator" parent="texture" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_f7cx6")
+}
+
+[node name="superlight" type="Node2D" parent="texture" index="1"]
+unique_name_in_owner = true
+z_index = -1
+material = SubResource("ShaderMaterial_7e3fr")
+script = ExtResource("5_ppdpf")
+size = Vector2(100, 200)
+
+[node name="frontlight" type="Node2D" parent="texture" index="2"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_w3sk0")
+scale = Vector2(0.968786, 0.968786)
+script = ExtResource("5_ppdpf")
+size = Vector2(40, 40)
+color = Color(1, 1, 1, 0)
+
+[node name="hitbox" parent="." index="1"]
+visible = false
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_yjmap")
+
+[node name="trail" type="GPUParticles2D" parent="." index="2"]
+unique_name_in_owner = true
+z_index = -1
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_7osnr")
