@@ -3,9 +3,9 @@ class_name ChickSprint
 
 func register():
 	speed = 0
-	damage = 20
 	penerate = 1
 func ai():
+	damage = launcher.velocity.length()
 	PresetBulletAI.lockLauncher(self, launcher, true)
 	if !launcher.sprinting:
 		tryDestroy()
