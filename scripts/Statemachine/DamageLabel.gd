@@ -24,10 +24,10 @@ func _ready():
 	else:
 		if crit:
 			label.label_settings.font_color = color4
-			label.text = "PERFECT MISS"
+			label.text = "完美闪避"
 		else:
 			label.label_settings.font_color = color3
-			label.text = "MISS"
+			label.text = "闪避"
 	animator.play("show")
 	await animator.animation_finished
 	queue_free()
