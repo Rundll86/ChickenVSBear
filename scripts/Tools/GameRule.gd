@@ -8,6 +8,7 @@ enum Difficulty {
 	EXPERT,
 	MASTER,
 }
+static var deadReasons: Array = JsonTool.parseJson("res://resources/constants/deadReasons.json")
 static var difficulty: Difficulty = Difficulty.NORMAL # 难度倍数，可以写小数
 static var allowFriendlyFire: bool = false # 是否允许友军伤害
 static var bulletSpeedMultiplier: float = 1 # 子弹速度倍率
