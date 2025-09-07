@@ -173,9 +173,15 @@ func takeDamage(bullet: BulletBase, crit: bool):
 	hurtAnimator.play("hurt")
 	var baseDamage: float = bullet.damage * bullet.launcher.fields.get(FieldStore.Entity.DAMAGE_MULTIPILER) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)
 	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
+	var perfectMiss = false
 	if sprinting:
 		playSound("miss")
-		storeEnergy(damage * 0.35)
+		if velocity.length() > (displace(velocity, true) * sprintMultiplier * 0.9).length():
+			perfectMiss = true
+		if perfectMiss:
+			storeEnergy(damage * 2)
+		else:
+			storeEnergy(damage * 0.35)
 		damage = 0
 	else:
 		playSound("hurt")
@@ -184,7 +190,7 @@ func takeDamage(bullet: BulletBase, crit: bool):
 	hit.emit(damage, bullet, crit)
 	healthChanged.emit(health)
 	health -= damage
-	DamageLabel.create(damage, crit, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
+	DamageLabel.create(damage, crit || perfectMiss, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
 	if isBoss and bullet.launcher.isPlayer():
 		bullet.launcher.setBoss(self)
 	if health <= 0:
