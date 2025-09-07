@@ -17,6 +17,8 @@ font = ExtResource("3_oynlg")
 font_color = Color(0.710938, 0.710938, 0.710938, 1)
 
 [node name="GameOver" instance=ExtResource("1_u2ynr")]
+offset_top = 0.0
+offset_bottom = 0.0
 script = ExtResource("2_6cd45")
 
 [node name="wrapper" parent="content" index="1"]
@@ -47,3 +49,4 @@ label_settings = SubResource("LabelSettings_ndokf")
 [node name="audio" type="AudioStreamPlayer2D" parent="." index="2"]
 unique_name_in_owner = true
 stream = ExtResource("3_n4aax")
+volume_db = 10.0
