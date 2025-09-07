@@ -1,0 +1,2 @@
+extends EntityBase
+class_name KukeMC

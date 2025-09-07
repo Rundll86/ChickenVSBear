@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4lfjwy0hkidu"]
+
+[ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_r4q7y"]
+[ext_resource type="Texture2D" uid="uid://c1jhrutky8pya" path="res://resources/characters/kukemc/avatar.webp" id="2_422pv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1c0ui"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_422pv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_422pv")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="KukeMC" instance=ExtResource("1_r4q7y")]
+displayName = "酷可mc"
+
+[node name="texture" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_1c0ui")
+animation = &"walk"
