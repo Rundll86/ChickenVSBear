@@ -57,12 +57,17 @@ radius = 114.215
 [node name="Bear" instance=ExtResource("1_3ves7")]
 script = ExtResource("2_kh2af")
 
-[node name="texture" parent="." index="1"]
+[node name="texture" parent="." index="2"]
 position = Vector2(0, -80)
 sprite_frames = SubResource("SpriteFrames_6tgxs")
+animation = &"walk"
+frame = 3
+frame_progress = 0.835241
 
 [node name="hitbox" parent="texture/hurtbox" index="0"]
 shape = SubResource("CircleShape2D_hekxf")
 
-[node name="statebar" parent="." index="2"]
+[node name="normal" type="Node2D" parent="texture/weapons" index="0"]
+
+[node name="statebar" parent="." index="3"]
 position = Vector2(0, -175)

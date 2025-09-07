@@ -269,7 +269,7 @@ func tryHeal(count: float):
 		healthChanged.emit(health)
 
 func findWeaponAnchor(weaponName: String):
-	var anchor = $"%weapons".get_node(weaponName)
+	var anchor = $"%weapons".get_node_or_null(weaponName)
 	if anchor is Node2D:
 		return anchor.global_position
 	else:

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ayxqglkc2nm"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_h0611"]
+[ext_resource type="Texture2D" uid="uid://0w8sebsqjb7a" path="res://resources/bullets/light-express/Sun_Dance.webp" id="2_rqhmg"]
+
+[node name="SunDance" instance=ExtResource("1_h0611")]
+
+[node name="leave1" type="Sprite2D" parent="texture" index="1"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(180, 0)
+texture = ExtResource("2_rqhmg")
+
+[node name="leave2" type="Sprite2D" parent="texture" index="2"]
+self_modulate = Color(3, 1, 1, 1)
+position = Vector2(160, 0)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_rqhmg")
+
+[node name="leave3" type="Sprite2D" parent="texture" index="3"]
+modulate = Color(10, 10, 10, 1)
+position = Vector2(140, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_rqhmg")
+
+[node name="leave4" type="Sprite2D" parent="texture" index="4"]
+modulate = Color(10, 10, 10, 1)
+position = Vector2(120, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_rqhmg")
