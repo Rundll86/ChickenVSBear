@@ -56,6 +56,7 @@ radius = 114.215
 
 [node name="Bear" instance=ExtResource("1_3ves7")]
 script = ExtResource("2_kh2af")
+displayName = "狗熊"
 
 [node name="texture" parent="." index="2"]
 position = Vector2(0, -80)

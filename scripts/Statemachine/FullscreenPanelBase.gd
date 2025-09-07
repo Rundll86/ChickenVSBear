@@ -9,8 +9,8 @@ func hidePanel():
 	await animator.animation_finished
 	visible = false
 	afterClose()
-func showPanel():
-	beforeOpen()
+func showPanel(args: Array = []):
+	beforeOpen(args)
 	visible = true
 	animator.play("show")
 	await animator.animation_finished
@@ -19,7 +19,7 @@ func _ready():
 	visible = false
 
 # 钩子
-func beforeOpen():
+func beforeOpen(_args: Array = []):
 	pass
 func afterClose():
 	pass

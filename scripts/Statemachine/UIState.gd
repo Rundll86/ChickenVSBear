@@ -64,13 +64,13 @@ func _physics_process(_delta):
 		if canOpen:
 			setPanel("Weapon")
 
-static func setPanel(targetName: String = ""):
+static func setPanel(targetName: String = "", args: Array = []):
 	currentPanel = null
 	for panel in panels.get_children():
 		if panel is FullscreenPanelBase:
 			if panel.name == targetName:
 				currentPanel = panel
-				panel.showPanel()
+				panel.showPanel(args)
 			else:
 				panel.hidePanel()
 static func closeCurrentPanel():

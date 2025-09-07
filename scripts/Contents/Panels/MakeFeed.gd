@@ -39,7 +39,7 @@ func _ready():
 		)
 		avaliableFeeds.add_child(feed)
 
-func beforeOpen():
+func beforeOpen(_args: Array = []):
 	selectedCount = 0
 	regenerateCards()
 

@@ -260,7 +260,7 @@ func tryDie(by: BulletBase):
 	EffectController.create(preload("res://components/Effects/DeadBlood.tscn"), texture.global_position).shot()
 	await die()
 	if isPlayer() and UIState.player == self:
-		UIState.setPanel("GameOver")
+		UIState.setPanel("GameOver", [displayName, by.launcher.displayName])
 func tryHeal(count: float):
 	if inventory[ItemStore.ItemType.APPLE] > 0 and health < fields.get(FieldStore.Entity.MAX_HEALTH):
 		inventory[ItemStore.ItemType.APPLE] -= 1

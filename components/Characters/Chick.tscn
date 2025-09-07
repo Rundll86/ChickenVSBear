@@ -57,7 +57,7 @@ stream = ExtResource("5_vcsbb")
 [node name="attack3" type="AudioStreamPlayer2D" parent="sounds" index="8"]
 stream = ExtResource("7_qjhwc")
 
-[node name="texture" parent="." index="1"]
+[node name="texture" parent="." index="2"]
 position = Vector2(0, -37)
 sprite_frames = SubResource("SpriteFrames_xji3d")
 
@@ -67,6 +67,6 @@ position = Vector2(30, -12)
 [node name="firepot" parent="texture/weapons/normal" index="0" instance=ExtResource("6_kvx3n")]
 unique_name_in_owner = true
 
-[node name="statebar" parent="." index="2" node_paths=PackedStringArray("entity")]
+[node name="statebar" parent="." index="3" node_paths=PackedStringArray("entity")]
 position = Vector2(0, -82)
 entity = NodePath("..")

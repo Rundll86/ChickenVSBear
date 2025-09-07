@@ -33,13 +33,14 @@ radius = 40.0
 
 [node name="Hen" instance=ExtResource("1_twxai")]
 script = ExtResource("2_8u5a0")
+displayName = "母鸡"
 drops = Array[int]([0, 1])
 dropCounts = Array[Vector2]([Vector2(6, 12), Vector2(4, 8)])
 
 [node name="hurt" parent="sounds" index="3"]
 stream = ExtResource("3_ojyt7")
 
-[node name="texture" parent="." index="1"]
+[node name="texture" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_xwexj")
 animation = &"walk"
 
@@ -48,6 +49,6 @@ shape = SubResource("CircleShape2D_0uubu")
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 
-[node name="statebar" parent="." index="2" node_paths=PackedStringArray("entity")]
+[node name="statebar" parent="." index="3" node_paths=PackedStringArray("entity")]
 position = Vector2(0, -114)
 entity = NodePath("..")

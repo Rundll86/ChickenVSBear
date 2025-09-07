@@ -3,7 +3,7 @@ extends FullscreenPanelBase
 
 @onready var box = $"%box"
 
-func beforeOpen():
+func beforeOpen(_args: Array = []):
 	for weapon in UIState.player.weapons:
 		weapon.show()
 		UIState.player.weaponStore.remove_child(weapon)
