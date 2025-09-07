@@ -60,7 +60,6 @@ debugRebuild = false
 debugRebuild = false
 
 [node name="WeaponCard" parent="weaponStore" index="4" instance=ExtResource("7_jguvd")]
-debugRebuild = false
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")

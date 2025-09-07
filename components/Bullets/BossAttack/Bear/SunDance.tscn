@@ -1,29 +1,160 @@
-[gd_scene load_steps=3 format=3 uid="uid://8ayxqglkc2nm"]
+[gd_scene load_steps=11 format=3 uid="uid://8ayxqglkc2nm"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_h0611"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/BossAttack/Bear/SunDance.gd" id="2_0kdtj"]
 [ext_resource type="Texture2D" uid="uid://0w8sebsqjb7a" path="res://resources/bullets/light-express/Sun_Dance.webp" id="2_rqhmg"]
 
+[sub_resource type="Gradient" id="Gradient_ep4dl"]
+offsets = PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.447059, 0, 1, 1, 0.890625, 0, 1, 0, 0.820313, 0.128174, 1, 0, 1, 0.859375, 1, 0, 0.53125, 1, 1, 0.429688, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ikq3n"]
+gradient = SubResource("Gradient_ep4dl")
+
+[sub_resource type="Animation" id="Animation_oinqg"]
+resource_name = "destroy"
+length = 0.5
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_ynxlt"]
+resource_name = "loop"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_kmogx"]
+resource_name = "spawn"
+length = 3.0
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%texture/..:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 2, 3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%texture/..:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 2, 3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%texture/..:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.504665, 2.00467, 3)
+}
+
+[sub_resource type="Animation" id="Animation_n0ppl"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%texture/..:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%texture/..:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%texture/..:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fv2s4"]
+_data = {
+"RESET": SubResource("Animation_n0ppl"),
+"destroy": SubResource("Animation_oinqg"),
+"loop": SubResource("Animation_ynxlt"),
+"spawn": SubResource("Animation_kmogx")
+}
+
 [node name="SunDance" instance=ExtResource("1_h0611")]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("2_0kdtj")
+allColor = SubResource("GradientTexture1D_ikq3n")
+autoSpawnAnimation = true
+freeAfterSpawn = true
+
+[node name="animator" parent="texture" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_fv2s4")
+}
 
 [node name="leave1" type="Sprite2D" parent="texture" index="1"]
-modulate = Color(1, 0, 0, 1)
+unique_name_in_owner = true
 position = Vector2(180, 0)
 texture = ExtResource("2_rqhmg")
 
 [node name="leave2" type="Sprite2D" parent="texture" index="2"]
-self_modulate = Color(3, 1, 1, 1)
+unique_name_in_owner = true
 position = Vector2(160, 0)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("2_rqhmg")
 
 [node name="leave3" type="Sprite2D" parent="texture" index="3"]
-modulate = Color(10, 10, 10, 1)
+unique_name_in_owner = true
 position = Vector2(140, 0)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_rqhmg")
 
 [node name="leave4" type="Sprite2D" parent="texture" index="4"]
-modulate = Color(10, 10, 10, 1)
+unique_name_in_owner = true
 position = Vector2(120, 0)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_rqhmg")
+
+[node name="hitbox" parent="." index="1"]
+rotation = 1.5708
+
+[node name="hitbox2" type="CollisionPolygon2D" parent="." index="2"]
+visible = false
+position = Vector2(-13, -1)
+polygon = PackedVector2Array(21, -8, 23, 10, 61, 21, 96, 23, 198, 17, 296, 1, 196, -17, 95, -20, 61, -19)
