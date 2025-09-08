@@ -160,6 +160,10 @@ func _physics_process(_delta: float) -> void:
 	trailParticle.emitting = trailing
 
 # 通用方法
+func getSprintInitialDisplace():
+	return displace(velocity) * sprintMultiplier
+func getSprintProgress():
+	return velocity.length() / getSprintInitialDisplace().length()
 func applyLevel():
 	fields[FieldStore.Entity.MAX_HEALTH] *= (1 + GameRule.entityHealthIncreasePerWave * (GameRule.difficulty + 1)) ** level
 	fields[FieldStore.Entity.DAMAGE_MULTIPILER] *= (1 + GameRule.entityDamageIncreasePerWave * (GameRule.difficulty + 1)) ** level
@@ -177,7 +181,7 @@ func takeDamage(bullet: BulletBase, crit: bool):
 	var perfectMiss = false
 	if sprinting:
 		playSound("miss")
-		if velocity.length() > (displace(velocity) * sprintMultiplier * (1 - fields.get(FieldStore.Entity.PERFECT_MISS_WINDOW))).length():
+		if getSprintProgress() > 1 - fields.get(FieldStore.Entity.PERFECT_MISS_WINDOW):
 			perfectMiss = true
 		if perfectMiss:
 			storeEnergy(damage * 2)
