@@ -17,11 +17,12 @@ static var presetWaves = {
 		create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 19, INF, 10),
 	],
 	"testBoss": [
-		create(preload("res://components/Characters/Chick.tscn"), 1, 1, true, 0, INF, 1),
-		create(preload("res://components/Characters/Bear.tscn"), 1, 1, true, 0, INF, 1),
+		# create(preload("res://components/Characters/Chick.tscn"), 1, 1, true, 0, INF, 1),
+		# create(preload("res://components/Characters/Bear.tscn"), 1, 1, true, 0, INF, 1),
+		create(preload("res://components/Characters/KukeMC.tscn"), 1, 1, true, 0, INF, 1),
 	]
 }
-static var data = presetWaves["normal"]
+static var data = presetWaves["testBoss"]
 
 static func create(
 		entity_: PackedScene,

@@ -156,5 +156,6 @@ static func generate(
 		instance.rotation = spawnRotation + deg_to_rad(randf_range(-launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT), launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT)))
 		if addToWorld:
 			WorldManager.rootNode.call_deferred("add_child", instance)
+			instance.add_to_group("bullets")
 		instances.append(instance)
 	return instances

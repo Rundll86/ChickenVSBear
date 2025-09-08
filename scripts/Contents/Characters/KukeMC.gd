@@ -1,15 +1,11 @@
 extends EntityBase
 class_name KukeMC
+func register():
+	fields[FieldStore.Entity.MAX_HEALTH] = 1000
 func ai():
-	for bullet in get_tree().get_nodes_in_group("bullet"):
+	for bullet in get_tree().get_nodes_in_group("bullets"):
 		if (
 			bullet is LGBTBullet and
-			bullet.position.distance_to(self.position) < 100
+			bullet.position.distance_to(self.position) < 200
 		):
 			bullet.tryDestroy()
-	for entity in get_tree().get_nodes_in_group("bosses"):
-		if (
-			entity.name == "FurryR" and
-			entity.position.distance_to(self.position) < 100
-		):
-			entity.takeDamage(114514)
