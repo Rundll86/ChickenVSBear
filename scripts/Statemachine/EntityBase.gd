@@ -160,10 +160,6 @@ func _physics_process(_delta: float) -> void:
 	trailParticle.emitting = trailing
 
 # 通用方法
-func getSprintInitialDisplace():
-	return displace(velocity) * sprintMultiplier
-func getSprintProgress():
-	return velocity.length() / getSprintInitialDisplace().length()
 func applyLevel():
 	fields[FieldStore.Entity.MAX_HEALTH] *= (1 + GameRule.entityHealthIncreasePerWave * (GameRule.difficulty + 1)) ** level
 	fields[FieldStore.Entity.DAMAGE_MULTIPILER] *= (1 + GameRule.entityDamageIncreasePerWave * (GameRule.difficulty + 1)) ** level
@@ -174,6 +170,10 @@ func move(direction: Vector2, isSprinting: bool = false):
 	var currentDirection = sign(direction.x)
 	if currentDirection != 0:
 		lastDirection = currentDirection
+func getSprintInitialDisplace():
+	return displace(velocity) * sprintMultiplier
+func getSprintProgress():
+	return velocity.length() / getSprintInitialDisplace().length()
 func takeDamage(bullet: BulletBase, crit: bool):
 	hurtAnimator.play("hurt")
 	var baseDamage: float = bullet.damage * bullet.launcher.fields.get(FieldStore.Entity.DAMAGE_MULTIPILER) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)
