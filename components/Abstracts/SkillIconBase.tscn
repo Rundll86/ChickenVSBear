@@ -4,6 +4,14 @@
 [ext_resource type="Script" path="res://scripts/Statemachine/SkillIcon.gd" id="1_l7say"]
 [ext_resource type="Texture2D" uid="uid://cp4ypuarjoshp" path="res://resources/skillIcons/purple-crystal.png" id="2_hh1bl"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fyf3"]
+shader = ExtResource("1_jaivk")
+shader_parameter/progress = 0.55
+shader_parameter/backAlpha = 0.25
+shader_parameter/edgeHeight = 0.05
+shader_parameter/trailHeight = 0.3
+shader_parameter/trailAlpha = 0.5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a60wd"]
 content_margin_left = 5.0
 content_margin_top = 5.0
@@ -15,14 +23,8 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ew32n"]
-shader = ExtResource("1_jaivk")
-shader_parameter/progress = 0.5
-shader_parameter/backAlpha = 0.25
-shader_parameter/edgeHeight = 0.05
-shader_parameter/trailHeight = 0.3
-
 [node name="SkillIconBase" type="PanelContainer"]
+material = SubResource("ShaderMaterial_3fyf3")
 custom_minimum_size = Vector2(40, 40)
 offset_right = 30.0
 offset_bottom = 30.0
@@ -31,7 +33,7 @@ script = ExtResource("1_l7say")
 
 [node name="texture" type="TextureRect" parent="."]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_ew32n")
+z_index = -1
 layout_mode = 2
 texture = ExtResource("2_hh1bl")
 expand_mode = 1

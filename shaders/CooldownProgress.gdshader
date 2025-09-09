@@ -5,11 +5,15 @@ uniform float edgeHeight:hint_range(0.0, 1.0, 0.01)=0.05;
 uniform float trailHeight:hint_range(0.0, 1.0, 0.01)=0.3;
 uniform float trailAlpha:hint_range(0.0, 1.0, 0.01)=0.5;
 void fragment() {
-	if(UV.y>=progress){
-		COLOR.a*=backAlpha;
-	}else if(distance(UV.y,progress)<edgeHeight){
-		COLOR.rgb*=255.0;
-	}else if(progress-UV.y<=trailHeight){
-		COLOR.rgb*=1.0+(trailHeight/(progress-UV.y)-1.0)*trailAlpha;
+	if(UV.y>=1.0-progress){
+		if(1.0-progress+trailHeight-UV.y>0.0){
+			float dist=distance(UV.y,1.0-progress);
+			COLOR=vec4(1);
+			COLOR.a=(trailHeight-dist)/trailHeight*trailAlpha;
+		}else{
+			COLOR.a*=backAlpha;
+		}
+	}else if(distance(UV.y,1.0-progress)<edgeHeight){
+		COLOR=vec4(1.0);
 	}
 }
