@@ -54,7 +54,8 @@ func apply(entity: EntityBase):
 		level += 1
 		entity.inventory[ItemStore.ItemType.BEACHBALL] -= costBeachball
 		store = update(level, originalStore.duplicate(), entity)
-		costBeachball *= 2
+		costBeachball = floor(GameRule.weaponUpdateCost * costBeachball)
+		needEnergy = GameRule.weaponUpdateEnergy * needEnergy
 		rebuildInfo()
 	return allHave
 func multipiler() -> float:
