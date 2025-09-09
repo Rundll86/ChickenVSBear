@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b07gqo6df0r5y"]
+
+[ext_resource type="PackedScene" uid="uid://d1ulrvupa76ap" path="res://components/UI/ColorBar.tscn" id="1_345g7"]
+[ext_resource type="Script" path="res://scripts/Statemachine/Variants/VerticalColorBar.gd" id="2_25su1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b46aq"]
+bg_color = Color(0, 0, 0, 0.5)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jm5oe"]
+bg_color = Color(1, 0, 0, 0.5)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7upt"]
+bg_color = Color(0, 1, 0, 0.5)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l12vy"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="VerticalColorBar" instance=ExtResource("1_345g7")]
+offset_right = 10.0
+offset_bottom = 100.0
+script = ExtResource("2_25su1")
+backBox = SubResource("StyleBoxFlat_b46aq")
+middleBox1 = SubResource("StyleBoxFlat_jm5oe")
+middleBox2 = SubResource("StyleBoxFlat_w7upt")
+frontBox = SubResource("StyleBoxFlat_l12vy")

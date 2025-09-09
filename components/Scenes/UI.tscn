@@ -1,19 +1,30 @@
-[gd_scene load_steps=21 format=3 uid="uid://dfwg750a47ggx"]
+[gd_scene load_steps=24 format=3 uid="uid://dfwg750a47ggx"]
 
 [ext_resource type="PackedScene" uid="uid://ofpg5s3j7esv" path="res://components/UI/BossBar.tscn" id="1_2pe58"]
 [ext_resource type="Script" path="res://scripts/Statemachine/UIState.gd" id="1_f00a6"]
 [ext_resource type="StyleBox" uid="uid://dx0udq8nv2ec0" path="res://styleboxes/topPanel.tres" id="3_kep0k"]
 [ext_resource type="PackedScene" uid="uid://bbm8l3hr4ihar" path="res://components/UI/ItemShow.tscn" id="3_o2oi4"]
 [ext_resource type="PackedScene" uid="uid://1n28ji5sl6bx" path="res://components/Scenes/FullscreenPanels/MakeFeed.tscn" id="4_kkki3"]
-[ext_resource type="Theme" uid="uid://b6nox1qqh50ub" path="res://themes/smallText.tres" id="5_widd7"]
-[ext_resource type="StyleBox" uid="uid://bsv1daadkv4eq" path="res://styleboxes/topLeftPanel.tres" id="6_8m0pt"]
+[ext_resource type="StyleBox" uid="uid://8pg3ry3y5wjv" path="res://styleboxes/centerRight.tres" id="5_3hym1"]
 [ext_resource type="PackedScene" uid="uid://beo6s1kudbbve" path="res://components/Scenes/FullscreenPanels/GameOver.tscn" id="6_10ay6"]
 [ext_resource type="Texture2D" uid="uid://k13cte17httt" path="res://resources/items/energy.svg" id="7_2om12"]
-[ext_resource type="PackedScene" uid="uid://d1ulrvupa76ap" path="res://components/UI/ColorBar.tscn" id="9_44nw8"]
+[ext_resource type="PackedScene" uid="uid://b07gqo6df0r5y" path="res://components/UI/Variants/VerticalColorBar.tscn" id="8_f4j2b"]
 [ext_resource type="StyleBox" uid="uid://ddnjus87wwlm8" path="res://styleboxes/leftPanel.tres" id="11_67ghp"]
 [ext_resource type="PackedScene" uid="uid://cksonrrx38k36" path="res://components/Scenes/FullscreenPanels/Pause.tscn" id="12_jkm6o"]
 [ext_resource type="PackedScene" uid="uid://dekcqdhrjs07u" path="res://components/Scenes/FullscreenPanels/Weapon.tscn" id="13_bmc24"]
 [ext_resource type="PackedScene" uid="uid://w2o3klbsssq3" path="res://components/Scenes/FullscreenPanels/Thanks.tscn" id="14_gp8lx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kp2r0"]
+bg_color = Color(0, 0, 0, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgnwf"]
+bg_color = Color(1, 0, 0, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_egr4c"]
+bg_color = Color(0, 1, 0, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xshu"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ri8gw"]
 content_margin_left = 20.0
@@ -169,20 +180,28 @@ type = 3
 [node name="energy" type="PanelContainer" parent="root"]
 z_index = 1
 z_as_relative = false
-custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = -1
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 97.0
-offset_bottom = 14.0
-theme_override_styles/panel = ExtResource("6_8m0pt")
+anchor_left = 1.0
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 0.6
+offset_left = -33.0
+offset_top = -70.0
+offset_right = 3.0
+offset_bottom = 70.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_3hym1")
 
 [node name="container" type="VBoxContainer" parent="root/energy"]
 layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
 
 [node name="energy" type="HBoxContainer" parent="root/energy/container"]
 layout_mode = 2
+alignment = 1
 
 [node name="icon" type="TextureRect" parent="root/energy/container/energy"]
 custom_minimum_size = Vector2(16, 16)
@@ -192,27 +211,14 @@ size_flags_vertical = 4
 texture = ExtResource("7_2om12")
 expand_mode = 1
 
-[node name="energy" type="Label" parent="root/energy/container/energy"]
+[node name="percent" parent="root/energy/container" instance=ExtResource("8_f4j2b")]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("5_widd7")
-text = "%current%"
-
-[node name="sep" type="Label" parent="root/energy/container/energy"]
-layout_mode = 2
-theme = ExtResource("5_widd7")
-text = "/"
-
-[node name="energyMax" type="Label" parent="root/energy/container/energy"]
-unique_name_in_owner = true
-layout_mode = 2
-theme = ExtResource("5_widd7")
-text = "%max%"
-
-[node name="percent" parent="root/energy/container" instance=ExtResource("9_44nw8")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
+size_flags_vertical = 3
+backBox = SubResource("StyleBoxFlat_kp2r0")
+middleBox1 = SubResource("StyleBoxFlat_kgnwf")
+middleBox2 = SubResource("StyleBoxFlat_egr4c")
+frontBox = SubResource("StyleBoxFlat_1xshu")
 
 [node name="fields" type="PanelContainer" parent="root"]
 modulate = Color(1, 1, 1, 0)
@@ -292,9 +298,8 @@ offset_top = 0.0
 offset_bottom = 0.0
 
 [node name="GameOver" parent="root/panels" instance=ExtResource("6_10ay6")]
+visible = false
 layout_mode = 1
-offset_top = 0.0
-offset_bottom = 0.0
 
 [node name="Pause" parent="root/panels" instance=ExtResource("12_jkm6o")]
 visible = false

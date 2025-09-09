@@ -2,8 +2,6 @@ extends CanvasLayer
 class_name UIState
 
 @onready var items = $"%items"
-@onready var energyLabel: Label = $"%energy"
-@onready var energyMaxLabel: Label = $"%energyMax"
 @onready var fields: VBoxContainer = $"%fields"
 @onready var fieldsAnimator: AnimationPlayer = $"%fieldsAnimator"
 
@@ -21,14 +19,10 @@ func _ready():
 	energyPercent = $"%percent"
 	itemCollect = $"%itemCollect"
 	skillIconContainer = $"%skillContainer"
-	# for i in FieldStore.entityMap:
-	# 	print(FieldStore.entityMap[i])
 func _process(_delta):
 	bossbar.visible = !!bossbar.entity
 func _physics_process(_delta):
 	if is_instance_valid(player):
-		energyLabel.text = "%.2f" % clamp(player.energy, 0, player.fields.get(FieldStore.Entity.MAX_ENERGY))
-		energyMaxLabel.text = "%.1f" % player.fields.get(FieldStore.Entity.MAX_ENERGY)
 		for i in items.get_children():
 			var item = i as ItemShow
 			item.count = player.inventory.get(item.type)
