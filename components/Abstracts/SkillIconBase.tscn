@@ -7,8 +7,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3fyf3"]
 shader = ExtResource("1_jaivk")
-shader_parameter/progress = 0.55
-shader_parameter/backAlpha = 0.1
+shader_parameter/progress = 0.5
+shader_parameter/backAlpha = 0.2
 shader_parameter/edgeHeight = 0.05
 shader_parameter/edgeColor = Color(1, 1, 1, 1)
 shader_parameter/trailHeight = 0.3
@@ -19,7 +19,7 @@ content_margin_left = 5.0
 content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
-bg_color = Color(0, 0, 0, 0.5)
+bg_color = Color(0, 0, 0, 0.7)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -47,6 +47,7 @@ scale_curve = SubResource("CurveTexture_05v0d")
 alpha_curve = SubResource("CurveTexture_qk3pj")
 
 [node name="SkillIconBase" type="PanelContainer"]
+z_index = 1
 texture_filter = 2
 material = SubResource("ShaderMaterial_3fyf3")
 custom_minimum_size = Vector2(40, 40)
