@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dekcqdhrjs07u" path="res://components/Scenes/FullscreenPanels/Weapon.tscn" id="13_bmc24"]
 [ext_resource type="PackedScene" uid="uid://w2o3klbsssq3" path="res://components/Scenes/FullscreenPanels/Thanks.tscn" id="14_gp8lx"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_12otr"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kp2r0"]
 bg_color = Color(0, 0, 0, 0.5)
 
@@ -118,8 +120,6 @@ _data = {
 "show": SubResource("Animation_2xajo")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_12otr"]
-
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_f00a6")
@@ -193,16 +193,29 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("5_3hym1")
 
-[node name="container" type="VBoxContainer" parent="root/energy"]
+[node name="wrapper" type="HBoxContainer" parent="root/energy"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="skills" type="PanelContainer" parent="root/energy/wrapper"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_12otr")
+
+[node name="skillContainer" type="VBoxContainer" parent="root/energy/wrapper/skills"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="container" type="VBoxContainer" parent="root/energy/wrapper"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="energy" type="HBoxContainer" parent="root/energy/container"]
+[node name="energy" type="HBoxContainer" parent="root/energy/wrapper/container"]
 layout_mode = 2
 alignment = 1
 
-[node name="icon" type="TextureRect" parent="root/energy/container/energy"]
+[node name="icon" type="TextureRect" parent="root/energy/wrapper/container/energy"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -210,7 +223,7 @@ size_flags_vertical = 4
 texture = ExtResource("7_2om12")
 expand_mode = 1
 
-[node name="percent" parent="root/energy/container" instance=ExtResource("8_f4j2b")]
+[node name="percent" parent="root/energy/wrapper/container" instance=ExtResource("8_f4j2b")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -248,23 +261,6 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_37e4s")
 }
-
-[node name="skills" type="PanelContainer" parent="root"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.97
-anchor_top = 0.5
-anchor_right = 0.97
-anchor_bottom = 0.5
-offset_left = 0.399902
-offset_right = 0.399902
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_12otr")
-
-[node name="skillContainer" type="VBoxContainer" parent="root/skills"]
-unique_name_in_owner = true
-layout_mode = 2
 
 [node name="itemCollect" type="VBoxContainer" parent="root"]
 unique_name_in_owner = true

@@ -1,16 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://ufl4kek8hrmt"]
+[gd_scene load_steps=12 format=3 uid="uid://ufl4kek8hrmt"]
 
 [ext_resource type="Shader" path="res://shaders/CooldownProgress.gdshader" id="1_jaivk"]
 [ext_resource type="Script" path="res://scripts/Statemachine/SkillIcon.gd" id="1_l7say"]
 [ext_resource type="Texture2D" uid="uid://cp4ypuarjoshp" path="res://resources/skillIcons/purple-crystal.png" id="2_hh1bl"]
+[ext_resource type="Texture2D" uid="uid://chqmaeivt84b5" path="res://components/UI/attackstar.svg" id="4_50rim"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3fyf3"]
 shader = ExtResource("1_jaivk")
 shader_parameter/progress = 0.55
-shader_parameter/backAlpha = 0.25
+shader_parameter/backAlpha = 0.1
 shader_parameter/edgeHeight = 0.05
+shader_parameter/edgeColor = Color(1, 1, 1, 1)
 shader_parameter/trailHeight = 0.3
-shader_parameter/trailAlpha = 0.5
+shader_parameter/trailColor = Color(1, 1, 1, 0.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a60wd"]
 content_margin_left = 5.0
@@ -23,7 +25,29 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="Curve" id="Curve_rgp6n"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504673, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qk3pj"]
+curve = SubResource("Curve_rgp6n")
+
+[sub_resource type="Curve" id="Curve_h7g2c"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_05v0d"]
+curve = SubResource("Curve_h7g2c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7cgpa"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_05v0d")
+alpha_curve = SubResource("CurveTexture_qk3pj")
+
 [node name="SkillIconBase" type="PanelContainer"]
+texture_filter = 2
 material = SubResource("ShaderMaterial_3fyf3")
 custom_minimum_size = Vector2(40, 40)
 offset_right = 30.0
@@ -38,3 +62,12 @@ layout_mode = 2
 texture = ExtResource("2_hh1bl")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="particle" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(20, 20)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_7cgpa")
+texture = ExtResource("4_50rim")
+one_shot = true
