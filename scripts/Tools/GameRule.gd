@@ -1,15 +1,7 @@
 class_name GameRule
 
-enum Difficulty {
-	EASY,
-	NORMAL,
-	HARD,
-	INSANE,
-	EXPERT,
-	MASTER,
-}
 static var deadReasons: Array = JsonTool.parseJson("res://resources/constants/deadReasons.json")
-static var difficulty: Difficulty = Difficulty.MASTER # 难度倍数，可以写小数
+static var difficulty: float = 1 # 难度倍数，可以写小数
 static var allowFriendlyFire: bool = false # 是否允许友军伤害
 static var bulletSpeedMultiplier: float = 1 # 子弹速度倍率
 static var damageOffset: float = MathTool.percent(20) # 伤害随机浮动比例
@@ -28,5 +20,5 @@ static var appleDropRateInfluenceByLuckValue: float = MathTool.percent(2) # 幸�
 static var critRateInfluenceByLuckValue: float = MathTool.percent(2.5) # 幸运值对暴击率的影响
 static var penerateRateInfluenceByLuckValue: float = MathTool.percent(3) # 幸运值对穿透率的影响
 static var detainTime: float = 1000 # 血量如果在这个时间内没有改变才会开始播放降低动画
-static var weaponUpdateCost: float = 1.5 # 武器升级后消耗的棒球数量倍数
-static var weaponUpdateEnergy: float = 1.25 # 武器升级后消耗的能量倍数
+static var weaponUpdateCost: float = 1.25 # 武器升级后消耗的棒球数量倍数
+static var weaponUpdateEnergy: float = 1.1 # 武器升级后消耗的能量倍数

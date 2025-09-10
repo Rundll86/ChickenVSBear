@@ -161,8 +161,8 @@ func _physics_process(_delta: float) -> void:
 
 # 通用方法
 func applyLevel():
-	fields[FieldStore.Entity.MAX_HEALTH] *= (1 + GameRule.entityHealthIncreasePerWave * sqrt(GameRule.difficulty + 1)) ** level
-	fields[FieldStore.Entity.DAMAGE_MULTIPILER] *= (1 + GameRule.entityDamageIncreasePerWave * sqrt(GameRule.difficulty + 1)) ** level
+	fields[FieldStore.Entity.MAX_HEALTH] *= (1 + GameRule.entityHealthIncreasePerWave * (GameRule.difficulty + 1)) ** level
+	fields[FieldStore.Entity.DAMAGE_MULTIPILER] *= (1 + GameRule.entityDamageIncreasePerWave * (GameRule.difficulty + 1)) ** level
 func displace(direction: Vector2, isSprinting: bool = false):
 	return (direction if isSprinting else direction.normalized()) * fields.get(FieldStore.Entity.MOVEMENT_SPEED) * 400 * abs(animatree.get("parameters/blend_position"))
 func move(direction: Vector2, isSprinting: bool = false):
