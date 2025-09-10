@@ -26,7 +26,7 @@ storeType = {
 "power": 2.0,
 "trace": 0.0
 }
-descriptionTemplate = "每$angle发射1/$count条以$power效率追踪$trace秒的[b]七彩飞星[/b]，每条造成$atk点伤害。"
+descriptionTemplate = "每$angle发射1/$count条以$power效率追踪$trace秒的[b]七彩光标[/b]，每条造成$atk点伤害。"
 needEnergy = 50.0
 cooldown = 1000.0
 debugRebuild = true
@@ -47,5 +47,5 @@ typeTopic = 3
 
 [node name="description" parent="container" index="2"]
 size_flags_vertical = 3
-text = "[center]每[color=cyan]30.0°[/color]发射1/[color=cyan]7[/color]条以[color=cyan]25%[/color]效率追踪[color=cyan]2.00[/color]秒的[b]七彩飞星[/b]，每条造成[color=cyan]20[/color]点伤害。[/center]"
+text = "[center]每[color=cyan]30.0°[/color]发射1/[color=cyan]7[/color]条以[color=cyan]25%[/color]效率追踪[color=cyan]2.00[/color]秒的[b]七彩光标[/b]，每条造成[color=cyan]20[/color]点伤害。[/center]"
 autowrap_mode = 2
