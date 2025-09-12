@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0r1i5tdbwljj"]
+
+[ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_o0yse"]
+[ext_resource type="Script" path="res://scripts/Contents/Panels/Starter.gd" id="2_ic0aq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ch0dv"]
+font_size = 45
+outline_size = 2
+
+[node name="Starter" instance=ExtResource("1_o0yse")]
+offset_top = 0.0
+offset_bottom = 0.0
+script = ExtResource("2_ic0aq")
+
+[node name="wrapper" parent="content" index="1"]
+theme_override_constants/separation = 30
+
+[node name="title" type="Label" parent="content/wrapper" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "公鸡大战狗熊"
+label_settings = SubResource("LabelSettings_ch0dv")
+
+[node name="starter" type="VBoxContainer" parent="content/wrapper" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="diffs" type="HBoxContainer" parent="content/wrapper/starter" index="0"]
+layout_mode = 2
+alignment = 1
+
+[node name="tip" type="Label" parent="content/wrapper/starter/diffs" index="0"]
+layout_mode = 2
+text = "选择难度："
+
+[node name="diffEdit" type="HSlider" parent="content/wrapper/starter/diffs" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 10.0
+value = 1.0
+
+[node name="levelShow" type="Label" parent="content/wrapper/starter/diffs" index="2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1/10"
+
+[node name="startBtn" type="Button" parent="content/wrapper/starter" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "开始"

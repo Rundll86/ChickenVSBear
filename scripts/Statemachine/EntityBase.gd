@@ -255,7 +255,7 @@ func tryDie(by: BulletBase):
 		var item = drops[drop]
 		var count = ceil(randf_range(dropCounts[drop].x, dropCounts[drop].y))
 		for i in range(count):
-			ItemDropped.generate(item, randi_range(0, int(sqrt(count))), position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
+			ItemDropped.generate(item, randi_range(1, int(sqrt(count) + GameRule.difficulty)), position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
 	if MathTool.rate(
 		GameRule.appleDropRate +
 		by.launcher.fields.get(FieldStore.Entity.DROP_APPLE_RATE) +
@@ -268,10 +268,11 @@ func tryDie(by: BulletBase):
 		fields[FieldStore.Entity.MAX_HEALTH] * randf_range(1 - GameRule.beachballOffset, 1 + GameRule.beachballOffset),
 		position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset)
 	)
+	if isPlayer():
+		if UIState.player == self:
+			UIState.setPanel("GameOver", [displayName, by.launcher.displayName])
 	EffectController.create(preload("res://components/Effects/DeadBlood.tscn"), texture.global_position).shot()
 	await die()
-	if isPlayer() and UIState.player == self:
-		UIState.setPanel("GameOver", [displayName, by.launcher.displayName])
 func tryHeal(count: float):
 	if inventory[ItemStore.ItemType.APPLE] > 0 and health < fields.get(FieldStore.Entity.MAX_HEALTH):
 		inventory[ItemStore.ItemType.APPLE] -= 1

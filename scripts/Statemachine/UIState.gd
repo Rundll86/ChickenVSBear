@@ -19,6 +19,7 @@ func _ready():
 	energyPercent = $"%percent"
 	itemCollect = $"%itemCollect"
 	skillIconContainer = $"%skillContainer"
+	setPanel("Starter")
 func _process(_delta):
 	bossbar.visible = !!bossbar.entity
 func _physics_process(_delta):
