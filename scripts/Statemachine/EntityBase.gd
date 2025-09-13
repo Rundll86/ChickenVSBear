@@ -48,6 +48,9 @@ var fields = {
 var attackCooldownMap = {
 	0: 100
 }
+var attackCooldowner = {
+	0: CooldownTimer.new()
+}
 var inventory = {
 	ItemStore.ItemType.BASEBALL: 500,
 	ItemStore.ItemType.BASKETBALL: 500,
@@ -88,7 +91,6 @@ var trailing: bool = false
 var lastDirection: int = 1
 var currentFocusedBoss: EntityBase = null
 var charginup: bool = false
-var cooldownTimer = CooldownTimer.new()
 var weapons: Array[Weapon] = []
 
 func _ready():
@@ -228,6 +230,10 @@ func tryAttack(type: int, needChargeUp: bool = false):
 	if isPlayer():
 		state = true
 	else:
+		var cooldownTimer: CooldownTimer
+		if !attackCooldowner.has(type):
+			attackCooldowner[type] = CooldownTimer.new()
+		cooldownTimer = attackCooldowner[type]
 		cooldownTimer.cooldown = attackCooldownMap.get(type, defaultCooldownUnit)
 		state = cooldownTimer.start()
 	if state:
