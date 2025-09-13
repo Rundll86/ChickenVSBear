@@ -205,12 +205,12 @@ height = 500.0
 
 [node name="ChickLaser" instance=ExtResource("1_eb54j")]
 script = ExtResource("2_7g0f0")
+displayName = "冷冻激光"
 metadata/_edit_vertical_guides_ = [688.0, 189.0]
 
 [node name="rect" parent="texture" index="0"]
 material = SubResource("ShaderMaterial_x6ivr")
 offset_left = 188.0
-offset_top = 0.0
 offset_right = 238.0
 offset_bottom = 500.0
 

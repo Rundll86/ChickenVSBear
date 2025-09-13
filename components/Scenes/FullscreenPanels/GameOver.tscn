@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://beo6s1kudbbve"]
+[gd_scene load_steps=7 format=3 uid="uid://beo6s1kudbbve"]
 
 [ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_u2ynr"]
 [ext_resource type="Script" path="res://scripts/Contents/Panels/GameOver.gd" id="2_6cd45"]
@@ -11,10 +11,6 @@ bg_color = Color(1, 0, 0, 0.3)
 [sub_resource type="LabelSettings" id="LabelSettings_17i5j"]
 font = ExtResource("3_oynlg")
 font_size = 50
-
-[sub_resource type="LabelSettings" id="LabelSettings_ndokf"]
-font = ExtResource("3_oynlg")
-font_color = Color(0.710938, 0.710938, 0.710938, 1)
 
 [node name="GameOver" instance=ExtResource("1_u2ynr")]
 offset_top = 0.0
@@ -29,22 +25,24 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_7gbuu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="content/wrapper/container" index="0"]
+[node name="wrapper" type="VBoxContainer" parent="content/wrapper/container" index="0"]
 layout_mode = 2
 alignment = 1
 
-[node name="text" type="Label" parent="content/wrapper/container/VBoxContainer" index="0"]
+[node name="text" type="Label" parent="content/wrapper/container/wrapper" index="0"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "败北"
 label_settings = SubResource("LabelSettings_17i5j")
 
-[node name="deadreason" type="Label" parent="content/wrapper/container/VBoxContainer" index="1"]
+[node name="deadreason" type="RichTextLabel" parent="content/wrapper/container/wrapper" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "死亡原因"
-label_settings = SubResource("LabelSettings_ndokf")
+bbcode_enabled = true
+text = "[color=gray]死亡原因[/color]"
+fit_content = true
+autowrap_mode = 0
 
 [node name="audio" type="AudioStreamPlayer2D" parent="." index="2"]
 unique_name_in_owner = true

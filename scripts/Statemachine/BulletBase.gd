@@ -1,6 +1,7 @@
 extends Area2D
 class_name BulletBase
 
+@export var displayName: String = "未知子弹"
 @export var speed: float = 10.0
 @export var damage: float = 10.0
 @export var penerate: float = 0.0

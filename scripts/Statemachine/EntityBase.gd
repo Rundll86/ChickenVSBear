@@ -290,7 +290,7 @@ func tryDie(by: BulletBase):
 	)
 	if isPlayer():
 		if UIState.player == self:
-			UIState.setPanel("GameOver", [displayName, by.launcher.displayName])
+			UIState.setPanel("GameOver", [displayName, by.launcher.displayName, by.displayName])
 	EffectController.create(preload("res://components/Effects/DeadBlood.tscn"), texture.global_position).shot()
 	await die()
 func tryHeal(count: float):
@@ -299,7 +299,6 @@ func tryHeal(count: float):
 		playSound("heal")
 		healed.emit(heal(count * fields.get(FieldStore.Entity.HEAL_ABILITY)))
 		healthChanged.emit(health)
-
 func findWeaponAnchor(weaponName: String):
 	var anchor = $"%weapons".get_node_or_null(weaponName)
 	if anchor is Node2D:

@@ -133,6 +133,7 @@ height = 86.0
 [node name="ForeverRainbow" instance=ExtResource("1_sltl7")]
 script = ExtResource("2_wwmq8")
 allColor = SubResource("GradientTexture1D_gcnu1")
+displayName = "永恒彩虹"
 lifeTime = 11000.0
 indisDamage = true
 autoSpawnAnimation = true

@@ -122,6 +122,7 @@ alpha_curve = SubResource("CurveTexture_wjo54")
 position = Vector2(-34, -24)
 script = ExtResource("2_uqsop")
 allColor = SubResource("GradientTexture1D_e0qv5")
+displayName = "七彩矢"
 autoLoopAnimation = true
 
 [node name="texture" parent="." index="0"]

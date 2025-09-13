@@ -8,6 +8,7 @@ size = Vector2(50, 50)
 
 [node name="FireScan" instance=ExtResource("1_cqre5")]
 script = ExtResource("2_qprdp")
+displayName = "狱炎"
 lifeDistance = 200.0
 
 [node name="hitbox" parent="." index="1"]

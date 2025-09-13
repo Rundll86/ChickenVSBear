@@ -1,10 +1,10 @@
 @tool
 extends FullscreenPanelBase
 
-@onready var audio = $"%audio"
-@onready var deadreason = $"%deadreason"
+@onready var audio: AudioStreamPlayer2D = $"%audio"
+@onready var deadreason: RichTextLabel = $"%deadreason"
 
 func beforeOpen(args: Array = []):
 	audio.play()
 	var reasonTemplate = MathTool.randc_from(GameRule.deadReasons)
-	deadreason.text = (reasonTemplate + "凶手是%s。") % args
+	deadreason.text = ("[color=gray]" + reasonTemplate + "凶手是[b]%s[/b]的[b]%s[/b]。[/color]") % args

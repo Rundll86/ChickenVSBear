@@ -120,6 +120,7 @@ modulate = Color(1, 1, 1, 0)
 scale = Vector2(1e-05, 1e-05)
 script = ExtResource("2_0kdtj")
 allColor = SubResource("GradientTexture1D_ikq3n")
+displayName = "太阳舞"
 autoSpawnAnimation = true
 freeAfterSpawn = true
 

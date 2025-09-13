@@ -91,6 +91,7 @@ alpha_curve = SubResource("CurveTexture_diybr")
 
 [node name="Diamond" instance=ExtResource("1_8udva")]
 script = ExtResource("2_yxtyj")
+displayName = "冰钻石"
 lifeTime = 5000.0
 indisDamage = true
 
