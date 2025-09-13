@@ -10,7 +10,7 @@ func register():
 	attackCooldownMap[1] = 10000
 	attackCooldownMap[2] = 8000
 	attackCooldownMap[3] = 13000
-	sprintMultiplier = 50
+	sprintMultiplier = 60
 func spawn():
 	texture.play("walk")
 func ai():
@@ -50,4 +50,4 @@ func attack(type):
 		return false
 	return true
 func sprint():
-	move((currentFocusedBoss.position - position).normalized() * sprintMultiplier * Vector2(1, 0), true)
+	move(Vector2(sign((currentFocusedBoss.position - position).x * sprintMultiplier), 0), true)
