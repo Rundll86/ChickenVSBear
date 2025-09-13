@@ -10,12 +10,13 @@ func register():
 	attackCooldownMap[1] = 10000
 	attackCooldownMap[2] = 8000
 	attackCooldownMap[3] = 13000
+	attackCooldownMap[4] = 4500
 	sprintMultiplier = 60
 func spawn():
 	texture.play("walk")
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 200)
-	for i in range(4):
+	for i in len(attackCooldownMap.keys()):
 		tryAttack(i)
 func attack(type):
 	var weaponPos = findWeaponAnchor("normal")
@@ -47,6 +48,14 @@ func attack(type):
 		sprintParticle.emitting = false
 		canRunAi = true
 		await sprintTo(currentFocusedBoss.position + MathTool.randv2_range(400), 0.25)
+		return false
+	elif type == 4:
+		playSound("attack4")
+		var count = randi_range(8, 12)
+		for i in range(count):
+			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/ArrowSeven.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(360.0 / count * i)):
+				bullet.tracer = currentFocusedBoss
+			await TickTool.millseconds(830.0 / count)
 		return false
 	return true
 func sprint():
