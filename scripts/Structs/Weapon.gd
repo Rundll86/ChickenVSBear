@@ -100,7 +100,7 @@ func playSound(sound: String):
 func tryAttack(entity: EntityBase):
 	if cooldownTimer.start():
 		if entity.useEnergy(needEnergy):
-			return attack(entity)
+			return await attack(entity)
 
 # 抽象
 func update(_to: int, origin: Dictionary, _entity: EntityBase):

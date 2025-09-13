@@ -92,6 +92,7 @@ var lastDirection: int = 1
 var currentFocusedBoss: EntityBase = null
 var charginup: bool = false
 var weapons: Array[Weapon] = []
+var canRunAi: bool = true
 
 func _ready():
 	register()
@@ -155,7 +156,7 @@ func _physics_process(_delta: float) -> void:
 			sprinting = false
 	else:
 		velocity = Vector2.ZERO
-		if (isPlayer() or is_instance_valid(currentFocusedBoss)) and not charginup:
+		if (isPlayer() or is_instance_valid(currentFocusedBoss)) and not charginup and canRunAi:
 			ai()
 	move_and_slide()
 	storeEnergy(randf_range(0.01, 0.1) * fields.get(FieldStore.Entity.ENERGY_REGENERATION), true)
@@ -242,11 +243,11 @@ func tryAttack(type: int, needChargeUp: bool = false):
 			await EffectController.create(preload("res://components/Effects/AttackStar.tscn"), damageAnchor.global_position).shot()
 			charginup = false
 		if isPlayer():
-			if weapon.tryAttack(self):
+			if await weapon.tryAttack(self):
 				weapon.playSound("attack")
 		else:
-			if attack(type):
-				playSound("attack" + str(type))
+			attack(type)
+			playSound("attack" + str(type))
 	return state
 func trySprint():
 	trailing = true
@@ -255,6 +256,13 @@ func trySprint():
 	sprinting = true
 	await TickTool.until(func(): return !sprinting)
 	trailing = false
+func sprintTo(target: Vector2, speed: float):
+	await TickTool.until(
+		func():
+			position += (target - position) * speed
+			return position.distance_to(target) < 10
+	)
+	position = target
 func tryDie(by: BulletBase):
 	if is_queued_for_deletion(): return
 	for drop in range(min(len(drops), len(dropCounts))):

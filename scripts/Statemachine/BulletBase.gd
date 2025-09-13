@@ -26,8 +26,10 @@ var spawnInWhere: Vector2 = Vector2.ZERO
 var destroying: bool = false
 var isChildSplit: bool = false
 var isChildRefract: bool = false
+var initialSpeed: float = 0
 
 func _ready():
+	initialSpeed = speed
 	register()
 	area_entered.connect(hit)
 	spawnInWhen = WorldManager.getTime()

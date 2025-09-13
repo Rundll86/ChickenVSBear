@@ -1,12 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://m60bwhdpbem8"]
+[gd_scene load_steps=28 format=3 uid="uid://m60bwhdpbem8"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_3ves7"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Bear.gd" id="2_kh2af"]
 [ext_resource type="Texture2D" uid="uid://dmy5lfw3jy2u4" path="res://resources/characters/bear/bear-walk-a.svg" id="2_umdul"]
+[ext_resource type="AudioStream" uid="uid://dqhrycmnkwojq" path="res://resources/sounds/bossAttack/Bear/Arrow7.ogg" id="3_n5dji"]
 [ext_resource type="Texture2D" uid="uid://dxlsg4p1xkqh0" path="res://resources/characters/bear/bear-walk-b.svg" id="3_o77du"]
 [ext_resource type="Texture2D" uid="uid://cd5vnifacsc8t" path="res://resources/characters/bear/bear-walk-c.svg" id="4_encki"]
+[ext_resource type="AudioStream" uid="uid://bxks728nvv83c" path="res://resources/sounds/bossAttack/Bear/SunDance.ogg" id="4_meklc"]
 [ext_resource type="Texture2D" uid="uid://dsgtjdeggris7" path="res://resources/characters/bear/bear-walk-d.svg" id="5_mvydi"]
+[ext_resource type="AudioStream" uid="uid://dhcm3pjj82xhg" path="res://resources/sounds/bossAttack/Bear/ForeverRainbow.ogg" id="5_vej16"]
 [ext_resource type="Texture2D" uid="uid://d2mwi15jqmnek" path="res://resources/characters/bear/bear-walk-e.svg" id="6_rwuah"]
+[ext_resource type="AudioStream" uid="uid://cqh2yvwcy83gg" path="res://resources/sounds/bossAttack/Bear/Sprint.ogg" id="6_x3jmu"]
 [ext_resource type="Texture2D" uid="uid://cli2fyulk3dsg" path="res://resources/characters/bear/bear-walk-f.svg" id="7_f0c6w"]
 [ext_resource type="Texture2D" uid="uid://dadi3ud01bqxk" path="res://resources/characters/bear/bear-walk-g.svg" id="8_4c7bp"]
 [ext_resource type="Texture2D" uid="uid://017nthmejh3g" path="res://resources/characters/bear/bear-walk-h.svg" id="9_bcby1"]
@@ -54,9 +58,70 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hekxf"]
 radius = 114.215
 
+[sub_resource type="Curve" id="Curve_u430e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4vlq0"]
+curve = SubResource("Curve_u430e")
+
+[sub_resource type="Curve" id="Curve_hrxfa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f4sgy"]
+curve = SubResource("Curve_hrxfa")
+
+[sub_resource type="Gradient" id="Gradient_ep4dl"]
+offsets = PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.447059, 0, 1, 1, 0.890625, 0, 1, 0, 0.820313, 0.128174, 1, 0, 1, 0.859375, 1, 0, 0.53125, 1, 1, 0.429688, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_53df5"]
+gradient = SubResource("Gradient_ep4dl")
+
+[sub_resource type="Gradient" id="Gradient_c54lm"]
+colors = PackedColorArray(0.1, 0.1, 0.1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o57pq"]
+gradient = SubResource("Gradient_c54lm")
+
+[sub_resource type="Curve" id="Curve_wldwu"]
+_data = [Vector2(0, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hk4ss"]
+curve = SubResource("Curve_wldwu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5v3nj"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_f4sgy")
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_hk4ss")
+color = Color(10, 10, 10, 1)
+color_ramp = SubResource("GradientTexture1D_o57pq")
+color_initial_ramp = SubResource("GradientTexture1D_53df5")
+alpha_curve = SubResource("CurveTexture_4vlq0")
+
 [node name="Bear" instance=ExtResource("1_3ves7")]
 script = ExtResource("2_kh2af")
 displayName = "狗熊"
+
+[node name="attack0" parent="sounds" index="5"]
+stream = ExtResource("3_n5dji")
+
+[node name="attack1" type="AudioStreamPlayer2D" parent="sounds" index="6"]
+stream = ExtResource("4_meklc")
+
+[node name="attack2" type="AudioStreamPlayer2D" parent="sounds" index="7"]
+stream = ExtResource("5_vej16")
+
+[node name="attack3" type="AudioStreamPlayer2D" parent="sounds" index="8"]
+stream = ExtResource("6_x3jmu")
 
 [node name="texture" parent="." index="2"]
 position = Vector2(0, -80)
@@ -70,5 +135,16 @@ shape = SubResource("CircleShape2D_hekxf")
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 
+[node name="sprintParticle" type="GPUParticles2D" parent="texture" index="6"]
+unique_name_in_owner = true
+z_index = -1
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_5v3nj")
+texture = ExtResource("2_umdul")
+
 [node name="statebar" parent="." index="3"]
 position = Vector2(0, -175)
+
+[node name="movebox" parent="." index="4"]
+disabled = true

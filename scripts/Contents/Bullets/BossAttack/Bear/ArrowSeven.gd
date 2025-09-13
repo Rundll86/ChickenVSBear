@@ -27,10 +27,10 @@ func ai():
 	if timeLived() <= forwardTime:
 		speed = 10 * ((forwardTime - timeLived()) / forwardTime)
 	elif forwarded:
-		if timeLived() < forwardTime + 1000:
+		if timeLived() < forwardTime + 2000:
 			speed = clamp((timeLived() - forwardTime) / 75, 0, 30)
 			if is_instance_valid(tracer):
-				PresetBulletAI.trace(self, tracer.position, 0.1)
+				PresetBulletAI.trace(self, tracer.position, 0.03)
 	else:
 		forwarded = true
 
