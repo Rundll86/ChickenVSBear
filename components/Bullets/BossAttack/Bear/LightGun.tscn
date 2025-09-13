@@ -1,0 +1,187 @@
+[gd_scene load_steps=20 format=3 uid="uid://chlefxyj2ood"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_kwotu"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/BossAttack/Bear/LightGun.gd" id="2_jid6s"]
+[ext_resource type="Script" path="res://scripts/Statemachine/ShaderStage.gd" id="3_or7kk"]
+[ext_resource type="Shader" path="res://shaders/LightTrack.gdshader" id="3_spbey"]
+[ext_resource type="Texture2D" uid="uid://cf065c7jjufq" path="res://resources/bullets/light-express/Ethereal_Lance.webp" id="5_bepne"]
+
+[sub_resource type="Gradient" id="Gradient_ep4dl"]
+offsets = PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.447059, 0, 1, 1, 0.890625, 0, 1, 0, 0.820313, 0.128174, 1, 0, 1, 0.859375, 1, 0, 0.53125, 1, 1, 0.429688, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aqmnp"]
+gradient = SubResource("Gradient_ep4dl")
+
+[sub_resource type="Animation" id="Animation_ufqp1"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("track:material:shader_parameter/color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sword:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1000, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%hitbox:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1000, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_oinqg"]
+resource_name = "destroy"
+length = 0.5
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_ynxlt"]
+resource_name = "loop"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_kmogx"]
+resource_name = "spawn"
+length = 3.0
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("track:material:shader_parameter/color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 2.5, 3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sword:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1000, -0.25, 0, 0.25, 0, 1000, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.5, 3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%hitbox:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1000, -0.25, 0, 0.25, 0, 1000, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.5, 3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d5b1d"]
+_data = {
+"RESET": SubResource("Animation_ufqp1"),
+"destroy": SubResource("Animation_oinqg"),
+"loop": SubResource("Animation_ynxlt"),
+"spawn": SubResource("Animation_kmogx")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sjtia"]
+shader = ExtResource("3_spbey")
+shader_parameter/color = Color(1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_h144l"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iq806"]
+curve = SubResource("Curve_h144l")
+
+[sub_resource type="Curve" id="Curve_cbjl2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mqm5w"]
+curve = SubResource("Curve_cbjl2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ppc2o"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_mqm5w")
+alpha_curve = SubResource("CurveTexture_iq806")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3olw7"]
+radius = 6.0
+height = 118.0
+
+[node name="LightGun" instance=ExtResource("1_kwotu")]
+script = ExtResource("2_jid6s")
+allColor = SubResource("GradientTexture1D_aqmnp")
+displayName = "空灵长枪"
+autoSpawnAnimation = true
+freeAfterSpawn = true
+
+[node name="animator" parent="texture" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_d5b1d")
+}
+
+[node name="track" type="Node2D" parent="texture" index="1"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_sjtia")
+script = ExtResource("3_or7kk")
+size = Vector2(2000, 10)
+
+[node name="sword" type="Sprite2D" parent="texture" index="2"]
+unique_name_in_owner = true
+position = Vector2(-1000, 0)
+texture = ExtResource("5_bepne")
+
+[node name="points" type="GPUParticles2D" parent="texture/sword" index="0"]
+unique_name_in_owner = true
+z_index = -1
+position = Vector2(-55, 0)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_ppc2o")
+
+[node name="hitbox" parent="." index="1"]
+position = Vector2(-1000, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3olw7")

@@ -11,6 +11,7 @@ func register():
 	attackCooldownMap[2] = 8000
 	attackCooldownMap[3] = 13000
 	attackCooldownMap[4] = 4500
+	attackCooldownMap[5] = 5500
 	sprintMultiplier = 60
 func spawn():
 	texture.play("walk")
@@ -18,6 +19,7 @@ func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 200)
 	for i in len(attackCooldownMap.keys()):
 		tryAttack(i)
+	# tryAttack(5)
 func attack(type):
 	var weaponPos = findWeaponAnchor("normal")
 	if type == 0:
@@ -56,6 +58,15 @@ func attack(type):
 			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/ArrowSeven.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(360.0 / count * i)):
 				bullet.tracer = currentFocusedBoss
 			await TickTool.millseconds(830.0 / count)
+		return false
+	elif type == 5:
+		var target = currentFocusedBoss.position
+		var count = randi_range(10, 15)
+		for i in range(count):
+			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, target, 0):
+				bullet.position += Vector2.from_angle(deg_to_rad(360.0 / count * i)) * 1000
+				bullet.rotation = bullet.position.angle_to_point(target)
+			await TickTool.millseconds(1670.0 / count)
 		return false
 	return true
 func sprint():

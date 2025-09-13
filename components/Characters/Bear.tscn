@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://m60bwhdpbem8"]
+[gd_scene load_steps=30 format=3 uid="uid://m60bwhdpbem8"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_3ves7"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Bear.gd" id="2_kh2af"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://ce8xjsh68momv" path="res://resources/sounds/bossAttack/Bear/Arrow7-2.ogg" id="7_0r2df"]
 [ext_resource type="Texture2D" uid="uid://cli2fyulk3dsg" path="res://resources/characters/bear/bear-walk-f.svg" id="7_f0c6w"]
 [ext_resource type="Texture2D" uid="uid://dadi3ud01bqxk" path="res://resources/characters/bear/bear-walk-g.svg" id="8_4c7bp"]
+[ext_resource type="AudioStream" uid="uid://dd18jfva1knwm" path="res://resources/sounds/bossAttack/Bear/LightGun.ogg" id="8_qagkm"]
 [ext_resource type="Texture2D" uid="uid://017nthmejh3g" path="res://resources/characters/bear/bear-walk-h.svg" id="9_bcby1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6tgxs"]
@@ -126,6 +127,9 @@ stream = ExtResource("6_x3jmu")
 
 [node name="attack4" type="AudioStreamPlayer2D" parent="sounds" index="9"]
 stream = ExtResource("7_0r2df")
+
+[node name="attack5" type="AudioStreamPlayer2D" parent="sounds" index="10"]
+stream = ExtResource("8_qagkm")
 
 [node name="texture" parent="." index="2"]
 position = Vector2(0, -80)
