@@ -7,6 +7,7 @@ extends BulletBase
 
 var myColor: Color
 var tracer: EntityBase = null
+var traceTime: float = 2000
 var forwardTime: float = 500
 var forwarded: bool = false
 
@@ -29,8 +30,8 @@ func ai():
 	elif forwarded:
 		if timeLived() < forwardTime + 2000:
 			speed = clamp((timeLived() - forwardTime) / 75, 0, 30)
-			if is_instance_valid(tracer):
-				PresetBulletAI.trace(self, tracer.position, 0.015)
+			if is_instance_valid(tracer) and timeLived() <= traceTime + forwardTime:
+				PresetBulletAI.trace(self, tracer.position, 0.1 * (traceTime - (timeLived() - forwardTime)) / traceTime)
 	else:
 		forwarded = true
 
