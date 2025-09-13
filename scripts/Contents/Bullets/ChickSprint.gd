@@ -5,7 +5,7 @@ func register():
 	speed = 0
 	penerate = 1
 func ai():
-	damage = launcher.velocity.length() / 300
+	damage = launcher.velocity.length() / 250
 	PresetBulletAI.lockLauncher(self, launcher, true)
 	if !launcher.sprinting:
 		tryDestroy()

@@ -86,6 +86,7 @@ var statebar: EntityStateBar
 var health: float = 0
 var energy: float = 0
 var sprinting: bool = false
+var targetableSprinting: bool = false
 var trailing: bool = false
 
 var lastDirection: int = 1
@@ -246,23 +247,28 @@ func tryAttack(type: int, needChargeUp: bool = false):
 			if await weapon.tryAttack(self):
 				weapon.playSound("attack")
 		else:
-			attack(type)
-			playSound("attack" + str(type))
+			if await attack(type):
+				playSound("attack" + str(type))
 	return state
 func trySprint():
 	trailing = true
 	playSound("sprint")
-	sprint()
 	sprinting = true
+	sprint()
 	await TickTool.until(func(): return !sprinting)
 	trailing = false
 func sprintTo(target: Vector2, speed: float):
+	await TickTool.until(func(): return !targetableSprinting)
+	targetableSprinting = true
+	trailing = true
 	await TickTool.until(
 		func():
 			position += (target - position) * speed
 			return position.distance_to(target) < 10
 	)
 	position = target
+	trailing = false
+	targetableSprinting = false
 func tryDie(by: BulletBase):
 	if is_queued_for_deletion(): return
 	for drop in range(min(len(drops), len(dropCounts))):
