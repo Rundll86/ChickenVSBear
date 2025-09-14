@@ -2,11 +2,16 @@ extends EntityBase
 class_name KukeMC
 
 func register():
-	fields[FieldStore.Entity.MAX_HEALTH] = 3500
+	fields[FieldStore.Entity.MAX_HEALTH] = 2500
 	fields[FieldStore.Entity.OFFSET_SHOOT] = 25
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.5
 	attackCooldownMap[0] = 8000
-	attackCooldownMap[1] = 5000
+	attackCooldownMap[1] = 10000
+func spawn():
+	for i in 5:
+		var child = EntityBase.generate(preload("res://components/Characters/KukeChild.tscn"), position + MathTool.randv2_range(500))
+		child.currentFocusedBoss = currentFocusedBoss
+		child.masterMine = self
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 500)
 	for bullet in get_tree().get_nodes_in_group("bullets"):

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6wjncfsm2rxw"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_7tnrb"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/PurpleCrystal.gd" id="2_it0pa"]
+[ext_resource type="Texture2D" uid="uid://c7hyatbuieaj" path="res://resources/bullets/purple-crystal/frames/0.svg" id="3_3f3gq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r86b3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3f3gq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gdnkp"]
+radius = 2.23607
+
+[node name="PurpleCrystalSmall" instance=ExtResource("1_7tnrb")]
+modulate = Color(1.5, 1.5, 1.5, 1)
+script = ExtResource("2_it0pa")
+displayName = "微型紫水晶"
+speed = 12.0
+damage = 1.0
+lifeDistance = 1400.0
+
+[node name="texture" parent="." index="0"]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_r86b3")
+
+[node name="hitbox" parent="." index="1"]
+position = Vector2(-17, 0)
+shape = SubResource("CircleShape2D_gdnkp")
