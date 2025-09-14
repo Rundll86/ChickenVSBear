@@ -78,7 +78,7 @@ func attack(type):
 		return false
 	elif type == 5:
 		playSound("attack5")
-		var count = randi_range(10, 15)
+		var count = randi_range(20, 30)
 		for i in range(count):
 			if !is_instance_valid(currentFocusedBoss): return false
 			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):

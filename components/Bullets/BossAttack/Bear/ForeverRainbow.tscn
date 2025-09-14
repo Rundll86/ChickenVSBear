@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://2odeyqgojcge"]
+[gd_scene load_steps=16 format=3 uid="uid://2odeyqgojcge"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_sltl7"]
 [ext_resource type="Texture2D" uid="uid://bkiaaucejquik" path="res://resources/bullets/light-express/Everlasting_Rainbow.png" id="2_3w4yo"]
 [ext_resource type="Script" path="res://scripts/Contents/Bullets/BossAttack/Bear/ForeverRainbow.gd" id="2_wwmq8"]
+[ext_resource type="Shader" path="res://shaders/Light.gdshader" id="4_tms7p"]
+[ext_resource type="Script" path="res://scripts/Statemachine/ShaderStage.gd" id="5_ulipy"]
 
 [sub_resource type="Gradient" id="Gradient_wd04q"]
 offsets = PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8, 1)
@@ -82,6 +84,11 @@ _data = {
 "spawn": SubResource("Animation_kmogx")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rigqa"]
+shader = ExtResource("4_tms7p")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/mixProgress = 1.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4fgwj"]
 radius = 15.0
 height = 224.0
@@ -104,7 +111,15 @@ libraries = {
 "": SubResource("AnimationLibrary_edsep")
 }
 
+[node name="light" type="Node2D" parent="texture" index="1"]
+material = SubResource("ShaderMaterial_rigqa")
+position = Vector2(75, 0)
+script = ExtResource("5_ulipy")
+size = Vector2(50, 50)
+color = Color(1, 1, 1, 0)
+
 [node name="hitbox" parent="." index="1"]
+visible = false
 position = Vector2(-13, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4fgwj")

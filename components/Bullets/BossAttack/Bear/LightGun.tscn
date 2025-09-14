@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_kwotu"]
 [ext_resource type="Script" path="res://scripts/Contents/Bullets/BossAttack/Bear/LightGun.gd" id="2_jid6s"]
 [ext_resource type="Script" path="res://scripts/Statemachine/ShaderStage.gd" id="3_or7kk"]
-[ext_resource type="Shader" path="res://shaders/LightTrack.gdshader" id="3_spbey"]
+[ext_resource type="Shader" path="res://shaders/BigLaser.gdshader" id="3_y3jot"]
 [ext_resource type="Texture2D" uid="uid://cf065c7jjufq" path="res://resources/bullets/light-express/Ethereal_Lance.webp" id="5_bepne"]
 
 [sub_resource type="Gradient" id="Gradient_ep4dl"]
@@ -18,7 +18,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("track:material:shader_parameter/color:a")
+tracks/0/path = NodePath("track:material:shader_parameter/alpha")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -101,7 +101,7 @@ step = 0.05
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("track:material:shader_parameter/color:a")
+tracks/0/path = NodePath("track:material:shader_parameter/alpha")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -164,8 +164,16 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sjtia"]
-shader = ExtResource("3_spbey")
-shader_parameter/color = Color(1, 1, 1, 0)
+shader = ExtResource("3_y3jot")
+shader_parameter/laser_color = Color(1, 1, 1, 0)
+shader_parameter/width = 1.0
+shader_parameter/softness = 0.25
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_frequency = 1.0
+shader_parameter/wave_amplitude = 0.5
+shader_parameter/wave_width = 0.01
+shader_parameter/edge_nonalpha = 0.25
+shader_parameter/alpha = 0.0
 
 [sub_resource type="Curve" id="Curve_h144l"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -213,8 +221,9 @@ libraries = {
 [node name="track" type="Node2D" parent="texture" index="1"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_sjtia")
+rotation = 1.5708
 script = ExtResource("3_or7kk")
-size = Vector2(2000, 10)
+size = Vector2(10, 2000)
 
 [node name="sword" type="Sprite2D" parent="texture" index="2"]
 unique_name_in_owner = true

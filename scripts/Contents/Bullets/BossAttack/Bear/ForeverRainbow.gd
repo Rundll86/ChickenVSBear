@@ -17,4 +17,5 @@ func ai():
 	PresetBulletAI.forward(self, rotation)
 
 func setColor(color: Color):
-	texture.modulate = color
+	texture.self_modulate = color
+	texture.modulate.v *= 10

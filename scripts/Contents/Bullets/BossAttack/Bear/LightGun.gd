@@ -17,7 +17,7 @@ func spawn():
 	track.material = track.material.duplicate()
 	points.process_material = points.process_material.duplicate()
 	setColor(myColor)
-	track.size.x = length
+	track.size.y = length
 	TickTool.modifyAnimationKey(animator, "spawn", "sword:position:x", Animation.TrackType.TYPE_BEZIER, 2.5, length / -2)
 	TickTool.modifyAnimationKey(animator, "spawn", "sword:position:x", Animation.TrackType.TYPE_BEZIER, 3, length / 2)
 	TickTool.modifyAnimationKey(animator, "spawn", "%hitbox:position:x", Animation.TrackType.TYPE_BEZIER, 2.5, length / -2)
@@ -25,8 +25,9 @@ func spawn():
 	await TickTool.millseconds(2500)
 	points.emitting = true
 func setColor(color: Color):
+	color.v *= 2
 	var result = Color(color)
 	result.a = 0
-	track.material.set_shader_parameter("color", result)
+	track.material.set_shader_parameter("laser_color", result)
 	sword.modulate = color
 	points.process_material.color = color

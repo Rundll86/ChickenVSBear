@@ -86,64 +86,64 @@ _data = {
 "right": SubResource("Animation_nuh11")
 }
 
-[sub_resource type="Curve" id="Curve_u430e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6h05p"]
+shader = ExtResource("12_j8sas")
+
+[sub_resource type="Curve" id="Curve_bm78d"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_4vlq0"]
-curve = SubResource("Curve_u430e")
+[sub_resource type="CurveTexture" id="CurveTexture_8q862"]
+curve = SubResource("Curve_bm78d")
 
-[sub_resource type="Curve" id="Curve_hrxfa"]
+[sub_resource type="Curve" id="Curve_ixlo1"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_f4sgy"]
-curve = SubResource("Curve_hrxfa")
+[sub_resource type="CurveTexture" id="CurveTexture_u5n7f"]
+curve = SubResource("Curve_ixlo1")
 
-[sub_resource type="Gradient" id="Gradient_ep4dl"]
+[sub_resource type="Gradient" id="Gradient_vg70m"]
 offsets = PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8, 1)
 colors = PackedColorArray(1, 0, 0, 1, 1, 0.447059, 0, 1, 1, 0.890625, 0, 1, 0, 0.820313, 0.128174, 1, 0, 1, 0.859375, 1, 0, 0.53125, 1, 1, 0.429688, 0, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_53df5"]
-gradient = SubResource("Gradient_ep4dl")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_psgmo"]
+gradient = SubResource("Gradient_vg70m")
 
-[sub_resource type="Gradient" id="Gradient_c54lm"]
+[sub_resource type="Gradient" id="Gradient_6x70l"]
 colors = PackedColorArray(0.1, 0.1, 0.1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_o57pq"]
-gradient = SubResource("Gradient_c54lm")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vxwls"]
+gradient = SubResource("Gradient_6x70l")
 
-[sub_resource type="Curve" id="Curve_wldwu"]
+[sub_resource type="Curve" id="Curve_glsl5"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.2, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_hk4ss"]
-curve = SubResource("Curve_wldwu")
+[sub_resource type="CurveTexture" id="CurveTexture_g2o7h"]
+curve = SubResource("Curve_glsl5")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5v3nj"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nv4nf"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(200, 200, 1)
+emission_box_extents = Vector3(50, 50, 1)
 angle_min = 1.07288e-05
 angle_max = 360.0
-angle_curve = SubResource("CurveTexture_f4sgy")
+angle_curve = SubResource("CurveTexture_u5n7f")
 spread = 180.0
-initial_velocity_min = 200.0
-initial_velocity_max = 400.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
 gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_hk4ss")
+scale_curve = SubResource("CurveTexture_g2o7h")
 color = Color(10, 10, 10, 1)
-color_ramp = SubResource("GradientTexture1D_o57pq")
-color_initial_ramp = SubResource("GradientTexture1D_53df5")
-alpha_curve = SubResource("CurveTexture_4vlq0")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6h05p"]
-shader = ExtResource("12_j8sas")
+color_ramp = SubResource("GradientTexture1D_vxwls")
+color_initial_ramp = SubResource("GradientTexture1D_psgmo")
+alpha_curve = SubResource("CurveTexture_8q862")
 
 [node name="Bear" instance=ExtResource("1_3ves7")]
 script = ExtResource("2_kh2af")
 displayName = "熊谷凌"
-metadata/_edit_vertical_guides_ = [-175.0, 177.0]
+metadata/_edit_vertical_guides_ = [-50.0]
 
 [node name="attack0" parent="sounds" index="5"]
 stream = ExtResource("3_n5dji")
@@ -179,17 +179,17 @@ libraries = {
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 
-[node name="sprintParticle" type="GPUParticles2D" parent="texture" index="6"]
-unique_name_in_owner = true
-z_index = -1
-emitting = false
-amount = 20
-process_material = SubResource("ParticleProcessMaterial_5v3nj")
-texture = ExtResource("13_v2sdb")
-
 [node name="mask" type="Sprite2D" parent="texture" index="7"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_6h05p")
+texture = ExtResource("13_v2sdb")
+
+[node name="sprintParticle" type="GPUParticles2D" parent="texture" index="8"]
+unique_name_in_owner = true
+z_index = -1
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_nv4nf")
 texture = ExtResource("13_v2sdb")
 
 [node name="statebar" parent="." index="3"]
