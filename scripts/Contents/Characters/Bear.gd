@@ -26,6 +26,7 @@ func attack(type):
 	if type == 0:
 		playSound("attack0")
 		for i in randi_range(20, 30):
+			if !is_instance_valid(currentFocusedBoss): return false
 			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/ArrowSeven.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(randf_range(0, 360))):
 				bullet.tracer = currentFocusedBoss
 				bullet.position += MathTool.randv2_range(50)
@@ -41,6 +42,7 @@ func attack(type):
 			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/ForeverRainbow.tscn"), self, weaponPos, 0):
 				bullet.rotation = 360 / 13.0 * i
 	elif type == 3:
+		if !is_instance_valid(currentFocusedBoss): return false
 		await sprintTo(currentFocusedBoss.position - Vector2(MathTool.randc_from([500, -500]), 0), 0.25)
 		playSound("attack3")
 		sprintParticle.emitting = true
@@ -56,6 +58,7 @@ func attack(type):
 		playSound("attack4")
 		var count = randi_range(8, 12)
 		for i in range(count):
+			if !is_instance_valid(currentFocusedBoss): return false
 			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/ArrowSeven.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(360.0 / count * i)):
 				bullet.tracer = currentFocusedBoss
 			await TickTool.millseconds(830.0 / count)
@@ -64,6 +67,7 @@ func attack(type):
 		playSound("attack5")
 		var count = randi_range(10, 15)
 		for i in range(count):
+			if !is_instance_valid(currentFocusedBoss): return false
 			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):
 				bullet.rotation = deg_to_rad(360.0 / count * i)
 			await TickTool.millseconds(1670.0 / count)
@@ -71,6 +75,7 @@ func attack(type):
 	elif type == 6:
 		playSound("attack6")
 		for i in 16:
+			if !is_instance_valid(currentFocusedBoss): return false
 			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):
 				bullet.position += MathTool.randv2_range(600)
 				bullet.look_at(currentFocusedBoss.position + MathTool.randv2_range(50))
@@ -81,6 +86,7 @@ func attack(type):
 		var angle = deg_to_rad(70)
 		for j in 4:
 			var initAngle = randf_range(0, 360)
+			if !is_instance_valid(currentFocusedBoss): return false
 			for i in 16:
 				for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):
 					bullet.rotation_degrees += initAngle
