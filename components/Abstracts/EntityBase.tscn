@@ -373,6 +373,7 @@ alpha_curve = SubResource("CurveTexture_vvfxd")
 [sub_resource type="CircleShape2D" id="CircleShape2D_34h7q"]
 
 [node name="EntityBase" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_mvol6")
 
 [node name="weaponStore" type="Node2D" parent="."]
