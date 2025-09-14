@@ -11,7 +11,7 @@ func register():
 	attackCooldownMap[0] = 3000
 	attackCooldownMap[1] = 10000
 	attackCooldownMap[2] = 8000
-	attackCooldownMap[3] = 5000
+	attackCooldownMap[3] = 13000
 	attackCooldownMap[4] = 4500
 	attackCooldownMap[5] = 5500
 	attackCooldownMap[6] = 10000
