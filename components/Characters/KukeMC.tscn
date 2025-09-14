@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4lfjwy0hkidu"]
+[gd_scene load_steps=6 format=3 uid="uid://d4lfjwy0hkidu"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_r4q7y"]
 [ext_resource type="Texture2D" uid="uid://c1jhrutky8pya" path="res://resources/characters/kukemc/avatar.webp" id="2_422pv"]
@@ -23,6 +23,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_farlp"]
+size = Vector2(150, 150)
+
 [node name="KukeMC" instance=ExtResource("1_r4q7y")]
 script = ExtResource("2_s2dg5")
 displayName = "酷可mc"
@@ -30,3 +33,9 @@ displayName = "酷可mc"
 [node name="texture" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_1c0ui")
 animation = &"walk"
+
+[node name="hitbox" parent="texture/hurtbox" index="0"]
+shape = SubResource("RectangleShape2D_farlp")
+
+[node name="statebar" parent="." index="3"]
+position = Vector2(0, -140)
