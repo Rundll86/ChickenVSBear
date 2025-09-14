@@ -154,6 +154,7 @@ height = 118.0
 [node name="LightGun" instance=ExtResource("1_kwotu")]
 script = ExtResource("2_jid6s")
 allColor = SubResource("GradientTexture1D_aqmnp")
+length = 1000.0
 displayName = "空灵长枪"
 autoSpawnAnimation = true
 freeAfterSpawn = true
@@ -178,6 +179,7 @@ texture = ExtResource("5_bepne")
 unique_name_in_owner = true
 z_index = -1
 position = Vector2(-55, 0)
+emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_ppc2o")
 
