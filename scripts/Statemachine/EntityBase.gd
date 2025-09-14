@@ -78,6 +78,7 @@ var inventoryMax = {
 @onready var hurtbox: Area2D = $"%hurtbox"
 @onready var sounds: Node2D = $"%sounds"
 @onready var hurtAnimator: AnimationPlayer = $"%hurtAnimator"
+@onready var stageAnimator: AnimationPlayer = $"%stageAnimator"
 @onready var damageAnchor: Node2D = $"%damageAnchor"
 @onready var trailParticle: GPUParticles2D = $"%trailParticle"
 @onready var weaponStore = $"%weaponStore"
@@ -94,6 +95,7 @@ var currentFocusedBoss: EntityBase = null
 var charginup: bool = false
 var weapons: Array[Weapon] = []
 var canRunAi: bool = true
+var currentStage: int = 0
 
 func _ready():
 	register()
@@ -164,6 +166,19 @@ func _physics_process(_delta: float) -> void:
 	trailParticle.emitting = trailing
 
 # 通用方法
+func setStage(stage: int):
+	if currentStage == stage:
+		return
+	canRunAi = false
+	var oldStage = currentStage
+	currentStage = stage
+	stageAnimator.play("exit")
+	await stageAnimator.animation_finished
+	await exitStage(oldStage)
+	await enterStage(stage)
+	stageAnimator.play("enter")
+	await stageAnimator.animation_finished
+	canRunAi = true
 func applyLevel():
 	fields[FieldStore.Entity.MAX_HEALTH] *= (1 + GameRule.entityHealthIncreasePerWave * (GameRule.difficulty + 1)) ** level
 	fields[FieldStore.Entity.DAMAGE_MULTIPILER] *= (1 + GameRule.entityDamageIncreasePerWave * (GameRule.difficulty + 1)) ** level
@@ -341,6 +356,10 @@ func heal(count: float):
 func register():
 	pass
 func spawn():
+	pass
+func exitStage(_stage: int):
+	pass
+func enterStage(_stage: int):
 	pass
 
 static func generate(

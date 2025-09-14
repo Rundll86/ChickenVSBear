@@ -2,6 +2,7 @@ extends EntityBase
 class_name Bear # 攻击方式模仿泰拉瑞亚光之女皇
 
 @onready var sprintParticle: GPUParticles2D = $"%sprintParticle"
+@onready var mask: Sprite2D = $"%mask"
 
 func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 2000
@@ -15,12 +16,19 @@ func register():
 	attackCooldownMap[6] = 10000
 	attackCooldownMap[7] = 9000
 	sprintMultiplier = 80
+	healthChanged.connect(
+		func(newHealth):
+			setStage(1 if newHealth < fields[FieldStore.Entity.MAX_HEALTH] * 0.5 else 0)
+	)
 func spawn():
 	texture.play("walk")
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 400)
 	for i in len(attackCooldownMap.keys()):
 		tryAttack(i)
+func enterStage(stage):
+	mask.visible = !!stage
+	await TickTool.millseconds(2000)
 func attack(type):
 	var weaponPos = findWeaponAnchor("normal")
 	if type == 0:
@@ -82,11 +90,11 @@ func attack(type):
 			await TickTool.millseconds(100)
 		return false
 	elif type == 7:
-		playSound("attack7")
 		var angle = deg_to_rad(70)
 		for j in 4:
 			var initAngle = randf_range(0, 360)
 			if !is_instance_valid(currentFocusedBoss): return false
+			playSound("attack7")
 			for i in 16:
 				for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):
 					bullet.rotation_degrees += initAngle
