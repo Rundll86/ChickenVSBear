@@ -10,7 +10,7 @@ func register():
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.4
 	attackCooldownMap[0] = 500
 	attackCooldownMap[1] = 6000
-	attackCooldownMap[2] = 100
+	attackCooldownMap[2] = 2000
 	attackCooldownMap[3] = 500
 	sprintMultiplier = 30
 func spawn():

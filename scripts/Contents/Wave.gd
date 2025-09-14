@@ -24,10 +24,9 @@ static var data = []
 static func customStart():
 	var furryr = EntityBase.generate(preload("res://components/Characters/Bear.tscn"), MathTool.randv2_range(500), true, false)
 	var kukemc = EntityBase.generate(preload("res://components/Characters/KukeMC.tscn"), MathTool.randv2_range(500), true, false)
-	var chick = EntityBase.generate(preload("res://components/Characters/Chick.tscn"), MathTool.randv2_range(500), true, false)
+	EntityBase.generate(preload("res://components/Characters/Chick.tscn"), MathTool.randv2_range(500), true, false)
 	furryr.currentFocusedBoss = kukemc
 	kukemc.currentFocusedBoss = furryr
-	chick.currentFocusedBoss = furryr
 static func create(
 		entity_: PackedScene,
 		minCount_: int = 1,
