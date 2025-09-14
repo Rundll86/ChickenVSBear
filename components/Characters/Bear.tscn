@@ -35,8 +35,8 @@ animations = [{
 size = Vector2(335, 344)
 
 [sub_resource type="Curve" id="Curve_u430e"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_4vlq0"]
 curve = SubResource("Curve_u430e")
@@ -62,20 +62,22 @@ colors = PackedColorArray(0.1, 0.1, 0.1, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_c54lm")
 
 [sub_resource type="Curve" id="Curve_wldwu"]
-_data = [Vector2(0, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.2, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_hk4ss"]
 curve = SubResource("Curve_wldwu")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5v3nj"]
 particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 200, 1)
 angle_min = 1.07288e-05
 angle_max = 360.0
 angle_curve = SubResource("CurveTexture_f4sgy")
 spread = 180.0
 initial_velocity_min = 200.0
-initial_velocity_max = 300.0
+initial_velocity_max = 400.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_hk4ss")
 color = Color(10, 10, 10, 1)
@@ -89,6 +91,7 @@ shader = ExtResource("12_j8sas")
 [node name="Bear" instance=ExtResource("1_3ves7")]
 script = ExtResource("2_kh2af")
 displayName = "狗熊"
+metadata/_edit_vertical_guides_ = [-175.0, 177.0]
 
 [node name="attack0" parent="sounds" index="5"]
 stream = ExtResource("3_n5dji")
@@ -115,6 +118,9 @@ stream = ExtResource("8_qagkm")
 position = Vector2(0, -80)
 sprite_frames = SubResource("SpriteFrames_6tgxs")
 
+[node name="hurtbox" parent="texture" index="0"]
+visible = false
+
 [node name="hitbox" parent="texture/hurtbox" index="0"]
 position = Vector2(-2.5, -1)
 shape = SubResource("RectangleShape2D_akdh6")
@@ -127,7 +133,7 @@ z_index = -1
 emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_5v3nj")
-texture = ExtResource("10_m7811")
+texture = ExtResource("13_v2sdb")
 
 [node name="mask" type="Sprite2D" parent="texture" index="7"]
 material = SubResource("ShaderMaterial_6h05p")
