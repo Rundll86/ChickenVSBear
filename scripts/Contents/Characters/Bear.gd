@@ -13,11 +13,12 @@ func register():
 	attackCooldownMap[4] = 4500
 	attackCooldownMap[5] = 5500
 	attackCooldownMap[6] = 10000
-	sprintMultiplier = 60
+	attackCooldownMap[7] = 9000
+	sprintMultiplier = 80
 func spawn():
 	texture.play("walk")
 func ai():
-	PresetEntityAI.follow(self, currentFocusedBoss, 200)
+	PresetEntityAI.follow(self, currentFocusedBoss, 400)
 	for i in len(attackCooldownMap.keys()):
 		tryAttack(i)
 func attack(type):
@@ -61,10 +62,9 @@ func attack(type):
 		return false
 	elif type == 5:
 		playSound("attack5")
-		var target = currentFocusedBoss.position
 		var count = randi_range(10, 15)
 		for i in range(count):
-			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, target, 0):
+			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):
 				bullet.rotation = deg_to_rad(360.0 / count * i)
 			await TickTool.millseconds(1670.0 / count)
 		return false
@@ -72,9 +72,22 @@ func attack(type):
 		playSound("attack6")
 		for i in 16:
 			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):
-				bullet.position += MathTool.randv2_range(300)
-				bullet.look_at(currentFocusedBoss.position)
+				bullet.position += MathTool.randv2_range(600)
+				bullet.look_at(currentFocusedBoss.position + MathTool.randv2_range(50))
 			await TickTool.millseconds(100)
+		return false
+	elif type == 7:
+		playSound("attack7")
+		var angle = deg_to_rad(70)
+		for j in 4:
+			var initAngle = randf_range(0, 360)
+			for i in 16:
+				for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):
+					bullet.rotation_degrees += initAngle
+					bullet.rotation -= angle / 2
+					bullet.rotation += angle / 16 * i
+					bullet.look_at(currentFocusedBoss.position)
+			await TickTool.millseconds(1000)
 		return false
 	return true
 func sprint():

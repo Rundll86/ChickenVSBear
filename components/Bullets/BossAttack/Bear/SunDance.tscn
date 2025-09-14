@@ -71,7 +71,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_kmogx"]
 resource_name = "spawn"
-length = 3.0
+length = 4.5
 step = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -82,7 +82,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
 "points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 2, 3)
+"times": PackedFloat32Array(0, 0.5, 3.5, 4.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -93,7 +93,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
 "points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 2, 3)
+"times": PackedFloat32Array(0, 0.5, 3.5, 4.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -104,7 +104,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.504665, 2.00467, 3)
+"times": PackedFloat32Array(0, 0.504665, 3.50467, 4.5)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fv2s4"]

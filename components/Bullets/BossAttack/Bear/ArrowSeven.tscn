@@ -119,6 +119,7 @@ scale_curve = SubResource("CurveTexture_i5kg3")
 alpha_curve = SubResource("CurveTexture_wjo54")
 
 [node name="ArrowSeven" instance=ExtResource("1_dvf35")]
+z_index = 1
 position = Vector2(-34, -24)
 script = ExtResource("2_uqsop")
 allColor = SubResource("GradientTexture1D_e0qv5")

@@ -25,6 +25,8 @@ func spawn():
 	await TickTool.millseconds(2500)
 	points.emitting = true
 func setColor(color: Color):
-	track.material.set_shader_parameter("color", color)
+	var result = Color(color)
+	result.a = 0
+	track.material.set_shader_parameter("color", result)
 	sword.modulate = color
 	points.process_material.color = color
