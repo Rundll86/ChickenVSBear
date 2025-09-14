@@ -90,7 +90,7 @@ shader = ExtResource("12_j8sas")
 
 [node name="Bear" instance=ExtResource("1_3ves7")]
 script = ExtResource("2_kh2af")
-displayName = "狗熊"
+displayName = "熊谷凌"
 metadata/_edit_vertical_guides_ = [-175.0, 177.0]
 
 [node name="attack0" parent="sounds" index="5"]
