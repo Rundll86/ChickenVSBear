@@ -15,18 +15,17 @@ static var WAVE_NORMAL = [
 	Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 19, INF, 10),
 ]
 static var WAVE_TESTBOSS = [
-	Wave.create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 0, INF, 1),
 	Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 0, INF, 1),
-	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, true, 0, INF, 1),
 ]
-static var data = []
+static var data = WAVE_TESTBOSS
 
 static func customStart():
-	var furryr = EntityBase.generate(preload("res://components/Characters/Bear.tscn"), MathTool.randv2_range(500), true, false)
-	var kukemc = EntityBase.generate(preload("res://components/Characters/KukeMC.tscn"), MathTool.randv2_range(500), true, false)
-	EntityBase.generate(preload("res://components/Characters/Chick.tscn"), MathTool.randv2_range(500), true, false)
-	furryr.currentFocusedBoss = kukemc
-	kukemc.currentFocusedBoss = furryr
+	pass
+	# var furryr = EntityBase.generate(preload("res://components/Characters/Bear.tscn"), MathTool.randv2_range(500), true, false)
+	# var kukemc = EntityBase.generate(preload("res://components/Characters/KukeMC.tscn"), MathTool.randv2_range(500), true, false)
+	# EntityBase.generate(preload("res://components/Characters/Chick.tscn"), MathTool.randv2_range(500), true, false)
+	# furryr.currentFocusedBoss = kukemc
+	# kukemc.currentFocusedBoss = furryr
 static func create(
 		entity_: PackedScene,
 		minCount_: int = 1,

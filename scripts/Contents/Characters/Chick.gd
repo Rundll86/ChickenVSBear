@@ -12,7 +12,7 @@ func register():
 	attackCooldownMap[1] = 6000
 	attackCooldownMap[2] = 2000
 	attackCooldownMap[3] = 500
-	sprintMultiplier = 30
+	sprintMultiplier = 45
 func spawn():
 	texture.play("walk")
 

@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cqh2yvwcy83gg" path="res://resources/sounds/bossAttack/Bear/Sprint.ogg" id="6_x3jmu"]
 [ext_resource type="AudioStream" uid="uid://ce8xjsh68momv" path="res://resources/sounds/bossAttack/Bear/Arrow7-2.ogg" id="7_0r2df"]
 [ext_resource type="AudioStream" uid="uid://dd18jfva1knwm" path="res://resources/sounds/bossAttack/Bear/LightGun.ogg" id="8_qagkm"]
-[ext_resource type="Texture2D" uid="uid://b5e6ndswcmq48" path="res://resources/characters/bear/FurryR.jpg" id="10_m7811"]
+[ext_resource type="Texture2D" uid="uid://cgngjuc21l4xq" path="res://resources/characters/bear/FurryR.png" id="9_av1u2"]
 [ext_resource type="Shader" path="res://shaders/RedTemprature.gdshader" id="12_j8sas"]
 [ext_resource type="Texture2D" uid="uid://df6ly7iydtcwx" path="res://resources/characters/bear/FurryR-mask.png" id="13_v2sdb"]
 
@@ -16,7 +16,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_m7811")
+"texture": ExtResource("9_av1u2")
 }],
 "loop": true,
 "name": &"idle",
@@ -24,7 +24,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_m7811")
+"texture": ExtResource("9_av1u2")
 }],
 "loop": true,
 "name": &"walk",
@@ -32,7 +32,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akdh6"]
-size = Vector2(335, 344)
+size = Vector2(100, 100)
 
 [sub_resource type="Animation" id="Animation_sxh2u"]
 length = 0.001
@@ -167,14 +167,9 @@ stream = ExtResource("8_qagkm")
 stream = ExtResource("8_qagkm")
 
 [node name="texture" parent="." index="2"]
-position = Vector2(0, -80)
 sprite_frames = SubResource("SpriteFrames_6tgxs")
 
-[node name="hurtbox" parent="texture" index="0"]
-visible = false
-
 [node name="hitbox" parent="texture/hurtbox" index="0"]
-position = Vector2(-2.5, -1)
 shape = SubResource("RectangleShape2D_akdh6")
 
 [node name="animator" parent="texture" index="1"]
@@ -194,12 +189,11 @@ texture = ExtResource("13_v2sdb")
 
 [node name="mask" type="Sprite2D" parent="texture" index="7"]
 unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_6h05p")
 texture = ExtResource("13_v2sdb")
 
 [node name="statebar" parent="." index="3"]
-position = Vector2(0, -284)
+position = Vector2(0, -114)
 
 [node name="movebox" parent="." index="4"]
 disabled = true

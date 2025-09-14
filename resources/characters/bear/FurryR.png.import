@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5e6ndswcmq48"
-path="res://.godot/imported/FurryR.jpg-f305957108e2f1f86811a398be97c85f.ctex"
+uid="uid://cgngjuc21l4xq"
+path="res://.godot/imported/FurryR.png-5850392cbd69fd4762536751d27e9e17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/characters/bear/FurryR.jpg"
-dest_files=["res://.godot/imported/FurryR.jpg-f305957108e2f1f86811a398be97c85f.ctex"]
+source_file="res://resources/characters/bear/FurryR.png"
+dest_files=["res://.godot/imported/FurryR.png-5850392cbd69fd4762536751d27e9e17.ctex"]
 
 [params]
 

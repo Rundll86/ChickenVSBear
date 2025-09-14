@@ -11,12 +11,11 @@ func register():
 	attackCooldownMap[0] = 3000
 	attackCooldownMap[1] = 10000
 	attackCooldownMap[2] = 8000
-	attackCooldownMap[3] = 13000
+	attackCooldownMap[3] = 5000
 	attackCooldownMap[4] = 4500
 	attackCooldownMap[5] = 5500
 	attackCooldownMap[6] = 10000
 	attackCooldownMap[7] = 9000
-	sprintMultiplier = 60
 	healthChanged.connect(
 		func(newHealth):
 			setStage(1 if newHealth < fields[FieldStore.Entity.MAX_HEALTH] * 0.5 else 0)
@@ -56,15 +55,17 @@ func attack(type):
 	elif type == 3:
 		if !is_instance_valid(currentFocusedBoss): return false
 		await sprintTo(currentFocusedBoss.position - Vector2(MathTool.randc_from([500, -500]), 0), 0.25)
-		playSound("attack3")
 		sprintParticle.emitting = true
 		canRunAi = false
-		await TickTool.millseconds(900)
+		currentInvinsible = true
+		playSound("attack3")
+		await TickTool.millseconds(500)
 		BulletBase.generate(preload("res://components/Bullets/BearSprint.tscn"), self, weaponPos, 0)
 		await trySprint()
 		sprintParticle.emitting = false
 		canRunAi = true
 		await sprintTo(currentFocusedBoss.position + MathTool.randv2_range(400), 0.25)
+		currentInvinsible = false
 		return false
 	elif type == 4:
 		playSound("attack4")
@@ -109,4 +110,8 @@ func attack(type):
 		return false
 	return true
 func sprint():
-	move((currentFocusedBoss.position - position).normalized() * Vector2(1, 0) * sprintMultiplier, true)
+	var dir = sign((currentFocusedBoss.position - position).x)
+	velocity = Vector2(dir, 0)
+func sprintAi():
+	velocity.x *= 1.2
+	return abs(velocity.x) >= 1000000

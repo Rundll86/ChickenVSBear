@@ -175,6 +175,7 @@ func timeLived():
 func setStage(stage: int):
 	if currentStage == stage:
 		return
+	currentInvinsible = true
 	canRunAi = false
 	var oldStage = currentStage
 	currentStage = stage
@@ -185,6 +186,7 @@ func setStage(stage: int):
 	stageAnimator.play("enter")
 	await stageAnimator.animation_finished
 	canRunAi = true
+	currentInvinsible = false
 func applyLevel():
 	fields[FieldStore.Entity.MAX_HEALTH] *= (1 + GameRule.entityHealthIncreasePerWave * (GameRule.difficulty + 1)) ** level
 	fields[FieldStore.Entity.DAMAGE_MULTIPILER] *= (1 + GameRule.entityDamageIncreasePerWave * (GameRule.difficulty + 1)) ** level
