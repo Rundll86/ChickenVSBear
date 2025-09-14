@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5q7djx12phem"]
+
+[ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_3ohuq"]
+[ext_resource type="Texture2D" uid="uid://lorraj4pe2lt" path="res://resources/characters/kukechild/KukeChild.png" id="2_7vbs6"]
+[ext_resource type="Script" path="res://scripts/Contents/Characters/KukeChild.gd" id="2_ywxbd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5rcbd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7vbs6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7vbs6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="KukeChild" instance=ExtResource("1_3ohuq")]
+script = ExtResource("2_ywxbd")
+
+[node name="texture" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_5rcbd")
+animation = &"walk"
+
+[node name="normal" type="Node2D" parent="texture/weapons" index="0"]
+position = Vector2(47, 11)
+
+[node name="statebar" parent="." index="3"]
+position = Vector2(0, -125)

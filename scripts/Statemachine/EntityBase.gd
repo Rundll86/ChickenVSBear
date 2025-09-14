@@ -96,8 +96,10 @@ var charginup: bool = false
 var weapons: Array[Weapon] = []
 var canRunAi: bool = true
 var currentStage: int = 0
+var spawnTime: float = 0
 
 func _ready():
+	spawnTime = WorldManager.getTime()
 	register()
 	var selfStatebar: EntityStateBar = $"%statebar"
 	if isBoss:
@@ -166,6 +168,8 @@ func _physics_process(_delta: float) -> void:
 	trailParticle.emitting = trailing
 
 # 通用方法
+func timeLived():
+	return WorldManager.getTime() - spawnTime
 func setStage(stage: int):
 	if currentStage == stage:
 		return
@@ -284,30 +288,32 @@ func sprintTo(target: Vector2, speed: float):
 	position = target
 	trailing = false
 	targetableSprinting = false
-func tryDie(by: BulletBase):
+func tryDie(by: BulletBase = null):
 	if is_queued_for_deletion(): return
-	for drop in range(min(len(drops), len(dropCounts))):
-		var item = drops[drop]
-		var count = ceil(randf_range(dropCounts[drop].x, dropCounts[drop].y))
-		for i in range(count):
-			ItemDropped.generate(item, randi_range(1, int(sqrt(count) + GameRule.difficulty)), position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
-	if MathTool.rate(
-		GameRule.appleDropRate +
-		by.launcher.fields.get(FieldStore.Entity.DROP_APPLE_RATE) +
-		GameRule.appleDropRateInfluenceByLuckValue * by.launcher.fields[FieldStore.Entity.LUCK_VALUE]
-	) or isBoss:
-		for i in randi_range(appleCount.x, appleCount.y):
-			ItemDropped.generate(ItemStore.ItemType.APPLE, 1, position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
-	ItemDropped.generate(
-		ItemStore.ItemType.BEACHBALL,
-		fields[FieldStore.Entity.MAX_HEALTH] * randf_range(1 - GameRule.beachballOffset, 1 + GameRule.beachballOffset),
-		position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset)
-	)
-	if isPlayer():
-		if UIState.player == self:
-			UIState.setPanel("GameOver", [displayName, by.launcher.displayName, by.displayName])
+	if is_instance_valid(by):
+		for drop in range(min(len(drops), len(dropCounts))):
+			var item = drops[drop]
+			var count = ceil(randf_range(dropCounts[drop].x, dropCounts[drop].y))
+			for i in range(count):
+				ItemDropped.generate(item, randi_range(1, int(sqrt(count) + GameRule.difficulty)), position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
+		if MathTool.rate(
+			GameRule.appleDropRate +
+			by.launcher.fields.get(FieldStore.Entity.DROP_APPLE_RATE) +
+			GameRule.appleDropRateInfluenceByLuckValue * by.launcher.fields[FieldStore.Entity.LUCK_VALUE]
+		) or isBoss:
+			for i in randi_range(appleCount.x, appleCount.y):
+				ItemDropped.generate(ItemStore.ItemType.APPLE, 1, position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
+		ItemDropped.generate(
+			ItemStore.ItemType.BEACHBALL,
+			fields[FieldStore.Entity.MAX_HEALTH] * randf_range(1 - GameRule.beachballOffset, 1 + GameRule.beachballOffset),
+			position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset)
+		)
+		if isPlayer():
+			if UIState.player == self:
+				UIState.setPanel("GameOver", [displayName, by.launcher.displayName, by.displayName])
 	EffectController.create(preload("res://components/Effects/DeadBlood.tscn"), texture.global_position).shot()
 	await die()
+	queue_free()
 func tryHeal(count: float):
 	if inventory[ItemStore.ItemType.APPLE] > 0 and health < fields.get(FieldStore.Entity.MAX_HEALTH):
 		inventory[ItemStore.ItemType.APPLE] -= 1
@@ -347,11 +353,12 @@ func ai():
 func attack(_type: int):
 	pass
 func die():
-	queue_free()
+	pass
 func sprint():
 	pass
 func heal(count: float):
 	health += count
+	DamageLabel.create(-count, false, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
 	return count
 func register():
 	pass

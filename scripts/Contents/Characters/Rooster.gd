@@ -33,7 +33,3 @@ func sprint():
 		Input.get_axis("m_left", "m_right"),
 		Input.get_axis("m_up", "m_down")
 	) * sprintMultiplier, true)
-func heal(count: float):
-	health += count
-	DamageLabel.create(-count, false, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
-	return count
