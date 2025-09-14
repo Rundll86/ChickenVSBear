@@ -15,8 +15,8 @@ static var WAVE_NORMAL = [
 	Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 19, INF, 10),
 ]
 static var WAVE_TESTBOSS = [
-	# Wave.create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 0, INF, 1),
-	# Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 0, INF, 1),
+	Wave.create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 0, INF, 1),
+	Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 0, INF, 1),
 	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, true, 0, INF, 1),
 ]
 static var data = WAVE_TESTBOSS
