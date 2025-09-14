@@ -16,7 +16,7 @@ func register():
 	attackCooldownMap[5] = 5500
 	attackCooldownMap[6] = 10000
 	attackCooldownMap[7] = 9000
-	sprintMultiplier = 80
+	sprintMultiplier = 60
 	healthChanged.connect(
 		func(newHealth):
 			setStage(1 if newHealth < fields[FieldStore.Entity.MAX_HEALTH] * 0.5 else 0)
@@ -109,4 +109,4 @@ func attack(type):
 		return false
 	return true
 func sprint():
-	move(Vector2(sign((currentFocusedBoss.position - position).x * sprintMultiplier), 0), true)
+	move((currentFocusedBoss.position - position).normalized() * Vector2(1, 0) * sprintMultiplier, true)
