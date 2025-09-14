@@ -4,6 +4,7 @@ class_name EntityBase # 这是个抽象类
 signal hit(damage: float, bullet: BulletBase, crit: bool)
 signal healed(amount: float)
 signal healthChanged(health: float)
+signal died()
 
 signal energyChanged(energy: float, dontChangeDirection: bool)
 
@@ -313,6 +314,7 @@ func tryDie(by: BulletBase = null):
 				UIState.setPanel("GameOver", [displayName, by.launcher.displayName, by.displayName])
 	EffectController.create(preload("res://components/Effects/DeadBlood.tscn"), texture.global_position).shot()
 	await die()
+	died.emit()
 	queue_free()
 func tryHeal(count: float):
 	if inventory[ItemStore.ItemType.APPLE] > 0 and health < fields.get(FieldStore.Entity.MAX_HEALTH):

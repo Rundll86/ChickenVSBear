@@ -1,5 +1,4 @@
 extends BulletBase
-class_name PurpleCrystal
 
 func ai():
 	PresetBulletAI.forward(self, rotation)

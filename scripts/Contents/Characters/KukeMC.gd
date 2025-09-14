@@ -5,13 +5,15 @@ func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 2500
 	fields[FieldStore.Entity.OFFSET_SHOOT] = 25
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.5
-	attackCooldownMap[0] = 8000
-	attackCooldownMap[1] = 10000
+	attackCooldownMap[0] = 4000
+	attackCooldownMap[1] = 6000
 func spawn():
-	for i in 5:
-		var child = EntityBase.generate(preload("res://components/Characters/KukeChild.tscn"), position + MathTool.randv2_range(500))
+	for i in 3:
+		var child = EntityBase.generate(load("res://components/Characters/KukeChild.tscn"), position + MathTool.randv2_range(500))
 		child.currentFocusedBoss = currentFocusedBoss
 		child.masterMine = self
+	for i in 20:
+		BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(randf_range(0, 360)))
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 500)
 	for bullet in get_tree().get_nodes_in_group("bullets"):
