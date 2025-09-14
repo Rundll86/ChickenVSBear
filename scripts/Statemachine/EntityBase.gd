@@ -73,6 +73,7 @@ var inventoryMax = {
 @export var dropCounts: Array[Vector2] = []
 @export var appleCount: Vector2i = Vector2(0, 2) # 死亡后掉落的苹果数量
 @export var level: int = 1
+@export var currentInvinsible: bool = false
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -127,7 +128,8 @@ func _ready():
 			icon.weapon = i
 			UIState.skillIconContainer.add_child(icon)
 	else:
-		currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
+		if !currentFocusedBoss:
+			currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
 		applyLevel()
 	health = fields.get(FieldStore.Entity.MAX_HEALTH)
 	energy = fields.get(FieldStore.Entity.MAX_ENERGY)

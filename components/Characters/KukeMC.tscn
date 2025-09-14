@@ -30,6 +30,9 @@ size = Vector2(150, 150)
 script = ExtResource("2_s2dg5")
 displayName = "酷可mc"
 
+[node name="collect" parent="sounds" index="4"]
+stream = null
+
 [node name="texture" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_1c0ui")
 animation = &"walk"
