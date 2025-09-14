@@ -13,19 +13,15 @@ static var WAVE_NORMAL = [
 	Wave.create(preload("res://components/Characters/Hen.tscn"), 1, 5, false, 0, INF, 1),
 	Wave.create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 9, INF, 15),
 	Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 19, INF, 10),
+	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, false, 14, INF, 20),
 ]
 static var WAVE_TESTBOSS = [
 	Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 0, INF, 1),
 ]
-static var data = WAVE_TESTBOSS
+static var data = WAVE_NORMAL
 
 static func customStart():
 	pass
-	# var furryr = EntityBase.generate(preload("res://components/Characters/Bear.tscn"), MathTool.randv2_range(500), true, false)
-	# var kukemc = EntityBase.generate(preload("res://components/Characters/KukeMC.tscn"), MathTool.randv2_range(500), true, false)
-	# EntityBase.generate(preload("res://components/Characters/Chick.tscn"), MathTool.randv2_range(500), true, false)
-	# furryr.currentFocusedBoss = kukemc
-	# kukemc.currentFocusedBoss = furryr
 static func create(
 		entity_: PackedScene,
 		minCount_: int = 1,

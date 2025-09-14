@@ -6,7 +6,7 @@ class_name Chick
 const laserCount = 4
 
 func register():
-	fields[FieldStore.Entity.MAX_HEALTH] = 1500
+	fields[FieldStore.Entity.MAX_HEALTH] = 1000
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.4
 	attackCooldownMap[0] = 500
 	attackCooldownMap[1] = 6000
