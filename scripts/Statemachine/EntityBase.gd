@@ -159,8 +159,7 @@ func _process(_delta):
 func _physics_process(_delta: float) -> void:
 	animatree.set("parameters/blend_position", lerpf(animatree.get("parameters/blend_position"), lastDirection, 0.2))
 	if sprinting:
-		velocity *= 0.9
-		if velocity.length() <= 100:
+		if sprintAi():
 			sprinting = false
 	else:
 		velocity = Vector2.ZERO
@@ -354,6 +353,9 @@ func isPlayer():
 # 抽象方法，实际上是一些钩子，不需要全部实现
 func ai():
 	pass
+func sprintAi():
+	velocity *= 0.9
+	return velocity.length() <= 100
 func attack(_type: int):
 	pass
 func die():
