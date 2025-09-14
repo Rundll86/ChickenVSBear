@@ -341,7 +341,7 @@ func getTrackingAnchor() -> Vector2:
 func isPlayer():
 	return is_in_group("players")
 
-# 抽象方法
+# 抽象方法，实际上是一些钩子，不需要全部实现
 func ai():
 	pass
 func attack(_type: int):
