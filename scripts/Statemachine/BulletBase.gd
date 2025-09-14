@@ -83,8 +83,8 @@ func hit(target: Node):
 	if !canDamageSelf && entity == launcher: return
 	if !indisDamage && !GameRule.allowFriendlyFire:
 		if entity.isPlayer() == launcher.isPlayer() and launcher.currentFocusedBoss != entity: return
-	var damages = entity.takeDamage(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE) + GameRule.critRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]))
-	succeedToHit(damages)
+	var resultDamage = entity.takeDamage(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE) + GameRule.critRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]))
+	succeedToHit(resultDamage, entity)
 	if MathTool.rate(fullPenerate()):
 		penerate -= entity.fields[FieldStore.Entity.PENARATION_RESISTANCE]
 	else:
@@ -130,7 +130,7 @@ func spawn():
 	pass
 func applyDot():
 	pass
-func succeedToHit(_dmg: float):
+func succeedToHit(_dmg: float, _entity: EntityBase):
 	pass
 func register():
 	pass

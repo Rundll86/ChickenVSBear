@@ -103,3 +103,4 @@ shape = SubResource("CircleShape2D_4hkht")
 polygon = PackedVector2Array(-2419, 1803, 2429, 1825, 2392, -366, 2867, -318, 2723, 2241, -2879, 2193, -2797, -2582, 2959, -2528, 2858, -347, 2420, -337, 2441, -1834, -2438, -1792)
 
 [node name="rooster" parent="." groups=["players"] instance=ExtResource("3_5ui6q")]
+currentInvinsible = true
