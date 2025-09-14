@@ -12,7 +12,7 @@ func spawn():
 		var child = EntityBase.generate(load("res://components/Characters/KukeChild.tscn"), position + MathTool.randv2_range(500))
 		child.currentFocusedBoss = currentFocusedBoss
 		child.masterMine = self
-	for i in randi_range(15, 25):
+	for i in randi_range(5, 25):
 		BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(randf_range(0, 360)))
 		await TickTool.millseconds(randi_range(0, 50))
 func ai():

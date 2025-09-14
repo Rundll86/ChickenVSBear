@@ -11,7 +11,7 @@ func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 700)
 	tryAttack(0)
 	if timeLived() > 8000:
-		masterMine.tryHeal(200)
+		masterMine.tryHeal(50)
 		tryDie(null)
 func attack(type):
 	if type == 0:
