@@ -1,5 +1,5 @@
 extends EntityBase
-class_name Bear # 攻击方式模仿泰拉瑞亚光之女皇
+class_name Bear
 
 @onready var sprintParticle: GPUParticles2D = $"%sprintParticle"
 @onready var mask: Sprite2D = $"%mask"
@@ -7,6 +7,7 @@ class_name Bear # 攻击方式模仿泰拉瑞亚光之女皇
 func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 2000
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.5
+	fields[FieldStore.Entity.OFFSET_SHOOT] = 0
 	attackCooldownMap[0] = 3000
 	attackCooldownMap[1] = 10000
 	attackCooldownMap[2] = 8000
@@ -28,6 +29,9 @@ func ai():
 		tryAttack(i)
 func enterStage(stage):
 	mask.visible = !!stage
+	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.75
+	fields[FieldStore.Entity.DAMAGE_MULTIPILER] = 1.5
+	fields[FieldStore.Entity.ATTACK_SPEED] = 2
 	await TickTool.millseconds(2000)
 func attack(type):
 	var weaponPos = findWeaponAnchor("normal")
