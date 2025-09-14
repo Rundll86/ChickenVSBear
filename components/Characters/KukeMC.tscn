@@ -37,5 +37,7 @@ animation = &"walk"
 [node name="hitbox" parent="texture/hurtbox" index="0"]
 shape = SubResource("RectangleShape2D_farlp")
 
+[node name="normal" type="Node2D" parent="texture/weapons" index="0"]
+
 [node name="statebar" parent="." index="3"]
 position = Vector2(0, -140)
