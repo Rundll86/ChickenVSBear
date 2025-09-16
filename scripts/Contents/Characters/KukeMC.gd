@@ -7,6 +7,8 @@ func register():
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.5
 	attackCooldownMap[0] = 2000
 	attackCooldownMap[1] = 5000
+	attackCooldownMap[2] = 6000
+	inventory[ItemStore.ItemType.APPLE] = INF
 func spawn():
 	for i in 3:
 		var child = EntityBase.generate(load("res://components/Characters/KukeChild.tscn"), position + MathTool.randv2_range(500))
@@ -35,3 +37,8 @@ func attack(type):
 			var child = EntityBase.generate(preload("res://components/Characters/KukeChild.tscn"), position + MathTool.randv2_range(500))
 			child.currentFocusedBoss = currentFocusedBoss
 			child.masterMine = self
+	elif type == 2:
+		var count = randi_range(50, 60)
+		for i in count:
+			BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), 360.0 / count * i)
+			await TickTool.millseconds(50)
