@@ -16,9 +16,11 @@ static var WAVE_NORMAL = [
 	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, false, 14, INF, 20),
 ]
 static var WAVE_TESTBOSS = [
-	Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 0, INF, 1),
+	Wave.create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 0, INF, 10),
+	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, true, 1, INF, 10),
+	Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 2, INF, 10),
 ]
-static var data = WAVE_NORMAL
+static var data = WAVE_TESTBOSS
 
 static func customStart():
 	pass

@@ -8,7 +8,7 @@ func register():
 	attackCooldownMap[0] = 4000
 	attackCooldownMap[1] = 6000
 func spawn():
-	for i in 3:
+	for i in 2:
 		var child = EntityBase.generate(load("res://components/Characters/KukeChild.tscn"), position + MathTool.randv2_range(500))
 		child.currentFocusedBoss = currentFocusedBoss
 		child.masterMine = self
