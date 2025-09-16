@@ -38,7 +38,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
-max_value = 10.0
+min_value = -3.0
+max_value = 5.0
 value = 1.0
 
 [node name="levelShow" type="Label" parent="content/wrapper/starter/diffs" index="2"]
