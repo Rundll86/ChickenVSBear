@@ -5,10 +5,10 @@ func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 2500
 	fields[FieldStore.Entity.OFFSET_SHOOT] = 25
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.5
-	attackCooldownMap[0] = 4000
-	attackCooldownMap[1] = 6000
+	attackCooldownMap[0] = 2000
+	attackCooldownMap[1] = 5000
 func spawn():
-	for i in 2:
+	for i in 3:
 		var child = EntityBase.generate(load("res://components/Characters/KukeChild.tscn"), position + MathTool.randv2_range(500))
 		child.currentFocusedBoss = currentFocusedBoss
 		child.masterMine = self

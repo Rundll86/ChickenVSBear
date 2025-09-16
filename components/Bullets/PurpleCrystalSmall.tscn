@@ -22,12 +22,12 @@ radius = 2.23607
 modulate = Color(1.5, 1.5, 1.5, 1)
 script = ExtResource("2_it0pa")
 displayName = "微型紫水晶"
-speed = 12.0
+speed = 15.0
 damage = 1.0
 lifeDistance = 1400.0
 
 [node name="texture" parent="." index="0"]
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_r86b3")
 
 [node name="hitbox" parent="." index="1"]

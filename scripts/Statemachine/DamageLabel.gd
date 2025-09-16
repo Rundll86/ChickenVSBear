@@ -13,7 +13,7 @@ class_name DamageLabel
 
 func _ready():
 	label.label_settings = label.label_settings.duplicate()
-	var damageValue = round(abs(damage))
+	var damageValue = ceil(abs(damage))
 	var damageSign = sign(damage)
 	if damageSign > 0:
 		label.label_settings.font_color = color1
