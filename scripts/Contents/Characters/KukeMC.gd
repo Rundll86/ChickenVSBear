@@ -17,16 +17,15 @@ func ai():
 			bullet.position.distance_to(self.position) < 200
 		):
 			bullet.tryDestroy()
-	# for i in len(attackCooldownMap.keys()):
-	# 	tryAttack(i)
-	tryAttack(3)
+	for i in len(attackCooldownMap.keys()):
+		tryAttack(i)
 func attack(type):
 	if type == 0:
 		for i in randi_range(8, 16):
 			fields[FieldStore.Entity.OFFSET_SHOOT] = 25
 			BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), position.angle_to_point(currentFocusedBoss.position))
 			await TickTool.millseconds(randi_range(10, 50))
-	elif type == 1:
+	elif type == 1 and health < fields[FieldStore.Entity.MAX_HEALTH] * 0.5:
 		for i in randi_range(1, 2):
 			var child = EntityBase.generate(preload("res://components/Characters/KukeChild.tscn"), position + MathTool.randv2_range(500))
 			child.currentFocusedBoss = currentFocusedBoss
@@ -34,7 +33,7 @@ func attack(type):
 	elif type == 2:
 		var count = randi_range(20, 40)
 		for i in count:
-			var count1 = 3
+			var count1 = randi_range(2, 4)
 			for j in count1:
 				fields[FieldStore.Entity.OFFSET_SHOOT] = 0
 				BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(360.0 / count * i + 360.0 / count1 * j))
