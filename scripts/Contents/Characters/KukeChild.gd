@@ -6,7 +6,6 @@ func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 25
 	fields[FieldStore.Entity.OFFSET_SHOOT] = 5
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.25
-	fields[FieldStore.Entity.DAMAGE_MULTIPILER] = 0.1
 	attackCooldownMap[0] = 50
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 700)
