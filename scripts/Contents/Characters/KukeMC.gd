@@ -31,12 +31,12 @@ func attack(type):
 			child.currentFocusedBoss = currentFocusedBoss
 			child.masterMine = self
 	elif type == 2:
-		var count = randi_range(20, 40)
-		for i in count:
-			var count1 = randi_range(2, 4)
-			for j in count1:
+		var countOfBullet = randi_range(40, 50)
+		var countOfBranch = randi_range(2, 4)
+		for bulletIndex in countOfBullet:
+			for branchIndex in countOfBranch:
 				fields[FieldStore.Entity.OFFSET_SHOOT] = 0
-				BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(360.0 / count * i + 360.0 / count1 * j))
+				BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(360.0 / countOfBullet * bulletIndex + 360.0 / countOfBranch * branchIndex))
 			await TickTool.millseconds(100)
 	elif type == 3:
 		BulletBase.generate(preload("res://components/Bullets/BossAttack/KukeMC/HeavyCrystal.tscn"), self, findWeaponAnchor("normal"), position.angle_to_point(currentFocusedBoss.position))
