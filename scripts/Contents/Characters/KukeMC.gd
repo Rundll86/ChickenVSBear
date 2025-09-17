@@ -22,7 +22,7 @@ func ai():
 	for bullet in get_tree().get_nodes_in_group("bullets"):
 		if (
 			bullet is LGBTBullet and
-			bullet.position.distance_to(self.position) < 200 # 酷可mc会去摧毁200半径以内的七彩飞星
+			bullet.position.distance_to(self.position) < 200
 		):
 			bullet.tryDestroy()
 	for i in len(attackCooldownMap.keys()):
@@ -40,5 +40,7 @@ func attack(type):
 	elif type == 2:
 		var count = randi_range(50, 60)
 		for i in count:
-			BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), 360.0 / count * i)
+			var count1 = 3
+			for j in count1:
+				BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), 360.0 / count * i + 360.0 / count1 * j)
 			await TickTool.millseconds(50)
