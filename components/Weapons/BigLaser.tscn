@@ -20,9 +20,8 @@ storeType = {
 "time": 0.0
 }
 descriptionTemplate = "每$time秒造成$atk点伤害。"
-needEnergy = 100.0
+needEnergy = 200.0
 cooldown = 6000.0
-debugRebuild = true
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_cb5nh")
@@ -31,10 +30,7 @@ stream = ExtResource("4_cb5nh")
 texture = ExtResource("2_qe8gb")
 
 [node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "100.0"
-
-[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
-text = "500"
+text = "200.0"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "湮灭激光"

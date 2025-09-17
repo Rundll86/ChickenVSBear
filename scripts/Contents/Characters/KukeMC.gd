@@ -3,7 +3,6 @@ class_name KukeMC
 
 func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 2500
-	fields[FieldStore.Entity.OFFSET_SHOOT] = 25
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.5
 	attackCooldownMap[0] = 2000
 	attackCooldownMap[1] = 5000
@@ -30,6 +29,7 @@ func ai():
 func attack(type):
 	if type == 0:
 		for i in randi_range(8, 16):
+			fields[FieldStore.Entity.OFFSET_SHOOT] = 25
 			BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), position.angle_to_point(currentFocusedBoss.position))
 			await TickTool.millseconds(randi_range(10, 50))
 	elif type == 1:
@@ -38,9 +38,10 @@ func attack(type):
 			child.currentFocusedBoss = currentFocusedBoss
 			child.masterMine = self
 	elif type == 2:
-		var count = randi_range(50, 60)
+		var count = randi_range(60, 80)
 		for i in count:
 			var count1 = 3
 			for j in count1:
+				fields[FieldStore.Entity.OFFSET_SHOOT] = 0
 				BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), 360.0 / count * i + 360.0 / count1 * j)
 			await TickTool.millseconds(50)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxd6ikymj0fge"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_mf7ha"]
+[ext_resource type="Script" path="res://scripts/Statemachine/ShaderStage.gd" id="2_75div"]
+[ext_resource type="Shader" path="res://shaders/Ring.gdshader" id="2_utujj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1i43q"]
+shader = ExtResource("2_utujj")
+shader_parameter/inner = 0.5
+shader_parameter/outer = 0.75
+
+[node name="BulletBase" instance=ExtResource("1_mf7ha")]
+
+[node name="track" type="Node2D" parent="texture" index="1"]
+material = SubResource("ShaderMaterial_1i43q")
+script = ExtResource("2_75div")

@@ -11,7 +11,7 @@ class_name Weapon
 	"atk": 10
 }
 @export var storeType: Dictionary = {
-	"atk": FieldStore.DataType.VALUE
+	"atk": FieldStore.DataType.INTEGER
 }
 @export var descriptionTemplate: String = "造成$atk点伤害。"
 @export var needEnergy: float = 0
