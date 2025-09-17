@@ -38,10 +38,10 @@ func attack(type):
 			child.currentFocusedBoss = currentFocusedBoss
 			child.masterMine = self
 	elif type == 2:
-		var count = randi_range(60, 80)
+		var count = randi_range(20, 40)
 		for i in count:
 			var count1 = 3
 			for j in count1:
 				fields[FieldStore.Entity.OFFSET_SHOOT] = 0
-				BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), 360.0 / count * i + 360.0 / count1 * j)
-			await TickTool.millseconds(50)
+				BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(360.0 / count * i + 360.0 / count1 * j))
+			await TickTool.millseconds(100)
