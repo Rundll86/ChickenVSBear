@@ -25,6 +25,7 @@ animations = [{
 
 [node name="KukeChild" instance=ExtResource("1_3ohuq")]
 script = ExtResource("2_ywxbd")
+displayName = "酷可小弟"
 
 [node name="collect" parent="sounds" index="4"]
 stream = null
