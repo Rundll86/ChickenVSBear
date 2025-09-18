@@ -6,7 +6,7 @@ func register():
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.5
 	attackCooldownMap[0] = 2000
 	attackCooldownMap[1] = 5000
-	attackCooldownMap[2] = 6000
+	attackCooldownMap[2] = 20000
 	attackCooldownMap[3] = 2000
 	inventory[ItemStore.ItemType.APPLE] = INF
 func ai():
@@ -32,7 +32,7 @@ func attack(type):
 			child.masterMine = self
 	elif type == 2:
 		var countOfBullet = randi_range(40, 50)
-		var countOfBranch = randi_range(2, 4)
+		var countOfBranch = randi_range(1, 3)
 		for bulletIndex in countOfBullet:
 			for branchIndex in countOfBranch:
 				fields[FieldStore.Entity.OFFSET_SHOOT] = 0

@@ -9,7 +9,7 @@ func register():
 func ai():
 	if timeLived() < readyTime:
 		PresetBulletAI.lockLauncher(self, launcher, true)
-		rotation = launcher.position.angle_to_point(launcher.currentFocusedBoss.position)
+		rotation = launcher.position.angle_to_point(launcher.currentFocusedBoss.getTrackingAnchor())
 		hitbox.disabled = true
 	else:
 		damage = speed / 4
