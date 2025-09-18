@@ -12,7 +12,7 @@ func ai():
 		rotation = launcher.position.angle_to_point(launcher.currentFocusedBoss.getTrackingAnchor())
 		hitbox.disabled = true
 	else:
-		damage = speed / 4
+		damage = speed / 5
 		PresetBulletAI.forward(self, rotation)
 		speed *= 1.2
 		track.visible = false
