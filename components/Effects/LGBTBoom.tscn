@@ -24,12 +24,12 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0.447059, 0, 1, 1, 0.890625, 0, 1, 0, 0
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_lbwsr"]
 gradient = SubResource("Gradient_sfjew")
 
-[sub_resource type="Curve" id="Curve_g4ke1"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_jkxju"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_cgdl1"]
-curve = SubResource("Curve_g4ke1")
+[sub_resource type="CurveTexture" id="CurveTexture_wupro"]
+curve = SubResource("Curve_jkxju")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ynlvg"]
 particle_flag_disable_z = true
@@ -38,17 +38,17 @@ angle_max = 360.0
 angle_curve = SubResource("CurveTexture_i60ri")
 direction = Vector3(-1, 0, 0)
 spread = 180.0
-initial_velocity_min = 25.0
 initial_velocity_max = 50.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
-scale_curve = SubResource("CurveTexture_cgdl1")
-color_ramp = SubResource("GradientTexture1D_lbwsr")
+scale_max = 0.75
+scale_curve = SubResource("CurveTexture_wupro")
+color_initial_ramp = SubResource("GradientTexture1D_lbwsr")
 alpha_curve = SubResource("CurveTexture_va8eb")
 
 [node name="LGBTBoom" instance=ExtResource("1_qfayo")]
 
 [node name="particles" parent="." index="1"]
-amount = 10
+amount = 20
 process_material = SubResource("ParticleProcessMaterial_ynlvg")
 texture = ExtResource("2_g6mna")
