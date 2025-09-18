@@ -5,14 +5,14 @@ var masterMine: KukeMC
 func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 25
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.35
-	attackCooldownMap[0] = 500
+	attackCooldownMap[0] = 200
 	attackCooldownMap[1] = 2000
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 700)
 	tryAttack(0)
 	tryAttack(1)
 	if timeLived() > 8000:
-		masterMine.tryHeal(200)
+		masterMine.tryHeal(100)
 		tryDie(null)
 func attack(type):
 	if type == 0:
