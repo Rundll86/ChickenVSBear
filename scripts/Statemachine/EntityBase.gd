@@ -346,7 +346,7 @@ func playSound(type: String):
 		cloned.queue_free()
 
 func getTrackingAnchor() -> Vector2:
-	return hurtbox.global_position
+	return hurtbox.get_node("hitbox").global_position
 
 # 关于分组
 func isPlayer():
