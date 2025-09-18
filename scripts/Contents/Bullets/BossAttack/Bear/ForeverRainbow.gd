@@ -5,7 +5,7 @@ extends BulletBase
 var myColor: Color
 
 func register():
-	damage = 5
+	damage = 15
 	penerate = 1
 func spawn():
 	myColor = allColor.gradient.sample(randf())

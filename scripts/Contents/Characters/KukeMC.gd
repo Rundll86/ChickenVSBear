@@ -2,7 +2,7 @@ extends EntityBase
 class_name KukeMC
 
 func register():
-	fields[FieldStore.Entity.MAX_HEALTH] = 2500
+	fields[FieldStore.Entity.MAX_HEALTH] = 3000
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.5
 	attackCooldownMap[0] = 2000
 	attackCooldownMap[1] = 5000

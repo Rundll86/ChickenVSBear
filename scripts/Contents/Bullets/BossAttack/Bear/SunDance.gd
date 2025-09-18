@@ -11,7 +11,7 @@ var myColor: Color
 
 func register():
 	speed = 0
-	damage = 5
+	damage = 20
 	penerate = 1
 func spawn():
 	myColor = allColor.gradient.sample(randf())

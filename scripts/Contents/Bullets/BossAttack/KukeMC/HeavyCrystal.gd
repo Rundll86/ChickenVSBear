@@ -6,6 +6,7 @@ var readyTime: float = 1000
 
 func register():
 	speed = 10
+	damage = 20
 func ai():
 	if timeLived() < readyTime:
 		PresetBulletAI.lockLauncher(self, launcher, true)
@@ -14,6 +15,5 @@ func ai():
 	else:
 		track.visible = false
 		hitbox.disabled = false
-		damage = speed / 6
 		PresetBulletAI.forward(self, rotation)
 		speed *= 1.15

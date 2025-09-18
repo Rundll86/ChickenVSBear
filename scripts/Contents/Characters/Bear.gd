@@ -22,6 +22,7 @@ func register():
 	)
 func spawn():
 	texture.play("walk")
+	mask.visible = false
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 400)
 	for i in len(attackCooldownMap.keys()):
