@@ -3,10 +3,10 @@
 [ext_resource type="Theme" uid="uid://bje5cd08dyok7" path="res://themes/bigTextAndBold.tres" id="2_y8dft"]
 [ext_resource type="Script" path="res://scripts/Statemachine/WeaponName.gd" id="3_g750e"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_fglo5"]
+[sub_resource type="LabelSettings" id="LabelSettings_83mpy"]
 font_size = 12
 
-[sub_resource type="LabelSettings" id="LabelSettings_3tmci"]
+[sub_resource type="LabelSettings" id="LabelSettings_gcoja"]
 font_size = 12
 
 [node name="WeaponName" type="HBoxContainer"]
@@ -27,6 +27,13 @@ typeTopicColorMap = {
 2: Color(0, 1, 1, 1),
 3: Color(0.851563, 0, 1, 1)
 }
+soulLevelColorMap = {
+0: Color(1, 1, 1, 1),
+1: Color(0.549081, 1, 0.469515, 1),
+2: Color(0.496592, 0.690537, 1, 1),
+3: Color(0.797899, 0.499276, 1, 1),
+4: Color(1, 0.568473, 0.258116, 1)
+}
 metadata/_edit_horizontal_guides_ = [25.0]
 
 [node name="quality" type="Label" parent="."]
@@ -34,14 +41,14 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 text = "[普通]"
-label_settings = SubResource("LabelSettings_fglo5")
+label_settings = SubResource("LabelSettings_83mpy")
 
 [node name="label" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_y8dft")
 bbcode_enabled = true
-text = "[b]未命名武器[/b]"
+text = "[b][color=ffffffff]归一[/color] · 未命名武器[/b]"
 fit_content = true
 autowrap_mode = 0
 
@@ -60,4 +67,4 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 text = "[冲击]"
-label_settings = SubResource("LabelSettings_3tmci")
+label_settings = SubResource("LabelSettings_gcoja")

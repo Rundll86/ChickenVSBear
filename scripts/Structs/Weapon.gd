@@ -6,6 +6,7 @@ class_name Weapon
 @export var displayName: String = "未命名饲料"
 @export var quality: WeaponName.Quality = WeaponName.Quality.COMMON
 @export var typeTopic: WeaponName.TypeTopic = WeaponName.TypeTopic.IMPACT
+@export var soulLevel: WeaponName.SoulLevel = WeaponName.SoulLevel.NORMALIZE
 @export var costBeachball: int = 500
 @export var store: Dictionary = {
 	"atk": 10
@@ -68,6 +69,7 @@ func rebuildInfo():
 	nameLabel.displayName = displayName
 	nameLabel.quality = quality
 	nameLabel.typeTopic = typeTopic
+	nameLabel.soulLevel = soulLevel
 	nameLabel.level = level
 	energyLabel.text = "%.1f" % needEnergy
 	beachballLabel.text = str(costBeachball)

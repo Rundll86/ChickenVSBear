@@ -15,10 +15,18 @@ enum TypeTopic {
 	TEMPERATURE,
 	MAGIC,
 }
+enum SoulLevel {
+	NORMALIZE,
+	ADD,
+	MULTIPLY,
+	EXPONENT,
+	INFINITY,
+}
 
 @export var displayName: String = "未命名武器"
 @export var quality: Quality = Quality.COMMON
 @export var typeTopic: TypeTopic = TypeTopic.IMPACT
+@export var soulLevel: SoulLevel = SoulLevel.NORMALIZE
 @export var level: int = 0
 @export var qualityColorMap = {
 	Quality.WASTE: Color(),
@@ -60,6 +68,20 @@ enum TypeTopic {
 	TypeTopic.TEMPERATURE: Color(),
 	TypeTopic.MAGIC: Color(),
 }
+@export var soulLevelNameMap = {
+	SoulLevel.NORMALIZE: "归一",
+	SoulLevel.ADD: "数增",
+	SoulLevel.MULTIPLY: "倍乘",
+	SoulLevel.EXPONENT: "幂指",
+	SoulLevel.INFINITY: "无量",
+}
+@export var soulLevelColorMap = {
+	SoulLevel.NORMALIZE: Color(),
+	SoulLevel.ADD: Color(),
+	SoulLevel.MULTIPLY: Color(),
+	SoulLevel.EXPONENT: Color(),
+	SoulLevel.INFINITY: Color(),
+}
 
 @onready var qualityLabel: Label = $"%quality"
 @onready var typeTopicLabel: Label = $"%typeTopic"
@@ -74,11 +96,13 @@ func _physics_process(_delta):
 	qualityLabel.label_settings.font_color = qualityColor()
 	typeTopicLabel.text = "[%s]" % typeTopicNameMap[typeTopic]
 	typeTopicLabel.label_settings.font_color = typeTopicColor()
-	nameLabel.text = "[b]%s[/b]" % displayName
+	nameLabel.text = "[b][color=%s]%s[/color] · %s[/b]" % [soulLevelColor().to_html(), soulLevelNameMap[soulLevel], displayName]
 	levelLabel.text = "[b]Lv.%d[/b]" % (level + 1)
 func qualityColor():
 	return qualityColorMap[quality] as Color
 func typeTopicColor():
 	return typeTopicColorMap[typeTopic] as Color
+func soulLevelColor():
+	return soulLevelColorMap[soulLevel] as Color
 func weight(player: EntityBase) -> int:
 	return floor(clamp(qualityRandomWeight[quality] + luckInfluence[quality] * player.fields[FieldStore.Entity.LUCK_VALUE], 1, INF))
