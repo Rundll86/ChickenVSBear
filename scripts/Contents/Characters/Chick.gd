@@ -30,7 +30,7 @@ func attack(type):
 	elif type == 1:
 		var laserCount = randi_range(2, 4)
 		for i in laserCount:
-			BulletBase.generate(preload("res://components/Bullets/ChickLaser.tscn"), self, texture.global_position, deg_to_rad(90 * i))
+			BulletBase.generate(preload("res://components/Bullets/ChickLaser.tscn"), self, texture.global_position, deg_to_rad(360.0 / laserCount * i))
 	elif type == 2:
 		var weaponPos = findWeaponAnchor("normal")
 		var target = weaponPos.angle_to_point(currentFocusedBoss.position)
