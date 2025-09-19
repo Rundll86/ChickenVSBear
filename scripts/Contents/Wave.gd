@@ -15,13 +15,16 @@ static var WAVE_NORMAL = [
 	Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 19, INF, 10),
 	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, false, 14, INF, 20),
 ]
-static var WAVE_TESTBOSS = [
-	# Wave.create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 0, INF, 10),
-	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, true, 0, INF, 10),
-	# Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 2, INF, 10),
+static var WAVE_TESTBOSS_ALL = [
+	Wave.create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 0, INF, 10),
+	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, true, 1, INF, 10),
+	Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 2, INF, 10),
+]
+static var WAVE_TESTBOSS_KUKE = [
+	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, true, 0, INF, 1),
 ]
 static var WAVE_EMPTY = []
-static var data = WAVE_TESTBOSS
+static var data = WAVE_TESTBOSS_ALL
 
 static func customStart():
 	if false:
