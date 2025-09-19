@@ -21,7 +21,7 @@ radius = 2.23607
 [node name="PurpleCrystalSmall" instance=ExtResource("1_7tnrb")]
 modulate = Color(1.5, 1.5, 1.5, 1)
 script = ExtResource("2_it0pa")
-displayName = "微型紫水晶"
+displayName = "微型水晶"
 speed = 15.0
 damage = 0.5
 lifeDistance = 1400.0
