@@ -355,7 +355,6 @@ func hasItem(items: Dictionary):
 			return false
 	return true
 func useItem(items: Dictionary):
-	print(items)
 	var state = hasItem(items)
 	if state:
 		for item in items:

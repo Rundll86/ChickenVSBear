@@ -44,10 +44,12 @@ func _ready():
 	)
 	extractBtn.pressed.connect(
 		func():
-			UIState.player.getItem({
-				ItemStore.ItemType.SOUL: ceil((1 + soulLevel) * soulLevel / 2.0)
-			})
-			soulLevel = 1
+			if soulLevel > WeaponName.SoulLevel.NORMALIZE:
+				UIState.player.getItem({
+					ItemStore.ItemType.SOUL: soulLevel
+				})
+				soulLevel -= 1
+				rebuildInfo()
 	)
 	inlayBtn.pressed.connect(
 		func():
