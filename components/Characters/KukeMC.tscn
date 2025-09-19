@@ -29,6 +29,8 @@ size = Vector2(150, 150)
 [node name="KukeMC" instance=ExtResource("1_r4q7y")]
 script = ExtResource("2_s2dg5")
 displayName = "酷可mc"
+drops = Array[int]([0, 1, 4])
+dropCounts = Array[Vector2]([Vector2(20, 40), Vector2(25, 100), Vector2(2, 3)])
 metadata/_edit_vertical_guides_ = [76.0]
 
 [node name="collect" parent="sounds" index="4"]

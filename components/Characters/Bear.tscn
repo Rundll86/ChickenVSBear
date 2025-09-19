@@ -143,6 +143,8 @@ alpha_curve = SubResource("CurveTexture_8q862")
 [node name="Bear" instance=ExtResource("1_3ves7")]
 script = ExtResource("2_kh2af")
 displayName = "熊谷凌"
+drops = Array[int]([0, 1, 4])
+dropCounts = Array[Vector2]([Vector2(50, 100), Vector2(70, 140), Vector2(4, 10)])
 metadata/_edit_vertical_guides_ = [-50.0]
 
 [node name="attack0" parent="sounds" index="5"]

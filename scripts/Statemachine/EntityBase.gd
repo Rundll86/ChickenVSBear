@@ -57,12 +57,14 @@ var inventory = {
 	ItemStore.ItemType.BASKETBALL: 500,
 	ItemStore.ItemType.APPLE: 5,
 	ItemStore.ItemType.BEACHBALL: 0,
+	ItemStore.ItemType.SOUL: 0,
 }
 var inventoryMax = {
 	ItemStore.ItemType.BASEBALL: INF, # 无限
 	ItemStore.ItemType.BASKETBALL: INF,
 	ItemStore.ItemType.APPLE: 5,
 	ItemStore.ItemType.BEACHBALL: INF,
+	ItemStore.ItemType.SOUL: INF,
 }
 
 @export var defaultCooldownUnit: float = 100

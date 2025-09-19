@@ -41,11 +41,31 @@ layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="updateBtn" type="Button" parent="container"]
+[node name="wrapper" type="VBoxContainer" parent="container"]
+layout_mode = 2
+
+[node name="updateBtn" type="Button" parent="container/wrapper"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_fwkd3")
 text = "升级"
+
+[node name="souls" type="HBoxContainer" parent="container/wrapper"]
+layout_mode = 2
+
+[node name="extractBtn" type="Button" parent="container/wrapper/souls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_fwkd3")
+text = "提炼灵魂"
+
+[node name="inlayBtn" type="Button" parent="container/wrapper/souls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_fwkd3")
+text = "镶嵌灵魂"
 
 [node name="info" type="VBoxContainer" parent="container"]
 layout_mode = 2

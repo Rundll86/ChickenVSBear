@@ -37,8 +37,8 @@ animations = [{
 script = ExtResource("2_r6bub")
 isBoss = true
 displayName = "小鸡"
-drops = Array[int]([0, 1])
-dropCounts = Array[Vector2]([Vector2(10, 30), Vector2(15, 50)])
+drops = Array[int]([0, 1, 4])
+dropCounts = Array[Vector2]([Vector2(10, 30), Vector2(15, 50), Vector2(1, 3)])
 appleCount = Vector2i(2, 4)
 
 [node name="hurt" parent="sounds" index="3"]
