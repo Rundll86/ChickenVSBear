@@ -1,6 +1,8 @@
 extends EntityBase
 class_name KukeMC
 
+var canSummon: bool = true
+
 func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 3000
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.5
@@ -9,6 +11,15 @@ func register():
 	attackCooldownMap[2] = 20000
 	attackCooldownMap[3] = 2000
 	inventory[ItemStore.ItemType.APPLE] = INF
+	healthChanged.connect(
+		func(h):
+			if h < fields[FieldStore.Entity.MAX_HEALTH] * 0.25:
+				canSummon = false
+				for child in EntityTool.findEntityByClass("KukeChild", get_tree()):
+					if child.masterMine == self:
+						child.tryKill()
+						tryHeal(200)
+	)
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 500)
 	for bullet in get_tree().get_nodes_in_group("bullets"):
@@ -25,7 +36,7 @@ func attack(type):
 			fields[FieldStore.Entity.OFFSET_SHOOT] = 25
 			BulletBase.generate(preload("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), position.angle_to_point(currentFocusedBoss.position))
 			await TickTool.millseconds(randi_range(10, 50))
-	elif type == 1 and health < fields[FieldStore.Entity.MAX_HEALTH] * 0.5:
+	elif type == 1 and health < fields[FieldStore.Entity.MAX_HEALTH] * 0.5 and canSummon:
 		for i in randi_range(1, 2):
 			var child = EntityBase.generate(preload("res://components/Characters/KukeChild.tscn"), position + MathTool.randv2_range(500))
 			child.currentFocusedBoss = currentFocusedBoss

@@ -24,3 +24,10 @@ static func findClosetEntity(to: Vector2, fromTree: SceneTree, player: bool = fa
 	return result
 static func findClosetPlayer(to: Vector2, fromTree: SceneTree, excludes: Array[EntityBase] = []) -> EntityBase:
 	return findClosetEntity(to, fromTree, true, false, excludes)
+static func findEntityByClass(cls: String, fromTree: SceneTree) -> Array[EntityBase]:
+	var results: Array[EntityBase] = []
+	var nodes = fromTree.get_nodes_in_group("mobs") + fromTree.get_nodes_in_group("players")
+	for entity in nodes:
+		if entity.get_class() == cls:
+			results.append(entity)
+	return results

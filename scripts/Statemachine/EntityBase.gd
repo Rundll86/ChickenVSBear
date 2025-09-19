@@ -344,6 +344,9 @@ func playSound(type: String):
 		cloned.play()
 		await cloned.finished
 		cloned.queue_free()
+func tryKill():
+	kill()
+	await tryDie()
 
 func getTrackingAnchor() -> Vector2:
 	return hurtbox.get_node("hitbox").global_position
@@ -375,6 +378,8 @@ func spawn():
 func exitStage(_stage: int):
 	pass
 func enterStage(_stage: int):
+	pass
+func kill():
 	pass
 
 static func generate(
