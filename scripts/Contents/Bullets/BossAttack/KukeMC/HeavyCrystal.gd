@@ -6,7 +6,7 @@ var readyTime: float = 1000
 
 func register():
 	speed = 10
-	damage = 20
+	damage = 30
 func ai():
 	if timeLived() < readyTime:
 		PresetBulletAI.lockLauncher(self, launcher, true)
