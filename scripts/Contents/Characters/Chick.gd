@@ -3,16 +3,14 @@ class_name Chick
 
 @onready var firepot = $"%firepot"
 
-const laserCount = 4
-
 func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 1000
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.4
-	attackCooldownMap[0] = 500
-	attackCooldownMap[1] = 6000
+	attackCooldownMap[0] = 200
+	attackCooldownMap[1] = 12000
 	attackCooldownMap[2] = 2000
-	attackCooldownMap[3] = 500
-	sprintMultiplier = 45
+	attackCooldownMap[3] = 3000
+	sprintMultiplier = 50
 func spawn():
 	texture.play("walk")
 
@@ -30,7 +28,8 @@ func attack(type):
 		for i in randi_range(10, 20):
 			BulletBase.generate(preload("res://components/Bullets/Diamond.tscn"), self, weaponPos + MathTool.randv2_range(20), rotation + deg_to_rad(randf_range(-90, 90)))
 	elif type == 1:
-		for i in range(laserCount):
+		var laserCount = randi_range(2, 4)
+		for i in laserCount:
 			BulletBase.generate(preload("res://components/Bullets/ChickLaser.tscn"), self, texture.global_position, deg_to_rad(90 * i))
 	elif type == 2:
 		var weaponPos = findWeaponAnchor("normal")

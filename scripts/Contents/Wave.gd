@@ -24,7 +24,7 @@ static var WAVE_TESTBOSS_KUKE = [
 	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, true, 0, INF, 1),
 ]
 static var WAVE_EMPTY = []
-static var data = WAVE_TESTBOSS_ALL
+static var data = WAVE_NORMAL
 
 static func customStart():
 	if false:
