@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckq2cq6m23hq3"]
+[gd_scene load_steps=9 format=3 uid="uid://ckq2cq6m23hq3"]
 
 [ext_resource type="Script" path="res://scripts/Structs/Weapon.gd" id="1_g802t"]
 [ext_resource type="Theme" uid="uid://dhvs6urgf6jr5" path="res://themes/main.tres" id="2_fwkd3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dwwpkn4q07ja2" path="res://icon.svg" id="3_vtucy"]
 [ext_resource type="Texture2D" uid="uid://k13cte17httt" path="res://resources/items/energy.svg" id="4_6gohw"]
 [ext_resource type="Texture2D" uid="uid://dw0g7cb4skd5s" path="res://resources/items/beachball.svg" id="5_pr18h"]
+[ext_resource type="Texture2D" uid="uid://7jhhyoinptns" path="res://resources/items/soul.svg" id="6_tygah"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2ewr"]
 content_margin_left = 30.0
@@ -122,10 +123,35 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "500"
 
+[node name="soulInfo" type="HBoxContainer" parent="container/info/infos"]
+layout_mode = 2
+alignment = 1
+
+[node name="icon" type="TextureRect" parent="container/info/infos/soulInfo"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_tygah")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="soul" type="Label" parent="container/info/infos/soulInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+
 [node name="name" parent="container/info" instance=ExtResource("3_qv0b1")]
 unique_name_in_owner = true
 layout_mode = 2
 displayName = "未命名饲料"
+soulLevelColorMap = {
+1: Color(1, 1, 1, 1),
+2: Color(0.489296, 1, 0.548293, 1),
+3: Color(0.584242, 0.651083, 1, 1),
+4: Color(1, 0.325579, 0.996599, 1),
+5: Color(1, 0.57713, 0.247421, 1)
+}
 
 [node name="description" type="RichTextLabel" parent="container"]
 unique_name_in_owner = true

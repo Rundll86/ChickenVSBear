@@ -6,7 +6,7 @@ class_name Weapon
 @export var displayName: String = "未命名饲料"
 @export var quality: WeaponName.Quality = WeaponName.Quality.COMMON
 @export var typeTopic: WeaponName.TypeTopic = WeaponName.TypeTopic.IMPACT
-@export var soulLevel: WeaponName.SoulLevel = WeaponName.SoulLevel.NORMALIZE
+@export var soulLevel: int = 1
 @export var costBeachball: int = 500
 @export var store: Dictionary = {
 	"atk": 10
@@ -24,8 +24,11 @@ class_name Weapon
 @onready var nameLabel: WeaponName = $"%name"
 @onready var energyLabel: Label = $"%energy"
 @onready var beachballLabel: Label = $"%beachball"
+@onready var soulLabel: Label = $"%soul"
 @onready var descriptionLabel: RichTextLabel = $"%description"
-@onready var updateButton: Button = $"%updateBtn"
+@onready var updateBtn: Button = $"%updateBtn"
+@onready var extractBtn: Button = $"%extractBtn"
+@onready var inlayBtn: Button = $"%inlayBtn"
 @onready var sounds: Node2D = $"%sounds"
 
 var cooldownTimer: CooldownTimer = null
@@ -35,9 +38,25 @@ func _ready():
 	cooldownTimer = CooldownTimer.new()
 	cooldownTimer.cooldown = cooldown
 	originalStore = store
-	updateButton.pressed.connect(
+	updateBtn.pressed.connect(
 		func():
 			apply(UIState.player)
+	)
+	extractBtn.pressed.connect(
+		func():
+			UIState.player.getItem({
+				ItemStore.ItemType.SOUL: ceil((1 + soulLevel) * soulLevel / 2.0)
+			})
+			soulLevel = 1
+	)
+	inlayBtn.pressed.connect(
+		func():
+			if soulLevel < WeaponName.SoulLevel.INFINITY - 1:
+				if UIState.player.useItem({
+					ItemStore.ItemType.SOUL: soulLevel
+				}):
+					soulLevel += 1
+					rebuildInfo()
 	)
 	for i in sounds.get_children():
 		i.process_mode = ProcessMode.PROCESS_MODE_ALWAYS
@@ -73,6 +92,7 @@ func rebuildInfo():
 	nameLabel.level = level
 	energyLabel.text = "%.1f" % needEnergy
 	beachballLabel.text = str(costBeachball)
+	soulLabel.text = str(soulLevel)
 	descriptionLabel.text = buildDescription()
 func buildDescription() -> String:
 	var result = descriptionTemplate

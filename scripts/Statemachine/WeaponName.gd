@@ -16,17 +16,17 @@ enum TypeTopic {
 	MAGIC,
 }
 enum SoulLevel {
-	NORMALIZE,
-	ADD,
-	MULTIPLY,
-	EXPONENT,
-	INFINITY,
+	NORMALIZE = 1,
+	ADD = 2,
+	MULTIPLY = 3,
+	EXPONENT = 4,
+	INFINITY = 5,
 }
 
 @export var displayName: String = "未命名武器"
 @export var quality: Quality = Quality.COMMON
 @export var typeTopic: TypeTopic = TypeTopic.IMPACT
-@export var soulLevel: SoulLevel = SoulLevel.NORMALIZE
+@export var soulLevel: int = SoulLevel.NORMALIZE
 @export var level: int = 0
 @export var qualityColorMap = {
 	Quality.WASTE: Color(),

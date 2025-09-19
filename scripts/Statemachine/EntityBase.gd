@@ -57,7 +57,7 @@ var inventory = {
 	ItemStore.ItemType.BASKETBALL: 500,
 	ItemStore.ItemType.APPLE: 5,
 	ItemStore.ItemType.BEACHBALL: 0,
-	ItemStore.ItemType.SOUL: 0,
+	ItemStore.ItemType.SOUL: 10,
 }
 var inventoryMax = {
 	ItemStore.ItemType.BASEBALL: INF, # 无限
@@ -349,6 +349,21 @@ func playSound(type: String):
 func tryKill():
 	kill()
 	await tryDie()
+func hasItem(items: Dictionary):
+	for item in items:
+		if inventory[item] < items[item]:
+			return false
+	return true
+func useItem(items: Dictionary):
+	print(items)
+	var state = hasItem(items)
+	if state:
+		for item in items:
+			inventory[item] -= items[item]
+	return state
+func getItem(items: Dictionary):
+	for item in items:
+		inventory[item] += items[item]
 
 func getTrackingAnchor() -> Vector2:
 	return hurtbox.get_node("hitbox").global_position
