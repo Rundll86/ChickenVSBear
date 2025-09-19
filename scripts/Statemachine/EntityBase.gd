@@ -52,12 +52,13 @@ var attackCooldownMap = {
 var attackCooldowner = {
 	0: CooldownTimer.new()
 }
+# 先给点物品，测试武器灵魂等级的功能
 var inventory = {
 	ItemStore.ItemType.BASEBALL: 500,
 	ItemStore.ItemType.BASKETBALL: 500,
 	ItemStore.ItemType.APPLE: 5,
-	ItemStore.ItemType.BEACHBALL: 0,
-	ItemStore.ItemType.SOUL: 10,
+	ItemStore.ItemType.BEACHBALL: 9999,
+	ItemStore.ItemType.SOUL: 9999,
 }
 var inventoryMax = {
 	ItemStore.ItemType.BASEBALL: INF, # 无限
