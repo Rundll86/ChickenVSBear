@@ -49,15 +49,17 @@ func _ready():
 					ItemStore.ItemType.SOUL: soulLevel
 				})
 				soulLevel -= 1
+				updateStore(level, UIState.player)
 				rebuildInfo()
 	)
 	inlayBtn.pressed.connect(
 		func():
-			if soulLevel < WeaponName.SoulLevel.INFINITY - 1:
+			if soulLevel < WeaponName.SoulLevel.INFINITY:
 				if UIState.player.useItem({
 					ItemStore.ItemType.SOUL: soulLevel
 				}):
 					soulLevel += 1
+					updateStore(level, UIState.player)
 					rebuildInfo()
 	)
 	for i in sounds.get_children():
@@ -75,11 +77,13 @@ func apply(entity: EntityBase):
 	if allHave:
 		level += 1
 		entity.inventory[ItemStore.ItemType.BEACHBALL] -= costBeachball
-		store = update(level, originalStore.duplicate(), entity)
+		updateStore(level, entity)
 		costBeachball = floor(GameRule.weaponUpdateCost * costBeachball)
 		needEnergy = GameRule.weaponUpdateEnergy * needEnergy
 		rebuildInfo()
 	return allHave
+func updateStore(to: int, entity: EntityBase):
+	store = update(to, originalStore.duplicate(), entity)
 func multipiler() -> float:
 	if is_instance_valid(UIState.player):
 		return 1 - UIState.player.fields.get(FieldStore.Entity.PRICE_REDUCTION)
