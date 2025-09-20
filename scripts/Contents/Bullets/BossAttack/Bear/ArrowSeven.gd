@@ -13,7 +13,7 @@ var forwarded: bool = false
 
 func register():
 	speed = 1
-	damage = 10
+	damage = 5
 	penerate = 1
 func spawn():
 	myColor = allColor.gradient.sample(randf())
