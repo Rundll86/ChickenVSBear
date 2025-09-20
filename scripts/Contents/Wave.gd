@@ -13,7 +13,7 @@ static var WAVE_NORMAL = [
 	Wave.create(preload("res://components/Characters/Hen.tscn"), 1, 5, false, 0, INF, 1),
 	Wave.create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 9, INF, 15),
 	Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 19, INF, 10),
-	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, false, 14, INF, 20),
+	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, true, 14, INF, 20),
 ]
 static var WAVE_TESTBOSS_ALL = [
 	Wave.create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 0, INF, 10),
