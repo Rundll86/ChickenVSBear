@@ -362,7 +362,7 @@ func useItem(items: Dictionary):
 	return state
 func getItem(items: Dictionary):
 	for item in items:
-		inventory[item] += items[item]
+		inventory[item] = clamp(inventory[item] + items[item], 0, inventoryMax[item])
 
 func getTrackingAnchor() -> Vector2:
 	return hurtbox.get_node("hitbox").global_position

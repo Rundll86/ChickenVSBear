@@ -35,8 +35,9 @@ func _physics_process(_delta):
 				if targetPlayer.sprinting:
 					apply_central_force((position - targetPlayer.texture.global_position).normalized() * targetPlayer.velocity.length() * 10)
 				else:
-					targetPlayer.collectItem(item, stackCount)
-					collect()
+					if targetPlayer.inventoryMax[item] > targetPlayer.inventory[item]:
+						targetPlayer.collectItem(item, stackCount)
+						collect()
 
 func collect():
 	collecting = true
