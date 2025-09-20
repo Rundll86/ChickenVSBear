@@ -28,6 +28,8 @@ radius = 1000.0
 script = ExtResource("2_f85ek")
 displayName = "核弹"
 damage = 500.0
+indisDamage = true
+canDamageSelf = true
 autoDestroyOnHitMap = false
 
 [node name="texture" parent="." index="0"]
