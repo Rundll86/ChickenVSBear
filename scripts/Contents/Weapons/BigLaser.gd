@@ -5,6 +5,7 @@ class_name BigLaserWeapon
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["atk"] += 5 * to * soulLevel
 	origin["time"] /= 1 + 0.05 * to * soulLevel
+	needEnergy += 5
 	return origin
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")

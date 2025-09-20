@@ -79,7 +79,6 @@ func apply(entity: EntityBase):
 		entity.inventory[ItemStore.ItemType.BEACHBALL] -= costBeachball
 		updateStore(level, entity)
 		costBeachball = floor(GameRule.weaponUpdateCost * costBeachball)
-		needEnergy = GameRule.weaponUpdateEnergy * needEnergy
 		rebuildInfo()
 	return allHave
 func updateStore(to: int, entity: EntityBase):

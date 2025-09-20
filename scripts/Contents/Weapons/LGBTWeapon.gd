@@ -8,6 +8,7 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["power"] += 0.05 * to * soulLevel
 	origin["trace"] += 0.25 * to * soulLevel
 	origin["angle"] /= 1 + 0.05 * to * soulLevel
+	needEnergy += 1
 	return origin
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")
