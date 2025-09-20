@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://8lxfkx47fn2c"]
+[gd_scene load_steps=23 format=3 uid="uid://8lxfkx47fn2c"]
 
 [ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_qngiw"]
 [ext_resource type="AudioStream" uid="uid://b6lss67etwrl" path="res://resources/sounds/effect/nuclear-explosion.mp3" id="2_8nbe8"]
@@ -10,6 +10,13 @@ point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_afnd6"]
 curve = SubResource("Curve_dhavk")
+
+[sub_resource type="Curve" id="Curve_8kj3m"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p1xl1"]
+curve = SubResource("Curve_8kj3m")
 
 [sub_resource type="Gradient" id="Gradient_gan5i"]
 colors = PackedColorArray(1, 0.801445, 0.486847, 1, 1, 0.432907, 0, 1)
@@ -35,12 +42,15 @@ curve = SubResource("Curve_c6aew")
 particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 50.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_p1xl1")
 spread = 30.0
 initial_velocity_min = -600.0
 initial_velocity_max = 600.0
 gravity = Vector3(0, -400, 0)
-scale_min = 3.0
-scale_max = 8.0
+scale_min = 5.0
+scale_max = 10.0
 scale_curve = SubResource("CurveTexture_8kws8")
 color_ramp = SubResource("GradientTexture1D_vjiyn")
 color_initial_ramp = SubResource("GradientTexture1D_suafd")

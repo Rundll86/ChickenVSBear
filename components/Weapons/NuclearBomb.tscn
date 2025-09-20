@@ -12,8 +12,8 @@ quality = 4
 typeTopic = 2
 costBeachball = 100
 store = {
-"atk": 100,
-"radius": 400.0
+"atk": 200,
+"radius": 500.0
 }
 storeType = {
 "atk": 1,
