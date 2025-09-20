@@ -20,4 +20,5 @@ func ai():
 func destroy(_b):
 	EffectController.create(preload("res://components/Effects/NuclearExplosion.tscn"), global_position).shot()
 	hitbox.disabled = false
+	CameraManager.shake(5000, 250, func(_c, t, r): return t * r) # 震屏强度随进度递减
 	await TickTool.frame(5)
