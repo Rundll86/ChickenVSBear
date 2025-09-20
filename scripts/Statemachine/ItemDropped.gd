@@ -26,7 +26,7 @@ func _physics_process(_delta):
 	if is_instance_valid(targetPlayer):
 		if collecting:
 			linear_velocity = Vector2.ZERO
-		else:
+		elif targetPlayer.inventoryMax[item] > targetPlayer.inventory[item]:
 			var direction = (targetPlayer.position - position).normalized()
 			var speed = 1000.0 * targetPlayer.fields.get(FieldStore.Entity.GRAVITY) / ((targetPlayer.position - position).length() ** (1 / 3.0))
 			apply_central_force(direction * speed)
@@ -35,9 +35,8 @@ func _physics_process(_delta):
 				if targetPlayer.sprinting:
 					apply_central_force((position - targetPlayer.texture.global_position).normalized() * targetPlayer.velocity.length() * 10)
 				else:
-					if targetPlayer.inventoryMax[item] > targetPlayer.inventory[item]:
-						targetPlayer.collectItem(item, stackCount)
-						collect()
+					targetPlayer.collectItem(item, stackCount)
+					collect()
 
 func collect():
 	collecting = true
