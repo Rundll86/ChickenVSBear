@@ -2,8 +2,8 @@ extends EntityBase
 class_name Hen
 
 func register():
-	fields[FieldStore.Entity.MAX_HEALTH] = 75
-	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.25
+	fields[FieldStore.Entity.MAX_HEALTH] = 100
+	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.3
 	fields[FieldStore.Entity.OFFSET_SHOOT] = 10
 
 func ai():
