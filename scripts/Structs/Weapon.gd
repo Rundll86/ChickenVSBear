@@ -7,7 +7,7 @@ class_name Weapon
 @export var quality: WeaponName.Quality = WeaponName.Quality.COMMON
 @export var typeTopic: WeaponName.TypeTopic = WeaponName.TypeTopic.IMPACT
 @export var soulLevel: int = 1
-@export var costBeachball: int = 100
+@export var costBeachball: int = 500
 @export var store: Dictionary = {
 	"atk": 10
 }
