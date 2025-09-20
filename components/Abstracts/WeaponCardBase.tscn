@@ -29,6 +29,7 @@ offset_right = 350.0
 offset_bottom = 304.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_n2ewr")
 script = ExtResource("1_g802t")
+costBeachball = 500
 metadata/_edit_lock_ = true
 
 [node name="sounds" type="Node2D" parent="."]

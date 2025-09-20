@@ -7,7 +7,7 @@ class_name Weapon
 @export var quality: WeaponName.Quality = WeaponName.Quality.COMMON
 @export var typeTopic: WeaponName.TypeTopic = WeaponName.TypeTopic.IMPACT
 @export var soulLevel: int = 1
-@export var costBeachball: int = 500
+@export var costBeachball: int = 100
 @export var store: Dictionary = {
 	"atk": 10
 }
@@ -100,20 +100,28 @@ func rebuildInfo():
 	beachballLabel.text = str(costBeachball)
 	soulLabel.text = str(soulLevel)
 	descriptionLabel.text = buildDescription()
+func formatValue(value: Variant, type: FieldStore.DataType) -> String:
+	if type == FieldStore.DataType.VALUE:
+		return "%.2f" % value
+	elif type == FieldStore.DataType.INTEGER:
+		return "%d" % value
+	elif type == FieldStore.DataType.PERCENT:
+		return ("%d" % (value * 100)) + "%"
+	elif type == FieldStore.DataType.ANGLE:
+		return "%.1f°" % value
+	else:
+		return str(value)
 func buildDescription() -> String:
+	var current = store
+	var next = update(level + 1, originalStore.duplicate(), UIState.player)
 	var result = descriptionTemplate
 	for key in store.keys():
-		var data = store[key]
+		var data = current[key]
+		var nextData = next[key]
 		var type = storeType.get(key, FieldStore.DataType.VALUE)
-		if type == FieldStore.DataType.VALUE:
-			data = "%.2f" % data
-		elif type == FieldStore.DataType.INTEGER:
-			data = "%d" % data
-		elif type == FieldStore.DataType.PERCENT:
-			data = ("%d" % (data * 100)) + "%"
-		elif type == FieldStore.DataType.ANGLE:
-			data = "%.1f°" % data
-		result = result.replace("$" + key, "[color=cyan]%s[/color]" % data)
+		data = formatValue(data, type)
+		nextData = formatValue(nextData, type)
+		result = result.replace("$" + key, "[color=cyan]%s[/color]→[color=yellow]%s[/color]" % [data, nextData])
 	return "[center]%s[/center]" % result
 func readStore(key: String, default: Variant = null):
 	return store.get(key, default)
