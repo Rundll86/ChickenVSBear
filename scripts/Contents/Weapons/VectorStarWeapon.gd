@@ -7,7 +7,6 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["forwardtime"] /= 1 + 0.05 * to * soulLevel
 	origin["mincount"] += 0.5 * to * soulLevel
 	origin["maxcount"] += 1.5 * to * soulLevel
-	needEnergy += 2
 	return origin
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")
