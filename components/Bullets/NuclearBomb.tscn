@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://6aetx86j5ue"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_dpea6"]
+[ext_resource type="Texture2D" uid="uid://gs6jd1qxkl74" path="res://resources/bullets/nuclear-bomb/bomb.png" id="2_1kyo5"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/NuclearBomb.gd" id="2_f85ek"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mku0w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1kyo5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_asfas"]
+font_size = 30
+font_color = Color(1, 0, 0, 1)
+outline_size = 1
+outline_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nhppq"]
+radius = 1000.0
+
+[node name="NuclearBomb" instance=ExtResource("1_dpea6")]
+script = ExtResource("2_f85ek")
+displayName = "核弹"
+damage = 500.0
+autoDestroyOnHitMap = false
+
+[node name="texture" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_mku0w")
+
+[node name="anchor" type="Node2D" parent="texture" index="1"]
+unique_name_in_owner = true
+
+[node name="label" type="Label" parent="texture/anchor" index="0"]
+unique_name_in_owner = true
+offset_left = -200.0
+offset_top = -25.0
+offset_right = 200.0
+offset_bottom = 25.0
+text = "NUCLEAR WARNING %.1f"
+label_settings = SubResource("LabelSettings_asfas")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hitbox" parent="." index="1"]
+visible = false
+shape = SubResource("CircleShape2D_nhppq")

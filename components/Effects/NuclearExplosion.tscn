@@ -1,0 +1,132 @@
+[gd_scene load_steps=21 format=3 uid="uid://8lxfkx47fn2c"]
+
+[ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_qngiw"]
+[ext_resource type="AudioStream" uid="uid://b6lss67etwrl" path="res://resources/sounds/effect/nuclear-explosion.mp3" id="2_8nbe8"]
+[ext_resource type="Texture2D" uid="uid://dspkfcx4po7fg" path="res://resources/bullets/nuclear-bomb/0.png" id="2_tt1c0"]
+
+[sub_resource type="Curve" id="Curve_dhavk"]
+_data = [Vector2(0.498403, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_afnd6"]
+curve = SubResource("Curve_dhavk")
+
+[sub_resource type="Gradient" id="Gradient_gan5i"]
+colors = PackedColorArray(1, 0.801445, 0.486847, 1, 1, 0.432907, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_suafd"]
+gradient = SubResource("Gradient_gan5i")
+
+[sub_resource type="Gradient" id="Gradient_utkbn"]
+offsets = PackedFloat32Array(0.140351, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vjiyn"]
+gradient = SubResource("Gradient_utkbn")
+
+[sub_resource type="Curve" id="Curve_c6aew"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8kws8"]
+curve = SubResource("Curve_c6aew")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vcrr6"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 50.0
+spread = 30.0
+initial_velocity_min = -600.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, -400, 0)
+scale_min = 3.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_8kws8")
+color_ramp = SubResource("GradientTexture1D_vjiyn")
+color_initial_ramp = SubResource("GradientTexture1D_suafd")
+alpha_curve = SubResource("CurveTexture_afnd6")
+
+[sub_resource type="Curve" id="Curve_7vus7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.15016, 1), 0.0, 0.0, 0, 0, Vector2(0.597444, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_21hv7"]
+curve = SubResource("Curve_7vus7")
+
+[sub_resource type="Curve" id="Curve_hq40d"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 10.0, 0, 1, Vector2(0.1, 1), 0.0, 1.11111, 0, 0, Vector2(1, 2), 1.11111, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pbcyu"]
+curve = SubResource("Curve_hq40d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rqn5f"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_pbcyu")
+alpha_curve = SubResource("CurveTexture_21hv7")
+
+[sub_resource type="Animation" id="Animation_4yw4a"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%stage/../ground:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_hwbhp"]
+length = 5.0
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%stage/../ground:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.5, 5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ii4iw"]
+_data = {
+"RESET": SubResource("Animation_4yw4a"),
+"spawn": SubResource("Animation_hwbhp")
+}
+
+[node name="NuclearExplosion" instance=ExtResource("1_qngiw")]
+spawnSound = "spawn"
+spawnAnimation = "spawn"
+
+[node name="spawn" parent="sounds" index="0"]
+stream = ExtResource("2_8nbe8")
+volume_db = 15.0
+
+[node name="ground" type="GPUParticles2D" parent="." index="1"]
+amount = 5000
+process_material = SubResource("ParticleProcessMaterial_vcrr6")
+lifetime = 2.0
+local_coords = true
+
+[node name="particles" parent="." index="2"]
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_rqn5f")
+texture = ExtResource("2_tt1c0")
+lifetime = 5.0
+explosiveness = 0.0
+local_coords = true
+
+[node name="animator" parent="stage" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_ii4iw")
+}

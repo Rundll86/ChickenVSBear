@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=18 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dclinyhu256xi" path="res://resources/sounds/effect/Low Whoosh.mp3" id="3_4syso"]
 [ext_resource type="Texture2D" uid="uid://ci2ik43ce82uy" path="res://resources/characters/cock/rooster-b.svg" id="3_b0fgx"]
 [ext_resource type="PackedScene" uid="uid://c0n3igy4hucrg" path="res://components/Weapons/PurpleCrystal.tscn" id="3_ms5sq"]
+[ext_resource type="PackedScene" uid="uid://b2qhes4apaxsj" path="res://components/Weapons/NuclearBomb.tscn" id="3_rgjda"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
 [ext_resource type="AudioStream" uid="uid://benyec5bqni0b" path="res://resources/sounds/effect/Chomp.wav" id="4_k0yme"]
 [ext_resource type="PackedScene" uid="uid://wl8u5m52708w" path="res://components/Weapons/LGBT.tscn" id="4_pb8qn"]
@@ -47,17 +48,18 @@ displayName = "公鸡"
 [node name="weaponStore" parent="." index="0"]
 process_mode = 4
 
-[node name="PurpleCrystal" parent="weaponStore" index="0" instance=ExtResource("3_ms5sq")]
+[node name="NuclearBomb" parent="weaponStore" index="0" instance=ExtResource("3_rgjda")]
+offset_bottom = 315.0
+
+[node name="PurpleCrystal" parent="weaponStore" index="1" instance=ExtResource("3_ms5sq")]
 debugRebuild = false
 
-[node name="VectorStar" parent="weaponStore" index="1" instance=ExtResource("6_fvy5n")]
+[node name="VectorStar" parent="weaponStore" index="2" instance=ExtResource("6_fvy5n")]
 debugRebuild = false
 
-[node name="LGBT" parent="weaponStore" index="2" instance=ExtResource("4_pb8qn")]
-debugRebuild = false
+[node name="LGBT" parent="weaponStore" index="3" instance=ExtResource("4_pb8qn")]
 
-[node name="BigLaser" parent="weaponStore" index="3" instance=ExtResource("4_plqwu")]
-debugRebuild = false
+[node name="BigLaser" parent="weaponStore" index="4" instance=ExtResource("4_plqwu")]
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")
