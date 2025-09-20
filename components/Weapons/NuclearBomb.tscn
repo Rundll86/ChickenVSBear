@@ -12,7 +12,7 @@ quality = 4
 typeTopic = 2
 costBeachball = 100
 store = {
-"atk": 500,
+"atk": 750,
 "radius": 500.0
 }
 storeType = {
@@ -44,4 +44,4 @@ typeTopicColorMap = {
 }
 
 [node name="description" parent="container" index="2"]
-text = "[center]倒计时10秒后对半径[color=cyan]500[/color]→[color=yellow]520[/color]范围的实体造成[color=cyan]200[/color]→[color=yellow]225[/color]点[b]无差别伤害[/b]。[/center]"
+text = "[center]倒计时10秒后对半径[color=cyan]500[/color]→[color=yellow]520[/color]范围的实体造成[color=cyan]500[/color]→[color=yellow]525[/color]点[b]无差别伤害[/b]。[/center]"
