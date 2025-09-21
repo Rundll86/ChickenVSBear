@@ -51,6 +51,18 @@ func apply(entity: EntityBase):
 			if !applier or applier.call(entity, value):
 				entity.fields[field] += value
 				entity.fields[field] = clamp(entity.fields[field], 0, FieldStore.entityMaxValueMap.get(field, INF))
+		for i in weapons:
+			var instance = i.instantiate() as Weapon
+			if UIState.player.weaponBag.has(instance.displayName):
+				UIState.player.getItem({
+					ItemStore.ItemType.SOUL: instance.soulLevel
+				})
+			else:
+				instance.hide()
+				entity.weapons.append(instance)
+				entity.weaponBag.append(instance.displayName)
+				entity.weaponStore.add_child(instance)
+				entity.rebuildWeaponIcons()
 		hide()
 	selected.emit(allHave)
 	return allHave

@@ -85,7 +85,7 @@ var inventoryMax = {
 @onready var stageAnimator: AnimationPlayer = $"%stageAnimator"
 @onready var damageAnchor: Node2D = $"%damageAnchor"
 @onready var trailParticle: GPUParticles2D = $"%trailParticle"
-@onready var weaponStore = $"%weaponStore"
+@onready var weaponStore: Node2D = $"%weaponStore"
 var statebar: EntityStateBar
 
 var health: float = 0
@@ -127,10 +127,7 @@ func _ready():
 				else:
 					UIState.energyPercent.setCurrent(newEnergy)
 		)
-		for i in weapons:
-			var icon: SkillIcon = ComponentManager.getUIComponent("SkillIcon").instantiate()
-			icon.weapon = i
-			UIState.skillIconContainer.add_child(icon)
+		rebuildWeaponIcons()
 	else:
 		if !currentFocusedBoss:
 			currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
@@ -174,6 +171,14 @@ func _physics_process(_delta: float) -> void:
 	trailParticle.emitting = trailing
 
 # 通用方法
+func rebuildWeaponIcons():
+	if isPlayer():
+		for i in UIState.skillIconContainer.get_children():
+			i.queue_free()
+		for i in weapons:
+			var icon: SkillIcon = ComponentManager.getUIComponent("SkillIcon").instantiate()
+			icon.weapon = i
+			UIState.skillIconContainer.add_child(icon)
 func timeLived():
 	return WorldManager.getTime() - spawnTime
 func setStage(stage: int):
