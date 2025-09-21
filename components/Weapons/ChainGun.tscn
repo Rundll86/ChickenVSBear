@@ -10,8 +10,14 @@ avatarTexture = ExtResource("2_ghn43")
 displayName = "链式机枪"
 costBeachball = 400
 store = {
-"atk": 5
+"atk": 5,
+"count": 1
 }
+storeType = {
+"atk": 1,
+"count": 1
+}
+descriptionTemplate = "发射$count个[b]微型水晶[/b]，可造成$atk点伤害。"
 needEnergy = 1.0
 cooldown = 66.0
 
@@ -28,4 +34,4 @@ text = "400"
 displayName = "链式机枪"
 
 [node name="description" parent="container" index="2"]
-text = "[center]造成[color=cyan]4[/color]→[color=yellow]6[/color]点伤害。[/center]"
+text = "[center]发射[color=cyan]2[/color]→[color=yellow]2[/color]个[b]微型水晶[/b]，可造成[color=cyan]5[/color]→[color=yellow]7[/color]点伤害。[/center]"
