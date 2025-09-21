@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8d56knoxje2e"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_twbyf"]
+[ext_resource type="Texture2D" uid="uid://ccxdfsg5071t4" path="res://resources/bullets/chain-gun/Chain_Gun.webp" id="2_030i8"]
+[ext_resource type="Texture2D" uid="uid://cwfyi61xkt4bt" path="res://resources/weapons/lgbt.jpeg" id="2_tlofc"]
+[ext_resource type="PackedScene" uid="uid://wl8u5m52708w" path="res://components/Weapons/LGBT.tscn" id="3_bfnqw"]
+
+[node name="LGBT" instance=ExtResource("1_twbyf")]
+avatarTexture = ExtResource("2_tlofc")
+displayName = "彩虹旗"
+quality = 2
+topic = 8
+fields = Array[int]([1])
+fieldValues = Array[float]([0.06])
+weapons = Array[PackedScene]([ExtResource("3_bfnqw")])
+costs = Array[int]([1, 3])
+costCounts = Array[int]([200, 2500])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_030i8")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "链式机枪"
+quality = 2
+topic = 8

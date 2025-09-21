@@ -7,6 +7,7 @@
 [node name="ChainGun" instance=ExtResource("1_7uifb")]
 avatarTexture = ExtResource("2_j74mc")
 displayName = "链式机枪"
+quality = 2
 topic = 8
 weapons = Array[PackedScene]([ExtResource("3_0nqrh")])
 costs = Array[int]([0, 3])
@@ -17,5 +18,4 @@ texture = ExtResource("2_j74mc")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "链式机枪"
-quality = 3
 topic = 8

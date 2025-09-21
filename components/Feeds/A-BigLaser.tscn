@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqnkn1nbdl67l"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_3s2fe"]
+[ext_resource type="Texture2D" uid="uid://dy4op6n6vxef3" path="res://resources/bullets/laser-circle/circle.svg" id="2_igv34"]
+[ext_resource type="PackedScene" uid="uid://cxabqjo7skxev" path="res://components/Weapons/BigLaser.tscn" id="3_u2qxo"]
+
+[node name="BigLaser" instance=ExtResource("1_3s2fe")]
+avatarTexture = ExtResource("2_igv34")
+displayName = "湮灭激光"
+quality = 2
+topic = 8
+weapons = Array[PackedScene]([ExtResource("3_u2qxo")])
+costs = Array[int]([0, 2])
+costCounts = Array[int]([500, 1])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_igv34")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "湮灭激光"
+quality = 2
+topic = 8
