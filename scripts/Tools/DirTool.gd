@@ -18,3 +18,5 @@ static func listdir(path: String) -> Array[String]:
 		return files
 	else:
 		return []
+static func getBasenameWithoutExtension(path: String) -> String:
+	return path.get_file().get_basename()

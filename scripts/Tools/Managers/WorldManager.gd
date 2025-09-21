@@ -8,6 +8,7 @@ static var runningTime: int = 0
 func _ready():
 	tree = get_tree()
 	rootNode = self
+	ComponentManager.init()
 func _physics_process(delta):
 	runningTime += delta * 1000
 	if EntityBase.mobCount() == 0 and runningTime > 3000:
