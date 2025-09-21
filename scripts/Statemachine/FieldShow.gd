@@ -37,7 +37,7 @@ func _ready():
 		valueLabel.label_settings.font_color = Color(1, 1, 1)
 
 static func create(newField: FieldStore.Entity, newValue: float, newShowSign: bool, newEntity: EntityBase, newUseViewCast: bool) -> FieldShow:
-	var fieldShow = load("res://components/UI/FieldShow.tscn").instantiate()
+	var fieldShow = ComponentManager.getUIComponent("FieldShow").instantiate()
 	fieldShow.field = newField
 	fieldShow.value = newValue
 	fieldShow.showSign = newShowSign

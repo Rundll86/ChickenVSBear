@@ -126,7 +126,7 @@ func _ready():
 					UIState.energyPercent.setCurrent(newEnergy)
 		)
 		for i in weapons:
-			var icon: SkillIcon = load("res://components/Abstracts/SkillIconBase.tscn").instantiate()
+			var icon: SkillIcon = ComponentManager.getUIComponent("SkillIcon").instantiate()
 			icon.weapon = i
 			UIState.skillIconContainer.add_child(icon)
 	else:

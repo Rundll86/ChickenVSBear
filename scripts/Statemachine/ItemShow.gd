@@ -23,7 +23,7 @@ func _physics_process(_delta):
 	countLabel.text = str(count)
 
 static func generate(itemType: ItemStore.ItemType, itemCount: int = 1, isAutoFree: bool = false):
-	var item = load("res://components/UI/ItemShow.tscn").instantiate()
+	var item = ComponentManager.getUIComponent("ItemShow").instantiate()
 	item.type = itemType
 	item.count = itemCount
 	item.autoFree = isAutoFree

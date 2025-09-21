@@ -24,9 +24,9 @@ func _ready():
 				refreshNeedBaseballCount *= 1 + randf_range(GameRule.refreshCountIncreasePercent.x, GameRule.refreshCountIncreasePercent.y)
 				regenerateCards()
 	)
-	for feedScene in DirTool.listdir("res://components/Feeds"):
-		print("正在从 %s 加载饲料卡" % feedScene)
-		var feed = load(feedScene).instantiate() as Feed
+	for i in len(ComponentManager.feeds):
+		print("正在从 %s 加载饲料卡" % ComponentManager.feeds[i])
+		var feed = ComponentManager.getFeed(i).instantiate() as Feed
 		feed.selected.connect(
 			func(applied: bool):
 				if applied:

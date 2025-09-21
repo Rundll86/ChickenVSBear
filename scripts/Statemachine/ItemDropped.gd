@@ -50,7 +50,7 @@ static func generate(
 		spawnPosition: Vector2,
 		addToWorld: bool = true
 	):
-	var instance: ItemDropped = load("res://components/UI/ItemDropped.tscn").instantiate()
+	var instance: ItemDropped = ComponentManager.getUIComponent("ItemDropped").instantiate()
 	instance.item = itemType
 	instance.stackCount = count
 	instance.position = spawnPosition

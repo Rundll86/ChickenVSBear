@@ -33,7 +33,7 @@ func _ready():
 	queue_free()
 
 static func create(spawnDamage: float, spawnCrit: bool, spawnPosition: Vector2, addToWorld: bool = true) -> DamageLabel:
-	var instance = load("res://components/UI/DamageLabel.tscn").instantiate()
+	var instance = ComponentManager.getUIComponent("DamageLabel").instantiate()
 	instance.damage = spawnDamage
 	instance.crit = spawnCrit
 	instance.position = spawnPosition

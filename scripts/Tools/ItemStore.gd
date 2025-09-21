@@ -23,4 +23,4 @@ static var idMap = {
 	ItemType.SOUL: "soul",
 }
 static func getTexture(type: ItemType) -> Texture2D:
-	return load("res://resources/items/%s.svg" % idMap[type])
+	return ComponentManager.getItemTexture(idMap[type])
