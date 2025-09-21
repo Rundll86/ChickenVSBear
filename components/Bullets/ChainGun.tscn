@@ -14,7 +14,8 @@ lifeTime = 50.0
 sprite_frames = SubResource("SpriteFrames_cl70o")
 
 [node name="node" type="Sprite2D" parent="texture" index="1"]
-position = Vector2(74, 0)
+position = Vector2(130, 0)
+scale = Vector2(2, 2)
 texture = ExtResource("2_4hyk3")
 
 [node name="anchor" type="Node2D" parent="texture/node" index="0"]

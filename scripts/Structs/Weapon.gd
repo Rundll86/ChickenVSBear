@@ -48,7 +48,7 @@ func _ready():
 		func():
 			if soulLevel > WeaponName.SoulLevel.NORMALIZE:
 				UIState.player.getItem({
-					ItemStore.ItemType.SOUL: soulLevel
+					ItemStore.ItemType.SOUL: soulLevel - 1
 				})
 				soulLevel -= 1
 				updateStore(level, UIState.player)
@@ -66,19 +66,21 @@ func _ready():
 	)
 	moveLeftBtn.pressed.connect(
 		func():
-			var myIndex = get_index()
-			var leftIndex = max(myIndex - 1, 0)
-			get_parent().move_child(self, leftIndex)
-			ArrayTool.swap(UIState.player.weapons, myIndex, leftIndex)
-			UIState.player.rebuildWeaponIcons()
+			if get_parent():
+				var myIndex = get_index()
+				var leftIndex = max(myIndex - 1, 0)
+				get_parent().move_child(self, leftIndex)
+				ArrayTool.swap(UIState.player.weapons, myIndex, leftIndex)
+				UIState.player.rebuildWeaponIcons()
 	)
 	moveRightBtn.pressed.connect(
 		func():
-			var myIndex = get_index()
-			var rightIndex = min(myIndex + 1, get_parent().get_child_count() - 1)
-			get_parent().move_child(self, rightIndex)
-			ArrayTool.swap(UIState.player.weapons, myIndex, rightIndex)
-			UIState.player.rebuildWeaponIcons()
+			if get_parent():
+				var myIndex = get_index()
+				var rightIndex = min(myIndex + 1, get_parent().get_child_count() - 1)
+				get_parent().move_child(self, rightIndex)
+				ArrayTool.swap(UIState.player.weapons, myIndex, rightIndex)
+				UIState.player.rebuildWeaponIcons()
 	)
 	for i in sounds.get_children():
 		i.process_mode = ProcessMode.PROCESS_MODE_ALWAYS
