@@ -77,6 +77,8 @@ func _ready():
 			var myIndex = get_index()
 			var rightIndex = min(myIndex + 1, get_parent().get_child_count() - 1)
 			get_parent().move_child(self, rightIndex)
+			ArrayTool.swap(UIState.player.weapons, myIndex, rightIndex)
+			UIState.player.rebuildWeaponIcons()
 	)
 	for i in sounds.get_children():
 		i.process_mode = ProcessMode.PROCESS_MODE_ALWAYS
