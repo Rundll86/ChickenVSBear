@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=21 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://bb1uh8k7gkhr7" path="res://components/Weapons/VectorStar.tscn" id="6_fvy5n"]
 [ext_resource type="AudioStream" uid="uid://4wuuf1osk0yv" path="res://resources/sounds/effect/Low Boing.wav" id="6_m5px1"]
 [ext_resource type="AudioStream" uid="uid://b10u6iir6uvqn" path="res://resources/sounds/effect/BigLaser.wav" id="8_7dhim"]
+[ext_resource type="PackedScene" uid="uid://dwsyn746hr25d" path="res://components/Weapons/MushroomPickaxe.tscn" id="9_85j0d"]
+[ext_resource type="PackedScene" uid="uid://b2qhes4apaxsj" path="res://components/Weapons/NuclearBomb.tscn" id="10_ncj2v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4v2ol"]
 animations = [{
@@ -64,6 +66,11 @@ debugRebuild = false
 [node name="LGBT" parent="weaponStore" index="4" instance=ExtResource("4_pb8qn")]
 
 [node name="BigLaser" parent="weaponStore" index="5" instance=ExtResource("4_plqwu")]
+
+[node name="MushroomPickaxe" parent="weaponStore" index="6" instance=ExtResource("9_85j0d")]
+debugRebuild = false
+
+[node name="NuclearBomb" parent="weaponStore" index="7" instance=ExtResource("10_ncj2v")]
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")

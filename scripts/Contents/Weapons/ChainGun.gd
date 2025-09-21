@@ -2,9 +2,8 @@
 extends Weapon
 
 func update(to, origin, _entity):
-	origin["atk"] += 1 * to * soulLevel
+	origin["atk"] += 2 * to * soulLevel
 	return origin
 func attack(entity: EntityBase):
-	var weaponPos = entity.findWeaponAnchor("normal")
-	for i in BulletBase.generate(ComponentManager.getBullet("PurpleCrystalSmall"), entity, weaponPos, (get_global_mouse_position() - weaponPos).angle()):
+	for i in BulletBase.generate(ComponentManager.getBullet("ChainGun"), entity, entity.texture.global_position, (get_global_mouse_position() - entity.texture.global_position).angle()):
 		i.damage = readStore("atk")

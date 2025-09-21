@@ -1,6 +1,9 @@
 extends BulletBase
 
+@onready var anchor: Node2D = $"%anchor"
+
+func spawn():
+	for i in BulletBase.generate(ComponentManager.getBullet("PurpleCrystalSmall"), launcher, anchor.global_position, rotation):
+		i.damage = damage
 func ai():
-	PresetBulletAI.faceToMouse(self)
-func applyDot():
-	pass
+	PresetBulletAI.lockLauncher(self, launcher, true)

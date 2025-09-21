@@ -8,6 +8,7 @@
 
 [node name="ChainGun" instance=ExtResource("1_0gg4y")]
 script = ExtResource("2_l7jtn")
+lifeTime = 50.0
 
 [node name="texture" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_cl70o")
@@ -15,6 +16,10 @@ sprite_frames = SubResource("SpriteFrames_cl70o")
 [node name="node" type="Sprite2D" parent="texture" index="1"]
 position = Vector2(74, 0)
 texture = ExtResource("2_4hyk3")
+
+[node name="anchor" type="Node2D" parent="texture/node" index="0"]
+unique_name_in_owner = true
+position = Vector2(25, 0)
 
 [node name="hitbox" parent="." index="1"]
 disabled = true
