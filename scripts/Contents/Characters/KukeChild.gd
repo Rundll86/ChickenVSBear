@@ -16,9 +16,9 @@ func ai():
 		tryKill()
 func attack(type):
 	if type == 0:
-		BulletBase.generate(load("res://components/Bullets/PurpleCrystalSmall.tscn"), self, findWeaponAnchor("normal"), position.angle_to_point(currentFocusedBoss.position))
+		BulletBase.generate(ComponentManager.getBullet("PurpleCrystalSmall"), self, findWeaponAnchor("normal"), position.angle_to_point(currentFocusedBoss.position))
 		await TickTool.millseconds(randi_range(5, 25))
 	elif type == 1:
-		BulletBase.generate(load("res://components/Bullets/BossAttack/KukeMC/HeavyCrystal.tscn"), self, findWeaponAnchor("normal"), position.angle_to_point(currentFocusedBoss.position))
+		BulletBase.generate(ComponentManager.getBullet("HeavyCrystal"), self, findWeaponAnchor("normal"), position.angle_to_point(currentFocusedBoss.position))
 func kill():
 	masterMine.tryHeal(100)

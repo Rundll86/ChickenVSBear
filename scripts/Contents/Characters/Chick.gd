@@ -26,19 +26,19 @@ func attack(type):
 	if type == 0:
 		var weaponPos = findWeaponAnchor("normal")
 		for i in randi_range(10, 20):
-			BulletBase.generate(load("res://components/Bullets/Diamond.tscn"), self, weaponPos + MathTool.randv2_range(20), rotation + deg_to_rad(randf_range(-90, 90)))
+			BulletBase.generate(ComponentManager.getBullet("Diamond"), self, weaponPos + MathTool.randv2_range(20), rotation + deg_to_rad(randf_range(-90, 90)))
 	elif type == 1:
 		var laserCount = randi_range(2, 4)
 		for i in laserCount:
-			BulletBase.generate(load("res://components/Bullets/ChickLaser.tscn"), self, texture.global_position, deg_to_rad(360.0 / laserCount * i))
+			BulletBase.generate(ComponentManager.getBullet("ChickLaser"), self, texture.global_position, deg_to_rad(360.0 / laserCount * i))
 	elif type == 2:
 		var weaponPos = findWeaponAnchor("normal")
 		var target = weaponPos.angle_to_point(currentFocusedBoss.position)
 		firepot.global_rotation = target
 		firepot.shot()
-		BulletBase.generate(load("res://components/Bullets/FireScan.tscn"), self, weaponPos, target)
+		BulletBase.generate(ComponentManager.getBullet("FireScan"), self, weaponPos, target)
 	elif type == 3:
-		BulletBase.generate(load("res://components/Bullets/ChickSprint.tscn"), self, position, 0)
+		BulletBase.generate(ComponentManager.getBullet("ChickSprint"), self, position, 0)
 		trySprint()
 	return true
 func sprint():

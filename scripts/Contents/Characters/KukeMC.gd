@@ -34,11 +34,11 @@ func attack(type):
 	if type == 0:
 		for i in randi_range(8, 16):
 			fields[FieldStore.Entity.OFFSET_SHOOT] = 25
-			BulletBase.generate(load("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), position.angle_to_point(currentFocusedBoss.position))
+			BulletBase.generate(ComponentManager.getBullet("PurpleCrystal"), self, findWeaponAnchor("normal"), position.angle_to_point(currentFocusedBoss.position))
 			await TickTool.millseconds(randi_range(10, 50))
 	elif type == 1 and health < fields[FieldStore.Entity.MAX_HEALTH] * 0.5 and canSummon:
 		for i in randi_range(1, 2):
-			var child = EntityBase.generate(load("res://components/Characters/KukeChild.tscn"), position + MathTool.randv2_range(500))
+			var child = EntityBase.generate(ComponentManager.getCharacter("KukeChild"), position + MathTool.randv2_range(500))
 			child.currentFocusedBoss = currentFocusedBoss
 			child.masterMine = self
 	elif type == 2:
@@ -47,7 +47,7 @@ func attack(type):
 		for bulletIndex in countOfBullet:
 			for branchIndex in countOfBranch:
 				fields[FieldStore.Entity.OFFSET_SHOOT] = 0
-				BulletBase.generate(load("res://components/Bullets/PurpleCrystal.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(360.0 / countOfBullet * bulletIndex + 360.0 / countOfBranch * branchIndex))
+				BulletBase.generate(ComponentManager.getBullet("PurpleCrystal"), self, findWeaponAnchor("normal"), deg_to_rad(360.0 / countOfBullet * bulletIndex + 360.0 / countOfBranch * branchIndex))
 			await TickTool.millseconds(100)
 	elif type == 3:
-		BulletBase.generate(load("res://components/Bullets/BossAttack/KukeMC/HeavyCrystal.tscn"), self, findWeaponAnchor("normal"), position.angle_to_point(currentFocusedBoss.position))
+		BulletBase.generate(ComponentManager.getBullet("HeavyCrystal"), self, findWeaponAnchor("normal"), position.angle_to_point(currentFocusedBoss.position))

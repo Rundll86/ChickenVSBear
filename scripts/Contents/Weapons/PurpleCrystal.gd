@@ -7,6 +7,6 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
 	return origin
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")
-	for bullet in BulletBase.generate(load("res://components/Bullets/PurpleCrystal.tscn"), entity, weaponPos, (get_global_mouse_position() - weaponPos).angle()):
+	for bullet in BulletBase.generate(ComponentManager.getBullet("PurpleCrystal"), entity, weaponPos, (get_global_mouse_position() - weaponPos).angle()):
 		bullet.damage = readStore("atk")
 	return true

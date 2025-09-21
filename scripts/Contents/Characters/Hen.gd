@@ -14,5 +14,5 @@ func attack(type):
 	if type == 0:
 		var weaponPos = findWeaponAnchor("normal")
 		for i in randi_range(1, 4):
-			BulletBase.generate(load("res://components/Bullets/Star.tscn"), self, weaponPos, (currentFocusedBoss.position - position).angle())
+			BulletBase.generate(ComponentManager.getBullet("Star"), self, weaponPos, (currentFocusedBoss.position - position).angle())
 	return true

@@ -14,7 +14,7 @@ func attack(entity: EntityBase):
 	var facingAngle = (get_global_mouse_position() - weaponPos).angle()
 	var startAngle = facingAngle - deg_to_rad(readStore("angle") * (readStore("count") / 2))
 	for i in range(int(readStore("count"))):
-		for j in BulletBase.generate(load("res://components/Bullets/LGBTBullet.tscn"), entity, weaponPos, startAngle + deg_to_rad(readStore("angle") * i)):
+		for j in BulletBase.generate(ComponentManager.getBullet("LGBTBullet"), entity, weaponPos, startAngle + deg_to_rad(readStore("angle") * i)):
 			var bullet: LGBTBullet = j
 			bullet.damage = readStore("atk")
 			bullet.tracer = EntityTool.findClosetEntity(get_global_mouse_position(), get_tree(), !entity.isPlayer(), entity.isPlayer())
