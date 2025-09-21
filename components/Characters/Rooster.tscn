@@ -1,18 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=17 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
 [ext_resource type="Texture2D" uid="uid://fn8qx72clh38" path="res://resources/characters/cock/rooster-a.svg" id="2_q0j6j"]
 [ext_resource type="AudioStream" uid="uid://dclinyhu256xi" path="res://resources/sounds/effect/Low Whoosh.mp3" id="3_4syso"]
 [ext_resource type="Texture2D" uid="uid://ci2ik43ce82uy" path="res://resources/characters/cock/rooster-b.svg" id="3_b0fgx"]
-[ext_resource type="PackedScene" uid="uid://frwt0fgrpskb" path="res://components/Weapons/Meowmere.tscn" id="3_e2rag"]
-[ext_resource type="PackedScene" uid="uid://dlaks67h2osms" path="res://components/Weapons/ChainGun.tscn" id="3_fnlro"]
+[ext_resource type="PackedScene" uid="uid://c0n3igy4hucrg" path="res://components/Weapons/PurpleCrystal.tscn" id="3_ms5sq"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
 [ext_resource type="AudioStream" uid="uid://benyec5bqni0b" path="res://resources/sounds/effect/Chomp.wav" id="4_k0yme"]
+[ext_resource type="PackedScene" uid="uid://wl8u5m52708w" path="res://components/Weapons/LGBT.tscn" id="4_pb8qn"]
+[ext_resource type="PackedScene" uid="uid://cxabqjo7skxev" path="res://components/Weapons/BigLaser.tscn" id="4_plqwu"]
 [ext_resource type="AudioStream" uid="uid://dmxh3bpk8vyy5" path="res://resources/sounds/effect/Coin.mp3" id="5_xnbhq"]
+[ext_resource type="PackedScene" uid="uid://bb1uh8k7gkhr7" path="res://components/Weapons/VectorStar.tscn" id="6_fvy5n"]
 [ext_resource type="AudioStream" uid="uid://4wuuf1osk0yv" path="res://resources/sounds/effect/Low Boing.wav" id="6_m5px1"]
 [ext_resource type="AudioStream" uid="uid://b10u6iir6uvqn" path="res://resources/sounds/effect/BigLaser.wav" id="8_7dhim"]
-[ext_resource type="PackedScene" uid="uid://dwsyn746hr25d" path="res://components/Weapons/MushroomPickaxe.tscn" id="9_85j0d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4v2ol"]
 animations = [{
@@ -46,15 +47,15 @@ displayName = "公鸡"
 [node name="weaponStore" parent="." index="0"]
 process_mode = 4
 
-[node name="ChainGun" parent="weaponStore" index="0" instance=ExtResource("3_fnlro")]
+[node name="PurpleCrystal" parent="weaponStore" index="0" instance=ExtResource("3_ms5sq")]
 debugRebuild = false
 
-[node name="Meowmere" parent="weaponStore" index="1" instance=ExtResource("3_e2rag")]
-offset_bottom = 315.0
-
-[node name="MushroomPickaxe" parent="weaponStore" index="2" instance=ExtResource("9_85j0d")]
-offset_bottom = 315.0
+[node name="VectorStar" parent="weaponStore" index="1" instance=ExtResource("6_fvy5n")]
 debugRebuild = false
+
+[node name="LGBT" parent="weaponStore" index="2" instance=ExtResource("4_pb8qn")]
+
+[node name="BigLaser" parent="weaponStore" index="3" instance=ExtResource("4_plqwu")]
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")
