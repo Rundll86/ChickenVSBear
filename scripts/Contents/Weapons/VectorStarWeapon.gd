@@ -4,7 +4,7 @@ class_name VectorStarWeapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["atk"] += 5 * to * soulLevel
-	origin["forwardtime"] /= 1 + 0.02 * to * soulLevel
+	origin["forwardtime"] /= 1 + 0.05 * to * soulLevel
 	origin["mincount"] += 0.5 * to * soulLevel
 	origin["maxcount"] += 1.5 * to * soulLevel
 	return origin

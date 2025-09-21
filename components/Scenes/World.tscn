@@ -69,6 +69,7 @@ radius = 57.3149
 
 [node name="world" type="Node2D"]
 y_sort_enabled = true
+texture_filter = 1
 script = ExtResource("1_lxsxj")
 metadata/_edit_vertical_guides_ = [-1.0, 57.0]
 
@@ -94,6 +95,7 @@ metadata/_edit_lock_ = true
 z_index = -100
 scale = Vector2(5, 5)
 texture = ExtResource("4_oy4jj")
+metadata/_edit_lock_ = true
 
 [node name="star1" type="CollisionShape2D" parent="map"]
 position = Vector2(-2057, 1298)

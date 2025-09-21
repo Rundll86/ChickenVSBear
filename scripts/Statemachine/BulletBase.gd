@@ -5,6 +5,7 @@ class_name BulletBase
 @export var speed: float = 10.0
 @export var damage: float = 10.0
 @export var penerate: float = 0.0
+@export var penerateDamageReduction: float = 0.0
 @export var lifeDistance: float = -1 # -1表示无限距离
 @export var lifeTime: float = -1 # -1表示无限时间
 @export var indisDamage: bool = false # 是否无差别伤害（不区分敌我）
@@ -88,6 +89,7 @@ func hit(target: Node):
 	succeedToHit(resultDamage, entity)
 	if MathTool.rate(fullPenerate()):
 		penerate -= entity.fields[FieldStore.Entity.PENARATION_RESISTANCE]
+		damage *= 1.0 - penerateDamageReduction
 	else:
 		tryDestroy()
 func forward(direction: Vector2):
