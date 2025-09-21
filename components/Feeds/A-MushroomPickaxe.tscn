@@ -7,7 +7,6 @@
 [node name="MushroomPickaxe" instance=ExtResource("1_ug67j")]
 avatarTexture = ExtResource("2_ksurb")
 displayName = "蘑菇矿挖爪"
-quality = 3
 topic = 8
 weapons = Array[PackedScene]([ExtResource("3_apbxn")])
 costs = Array[int]([0, 1])
@@ -18,5 +17,5 @@ texture = ExtResource("2_ksurb")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "蘑菇矿挖爪"
-quality = 4
+quality = 3
 topic = 8
