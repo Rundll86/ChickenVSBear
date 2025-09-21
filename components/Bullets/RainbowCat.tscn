@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://ct8ijxg7ftypd"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_vvwmq"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/RainbowCat.gd" id="2_4c1xc"]
+[ext_resource type="Texture2D" uid="uid://ceqhttm1urmk3" path="res://resources/bullets/rainbow-cat/1.webp" id="2_bt3cu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xq5p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bt3cu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_80oph"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pwojl"]
+curve = SubResource("Curve_80oph")
+
+[sub_resource type="Curve" id="Curve_dmif4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yu884"]
+curve = SubResource("Curve_dmif4")
+
+[sub_resource type="Gradient" id="Gradient_wd04q"]
+offsets = PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.447059, 0, 1, 1, 0.890625, 0, 1, 0, 0.820313, 0.128174, 1, 0, 1, 0.859375, 1, 0, 0.53125, 1, 1, 0.429688, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f6n6f"]
+gradient = SubResource("Gradient_wd04q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u7fxt"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_yu884")
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_f6n6f")
+alpha_curve = SubResource("CurveTexture_pwojl")
+
+[node name="RainbowCat" instance=ExtResource("1_vvwmq")]
+script = ExtResource("2_4c1xc")
+
+[node name="texture" parent="." index="0"]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_0xq5p")
+
+[node name="trail" type="GPUParticles2D" parent="texture" index="1"]
+z_index = -1
+amount = 400
+process_material = SubResource("ParticleProcessMaterial_u7fxt")

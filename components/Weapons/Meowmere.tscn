@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://frwt0fgrpskb"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_xhgkg"]
+[ext_resource type="Script" path="res://scripts/Contents/Weapons/Meowmere.gd" id="2_4rd12"]
+[ext_resource type="Texture2D" uid="uid://cwr2pud7h8o3e" path="res://resources/bullets/meowmere/Meowmere.webp" id="2_kiocs"]
+
+[node name="Meowmere" instance=ExtResource("1_xhgkg")]
+script = ExtResource("2_4rd12")
+avatarTexture = ExtResource("2_kiocs")
+displayName = "彩虹猫之刃"
+quality = 2
+typeTopic = 3
+costBeachball = 600
+store = {
+"atk": 10,
+"count": 1.0
+}
+storeType = {
+"atk": 1,
+"count": 1.0
+}
+descriptionTemplate = "发射$count只彩虹猫的同时挥舞造成$atk点伤害。"
+cooldown = 200.0
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_kiocs")
+
+[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
+text = "600"
+
+[node name="name" parent="container/info" index="2"]
+displayName = "彩虹猫之刃"
+quality = 2
+typeTopic = 3
+
+[node name="description" parent="container" index="2"]
+text = "[center]发射[color=cyan]1[/color]→[color=yellow]1[/color]只彩虹猫的同时挥舞造成[color=cyan]10[/color]→[color=yellow]17[/color]点伤害。[/center]"

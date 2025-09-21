@@ -327,7 +327,7 @@ func tryHeal(count: float):
 		playSound("heal")
 		healed.emit(heal(count * fields.get(FieldStore.Entity.HEAL_ABILITY)))
 		healthChanged.emit(health)
-func findWeaponAnchor(weaponName: String):
+func findWeaponAnchor(weaponName: String) -> Vector2:
 	var anchor = $"%weapons".get_node_or_null(weaponName)
 	if anchor is Node2D:
 		return anchor.global_position

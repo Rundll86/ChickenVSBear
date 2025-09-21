@@ -50,6 +50,7 @@ func _ready():
 				if autoDestroyOnHitMap:
 					tryDestroy(true)
 	)
+	ai()
 func _process(_delta: float) -> void:
 	if destroying: return
 	if lifeTime > 0:
