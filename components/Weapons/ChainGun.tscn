@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlaks67h2osms"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_x1nyl"]
+[ext_resource type="Texture2D" uid="uid://ccxdfsg5071t4" path="res://resources/bullets/chain-gun/Chain_Gun.webp" id="2_ghn43"]
+[ext_resource type="Script" path="res://scripts/Contents/Weapons/ChainGun.gd" id="2_ponmu"]
+
+[node name="ChainGun" instance=ExtResource("1_x1nyl")]
+script = ExtResource("2_ponmu")
+avatarTexture = ExtResource("2_ghn43")
+displayName = "链式机枪"
+costBeachball = 400
+store = {
+"atk": 2
+}
+cooldown = 50.0
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_ghn43")
+
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
+text = "1.0"
+
+[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
+text = "400"
+
+[node name="name" parent="container/info" index="2"]
+displayName = "链式机枪"
+
+[node name="description" parent="container" index="2"]
+text = "[center]造成[color=cyan]2[/color]→[color=yellow]3[/color]点伤害。[/center]"
