@@ -14,4 +14,4 @@ func ai():
 		PresetBulletAI.trace(self, tracer.getTrackingAnchor(), clamp(speed / 50 * tracePower, 0, 1))
 	PresetBulletAI.forward(self, rotation)
 func destroy(_b):
-	EffectController.create(preload("res://components/Effects/LGBTBoom.tscn"), position).shot()
+	EffectController.create(load("res://components/Effects/LGBTBoom.tscn"), position).shot()

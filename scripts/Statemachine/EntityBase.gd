@@ -126,7 +126,7 @@ func _ready():
 					UIState.energyPercent.setCurrent(newEnergy)
 		)
 		for i in weapons:
-			var icon: SkillIcon = preload("res://components/Abstracts/SkillIconBase.tscn").instantiate()
+			var icon: SkillIcon = load("res://components/Abstracts/SkillIconBase.tscn").instantiate()
 			icon.weapon = i
 			UIState.skillIconContainer.add_child(icon)
 	else:
@@ -266,7 +266,7 @@ func tryAttack(type: int, needChargeUp: bool = false):
 	if state:
 		if needChargeUp:
 			charginup = true
-			await EffectController.create(preload("res://components/Effects/AttackStar.tscn"), damageAnchor.global_position).shot()
+			await EffectController.create(load("res://components/Effects/AttackStar.tscn"), damageAnchor.global_position).shot()
 			charginup = false
 		if isPlayer():
 			if await weapon.tryAttack(self):
@@ -317,7 +317,7 @@ func tryDie(by: BulletBase = null):
 		if isPlayer():
 			if UIState.player == self:
 				UIState.setPanel("GameOver", [displayName, by.launcher.displayName, by.displayName])
-	EffectController.create(preload("res://components/Effects/DeadBlood.tscn"), texture.global_position).shot()
+	EffectController.create(load("res://components/Effects/DeadBlood.tscn"), texture.global_position).shot()
 	await die()
 	died.emit()
 	queue_free()

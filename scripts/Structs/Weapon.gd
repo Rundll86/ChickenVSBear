@@ -2,7 +2,7 @@
 extends PanelContainer
 class_name Weapon
 
-@export var avatarTexture: Texture2D = preload("res://icon.svg")
+@export var avatarTexture: Texture2D = load("res://icon.svg")
 @export var displayName: String = "未命名饲料"
 @export var quality: WeaponName.Quality = WeaponName.Quality.COMMON
 @export var typeTopic: WeaponName.TypeTopic = WeaponName.TypeTopic.IMPACT

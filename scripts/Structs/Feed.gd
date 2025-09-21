@@ -4,7 +4,7 @@ class_name Feed
 
 signal selected(applied: bool)
 
-@export var avatarTexture: Texture2D = preload("res://icon.svg")
+@export var avatarTexture: Texture2D = load("res://icon.svg")
 @export var displayName: String = "未命名饲料"
 @export var quality: FeedName.Quality = FeedName.Quality.COMMON
 @export var topic: FeedName.Topic = FeedName.Topic.SURVIVAL
@@ -69,7 +69,7 @@ func rebuildInfo():
 		noField = false
 		var field = fields[i]
 		var value = fieldValues[i]
-		var fieldShow: FieldShow = preload("res://components/UI/FieldShow.tscn").instantiate()
+		var fieldShow: FieldShow = load("res://components/UI/FieldShow.tscn").instantiate()
 		fieldShow.field = field
 		fieldShow.value = value
 		if is_instance_valid(UIState.player):
@@ -82,7 +82,7 @@ func rebuildInfo():
 	for i in range(min(costs.size(), costCounts.size())):
 		var cost = costs[i]
 		var count = costCounts[i]
-		var costShow: ItemShow = preload("res://components/UI/ItemShow.tscn").instantiate()
+		var costShow: ItemShow = load("res://components/UI/ItemShow.tscn").instantiate()
 		costShow.type = cost
 		costShow.count = int(count * multipiler())
 		costsBox.add_child(costShow)

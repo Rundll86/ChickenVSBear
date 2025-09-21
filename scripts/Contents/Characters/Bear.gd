@@ -39,7 +39,7 @@ func attack(type):
 		playSound("attack0")
 		for i in randi_range(20, 30):
 			if !is_instance_valid(currentFocusedBoss): return false
-			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/ArrowSeven.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(randf_range(0, 360))):
+			for bullet in BulletBase.generate(load("res://components/Bullets/BossAttack/Bear/ArrowSeven.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(randf_range(0, 360))):
 				bullet.tracer = currentFocusedBoss
 				bullet.position += MathTool.randv2_range(50)
 			await TickTool.millseconds(50)
@@ -48,10 +48,10 @@ func attack(type):
 		await sprintTo(currentFocusedBoss.position - Vector2(MathTool.randc_from([-300, 300]), 300), 0.25)
 		var count = randi_range(6, 8)
 		for i in range(count):
-			BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/SunDance.tscn"), self, weaponPos, deg_to_rad(360.0 / count * i))
+			BulletBase.generate(load("res://components/Bullets/BossAttack/Bear/SunDance.tscn"), self, weaponPos, deg_to_rad(360.0 / count * i))
 	elif type == 2:
 		for i in range(13):
-			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/ForeverRainbow.tscn"), self, weaponPos, 0):
+			for bullet in BulletBase.generate(load("res://components/Bullets/BossAttack/Bear/ForeverRainbow.tscn"), self, weaponPos, 0):
 				bullet.rotation = 360 / 13.0 * i
 	elif type == 3:
 		if !is_instance_valid(currentFocusedBoss): return false
@@ -61,7 +61,7 @@ func attack(type):
 		currentInvinsible = true
 		playSound("attack3")
 		await TickTool.millseconds(500)
-		BulletBase.generate(preload("res://components/Bullets/BearSprint.tscn"), self, weaponPos, 0)
+		BulletBase.generate(load("res://components/Bullets/BearSprint.tscn"), self, weaponPos, 0)
 		await trySprint()
 		sprintParticle.emitting = false
 		canRunAi = true
@@ -73,7 +73,7 @@ func attack(type):
 		var count = randi_range(8, 12)
 		for i in range(count):
 			if !is_instance_valid(currentFocusedBoss): return false
-			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/ArrowSeven.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(360.0 / count * i)):
+			for bullet in BulletBase.generate(load("res://components/Bullets/BossAttack/Bear/ArrowSeven.tscn"), self, findWeaponAnchor("normal"), deg_to_rad(360.0 / count * i)):
 				bullet.tracer = currentFocusedBoss
 			await TickTool.millseconds(830.0 / count)
 		return false
@@ -82,7 +82,7 @@ func attack(type):
 		var count = randi_range(20, 30)
 		for i in range(count):
 			if !is_instance_valid(currentFocusedBoss): return false
-			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):
+			for bullet in BulletBase.generate(load("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):
 				bullet.rotation = deg_to_rad(360.0 / count * i)
 			await TickTool.millseconds(1670.0 / count)
 		return false
@@ -90,7 +90,7 @@ func attack(type):
 		playSound("attack6")
 		for i in 16:
 			if !is_instance_valid(currentFocusedBoss): return false
-			for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):
+			for bullet in BulletBase.generate(load("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):
 				bullet.position += MathTool.randv2_range(600)
 				bullet.look_at(currentFocusedBoss.position + MathTool.randv2_range(50))
 			await TickTool.millseconds(100)
@@ -102,7 +102,7 @@ func attack(type):
 			if !is_instance_valid(currentFocusedBoss): return false
 			playSound("attack7")
 			for i in 16:
-				for bullet in BulletBase.generate(preload("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):
+				for bullet in BulletBase.generate(load("res://components/Bullets/BossAttack/Bear/LightGun.tscn"), self, currentFocusedBoss.position, 0):
 					bullet.rotation_degrees += initAngle
 					bullet.rotation -= angle / 2
 					bullet.rotation += angle / 16 * i

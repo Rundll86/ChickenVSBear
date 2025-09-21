@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://dmxi1ikn6avig"]
 
-[ext_resource type="Script" path="res://scripts/Tools/WorldManager.gd" id="1_lxsxj"]
+[ext_resource type="Script" path="res://scripts/Tools/Managers/WorldManager.gd" id="1_lxsxj"]
 [ext_resource type="PackedScene" uid="uid://dfwg750a47ggx" path="res://components/Scenes/UI.tscn" id="2_04cdd"]
 [ext_resource type="PackedScene" uid="uid://bm7ymrri6pykb" path="res://components/Characters/Rooster.tscn" id="3_5ui6q"]
 [ext_resource type="Texture2D" uid="uid://c33c8mtm4x3e3" path="res://resources/maps/Galaxy.png" id="4_oy4jj"]
-[ext_resource type="Script" path="res://scripts/Tools/CameraManager.gd" id="5_mk7bv"]
+[ext_resource type="Script" path="res://scripts/Tools/Managers/CameraManager.gd" id="5_mk7bv"]
 
 [sub_resource type="Animation" id="Animation_ykpvi"]
 length = 0.001

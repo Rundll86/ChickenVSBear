@@ -21,7 +21,7 @@ func ai():
 		warn.size = Vector2.ONE * 2 * radius * (timeLived() / countdown)
 		label.text = "NUCLEAR WARNING %.1f" % ((countdown - timeLived()) / 1000)
 func destroy(_b):
-	EffectController.create(preload("res://components/Effects/NuclearExplosion.tscn"), global_position).shot()
+	EffectController.create(load("res://components/Effects/NuclearExplosion.tscn"), global_position).shot()
 	hitbox.disabled = false
 	CameraManager.shake(5000, 500, func(_c, t, r): return t * r) # 震屏强度随进度递减
 	await TickTool.frame(5)

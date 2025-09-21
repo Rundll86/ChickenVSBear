@@ -10,26 +10,26 @@ var per: int = 0
 
 static var current: int = 0
 static var WAVE_NORMAL = [
-	Wave.create(preload("res://components/Characters/Hen.tscn"), 1, 5, false, 0, INF, 1),
-	Wave.create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 9, INF, 15),
-	Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 19, INF, 10),
-	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, true, 14, INF, 20),
+	Wave.create(load("res://components/Characters/Hen.tscn"), 1, 5, false, 0, INF, 1),
+	Wave.create(load("res://components/Characters/Chick.tscn"), 0, 0, true, 9, INF, 15),
+	Wave.create(load("res://components/Characters/Bear.tscn"), 0, 0, true, 19, INF, 10),
+	Wave.create(load("res://components/Characters/KukeMC.tscn"), 0, 0, true, 14, INF, 20),
 ]
 static var WAVE_TESTBOSS_ALL = [
-	Wave.create(preload("res://components/Characters/Chick.tscn"), 0, 0, true, 0, INF, 10),
-	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, true, 1, INF, 10),
-	Wave.create(preload("res://components/Characters/Bear.tscn"), 0, 0, true, 2, INF, 10),
+	Wave.create(load("res://components/Characters/Chick.tscn"), 0, 0, true, 0, INF, 10),
+	Wave.create(load("res://components/Characters/KukeMC.tscn"), 0, 0, true, 1, INF, 10),
+	Wave.create(load("res://components/Characters/Bear.tscn"), 0, 0, true, 2, INF, 10),
 ]
 static var WAVE_TESTBOSS_KUKE = [
-	Wave.create(preload("res://components/Characters/KukeMC.tscn"), 0, 0, true, 0, INF, 10),
+	Wave.create(load("res://components/Characters/KukeMC.tscn"), 0, 0, true, 0, INF, 10),
 ]
 static var WAVE_EMPTY = []
 static var data = WAVE_NORMAL
 
 static func customStart():
 	if false:
-		var furryr = EntityBase.generate(preload("res://components/Characters/Bear.tscn"), MathTool.randv2_range(500), true, false)
-		var kukemc = EntityBase.generate(preload("res://components/Characters/KukeMC.tscn"), MathTool.randv2_range(500), true, false)
+		var furryr = EntityBase.generate(load("res://components/Characters/Bear.tscn"), MathTool.randv2_range(500), true, false)
+		var kukemc = EntityBase.generate(load("res://components/Characters/KukeMC.tscn"), MathTool.randv2_range(500), true, false)
 		furryr.currentFocusedBoss = kukemc
 		kukemc.currentFocusedBoss = furryr
 static func create(
