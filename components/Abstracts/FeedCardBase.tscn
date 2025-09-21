@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bykwevnv7keeh"]
+[gd_scene load_steps=5 format=3 uid="uid://bykwevnv7keeh"]
 
 [ext_resource type="Script" path="res://scripts/Structs/Feed.gd" id="1_2ea75"]
 [ext_resource type="Theme" uid="uid://dhvs6urgf6jr5" path="res://themes/main.tres" id="2_lvrpo"]
-[ext_resource type="Texture2D" uid="uid://dwwpkn4q07ja2" path="res://icon.svg" id="3_v6s0y"]
 [ext_resource type="PackedScene" uid="uid://bt370a1djjg5p" path="res://components/UI/FeedName.tscn" id="4_aewpy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2ewr"]
@@ -48,7 +47,6 @@ custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("3_v6s0y")
 expand_mode = 1
 stretch_mode = 5
 
@@ -58,6 +56,10 @@ layout_mode = 2
 quality = 1
 
 [node name="fields" type="VBoxContainer" parent="container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="weapons" type="VBoxContainer" parent="container"]
 unique_name_in_owner = true
 layout_mode = 2
 

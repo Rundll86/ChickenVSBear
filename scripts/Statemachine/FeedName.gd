@@ -18,6 +18,7 @@ enum Topic {
 	PROBABILITY,
 	FEED,
 	DROP,
+	WEAPON,
 }
 
 @export var displayName: String = "未命名饲料"
@@ -60,6 +61,7 @@ enum Topic {
 	Topic.PROBABILITY: "概率",
 	Topic.FEED: "饲料",
 	Topic.DROP: "掉落物",
+	Topic.WEAPON: "武器",
 }
 @export var topicColorMap = {
 	Topic.SURVIVAL: Color(),
@@ -70,6 +72,7 @@ enum Topic {
 	Topic.PROBABILITY: Color(),
 	Topic.FEED: Color(),
 	Topic.DROP: Color(),
+	Topic.WEAPON: Color(),
 }
 
 @onready var qualityLabel: Label = $"%quality"

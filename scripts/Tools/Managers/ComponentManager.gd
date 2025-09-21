@@ -38,6 +38,6 @@ static func getFeed(i: int) -> PackedScene:
 static func getUIComponent(t: String) -> PackedScene:
 	return MathTool.priority(uiComponents.get(t, false), load("res://components/UI/%s.tscn" % t))
 static func getTheme(t: String) -> Theme:
-	return MathTool.priority(themes.get(t, false), load("res://themes/%s.tscn" % t))
+	return MathTool.priority(themes.get(t, false), load("res://themes/%s.tres" % t))
 static func getItemTexture(t: String) -> Texture2D:
 	return MathTool.priority(itemTextures.get(t, false), load("res://resources/items/%s.svg" % t))

@@ -10,12 +10,14 @@ signal selected(applied: bool)
 @export var topic: FeedName.Topic = FeedName.Topic.SURVIVAL
 @export var fields: Array[FieldStore.Entity] = []
 @export var fieldValues: Array[float] = []
+@export var weapons: Array[PackedScene] = []
 @export var costs: Array[ItemStore.ItemType] = []
 @export var costCounts: Array[int] = []
 
 @onready var avatarRect: TextureRect = $"%avatar"
 @onready var nameLabel: FeedName = $"%name"
 @onready var fieldsBox: VBoxContainer = $"%fields"
+@onready var weaponsBox: VBoxContainer = $"%weapons"
 @onready var costsBox: GridContainer = $"%costs"
 @onready var selectButton: Button = $"%selectBtn"
 
