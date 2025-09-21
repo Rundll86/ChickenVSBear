@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dalh3x6uosynx"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_ug67j"]
+[ext_resource type="Texture2D" uid="uid://cqg0aluvegqfe" path="res://resources/bullets/MushroomPickaxe/frames/Shroomite_Digging_Claw.webp" id="2_ksurb"]
+[ext_resource type="Texture2D" uid="uid://cp57lmeohvo3o" path="res://resources/weapons/nuclear-bomb.png" id="2_uo3pv"]
+[ext_resource type="PackedScene" uid="uid://dwsyn746hr25d" path="res://components/Weapons/MushroomPickaxe.tscn" id="3_apbxn"]
+
+[node name="MushroomPickaxe" instance=ExtResource("1_ug67j")]
+avatarTexture = ExtResource("2_ksurb")
+displayName = "蘑菇矿挖爪"
+quality = 4
+topic = 8
+weapons = Array[PackedScene]([ExtResource("3_apbxn")])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([1000, 1000])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_uo3pv")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "核弹控制器"
+quality = 4
+topic = 8
