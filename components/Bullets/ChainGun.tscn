@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgt6dok3wc7qs"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_0gg4y"]
+[ext_resource type="Texture2D" uid="uid://ccxdfsg5071t4" path="res://resources/bullets/chain-gun/Chain_Gun.webp" id="2_4hyk3"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/ChainGun.gd" id="2_l7jtn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cl70o"]
+
+[node name="ChainGun" instance=ExtResource("1_0gg4y")]
+script = ExtResource("2_l7jtn")
+
+[node name="texture" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_cl70o")
+
+[node name="node" type="Sprite2D" parent="texture" index="1"]
+position = Vector2(74, 0)
+texture = ExtResource("2_4hyk3")
+
+[node name="hitbox" parent="." index="1"]
+disabled = true

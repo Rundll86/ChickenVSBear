@@ -51,6 +51,7 @@ alpha_curve = SubResource("CurveTexture_pwojl")
 
 [node name="RainbowCat" instance=ExtResource("1_vvwmq")]
 script = ExtResource("2_4c1xc")
+lifeTime = 3000.0
 
 [node name="texture" parent="." index="0"]
 rotation = 1.5708

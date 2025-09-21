@@ -10,3 +10,5 @@ static func trace(bullet: BulletBase, target: Vector2, speed: float):
 		bullet.position.angle_to_point(target),
 		speed
 	)
+static func faceToMouse(bullet: BulletBase):
+	bullet.rotation = bullet.position.angle_to_point(bullet.get_global_mouse_position())
