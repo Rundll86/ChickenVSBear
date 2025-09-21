@@ -24,6 +24,7 @@ func _ready():
 				refreshNeedBaseballCount *= 1 + randf_range(GameRule.refreshCountIncreasePercent.x, GameRule.refreshCountIncreasePercent.y)
 				regenerateCards()
 	)
+	ComponentManager.init()
 	for i in len(ComponentManager.feeds):
 		var feed = ComponentManager.getFeed(i).instantiate() as Feed
 		feed.selected.connect(

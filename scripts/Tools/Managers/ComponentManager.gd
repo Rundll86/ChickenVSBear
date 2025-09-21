@@ -10,9 +10,6 @@ static var uiComponents = {}
 static var themes = {}
 static var itemTextures = {}
 
-func _ready():
-	init()
-
 static func init():
 	for i in DirTool.listdir("res://components/Bullets"):
 		bullets[DirTool.getBasenameWithoutExtension(i)] = load(i)
