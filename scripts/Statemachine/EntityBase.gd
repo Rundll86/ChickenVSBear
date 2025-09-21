@@ -98,6 +98,7 @@ var lastDirection: int = 1
 var currentFocusedBoss: EntityBase = null
 var charginup: bool = false
 var weapons: Array[Weapon] = []
+var weaponBag: Array[String] = []
 var canRunAi: bool = true
 var currentStage: int = 0
 var spawnTime: float = 0
@@ -115,6 +116,7 @@ func _ready():
 		for i in weaponStore.get_children():
 			i.hide()
 			weapons.append(i)
+			weaponBag.append(i.displayName)
 		statebar.levelLabels.hide()
 		UIState.player = self
 		energyChanged.connect(

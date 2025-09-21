@@ -79,6 +79,15 @@ func rebuildInfo():
 		fieldsBox.add_child(fieldShow)
 	if noField:
 		fieldsBox.add_child(QuickUI.smallText("无词条"))
+	for i in weaponsBox.get_children():
+		i.queue_free()
+	for weapon in weapons:
+		var weaponShow: WeaponShow = ComponentManager.getUIComponent("WeaponShow").instantiate()
+		weaponShow.weapon = weapon
+		if is_instance_valid(UIState.player):
+			weaponShow.operation = WeaponShow.Operation.EXTRACT if UIState.player.weaponBag.has(weapon.instantiate().displayName) else WeaponShow.Operation.GET
+		weaponShow.visible = true
+		weaponsBox.add_child(weaponShow)
 	for i in costsBox.get_children():
 		i.queue_free()
 	for i in range(min(costs.size(), costCounts.size())):
