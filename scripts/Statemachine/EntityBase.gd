@@ -53,8 +53,8 @@ var attackCooldowner = {
 	0: CooldownTimer.new()
 }
 var inventory = {
-	ItemStore.ItemType.BASEBALL: 500,
-	ItemStore.ItemType.BASKETBALL: 500,
+	ItemStore.ItemType.BASEBALL: INF, # 测试一下
+	ItemStore.ItemType.BASKETBALL: INF,
 	ItemStore.ItemType.APPLE: 5,
 	ItemStore.ItemType.BEACHBALL: 0,
 	ItemStore.ItemType.SOUL: 0,
