@@ -1,12 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmxi1ikn6avig"]
+[gd_scene load_steps=10 format=3 uid="uid://dmxi1ikn6avig"]
 
 [ext_resource type="Script" path="res://scripts/Tools/Managers/WorldManager.gd" id="1_lxsxj"]
 [ext_resource type="PackedScene" uid="uid://dfwg750a47ggx" path="res://components/Scenes/UI.tscn" id="2_04cdd"]
-[ext_resource type="Script" path="res://scripts/Tools/Managers/ComponentManager.gd" id="2_fseiu"]
 [ext_resource type="PackedScene" uid="uid://bm7ymrri6pykb" path="res://components/Characters/Rooster.tscn" id="3_5ui6q"]
 [ext_resource type="Texture2D" uid="uid://c33c8mtm4x3e3" path="res://resources/maps/Galaxy.png" id="4_oy4jj"]
 [ext_resource type="Script" path="res://scripts/Tools/Managers/CameraManager.gd" id="5_mk7bv"]
-[ext_resource type="Script" path="res://scripts/Tools/ItemStore.gd" id="7_b3hon"]
 
 [sub_resource type="Animation" id="Animation_ykpvi"]
 length = 0.001
@@ -74,9 +72,6 @@ y_sort_enabled = true
 script = ExtResource("1_lxsxj")
 metadata/_edit_vertical_guides_ = [-1.0, 57.0]
 
-[node name="Node" type="Node" parent="."]
-script = ExtResource("2_fseiu")
-
 [node name="UI" parent="." instance=ExtResource("2_04cdd")]
 
 [node name="camera" type="Camera2D" parent="."]
@@ -108,6 +103,3 @@ shape = SubResource("CircleShape2D_4hkht")
 polygon = PackedVector2Array(-2419, 1803, 2429, 1825, 2392, -366, 2867, -318, 2723, 2241, -2879, 2193, -2797, -2582, 2959, -2528, 2858, -347, 2420, -337, 2441, -1834, -2438, -1792)
 
 [node name="rooster" parent="." groups=["players"] instance=ExtResource("3_5ui6q")]
-
-[node name="Node2" type="Node" parent="."]
-script = ExtResource("7_b3hon")

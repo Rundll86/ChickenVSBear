@@ -1,5 +1,4 @@
 @tool
-extends Node
 class_name ItemStore
 
 enum ItemType {
