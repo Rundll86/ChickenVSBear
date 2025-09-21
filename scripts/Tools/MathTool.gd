@@ -34,3 +34,5 @@ static func getClosestIntersection(a: Vector2, b: Vector2, r: float) -> Vector2:
 		return b
 	var intersection = a + abNormalized * r
 	return intersection
+static func priority(a, b):
+	return a if a else b

@@ -1,6 +1,6 @@
 class_name Wave
 
-var entity: PackedScene
+var entity: String
 var minCount: int = 1
 var maxCount: int = 1
 var isBoss: bool = false
@@ -10,18 +10,18 @@ var per: int = 0
 
 static var current: int = 0
 static var WAVE_NORMAL = [
-	Wave.create(ComponentManager.getCharacter("Hen"), 1, 5, false, 0, INF, 1),
-	Wave.create(ComponentManager.getCharacter("Chick"), 0, 0, true, 9, INF, 15),
-	Wave.create(ComponentManager.getCharacter("Bear"), 0, 0, true, 19, INF, 10),
-	Wave.create(ComponentManager.getCharacter("KukeMC"), 0, 0, true, 14, INF, 20),
+	Wave.create("Hen", 1, 5, false, 0, INF, 1),
+	Wave.create("Chick", 0, 0, true, 9, INF, 15),
+	Wave.create("Bear", 0, 0, true, 19, INF, 10),
+	Wave.create("KukeMC", 0, 0, true, 14, INF, 20),
 ]
 static var WAVE_TESTBOSS_ALL = [
-	Wave.create(ComponentManager.getCharacter("Chick"), 0, 0, true, 0, INF, 10),
-	Wave.create(ComponentManager.getCharacter("KukeMC"), 0, 0, true, 1, INF, 10),
-	Wave.create(ComponentManager.getCharacter("Bear"), 0, 0, true, 2, INF, 10),
+	Wave.create("Chick", 0, 0, true, 0, INF, 10),
+	Wave.create("KukeMC", 0, 0, true, 1, INF, 10),
+	Wave.create("Bear", 0, 0, true, 2, INF, 10),
 ]
 static var WAVE_TESTBOSS_KUKE = [
-	Wave.create(ComponentManager.getCharacter("KukeMC"), 0, 0, true, 0, INF, 10),
+	Wave.create("KukeMC", 0, 0, true, 0, INF, 10),
 ]
 static var WAVE_EMPTY = []
 static var data = WAVE_NORMAL
@@ -33,7 +33,7 @@ static func customStart():
 		furryr.currentFocusedBoss = kukemc
 		kukemc.currentFocusedBoss = furryr
 static func create(
-		entity_: PackedScene,
+		entity_: String,
 		minCount_: int = 1,
 		maxCount_: int = 1,
 		isBoss_: bool = false,
@@ -61,7 +61,7 @@ static func spawn():
 	for i in range(len(data)):
 		var wave = data[i]
 		for j in range(entityCountOf(wave)):
-			EntityBase.generate(wave.entity, MathTool.randv2_range(500), true, wave.isBoss)
+			EntityBase.generate(ComponentManager.getCharacter(wave.entity), MathTool.randv2_range(500), true, wave.isBoss)
 static func next():
 	if current == 0:
 		customStart()
