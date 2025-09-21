@@ -25,7 +25,6 @@ func _ready():
 				regenerateCards()
 	)
 	for i in len(ComponentManager.feeds):
-		print("正在从 %s 加载饲料卡" % ComponentManager.feeds[i])
 		var feed = ComponentManager.getFeed(i).instantiate() as Feed
 		feed.selected.connect(
 			func(applied: bool):

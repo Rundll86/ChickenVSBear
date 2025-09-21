@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://bvri0nv1jrigf"]
 
-[ext_resource type="PackedScene" uid="uid://8gjjfju6p3fh" path="res://components/Bullets/Common/LaserSummoner.tscn" id="1_eb54j"]
+[ext_resource type="PackedScene" uid="uid://8gjjfju6p3fh" path="res://components/Bullets/LaserSummoner.tscn" id="1_eb54j"]
 [ext_resource type="Script" path="res://scripts/Contents/Bullets/ChickLaser.gd" id="2_7g0f0"]
 [ext_resource type="Shader" path="res://shaders/BigLaser.gdshader" id="3_4y0mm"]
 [ext_resource type="Texture2D" uid="uid://cv8yl3ncek4ap" path="res://resources/bullets/laser-circle/blue-circle.svg" id="4_cws6l"]

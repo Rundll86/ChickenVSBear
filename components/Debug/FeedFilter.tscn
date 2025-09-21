@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://feedfiltercombined"]
+
+[ext_resource type="Script" path="res://scripts/Debug/FeedFilter.gd" id="1_feedfilter"]
+
+[node name="FeedFilter" type="HBoxContainer"]
+theme_override_constants/separation = 0
+script = ExtResource("1_feedfilter")
+targetFields = Array[int]([])
+targetTopics = Array[int]([])
+composeMode = 0
+clickToRefresh = false

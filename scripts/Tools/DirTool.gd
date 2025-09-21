@@ -10,9 +10,10 @@ static func listdir(path: String) -> Array[String]:
 		var file_name = dir.get_next()
 		while file_name != "":
 			if file_name != "." and file_name != "..":
-				if file_name.get_extension() == "remap":
-					file_name = file_name.substr(0, len(file_name) - 6)
-				files.append(path + file_name)
+				if not file_name.get_extension() == "import":
+					if file_name.get_extension() == "remap":
+						file_name = file_name.substr(0, len(file_name) - 6)
+					files.append(path + file_name)
 			file_name = dir.get_next()
 		dir.list_dir_end()
 		return files

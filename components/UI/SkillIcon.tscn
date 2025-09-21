@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://shaders/CooldownProgress.gdshader" id="1_jaivk"]
 [ext_resource type="Script" path="res://scripts/Statemachine/SkillIcon.gd" id="1_l7say"]
 [ext_resource type="Texture2D" uid="uid://cp4ypuarjoshp" path="res://resources/skillIcons/purple-crystal.png" id="2_hh1bl"]
-[ext_resource type="Texture2D" uid="uid://chqmaeivt84b5" path="res://components/UI/attackstar.svg" id="4_50rim"]
+[ext_resource type="Texture2D" uid="uid://chqmaeivt84b5" path="res://resources/common/attackstar.svg" id="4_50rim"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3fyf3"]
 shader = ExtResource("1_jaivk")

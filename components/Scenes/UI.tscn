@@ -8,7 +8,7 @@
 [ext_resource type="StyleBox" uid="uid://8pg3ry3y5wjv" path="res://styleboxes/centerRight.tres" id="5_3hym1"]
 [ext_resource type="PackedScene" uid="uid://beo6s1kudbbve" path="res://components/Scenes/FullscreenPanels/GameOver.tscn" id="6_10ay6"]
 [ext_resource type="Texture2D" uid="uid://k13cte17httt" path="res://resources/items/energy.svg" id="7_2om12"]
-[ext_resource type="PackedScene" uid="uid://b07gqo6df0r5y" path="res://components/UI/Variants/VerticalColorBar.tscn" id="8_f4j2b"]
+[ext_resource type="PackedScene" uid="uid://b07gqo6df0r5y" path="res://components/VerticalColorBar.tscn" id="8_f4j2b"]
 [ext_resource type="StyleBox" uid="uid://ddnjus87wwlm8" path="res://styleboxes/leftPanel.tres" id="11_67ghp"]
 [ext_resource type="PackedScene" uid="uid://cksonrrx38k36" path="res://components/Scenes/FullscreenPanels/Pause.tscn" id="12_jkm6o"]
 [ext_resource type="PackedScene" uid="uid://dekcqdhrjs07u" path="res://components/Scenes/FullscreenPanels/Weapon.tscn" id="13_bmc24"]

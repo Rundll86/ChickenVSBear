@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bkwy3rwkihf4m"]
 
 [ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_gbycc"]
-[ext_resource type="Texture2D" uid="uid://chqmaeivt84b5" path="res://components/UI/attackstar.svg" id="2_2ws80"]
+[ext_resource type="Texture2D" uid="uid://chqmaeivt84b5" path="res://resources/common/attackstar.svg" id="2_2ws80"]
 [ext_resource type="AudioStream" uid="uid://cn876dtp1ypqx" path="res://resources/sounds/effect/Collect.wav" id="2_nxkfo"]
 
 [sub_resource type="Curve" id="Curve_2biku"]

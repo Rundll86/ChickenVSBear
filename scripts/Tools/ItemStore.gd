@@ -1,4 +1,5 @@
 @tool
+extends Node
 class_name ItemStore
 
 enum ItemType {
@@ -23,4 +24,4 @@ static var idMap = {
 	ItemType.SOUL: "soul",
 }
 static func getTexture(type: ItemType) -> Texture2D:
-	return ComponentManager.getItemTexture(idMap[type])
+	return ComponentManager.getItemTexture(idMap.get(type, "baseball"))
