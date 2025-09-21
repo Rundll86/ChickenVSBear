@@ -7,7 +7,7 @@
 [node name="NuclearBomb" instance=ExtResource("1_kytcq")]
 avatarTexture = ExtResource("2_l6mhl")
 displayName = "核弹控制器"
-quality = 4
+quality = 3
 topic = 8
 weapons = Array[PackedScene]([ExtResource("3_3jrcs")])
 costs = Array[int]([0, 4])
@@ -18,4 +18,5 @@ texture = ExtResource("2_l6mhl")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "核弹控制器"
+quality = 4
 topic = 8

@@ -1,23 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgq3u1646y1lb"]
+[gd_scene load_steps=4 format=3 uid="uid://bgq3u1646y1lb"]
 
 [ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_7uifb"]
-[ext_resource type="Texture2D" uid="uid://cp57lmeohvo3o" path="res://resources/weapons/nuclear-bomb.png" id="2_080r4"]
 [ext_resource type="Texture2D" uid="uid://ccxdfsg5071t4" path="res://resources/bullets/chain-gun/Chain_Gun.webp" id="2_j74mc"]
 [ext_resource type="PackedScene" uid="uid://dlaks67h2osms" path="res://components/Weapons/ChainGun.tscn" id="3_0nqrh"]
 
 [node name="ChainGun" instance=ExtResource("1_7uifb")]
 avatarTexture = ExtResource("2_j74mc")
 displayName = "链式机枪"
-quality = 4
+quality = 3
 topic = 8
 weapons = Array[PackedScene]([ExtResource("3_0nqrh")])
 costs = Array[int]([0, 3])
 costCounts = Array[int]([400, 2000])
 
 [node name="avatar" parent="container/info" index="0"]
-texture = ExtResource("2_080r4")
+texture = ExtResource("2_j74mc")
 
 [node name="name" parent="container/info" index="1"]
-displayName = "核弹控制器"
+displayName = "链式机枪"
 quality = 4
 topic = 8
