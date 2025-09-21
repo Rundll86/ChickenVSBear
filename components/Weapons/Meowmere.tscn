@@ -13,13 +13,15 @@ typeTopic = 3
 costBeachball = 600
 store = {
 "atk": 10,
+"childatk": 5,
 "count": 1.0
 }
 storeType = {
 "atk": 1,
+"childatk": 1,
 "count": 1.0
 }
-descriptionTemplate = "发射$count只彩虹猫的同时挥舞造成$atk点伤害。"
+descriptionTemplate = "发射$count只造成$childatk点伤害的[b]彩虹猫[/b]的同时挥舞造成$atk点伤害。"
 cooldown = 200.0
 
 [node name="avatar" parent="container/info" index="0"]
@@ -34,4 +36,4 @@ quality = 2
 typeTopic = 3
 
 [node name="description" parent="container" index="2"]
-text = "[center]发射[color=cyan]1[/color]→[color=yellow]1[/color]只彩虹猫的同时挥舞造成[color=cyan]10[/color]→[color=yellow]17[/color]点伤害。[/center]"
+text = "[center]发射[color=cyan]1[/color]→[color=yellow]1[/color]只造成[color=cyan]5[/color]→[color=yellow]3[/color]点伤害的[b]彩虹猫[/b]的同时挥舞造成[color=cyan]15[/color]→[color=yellow]22[/color]点伤害。[/center]"

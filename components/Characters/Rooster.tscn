@@ -57,18 +57,19 @@ debugRebuild = false
 [node name="Meowmere" parent="weaponStore" index="1" instance=ExtResource("3_e2rag")]
 offset_bottom = 315.0
 
-[node name="PurpleCrystal" parent="weaponStore" index="2" instance=ExtResource("3_ms5sq")]
+[node name="MushroomPickaxe" parent="weaponStore" index="2" instance=ExtResource("9_85j0d")]
+offset_bottom = 315.0
 debugRebuild = false
 
-[node name="VectorStar" parent="weaponStore" index="3" instance=ExtResource("6_fvy5n")]
+[node name="PurpleCrystal" parent="weaponStore" index="3" instance=ExtResource("3_ms5sq")]
 debugRebuild = false
 
-[node name="LGBT" parent="weaponStore" index="4" instance=ExtResource("4_pb8qn")]
-
-[node name="BigLaser" parent="weaponStore" index="5" instance=ExtResource("4_plqwu")]
-
-[node name="MushroomPickaxe" parent="weaponStore" index="6" instance=ExtResource("9_85j0d")]
+[node name="VectorStar" parent="weaponStore" index="4" instance=ExtResource("6_fvy5n")]
 debugRebuild = false
+
+[node name="LGBT" parent="weaponStore" index="5" instance=ExtResource("4_pb8qn")]
+
+[node name="BigLaser" parent="weaponStore" index="6" instance=ExtResource("4_plqwu")]
 
 [node name="NuclearBomb" parent="weaponStore" index="7" instance=ExtResource("10_ncj2v")]
 
