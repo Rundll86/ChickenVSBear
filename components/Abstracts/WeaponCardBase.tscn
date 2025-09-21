@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckq2cq6m23hq3"]
+[gd_scene load_steps=8 format=3 uid="uid://ckq2cq6m23hq3"]
 
 [ext_resource type="Script" path="res://scripts/Structs/Weapon.gd" id="1_g802t"]
 [ext_resource type="Theme" uid="uid://dhvs6urgf6jr5" path="res://themes/main.tres" id="2_fwkd3"]
 [ext_resource type="PackedScene" uid="uid://ch81vd3awkmhk" path="res://components/UI/WeaponName.tscn" id="3_qv0b1"]
-[ext_resource type="Texture2D" uid="uid://dwwpkn4q07ja2" path="res://icon.svg" id="3_vtucy"]
 [ext_resource type="Texture2D" uid="uid://k13cte17httt" path="res://resources/items/energy.svg" id="4_6gohw"]
 [ext_resource type="Texture2D" uid="uid://dw0g7cb4skd5s" path="res://resources/items/beachball.svg" id="5_pr18h"]
 [ext_resource type="Texture2D" uid="uid://7jhhyoinptns" path="res://resources/items/soul.svg" id="6_tygah"]
@@ -78,7 +77,6 @@ custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("3_vtucy")
 expand_mode = 1
 stretch_mode = 5
 
@@ -167,3 +165,18 @@ size_flags_vertical = 10
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
+
+[node name="control" type="HBoxContainer" parent="container"]
+layout_mode = 2
+
+[node name="moveleft" type="Button" parent="container/control"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "←"
+
+[node name="moveright" type="Button" parent="container/control"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "→"

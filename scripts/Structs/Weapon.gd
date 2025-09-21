@@ -30,6 +30,8 @@ class_name Weapon
 @onready var extractBtn: Button = $"%extractBtn"
 @onready var inlayBtn: Button = $"%inlayBtn"
 @onready var sounds: Node2D = $"%sounds"
+@onready var moveLeftBtn: Button = $"%moveleft"
+@onready var moveRightBtn: Button = $"%moveright"
 
 var cooldownTimer: CooldownTimer = null
 var originalStore: Dictionary = {}
@@ -61,6 +63,20 @@ func _ready():
 					soulLevel += 1
 					updateStore(level, UIState.player)
 					rebuildInfo()
+	)
+	moveLeftBtn.pressed.connect(
+		func():
+			var myIndex = get_index()
+			var leftIndex = max(myIndex - 1, 0)
+			get_parent().move_child(self, leftIndex)
+			ArrayTool.swap(UIState.player.weapons, myIndex, leftIndex)
+			UIState.player.rebuildWeaponIcons()
+	)
+	moveRightBtn.pressed.connect(
+		func():
+			var myIndex = get_index()
+			var rightIndex = min(myIndex + 1, get_parent().get_child_count() - 1)
+			get_parent().move_child(self, rightIndex)
 	)
 	for i in sounds.get_children():
 		i.process_mode = ProcessMode.PROCESS_MODE_ALWAYS
