@@ -47,7 +47,7 @@ displayName = "公鸡"
 process_mode = 4
 
 [node name="ChainGun" parent="weaponStore" index="0" instance=ExtResource("3_inwol")]
-offset_bottom = 330.0
+offset_bottom = 352.0
 
 [node name="PurpleCrystal" parent="weaponStore" index="1" instance=ExtResource("3_ms5sq")]
 debugRebuild = false

@@ -1,7 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://ofpg5s3j7esv"]
+[gd_scene load_steps=9 format=3 uid="uid://ofpg5s3j7esv"]
 
 [ext_resource type="Script" path="res://scripts/Statemachine/BossBar.gd" id="1_hkj6o"]
 [ext_resource type="PackedScene" uid="uid://d1ulrvupa76ap" path="res://components/UI/ColorBar.tscn" id="1_uxey7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0aktd"]
+bg_color = Color(0, 0, 0, 0.5)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gor8g"]
+bg_color = Color(1, 0, 0, 0.5)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3ag3"]
+bg_color = Color(0, 1, 0, 0.5)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bua1u"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ar00p"]
 content_margin_left = 10.0
@@ -9,6 +41,7 @@ content_margin_left = 10.0
 [sub_resource type="LabelSettings" id="LabelSettings_esyuk"]
 font_size = 12
 font_color = Color(0, 0, 0, 1)
+outline_size = 2
 
 [node name="BossBar" type="Control"]
 layout_mode = 3
@@ -23,16 +56,20 @@ script = ExtResource("1_hkj6o")
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 1.0
-anchor_right = 0.8
-anchor_bottom = 1.0
-offset_top = -65.0
+anchor_left = 0.3
+anchor_top = 0.95
+anchor_right = 0.7
+anchor_bottom = 0.95
+offset_top = -30.0
 offset_right = 0.0
-offset_bottom = -40.0
+offset_bottom = 0.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 currentValue = 0.0
+backBox = SubResource("StyleBoxFlat_0aktd")
+middleBox1 = SubResource("StyleBoxFlat_gor8g")
+middleBox2 = SubResource("StyleBoxFlat_g3ag3")
+frontBox = SubResource("StyleBoxFlat_bua1u")
 
 [node name="panel" type="PanelContainer" parent="health"]
 layout_mode = 1
