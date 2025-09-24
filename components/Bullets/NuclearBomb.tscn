@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://6aetx86j5ue"]
+[gd_scene load_steps=11 format=3 uid="uid://6aetx86j5ue"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_dpea6"]
 [ext_resource type="Texture2D" uid="uid://gs6jd1qxkl74" path="res://resources/bullets/nuclear-bomb/bomb.png" id="2_1kyo5"]
@@ -6,7 +6,13 @@
 [ext_resource type="Shader" path="res://shaders/FilledRing.gdshader" id="4_dheb6"]
 [ext_resource type="Script" path="res://scripts/Statemachine/ShaderStage.gd" id="4_wb270"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7tor"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e6cfa"]
+shader = ExtResource("4_dheb6")
+shader_parameter/inner = 1.0
+shader_parameter/outer = 1.0
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rcpby"]
 shader = ExtResource("4_dheb6")
 shader_parameter/inner = 0.98
 shader_parameter/outer = 1.0
@@ -40,14 +46,21 @@ indisDamage = true
 canDamageSelf = true
 autoDestroyOnHitMap = false
 
-[node name="warn" type="Node2D" parent="." index="0"]
+[node name="warnbg" type="Node2D" parent="." index="0"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_s7tor")
+material = SubResource("ShaderMaterial_e6cfa")
 script = ExtResource("4_wb270")
-size = Vector2(0, 0)
+size = Vector2(200, 200)
+color = Color(0, 0, 0, 0.2)
+
+[node name="warn" type="Node2D" parent="." index="1"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_rcpby")
+script = ExtResource("4_wb270")
+size = Vector2(200, 200)
 color = Color(1, 0, 0, 1)
 
-[node name="texture" parent="." index="1"]
+[node name="texture" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_mku0w")
 
 [node name="anchor" type="Node2D" parent="texture" index="1"]
@@ -64,5 +77,5 @@ label_settings = SubResource("LabelSettings_asfas")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="hitbox" parent="." index="2"]
+[node name="hitbox" parent="." index="3"]
 shape = SubResource("CircleShape2D_nhppq")

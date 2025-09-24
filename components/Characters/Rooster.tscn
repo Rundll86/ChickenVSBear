@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=17 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
 [ext_resource type="Texture2D" uid="uid://fn8qx72clh38" path="res://resources/characters/cock/rooster-a.svg" id="2_q0j6j"]
 [ext_resource type="AudioStream" uid="uid://dclinyhu256xi" path="res://resources/sounds/effect/Low Whoosh.mp3" id="3_4syso"]
 [ext_resource type="Texture2D" uid="uid://ci2ik43ce82uy" path="res://resources/characters/cock/rooster-b.svg" id="3_b0fgx"]
+[ext_resource type="PackedScene" uid="uid://b2qhes4apaxsj" path="res://components/Weapons/NuclearBomb.tscn" id="3_eikw3"]
 [ext_resource type="PackedScene" uid="uid://c0n3igy4hucrg" path="res://components/Weapons/PurpleCrystal.tscn" id="3_ms5sq"]
 [ext_resource type="PackedScene" uid="uid://frwt0fgrpskb" path="res://components/Weapons/Meowmere.tscn" id="3_pbssk"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
@@ -46,13 +47,16 @@ displayName = "公鸡"
 [node name="weaponStore" parent="." index="0"]
 process_mode = 4
 
-[node name="Meowmere" parent="weaponStore" index="0" instance=ExtResource("3_pbssk")]
+[node name="NuclearBomb" parent="weaponStore" index="0" instance=ExtResource("3_eikw3")]
+offset_bottom = 352.0
+
+[node name="Meowmere" parent="weaponStore" index="1" instance=ExtResource("3_pbssk")]
 offset_bottom = 374.0
 
-[node name="PurpleCrystal" parent="weaponStore" index="1" instance=ExtResource("3_ms5sq")]
+[node name="PurpleCrystal" parent="weaponStore" index="2" instance=ExtResource("3_ms5sq")]
 debugRebuild = false
 
-[node name="VectorStar" parent="weaponStore" index="2" instance=ExtResource("6_fvy5n")]
+[node name="VectorStar" parent="weaponStore" index="3" instance=ExtResource("6_fvy5n")]
 debugRebuild = false
 
 [node name="sprint" parent="sounds" index="0"]
