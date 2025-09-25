@@ -100,6 +100,7 @@ func timeLived():
 	return WorldManager.getTime() - spawnInWhen
 func dotLoop():
 	if await applyDot():
+		await TickTool.until(func(): return !UIState.currentPanel)
 		await dotLoop()
 func tryDestroy(becauseMap: bool = false):
 	if destroying: return

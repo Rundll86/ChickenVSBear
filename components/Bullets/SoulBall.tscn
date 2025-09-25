@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://lwmu85w7c0d4"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_1gpjv"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/SoulBall.gd" id="2_eaa43"]
+[ext_resource type="Texture2D" uid="uid://b8w31dkev8nc8" path="res://resources/bullets/seven-soul/soul-red.png" id="2_fmlef"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5be2f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fmlef")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_fxg5q"]
+_data = [Vector2(0, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5wobk"]
+curve = SubResource("Curve_fxg5q")
+
+[sub_resource type="Curve" id="Curve_orogq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pftyf"]
+curve = SubResource("Curve_orogq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vwon6"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_pftyf")
+alpha_curve = SubResource("CurveTexture_5wobk")
+
+[node name="SoulBall" instance=ExtResource("1_1gpjv")]
+script = ExtResource("2_eaa43")
+displayName = "灵魂"
+speed = 25.0
+damage = 1.5
+lifeTime = 1000.0
+
+[node name="texture" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_5be2f")
+
+[node name="trail" type="GPUParticles2D" parent="texture" index="1"]
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_vwon6")
+texture = ExtResource("2_fmlef")
+lifetime = 0.5
+
+[node name="hitbox" parent="." index="1"]
+visible = false

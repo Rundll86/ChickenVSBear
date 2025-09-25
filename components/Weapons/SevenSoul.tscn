@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5y4g70evwy46"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_0f84s"]
+[ext_resource type="Script" path="res://scripts/Contents/Weapons/SevenSoul.gd" id="2_n7gtb"]
+[ext_resource type="Texture2D" uid="uid://b8w31dkev8nc8" path="res://resources/bullets/seven-soul/soul-red.png" id="4_a4r2b"]
+
+[node name="SevenSoul" instance=ExtResource("1_0f84s")]
+script = ExtResource("2_n7gtb")
+avatarTexture = ExtResource("4_a4r2b")
+displayName = "人类灵魂"
+typeTopic = 3
+store = {
+"atk": 2
+}
+descriptionTemplate = "召唤7条人类灵魂，每条以10Hz的频率造成$atk点伤害。"
+cooldown = 2000.0
+debugRebuild = true
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("4_a4r2b")
+
+[node name="name" parent="container/info" index="2"]
+displayName = "人类灵魂"
+typeTopic = 3
+
+[node name="description" parent="container" index="2"]
+text = "[center]召唤7条人类灵魂，每条以10Hz的频率造成[color=cyan]2[/color]→[color=yellow]10[/color]点伤害。[/center]"

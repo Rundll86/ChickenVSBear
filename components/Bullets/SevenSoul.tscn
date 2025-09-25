@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bymprh2qel2oj"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_c4fl5"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/SevenSoul.gd" id="2_egs34"]
+[ext_resource type="Texture2D" uid="uid://wy10fc3bqppg" path="res://resources/bullets/seven-soul/soul.png" id="2_itucu"]
+
+[node name="SevenSoul" instance=ExtResource("1_c4fl5")]
+script = ExtResource("2_egs34")
+lifeTime = 10000.0
+
+[node name="heart" type="Sprite2D" parent="texture" index="1"]
+unique_name_in_owner = true
+position = Vector2(100, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_itucu")
+
+[node name="hitbox" parent="." index="1"]
+disabled = true
