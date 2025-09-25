@@ -6,7 +6,7 @@
 
 [node name="SevenSoul" instance=ExtResource("1_c4fl5")]
 script = ExtResource("2_egs34")
-lifeTime = 10000.0
+lifeTime = 112000.0
 
 [node name="heart" type="Sprite2D" parent="texture" index="1"]
 unique_name_in_owner = true
