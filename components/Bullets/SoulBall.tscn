@@ -33,6 +33,8 @@ curve = SubResource("Curve_orogq")
 particle_flag_disable_z = true
 direction = Vector3(-1, 0, 0)
 spread = 0.0
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_pftyf")
 alpha_curve = SubResource("CurveTexture_5wobk")
@@ -52,6 +54,7 @@ amount = 10
 process_material = SubResource("ParticleProcessMaterial_vwon6")
 texture = ExtResource("2_fmlef")
 lifetime = 0.5
+local_coords = true
 
 [node name="hitbox" parent="." index="1"]
 visible = false

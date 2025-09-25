@@ -1,8 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://bymprh2qel2oj"]
+[gd_scene load_steps=9 format=3 uid="uid://bymprh2qel2oj"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_c4fl5"]
 [ext_resource type="Script" path="res://scripts/Contents/Bullets/SevenSoul.gd" id="2_egs34"]
 [ext_resource type="Texture2D" uid="uid://wy10fc3bqppg" path="res://resources/bullets/seven-soul/soul.png" id="2_itucu"]
+
+[sub_resource type="Curve" id="Curve_0y25k"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.497908, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_d1eej"]
+curve = SubResource("Curve_0y25k")
+
+[sub_resource type="Curve" id="Curve_acuqr"]
+max_value = 4.0
+_data = [Vector2(0, 1), 0.0, 3.0, 0, 1, Vector2(1, 4), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cokmd"]
+curve = SubResource("Curve_acuqr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4d30u"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_cokmd")
+alpha_curve = SubResource("CurveTexture_d1eej")
 
 [node name="SevenSoul" instance=ExtResource("1_c4fl5")]
 script = ExtResource("2_egs34")
@@ -13,6 +36,17 @@ unique_name_in_owner = true
 position = Vector2(100, 0)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_itucu")
+
+[node name="effect" type="GPUParticles2D" parent="texture" index="2"]
+unique_name_in_owner = true
+position = Vector2(100, 0)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_4d30u")
+texture = ExtResource("2_itucu")
+lifetime = 0.5
+one_shot = true
+local_coords = true
 
 [node name="hitbox" parent="." index="1"]
 disabled = true

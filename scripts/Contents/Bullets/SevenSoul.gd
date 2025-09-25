@@ -11,9 +11,11 @@ var colors = [
 var index = 0
 
 @onready var heart = $"%heart"
+@onready var effect: GPUParticles2D = $"%effect"
 
 func spawn():
-	heart.modulate = Color(colors[index % colors.size()])
+	modulate = Color(colors[index % colors.size()])
+	effect.emitting = true
 func ai():
 	rotation_degrees = 360.0 / colors.size() * index + timeLived() / 20000.0 * 360 - index / 6.0 * 360.0
 	heart.global_rotation_degrees = 0
