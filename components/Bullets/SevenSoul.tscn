@@ -29,6 +29,9 @@ alpha_curve = SubResource("CurveTexture_d1eej")
 
 [node name="SevenSoul" instance=ExtResource("1_c4fl5")]
 script = ExtResource("2_egs34")
+speed = 0.0
+damage = 0.0
+penerate = 1.0
 lifeTime = 112000.0
 
 [node name="heart" type="Sprite2D" parent="texture" index="1"]
@@ -49,4 +52,4 @@ one_shot = true
 local_coords = true
 
 [node name="hitbox" parent="." index="1"]
-disabled = true
+position = Vector2(100, 0)

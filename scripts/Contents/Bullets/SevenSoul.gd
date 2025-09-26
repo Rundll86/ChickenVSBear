@@ -15,6 +15,14 @@ var pingAfterGeneration: float = 5000
 @onready var heart = $"%heart"
 @onready var effect: GPUParticles2D = $"%effect"
 
+func register():
+	area_entered.connect(
+		func(area):
+			var bullet = BulletTool.fromArea(area)
+			if bullet and BulletTool.canDamage(bullet, launcher):
+				launcher.tryHeal(1)
+				launcher.storeEnergy(damage * 0.25)
+	)
 func spawn():
 	modulate = Color(colors[index % colors.size()])
 	effect.emitting = true

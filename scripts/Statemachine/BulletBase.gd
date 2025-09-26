@@ -81,10 +81,7 @@ func _physics_process(_delta: float) -> void:
 func hit(target: Node):
 	var entity: EntityBase = EntityTool.fromHurtbox(target)
 	if !entity || !launcher: return
-	if entity.currentInvinsible: return
-	if !canDamageSelf && entity == launcher: return
-	if !indisDamage && !GameRule.allowFriendlyFire:
-		if entity.isPlayer() == launcher.isPlayer() and launcher.currentFocusedBoss != entity: return
+	if !BulletTool.canDamage(self, entity): return
 	var resultDamage = entity.takeDamage(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE) + GameRule.critRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]))
 	succeedToHit(resultDamage, entity)
 	if MathTool.rate(fullPenerate()):
