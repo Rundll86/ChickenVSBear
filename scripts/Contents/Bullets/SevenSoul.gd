@@ -21,12 +21,11 @@ func register():
 			var bullet = BulletTool.fromArea(area)
 			if bullet and BulletTool.canDamage(bullet, launcher):
 				launcher.tryHeal(1)
-				launcher.storeEnergy(damage * 0.25)
+				launcher.storeEnergy(damage * 0.1)
 	)
 func spawn():
 	modulate = Color(colors[index % colors.size()])
 	effect.emitting = true
-	launcher.tryHeal(5)
 	
 func ai():
 	rotation_degrees = 360.0 / colors.size() * index + timeLived() / generationDuration * 360 - index / 6.0 * 360.0
