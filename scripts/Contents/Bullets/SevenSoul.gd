@@ -9,7 +9,8 @@ var colors = [
 	"#FDEB0F"
 ]
 var index = 0
-var generationDuration: float = 19500
+var generationDuration: float = 15000
+var pingAfterGeneration: float = 5000
 
 @onready var heart = $"%heart"
 @onready var effect: GPUParticles2D = $"%effect"
@@ -24,7 +25,7 @@ func ai():
 	heart.global_rotation_degrees = 0
 	PresetBulletAI.lockLauncher(self, launcher, true)
 func applyDot():
-	if timeLived() > generationDuration * ((6.0 - index) / 6.0):
+	if timeLived() > generationDuration * ((6.0 - index) / 6.0) + pingAfterGeneration:
 		BulletBase.generate(ComponentManager.getBullet("SoulBall"), launcher, heart.global_position, heart.global_position.angle_to_point(get_global_mouse_position()))
 	await TickTool.millseconds(100)
 	return true
