@@ -45,6 +45,7 @@ alpha_curve = SubResource("CurveTexture_bd63g")
 texture_filter = 1
 script = ExtResource("2_ld7n7")
 speed = 1.0
+lifeTime = 1000.0
 
 [node name="texture" parent="." index="0"]
 rotation = -1.5708
