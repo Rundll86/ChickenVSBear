@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bymprh2qel2oj"]
+[gd_scene load_steps=10 format=3 uid="uid://bymprh2qel2oj"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_c4fl5"]
 [ext_resource type="Script" path="res://scripts/Contents/Bullets/SevenSoul.gd" id="2_egs34"]
@@ -27,6 +27,9 @@ scale_max = 1.5
 scale_curve = SubResource("CurveTexture_cokmd")
 alpha_curve = SubResource("CurveTexture_d1eej")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k7d7"]
+size = Vector2(30, 100)
+
 [node name="SevenSoul" instance=ExtResource("1_c4fl5")]
 script = ExtResource("2_egs34")
 speed = 0.0
@@ -53,3 +56,4 @@ local_coords = true
 
 [node name="hitbox" parent="." index="1"]
 position = Vector2(100, 0)
+shape = SubResource("RectangleShape2D_1k7d7")
