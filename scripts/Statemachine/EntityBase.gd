@@ -329,11 +329,9 @@ func tryDie(by: BulletBase = null):
 	died.emit()
 	queue_free()
 func tryHeal(count: float):
-	if inventory[ItemStore.ItemType.APPLE] > 0 and health < fields.get(FieldStore.Entity.MAX_HEALTH):
-		inventory[ItemStore.ItemType.APPLE] -= 1
-		playSound("heal")
-		healed.emit(heal(count * fields.get(FieldStore.Entity.HEAL_ABILITY)))
-		healthChanged.emit(health)
+	playSound("heal")
+	healed.emit(heal(count * fields.get(FieldStore.Entity.HEAL_ABILITY)))
+	healthChanged.emit(health)
 func findWeaponAnchor(weaponName: String) -> Vector2:
 	var anchor = $"%weapons".get_node_or_null(weaponName)
 	if anchor is Node2D:

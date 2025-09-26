@@ -27,7 +27,11 @@ func ai():
 	if Input.is_action_just_pressed("sprint"):
 		trySprint()
 	if Input.is_action_just_pressed("heal"):
-		tryHeal(20)
+		if health < fields.get(FieldStore.Entity.MAX_HEALTH):
+			if useItem({
+				ItemStore.ItemType.APPLE: 1
+			}):
+				tryHeal(20)
 func sprint():
 	move(Vector2(
 		Input.get_axis("m_left", "m_right"),
