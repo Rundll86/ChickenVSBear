@@ -6,7 +6,7 @@ class_name Chick
 func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 1000
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.4
-	attackCooldownMap[0] = 200
+	attackCooldownMap[0] = 400
 	attackCooldownMap[1] = 12000
 	attackCooldownMap[2] = 2000
 	attackCooldownMap[3] = 3000
@@ -25,7 +25,7 @@ func ai():
 func attack(type):
 	if type == 0:
 		var weaponPos = findWeaponAnchor("normal")
-		for i in randi_range(10, 20):
+		for i in randi_range(7, 16):
 			BulletBase.generate(ComponentManager.getBullet("Diamond"), self, weaponPos + MathTool.randv2_range(20), rotation + deg_to_rad(randf_range(-90, 90)))
 	elif type == 1:
 		var laserCount = randi_range(2, 4)

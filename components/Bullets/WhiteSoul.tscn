@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://gnenrlcspjuq"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_k41ea"]
+[ext_resource type="Script" path="res://scripts/Contents/Bullets/WhiteSoul.gd" id="2_ld7n7"]
+[ext_resource type="Texture2D" uid="uid://wy10fc3bqppg" path="res://resources/bullets/seven-soul/soul.png" id="2_mqva0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3yyb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mqva0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_r03vp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bd63g"]
+curve = SubResource("Curve_r03vp")
+
+[sub_resource type="Curve" id="Curve_rtb8e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.75), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7ga5a"]
+curve = SubResource("Curve_rtb8e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u4kq5"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_7ga5a")
+alpha_curve = SubResource("CurveTexture_bd63g")
+
+[node name="WhiteSoul" instance=ExtResource("1_k41ea")]
+texture_filter = 1
+script = ExtResource("2_ld7n7")
+speed = 1.0
+
+[node name="texture" parent="." index="0"]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_3yyb4")
+
+[node name="trail" type="GPUParticles2D" parent="texture" index="1"]
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_u4kq5")
+texture = ExtResource("2_mqva0")
+local_coords = true
