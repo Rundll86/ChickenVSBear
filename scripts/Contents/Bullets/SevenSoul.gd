@@ -25,8 +25,11 @@ func ai():
 func applyDot():
 	if timeLived() > 20000 * ((6.0 - index) / 6.0):
 		if !spawnedChild:
-			BulletBase.generate(ComponentManager.getBullet("WhiteSoul"), launcher, heart.global_position, rotation)
 			spawnedChild = true
+			var count = 7
+			for i in count:
+				BulletBase.generate(ComponentManager.getBullet("WhiteSoul"), launcher, heart.global_position, rotation + deg_to_rad(360.0 / count * i))
+				await TickTool.millseconds(50)
 		BulletBase.generate(ComponentManager.getBullet("SoulBall"), launcher, heart.global_position, heart.global_position.angle_to_point(get_global_mouse_position()))
 	await TickTool.millseconds(100)
 	return true
