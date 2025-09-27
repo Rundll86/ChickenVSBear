@@ -321,11 +321,12 @@ func tryDie(by: BulletBase = null):
 			fields[FieldStore.Entity.MAX_HEALTH] * randf_range(1 - GameRule.beachballOffset, 1 + GameRule.beachballOffset),
 			position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset)
 		)
-		ItemDropped.generate(
-			ItemStore.ItemType.SOUL,
-			randi_range(1, 2),
-			position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset)
-		)
+		if isBoss:
+			ItemDropped.generate(
+				ItemStore.ItemType.SOUL,
+				randi_range(1, 2),
+				position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset)
+			)
 		if isPlayer():
 			if UIState.player == self:
 				UIState.setPanel("GameOver", [displayName, by.launcher.displayName, by.displayName])
