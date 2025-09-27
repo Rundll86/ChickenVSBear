@@ -4,7 +4,7 @@ class_name KukeMC
 var canSummon: bool = true
 
 func register():
-	fields[FieldStore.Entity.MAX_HEALTH] = 3500
+	fields[FieldStore.Entity.MAX_HEALTH] = 3000
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.5
 	attackCooldownMap[0] = 2000
 	attackCooldownMap[1] = 5000

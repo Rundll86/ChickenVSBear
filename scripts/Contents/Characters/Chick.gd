@@ -4,7 +4,7 @@ class_name Chick
 @onready var firepot = $"%firepot"
 
 func register():
-	fields[FieldStore.Entity.MAX_HEALTH] = 2000
+	fields[FieldStore.Entity.MAX_HEALTH] = 1500
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.4
 	attackCooldownMap[0] = 400
 	attackCooldownMap[1] = 12000
