@@ -2,29 +2,36 @@
 
 [ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_0f84s"]
 [ext_resource type="Script" path="res://scripts/Contents/Weapons/SevenSoul.gd" id="2_n7gtb"]
-[ext_resource type="Texture2D" uid="uid://b8w31dkev8nc8" path="res://resources/bullets/seven-soul/soul-red.png" id="4_a4r2b"]
+[ext_resource type="Texture2D" uid="uid://ckqfe3a61hw7" path="res://resources/weapons/bill.webp" id="3_nq3bo"]
 [ext_resource type="AudioStream" uid="uid://dy4k5mni7d7wo" path="res://resources/sounds/weapon/Finale - Toby Fox.wav" id="4_tmgox"]
 
 [node name="SevenSoul" instance=ExtResource("1_0f84s")]
 script = ExtResource("2_n7gtb")
-avatarTexture = ExtResource("4_a4r2b")
-displayName = "人类灵魂"
+avatarTexture = ExtResource("3_nq3bo")
+displayName = "bilioicik"
+quality = 2
 typeTopic = 3
 store = {
 "atk": 1
 }
 descriptionTemplate = "召唤7条人类灵魂，每条以10Hz的频率造成$atk点伤害。"
-cooldown = 2000.0
+needEnergy = 150.0
+cooldown = 120000.0
+debugRebuild = true
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_tmgox")
 volume_db = 20.0
 
 [node name="avatar" parent="container/info" index="0"]
-texture = ExtResource("4_a4r2b")
+texture = ExtResource("3_nq3bo")
+
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
+text = "150.0"
 
 [node name="name" parent="container/info" index="2"]
-displayName = "人类灵魂"
+displayName = "bilioicik"
+quality = 2
 typeTopic = 3
 
 [node name="description" parent="container" index="2"]

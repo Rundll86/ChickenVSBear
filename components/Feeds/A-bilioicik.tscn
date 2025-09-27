@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bovmunl2hqugs"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_dd51q"]
+[ext_resource type="Texture2D" uid="uid://dy4op6n6vxef3" path="res://resources/bullets/laser-circle/circle.svg" id="2_8budk"]
+[ext_resource type="Texture2D" uid="uid://ckqfe3a61hw7" path="res://resources/weapons/bill.webp" id="2_ekyqe"]
+[ext_resource type="PackedScene" uid="uid://c5y4g70evwy46" path="res://components/Weapons/SevenSoul.tscn" id="3_sn43t"]
+
+[node name="bilioicik" instance=ExtResource("1_dd51q")]
+avatarTexture = ExtResource("2_ekyqe")
+displayName = "bilioicik"
+quality = 2
+topic = 8
+weapons = Array[PackedScene]([ExtResource("3_sn43t")])
+costs = Array[int]([3, 2])
+costCounts = Array[int]([2000, 2])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_8budk")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "湮灭激光"
+quality = 2
+topic = 8
