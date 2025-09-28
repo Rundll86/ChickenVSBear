@@ -1,7 +1,14 @@
 # 公鸡大战狗熊
 
-这是一个用于恶搞的Godot4.3唐人游戏，无C#，无Spine。
-游戏类型：波次制**肉鸽**。
+这是一个用于恶搞的Godot4.3唐人游戏，无Spine。
+游戏类型：波次制Rougeli**t**e。
+
+英文名：**ReasterBeat**。
+
+- **Reaster**为单词**Rooster（公鸡）**与**Bear（狗熊）**的嵌合体。
+- **Beat**本意为“打击；节奏”，此处引申为“打斗”。
+- 组合两词，意译为“公鸡大战狗熊”。
+- **不存在任何性暗示**哈，请不要过度解读。
 
 ## boss清单
 
@@ -9,7 +16,7 @@
 - 酷可mc【[**CCW**](https://www.ccw.site/student/610b508176415b2f27e0f851)】
 - 熊谷凌【[**CCW**](https://www.ccw.site/student/672a23df6a88e30e6e0d4c9c)】
 
-- ~~感觉不如**Sclawlet** × **Horgan**~~
+- ~~感觉不如**SCLAWLET** × **HORGAN**~~
 
 ## 波次预设表
 
