@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt4b7ks26fcgi"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_4hjdm"]
+[ext_resource type="Texture2D" uid="uid://bgj2i5q2rst27" path="res://resources/weapons/Daedalus_Stormbow.png" id="2_kcegs"]
+[ext_resource type="Script" path="res://scripts/Contents/Weapons/WhiteSoul.gd" id="2_ti114"]
+
+[node name="WhiteSoul" instance=ExtResource("1_4hjdm")]
+script = ExtResource("2_ti114")
+avatarTexture = ExtResource("2_kcegs")
+displayName = "代达罗斯风暴魂"
+quality = 3
+costBeachball = 300
+store = {
+"atk": 5,
+"count": 2.0,
+"radius": 50.0
+}
+storeType = {
+"atk": 1,
+"count": 1,
+"radius": 0.0
+}
+descriptionTemplate = "从天而降$count支目标位于鼠标位置半径$radius内的怪物灵魂，造成$atk点伤害。"
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_kcegs")
+
+[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
+text = "300"
+
+[node name="name" parent="container/info" index="2"]
+displayName = "代达罗斯风暴魂"
+quality = 3
+
+[node name="description" parent="container" index="2"]
+text = "[center]从天而降[color=cyan]2[/color]→[color=yellow]2[/color]支目标位于鼠标位置半径[color=cyan]50.00[/color]→[color=yellow]47.62[/color]内的怪物灵魂，造成[color=cyan]2[/color]→[color=yellow]4[/color]点伤害。[/center]"

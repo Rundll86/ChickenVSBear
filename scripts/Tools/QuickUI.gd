@@ -16,3 +16,6 @@ static func graySmallText(text: String, center: bool = true):
 	if center:
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	return label
+static func getWindowSize() -> Vector2:
+	var result = DisplayServer.window_get_size()
+	return result
