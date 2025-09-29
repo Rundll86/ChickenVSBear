@@ -229,8 +229,8 @@ func takeDamage(bullet: BulletBase, crit: bool):
 		storeEnergy(damage * -0.5)
 	position += Vector2.from_angle(bullet.position.angle_to_point(position)) * bullet.knockback
 	hit.emit(damage, bullet, crit)
-	healthChanged.emit(health)
 	health -= damage
+	healthChanged.emit(health)
 	DamageLabel.create(damage, crit || perfectMiss, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
 	if isBoss and bullet.launcher.isPlayer():
 		bullet.launcher.setBoss(self)
