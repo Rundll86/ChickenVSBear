@@ -104,9 +104,9 @@ func rebuildInfo():
 		i.queue_free()
 	for i in range(min(costs.size(), costCounts.size())):
 		var cost = costs[i]
-		var count = costCounts[i]
+		var count = countOf(i)
 		var costShow: ItemShow = ComponentManager.getUIComponent("ItemShow").instantiate()
-		costShow.enough = is_instance_valid(UIState.player) and UIState.player.inventory[cost] >= countOf(i)
+		costShow.enough = is_instance_valid(UIState.player) and UIState.player.inventory[cost] >= count
 		costShow.type = cost
-		costShow.count = int(count * multipiler())
+		costShow.count = count
 		costsBox.add_child(costShow)
