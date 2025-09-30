@@ -17,6 +17,7 @@ gradient = SubResource("Gradient_wd04q")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nfgk"]
 shader = ExtResource("3_j0g0m")
 shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/mixProgress = 0.5
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q4xus"]
 animations = [{
@@ -78,15 +79,16 @@ _data = {
 "spawn": SubResource("Animation_kmogx")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7e3fr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k643k"]
 shader = ExtResource("5_lyybq")
 shader_parameter/k = -0.223
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/scale = 10.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3sk0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bv2k"]
 shader = ExtResource("3_j0g0m")
 shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/mixProgress = 0.5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yjmap"]
 radius = 5.0
@@ -120,7 +122,6 @@ alpha_curve = SubResource("CurveTexture_wjo54")
 
 [node name="ArrowSeven" instance=ExtResource("1_dvf35")]
 z_index = 1
-position = Vector2(-34, -24)
 script = ExtResource("2_uqsop")
 allColor = SubResource("GradientTexture1D_e0qv5")
 displayName = "七彩矢"
@@ -139,13 +140,13 @@ libraries = {
 [node name="superlight" type="Node2D" parent="texture" index="1"]
 unique_name_in_owner = true
 z_index = -1
-material = SubResource("ShaderMaterial_7e3fr")
+material = SubResource("ShaderMaterial_k643k")
 script = ExtResource("5_ppdpf")
 size = Vector2(100, 200)
 
 [node name="frontlight" type="Node2D" parent="texture" index="2"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_w3sk0")
+material = SubResource("ShaderMaterial_0bv2k")
 scale = Vector2(0.968786, 0.968786)
 script = ExtResource("5_ppdpf")
 size = Vector2(40, 40)

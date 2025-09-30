@@ -13,8 +13,7 @@ var forwarded: bool = false
 
 func register():
 	speed = 1
-	damage = 5
-	penerate = 1
+	damage = 2
 func spawn():
 	myColor = allColor.gradient.sample(randf())
 	superlight.material = superlight.material.duplicate()

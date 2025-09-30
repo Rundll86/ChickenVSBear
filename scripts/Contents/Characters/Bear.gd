@@ -23,15 +23,25 @@ func register():
 func spawn():
 	texture.play("walk")
 	mask.visible = false
+	if MathTool.rate(0.01):
+		setStage(2)
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 400)
 	for i in len(attackCooldownMap.keys()):
 		tryAttack(i)
 func enterStage(stage):
 	mask.visible = !!stage
-	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.75
-	fields[FieldStore.Entity.DAMAGE_MULTIPILER] = 1.5
-	fields[FieldStore.Entity.ATTACK_SPEED] = 2
+	if stage == 0:
+		fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.5
+		fields[FieldStore.Entity.DAMAGE_MULTIPILER] = 1
+		fields[FieldStore.Entity.ATTACK_SPEED] = 1
+	elif stage == 1:
+		fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.6
+		fields[FieldStore.Entity.DAMAGE_MULTIPILER] = 1.15
+		fields[FieldStore.Entity.ATTACK_SPEED] = 1.15
+	elif stage == 2:
+		fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.25
+		fields[FieldStore.Entity.DAMAGE_MULTIPILER] = 9999
 	await TickTool.millseconds(2000)
 func attack(type):
 	var weaponPos = findWeaponAnchor("normal")
