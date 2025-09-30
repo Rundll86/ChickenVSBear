@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbm8l3hr4ihar"]
+[gd_scene load_steps=8 format=3 uid="uid://bbm8l3hr4ihar"]
 
 [ext_resource type="Script" path="res://scripts/Statemachine/ItemShow.gd" id="1_2dhsb"]
 [ext_resource type="Texture2D" uid="uid://bks8jmctleina" path="res://resources/items/baseball.svg" id="1_hyowb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3yjwr"]
 
 [sub_resource type="Animation" id="Animation_6sxrr"]
 length = 0.001
@@ -110,6 +112,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "0"
+label_settings = SubResource("LabelSettings_3yjwr")
 
 [node name="animator" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

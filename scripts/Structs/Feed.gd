@@ -29,20 +29,18 @@ func _ready():
 	rebuildInfo()
 
 func allHad(entity: EntityBase) -> bool:
-	var allHave = true
 	for i in range(min(costs.size(), costCounts.size())):
 		var item = costs[i]
-		var count = costCounts[i] * multipiler()
+		var count = countOf(i)
 		if entity.inventory[item] < count:
-			allHave = false
-			break
-	return allHave
+			return false
+	return true
 func apply(entity: EntityBase):
 	var allHave = allHad(entity)
 	if allHave:
 		for i in range(min(costs.size(), costCounts.size())):
 			var item = costs[i]
-			var count = costCounts[i] * multipiler()
+			var count = countOf(i)
 			entity.inventory[item] -= count
 		for i in range(min(fields.size(), fieldValues.size())):
 			var field = fields[i]
@@ -66,6 +64,8 @@ func apply(entity: EntityBase):
 		hide()
 	selected.emit(allHave)
 	return allHave
+func countOf(index: int) -> int:
+	return ceil(costCounts[index] * multipiler())
 func multipiler() -> float:
 	if is_instance_valid(UIState.player):
 		return 1 - UIState.player.fields.get(FieldStore.Entity.PRICE_REDUCTION)
@@ -106,6 +106,7 @@ func rebuildInfo():
 		var cost = costs[i]
 		var count = costCounts[i]
 		var costShow: ItemShow = ComponentManager.getUIComponent("ItemShow").instantiate()
+		costShow.enough = is_instance_valid(UIState.player) and UIState.player.inventory[cost] >= countOf(i)
 		costShow.type = cost
 		costShow.count = int(count * multipiler())
 		costsBox.add_child(costShow)
