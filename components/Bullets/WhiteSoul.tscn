@@ -46,7 +46,7 @@ texture_filter = 1
 script = ExtResource("2_ld7n7")
 displayName = "怪物灵魂"
 speed = 20.0
-lifeTime = 2000.0
+damage = 5.0
 
 [node name="texture" parent="." index="0"]
 rotation = -1.5708

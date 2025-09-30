@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bex4qnwll5s34"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_rfm0t"]
+[ext_resource type="Texture2D" uid="uid://bgj2i5q2rst27" path="res://resources/weapons/Daedalus_Stormbow.png" id="2_dkf3o"]
+[ext_resource type="PackedScene" uid="uid://bt4b7ks26fcgi" path="res://components/Weapons/WhiteSoul.tscn" id="3_iq4u3"]
+
+[node name="WhiteSoul" instance=ExtResource("1_rfm0t")]
+avatarTexture = ExtResource("2_dkf3o")
+displayName = "代达罗斯风暴魂"
+quality = 2
+topic = 8
+weapons = Array[PackedScene]([ExtResource("3_iq4u3")])
+costs = Array[int]([2, 1])
+costCounts = Array[int]([1, 1000])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_dkf3o")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "代达罗斯风暴魂"
+quality = 2
+topic = 8

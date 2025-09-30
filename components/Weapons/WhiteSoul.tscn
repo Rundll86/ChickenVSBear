@@ -12,8 +12,8 @@ quality = 3
 costBeachball = 300
 store = {
 "atk": 5,
-"count": 2.0,
-"radius": 50.0
+"count": 1.0,
+"radius": 100.0
 }
 storeType = {
 "atk": 1,
@@ -21,6 +21,7 @@ storeType = {
 "radius": 0.0
 }
 descriptionTemplate = "从天而降$count支目标位于鼠标位置半径$radius内的怪物灵魂，造成$atk点伤害。"
+cooldown = 50.0
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_kcegs")
@@ -33,4 +34,4 @@ displayName = "代达罗斯风暴魂"
 quality = 3
 
 [node name="description" parent="container" index="2"]
-text = "[center]从天而降[color=cyan]2[/color]→[color=yellow]2[/color]支目标位于鼠标位置半径[color=cyan]50.00[/color]→[color=yellow]47.62[/color]内的怪物灵魂，造成[color=cyan]2[/color]→[color=yellow]4[/color]点伤害。[/center]"
+text = "[center]从天而降[color=cyan]1[/color]→[color=yellow]1[/color]支目标位于鼠标位置半径[color=cyan]100.00[/color]→[color=yellow]95.24[/color]内的怪物灵魂，造成[color=cyan]5[/color]→[color=yellow]7[/color]点伤害。[/center]"
