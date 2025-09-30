@@ -1,22 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkm51am35af20"]
+[gd_scene load_steps=3 format=3 uid="uid://bkm51am35af20"]
 
 [ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_pda12"]
 [ext_resource type="Texture2D" uid="uid://dhu2npe2hdg6m" path="res://resources/feeds/egg-a.svg" id="2_4crt5"]
-[ext_resource type="Texture2D" uid="uid://b7vxserbhskol" path="res://resources/feeds/banana.svg" id="2_4g6dr"]
 
 [node name="Egg" instance=ExtResource("1_pda12")]
 avatarTexture = ExtResource("2_4crt5")
 displayName = "鸡蛋"
-quality = 2
+quality = 3
 topic = 3
 fields = Array[int]([3, 7])
-fieldValues = Array[float]([0.25, 10.0])
+fieldValues = Array[float]([0.4, 12.0])
 costs = Array[int]([0, 1])
-costCounts = Array[int]([200, 100])
+costCounts = Array[int]([400, 250])
 
 [node name="avatar" parent="container/info" index="0"]
-texture = ExtResource("2_4g6dr")
+texture = ExtResource("2_4crt5")
 
 [node name="name" parent="container/info" index="1"]
-displayName = "香蕉"
+displayName = "鸡蛋"
+quality = 2
 topic = 3
