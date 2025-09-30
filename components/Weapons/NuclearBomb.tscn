@@ -10,9 +10,9 @@ avatarTexture = ExtResource("2_5nh8i")
 displayName = "核弹控制器"
 quality = 4
 typeTopic = 2
-costBeachball = 100
+costBeachball = 600
 store = {
-"atk": 1200,
+"atk": 2000,
 "radius": 750.0
 }
 storeType = {
@@ -20,17 +20,18 @@ storeType = {
 "radius": 1
 }
 descriptionTemplate = "倒计时10秒后对半径$radius范围的实体造成$atk点[b]无差别伤害[/b]。"
-needEnergy = 100.0
+needEnergy = 120.0
 cooldown = 2000.0
+debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_5nh8i")
 
 [node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "200.0"
+text = "120.0"
 
 [node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
-text = "100"
+text = "600"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "核弹控制器"
@@ -44,4 +45,4 @@ typeTopicColorMap = {
 }
 
 [node name="description" parent="container" index="2"]
-text = "[center]倒计时10秒后对半径[color=cyan]750[/color]→[color=yellow]770[/color]范围的实体造成[color=cyan]1000[/color]→[color=yellow]1025[/color]点[b]无差别伤害[/b]。[/center]"
+text = "[center]倒计时10秒后对半径[color=cyan]750[/color]→[color=yellow]765[/color]范围的实体造成[color=cyan]2000[/color]→[color=yellow]2050[/color]点[b]无差别伤害[/b]。[/center]"
