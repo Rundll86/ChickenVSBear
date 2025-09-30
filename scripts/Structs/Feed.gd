@@ -96,7 +96,8 @@ func rebuildInfo():
 	for weapon in weapons:
 		var weaponShow: WeaponShow = ComponentManager.getUIComponent("WeaponShow").instantiate()
 		weaponShow.weapon = weapon
-		weaponShow.operation = WeaponShow.Operation.EXTRACT if UIState.player.weaponBag.has(weapon.instantiate().displayName) else WeaponShow.Operation.GET
+		if is_instance_valid(UIState.player):
+			weaponShow.operation = WeaponShow.Operation.EXTRACT if UIState.player.weaponBag.has(weapon.instantiate().displayName) else WeaponShow.Operation.GET
 		weaponShow.visible = true
 		weaponsBox.add_child(weaponShow)
 	for i in costsBox.get_children():
@@ -105,7 +106,7 @@ func rebuildInfo():
 		var cost = costs[i]
 		var count = countOf(i)
 		var costShow: ItemShow = ComponentManager.getUIComponent("ItemShow").instantiate()
-		costShow.enough = UIState.player.inventory[cost] >= count
+		costShow.enough = is_instance_valid(UIState.player) and UIState.player.inventory[cost] >= count
 		costShow.type = cost
 		costShow.count = count
 		costsBox.add_child(costShow)
