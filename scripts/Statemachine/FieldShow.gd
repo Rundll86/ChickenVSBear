@@ -10,6 +10,7 @@ class_name FieldShow
 @export var maxed: bool = false
 @export var showAdvantage: bool = false
 
+@onready var icon: TextureRect = $"%icon"
 @onready var nameLabel: Label = $"%name"
 @onready var valueLabel: Label = $"%value"
 
@@ -19,6 +20,7 @@ func _ready():
 		if caster:
 			value = caster.call(entity, value)
 	nameLabel.text = FieldStore.entityMap[field]
+	icon.texture = ComponentManager.getFieldTexture(FieldStore.entityMap.get(field))
 	var formattedValue: String
 	var dataType = FieldStore.entityMapType[field]
 	if dataType == FieldStore.DataType.VALUE:

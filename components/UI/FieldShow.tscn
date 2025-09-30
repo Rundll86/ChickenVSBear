@@ -4,17 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://iu5i8ullbhf6" path="res://resources/items/apple.svg" id="2_q02yi"]
 [ext_resource type="Theme" uid="uid://b6nox1qqh50ub" path="res://themes/smallText.tres" id="2_x62bb"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_3ylui"]
+[sub_resource type="LabelSettings" id="LabelSettings_ysv18"]
 font_size = 13
 
 [node name="FieldShow" type="HBoxContainer"]
 offset_right = 144.0
 offset_bottom = 18.0
 script = ExtResource("1_gwocj")
-metadata/_edit_horizontal_guides_ = [18.0]
+metadata/_edit_horizontal_guides_ = [20.0]
 
 [node name="icon" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(14, 14)
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -43,5 +44,5 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 8
 text = "0"
-label_settings = SubResource("LabelSettings_3ylui")
+label_settings = SubResource("LabelSettings_ysv18")
 horizontal_alignment = 1

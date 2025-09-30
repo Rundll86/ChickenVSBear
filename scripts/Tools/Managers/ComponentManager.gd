@@ -8,6 +8,7 @@ static var effects = {}
 static var feeds = []
 static var uiComponents = {}
 static var themes = {}
+static var fieldTextures = {}
 static var itemTextures = {}
 
 static func init():
@@ -23,6 +24,8 @@ static func init():
 		uiComponents[DirTool.getBasenameWithoutExtension(i)] = load(i)
 	for i in DirTool.listdir("res://themes"):
 		themes[DirTool.getBasenameWithoutExtension(i)] = load(i)
+	for i in DirTool.listdir("res://resources/fieldIcons"):
+		fieldTextures[DirTool.getBasenameWithoutExtension(i)] = load(i)
 	for i in DirTool.listdir("res://resources/items"):
 		itemTextures[DirTool.getBasenameWithoutExtension(i)] = load(i)
 static func getBullet(t: String) -> PackedScene:
@@ -39,5 +42,7 @@ static func getUIComponent(t: String) -> PackedScene:
 	return MathTool.priority(uiComponents.get(t, false), load("res://components/UI/%s.tscn" % t))
 static func getTheme(t: String) -> Theme:
 	return MathTool.priority(themes.get(t, false), load("res://themes/%s.tres" % t))
+static func getFieldTexture(t: String) -> Texture2D:
+	return MathTool.priority(fieldTextures.get(t, false), load("res://resources/fieldIcons/%s.svg" % t))
 static func getItemTexture(t: String) -> Texture2D:
 	return MathTool.priority(itemTextures.get(t, false), load("res://resources/items/%s.svg" % t))
