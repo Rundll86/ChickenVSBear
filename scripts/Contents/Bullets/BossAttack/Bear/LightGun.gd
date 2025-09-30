@@ -10,7 +10,7 @@ extends BulletBase
 var myColor: Color
 func register():
 	speed = 1
-	damage = 1.5
+	damage = 1
 	penerate = 1
 func spawn():
 	myColor = allColor.gradient.sample(randf())
