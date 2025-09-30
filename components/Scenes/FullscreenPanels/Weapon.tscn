@@ -4,9 +4,11 @@
 [ext_resource type="Script" path="res://scripts/Contents/Panels/WeaponPanel.gd" id="2_6alu1"]
 
 [node name="Weapon" instance=ExtResource("1_yodmq")]
+offset_top = 0.0
+offset_bottom = 0.0
 script = ExtResource("2_6alu1")
 
-[node name="wrapper" parent="content" index="0"]
+[node name="wrapper" parent="content" index="1"]
 theme_override_constants/separation = 50
 
 [node name="box" type="HBoxContainer" parent="content/wrapper" index="0"]
