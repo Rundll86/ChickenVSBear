@@ -12,12 +12,11 @@ displayName = "bilioicik"
 quality = 2
 typeTopic = 3
 store = {
-"atk": 1
+"atk": 3
 }
 descriptionTemplate = "召唤7条人类灵魂，每条以10Hz的频率造成$atk点伤害。"
 needEnergy = 150.0
-cooldown = 120000.0
-debugRebuild = true
+cooldown = 2000.0
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_tmgox")

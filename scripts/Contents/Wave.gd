@@ -17,8 +17,8 @@ static var WAVE_NORMAL = [
 ]
 static var WAVE_TESTBOSS_ALL = [
 	Wave.create("Chick", 0, 0, true, 0, INF, 10),
-	Wave.create("KukeMC", 0, 0, true, 1, INF, 10),
-	Wave.create("Bear", 0, 0, true, 2, INF, 10),
+	Wave.create("KukeMC", 0, 0, true, 0, INF, 10),
+	Wave.create("Bear", 0, 0, true, 0, INF, 10),
 ]
 static var WAVE_TESTBOSS_KUKE = [
 	Wave.create("KukeMC", 0, 0, true, 0, INF, 10),
@@ -30,7 +30,7 @@ static var WAVE_TESTBOSS_CHICK = [
 	Wave.create("Chick", 0, 0, true, 0, INF, 10),
 ]
 static var WAVE_EMPTY = []
-static var data = WAVE_TESTBOSS_BEAR
+static var data = WAVE_TESTBOSS_ALL
 
 static func customStart():
 	if false:

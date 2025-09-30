@@ -44,6 +44,7 @@ script = ExtResource("2_eaa43")
 displayName = "灵魂"
 speed = 25.0
 damage = 1.5
+penerate = 1.0
 lifeTime = 1000.0
 
 [node name="texture" parent="." index="0"]
@@ -55,6 +56,3 @@ process_material = SubResource("ParticleProcessMaterial_vwon6")
 texture = ExtResource("2_fmlef")
 lifetime = 0.5
 local_coords = true
-
-[node name="hitbox" parent="." index="1"]
-visible = false
