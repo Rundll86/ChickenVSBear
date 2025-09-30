@@ -8,7 +8,7 @@ avatarTexture = ExtResource("2_82amy")
 displayName = "草莓"
 quality = 3
 fields = Array[int]([14])
-fieldValues = Array[float]([0.1])
+fieldValues = Array[float]([0.04])
 costs = Array[int]([1])
 costCounts = Array[int]([400])
 

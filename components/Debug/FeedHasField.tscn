@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://clm14a8gnikte"]
-
-[ext_resource type="Script" path="res://scripts/Debug/FeedHasField.gd" id="1_7leag"]
-
-[node name="FeedHasField" type="HBoxContainer"]
-theme_override_constants/separation = 0
-script = ExtResource("1_7leag")
-targetFields = Array[int]([25])
-composeMode = 1

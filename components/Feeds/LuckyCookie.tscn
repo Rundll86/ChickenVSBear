@@ -8,8 +8,8 @@ avatarTexture = ExtResource("2_or0st")
 displayName = "幸运签语饼"
 quality = 2
 topic = 5
-fields = Array[int]([14, 4, 6, 18])
-fieldValues = Array[float]([0.02, 0.03, 0.04, 2.0])
+fields = Array[int]([18])
+fieldValues = Array[float]([2.0])
 costs = Array[int]([0, 1])
 costCounts = Array[int]([400, 375])
 
@@ -19,3 +19,4 @@ texture = ExtResource("2_or0st")
 [node name="name" parent="container/info" index="1"]
 displayName = "幸运签语饼"
 quality = 2
+topic = 5
