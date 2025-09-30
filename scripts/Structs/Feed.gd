@@ -67,10 +67,7 @@ func apply(entity: EntityBase):
 func countOf(index: int) -> int:
 	return ceil(costCounts[index] * multipiler())
 func multipiler() -> float:
-	if is_instance_valid(UIState.player):
-		return 1 - UIState.player.fields.get(FieldStore.Entity.PRICE_REDUCTION)
-	else:
-		return 1
+	return 1 - UIState.player.fields.get(FieldStore.Entity.PRICE_REDUCTION)
 func rebuildInfo():
 	avatarRect.texture = avatarTexture
 	nameLabel.displayName = displayName
@@ -86,8 +83,7 @@ func rebuildInfo():
 		var fieldShow: FieldShow = ComponentManager.getUIComponent("FieldShow").instantiate()
 		fieldShow.field = field
 		fieldShow.value = value
-		if is_instance_valid(UIState.player):
-			fieldShow.maxed = value + UIState.player.fields[field] > FieldStore.entityMaxValueMap.get(field, INF)
+		fieldShow.maxed = value + UIState.player.fields[field] > FieldStore.entityMaxValueMap.get(field, INF)
 		fieldsBox.add_child(fieldShow)
 	if noField:
 		fieldsBox.add_child(QuickUI.smallText("无词条"))
@@ -96,8 +92,7 @@ func rebuildInfo():
 	for weapon in weapons:
 		var weaponShow: WeaponShow = ComponentManager.getUIComponent("WeaponShow").instantiate()
 		weaponShow.weapon = weapon
-		if is_instance_valid(UIState.player):
-			weaponShow.operation = WeaponShow.Operation.EXTRACT if UIState.player.weaponBag.has(weapon.instantiate().displayName) else WeaponShow.Operation.GET
+		weaponShow.operation = WeaponShow.Operation.EXTRACT if UIState.player.weaponBag.has(weapon.instantiate().displayName) else WeaponShow.Operation.GET
 		weaponShow.visible = true
 		weaponsBox.add_child(weaponShow)
 	for i in costsBox.get_children():
@@ -106,7 +101,7 @@ func rebuildInfo():
 		var cost = costs[i]
 		var count = countOf(i)
 		var costShow: ItemShow = ComponentManager.getUIComponent("ItemShow").instantiate()
-		costShow.enough = is_instance_valid(UIState.player) and UIState.player.inventory[cost] >= count
+		costShow.enough = UIState.player.inventory[cost] >= count
 		costShow.type = cost
 		costShow.count = count
 		costsBox.add_child(costShow)
