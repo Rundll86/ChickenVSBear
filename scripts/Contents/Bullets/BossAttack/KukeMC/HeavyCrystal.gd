@@ -9,7 +9,7 @@ func register():
 func ai():
 	if timeLived() < readyTime:
 		PresetBulletAI.lockLauncher(self, launcher, true)
-		rotation = launcher.position.angle_to_point(launcher.currentFocusedBoss.getTrackingAnchor())
+		PresetBulletAI.trace(self, launcher.currentFocusedBoss.getTrackingAnchor(), 0.8)
 		hitbox.disabled = true
 	else:
 		track.visible = false
