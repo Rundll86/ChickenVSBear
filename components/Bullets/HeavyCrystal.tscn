@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://shaders/Ring.gdshader" id="2_utujj"]
 [ext_resource type="Script" path="res://scripts/Contents/Bullets/BossAttack/KukeMC/HeavyCrystal.gd" id="2_ygemv"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1i43q"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_41i4d"]
 shader = ExtResource("2_utujj")
 shader_parameter/inner = 0.95
 shader_parameter/outer = 1.0
@@ -132,14 +132,14 @@ curve = SubResource("Curve_cy4lq")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hgwnm"]
 particle_flag_disable_z = true
 emission_shape = 1
-emission_sphere_radius = 5.0
+emission_sphere_radius = 10.0
 angle_min = 1.07288e-05
 angle_max = 360.0
 angle_curve = SubResource("CurveTexture_0a8st")
 direction = Vector3(-1, 0, 0)
 spread = 0.0
 initial_velocity_min = 300.0
-initial_velocity_max = 600.0
+initial_velocity_max = 400.0
 gravity = Vector3(0, 0, 0)
 scale_min = 3.0
 scale_max = 6.0
@@ -159,7 +159,7 @@ autoSpawnAnimation = true
 
 [node name="track" type="Node2D" parent="." index="0"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_1i43q")
+material = SubResource("ShaderMaterial_41i4d")
 script = ExtResource("2_75div")
 size = Vector2(300, 300)
 color = Color(0.869998, 0.686414, 0.917359, 1)
@@ -177,8 +177,8 @@ libraries = {
 [node name="trail" type="GPUParticles2D" parent="texture" index="1"]
 unique_name_in_owner = true
 z_index = -1
-position = Vector2(-20.6667, 0)
-amount = 100
+position = Vector2(11.3333, 0)
+amount = 150
 process_material = SubResource("ParticleProcessMaterial_hgwnm")
 local_coords = true
 
