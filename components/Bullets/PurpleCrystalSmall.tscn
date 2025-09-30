@@ -16,7 +16,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gdnkp"]
-radius = 2.23607
+radius = 5.0
 
 [node name="PurpleCrystalSmall" instance=ExtResource("1_7tnrb")]
 modulate = Color(1.5, 1.5, 1.5, 1)
@@ -31,5 +31,4 @@ scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_r86b3")
 
 [node name="hitbox" parent="." index="1"]
-position = Vector2(-17, 0)
 shape = SubResource("CircleShape2D_gdnkp")
