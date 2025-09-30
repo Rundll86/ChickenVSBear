@@ -24,6 +24,7 @@ storeType = {
 "reduce": 2
 }
 descriptionTemplate = "发射$count只伤害以$reduce衰减的造成$childatk点伤害的[b]彩虹猫[/b]的同时挥舞造成$atk点伤害。"
+needEnergy = 1.0
 cooldown = 200.0
 
 [node name="avatar" parent="container/info" index="0"]
@@ -38,4 +39,4 @@ quality = 2
 typeTopic = 3
 
 [node name="description" parent="container" index="2"]
-text = "[center]发射[color=cyan]1[/color]→[color=yellow]1[/color]只伤害以[color=cyan]25%[/color]→[color=yellow]23%[/color]衰减的造成[color=cyan]10[/color]→[color=yellow]12[/color]点伤害的[b]彩虹猫[/b]的同时挥舞造成[color=cyan]15[/color]→[color=yellow]18[/color]点伤害。[/center]"
+text = "[center]发射[color=cyan]1[/color]→[color=yellow]1[/color]只伤害以[color=cyan]25%[/color]→[color=yellow]23%[/color]衰减的造成[color=cyan]12[/color]→[color=yellow]28[/color]点伤害的[b]彩虹猫[/b]的同时挥舞造成[color=cyan]10[/color]→[color=yellow]13[/color]点伤害。[/center]"

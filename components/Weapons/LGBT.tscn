@@ -28,7 +28,7 @@ storeType = {
 "trace": 0.0
 }
 descriptionTemplate = "每$angle发射1/$count条以$power效率追踪$trace秒的[b]七彩光标[/b]，每条造成$atk点伤害。"
-needEnergy = 50.0
+needEnergy = 25.0
 cooldown = 1000.0
 
 [node name="attack" parent="sounds" index="0"]
@@ -39,6 +39,9 @@ texture = ExtResource("2_ou6jo")
 
 [node name="energy" parent="container/info/infos/energyInfo" index="1"]
 text = "50.0"
+
+[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
+text = "200"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "彩虹旗"

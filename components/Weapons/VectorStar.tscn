@@ -23,9 +23,8 @@ storeType = {
 "mincount": 1.0
 }
 descriptionTemplate = "发射$mincount~$maxcount个[b]无主的飞星[/b]，在$forwardtime秒后向目标冲刺并造成$atk点伤害。"
-needEnergy = 10.0
+needEnergy = 5.0
 cooldown = 500.0
-debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("3_wfty8")
@@ -41,4 +40,4 @@ displayName = "矢量核心"
 quality = 2
 
 [node name="description" parent="container" index="2"]
-text = "[center]发射[color=cyan]5[/color]→[color=yellow]5[/color]~[color=cyan]10[/color]→[color=yellow]11[/color]个[b]无主的飞星[/b]，在[color=cyan]0.75[/color]→[color=yellow]0.74[/color]秒后向目标冲刺并造成[color=cyan]7[/color]→[color=yellow]12[/color]点伤害。[/center]"
+text = "[center]发射[color=cyan]5[/color]→[color=yellow]5[/color]~[color=cyan]10[/color]→[color=yellow]11[/color]个[b]无主的飞星[/b]，在[color=cyan]0.75[/color]→[color=yellow]0.71[/color]秒后向目标冲刺并造成[color=cyan]7[/color]→[color=yellow]12[/color]点伤害。[/center]"
