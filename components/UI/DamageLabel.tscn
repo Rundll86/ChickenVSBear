@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccuucmpdsjgb3"]
+[gd_scene load_steps=6 format=3 uid="uid://ccuucmpdsjgb3"]
 
 [ext_resource type="Script" path="res://scripts/Statemachine/DamageLabel.gd" id="1_0q15u"]
-[ext_resource type="FontFile" uid="uid://db2jl4bq8idec" path="res://resources/fonts/swyc.ttf" id="2_qkvn4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_valp2"]
-font = ExtResource("2_qkvn4")
 font_size = 25
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)

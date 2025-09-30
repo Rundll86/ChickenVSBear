@@ -1,15 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://beo6s1kudbbve"]
+[gd_scene load_steps=6 format=3 uid="uid://beo6s1kudbbve"]
 
 [ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_u2ynr"]
 [ext_resource type="Script" path="res://scripts/Contents/Panels/GameOver.gd" id="2_6cd45"]
 [ext_resource type="AudioStream" uid="uid://dbso1w8hvgilg" path="res://resources/sounds/effect/Lose.wav" id="3_n4aax"]
-[ext_resource type="FontFile" uid="uid://db2jl4bq8idec" path="res://resources/fonts/swyc.ttf" id="3_oynlg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gbuu"]
 bg_color = Color(1, 0, 0, 0.3)
 
 [sub_resource type="LabelSettings" id="LabelSettings_17i5j"]
-font = ExtResource("3_oynlg")
 font_size = 50
 
 [node name="GameOver" instance=ExtResource("1_u2ynr")]
