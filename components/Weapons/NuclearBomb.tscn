@@ -27,11 +27,7 @@ debugRebuild = true
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_5nh8i")
 
-[node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "120.0"
 
-[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
-text = "600"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "核弹控制器"

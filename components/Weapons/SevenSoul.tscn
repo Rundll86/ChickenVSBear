@@ -25,8 +25,6 @@ volume_db = 20.0
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("3_nq3bo")
 
-[node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "150.0"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "bilioicik"

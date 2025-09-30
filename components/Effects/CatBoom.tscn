@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4y1kq7yger4h"]
+[gd_scene load_steps=11 format=3 uid="uid://b4y1kq7yger4h"]
 
 [ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_fwc1i"]
 
 [sub_resource type="Curve" id="Curve_snh3o"]
-_data = [Vector2(0.502092, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_tr6r8"]
@@ -16,8 +16,15 @@ colors = PackedColorArray(1, 0.75, 0.75, 1, 1, 0.8625, 0.75, 1, 1, 0.970833, 0.7
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_5ra8e"]
 gradient = SubResource("Gradient_v4pid")
 
+[sub_resource type="Curve" id="Curve_bqxyt"]
+_data = [Vector2(0.4, 0), 162.223, 0.0, 1, 0, Vector2(0.8, 1), 0.0, 162.223, 0, 1]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xd1pr"]
+curve = SubResource("Curve_bqxyt")
+
 [sub_resource type="Curve" id="Curve_a27b5"]
-_data = [Vector2(0.497908, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_sgxbq"]
@@ -28,11 +35,12 @@ particle_flag_disable_z = true
 angle_min = 1.07288e-05
 angle_max = 360.0
 spread = 180.0
-initial_velocity_min = 80.0
-initial_velocity_max = 120.0
+initial_velocity_min = 150.0
+initial_velocity_max = 180.0
 gravity = Vector3(0, 0, 0)
-damping_min = 50.0
-damping_max = 50.0
+damping_min = 1000.0
+damping_max = 1000.0
+damping_curve = SubResource("CurveTexture_xd1pr")
 scale_min = 3.0
 scale_max = 6.0
 scale_curve = SubResource("CurveTexture_sgxbq")
@@ -43,5 +51,5 @@ alpha_curve = SubResource("CurveTexture_tr6r8")
 
 [node name="particles" parent="." index="1"]
 z_index = 1
-amount = 150
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_yytbm")

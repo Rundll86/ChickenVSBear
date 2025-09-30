@@ -23,8 +23,8 @@ class_name Weapon
 @onready var avatarRect: TextureRect = $"%avatar"
 @onready var nameLabel: WeaponName = $"%name"
 @onready var energyLabel: Label = $"%energy"
-@onready var beachballLabel: Label = $"%beachball"
-@onready var soulLabel: Label = $"%soul"
+@onready var beachball: ItemShow = $"%beachball"
+@onready var soul: ItemShow = $"%soul"
 @onready var descriptionLabel: RichTextLabel = $"%description"
 @onready var updateBtn: Button = $"%updateBtn"
 @onready var extractBtn: Button = $"%extractBtn"
@@ -40,6 +40,12 @@ func _ready():
 	cooldownTimer = CooldownTimer.new()
 	cooldownTimer.cooldown = cooldown
 	originalStore = store
+	updateBtn.mouse_entered.connect(func(): rebuildInfo(true))
+	updateBtn.mouse_exited.connect(func(): rebuildInfo())
+	extractBtn.mouse_entered.connect(func(): rebuildInfo(true))
+	extractBtn.mouse_exited.connect(func(): rebuildInfo())
+	inlayBtn.mouse_entered.connect(func(): rebuildInfo(true))
+	inlayBtn.mouse_exited.connect(func(): rebuildInfo())
 	updateBtn.pressed.connect(
 		func():
 			apply(UIState.player)
@@ -90,17 +96,19 @@ func _physics_process(_delta):
 	if debugRebuild:
 		rebuildInfo()
 
-func allHad(entity: EntityBase) -> bool:
-	return entity.inventory[ItemStore.ItemType.BEACHBALL] >= costBeachball
-func apply(entity: EntityBase):
-	var allHave = allHad(entity)
-	if allHave:
+func canUpdate():
+	return UIState.player.hasItem({ItemStore.ItemType.BEACHBALL: costBeachball})
+func canInlay():
+	return UIState.player.hasItem({ItemStore.ItemType.SOUL: soulLevel})
+func apply(entity: EntityBase) -> bool:
+	if canUpdate():
 		level += 1
 		entity.inventory[ItemStore.ItemType.BEACHBALL] -= costBeachball
 		updateStore(level, entity)
 		costBeachball = floor(GameRule.weaponUpdateCost * costBeachball)
-		rebuildInfo()
-	return allHave
+		rebuildInfo(true)
+		return true
+	return false
 func updateStore(to: int, entity: EntityBase):
 	store = update(to, originalStore.duplicate(), entity)
 func multipiler() -> float:
@@ -108,7 +116,7 @@ func multipiler() -> float:
 		return 1 - UIState.player.fields.get(FieldStore.Entity.PRICE_REDUCTION)
 	else:
 		return 1
-func rebuildInfo():
+func rebuildInfo(showNext: bool = false):
 	avatarRect.texture = avatarTexture
 	nameLabel.displayName = displayName
 	nameLabel.quality = quality
@@ -116,9 +124,12 @@ func rebuildInfo():
 	nameLabel.soulLevel = soulLevel
 	nameLabel.level = level
 	energyLabel.text = "%.1f" % needEnergy
-	beachballLabel.text = str(costBeachball)
-	soulLabel.text = str(soulLevel)
-	descriptionLabel.text = buildDescription()
+	beachball.count = costBeachball
+	soul.count = soulLevel
+	if is_instance_valid(UIState.player):
+		beachball.enough = canUpdate()
+		soul.enough = canInlay()
+	descriptionLabel.text = buildDescription(showNext && (canUpdate() || canInlay()))
 func formatValue(value: Variant, type: FieldStore.DataType) -> String:
 	if type == FieldStore.DataType.VALUE:
 		return "%.2f" % value
@@ -128,9 +139,11 @@ func formatValue(value: Variant, type: FieldStore.DataType) -> String:
 		return ("%d" % (value * 100)) + "%"
 	elif type == FieldStore.DataType.ANGLE:
 		return "%.1f°" % value
+	elif type == FieldStore.DataType.FREQUENCY:
+		return "%.1fHz" % value
 	else:
 		return str(value)
-func buildDescription() -> String:
+func buildDescription(showNext: bool = false) -> String:
 	var current = store
 	var next = update(level + 1, originalStore.duplicate(), UIState.player)
 	var result = descriptionTemplate
@@ -140,7 +153,12 @@ func buildDescription() -> String:
 		var type = storeType.get(key, FieldStore.DataType.VALUE)
 		data = formatValue(data, type)
 		nextData = formatValue(nextData, type)
-		result = result.replace("$" + key, "[color=cyan]%s[/color]→[color=yellow]%s[/color]" % [data, nextData])
+		var text
+		if showNext:
+			text = "[color=cyan]%s[/color]→[color=yellow]%s[/color]" % [data, nextData]
+		else:
+			text = "[color=cyan]%s[/color]" % data
+		result = result.replace("$" + key, text)
 	return "[center]%s[/center]" % result
 func readStore(key: String, default: Variant = null):
 	return store.get(key, default)

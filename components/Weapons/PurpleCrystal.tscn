@@ -21,8 +21,6 @@ stream = ExtResource("4_16daa")
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_wgtcw")
 
-[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
-text = "250"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "紫水晶簇"

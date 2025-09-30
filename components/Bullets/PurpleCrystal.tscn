@@ -20,6 +20,7 @@ animations = [{
 [node name="PurpleCrystal" instance=ExtResource("1_45mh7")]
 script = ExtResource("2_4lnlm")
 displayName = "水晶"
+lifeTime = 1000.0
 
 [node name="texture" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_r86b3")

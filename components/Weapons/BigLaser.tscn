@@ -30,13 +30,10 @@ stream = ExtResource("4_cb5nh")
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_qe8gb")
 
-[node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "200.0"
-
 [node name="name" parent="container/info" index="2"]
 displayName = "湮灭激光"
 quality = 2
 typeTopic = 1
 
 [node name="description" parent="container" index="2"]
-text = "[center]每[color=cyan]0.10[/color]→[color=yellow]0.10[/color]秒造成[color=cyan]40[/color]→[color=yellow]45[/color]点伤害。[/center]"
+text = "[center]每[color=cyan]0.10[/color]秒造成[color=cyan]40[/color]点伤害。[/center]"

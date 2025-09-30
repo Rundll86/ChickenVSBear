@@ -29,11 +29,7 @@ cooldown = 500.0
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("3_wfty8")
 
-[node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "10.0"
 
-[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
-text = "400"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "矢量核心"

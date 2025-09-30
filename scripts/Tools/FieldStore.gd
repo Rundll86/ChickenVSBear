@@ -5,7 +5,8 @@ enum DataType {
 	VALUE,
 	INTEGER,
 	PERCENT,
-	ANGLE
+	ANGLE,
+	FREQUENCY
 }
 enum Entity {
 	MAX_HEALTH,

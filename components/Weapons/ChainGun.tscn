@@ -26,11 +26,7 @@ cooldown = 50.0
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_ghn43")
 
-[node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "1.0"
 
-[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
-text = "400"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "链式机枪"

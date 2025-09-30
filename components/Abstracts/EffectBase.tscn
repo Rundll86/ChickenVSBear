@@ -5,6 +5,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7cv4k"]
 
 [node name="EffectBase" type="Node2D"]
+z_index = 1
 script = ExtResource("1_pt2rk")
 
 [node name="sounds" type="Node2D" parent="."]

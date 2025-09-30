@@ -26,8 +26,6 @@ cooldown = 50.0
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_kcegs")
 
-[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
-text = "300"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "代达罗斯风暴魂"

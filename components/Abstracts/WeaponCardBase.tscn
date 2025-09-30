@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckq2cq6m23hq3"]
+[gd_scene load_steps=7 format=3 uid="uid://ckq2cq6m23hq3"]
 
 [ext_resource type="Script" path="res://scripts/Structs/Weapon.gd" id="1_g802t"]
 [ext_resource type="Theme" uid="uid://dhvs6urgf6jr5" path="res://themes/main.tres" id="2_fwkd3"]
 [ext_resource type="PackedScene" uid="uid://ch81vd3awkmhk" path="res://components/UI/WeaponName.tscn" id="3_qv0b1"]
 [ext_resource type="Texture2D" uid="uid://k13cte17httt" path="res://resources/items/energy.svg" id="4_6gohw"]
-[ext_resource type="Texture2D" uid="uid://dw0g7cb4skd5s" path="res://resources/items/beachball.svg" id="5_pr18h"]
-[ext_resource type="Texture2D" uid="uid://7jhhyoinptns" path="res://resources/items/soul.svg" id="6_tygah"]
+[ext_resource type="PackedScene" uid="uid://bbm8l3hr4ihar" path="res://components/UI/ItemShow.tscn" id="4_k01vb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2ewr"]
 content_margin_left = 30.0
@@ -103,46 +102,21 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "0.0"
 
-[node name="beachballInfo" type="HBoxContainer" parent="container/info/infos"]
-layout_mode = 2
-alignment = 1
-
-[node name="icon" type="TextureRect" parent="container/info/infos/beachballInfo"]
-custom_minimum_size = Vector2(15, 15)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("5_pr18h")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="beachball" type="Label" parent="container/info/infos/beachballInfo"]
+[node name="beachball" parent="container/info/infos" instance=ExtResource("4_k01vb")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "500"
-
-[node name="soulInfo" type="HBoxContainer" parent="container/info/infos"]
-layout_mode = 2
-alignment = 1
-
-[node name="icon" type="TextureRect" parent="container/info/infos/soulInfo"]
-custom_minimum_size = Vector2(15, 15)
-layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("6_tygah")
-expand_mode = 1
-stretch_mode = 5
+type = 3
 
-[node name="soul" type="Label" parent="container/info/infos/soulInfo"]
+[node name="soul" parent="container/info/infos" instance=ExtResource("4_k01vb")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "1"
+size_flags_horizontal = 4
+type = 4
 
 [node name="name" parent="container/info" instance=ExtResource("3_qv0b1")]
 unique_name_in_owner = true
 layout_mode = 2
-displayName = "未命名饲料"
 soulLevelColorMap = {
 1: Color(1, 1, 1, 1),
 2: Color(0.489296, 1, 0.548293, 1),
@@ -155,7 +129,7 @@ soulLevelColorMap = {
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
-text = "[center]造成[color=cyan]10[/color]→[color=yellow]10[/color]点伤害。[/center]"
+text = "[center]造成[color=cyan]10[/color]点伤害。[/center]"
 fit_content = true
 
 [node name="costs" type="GridContainer" parent="container"]

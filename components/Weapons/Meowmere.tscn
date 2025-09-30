@@ -30,8 +30,6 @@ cooldown = 200.0
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_kiocs")
 
-[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
-text = "600"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "彩虹猫之刃"

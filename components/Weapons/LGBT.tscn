@@ -37,11 +37,7 @@ stream = ExtResource("4_c5xse")
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_ou6jo")
 
-[node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "50.0"
 
-[node name="beachball" parent="container/info/infos/beachballInfo" index="1"]
-text = "200"
 
 [node name="name" parent="container/info" index="2"]
 displayName = "彩虹旗"
