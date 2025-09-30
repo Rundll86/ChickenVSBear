@@ -67,7 +67,10 @@ func apply(entity: EntityBase):
 func countOf(index: int) -> int:
 	return ceil(costCounts[index] * multipiler())
 func multipiler() -> float:
-	return 1 - UIState.player.fields.get(FieldStore.Entity.PRICE_REDUCTION)
+	if is_instance_valid(UIState.player):
+		return 1 - UIState.player.fields.get(FieldStore.Entity.PRICE_REDUCTION)
+	else:
+		return 1
 func rebuildInfo():
 	avatarRect.texture = avatarTexture
 	nameLabel.displayName = displayName
@@ -83,7 +86,8 @@ func rebuildInfo():
 		var fieldShow: FieldShow = ComponentManager.getUIComponent("FieldShow").instantiate()
 		fieldShow.field = field
 		fieldShow.value = value
-		fieldShow.maxed = value + UIState.player.fields[field] > FieldStore.entityMaxValueMap.get(field, INF)
+		if is_instance_valid(UIState.player):
+			fieldShow.maxed = value + UIState.player.fields[field] > FieldStore.entityMaxValueMap.get(field, INF)
 		fieldsBox.add_child(fieldShow)
 	if noField:
 		fieldsBox.add_child(QuickUI.smallText("无词条"))
