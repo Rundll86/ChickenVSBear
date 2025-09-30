@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=16 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dclinyhu256xi" path="res://resources/sounds/effect/Low Whoosh.mp3" id="3_4syso"]
 [ext_resource type="Texture2D" uid="uid://ci2ik43ce82uy" path="res://resources/characters/cock/rooster-b.svg" id="3_b0fgx"]
 [ext_resource type="PackedScene" uid="uid://c0n3igy4hucrg" path="res://components/Weapons/PurpleCrystal.tscn" id="3_cyreu"]
+[ext_resource type="PackedScene" uid="uid://b2qhes4apaxsj" path="res://components/Weapons/NuclearBomb.tscn" id="3_kdo05"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
 [ext_resource type="AudioStream" uid="uid://benyec5bqni0b" path="res://resources/sounds/effect/Chomp.wav" id="4_k0yme"]
 [ext_resource type="PackedScene" uid="uid://bb1uh8k7gkhr7" path="res://components/Weapons/VectorStar.tscn" id="4_re2px"]
@@ -45,10 +46,13 @@ displayName = "公鸡"
 [node name="weaponStore" parent="." index="0"]
 process_mode = 4
 
-[node name="PurpleCrystal" parent="weaponStore" index="0" instance=ExtResource("3_cyreu")]
+[node name="NuclearBomb" parent="weaponStore" index="0" instance=ExtResource("3_kdo05")]
+offset_bottom = 324.0
+
+[node name="PurpleCrystal" parent="weaponStore" index="1" instance=ExtResource("3_cyreu")]
 debugRebuild = false
 
-[node name="VectorStar" parent="weaponStore" index="1" instance=ExtResource("4_re2px")]
+[node name="VectorStar" parent="weaponStore" index="2" instance=ExtResource("4_re2px")]
 debugRebuild = false
 
 [node name="sprint" parent="sounds" index="0"]

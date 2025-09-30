@@ -2,8 +2,8 @@
 extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-	origin["atk"] += 25 * to * soulLevel
-	origin["radius"] += 20 * to * soulLevel
+	origin["atk"] += 50 * to * soulLevel
+	origin["radius"] += 15 * to * soulLevel
 	return origin
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")
