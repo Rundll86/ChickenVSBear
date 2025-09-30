@@ -8,6 +8,7 @@ class_name FieldShow
 @export var entity: EntityBase = null
 @export var useViewCast: bool = false
 @export var maxed: bool = false
+@export var showAdvantage: bool = false
 
 @onready var nameLabel: Label = $"%name"
 @onready var valueLabel: Label = $"%value"
@@ -33,6 +34,11 @@ func _ready():
 	if maxed:
 		valueLabel.label_settings.font_color = Color(1, 0.3, 0.3)
 		valueLabel.text = "MAX%s" % valueLabel.text
+	elif showAdvantage:
+		if field in FieldStore.entityNegativeFields:
+			valueLabel.label_settings.font_color = Color.RED if value > 0 else Color.GREEN
+		else:
+			valueLabel.label_settings.font_color = Color.GREEN if value > 0 else Color.RED
 	else:
 		valueLabel.label_settings.font_color = Color(1, 1, 1)
 

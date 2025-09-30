@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://iu5i8ullbhf6" path="res://resources/items/apple.svg" id="2_q02yi"]
 [ext_resource type="Theme" uid="uid://b6nox1qqh50ub" path="res://themes/smallText.tres" id="2_x62bb"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ossj7"]
+[sub_resource type="LabelSettings" id="LabelSettings_3ylui"]
 font_size = 13
 
 [node name="FieldShow" type="HBoxContainer"]
@@ -43,5 +43,5 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 8
 text = "0"
-label_settings = SubResource("LabelSettings_ossj7")
+label_settings = SubResource("LabelSettings_3ylui")
 horizontal_alignment = 1

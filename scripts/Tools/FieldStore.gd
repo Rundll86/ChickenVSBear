@@ -119,3 +119,6 @@ static var entityViewCastMap = {
 		return entity.inventoryMax[ItemStore.ItemType.APPLE]
 		,
 }
+static var entityNegativeFields: Array[Entity] = [
+	Entity.OFFSET_SHOOT
+]

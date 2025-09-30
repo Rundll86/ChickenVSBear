@@ -86,6 +86,7 @@ func rebuildInfo():
 		var fieldShow: FieldShow = ComponentManager.getUIComponent("FieldShow").instantiate()
 		fieldShow.field = field
 		fieldShow.value = value
+		fieldShow.showAdvantage = true
 		if is_instance_valid(UIState.player):
 			fieldShow.maxed = value + UIState.player.fields[field] > FieldStore.entityMaxValueMap.get(field, INF)
 		fieldsBox.add_child(fieldShow)

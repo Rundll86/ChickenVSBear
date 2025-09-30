@@ -3,7 +3,7 @@ extends PanelContainer
 class_name Weapon
 
 @export var avatarTexture: Texture2D = null
-@export var displayName: String = "未命名饲料"
+@export var displayName: String = "未命名武器"
 @export var quality: WeaponName.Quality = WeaponName.Quality.COMMON
 @export var typeTopic: WeaponName.TypeTopic = WeaponName.TypeTopic.IMPACT
 @export var soulLevel: int = 1
