@@ -171,6 +171,7 @@ func playSound(sound: String):
 		await cloned.finished
 		cloned.queue_free()
 func tryAttack(entity: EntityBase):
+	cooldownTimer.speedScale = entity.fields.get(FieldStore.Entity.ATTACK_SPEED)
 	if cooldownTimer.start():
 		if entity.useEnergy(needEnergy):
 			return await attack(entity)
