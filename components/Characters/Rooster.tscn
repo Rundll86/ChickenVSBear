@@ -41,7 +41,6 @@ radius = 41.0122
 [node name="Rooster" instance=ExtResource("1_e5pl8")]
 script = ExtResource("2_oqdqd")
 displayName = "公鸡"
-currentInvinsible = true
 
 [node name="weaponStore" parent="." index="0"]
 process_mode = 4
