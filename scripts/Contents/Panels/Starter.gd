@@ -12,5 +12,5 @@ func _ready():
 			UIState.closeCurrentPanel()
 	)
 func _physics_process(_delta):
-	levelShow.text = "%s/10" % diffEdit.value
+	levelShow.text = "%d ∈ [%d, %d]" % [diffEdit.value, diffEdit.min_value, diffEdit.max_value]
 	GameRule.difficulty = diffEdit.value

@@ -1,13 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0r1i5tdbwljj"]
+[gd_scene load_steps=8 format=3 uid="uid://c0r1i5tdbwljj"]
 
 [ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_o0yse"]
-[ext_resource type="Script" path="res://scripts/Contents/Panels/Starter.gd" id="2_ic0aq"]
+[ext_resource type="Script" uid="uid://codlmfbuyis33" path="res://scripts/Contents/Panels/Starter.gd" id="2_ic0aq"]
 [ext_resource type="FontFile" uid="uid://v3frxpuvtj5o" path="res://resources/fonts/syht-bold.ttf" id="3_sopoi"]
+[ext_resource type="Theme" uid="uid://dhvs6urgf6jr5" path="res://themes/main.tres" id="4_lfxcn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ch0dv"]
 font = ExtResource("3_sopoi")
 font_size = 45
 outline_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_lfxcn"]
+font_size = 20
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_sdsu8"]
+font_size = 12
+outline_size = 1
 
 [node name="Starter" instance=ExtResource("1_o0yse")]
 offset_top = 0.0
@@ -25,32 +34,98 @@ label_settings = SubResource("LabelSettings_ch0dv")
 
 [node name="starter" type="VBoxContainer" parent="content/wrapper" index="1"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 30
 
-[node name="diffs" type="HBoxContainer" parent="content/wrapper/starter" index="0"]
+[node name="singleplayer" type="VBoxContainer" parent="content/wrapper/starter" index="0"]
+layout_mode = 2
+
+[node name="diffs" type="HBoxContainer" parent="content/wrapper/starter/singleplayer" index="0"]
 layout_mode = 2
 alignment = 1
 
-[node name="tip" type="Label" parent="content/wrapper/starter/diffs" index="0"]
+[node name="tip" type="Label" parent="content/wrapper/starter/singleplayer/diffs" index="0"]
 layout_mode = 2
 text = "选择难度："
 
-[node name="diffEdit" type="HSlider" parent="content/wrapper/starter/diffs" index="1"]
+[node name="diffEdit" type="HSlider" parent="content/wrapper/starter/singleplayer/diffs" index="1"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
-min_value = -3.0
+min_value = -5.0
 max_value = 5.0
 value = 1.0
 
-[node name="levelShow" type="Label" parent="content/wrapper/starter/diffs" index="2"]
+[node name="levelShow" type="Label" parent="content/wrapper/starter/singleplayer/diffs" index="2"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "1/10"
+text = "1 ∈ [-5, 5]"
 
-[node name="startBtn" type="Button" parent="content/wrapper/starter" index="1"]
+[node name="startBtn" type="Button" parent="content/wrapper/starter/singleplayer" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "开始"
+theme = ExtResource("4_lfxcn")
+text = "单人游戏"
+
+[node name="multiplayer" type="VBoxContainer" parent="content/wrapper/starter" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="title" type="Label" parent="content/wrapper/starter/multiplayer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "多人游戏"
+label_settings = SubResource("LabelSettings_lfxcn")
+
+[node name="host" type="HBoxContainer" parent="content/wrapper/starter/multiplayer" index="1"]
+layout_mode = 2
+alignment = 1
+
+[node name="tip" type="Label" parent="content/wrapper/starter/multiplayer/host" index="0"]
+layout_mode = 2
+text = "地址"
+label_settings = SubResource("LabelSettings_sdsu8")
+
+[node name="hostInput" type="LineEdit" parent="content/wrapper/starter/multiplayer/host" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_lfxcn")
+text = "127.0.0.1"
+placeholder_text = "主机"
+expand_to_text_length = true
+emoji_menu_enabled = false
+virtual_keyboard_type = 7
+select_all_on_focus = true
+
+[node name="separator" type="Label" parent="content/wrapper/starter/multiplayer/host" index="2"]
+layout_mode = 2
+text = ":"
+
+[node name="portInput" type="LineEdit" parent="content/wrapper/starter/multiplayer/host" index="3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_lfxcn")
+text = "1145"
+placeholder_text = "端口"
+expand_to_text_length = true
+emoji_menu_enabled = false
+virtual_keyboard_type = 2
+select_all_on_focus = true
+
+[node name="operation" type="HBoxContainer" parent="content/wrapper/starter/multiplayer" index="2"]
+layout_mode = 2
+alignment = 1
+
+[node name="launchBtn" type="Button" parent="content/wrapper/starter/multiplayer/operation" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "启动服务器"
+
+[node name="connectBtn" type="Button" parent="content/wrapper/starter/multiplayer/operation" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "连接服务器"

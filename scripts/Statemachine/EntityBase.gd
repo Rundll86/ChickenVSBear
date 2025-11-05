@@ -104,7 +104,6 @@ var currentStage: int = 0
 var spawnTime: float = 0
 
 func _ready():
-	var peer=ENetMultiplayerPeer.new()
 	spawnTime = WorldManager.getTime()
 	register()
 	var selfStatebar: EntityStateBar = $"%statebar"

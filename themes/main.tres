@@ -102,5 +102,6 @@ Button/styles/hover = SubResource("StyleBoxFlat_4j7ii")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_mt3v0")
 Button/styles/normal = SubResource("StyleBoxFlat_3nqwh")
 Button/styles/pressed = SubResource("StyleBoxFlat_iekfp")
+LineEdit/font_sizes/font_size = 12
 ProgressBar/styles/background = SubResource("StyleBoxFlat_a507o")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_ef7vq")

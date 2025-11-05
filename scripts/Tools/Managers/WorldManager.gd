@@ -4,11 +4,13 @@ class_name WorldManager
 static var rootNode: Node2D
 static var tree: SceneTree
 static var runningTime: int = 0
+static var peer: ENetMultiplayerPeer
 
 func _ready():
 	tree = get_tree()
 	rootNode = self
 	ComponentManager.init()
+	peer = ENetMultiplayerPeer.new()
 func _physics_process(delta):
 	runningTime += delta * 1000
 	if EntityBase.mobCount() == 0 and runningTime > 3000:
