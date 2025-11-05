@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://cvogxi7mktumf"]
 
-[ext_resource type="Script" path="res://scripts/Statemachine/EntityBase.gd" id="1_mvol6"]
+[ext_resource type="Script" uid="uid://ds3j3f82li68h" path="res://scripts/Statemachine/EntityBase.gd" id="1_mvol6"]
 [ext_resource type="Texture2D" uid="uid://dwwpkn4q07ja2" path="res://icon.svg" id="2_7lpu0"]
 [ext_resource type="AudioStream" uid="uid://cn876dtp1ypqx" path="res://resources/sounds/effect/Collect.wav" id="2_qt0aq"]
 [ext_resource type="PackedScene" uid="uid://dcjqjqere8ets" path="res://components/UI/EntityStateBar.tscn" id="2_uje1g"]
@@ -71,9 +71,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_daot2"]
 _data = {
-"RESET": SubResource("Animation_sxh2u"),
-"left": SubResource("Animation_vxanw"),
-"right": SubResource("Animation_nuh11")
+&"RESET": SubResource("Animation_sxh2u"),
+&"left": SubResource("Animation_vxanw"),
+&"right": SubResource("Animation_nuh11")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ao5k4"]
@@ -165,8 +165,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kbmff"]
 _data = {
-"RESET": SubResource("Animation_3wcjn"),
-"hurt": SubResource("Animation_wl2we")
+&"RESET": SubResource("Animation_3wcjn"),
+&"hurt": SubResource("Animation_wl2we")
 }
 
 [sub_resource type="Animation" id="Animation_n7kxn"]
@@ -281,9 +281,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vvkcp"]
 _data = {
-"RESET": SubResource("Animation_n7kxn"),
-"enter": SubResource("Animation_lg0kn"),
-"exit": SubResource("Animation_nfj4q")
+&"RESET": SubResource("Animation_n7kxn"),
+&"enter": SubResource("Animation_lg0kn"),
+&"exit": SubResource("Animation_nfj4q")
 }
 
 [sub_resource type="Curve" id="Curve_cs3iy"]
@@ -410,7 +410,7 @@ shape = SubResource("CircleShape2D_buhm1")
 [node name="animator" type="AnimationPlayer" parent="texture"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_daot2")
+&"": SubResource("AnimationLibrary_daot2")
 }
 
 [node name="animatree" type="AnimationTree" parent="texture/animator"]
@@ -423,13 +423,13 @@ parameters/blend_position = 1.36
 [node name="hurtAnimator" type="AnimationPlayer" parent="texture"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_kbmff")
+&"": SubResource("AnimationLibrary_kbmff")
 }
 
 [node name="stageAnimator" type="AnimationPlayer" parent="texture"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_vvkcp")
+&"": SubResource("AnimationLibrary_vvkcp")
 }
 
 [node name="weapons" type="Node2D" parent="texture"]
@@ -445,9 +445,9 @@ process_material = SubResource("ParticleProcessMaterial_kndb2")
 unique_name_in_owner = true
 emitting = false
 amount = 100
-process_material = SubResource("ParticleProcessMaterial_f3xas")
 one_shot = true
 explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_f3xas")
 
 [node name="statebar" parent="." instance=ExtResource("2_uje1g")]
 unique_name_in_owner = true

@@ -1,21 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0ncrvm8u4pox"]
+[gd_scene load_steps=11 format=3 uid="uid://b0ncrvm8u4pox"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_goqmy"]
-[ext_resource type="Script" path="res://scripts/Contents/Characters/Chick.gd" id="2_r6bub"]
-[ext_resource type="Texture2D" uid="uid://7pkplcqqxvnp" path="res://resources/characters/chick/chick-a.svg" id="2_syddq"]
-[ext_resource type="Texture2D" uid="uid://dj5dvqb8gsedr" path="res://resources/characters/chick/chick-b.svg" id="3_064jv"]
+[ext_resource type="Script" uid="uid://b2gg1fh0bflu7" path="res://scripts/Contents/Characters/Chick.gd" id="2_r6bub"]
 [ext_resource type="AudioStream" uid="uid://b7pxuov1id0ho" path="res://resources/sounds/effect/Pew.mp3" id="3_ik1xf"]
 [ext_resource type="AudioStream" uid="uid://bgo8p1l77xrbe" path="res://resources/sounds/effect/Magic Spell.wav" id="4_2qabh"]
 [ext_resource type="AudioStream" uid="uid://b10u6iir6uvqn" path="res://resources/sounds/effect/BigLaser.wav" id="4_mrsne"]
 [ext_resource type="AudioStream" uid="uid://cee6rxv2uqynh" path="res://resources/sounds/effect/Flame.ogg" id="5_vcsbb"]
 [ext_resource type="PackedScene" uid="uid://dny25qkcvtaa2" path="res://components/Effects/FirePot.tscn" id="6_kvx3n"]
 [ext_resource type="AudioStream" uid="uid://dn6bijr513wyp" path="res://resources/sounds/effect/Drum Boing.wav" id="7_qjhwc"]
+[ext_resource type="Texture2D" uid="uid://k0hcr5u2xlk6" path="res://resources/characters/chick/fox.png" id="8_k8ox8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xji3d"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_syddq")
+"texture": ExtResource("8_k8ox8")
 }],
 "loop": true,
 "name": &"idle",
@@ -23,10 +22,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_syddq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_064jv")
+"texture": ExtResource("8_k8ox8")
 }],
 "loop": true,
 "name": &"walk",
@@ -60,6 +56,7 @@ stream = ExtResource("7_qjhwc")
 [node name="texture" parent="." index="2"]
 position = Vector2(0, -37)
 sprite_frames = SubResource("SpriteFrames_xji3d")
+animation = &"walk"
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 position = Vector2(30, -12)
