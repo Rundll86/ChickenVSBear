@@ -3,7 +3,7 @@ class_name LGBTBullet
 
 var tracer: EntityBase = null
 var maxTraceTime: float = 0
-var tracePower: float
+var tracePower: float = 0
 
 func register():
 	speed = 1

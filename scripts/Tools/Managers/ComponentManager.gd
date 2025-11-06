@@ -4,6 +4,7 @@ class_name ComponentManager
 
 static var bullets = {}
 static var characters = {}
+static var summons = {}
 static var effects = {}
 static var feeds = []
 static var uiComponents = {}
@@ -16,6 +17,8 @@ static func init():
 		bullets[DirTool.getBasenameWithoutExtension(i)] = load(i)
 	for i in DirTool.listdir("res://components/Characters"):
 		characters[DirTool.getBasenameWithoutExtension(i)] = load(i)
+	for i in DirTool.listdir("res://components/Summons"):
+		summons[DirTool.getBasenameWithoutExtension(i)] = load(i)
 	for i in DirTool.listdir("res://components/Effects"):
 		effects[DirTool.getBasenameWithoutExtension(i)] = load(i)
 	for i in DirTool.listdir("res://components/Feeds"):
@@ -32,6 +35,8 @@ static func getBullet(t: String) -> PackedScene:
 	return MathTool.priority(bullets.get(t, false), load("res://components/Bullets/%s.tscn" % t))
 static func getCharacter(t: String) -> PackedScene:
 	return MathTool.priority(characters.get(t, false), load("res://components/Characters/%s.tscn" % t))
+static func getSummon(t: String) -> PackedScene:
+	return MathTool.priority(summons.get(t, false), load("res://components/Summons/%s.tscn" % t))
 static func getEffect(t: String) -> PackedScene:
 	return MathTool.priority(effects.get(t, false), load("res://components/Effects/%s.tscn" % t))
 static func getFeed(i: int) -> PackedScene:

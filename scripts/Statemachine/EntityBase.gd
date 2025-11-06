@@ -374,7 +374,19 @@ func useItem(items: Dictionary):
 func getItem(items: Dictionary):
 	for item in items:
 		inventory[item] = clamp(inventory[item] + items[item], 0, inventoryMax[item])
+func summon(who: PackedScene, syncFields: bool = true, lockValue: bool = true) -> SummonBase:
+	var instance: SummonBase = who.instantiate()
+	instance.myMaster = self
+	if isPlayer(): instance.add_to_group("players")
+	if syncFields:
+		if lockValue:
+			instance.fields = fields.duplicate()
+		else:
+			instance.fields = fields
+	get_parent().add_child(instance)
+	return instance
 
+# 关于追踪
 func getTrackingAnchor() -> Vector2:
 	return hurtbox.get_node("hitbox").global_position
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://wl8u5m52708w"]
 
 [ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_jwtmd"]
-[ext_resource type="Script" path="res://scripts/Contents/Weapons/LGBTWeapon.gd" id="2_0tyah"]
+[ext_resource type="Script" uid="uid://cj72d1ckmojex" path="res://scripts/Contents/Weapons/LGBTWeapon.gd" id="2_0tyah"]
 [ext_resource type="Texture2D" uid="uid://cwfyi61xkt4bt" path="res://resources/weapons/lgbt.jpeg" id="2_ou6jo"]
 [ext_resource type="AudioStream" uid="uid://bgo8p1l77xrbe" path="res://resources/sounds/effect/Magic Spell.wav" id="4_c5xse"]
 
@@ -29,7 +29,7 @@ storeType = {
 }
 descriptionTemplate = "每$angle发射1/$count条以$power效率追踪$trace秒的[b]七彩光标[/b]，每条造成$atk点伤害。"
 needEnergy = 25.0
-cooldown = 1000.0
+cooldown = 0.1
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_c5xse")
@@ -37,7 +37,14 @@ stream = ExtResource("4_c5xse")
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_ou6jo")
 
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
+text = "25.0"
 
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 200
+
+[node name="soul" parent="container/info/infos" index="2"]
+count = 1
 
 [node name="name" parent="container/info" index="2"]
 displayName = "彩虹旗"
@@ -46,5 +53,5 @@ typeTopic = 3
 
 [node name="description" parent="container" index="2"]
 size_flags_vertical = 3
-text = "[center]每[color=cyan]30.0°[/color]→[color=yellow]28.6°[/color]发射1/[color=cyan]7[/color]→[color=yellow]8[/color]条以[color=cyan]25%[/color]→[color=yellow]30%[/color]效率追踪[color=cyan]2.00[/color]→[color=yellow]2.25[/color]秒的[b]七彩光标[/b]，每条造成[color=cyan]20[/color]→[color=yellow]25[/color]点伤害。[/center]"
+text = "[center]每[color=cyan]30.0°[/color]发射1/[color=cyan]7[/color]条以[color=cyan]25%[/color]效率追踪[color=cyan]2.00[/color]秒的[b]七彩光标[/b]，每条造成[color=cyan]20[/color]点伤害。[/center]"
 autowrap_mode = 2
