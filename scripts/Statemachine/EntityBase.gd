@@ -118,9 +118,10 @@ func _ready():
 			weapons.append(i)
 			weaponBag.append(i.displayName)
 		statebar.levelLabels.hide()
-		UIState.player = self
+		if !is_instance_valid(UIState.player): UIState.player = self
 		energyChanged.connect(
 			func(newEnergy, dontChangeDirection):
+				if !UIState.player == self: return
 				UIState.energyPercent.maxValue = fields.get(FieldStore.Entity.MAX_ENERGY)
 				if dontChangeDirection:
 					UIState.energyPercent.currentValue = newEnergy
@@ -129,8 +130,6 @@ func _ready():
 		)
 		rebuildWeaponIcons()
 	else:
-		if !currentFocusedBoss:
-			currentFocusedBoss = get_tree().get_nodes_in_group("players")[0]
 		applyLevel()
 	health = fields.get(FieldStore.Entity.MAX_HEALTH)
 	energy = fields.get(FieldStore.Entity.MAX_ENERGY)
@@ -158,6 +157,8 @@ func _process(_delta):
 	if is_instance_valid(statebar):
 		statebar.levelLabel.text = str(level)
 func _physics_process(_delta: float) -> void:
+	if !isPlayer() && !currentFocusedBoss:
+		currentFocusedBoss = MathTool.randc_from(get_tree().get_nodes_in_group("players"))
 	animatree.set("parameters/blend_position", lerpf(animatree.get("parameters/blend_position"), lastDirection, 0.2))
 	if sprinting:
 		if sprintAi():
@@ -165,6 +166,8 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 		if (isPlayer() or is_instance_valid(currentFocusedBoss)) and not charginup and canRunAi:
+			ai()
+		elif isSummon():
 			ai()
 	move_and_slide()
 	storeEnergy(randf_range(0.01, 0.05 + fields.get(FieldStore.Entity.ENERGY_REGENERATION) - 1), true)
@@ -255,13 +258,13 @@ func useEnergy(value: float):
 	return state
 func tryAttack(type: int, needChargeUp: bool = false):
 	var weapon: Weapon
-	if isPlayer():
+	if isPlayer() and !isSummon():
 		if len(weapons) > type:
 			weapon = weapons[type]
 		else:
 			return
 	var state
-	if isPlayer():
+	if isPlayer() and !isSummon():
 		state = true
 	else:
 		var cooldownTimer: CooldownTimer
@@ -275,7 +278,7 @@ func tryAttack(type: int, needChargeUp: bool = false):
 			charginup = true
 			await EffectController.create(ComponentManager.getEffect("AttackStar"), damageAnchor.global_position).shot()
 			charginup = false
-		if isPlayer():
+		if isPlayer() and !isSummon():
 			if await weapon.tryAttack(self):
 				weapon.playSound("attack")
 		else:
@@ -376,6 +379,7 @@ func getItem(items: Dictionary):
 		inventory[item] = clamp(inventory[item] + items[item], 0, inventoryMax[item])
 func summon(who: PackedScene, syncFields: bool = true, lockValue: bool = true) -> SummonBase:
 	var instance: SummonBase = who.instantiate()
+	instance.position = position
 	instance.myMaster = self
 	if isPlayer(): instance.add_to_group("players")
 	if syncFields:
@@ -393,6 +397,8 @@ func getTrackingAnchor() -> Vector2:
 # 关于分组
 func isPlayer():
 	return is_in_group("players")
+func isSummon():
+	return self is SummonBase
 
 # 抽象方法，实际上是一些钩子，不需要全部实现
 func ai():

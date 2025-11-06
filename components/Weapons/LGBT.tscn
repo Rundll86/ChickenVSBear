@@ -29,7 +29,7 @@ storeType = {
 }
 descriptionTemplate = "每$angle发射1/$count条以$power效率追踪$trace秒的[b]七彩光标[/b]，每条造成$atk点伤害。"
 needEnergy = 25.0
-cooldown = 0.1
+cooldown = 1000.0
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_c5xse")

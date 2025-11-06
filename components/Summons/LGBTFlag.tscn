@@ -6,3 +6,5 @@
 [node name="LGBTFlag" instance=ExtResource("1_fktqv")]
 script = ExtResource("2_6d456")
 attraction = 0.5
+
+[node name="normal" type="Node2D" parent="texture/weapons" index="0"]
