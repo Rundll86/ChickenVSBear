@@ -22,12 +22,6 @@ func register():
 	)
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 500)
-	for bullet in get_tree().get_nodes_in_group("bullets"):
-		if (
-			bullet is LGBTBullet and
-			bullet.position.distance_to(self.position) < 200
-		):
-			bullet.tryDestroy()
 	for i in len(attackCooldownMap.keys()):
 		tryAttack(i)
 func attack(type):
