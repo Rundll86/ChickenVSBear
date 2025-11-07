@@ -14,7 +14,7 @@ quality = 4
 typeTopic = 3
 costBeachball = 200
 store = {
-"angle": 25.0,
+"angle": 35.0,
 "atk": 15.0,
 "count": 2.0,
 "power": 0.02,
@@ -54,5 +54,5 @@ typeTopic = 3
 
 [node name="description" parent="container" index="2"]
 size_flags_vertical = 3
-text = "[center]召唤[b]彩虹旗[/b]，每[color=cyan]25.0°[/color]发射1/[color=cyan]2[/color]条以[color=cyan]2%[/color]效率追踪[color=cyan]1.00[/color]秒的[b]七彩光标[/b]，每条造成[color=cyan]15[/color]点伤害。[/center]"
+text = "[center]召唤[b]彩虹旗[/b]，每[color=cyan]35.0°[/color]发射1/[color=cyan]2[/color]条以[color=cyan]2%[/color]效率追踪[color=cyan]1.00[/color]秒的[b]七彩光标[/b]，每条造成[color=cyan]15[/color]点伤害。[/center]"
 autowrap_mode = 2

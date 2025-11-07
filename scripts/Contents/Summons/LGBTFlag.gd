@@ -14,7 +14,7 @@ func ai():
 func attack(type):
 	if type == 0:
 		var tracer = EntityTool.findClosetEntity(position, get_tree(), false, true)
-		var startAngle = position.angle_to_point(tracer.getTrackingAnchor()) + deg_to_rad(randf_range(-90, 90))
+		var startAngle = position.angle_to_point(tracer.getTrackingAnchor()) + deg_to_rad(randf_range(-1, 1) * 45)
 		for i in count:
 			if !is_instance_valid(tracer):
 				break
