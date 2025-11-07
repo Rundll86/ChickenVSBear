@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbxu15g1pd3cx"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_73eho"]
+[ext_resource type="Texture2D" uid="uid://bv7iu8qylxp70" path="res://resources/weapons/hjm.png" id="2_74sfb"]
+
+[node name="HJM" instance=ExtResource("1_73eho")]
+avatarTexture = ExtResource("2_74sfb")
+displayName = "耄耋"
+typeTopic = 2
+store = {
+"atk": 10,
+"time": 0.1
+}
+storeType = {
+"atk": 1,
+"time": 0
+}
+descriptionTemplate = "召唤[b]抓狂的哈基米[/b]，跟踪敌人，每$time秒造成$atk点伤害。"
+debugRebuild = true
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_74sfb")
+
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 500
+
+[node name="soul" parent="container/info/infos" index="2"]
+count = 1
+
+[node name="name" parent="container/info" index="2"]
+displayName = "耄耋"
+typeTopic = 2
+
+[node name="description" parent="container" index="2"]
+text = "[center]召唤[b]抓狂的哈基米[/b]，跟踪敌人，每[color=cyan]0.10[/color]秒造成[color=cyan]10[/color]点伤害。[/center]"
