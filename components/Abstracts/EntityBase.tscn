@@ -449,6 +449,8 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_f3xas")
 
+[node name="static" type="Sprite2D" parent="texture"]
+
 [node name="statebar" parent="." instance=ExtResource("2_uje1g")]
 unique_name_in_owner = true
 position = Vector2(0, -100)

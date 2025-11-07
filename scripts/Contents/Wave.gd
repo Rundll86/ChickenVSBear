@@ -8,7 +8,7 @@ var from: float = 0
 var to: float = 0
 var per: int = 0
 
-static var current: int = 9
+static var current: int = 0
 static var WAVE_NORMAL = [
 	Wave.create("Hen", 1, 5, false, 0, INF, 1),
 	Wave.create("Chick", 0, 0, true, 9, INF, 15),

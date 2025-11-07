@@ -1,10 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://b83iw0a062qp"]
+[gd_scene load_steps=6 format=3 uid="uid://b83iw0a062qp"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_fktqv"]
 [ext_resource type="Script" uid="uid://11fi3jjdm810" path="res://scripts/Contents/Summons/LGBTFlag.gd" id="2_6d456"]
+[ext_resource type="Texture2D" uid="uid://cwfyi61xkt4bt" path="res://resources/weapons/lgbt.jpeg" id="3_r6sud"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r6sud"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6sud"]
+size = Vector2(112, 70)
 
 [node name="LGBTFlag" instance=ExtResource("1_fktqv")]
 script = ExtResource("2_6d456")
 attraction = 0.5
 
+[node name="texture" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_r6sud")
+
+[node name="hitbox" parent="texture/hurtbox" index="0"]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_r6sud")
+
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
+
+[node name="static" parent="texture" index="7"]
+position = Vector2(0, 15)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("3_r6sud")

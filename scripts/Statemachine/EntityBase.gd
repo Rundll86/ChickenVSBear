@@ -395,9 +395,9 @@ func getTrackingAnchor() -> Vector2:
 	return hurtbox.get_node("hitbox").global_position
 
 # 关于分组
-func isPlayer():
+func isPlayer() -> bool:
 	return is_in_group("players")
-func isSummon():
+func isSummon() -> bool:
 	return self is SummonBase
 
 # 抽象方法，实际上是一些钩子，不需要全部实现

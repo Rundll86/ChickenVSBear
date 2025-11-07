@@ -80,6 +80,7 @@ alpha_curve = SubResource("CurveTexture_tnhr3")
 
 [node name="LGBTBullet" instance=ExtResource("1_bnhy4")]
 script = ExtResource("2_iakgr")
+penerate = 1.0
 lifeTime = 5000.0
 
 [node name="texture" parent="." index="0"]
