@@ -3,10 +3,10 @@ extends Weapon
 class_name VectorStarWeapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-	origin["atk"] += 5 * to * soulLevel
-	origin["forwardtime"] /= 1 + 0.05 * to * soulLevel
-	origin["mincount"] += 0.5 * to * soulLevel
-	origin["maxcount"] += 1.5 * to * soulLevel
+	origin["atk"] += 2 * to * soulLevel
+	origin["forwardtime"] /= 1 + 0.025 * to * soulLevel
+	origin["mincount"] += 0.05 * to * soulLevel
+	origin["maxcount"] += 0.1 * to * soulLevel
 	return origin
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")
