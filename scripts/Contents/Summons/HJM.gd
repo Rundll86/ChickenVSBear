@@ -5,7 +5,7 @@ var tracer: EntityBase = null
 
 func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 75
-	fields[FieldStore.Entity.MOVEMENT_SPEED] = 2
+	fields[FieldStore.Entity.MOVEMENT_SPEED] = 1.5
 	await TickTool.frame()
 	attackCooldownMap[0] = attackTime
 func spawn():
@@ -13,14 +13,15 @@ func spawn():
 func ai():
 	tryAttack(0)
 	if is_instance_valid(tracer):
-		PresetEntityAI.follow(self, tracer, 50)
+		PresetEntityAI.follow(self, tracer, 80)
 	else:
 		tracer = EntityTool.findClosetEntity(position, get_tree(), !isPlayer(), isPlayer())
 func attack(type):
 	if type == 0:
-		BulletBase.generate(
+		for bullet in BulletBase.generate(
 			ComponentManager.getBullet("HJMAttack"),
 			self,
 			findWeaponAnchor("normal"),
 			0
-		)
+		):
+			bullet.damage = atk
