@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_x1nyl"]
 [ext_resource type="Texture2D" uid="uid://ccxdfsg5071t4" path="res://resources/bullets/chain-gun/Chain_Gun.webp" id="2_ghn43"]
-[ext_resource type="Script" path="res://scripts/Contents/Weapons/ChainGun.gd" id="2_ponmu"]
+[ext_resource type="Script" uid="uid://dev0urlc13rxc" path="res://scripts/Contents/Weapons/ChainGun.gd" id="2_ponmu"]
 
 [node name="ChainGun" instance=ExtResource("1_x1nyl")]
 script = ExtResource("2_ponmu")
@@ -20,16 +20,23 @@ storeType = {
 "split": 1
 }
 descriptionTemplate = "以$split单位的间隔发射$count个[b]微型水晶[/b]，可造成$atk点伤害。"
-needEnergy = 2.0
+needEnergy = 0.3
 cooldown = 50.0
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_ghn43")
 
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
+text = "0.5"
 
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 400
+
+[node name="soul" parent="container/info/infos" index="2"]
+count = 1
 
 [node name="name" parent="container/info" index="2"]
 displayName = "链式机枪"
 
 [node name="description" parent="container" index="2"]
-text = "[center]以[color=cyan]30[/color]→[color=yellow]28[/color]单位的间隔发射[color=cyan]1[/color]→[color=yellow]1[/color]个[b]微型水晶[/b]，可造成[color=cyan]10[/color]→[color=yellow]12[/color]点伤害。[/center]"
+text = "[center]以[color=cyan]30[/color]单位的间隔发射[color=cyan]1[/color]个[b]微型水晶[/b]，可造成[color=cyan]10[/color]点伤害。[/center]"

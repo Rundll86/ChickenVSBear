@@ -28,9 +28,8 @@ storeType = {
 "trace": 0.0
 }
 descriptionTemplate = "召唤[b]彩虹旗[/b]，每$angle发射1/$count条以$power效率追踪$trace秒的[b]七彩光标[/b]，每条造成$atk点伤害。"
-needEnergy = 75.0
+needEnergy = 35.0
 cooldown = 1000.0
-debugRebuild = true
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_c5xse")

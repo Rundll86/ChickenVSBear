@@ -19,11 +19,14 @@ storeType = {
 "time": 0
 }
 descriptionTemplate = "召唤[b]抓狂的哈基米[/b]，跟踪敌人，每$time秒造成$atk点伤害。"
+needEnergy = 60.0
 cooldown = 1000.0
-debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_74sfb")
+
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
+text = "100.0"
 
 [node name="beachball" parent="container/info/infos" index="1"]
 count = 600

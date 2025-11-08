@@ -6,7 +6,7 @@ var count: int = 0
 var angle: float = 0
 
 func register():
-	fields[FieldStore.Entity.MAX_HEALTH] = 50
+	fields[FieldStore.Entity.MAX_HEALTH] = 200
 	attackCooldownMap[0] = 1000
 func ai():
 	tryAttack(0)

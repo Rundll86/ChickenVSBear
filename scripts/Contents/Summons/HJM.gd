@@ -4,7 +4,7 @@ var attackTime: float = 0
 var tracer: EntityBase = null
 
 func register():
-	fields[FieldStore.Entity.MAX_HEALTH] = 75
+	fields[FieldStore.Entity.MAX_HEALTH] = 150
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 1.5
 	await TickTool.frame()
 	attackCooldownMap[0] = attackTime
