@@ -1,13 +1,12 @@
 extends SummonBase
 
-var atk: float = 0
 var maxTraceTime: float = 0
 var tracePower: float = 0
 var count: int = 0
 var angle: float = 0
 
 func register():
-	fields[FieldStore.Entity.MAX_HEALTH] = 150
+	fields[FieldStore.Entity.MAX_HEALTH] = 50
 	attackCooldownMap[0] = 1000
 func ai():
 	tryAttack(0)

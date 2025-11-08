@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cvogxi7mktumf"]
+[gd_scene load_steps=41 format=3 uid="uid://cvogxi7mktumf"]
 
 [ext_resource type="Script" uid="uid://ds3j3f82li68h" path="res://scripts/Statemachine/EntityBase.gd" id="1_mvol6"]
 [ext_resource type="Texture2D" uid="uid://dwwpkn4q07ja2" path="res://icon.svg" id="2_7lpu0"]
@@ -20,6 +20,8 @@ animations = [{
 "name": &"walk",
 "speed": 5.0
 }]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tiuhe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_buhm1"]
 radius = 40.0
@@ -372,7 +374,7 @@ alpha_curve = SubResource("CurveTexture_vvfxd")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_34h7q"]
 
-[node name="EntityBase" type="CharacterBody2D"]
+[node name="HJM" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_mvol6")
 
@@ -400,6 +402,11 @@ unique_name_in_owner = true
 position = Vector2(0, -50)
 sprite_frames = SubResource("SpriteFrames_wcqpm")
 animation = &"idle"
+
+[node name="staticBackground" type="Sprite2D" parent="texture"]
+
+[node name="staticAnimation" type="AnimatedSprite2D" parent="texture"]
+sprite_frames = SubResource("SpriteFrames_tiuhe")
 
 [node name="hurtbox" type="Area2D" parent="texture"]
 unique_name_in_owner = true
@@ -448,8 +455,6 @@ amount = 100
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_f3xas")
-
-[node name="static" type="Sprite2D" parent="texture"]
 
 [node name="statebar" parent="." instance=ExtResource("2_uje1g")]
 unique_name_in_owner = true

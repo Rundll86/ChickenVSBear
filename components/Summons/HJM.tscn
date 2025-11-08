@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://m4y40dm14s2k"]
+
+[ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_06nhw"]
+[ext_resource type="Script" uid="uid://bpu0sko7fthdk" path="res://scripts/Contents/Summons/HJM.gd" id="2_7ry3q"]
+[ext_resource type="Texture2D" uid="uid://bwnoybp5p3ely" path="res://resources/characters/hjm/1.png" id="2_p863a"]
+[ext_resource type="Texture2D" uid="uid://hxj6l6rylwca" path="res://resources/characters/hjm/2.png" id="3_1fxvo"]
+[ext_resource type="Texture2D" uid="uid://cmhrdbgs2h38h" path="res://resources/characters/hjm/3.png" id="4_7ry3q"]
+[ext_resource type="Texture2D" uid="uid://b5ei8p0juqu7i" path="res://resources/characters/hjm/4.png" id="5_rvrmg"]
+[ext_resource type="Texture2D" uid="uid://b43kpwcg47j0d" path="res://resources/characters/hjm/5.png" id="6_xbgpj"]
+[ext_resource type="Texture2D" uid="uid://dp8nb7h3af5ku" path="res://resources/characters/hjm/6.png" id="7_qgik4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p863a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hapby"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p863a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p863a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1fxvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7ry3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rvrmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xbgpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qgik4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 15.0
+}]
+
+[node name="HJM" instance=ExtResource("1_06nhw")]
+script = ExtResource("2_7ry3q")
+attraction = 0.0
+useStatic = true
+
+[node name="texture" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_p863a")
+animation = &"default"
+
+[node name="staticAnimation" parent="texture" index="1"]
+position = Vector2(0, 13)
+scale = Vector2(0.4446156, 0.33835638)
+sprite_frames = SubResource("SpriteFrames_hapby")
+animation = &"walk"
+frame_progress = 0.20121677
+
+[node name="hitbox" parent="texture/hurtbox" index="0"]
+position = Vector2(-4, 13)
+
+[node name="normal" type="Node2D" parent="texture/weapons" index="0"]

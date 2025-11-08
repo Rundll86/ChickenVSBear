@@ -76,6 +76,7 @@ var inventoryMax = {
 @export var appleCount: Vector2i = Vector2(0, 2) # 死亡后掉落的苹果数量
 @export var level: int = 1
 @export var currentInvinsible: bool = false
+@export var useStatic: bool = false
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -104,6 +105,8 @@ var currentStage: int = 0
 var spawnTime: float = 0
 
 func _ready():
+	if useStatic:
+		texture = texture.get_node("staticAnimation")
 	spawnTime = WorldManager.getTime()
 	register()
 	var selfStatebar: EntityStateBar = $"%statebar"

@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbxu15g1pd3cx"]
+[gd_scene load_steps=4 format=3 uid="uid://dbxu15g1pd3cx"]
 
 [ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_73eho"]
+[ext_resource type="Script" uid="uid://crx7hojhwqlyl" path="res://scripts/Contents/Weapons/HJM.gd" id="2_2in6n"]
 [ext_resource type="Texture2D" uid="uid://bv7iu8qylxp70" path="res://resources/weapons/hjm.png" id="2_74sfb"]
 
 [node name="HJM" instance=ExtResource("1_73eho")]
+script = ExtResource("2_2in6n")
 avatarTexture = ExtResource("2_74sfb")
 displayName = "耄耋"
 typeTopic = 2
@@ -16,7 +18,7 @@ storeType = {
 "time": 0
 }
 descriptionTemplate = "召唤[b]抓狂的哈基米[/b]，跟踪敌人，每$time秒造成$atk点伤害。"
-debugRebuild = true
+cooldown = 1000.0
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_74sfb")

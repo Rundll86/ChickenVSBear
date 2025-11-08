@@ -3,6 +3,7 @@ class_name SummonBase
 
 @export var attraction: float = 0.0
 
+var atk: float = 0
 var myMaster: EntityBase = null
 
 func _ready():

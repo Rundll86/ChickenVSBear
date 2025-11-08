@@ -10,7 +10,7 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["trace"] += 0.05 * to * soulLevel
 	return origin
 func attack(entity: EntityBase):
-	var summon = entity.summon(ComponentManager.getSummon("LGBTFlag"), true)
+	var summon = entity.summon(ComponentManager.getSummon("LGBTFlag"), true, false)
 	summon.atk = readStore("atk")
 	summon.maxTraceTime = readStore("trace") * 1000
 	summon.tracePower = readStore("power")

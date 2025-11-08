@@ -23,6 +23,7 @@ class_name BulletBase
 @onready var texture: AnimatedSprite2D = $"%texture"
 
 var launcher: EntityBase = null
+var launcherSummoned: EntityBase = null
 var spawnInWhen: float = 0
 var spawnInWhere: Vector2 = Vector2.ZERO
 var destroying: bool = false
@@ -32,6 +33,9 @@ var initialSpeed: float = 0
 
 func _ready():
 	initialSpeed = speed
+	if launcher.isSummon():
+		launcherSummoned = launcher
+		launcher = launcher.myMaster
 	register()
 	area_entered.connect(hit)
 	spawnInWhen = WorldManager.getTime()
