@@ -8,7 +8,7 @@ var from: float = 0
 var to: float = 0
 var per: int = 0
 
-static var current: int = 9
+static var current: int = startWith(1)
 static var WAVE_NORMAL = [
 	Wave.create("Hen", 1, 5, false, 0, INF, 1),
 	Wave.create("Chick", 0, 0, true, 9, INF, 15),
@@ -16,9 +16,9 @@ static var WAVE_NORMAL = [
 	Wave.create("KukeMC", 0, 0, true, 14, INF, 20),
 ]
 static var WAVE_TESTBOSS_ALL = [
-	Wave.create("Chick", 0, 0, true, 0, INF, 10),
-	Wave.create("KukeMC", 0, 0, true, 1, INF, 10),
-	Wave.create("Bear", 0, 0, true, 2, INF, 10),
+	Wave.create("Chick", 0, 0, true, 0, INF, 3),
+	Wave.create("KukeMC", 0, 0, true, 1, INF, 3),
+	Wave.create("Bear", 0, 0, true, 2, INF, 3),
 ]
 static var WAVE_TESTBOSS_KUKE = [
 	Wave.create("KukeMC", 0, 0, true, 0, INF, 10),
@@ -73,3 +73,5 @@ static func next():
 		customStart()
 	spawn()
 	current += 1
+static func startWith(wave: int):
+	return wave - 1

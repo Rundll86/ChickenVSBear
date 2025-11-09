@@ -17,10 +17,10 @@ func _ready():
 	var damageSign = sign(damage)
 	if damageSign > 0:
 		label.label_settings.font_color = color1
-		label.text = "%s%s" % [damageValue, "!!!" if crit else ""]
+		label.text = "%d%s" % [damageValue, "!!!" if crit else ""]
 	elif damageSign < 0:
 		label.label_settings.font_color = color2
-		label.text = "+%s%s" % [damageValue, "!!!" if crit else ""]
+		label.text = "+%d%s" % [damageValue, "!!!" if crit else ""]
 	else:
 		if crit:
 			label.label_settings.font_color = color4
