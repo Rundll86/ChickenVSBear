@@ -175,6 +175,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	storeEnergy(randf_range(0.01, 0.05 + fields.get(FieldStore.Entity.ENERGY_REGENERATION) - 1), true)
 	trailParticle.emitting = trailing
+	rpc("syncPosition", displayName, position)
 
 # 通用方法
 func rebuildWeaponIcons():
@@ -393,11 +394,26 @@ func summon(who: PackedScene, syncFields: bool = true, lockValue: bool = true) -
 	get_parent().add_child(instance)
 	return instance
 
+# 多人游戏数据同步
+@rpc("any_peer")
+func syncPosition(player: String, newPosition: Vector2):
+	if player == displayName:
+		position = newPosition
+@rpc("any_peer")
+func syncHealth(player: String, newHealth: float):
+	if player == displayName:
+		health = newHealth
+		healthChanged.emit(health)
+@rpc("any_peer")
+func syncAttack(player: String, index: int):
+	if player == displayName:
+		tryAttack(index)
+
 # 关于追踪
 func getTrackingAnchor() -> Vector2:
 	return hurtbox.get_node("hitbox").global_position
 
-# 关于分组
+# 关于实体类型
 func isPlayer() -> bool:
 	return is_in_group("players")
 func isSummon() -> bool:
@@ -430,6 +446,10 @@ func enterStage(_stage: int):
 func kill():
 	pass
 
+static func generatePlayer(playerName: String):
+	var player = generate(ComponentManager.getCharacter("Rooster"), Vector2.ZERO, false, false, true)
+	player.displayName = playerName
+	return player
 static func generate(
 	entity: PackedScene,
 	spawnPosition: Vector2,
@@ -443,6 +463,8 @@ static func generate(
 	instance.level = clamp((round(Wave.current * (1 + GameRule.entityLevelOffsetByWave * randf_range(-1, 1)))), 1, INF)
 	if isMob:
 		instance.add_to_group("mobs")
+	else:
+		instance.add_to_group("players")
 	if addToWorld:
 		WorldManager.rootNode.add_child(instance)
 	return instance

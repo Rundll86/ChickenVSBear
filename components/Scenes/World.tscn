@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmxi1ikn6avig"]
+[gd_scene load_steps=9 format=3 uid="uid://dmxi1ikn6avig"]
 
-[ext_resource type="Script" path="res://scripts/Tools/Managers/WorldManager.gd" id="1_lxsxj"]
+[ext_resource type="Script" uid="uid://d2oyyyg0b4qqd" path="res://scripts/Tools/Managers/WorldManager.gd" id="1_lxsxj"]
 [ext_resource type="PackedScene" uid="uid://dfwg750a47ggx" path="res://components/Scenes/UI.tscn" id="2_04cdd"]
-[ext_resource type="PackedScene" uid="uid://bm7ymrri6pykb" path="res://components/Characters/Rooster.tscn" id="3_5ui6q"]
 [ext_resource type="Texture2D" uid="uid://c33c8mtm4x3e3" path="res://resources/maps/Galaxy.png" id="4_oy4jj"]
-[ext_resource type="Script" path="res://scripts/Tools/Managers/CameraManager.gd" id="5_mk7bv"]
+[ext_resource type="Script" uid="uid://bs45p8w83d4b4" path="res://scripts/Tools/Managers/CameraManager.gd" id="5_mk7bv"]
 
 [sub_resource type="Animation" id="Animation_ykpvi"]
 length = 0.001
@@ -60,8 +59,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_44ixa"]
 _data = {
-"RESET": SubResource("Animation_ykpvi"),
-"bigLaser": SubResource("Animation_kii8h")
+&"RESET": SubResource("Animation_ykpvi"),
+&"bigLaser": SubResource("Animation_kii8h")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4hkht"]
@@ -85,7 +84,7 @@ script = ExtResource("5_mk7bv")
 [node name="animator" type="AnimationPlayer" parent="camera"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_44ixa")
+&"": SubResource("AnimationLibrary_44ixa")
 }
 
 [node name="map" type="StaticBody2D" parent="." groups=["map"]]
@@ -103,5 +102,3 @@ shape = SubResource("CircleShape2D_4hkht")
 
 [node name="shan2" type="CollisionPolygon2D" parent="map"]
 polygon = PackedVector2Array(-2419, 1803, 2429, 1825, 2392, -366, 2867, -318, 2723, 2241, -2879, 2193, -2797, -2582, 2959, -2528, 2858, -347, 2420, -337, 2441, -1834, -2438, -1792)
-
-[node name="rooster" parent="." groups=["players"] instance=ExtResource("3_5ui6q")]
