@@ -6,6 +6,8 @@ extends FullscreenPanelBase
 @onready var levelShow: Label = $"%levelShow"
 
 func _ready():
+	diffEdit.min_value = GameRule.difficultyRange.x
+	diffEdit.max_value = GameRule.difficultyRange.y
 	startBtn.pressed.connect(
 		func():
 			Wave.next()

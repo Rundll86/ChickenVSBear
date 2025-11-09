@@ -204,7 +204,7 @@ func setStage(stage: int):
 	currentInvinsible = false
 func applyLevel():
 	fields[FieldStore.Entity.MAX_HEALTH] *= (1 + GameRule.entityHealthIncreasePerWave * (GameRule.difficulty - GameRule.difficultyRange.x + 1)) ** level
-	fields[FieldStore.Entity.DAMAGE_MULTIPILER] *= (1 + GameRule.entityDamageIncreasePerWave * (GameRule.difficulty - GameRule.difficultyRange.x)) ** level
+	fields[FieldStore.Entity.DAMAGE_MULTIPILER] *= sqrt((1 + GameRule.entityDamageIncreasePerWave * (GameRule.difficulty - GameRule.difficultyRange.x))) ** level
 func displace(direction: Vector2, isSprinting: bool = false):
 	return (direction if isSprinting else direction.normalized()) * fields.get(FieldStore.Entity.MOVEMENT_SPEED) * 400 * abs(animatree.get("parameters/blend_position"))
 func move(direction: Vector2, isSprinting: bool = false):
@@ -314,7 +314,7 @@ func tryDie(by: BulletBase = null):
 			var item = drops[drop]
 			var count = ceil(randf_range(dropCounts[drop].x, dropCounts[drop].y))
 			for i in range(count):
-				ItemDropped.generate(item, randi_range(1, int(sqrt(count) + GameRule.difficulty)), position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
+				ItemDropped.generate(item, randi_range(1, int(sqrt(count) * (GameRule.difficulty - GameRule.difficultyRange.x + 1))), position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
 		if MathTool.rate(
 			GameRule.appleDropRate +
 			by.launcher.fields.get(FieldStore.Entity.DROP_APPLE_RATE) +
@@ -327,15 +327,15 @@ func tryDie(by: BulletBase = null):
 			fields[FieldStore.Entity.MAX_HEALTH] * randf_range(1 - GameRule.beachballOffset, 1 + GameRule.beachballOffset),
 			position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset)
 		)
-		if isBoss:
-			ItemDropped.generate(
-				ItemStore.ItemType.SOUL,
-				randi_range(1, 2),
-				position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset)
-			)
-		if isPlayer():
-			if UIState.player == self:
-				UIState.setPanel("GameOver", [displayName, by.launcher.displayName, by.displayName])
+	if isBoss:
+		ItemDropped.generate(
+			ItemStore.ItemType.SOUL,
+			randi_range(1, 2),
+			position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset)
+		)
+	if isPlayer():
+		if UIState.player == self:
+			UIState.setPanel("GameOver", [displayName, by.launcher.displayName, by.displayName])
 	EffectController.create(ComponentManager.getEffect("DeadBlood"), texture.global_position).shot()
 	await die()
 	died.emit()
