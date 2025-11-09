@@ -88,9 +88,10 @@ label_settings = SubResource("LabelSettings_lfxcn")
 
 [node name="connectionState" type="Label" parent="content/wrapper/starter/multiplayer/main" index="1"]
 unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "状态："
+text = "状态：未连接到服务器。"
 label_settings = SubResource("LabelSettings_kl3ko")
 
 [node name="host" type="HBoxContainer" parent="content/wrapper/starter/multiplayer/main" index="2"]
@@ -144,6 +145,13 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "连接服务器"
+
+[node name="disconnectBtn" type="Button" parent="content/wrapper/starter/multiplayer/main/operation" index="2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "断开连接"
 
 [node name="serverConfig" type="VBoxContainer" parent="content/wrapper/starter/multiplayer" index="1"]
 layout_mode = 2

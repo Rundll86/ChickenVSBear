@@ -10,6 +10,7 @@ extends FullscreenPanelBase
 @onready var connectBtn: Button = $"%connectBtn"
 @onready var maxPlayerInput: LineEdit = $"%maxPlayerInput"
 @onready var connectionState: Label = $"%connectionState"
+@onready var disconnectBtn: Button = $"%disconnectBtn"
 
 func _ready():
 	diffEdit.min_value = GameRule.difficultyRange.x
@@ -36,3 +37,4 @@ func setState(state: MultiplayerState.ConnectionState):
 	MultiplayerState.state = state
 	connectionState.text = "状态：%s" % MultiplayerState.stateTextMap[state]
 	connectionState.modulate = MultiplayerState.stateColorMap[state]
+	disconnectBtn.disabled = not MultiplayerState.isConnected()

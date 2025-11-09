@@ -25,8 +25,15 @@ static var isMultiplayer: bool = false
 
 static var maxPlayer: int = 10
 
+static func isConnected():
+	return [ConnectionState.CONNECTED_HOST, ConnectionState.CONNECTED_CLIENT].has(state)
 static func launchServer(port: int):
-	isMultiplayer = true
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(port, maxPlayer)
+	state = ConnectionState.CONNECTED_HOST
+	return peer
+static func connectClient(host: String, port: int):
+	var peer = ENetMultiplayerPeer.new()
+	peer.create_client(host, port)
+	state = ConnectionState.CONNECTED_CLIENT
 	return peer
