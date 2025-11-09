@@ -14,6 +14,16 @@ extends FullscreenPanelBase
 @onready var disconnectBtn: Button = $"%disconnectBtn"
 @onready var playerNameInput: LineEdit = $"%playerNameInput"
 @onready var serverConfig: VBoxContainer = $"%serverConfig"
+@onready var playersList: VBoxContainer = $"%list"
+
+@rpc("any_peer")
+func joinPlayer(player: String):
+	playersList.add_child(QuickUI.graySmallText(player))
+@rpc("any_peer")
+func setPlayerName(oldName: String, newName: String):
+	for i in playersList.get_children():
+		if i.text == oldName:
+			i.text = newName
 
 func _ready():
 	diffEdit.min_value = GameRule.difficultyRange.x
@@ -22,8 +32,9 @@ func _ready():
 		func():
 			setState(MultiplayerState.ConnectionState.DISCONNECTED)
 	)
-	multiplayer.peer_connected.connect(
+	multiplayer.connected_to_server.connect(
 		func():
+			joinPlayer.rpc(playerNameInput.text)
 			setState(MultiplayerState.ConnectionState.CONNECTED_CLIENT)
 	)
 	startBtn.pressed.connect(
@@ -42,7 +53,7 @@ func _ready():
 	)
 	launchBtn.pressed.connect(
 		func():
-			MultiplayerState.launchServer(int(portInput.text))
+			multiplayer.multiplayer_peer = MultiplayerState.launchServer(int(portInput.text))
 			setState(MultiplayerState.ConnectionState.CONNECTED_HOST)
 	)
 	connectBtn.pressed.connect(
@@ -53,6 +64,10 @@ func _ready():
 	disconnectBtn.pressed.connect(
 		func():
 			setState(MultiplayerState.ConnectionState.DISCONNECTED)
+	)
+	playerNameInput.text_changed.connect(
+		func(text):
+			setPlayerName.rpc(playerNameInput.text, text)
 	)
 	setState(MultiplayerState.ConnectionState.DISCONNECTED)
 func _physics_process(_delta):

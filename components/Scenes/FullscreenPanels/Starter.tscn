@@ -176,31 +176,31 @@ size_flags_horizontal = 4
 disabled = true
 text = "断开连接"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="content/wrapper/starter/multiplayer" index="1"]
+[node name="configs" type="HBoxContainer" parent="content/wrapper/starter/multiplayer" index="1"]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="serverConfig" type="VBoxContainer" parent="content/wrapper/starter/multiplayer/HBoxContainer" index="0"]
+[node name="serverConfig" type="VBoxContainer" parent="content/wrapper/starter/multiplayer/configs" index="0"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="title" type="Label" parent="content/wrapper/starter/multiplayer/HBoxContainer/serverConfig" index="0"]
+[node name="title" type="Label" parent="content/wrapper/starter/multiplayer/configs/serverConfig" index="0"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "服务器配置"
 
-[node name="maxPlayer" type="HBoxContainer" parent="content/wrapper/starter/multiplayer/HBoxContainer/serverConfig" index="1"]
+[node name="maxPlayer" type="HBoxContainer" parent="content/wrapper/starter/multiplayer/configs/serverConfig" index="1"]
 layout_mode = 2
 alignment = 1
 
-[node name="title" type="Label" parent="content/wrapper/starter/multiplayer/HBoxContainer/serverConfig/maxPlayer" index="0"]
+[node name="title" type="Label" parent="content/wrapper/starter/multiplayer/configs/serverConfig/maxPlayer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "最大玩家数"
 label_settings = SubResource("LabelSettings_i7qv0")
 
-[node name="maxPlayerInput" type="LineEdit" parent="content/wrapper/starter/multiplayer/HBoxContainer/serverConfig/maxPlayer" index="1"]
+[node name="maxPlayerInput" type="LineEdit" parent="content/wrapper/starter/multiplayer/configs/serverConfig/maxPlayer" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -211,25 +211,15 @@ emoji_menu_enabled = false
 virtual_keyboard_type = 2
 select_all_on_focus = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="content/wrapper/starter/multiplayer/HBoxContainer" index="1"]
+[node name="players" type="VBoxContainer" parent="content/wrapper/starter/multiplayer/configs" index="1"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="content/wrapper/starter/multiplayer/HBoxContainer/VBoxContainer" index="0"]
+[node name="title" type="Label" parent="content/wrapper/starter/multiplayer/configs/players" index="0"]
 layout_mode = 2
-text = "玩家名"
+size_flags_horizontal = 4
+text = "玩家管理"
 
-[node name="Label2" type="Label" parent="content/wrapper/starter/multiplayer/HBoxContainer/VBoxContainer" index="1"]
+[node name="list" type="VBoxContainer" parent="content/wrapper/starter/multiplayer/configs/players" index="1"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "玩家名"
-
-[node name="Label3" type="Label" parent="content/wrapper/starter/multiplayer/HBoxContainer/VBoxContainer" index="2"]
-layout_mode = 2
-text = "玩家名"
-
-[node name="Label4" type="Label" parent="content/wrapper/starter/multiplayer/HBoxContainer/VBoxContainer" index="3"]
-layout_mode = 2
-text = "玩家名"
-
-[node name="Label5" type="Label" parent="content/wrapper/starter/multiplayer/HBoxContainer/VBoxContainer" index="4"]
-layout_mode = 2
-text = "玩家名"
+alignment = 1
