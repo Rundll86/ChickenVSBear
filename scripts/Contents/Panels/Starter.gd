@@ -34,5 +34,5 @@ func _physics_process(_delta):
 
 func setState(state: MultiplayerState.ConnectionState):
 	MultiplayerState.state = state
-	connectionState.text = MultiplayerState.stateTextMap[state]
+	connectionState.text = "状态：%s" % MultiplayerState.stateTextMap[state]
 	connectionState.modulate = MultiplayerState.stateColorMap[state]
