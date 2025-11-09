@@ -1,6 +1,7 @@
 class_name GameRule
 
 static var deadReasons: Array = JsonTool.parseJson("res://resources/constants/deadReasons.json")
+static var difficultyRange: Vector2 = Vector2(-5, 10) # 难度倍数范围，包括最小值和最大值，负数则降低难度
 static var difficulty: float = 10 # 难度倍数，可以写小数
 static var allowFriendlyFire: bool = false # 是否允许友军伤害
 static var bulletSpeedMultiplier: float = 1 # 子弹速度倍率
@@ -13,7 +14,7 @@ static var refreshCountIncreasePercent: Vector2 = Vector2(MathTool.percent(10), 
 static var entityCountBoostPerWave: float = MathTool.percent(10) # 每波敌人数量增加的百分比，倍数级
 static var itemShowLifetime: int = 1500 # 物品展示组件如果设置了自动隐藏，那么隐藏前可以存活的时间
 static var tipSpawnRateWhenGetDroppedItem: float = MathTool.percent(25) # 当玩家获取到掉落物时，提示的概率
-static var entityHealthIncreasePerWave: float = MathTool.percent(10) # 每波敌人生命值增加的百分比，指数级
+static var entityHealthIncreasePerWave: float = MathTool.percent(1) # 每波敌人生命值增加的百分比，指数级
 static var entityDamageIncreasePerWave: float = MathTool.percent(1) # 每波敌人伤害增加的百分比，指数级
 static var entityLevelOffsetByWave: float = MathTool.percent(30) # 每波敌人等级根据当前波数随机浮动的比例
 static var appleDropRateInfluenceByLuckValue: float = MathTool.percent(2) # 幸运值对苹果掉率的影响
