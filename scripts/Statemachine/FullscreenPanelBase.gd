@@ -15,9 +15,6 @@ func showPanel(args: Array = []):
 	animator.play("show")
 	await animator.animation_finished
 
-func _ready():
-	visible = false
-
 # 钩子
 func beforeOpen(_args: Array = []):
 	pass

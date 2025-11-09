@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0r1i5tdbwljj"]
+[gd_scene load_steps=10 format=3 uid="uid://c0r1i5tdbwljj"]
 
 [ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_o0yse"]
 [ext_resource type="Script" uid="uid://codlmfbuyis33" path="res://scripts/Contents/Panels/Starter.gd" id="2_ic0aq"]
@@ -14,9 +14,15 @@ outline_size = 2
 font_size = 20
 outline_size = 1
 
+[sub_resource type="LabelSettings" id="LabelSettings_kl3ko"]
+font_size = 14
+
 [sub_resource type="LabelSettings" id="LabelSettings_sdsu8"]
 font_size = 12
 outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_i7qv0"]
+font_size = 13
 
 [node name="Starter" instance=ExtResource("1_o0yse")]
 offset_top = 0.0
@@ -52,14 +58,12 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
-min_value = -5.0
-max_value = 5.0
-value = 1.0
+max_value = 0.0
 
 [node name="levelShow" type="Label" parent="content/wrapper/starter/singleplayer/diffs" index="2"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "1 ∈ [-5, 5]"
+text = "0 ∈ [0, 0]"
 
 [node name="startBtn" type="Button" parent="content/wrapper/starter/singleplayer" index="1"]
 unique_name_in_owner = true
@@ -70,25 +74,35 @@ text = "单人游戏"
 
 [node name="multiplayer" type="VBoxContainer" parent="content/wrapper/starter" index="1"]
 layout_mode = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 15
 alignment = 1
 
-[node name="title" type="Label" parent="content/wrapper/starter/multiplayer" index="0"]
+[node name="main" type="VBoxContainer" parent="content/wrapper/starter/multiplayer" index="0"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="content/wrapper/starter/multiplayer/main" index="0"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "多人游戏"
 label_settings = SubResource("LabelSettings_lfxcn")
 
-[node name="host" type="HBoxContainer" parent="content/wrapper/starter/multiplayer" index="1"]
+[node name="connectionState" type="Label" parent="content/wrapper/starter/multiplayer/main" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "状态："
+label_settings = SubResource("LabelSettings_kl3ko")
+
+[node name="host" type="HBoxContainer" parent="content/wrapper/starter/multiplayer/main" index="2"]
 layout_mode = 2
 alignment = 1
 
-[node name="tip" type="Label" parent="content/wrapper/starter/multiplayer/host" index="0"]
+[node name="tip" type="Label" parent="content/wrapper/starter/multiplayer/main/host" index="0"]
 layout_mode = 2
 text = "地址"
 label_settings = SubResource("LabelSettings_sdsu8")
 
-[node name="hostInput" type="LineEdit" parent="content/wrapper/starter/multiplayer/host" index="1"]
+[node name="hostInput" type="LineEdit" parent="content/wrapper/starter/multiplayer/main/host" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("4_lfxcn")
@@ -97,13 +111,14 @@ placeholder_text = "主机"
 expand_to_text_length = true
 emoji_menu_enabled = false
 virtual_keyboard_type = 7
+clear_button_enabled = true
 select_all_on_focus = true
 
-[node name="separator" type="Label" parent="content/wrapper/starter/multiplayer/host" index="2"]
+[node name="separator" type="Label" parent="content/wrapper/starter/multiplayer/main/host" index="2"]
 layout_mode = 2
 text = ":"
 
-[node name="portInput" type="LineEdit" parent="content/wrapper/starter/multiplayer/host" index="3"]
+[node name="portInput" type="LineEdit" parent="content/wrapper/starter/multiplayer/main/host" index="3"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("4_lfxcn")
@@ -114,18 +129,48 @@ emoji_menu_enabled = false
 virtual_keyboard_type = 2
 select_all_on_focus = true
 
-[node name="operation" type="HBoxContainer" parent="content/wrapper/starter/multiplayer" index="2"]
+[node name="operation" type="HBoxContainer" parent="content/wrapper/starter/multiplayer/main" index="3"]
 layout_mode = 2
 alignment = 1
 
-[node name="launchBtn" type="Button" parent="content/wrapper/starter/multiplayer/operation" index="0"]
+[node name="launchBtn" type="Button" parent="content/wrapper/starter/multiplayer/main/operation" index="0"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "启动服务器"
 
-[node name="connectBtn" type="Button" parent="content/wrapper/starter/multiplayer/operation" index="1"]
+[node name="connectBtn" type="Button" parent="content/wrapper/starter/multiplayer/main/operation" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "连接服务器"
+
+[node name="serverConfig" type="VBoxContainer" parent="content/wrapper/starter/multiplayer" index="1"]
+layout_mode = 2
+alignment = 1
+
+[node name="title" type="Label" parent="content/wrapper/starter/multiplayer/serverConfig" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "服务器配置"
+
+[node name="maxPlayer" type="HBoxContainer" parent="content/wrapper/starter/multiplayer/serverConfig" index="1"]
+layout_mode = 2
+alignment = 1
+
+[node name="title" type="Label" parent="content/wrapper/starter/multiplayer/serverConfig/maxPlayer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "最大玩家数"
+label_settings = SubResource("LabelSettings_i7qv0")
+
+[node name="maxPlayerInput" type="LineEdit" parent="content/wrapper/starter/multiplayer/serverConfig/maxPlayer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_lfxcn")
+text = "10"
+expand_to_text_length = true
+emoji_menu_enabled = false
+virtual_keyboard_type = 2
+select_all_on_focus = true
