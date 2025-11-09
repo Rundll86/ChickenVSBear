@@ -14,16 +14,30 @@ extends FullscreenPanelBase
 @onready var disconnectBtn: Button = $"%disconnectBtn"
 @onready var playerNameInput: LineEdit = $"%playerNameInput"
 @onready var serverConfig: VBoxContainer = $"%serverConfig"
+@onready var players: VBoxContainer = $"%players"
 @onready var playersList: VBoxContainer = $"%list"
 
 @rpc("any_peer")
 func joinPlayer(player: String):
-	playersList.add_child(QuickUI.graySmallText(player))
+	if multiplayer.is_server():
+		addPlayerName(player)
+		rebuildAllPlayers.rpc(getPlayerNames())
+@rpc("any_peer")
+func leavePlayer(playerName: String):
+	if multiplayer.is_server():
+		removePlayerName(playerName)
+		rebuildAllPlayers.rpc(getPlayerNames())
 @rpc("any_peer")
 func setPlayerName(oldName: String, newName: String):
 	for i in playersList.get_children():
 		if i.text == oldName:
 			i.text = newName
+@rpc("any_peer")
+func rebuildAllPlayers(playerNames: Array[String]):
+	for i in playersList.get_children():
+		i.queue_free()
+	for i in playerNames:
+		addPlayerName(i)
 
 func _ready():
 	diffEdit.min_value = GameRule.difficultyRange.x
@@ -54,6 +68,7 @@ func _ready():
 	launchBtn.pressed.connect(
 		func():
 			multiplayer.multiplayer_peer = MultiplayerState.launchServer(int(portInput.text))
+			joinPlayer(playerNameInput.text)
 			setState(MultiplayerState.ConnectionState.CONNECTED_HOST)
 	)
 	connectBtn.pressed.connect(
@@ -63,6 +78,7 @@ func _ready():
 	)
 	disconnectBtn.pressed.connect(
 		func():
+			leavePlayer.rpc(playerNameInput.text)
 			setState(MultiplayerState.ConnectionState.DISCONNECTED)
 	)
 	playerNameInput.text_changed.connect(
@@ -81,3 +97,15 @@ func setState(state: MultiplayerState.ConnectionState):
 	disconnectBtn.disabled = not MultiplayerState.isConnected()
 	startMultiplayerBtn.disabled = not MultiplayerState.isConnected()
 	serverConfig.visible = MultiplayerState.state == MultiplayerState.ConnectionState.CONNECTED_HOST
+	players.visible = MultiplayerState.isConnected()
+func addPlayerName(playerName: String):
+	playersList.add_child(QuickUI.graySmallText(playerName))
+func removePlayerName(playerName: String):
+	for i in playersList.get_children():
+		if i.text == playerName:
+			i.queue_free()
+func getPlayerNames() -> Array[String]:
+	var result: Array[String] = []
+	for i in playersList.get_children():
+		result.append(i.text)
+	return result
