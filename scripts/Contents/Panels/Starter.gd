@@ -13,6 +13,7 @@ extends FullscreenPanelBase
 @onready var connectionState: Label = $"%connectionState"
 @onready var disconnectBtn: Button = $"%disconnectBtn"
 @onready var playerNameInput: LineEdit = $"%playerNameInput"
+var historyStack
 @onready var serverConfig: VBoxContainer = $"%serverConfig"
 @onready var players: VBoxContainer = $"%players"
 @onready var playersList: VBoxContainer = $"%list"
@@ -22,6 +23,10 @@ func joinPlayer(player: String):
 	if multiplayer.is_server():
 		addPlayerName(player)
 		rebuildAllPlayers.rpc(getPlayerNames())
+		if getPlayerNames().has(player):
+			var newName = player + str(randi_range(1000, 99999999999))
+			setPlayerName.rpc(player, newName)
+			setPlayerName(player, newName)
 @rpc("any_peer")
 func leavePlayer(playerName: String):
 	if multiplayer.is_server():
@@ -29,9 +34,13 @@ func leavePlayer(playerName: String):
 		rebuildAllPlayers.rpc(getPlayerNames())
 @rpc("any_peer")
 func setPlayerName(oldName: String, newName: String):
+	if playerNameInput.text == oldName:
+		playerNameInput.text = newName
+		historyStack[0].getData().append(newName)
 	for i in playersList.get_children():
 		if i.text == oldName:
 			i.text = newName
+			break
 @rpc("any_peer")
 func rebuildAllPlayers(playerNames: Array[String]):
 	for i in playersList.get_children():
@@ -40,6 +49,7 @@ func rebuildAllPlayers(playerNames: Array[String]):
 		addPlayerName(i)
 
 func _ready():
+	historyStack = Composables.useHistoryStack(playerNameInput)
 	diffEdit.min_value = GameRule.difficultyRange.x
 	diffEdit.max_value = GameRule.difficultyRange.y
 	multiplayer.connection_failed.connect(
@@ -81,9 +91,11 @@ func _ready():
 			leavePlayer.rpc(playerNameInput.text)
 			setState(MultiplayerState.ConnectionState.DISCONNECTED)
 	)
+	var getLast = historyStack[1]
 	playerNameInput.text_changed.connect(
-		func(text):
-			setPlayerName.rpc(playerNameInput.text, text)
+		func(newText):
+			setPlayerName.rpc(getLast.call(1), newText)
+			setPlayerName(getLast.call(1), newText)
 	)
 	setState(MultiplayerState.ConnectionState.DISCONNECTED)
 func _physics_process(_delta):
