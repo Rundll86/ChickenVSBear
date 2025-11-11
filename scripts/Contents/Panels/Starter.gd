@@ -51,7 +51,7 @@ func rebuildAllPlayers(playerNames: Array[String]):
 		i.queue_free()
 	for i in playerNames:
 		addPlayerName(i)
-@rpc("authority")
+@rpc("any_peer")
 func startMultiplayerGame():
 	if multiplayer.is_server():
 		for i in getPlayerNames():
@@ -81,6 +81,7 @@ func _ready():
 	startMultiplayerBtn.pressed.connect(
 		func():
 			startMultiplayerGame.rpc()
+			startMultiplayerGame()
 	)
 	maxPlayerInput.text_changed.connect(
 		func(text):
