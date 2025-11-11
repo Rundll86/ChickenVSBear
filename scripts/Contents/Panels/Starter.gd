@@ -19,14 +19,18 @@ var historyStack
 @onready var playersList: VBoxContainer = $"%list"
 
 @rpc("any_peer")
+func mutexPlayer(player: String):
+	if multiplayer.is_server():
+		if getPlayerNames().count(player) > 1:
+			var newName = player + str(randi_range(1000, 99999999999))
+			setPlayerName.rpc(player, newName)
+			setPlayerName(player, newName)
+@rpc("any_peer")
 func joinPlayer(player: String):
 	if multiplayer.is_server():
 		addPlayerName(player)
 		rebuildAllPlayers.rpc(getPlayerNames())
-		if getPlayerNames().has(player):
-			var newName = player + str(randi_range(1000, 99999999999))
-			setPlayerName.rpc(player, newName)
-			setPlayerName(player, newName)
+		mutexPlayer(player)
 @rpc("any_peer")
 func leavePlayer(playerName: String):
 	if multiplayer.is_server():
@@ -96,6 +100,7 @@ func _ready():
 		func(newText):
 			setPlayerName.rpc(getLast.call(1), newText)
 			setPlayerName(getLast.call(1), newText)
+			mutexPlayer.rpc(newText)
 	)
 	setState(MultiplayerState.ConnectionState.DISCONNECTED)
 func _physics_process(_delta):
