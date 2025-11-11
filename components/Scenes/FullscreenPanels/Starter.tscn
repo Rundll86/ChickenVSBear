@@ -80,7 +80,7 @@ expand_to_text_length = true
 virtual_keyboard_type = 7
 select_all_on_focus = true
 
-[node name="startBtn" type="Button" parent="content/wrapper/starter/singleplayer/start" index="1"]
+[node name="startSingleplayerBtn" type="Button" parent="content/wrapper/starter/singleplayer/start" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -214,6 +214,7 @@ select_all_on_focus = true
 
 [node name="players" type="VBoxContainer" parent="content/wrapper/starter/multiplayer/configs" index="1"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="title" type="Label" parent="content/wrapper/starter/multiplayer/configs/players" index="0"]

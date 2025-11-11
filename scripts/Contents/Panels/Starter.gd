@@ -2,7 +2,7 @@
 extends FullscreenPanelBase
 
 @onready var diffEdit: HSlider = $"%diffEdit"
-@onready var startBtn: Button = $"%startBtn"
+@onready var startSingleplayerBtn: Button = $"%startSingleplayerBtn"
 @onready var startMultiplayerBtn: Button = $"%startMultiplayerBtn"
 @onready var levelShow: Label = $"%levelShow"
 @onready var hostInput: LineEdit = $"%hostInput"
@@ -65,7 +65,7 @@ func _ready():
 			joinPlayer.rpc(playerNameInput.text)
 			setState(MultiplayerState.ConnectionState.CONNECTED_CLIENT)
 	)
-	startBtn.pressed.connect(
+	startSingleplayerBtn.pressed.connect(
 		func():
 			EntityBase.generatePlayer(playerNameInput.text)
 			Wave.next()
@@ -112,7 +112,7 @@ func setState(state: MultiplayerState.ConnectionState):
 	connectionState.text = "状态：%s" % MultiplayerState.stateTextMap[state]
 	connectionState.modulate = MultiplayerState.stateColorMap[state]
 	disconnectBtn.disabled = not MultiplayerState.isConnected()
-	startMultiplayerBtn.disabled = not MultiplayerState.isConnected()
+	startMultiplayerBtn.disabled = not MultiplayerState.isConnected() || !multiplayer.is_server()
 	serverConfig.visible = MultiplayerState.state == MultiplayerState.ConnectionState.CONNECTED_HOST
 	players.visible = MultiplayerState.isConnected()
 func addPlayerName(playerName: String):
