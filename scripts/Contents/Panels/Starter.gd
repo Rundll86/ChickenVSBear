@@ -51,6 +51,13 @@ func rebuildAllPlayers(playerNames: Array[String]):
 		i.queue_free()
 	for i in playerNames:
 		addPlayerName(i)
+@rpc("authority")
+func startMultiplayerGame():
+	if multiplayer.is_server():
+		for i in getPlayerNames():
+			EntityBase.generatePlayer(i)
+		Wave.next()
+		UIState.closeCurrentPanel()
 
 func _ready():
 	historyStack = Composables.useHistoryStack(playerNameInput)
@@ -73,7 +80,7 @@ func _ready():
 	)
 	startMultiplayerBtn.pressed.connect(
 		func():
-			pass
+			startMultiplayerGame.rpc()
 	)
 	maxPlayerInput.text_changed.connect(
 		func(text):
