@@ -53,11 +53,11 @@ func rebuildAllPlayers(playerNames: Array[String]):
 		addPlayerName(i)
 @rpc("any_peer")
 func startMultiplayerGame():
-	if multiplayer.is_server():
-		for i in getPlayerNames():
-			EntityBase.generatePlayer(i)
-		Wave.next()
-		UIState.closeCurrentPanel()
+	MultiplayerState.playerName = playerNameInput.text
+	for i in getPlayerNames():
+		EntityBase.generatePlayer(i)
+	Wave.next()
+	UIState.closeCurrentPanel()
 
 func _ready():
 	historyStack = Composables.useHistoryStack(playerNameInput)

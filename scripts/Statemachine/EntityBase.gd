@@ -169,13 +169,16 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 		if (isPlayer() or is_instance_valid(currentFocusedBoss)) and not charginup and canRunAi:
-			ai()
+			if isPlayer():
+				if MultiplayerState.playerName == displayName:
+					ai()
+			else:
+				ai()
 		elif isSummon():
 			ai()
 	move_and_slide()
 	storeEnergy(randf_range(0.01, 0.05 + fields.get(FieldStore.Entity.ENERGY_REGENERATION) - 1), true)
 	trailParticle.emitting = trailing
-	rpc("syncPosition", displayName, position)
 
 # 通用方法
 func rebuildWeaponIcons():
@@ -393,21 +396,6 @@ func summon(who: PackedScene, syncFields: bool = true, lockValue: bool = true) -
 			instance.fields = fields
 	get_parent().add_child(instance)
 	return instance
-
-# 多人游戏数据同步
-@rpc("any_peer")
-func syncPosition(player: String, newPosition: Vector2):
-	if player == displayName:
-		position = newPosition
-@rpc("any_peer")
-func syncHealth(player: String, newHealth: float):
-	if player == displayName:
-		health = newHealth
-		healthChanged.emit(health)
-@rpc("any_peer")
-func syncAttack(player: String, index: int):
-	if player == displayName:
-		tryAttack(index)
 
 # 关于追踪
 func getTrackingAnchor() -> Vector2:
