@@ -20,8 +20,11 @@ static var stateColorMap = {
 	ConnectionState.CONNECTED_CLIENT: Color.GREEN,
 }
 
+static var isMultiplayer: bool = false
 static var state: ConnectionState = ConnectionState.DISCONNECTED
 static var playerName: String
+
+static var connection: ENetMultiplayerPeer
 
 static var maxPlayer: int = 10
 

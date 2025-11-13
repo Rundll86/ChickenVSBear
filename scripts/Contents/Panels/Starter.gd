@@ -53,9 +53,16 @@ func rebuildAllPlayers(playerNames: Array[String]):
 		addPlayerName(i)
 @rpc("any_peer")
 func startMultiplayerGame():
+	MultiplayerState.isMultiplayer = true
+	WorldManager.rootNode.multiplayer.multiplayer_peer = MultiplayerState.connection
 	MultiplayerState.playerName = playerNameInput.text
+	MultiplayerState.connection = multiplayer.multiplayer_peer
 	for i in getPlayerNames():
 		EntityBase.generatePlayer(i)
+	UIState.closeCurrentPanel()
+func startSingleplayerGame():
+	MultiplayerState.isMultiplayer = false
+	EntityBase.generatePlayer(playerNameInput.text)
 	Wave.next()
 	UIState.closeCurrentPanel()
 
@@ -74,9 +81,7 @@ func _ready():
 	)
 	startSingleplayerBtn.pressed.connect(
 		func():
-			EntityBase.generatePlayer(playerNameInput.text)
-			Wave.next()
-			UIState.closeCurrentPanel()
+			startSingleplayerGame()
 	)
 	startMultiplayerBtn.pressed.connect(
 		func():
