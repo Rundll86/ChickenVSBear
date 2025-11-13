@@ -105,7 +105,6 @@ var currentStage: int = 0
 var spawnTime: float = 0
 
 func _ready():
-	multiplayer.multiplayer_peer = MultiplayerState.connection
 	if useStatic:
 		texture = texture.get_node("staticAnimation")
 	spawnTime = WorldManager.getTime()
@@ -181,13 +180,6 @@ func _physics_process(_delta: float) -> void:
 	storeEnergy(randf_range(0.01, 0.05 + fields.get(FieldStore.Entity.ENERGY_REGENERATION) - 1), true)
 	trailParticle.emitting = trailing
 
-# 同步状态
-@rpc("any_peer")
-func syncPosition(player: String, newPosition: Vector2, newVelocity: Vector2):
-	if player != displayName: return
-	position = newPosition
-	velocity = newVelocity
-
 # 通用方法
 func rebuildWeaponIcons():
 	if isPlayer():
@@ -224,9 +216,6 @@ func move(direction: Vector2, isSprinting: bool = false):
 	var currentDirection = sign(direction.x)
 	if currentDirection != 0:
 		lastDirection = currentDirection
-	if MultiplayerState.isMultiplayer:
-		print("test")
-		syncPosition.rpc(displayName, position, velocity)
 func getSprintInitialDisplace():
 	return displace(velocity) * sprintMultiplier
 func getSprintProgress():

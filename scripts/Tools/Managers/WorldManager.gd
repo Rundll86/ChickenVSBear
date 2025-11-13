@@ -5,10 +5,12 @@ static var rootNode: WorldManager
 static var tree: SceneTree
 static var runningTime: int = 0
 static var peer: ENetMultiplayerPeer
+static var spawner: MultiplayerSpawner
 
 func _ready():
 	tree = get_tree()
 	rootNode = self
+	spawner = $%spawner
 	ComponentManager.init()
 func _physics_process(delta):
 	runningTime += delta * 1000
@@ -24,6 +26,14 @@ func spawnWave():
 	nextWave(waves)
 	if MultiplayerState.isMultiplayer and multiplayer.is_server():
 		nextWave.rpc(waves)
+func spawn(node: Node):
+	if MultiplayerState.isMultiplayer:
+		if multiplayer.is_server():
+			spawner.spawn(node)
+	else:
+		add_child(node)
 
 static func getTime():
 	return runningTime
+static func spawnNode(node: Node):
+	rootNode.spawn(node)

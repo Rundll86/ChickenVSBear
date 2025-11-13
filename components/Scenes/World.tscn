@@ -72,6 +72,10 @@ texture_filter = 1
 script = ExtResource("1_lxsxj")
 metadata/_edit_vertical_guides_ = [-1.0, 57.0]
 
+[node name="spawner" type="MultiplayerSpawner" parent="."]
+unique_name_in_owner = true
+spawn_path = NodePath("..")
+
 [node name="UI" parent="." instance=ExtResource("2_04cdd")]
 
 [node name="camera" type="Camera2D" parent="."]
