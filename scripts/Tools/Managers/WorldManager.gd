@@ -12,10 +12,18 @@ func _ready():
 	ComponentManager.init()
 func _physics_process(delta):
 	runningTime += delta * 1000
-	if multiplayer.is_server() or not MultiplayerState.isMultiplayer:
-		if EntityBase.mobCount() == 0 and runningTime > 3000:
-			Wave.next()
-			UIState.setPanel("MakeFeed")
+	if EntityBase.mobCount() == 0 and runningTime > 1000:
+		UIState.setPanel("MakeFeed")
+
+@rpc("authority")
+func nextWave(waves: Array[Wave]):
+	Wave.next(waves)
+
+func spawnWave():
+	var waves = Wave.spawn()
+	nextWave(waves)
+	if MultiplayerState.isMultiplayer and multiplayer.is_server():
+		nextWave.rpc(waves)
 
 static func getTime():
 	return runningTime

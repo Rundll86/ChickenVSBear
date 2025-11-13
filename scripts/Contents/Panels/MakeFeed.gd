@@ -50,7 +50,7 @@ func updateValue():
 	countLabel.text = str(UIState.player.fields[FieldStore.Entity.FEED_COUNT_CAN_MADE] - selectedCount)
 	needBB.count = refreshNeedBaseballCount
 func finish():
-	Wave.next()
+	WorldManager.rootNode.spawnWave()
 	UIState.closeCurrentPanel()
 func regenerateCards():
 	updateValue()

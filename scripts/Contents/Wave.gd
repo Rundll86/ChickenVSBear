@@ -1,5 +1,6 @@
 class_name Wave
 
+# 元数据
 var entity: String
 var minCount: int = 1
 var maxCount: int = 1
@@ -7,6 +8,19 @@ var isBoss: bool = false
 var from: float = 0
 var to: float = 0
 var per: int = 0
+# 实例数据
+var entityPosition: Vector2
+
+func duplicate() -> Wave:
+	var wave = Wave.new()
+	wave.entity = entity
+	wave.minCount = minCount
+	wave.maxCount = maxCount
+	wave.isBoss = isBoss
+	wave.from = from
+	wave.to = to
+	wave.per = per
+	return wave
 
 static var current: int = startWith(1)
 static var WAVE_NORMAL = [
@@ -32,12 +46,6 @@ static var WAVE_TESTBOSS_CHICK = [
 static var WAVE_EMPTY = []
 static var data = WAVE_NORMAL
 
-static func customStart():
-	if false:
-		var furryr = EntityBase.generate(ComponentManager.getCharacter("Bear"), MathTool.randv2_range(500), true, false)
-		var kukemc = EntityBase.generate(ComponentManager.getCharacter("KukeMC"), MathTool.randv2_range(500), true, false)
-		furryr.currentFocusedBoss = kukemc
-		kukemc.currentFocusedBoss = furryr
 static func create(
 		entity_: String,
 		minCount_: int = 1,
@@ -63,15 +71,18 @@ static func entityCountOf(wave: Wave) -> int:
 		else:
 			return randi_range(ceil(wave.minCount), floor(wave.maxCount * (1 + GameRule.entityCountBoostPerWave * current)))
 	return 0
-static func spawn():
+static func spawn() -> Array[Wave]:
+	var result: Array[Wave] = []
 	for i in range(len(data)):
-		var wave = data[i]
+		var wave: Wave = data[i]
 		for j in range(entityCountOf(wave)):
-			EntityBase.generate(ComponentManager.getCharacter(wave.entity), MathTool.randv2_range(500), true, wave.isBoss)
-static func next():
-	if current == 0:
-		customStart()
-	spawn()
+			var currentWave = wave.duplicate()
+			currentWave.entityPosition = MathTool.randv2_range(500)
+			result.append(currentWave)
+	return result
+static func next(waves: Array[Wave]):
+	for wave in waves:
+		EntityBase.generate(ComponentManager.getCharacter(wave.entity), wave.entityPosition, true, wave.isBoss)
 	current += 1
 static func startWith(wave: int):
 	return wave - 1

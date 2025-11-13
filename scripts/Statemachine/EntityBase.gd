@@ -445,7 +445,7 @@ func enterStage(_stage: int):
 func kill():
 	pass
 
-static func generatePlayer(playerName: String):
+static func generatePlayer(playerName: String) -> EntityBase:
 	var player = generate(ComponentManager.getCharacter("Rooster"), Vector2.ZERO, false, false, true)
 	player.displayName = playerName
 	player.name = "Player_%s" % playerName
