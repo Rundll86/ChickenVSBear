@@ -71,8 +71,8 @@ static func entityCountOf(wave: Wave) -> int:
 		else:
 			return randi_range(ceil(wave.minCount), floor(wave.maxCount * (1 + GameRule.entityCountBoostPerWave * current)))
 	return 0
-static func spawn() -> Array[Wave]:
-	var result: Array[Wave] = []
+static func spawn() -> Array:
+	var result: Array = []
 	for i in range(len(data)):
 		var wave: Wave = data[i]
 		for j in range(entityCountOf(wave)):
@@ -80,8 +80,10 @@ static func spawn() -> Array[Wave]:
 			currentWave.entityPosition = MathTool.randv2_range(500)
 			result.append(currentWave)
 	return result
-static func next(waves: Array[Wave]):
+static func next(waves: Array):
 	for wave in waves:
+		if wave is EncodedObjectAsID:
+			wave = instance_from_id(wave.get_instance_id())
 		EntityBase.generate(ComponentManager.getCharacter(wave.entity), wave.entityPosition, true, wave.isBoss)
 	current += 1
 static func startWith(wave: int):

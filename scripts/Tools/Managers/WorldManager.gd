@@ -18,7 +18,7 @@ func _physics_process(delta):
 		UIState.setPanel("MakeFeed")
 
 @rpc("authority")
-func nextWave(waves: Array[Wave]):
+func nextWave(waves: Array):
 	Wave.next(waves)
 
 func spawnWave():

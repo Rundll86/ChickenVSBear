@@ -1,9 +1,23 @@
-[gd_scene load_steps=41 format=3 uid="uid://cvogxi7mktumf"]
+[gd_scene load_steps=42 format=3 uid="uid://cvogxi7mktumf"]
 
 [ext_resource type="Script" uid="uid://ds3j3f82li68h" path="res://scripts/Statemachine/EntityBase.gd" id="1_mvol6"]
 [ext_resource type="Texture2D" uid="uid://dwwpkn4q07ja2" path="res://icon.svg" id="2_7lpu0"]
 [ext_resource type="AudioStream" uid="uid://cn876dtp1ypqx" path="res://resources/sounds/effect/Collect.wav" id="2_qt0aq"]
 [ext_resource type="PackedScene" uid="uid://dcjqjqere8ets" path="res://components/UI/EntityStateBar.tscn" id="2_uje1g"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tiuhe"]
+properties/0/path = NodePath(".:displayName")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("texture/animator/animatree:parameters/blend_position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:health")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wcqpm"]
 animations = [{
@@ -374,9 +388,13 @@ alpha_curve = SubResource("CurveTexture_vvfxd")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_34h7q"]
 
-[node name="HJM" type="CharacterBody2D"]
+[node name="EntityBase" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_mvol6")
+
+[node name="syncer" type="MultiplayerSynchronizer" parent="."]
+unique_name_in_owner = true
+replication_config = SubResource("SceneReplicationConfig_tiuhe")
 
 [node name="weaponStore" type="Node2D" parent="."]
 unique_name_in_owner = true

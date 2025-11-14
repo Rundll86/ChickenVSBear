@@ -87,9 +87,10 @@ var inventoryMax = {
 @onready var damageAnchor: Node2D = $"%damageAnchor"
 @onready var trailParticle: GPUParticles2D = $"%trailParticle"
 @onready var weaponStore: Node2D = $"%weaponStore"
+@onready var syncer: MultiplayerSynchronizer = $"%syncer"
 var statebar: EntityStateBar
 
-var health: float = 0
+@export var health: float = 0
 var energy: float = 0
 var sprinting: bool = false
 var targetableSprinting: bool = false
@@ -121,7 +122,6 @@ func _ready():
 			weapons.append(i)
 			weaponBag.append(i.displayName)
 		statebar.levelLabels.hide()
-		if !is_instance_valid(UIState.player): UIState.player = self
 		energyChanged.connect(
 			func(newEnergy, dontChangeDirection):
 				if !UIState.player == self: return
@@ -434,8 +434,13 @@ func enterStage(_stage: int):
 func kill():
 	pass
 
+static func findPlayer(playerName: String) -> EntityBase:
+	for i in WorldManager.tree.get_nodes_in_group("players"):
+		if i.displayName == playerName:
+			return i
+	return null
 static func generatePlayer(playerName: String) -> EntityBase:
-	var player = generate(ComponentManager.getCharacter("Rooster"), Vector2.ZERO, false, false, true)
+	var player = generate(ComponentManager.getCharacter("Rooster"), Vector2.ZERO, false)
 	player.displayName = playerName
 	player.name = "Player_%s" % playerName
 	return player
@@ -455,7 +460,7 @@ static func generate(
 	else:
 		instance.add_to_group("players")
 	if addToWorld:
-		WorldManager.rootNode.add_child(instance)
+		WorldManager.rootNode.spawn(instance)
 	return instance
 static func mobCount():
 	return len(WorldManager.tree.get_nodes_in_group("mobs"))
