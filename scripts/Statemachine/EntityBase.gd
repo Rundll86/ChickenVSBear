@@ -117,6 +117,8 @@ func _ready():
 		statebar = selfStatebar
 		statebar.entity = self
 	if isPlayer():
+		if displayName == MultiplayerState.playerName:
+			UIState.player = self
 		for i in weaponStore.get_children():
 			i.hide()
 			weapons.append(i)

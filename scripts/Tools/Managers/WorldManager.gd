@@ -12,6 +12,7 @@ func _ready():
 	rootNode = self
 	spawner = $%spawner
 	ComponentManager.init()
+	spawner.spawn_function = justReturn
 func _physics_process(delta):
 	runningTime += delta * 1000
 	if EntityBase.mobCount() == 0 and runningTime > 1000:
@@ -29,9 +30,12 @@ func spawnWave():
 func spawn(node: Node):
 	if MultiplayerState.isMultiplayer:
 		if multiplayer.is_server():
-			spawner.spawn(node)
+			spawner.spawn([node])
 	else:
 		add_child(node)
+func justReturn(data):
+	print(ArrayTool.parseEncodedObject(data))
+	return ArrayTool.parseEncodedObject(data)[0]
 
 static func getTime():
 	return runningTime
