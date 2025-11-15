@@ -151,7 +151,8 @@ static func generate(
 	  	spawnRotation: float,
 		asChildSplit: bool = false,
 		asChildRefract: bool = false,
-	   	addToWorld: bool = true
+	   	addToWorld: bool = true,
+		ignoreOffset: bool = false
 	):
 	var extraCount = launchBy.fields.get(FieldStore.Entity.EXTRA_BULLET_COUNT)
 	var count = 1 + MathTool.shrimpRate(extraCount)
@@ -162,7 +163,7 @@ static func generate(
 		instance.isChildRefract = asChildRefract
 		instance.launcher = launchBy
 		instance.position = spawnPosition
-		instance.rotation = spawnRotation + deg_to_rad(randf_range(-launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT), launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT)))
+		instance.rotation = spawnRotation + deg_to_rad(launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT) * randf_range(-1, 1) * int(!ignoreOffset))
 		if addToWorld:
 			WorldManager.rootNode.call_deferred("add_child", instance)
 			instance.add_to_group("bullets")
