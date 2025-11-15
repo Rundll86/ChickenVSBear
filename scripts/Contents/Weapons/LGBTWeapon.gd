@@ -4,7 +4,7 @@ class_name LGBTWeapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["angle"] /= 1 + 0.025 * to * soulLevel
-	origin["count"] += 1 * (soulLevel - 1)
+	origin["count"] = soulLevel + 1
 	origin["atk"] += 2 * to * soulLevel
 	origin["power"] += 0.005 * to * soulLevel
 	origin["trace"] += 0.05 * to * soulLevel

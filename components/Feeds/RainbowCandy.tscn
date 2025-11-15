@@ -6,9 +6,10 @@
 [node name="RainbowCandy" instance=ExtResource("1_2x0kp")]
 avatarTexture = ExtResource("2_xhiuj")
 displayName = "彩虹糖"
+quality = 3
 topic = 4
 fields = Array[int]([1, 5, 6, 13, 7, 3])
-fieldValues = Array[float]([0.2, 0.25, 0.05, 2.0, 10.0, -0.4])
+fieldValues = Array[float]([0.2, 0.25, 0.05, 1.0, 15.0, -0.5])
 costs = Array[int]([0, 3])
 costCounts = Array[int]([700, 100])
 
@@ -17,5 +18,4 @@ texture = ExtResource("2_xhiuj")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "彩虹糖"
-quality = 3
 topic = 4

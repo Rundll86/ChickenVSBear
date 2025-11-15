@@ -3,7 +3,7 @@ extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["atk"] += 3 * to * soulLevel
-	origin["count"] += 1 * (soulLevel - 1)
+	origin["count"] = soulLevel + 1
 	origin["rotate"] += 0.05 * to * soulLevel
 	origin["life"] += 0.1 * to * soulLevel
 	return origin
