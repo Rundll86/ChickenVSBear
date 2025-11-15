@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://3n8dbce6nfq8"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_n7hnn"]
+[ext_resource type="Texture2D" uid="uid://ctmxadaowx5ps" path="res://resources/weapons/Volcano.webp" id="2_n7hnn"]
+[ext_resource type="PackedScene" uid="uid://u0djqwuuysp8" path="res://components/Weapons/Volcano.tscn" id="3_7weiv"]
+
+[node name="Volcano" instance=ExtResource("1_n7hnn")]
+avatarTexture = ExtResource("2_n7hnn")
+displayName = "火山"
+quality = 2
+topic = 8
+fields = Array[int]([8])
+fieldValues = Array[float]([0.1])
+weapons = Array[PackedScene]([ExtResource("3_7weiv")])
+costs = Array[int]([1, 1])
+costCounts = Array[int]([500, 1500])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_n7hnn")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "火山"
+quality = 2
+topic = 8
