@@ -3,8 +3,9 @@ extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["atk"] += 5 * to * soulLevel
-	origin["count"] += 1 * soulLevel
-	origin["rotate"] += 0.25 * to * soulLevel
+	origin["count"] += 1 * (soulLevel - 1)
+	origin["rotate"] += 0.1 * to * soulLevel
+	origin["life"] += 0.05 * to * soulLevel
 	return origin
 func attack(entity: EntityBase):
 	for i in readStore("count"):
@@ -12,3 +13,4 @@ func attack(entity: EntityBase):
 			var bullet: Volcano = j
 			bullet.damage = readStore("atk")
 			bullet.rotates = readStore("rotate")
+			bullet.lifeTime = readStore("life") * 1000

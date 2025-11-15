@@ -12,16 +12,19 @@ quality = 3
 typeTopic = 2
 store = {
 "atk": 20,
-"count": 2.0,
+"count": 1.0,
+"life": 5,
 "rotate": 2.0
 }
 storeType = {
 "atk": 1,
 "count": 1,
+"life": 0,
 "rotate": 3
 }
-descriptionTemplate = "召唤$count支[b]火山[/b]，以$rotate的速度旋转，接触时造成$atk点伤害。"
+descriptionTemplate = "召唤$count支[b]火山[/b]，以$rotate的速度旋转，接触时造成$atk点伤害，在$life秒后停止。"
 cooldown = 7000.0
+debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_hh01t")
@@ -38,4 +41,4 @@ quality = 3
 typeTopic = 2
 
 [node name="description" parent="container" index="2"]
-text = "[center]召唤[color=cyan]2[/color]支[b]火山[/b]，以[color=cyan]1.0°[/color]的速度旋转，接触时造成[color=cyan]15[/color]点伤害。[/center]"
+text = "[center]召唤[color=cyan]1[/color]支[b]火山[/b]，以[color=cyan]2.0°[/color]的速度旋转，接触时造成[color=cyan]20[/color]点伤害，在[color=cyan]5.00[/color]秒后停止。[/center]"

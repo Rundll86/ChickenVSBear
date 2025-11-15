@@ -3,7 +3,7 @@ extends Weapon
 
 func update(to, origin, _entity):
 	origin["atk"] += 2 * to * soulLevel
-	origin["count"] = 1 * soulLevel
+	origin["count"] = 1 * (soulLevel - 1)
 	origin["split"] /= 1 + 0.05 * to * soulLevel
 	return origin
 func attack(entity: EntityBase):
