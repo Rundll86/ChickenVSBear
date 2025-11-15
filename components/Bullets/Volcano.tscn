@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://8uepi7uql314"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_gd3m7"]
+[ext_resource type="Script" uid="uid://ci5hswfhck5as" path="res://scripts/Contents/Bullets/Volcano.gd" id="2_w1utg"]
+[ext_resource type="Texture2D" uid="uid://ctmxadaowx5ps" path="res://resources/weapons/Volcano.webp" id="2_wwxm2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1utg"]
+size = Vector2(113, 34)
+
+[node name="Volcano" instance=ExtResource("1_gd3m7")]
+script = ExtResource("2_w1utg")
+penerate = 1.0
+lifeTime = 6000.0
+
+[node name="anchor" type="Node2D" parent="texture" index="1"]
+
+[node name="texture" type="Sprite2D" parent="texture/anchor" index="0"]
+position = Vector2(150, 0)
+rotation = 0.7853982
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_wwxm2")
+
+[node name="hitbox" parent="." index="1"]
+position = Vector2(167.5, 0)
+shape = SubResource("RectangleShape2D_w1utg")

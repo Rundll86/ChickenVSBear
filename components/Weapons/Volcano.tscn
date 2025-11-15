@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://u0djqwuuysp8"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_3uhfa"]
+[ext_resource type="Texture2D" uid="uid://ctmxadaowx5ps" path="res://resources/weapons/Volcano.webp" id="2_hh01t"]
+[ext_resource type="Script" uid="uid://cbihum34xs8ev" path="res://scripts/Contents/Weapons/Volcano.gd" id="2_ihngx"]
+
+[node name="Volcano" instance=ExtResource("1_3uhfa")]
+script = ExtResource("2_ihngx")
+avatarTexture = ExtResource("2_hh01t")
+displayName = "火山"
+quality = 3
+typeTopic = 2
+store = {
+"atk": 20,
+"count": 2.0,
+"rotate": 2.0
+}
+storeType = {
+"atk": 1,
+"count": 1,
+"rotate": 3
+}
+descriptionTemplate = "召唤$count支[b]火山[/b]，以$rotate的速度旋转，接触时造成$atk点伤害。"
+cooldown = 7000.0
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_hh01t")
+
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 500
+
+[node name="soul" parent="container/info/infos" index="2"]
+count = 1
+
+[node name="name" parent="container/info" index="2"]
+displayName = "火山"
+quality = 3
+typeTopic = 2
+
+[node name="description" parent="container" index="2"]
+text = "[center]召唤[color=cyan]2[/color]支[b]火山[/b]，以[color=cyan]1.0°[/color]的速度旋转，接触时造成[color=cyan]15[/color]点伤害。[/center]"

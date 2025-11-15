@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=15 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" uid="uid://cthtupc6dtbav" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
 [ext_resource type="Texture2D" uid="uid://fn8qx72clh38" path="res://resources/characters/cock/rooster-a.svg" id="2_q0j6j"]
 [ext_resource type="AudioStream" uid="uid://dclinyhu256xi" path="res://resources/sounds/effect/Low Whoosh.mp3" id="3_4syso"]
 [ext_resource type="Texture2D" uid="uid://ci2ik43ce82uy" path="res://resources/characters/cock/rooster-b.svg" id="3_b0fgx"]
+[ext_resource type="PackedScene" uid="uid://u0djqwuuysp8" path="res://components/Weapons/Volcano.tscn" id="3_fkh3f"]
 [ext_resource type="PackedScene" uid="uid://c0n3igy4hucrg" path="res://components/Weapons/PurpleCrystal.tscn" id="3_jluqw"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
 [ext_resource type="AudioStream" uid="uid://benyec5bqni0b" path="res://resources/sounds/effect/Chomp.wav" id="4_k0yme"]
@@ -40,11 +41,17 @@ radius = 41.0122
 [node name="Rooster" instance=ExtResource("1_e5pl8")]
 script = ExtResource("2_oqdqd")
 displayName = "公鸡"
+metadata/_edit_horizontal_guides_ = [-139.0]
+metadata/_edit_vertical_guides_ = [58.0]
 
-[node name="weaponStore" parent="." index="0"]
+[node name="weaponStore" parent="." index="1"]
 process_mode = 4
 
-[node name="PurpleCrystal" parent="weaponStore" index="0" instance=ExtResource("3_jluqw")]
+[node name="Volcano" parent="weaponStore" index="0" instance=ExtResource("3_fkh3f")]
+offset_bottom = 374.0
+debugRebuild = false
+
+[node name="PurpleCrystal" parent="weaponStore" index="1" instance=ExtResource("3_jluqw")]
 offset_bottom = 350.0
 debugRebuild = false
 
@@ -66,7 +73,7 @@ stream = ExtResource("8_7dhim")
 [node name="attack0" parent="sounds" index="6"]
 stream = ExtResource("3_4syso")
 
-[node name="texture" parent="." index="2"]
+[node name="texture" parent="." index="3"]
 position = Vector2(0, -70)
 sprite_frames = SubResource("SpriteFrames_4v2ol")
 animation = &"walk"
@@ -78,6 +85,6 @@ shape = SubResource("CircleShape2D_h1v0q")
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 position = Vector2(54, -45)
 
-[node name="statebar" parent="." index="3" node_paths=PackedStringArray("entity")]
+[node name="statebar" parent="." index="4" node_paths=PackedStringArray("entity")]
 position = Vector2(0, -151)
 entity = NodePath("..")
