@@ -24,7 +24,7 @@ storeType = {
 "rotate": 3
 }
 descriptionTemplate = "召唤$count支[b]火山[/b]，以$rotate的速度旋转，接触时造成$atk点伤害，在$life秒后停止。"
-cooldown = 6000.0
+cooldown = 5000.0
 debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
