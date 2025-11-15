@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbhi7yatfmf8h"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_2x0kp"]
+[ext_resource type="Texture2D" uid="uid://ckw0agpwxpdxv" path="res://resources/feeds/rainbow.svg" id="2_xhiuj"]
+
+[node name="RainbowCandy" instance=ExtResource("1_2x0kp")]
+avatarTexture = ExtResource("2_xhiuj")
+displayName = "彩虹糖"
+topic = 4
+fields = Array[int]([1, 5, 6, 13, 7, 3])
+fieldValues = Array[float]([0.2, 0.25, 0.05, 2.0, 10.0, -0.4])
+costs = Array[int]([0, 3])
+costCounts = Array[int]([700, 100])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_xhiuj")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "彩虹糖"
+quality = 3
+topic = 4
