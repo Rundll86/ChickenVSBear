@@ -62,6 +62,7 @@ func startMultiplayerGame():
 	UIState.closeCurrentPanel()
 func startSingleplayerGame():
 	MultiplayerState.isMultiplayer = false
+	MultiplayerState.playerName = playerNameInput.text
 	EntityBase.generatePlayer(playerNameInput.text)
 	WorldManager.rootNode.spawnWave()
 	UIState.closeCurrentPanel()
