@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://b3hoapgh61w3e"]
 
 [ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_neao1"]
-[ext_resource type="AudioStream" uid="uid://bjtxl0ec0dfw5" path="res://resources/sounds/effect/Squish Pop.wav" id="2_sjht3"]
+[ext_resource type="AudioStream" uid="uid://chxpw0sprn4kj" path="res://resources/sounds/effect/Police Siren.wav" id="2_dbg3c"]
 
 [sub_resource type="Curve" id="Curve_w5fhr"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -50,7 +50,7 @@ alpha_curve = SubResource("CurveTexture_py1or")
 spawnSound = "spawn"
 
 [node name="spawn" parent="sounds" index="0"]
-stream = ExtResource("2_sjht3")
+stream = ExtResource("2_dbg3c")
 
 [node name="particles" parent="." index="1"]
 amount = 100

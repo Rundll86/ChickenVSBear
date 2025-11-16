@@ -413,6 +413,8 @@ unique_name_in_owner = true
 [node name="collect" type="AudioStreamPlayer2D" parent="sounds"]
 stream = ExtResource("2_qt0aq")
 
+[node name="die" type="AudioStreamPlayer2D" parent="sounds"]
+
 [node name="attack0" type="AudioStreamPlayer2D" parent="sounds"]
 
 [node name="texture" type="AnimatedSprite2D" parent="."]

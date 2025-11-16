@@ -1,35 +1,28 @@
 [gd_scene load_steps=8 format=3 uid="uid://c8h1abpbe6cww"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_twxai"]
-[ext_resource type="Script" path="res://scripts/Contents/Characters/Hen.gd" id="2_8u5a0"]
-[ext_resource type="Texture2D" uid="uid://b5m0fpg3ewfum" path="res://resources/characters/hen/hen-a.svg" id="2_k7xxq"]
-[ext_resource type="Texture2D" uid="uid://3o0oqobnr3b2" path="res://resources/characters/hen/hen-b.svg" id="3_cpiwr"]
-[ext_resource type="AudioStream" uid="uid://cxhsnyjhrnicl" path="res://resources/sounds/effect/Glug.wav" id="3_ojyt7"]
+[ext_resource type="Script" uid="uid://dsfht8qodraln" path="res://scripts/Contents/Characters/Hen.gd" id="2_8u5a0"]
+[ext_resource type="AudioStream" uid="uid://cougu5tprpf8d" path="res://resources/sounds/effect/Growl.wav" id="3_1stll"]
+[ext_resource type="Texture2D" uid="uid://ylvq4hek5qem" path="res://resources/characters/hen/hsl.png" id="4_1stll"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xwexj"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_k7xxq")
-}],
+"frames": [],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_k7xxq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_cpiwr")
-}],
+"frames": [],
 "loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0uubu"]
-radius = 40.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1stll"]
+size = Vector2(114.5, 43)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rwj47"]
+radius = 19.026299
 
 [node name="Hen" instance=ExtResource("1_twxai")]
 script = ExtResource("2_8u5a0")
@@ -38,17 +31,25 @@ drops = Array[int]([0, 1])
 dropCounts = Array[Vector2]([Vector2(6, 12), Vector2(4, 8)])
 
 [node name="hurt" parent="sounds" index="3"]
-stream = ExtResource("3_ojyt7")
+stream = ExtResource("3_1stll")
 
-[node name="texture" parent="." index="2"]
+[node name="texture" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_xwexj")
-animation = &"walk"
+
+[node name="staticBackground" parent="texture" index="0"]
+scale = Vector2(-0.452, 0.452)
+texture = ExtResource("4_1stll")
 
 [node name="hitbox" parent="texture/hurtbox" index="0"]
-shape = SubResource("CircleShape2D_0uubu")
+position = Vector2(7, 4)
+shape = SubResource("RectangleShape2D_1stll")
+
+[node name="hitbox2" type="CollisionShape2D" parent="texture/hurtbox" index="1"]
+position = Vector2(72, -28)
+shape = SubResource("CircleShape2D_rwj47")
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 
-[node name="statebar" parent="." index="3" node_paths=PackedStringArray("entity")]
+[node name="statebar" parent="." index="4" node_paths=PackedStringArray("entity")]
 position = Vector2(0, -114)
 entity = NodePath("..")

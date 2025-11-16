@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfkg40awgniv"]
+
+[ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_hw4g4"]
+[ext_resource type="Texture2D" uid="uid://cs6se8dighfgj" path="res://resources/characters/cat/cat.png" id="2_q30ge"]
+[ext_resource type="Script" uid="uid://chmxghslo4kc4" path="res://scripts/Contents/Characters/Cat.gd" id="2_uo67a"]
+[ext_resource type="AudioStream" uid="uid://d2ooclkk70rm0" path="res://resources/sounds/effect/Meow.wav" id="3_bglcc"]
+[ext_resource type="AudioStream" uid="uid://chxpw0sprn4kj" path="res://resources/sounds/effect/Police Siren.wav" id="4_2o6vq"]
+[ext_resource type="AudioStream" uid="uid://b7pxuov1id0ho" path="res://resources/sounds/effect/Pew.mp3" id="4_rh5rn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uo67a"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uo67a"]
+size = Vector2(81, 62)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uo67a"]
+radius = 19.026299
+
+[node name="Cat" instance=ExtResource("1_hw4g4")]
+script = ExtResource("2_uo67a")
+
+[node name="hurt" parent="sounds" index="3"]
+stream = ExtResource("3_bglcc")
+volume_db = -5.0
+
+[node name="die" parent="sounds" index="5"]
+stream = ExtResource("4_2o6vq")
+
+[node name="attack0" parent="sounds" index="6"]
+stream = ExtResource("4_rh5rn")
+
+[node name="texture" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_uo67a")
+animation = &"walk"
+
+[node name="staticBackground" parent="texture" index="0"]
+position = Vector2(0, -2)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_q30ge")
+
+[node name="staticAnimation" parent="texture" index="1"]
+scale = Vector2(1, 1.289)
+
+[node name="hitbox" parent="texture/hurtbox" index="0"]
+position = Vector2(-9.5, 5)
+shape = SubResource("RectangleShape2D_uo67a")
+
+[node name="hitbox2" type="CollisionShape2D" parent="texture/hurtbox" index="1"]
+position = Vector2(43, -2)
+shape = SubResource("CircleShape2D_uo67a")
+
+[node name="statebar" parent="." index="4"]
+position = Vector2(0, -115)

@@ -133,7 +133,8 @@ func _ready():
 				else:
 					UIState.energyPercent.setCurrent(newEnergy)
 		)
-		rebuildWeaponIcons()
+		if displayName == MultiplayerState.playerName:
+			rebuildWeaponIcons()
 	else:
 		applyLevel()
 	health = fields.get(FieldStore.Entity.MAX_HEALTH)
