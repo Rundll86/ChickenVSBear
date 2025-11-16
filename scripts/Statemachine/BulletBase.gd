@@ -30,9 +30,11 @@ var destroying: bool = false
 var isChildSplit: bool = false
 var isChildRefract: bool = false
 var initialSpeed: float = 0
+var originalDamage: float = 0
 
 func _ready():
 	initialSpeed = speed
+	originalDamage = damage
 	if launcher.isSummon():
 		launcherSummoned = launcher
 		launcher = launcher.myMaster
@@ -99,6 +101,10 @@ func fullPenerate():
 	return penerate + launcher.fields.get(FieldStore.Entity.PENERATE) + GameRule.penerateRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]
 func timeLived():
 	return WorldManager.getTime() - spawnInWhen
+func distanceLived():
+	return position.distance_to(spawnInWhere)
+func lifeDistancePercent():
+	return distanceLived() / lifeDistance
 func dotLoop():
 	if await applyDot():
 		await TickTool.until(func(): return !UIState.currentPanel)

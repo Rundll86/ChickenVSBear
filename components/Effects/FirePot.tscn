@@ -1,30 +1,23 @@
-[gd_scene load_steps=13 format=3 uid="uid://dny25qkcvtaa2"]
+[gd_scene load_steps=11 format=3 uid="uid://dny25qkcvtaa2"]
 
 [ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_k7ukc"]
 
 [sub_resource type="Curve" id="Curve_ohc88"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_6awim"]
 curve = SubResource("Curve_ohc88")
 
 [sub_resource type="Gradient" id="Gradient_14cxb"]
-colors = PackedColorArray(0.780392, 0.498039, 0, 1, 1, 0, 0, 1)
+offsets = PackedFloat32Array(0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.6366434, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_2p6rn"]
 gradient = SubResource("Gradient_14cxb")
 
-[sub_resource type="Gradient" id="Gradient_g8be5"]
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_miml8"]
-gradient = SubResource("Gradient_g8be5")
-
 [sub_resource type="Curve" id="Curve_iaern"]
-min_value = -200.0
-max_value = 200.0
+_limits = [-200.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0, -200), 0.0, 0.0, 0, 0, Vector2(1, 200), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -40,24 +33,27 @@ curve = SubResource("Curve_qy5ym")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pah3d"]
 particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 50.0
 angle_min = 1.07288e-05
 angle_max = 360.0
-spread = 15.0
+spread = 5.0
 initial_velocity_min = 10.0
 initial_velocity_max = 500.0
-gravity = Vector3(0, 0, 0)
+gravity = Vector3(980, 0, 0)
 linear_accel_min = -2.23517e-06
 linear_accel_max = -2.23517e-06
 linear_accel_curve = SubResource("CurveTexture_1flsn")
-scale_min = 2.0
-scale_max = 12.0
+scale_min = 4.0
+scale_max = 16.0
 scale_over_velocity_curve = SubResource("CurveTexture_wcx7i")
-color_ramp = SubResource("GradientTexture1D_miml8")
 color_initial_ramp = SubResource("GradientTexture1D_2p6rn")
 alpha_curve = SubResource("CurveTexture_6awim")
 
 [node name="FirePot" instance=ExtResource("1_k7ukc")]
+metadata/_edit_vertical_guides_ = [808.0]
 
-[node name="particles" parent="." index="0"]
-amount = 50
+[node name="particles" parent="." index="1"]
+amount = 100
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_pah3d")

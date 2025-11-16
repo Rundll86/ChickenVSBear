@@ -66,11 +66,19 @@ static func create(
 	wave.to = to_
 	wave.per = per_
 	return wave
+static func hasBoss() -> bool:
+	for wave in data:
+		if canSpawn(wave):
+			if wave.isBoss:
+				return true
+	return false
+static func canSpawn(wave: Wave) -> bool:
+	return wave.from <= current and wave.to >= current and int(current - wave.from) % wave.per == 0
 static func entityCountOf(wave: Wave) -> int:
-	if wave.from <= current and wave.to >= current and int(current - wave.from) % wave.per == 0:
+	if canSpawn(wave):
 		if wave.isBoss:
 			return 1
-		else:
+		elif !hasBoss():
 			return randi_range(ceil(wave.minCount), floor(wave.maxCount * (1 + GameRule.entityCountBoostPerWave * current)))
 	return 0
 static func spawn() -> Array:

@@ -1,0 +1,7 @@
+extends BulletBase
+
+@export var canTrace: bool = true
+
+func ai():
+	if canTrace:
+		PresetBulletAI.lerpPosition(self, launcher.currentFocusedBoss.getTrackingAnchor() - Vector2(0, 200), 0.1)

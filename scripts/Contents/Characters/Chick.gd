@@ -10,15 +10,17 @@ func register():
 	attackCooldownMap[1] = 12000
 	attackCooldownMap[2] = 2000
 	attackCooldownMap[3] = 3000
+	attackCooldownMap[4] = 4000
 	sprintMultiplier = 50
 func spawn():
 	texture.play("walk")
 
 func ai():
+	tryAttack(4)
 	PresetEntityAI.follow(self, currentFocusedBoss, 0)
-	PresetEntityAI.distanceAttack(self, currentFocusedBoss, 0, 200, 2)
-	PresetEntityAI.distanceAttack(self, currentFocusedBoss, 200, 700, 1)
-	PresetEntityAI.distanceAction(self, currentFocusedBoss, 700, INF,
+	PresetEntityAI.distanceAttack(self, currentFocusedBoss, 0, 500, 2)
+	PresetEntityAI.distanceAttack(self, currentFocusedBoss, 500, 1000, 1)
+	PresetEntityAI.distanceAction(self, currentFocusedBoss, 1000, INF,
 		func():
 			PresetEntityAI.weightAttack(self, [0, 3], [5, 1], func(index): return index == 3)
 	)
@@ -33,13 +35,15 @@ func attack(type):
 			BulletBase.generate(ComponentManager.getBullet("ChickLaser"), self, texture.global_position, deg_to_rad(360.0 / laserCount * i))
 	elif type == 2:
 		var weaponPos = findWeaponAnchor("normal")
-		var target = weaponPos.angle_to_point(currentFocusedBoss.position)
+		var target = weaponPos.angle_to_point(currentFocusedBoss.getTrackingAnchor())
 		firepot.global_rotation = target
 		firepot.shot()
 		BulletBase.generate(ComponentManager.getBullet("FireScan"), self, weaponPos, target)
 	elif type == 3:
 		BulletBase.generate(ComponentManager.getBullet("ChickSprint"), self, position, 0)
 		trySprint()
+	elif type == 4:
+		BulletBase.generate(ComponentManager.getBullet("FoxZhua"), self, findWeaponAnchor("foot"), deg_to_rad(90))
 	return true
 func sprint():
 	move((currentFocusedBoss.position - position).normalized() * sprintMultiplier, true)

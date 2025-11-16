@@ -17,3 +17,5 @@ static func faceToMouse(bullet: BulletBase):
 	bullet.rotation = bullet.position.angle_to_point(bullet.get_global_mouse_position())
 static func selfRotate(bullet: BulletBase, speed: float):
 	bullet.rotation += deg_to_rad(speed)
+static func lerpPosition(bullet: BulletBase, target: Vector2, speed: float):
+	bullet.position = bullet.position.lerp(target, speed)

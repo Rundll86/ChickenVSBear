@@ -1,15 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://db2cbgyyjpydp"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_cqre5"]
-[ext_resource type="Script" path="res://scripts/Contents/Bullets/FireScan.gd" id="2_qprdp"]
+[ext_resource type="Script" uid="uid://dlg4g03ppdd2x" path="res://scripts/Contents/Bullets/FireScan.gd" id="2_qprdp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qcsn"]
-size = Vector2(50, 50)
+size = Vector2(10, 200)
 
 [node name="FireScan" instance=ExtResource("1_cqre5")]
 script = ExtResource("2_qprdp")
 displayName = "狱炎"
-lifeDistance = 200.0
+speed = 15.0
+damage = 15.0
+lifeDistance = 500.0
 
 [node name="hitbox" parent="." index="1"]
 shape = SubResource("RectangleShape2D_4qcsn")
