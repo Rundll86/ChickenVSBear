@@ -21,4 +21,5 @@ func attack(type):
 	elif type == 1:
 		BulletBase.generate(ComponentManager.getBullet("HeavyCrystal"), self, findWeaponAnchor("normal"), position.angle_to_point(currentFocusedBoss.position))
 func kill():
-	masterMine.tryHeal(100)
+	if is_instance_valid(masterMine):
+		masterMine.tryHeal(100)

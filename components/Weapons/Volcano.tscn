@@ -8,22 +8,20 @@
 script = ExtResource("2_ihngx")
 avatarTexture = ExtResource("2_hh01t")
 displayName = "火山"
-quality = 3
+quality = 4
 typeTopic = 2
 costBeachball = 300
 store = {
-"atk": 25,
-"count": 2.0,
+"atk": 10,
 "life": 5,
-"rotate": 1.0
+"rotate": 0.1
 }
 storeType = {
 "atk": 1,
-"count": 1,
 "life": 0,
-"rotate": 3
+"rotate": 2
 }
-descriptionTemplate = "召唤$count支[b]火山[/b]，以$rotate的速度旋转，接触时造成$atk点伤害，在$life秒后停止。"
+descriptionTemplate = "召唤1支[b]火山[/b]，以$rotate的效率跟随鼠标指向，接触时造成$atk点伤害。"
 cooldown = 5000.0
 debugRebuild = true
 
@@ -38,8 +36,8 @@ count = 1
 
 [node name="name" parent="container/info" index="2"]
 displayName = "火山"
-quality = 3
+quality = 4
 typeTopic = 2
 
 [node name="description" parent="container" index="2"]
-text = "[center]召唤[color=cyan]2[/color]支[b]火山[/b]，以[color=cyan]1.0°[/color]的速度旋转，接触时造成[color=cyan]25[/color]点伤害，在[color=cyan]5.00[/color]秒后停止。[/center]"
+text = "[center]召唤1支[b]火山[/b]，以[color=cyan]10%[/color]的效率跟随鼠标指向，接触时造成[color=cyan]10[/color]点伤害。[/center]"
