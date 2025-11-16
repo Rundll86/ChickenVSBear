@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://dr2gq0mfe30xx"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_yfqj6"]
+[ext_resource type="Shader" uid="uid://cnc1n2042ntv5" path="res://shaders/Ring.gdshader" id="2_ddosv"]
+[ext_resource type="Script" uid="uid://brn88cqusk0q2" path="res://scripts/Contents/Bullets/DogCircle.gd" id="2_qyd4u"]
+[ext_resource type="Script" uid="uid://cgb01lelfg73p" path="res://scripts/Statemachine/ShaderStage.gd" id="3_qyd4u"]
+
+[sub_resource type="Animation" id="Animation_qyd4u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:material:shader_parameter/alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_oinqg"]
+resource_name = "destroy"
+length = 0.5
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_ynxlt"]
+resource_name = "loop"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_kmogx"]
+resource_name = "spawn"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:material:shader_parameter/alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qyd4u"]
+_data = {
+&"RESET": SubResource("Animation_qyd4u"),
+&"destroy": SubResource("Animation_oinqg"),
+&"loop": SubResource("Animation_ynxlt"),
+&"spawn": SubResource("Animation_kmogx")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qyd4u"]
+shader = ExtResource("2_ddosv")
+shader_parameter/inner = 0.7999999821184
+shader_parameter/outer = 0.999999977648
+shader_parameter/alpha = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ddosv"]
+radius = 13.0
+height = 138.0
+
+[node name="DogCircle" instance=ExtResource("1_yfqj6")]
+script = ExtResource("2_qyd4u")
+displayName = "吼叫声波"
+damage = 2.0
+autoSpawnAnimation = true
+freeAfterSpawn = true
+
+[node name="animator" parent="texture" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_qyd4u")
+}
+
+[node name="texture" type="Node2D" parent="texture" index="1"]
+modulate = Color(1, 1, 1, 0.08421052)
+material = SubResource("ShaderMaterial_qyd4u")
+script = ExtResource("3_qyd4u")
+size = Vector2(40, 150)
+color = Color(1, 1, 1, 0)
+metadata/_custom_type_script = "uid://cgb01lelfg73p"
+
+[node name="hitbox" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_ddosv")

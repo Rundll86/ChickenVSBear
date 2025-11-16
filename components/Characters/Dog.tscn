@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb363wvwvs7m4"]
+
+[ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_cbgnh"]
+[ext_resource type="Texture2D" uid="uid://cew1kecisufy4" path="res://resources/characters/dog/hsq.png" id="2_oospf"]
+[ext_resource type="Script" uid="uid://soehdxfbpmc0" path="res://scripts/Contents/Characters/Dog.gd" id="2_pb36u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pb36u"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tn3v8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oospf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Dog" instance=ExtResource("1_cbgnh")]
+script = ExtResource("2_pb36u")
+displayName = "哈士奇"
+
+[node name="texture" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_pb36u")
+
+[node name="staticAnimation" parent="texture" index="1"]
+position = Vector2(0, -19.999998)
+scale = Vector2(0.35093215, 0.35093215)
+sprite_frames = SubResource("SpriteFrames_tn3v8")
+animation = &"idle"
+
+[node name="normal" type="Node2D" parent="texture/weapons" index="0"]
+
+[node name="statebar" parent="." index="4"]
+position = Vector2(0, -150)
