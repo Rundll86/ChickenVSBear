@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0ncrvm8u4pox"]
+[gd_scene load_steps=14 format=3 uid="uid://b0ncrvm8u4pox"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_goqmy"]
 [ext_resource type="Script" uid="uid://b2gg1fh0bflu7" path="res://scripts/Contents/Characters/Chick.gd" id="2_r6bub"]
@@ -11,6 +11,19 @@
 [ext_resource type="Texture2D" uid="uid://k0hcr5u2xlk6" path="res://resources/characters/chick/fox.png" id="8_k8ox8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xji3d"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x766l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -29,6 +42,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x766l"]
+size = Vector2(57, 62)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0sit"]
+radius = 37.054016
+
 [node name="Chick" instance=ExtResource("1_goqmy")]
 script = ExtResource("2_r6bub")
 isBoss = true
@@ -40,9 +59,6 @@ appleCount = Vector2i(2, 4)
 [node name="hurt" parent="sounds" index="3"]
 stream = ExtResource("3_ik1xf")
 
-[node name="attack0" parent="sounds" index="5"]
-stream = ExtResource("4_2qabh")
-
 [node name="attack1" type="AudioStreamPlayer2D" parent="sounds" index="6"]
 stream = ExtResource("4_mrsne")
 volume_db = -10.0
@@ -53,17 +69,37 @@ stream = ExtResource("5_vcsbb")
 [node name="attack3" type="AudioStreamPlayer2D" parent="sounds" index="8"]
 stream = ExtResource("7_qjhwc")
 
-[node name="texture" parent="." index="2"]
+[node name="attack0" parent="sounds" index="9"]
+stream = ExtResource("4_2qabh")
+
+[node name="texture" parent="." index="3"]
 position = Vector2(0, -37)
 sprite_frames = SubResource("SpriteFrames_xji3d")
 animation = &"walk"
 
+[node name="staticAnimation" parent="texture" index="1"]
+position = Vector2(0, -39)
+scale = Vector2(0.42847547, 0.42847547)
+sprite_frames = SubResource("SpriteFrames_x766l")
+animation = &"idle"
+
+[node name="hitbox" parent="texture/hurtbox" index="0"]
+position = Vector2(-0.5, -51)
+shape = SubResource("RectangleShape2D_x766l")
+
+[node name="hitbox2" type="CollisionShape2D" parent="texture/hurtbox" index="1"]
+position = Vector2(73, -76)
+shape = SubResource("CircleShape2D_w0sit")
+
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
-position = Vector2(30, -12)
+position = Vector2(79, -63)
 
 [node name="firepot" parent="texture/weapons/normal" index="0" instance=ExtResource("6_kvx3n")]
 unique_name_in_owner = true
 
-[node name="statebar" parent="." index="3" node_paths=PackedStringArray("entity")]
-position = Vector2(0, -82)
+[node name="trailParticle" parent="texture" index="7"]
+position = Vector2(1, -50)
+
+[node name="statebar" parent="." index="4" node_paths=PackedStringArray("entity")]
+position = Vector2(0, -167)
 entity = NodePath("..")

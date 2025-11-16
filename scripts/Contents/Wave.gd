@@ -22,11 +22,11 @@ func duplicate() -> Wave:
 	wave.per = per
 	return wave
 
-static var current: int = startWith(1)
+static var current: int = startWith(10)
 static var WAVE_NORMAL = [
-	# Wave.create("Hen", 1, 5, false, 0, INF, 1),
-	# Wave.create("Cat", 1, 5, false, 0, INF, 1),
-	Wave.create("Dog", 1, 5, false, 0, INF, 1),
+	Wave.create("Hen", 1, 3, false, 0, INF, 1),
+	Wave.create("Cat", 1, 3, false, 0, INF, 1),
+	Wave.create("Dog", 1, 3, false, 0, INF, 1),
 	Wave.create("Chick", 0, 0, true, 9, INF, 15),
 	Wave.create("Bear", 0, 0, true, 19, INF, 10),
 	Wave.create("KukeMC", 0, 0, true, 14, INF, 20),
