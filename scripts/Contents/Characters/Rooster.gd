@@ -4,6 +4,10 @@ class_name Rooster
 func register():
 	attackCooldownMap[0] = 200
 	attackCooldownMap[1] = 6000
+	hit.connect(
+		func(_damage: float, _bullet: BulletBase, _crit: bool):
+			EffectController.create(ComponentManager.getEffect("FeatherFall"), texture.global_position).shot()
+	)
 func ai():
 	texture.play("walk")
 	var direction = Vector2(

@@ -42,6 +42,7 @@ sprite_frames = SubResource("SpriteFrames_tn3v8")
 animation = &"idle"
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
+position = Vector2(53, -35)
 
 [node name="statebar" parent="." index="4"]
 position = Vector2(0, -150)

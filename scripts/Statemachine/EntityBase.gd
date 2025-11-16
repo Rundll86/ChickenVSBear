@@ -224,6 +224,7 @@ func getSprintInitialDisplace():
 func getSprintProgress():
 	return velocity.length() / getSprintInitialDisplace().length()
 func takeDamage(bullet: BulletBase, crit: bool):
+	# 当受伤时
 	hurtAnimator.play("hurt")
 	var baseDamage: float = bullet.damage * bullet.launcher.fields.get(FieldStore.Entity.DAMAGE_MULTIPILER) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)
 	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
