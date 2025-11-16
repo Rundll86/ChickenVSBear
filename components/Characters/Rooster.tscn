@@ -2,9 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" uid="uid://cthtupc6dtbav" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
-[ext_resource type="Texture2D" uid="uid://fn8qx72clh38" path="res://resources/characters/cock/rooster-a.svg" id="2_q0j6j"]
 [ext_resource type="AudioStream" uid="uid://dclinyhu256xi" path="res://resources/sounds/effect/Low Whoosh.mp3" id="3_4syso"]
-[ext_resource type="Texture2D" uid="uid://ci2ik43ce82uy" path="res://resources/characters/cock/rooster-b.svg" id="3_b0fgx"]
 [ext_resource type="PackedScene" uid="uid://c0n3igy4hucrg" path="res://components/Weapons/PurpleCrystal.tscn" id="3_jluqw"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
 [ext_resource type="PackedScene" uid="uid://u0djqwuuysp8" path="res://components/Weapons/Volcano.tscn" id="4_jluqw"]
@@ -12,35 +10,47 @@
 [ext_resource type="AudioStream" uid="uid://dmxh3bpk8vyy5" path="res://resources/sounds/effect/Coin.mp3" id="5_xnbhq"]
 [ext_resource type="AudioStream" uid="uid://4wuuf1osk0yv" path="res://resources/sounds/effect/Low Boing.wav" id="6_m5px1"]
 [ext_resource type="AudioStream" uid="uid://b10u6iir6uvqn" path="res://resources/sounds/effect/BigLaser.wav" id="8_7dhim"]
+[ext_resource type="Texture2D" uid="uid://x7ic6wm22jv4" path="res://resources/characters/cock/rooster.png" id="11_joj4g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4v2ol"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_q0j6j")
-}],
+"frames": [],
 "loop": true,
 "name": &"idle",
 "speed": 1.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_q0j6j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_b0fgx")
-}],
+"frames": [],
 "loop": true,
 "name": &"walk",
 "speed": 3.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_jluqw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_joj4g")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_joj4g")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_h1v0q"]
-radius = 41.0122
+radius = 61.204575
 
 [node name="Rooster" instance=ExtResource("1_e5pl8")]
 script = ExtResource("2_oqdqd")
 displayName = "公鸡"
+useStatic = true
 metadata/_edit_horizontal_guides_ = [-139.0]
 metadata/_edit_vertical_guides_ = [58.0]
 
@@ -69,7 +79,7 @@ stream = ExtResource("6_m5px1")
 [node name="attack1" type="AudioStreamPlayer2D" parent="sounds" index="5"]
 stream = ExtResource("8_7dhim")
 
-[node name="attack0" parent="sounds" index="6"]
+[node name="attack0" parent="sounds" index="7"]
 stream = ExtResource("3_4syso")
 
 [node name="texture" parent="." index="3"]
@@ -77,13 +87,19 @@ position = Vector2(0, -70)
 sprite_frames = SubResource("SpriteFrames_4v2ol")
 animation = &"walk"
 
+[node name="staticAnimation" parent="texture" index="1"]
+position = Vector2(0, -24)
+scale = Vector2(0.32309517, 0.32309517)
+sprite_frames = SubResource("SpriteFrames_jluqw")
+animation = &"walk"
+
 [node name="hitbox" parent="texture/hurtbox" index="0"]
-position = Vector2(0, 30)
+position = Vector2(8, -28)
 shape = SubResource("CircleShape2D_h1v0q")
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 position = Vector2(54, -45)
 
 [node name="statebar" parent="." index="4" node_paths=PackedStringArray("entity")]
-position = Vector2(0, -151)
+position = Vector2(0, -202)
 entity = NodePath("..")

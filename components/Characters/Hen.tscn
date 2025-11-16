@@ -32,6 +32,7 @@ dropCounts = Array[Vector2]([Vector2(6, 12), Vector2(4, 8)])
 
 [node name="hurt" parent="sounds" index="3"]
 stream = ExtResource("3_1stll")
+volume_db = 10.0
 
 [node name="texture" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_xwexj")
