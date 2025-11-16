@@ -3,8 +3,10 @@ class_name Chick
 
 @onready var firepot = $"%firepot"
 
+var played: bool = false
+
 func register():
-	fields[FieldStore.Entity.MAX_HEALTH] = 1500
+	fields[FieldStore.Entity.MAX_HEALTH] = 15
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.4
 	attackCooldownMap[0] = 400
 	attackCooldownMap[1] = 12000
@@ -12,6 +14,12 @@ func register():
 	attackCooldownMap[3] = 3000
 	attackCooldownMap[4] = 4000
 	sprintMultiplier = 50
+	healthChanged.connect(
+		func(h):
+			if !played and h <= fields.get(FieldStore.Entity.MAX_HEALTH) * 0.1:
+				played = true
+				playSound("readyToDie")
+	)
 func spawn():
 	texture.play("walk")
 
