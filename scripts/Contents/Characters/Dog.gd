@@ -4,7 +4,7 @@ func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 120
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.2
 	fields[FieldStore.Entity.OFFSET_SHOOT] = 0
-	attackCooldownMap[0] = 2000
+	attackCooldownMap[0] = randi_range(3000, 5000)
 
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 300)

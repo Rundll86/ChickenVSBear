@@ -77,6 +77,7 @@ var inventoryMax = {
 @export var level: int = 1
 @export var currentInvinsible: bool = false
 @export var useStatic: bool = false
+@export var hurtAudioRate: float = 1
 
 @onready var animatree: AnimationTree = $"%animatree"
 @onready var texture: AnimatedSprite2D = $"%texture"
@@ -239,7 +240,8 @@ func takeDamage(bullet: BulletBase, crit: bool):
 			storeEnergy(damage * 0.35)
 		damage = 0
 	else:
-		playSound("hurt")
+		if MathTool.rate(hurtAudioRate):
+			playSound("hurt")
 		storeEnergy(damage * -0.5)
 	position += Vector2.from_angle(bullet.position.angle_to_point(position)) * bullet.knockback
 	hit.emit(damage, bullet, crit)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bb363wvwvs7m4"]
+[gd_scene load_steps=9 format=3 uid="uid://bb363wvwvs7m4"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_cbgnh"]
 [ext_resource type="Texture2D" uid="uid://cew1kecisufy4" path="res://resources/characters/dog/hsq.png" id="2_oospf"]
 [ext_resource type="Script" uid="uid://soehdxfbpmc0" path="res://scripts/Contents/Characters/Dog.gd" id="2_pb36u"]
+[ext_resource type="AudioStream" uid="uid://cgnqvldnkxjtr" path="res://resources/sounds/effect/doghurt2.wav" id="3_tn3v8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pb36u"]
 animations = [{
@@ -28,9 +29,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e644g"]
+size = Vector2(118, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2gll"]
+radius = 27.018513
+
 [node name="Dog" instance=ExtResource("1_cbgnh")]
 script = ExtResource("2_pb36u")
 displayName = "哈士奇"
+hurtAudioRate = 0.3
+
+[node name="hurt" parent="sounds" index="3"]
+stream = ExtResource("3_tn3v8")
 
 [node name="texture" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_pb36u")
@@ -40,6 +51,14 @@ position = Vector2(0, -19.999998)
 scale = Vector2(0.35093215, 0.35093215)
 sprite_frames = SubResource("SpriteFrames_tn3v8")
 animation = &"idle"
+
+[node name="hitbox" parent="texture/hurtbox" index="0"]
+position = Vector2(-14, -22)
+shape = SubResource("RectangleShape2D_e644g")
+
+[node name="hitbox2" type="CollisionShape2D" parent="texture/hurtbox" index="1"]
+position = Vector2(46, -51)
+shape = SubResource("CircleShape2D_s2gll")
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 position = Vector2(53, -35)
