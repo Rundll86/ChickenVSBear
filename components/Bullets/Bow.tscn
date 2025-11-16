@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2ga3ktbxdfc5"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_t0pyo"]
+[ext_resource type="Texture2D" uid="uid://7us1po711e3o" path="res://resources/weapons/鸡毛弓.png" id="2_two1a"]
+
+[node name="Bow" instance=ExtResource("1_t0pyo")]
+
+[node name="static" type="Sprite2D" parent="texture" index="1"]
+scale = Vector2(0.055427626, 0.055427626)
+texture = ExtResource("2_two1a")
+
+[node name="hitbox" parent="." index="1"]
+disabled = true
