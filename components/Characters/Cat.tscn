@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://chxpw0sprn4kj" path="res://resources/sounds/effect/Police Siren.wav" id="4_2o6vq"]
 [ext_resource type="AudioStream" uid="uid://b7pxuov1id0ho" path="res://resources/sounds/effect/Pew.mp3" id="4_rh5rn"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_uo67a"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2o6vq"]
 animations = [{
 "frames": [],
 "loop": true,
@@ -40,7 +40,7 @@ stream = ExtResource("4_2o6vq")
 stream = ExtResource("4_rh5rn")
 
 [node name="texture" parent="." index="3"]
-sprite_frames = SubResource("SpriteFrames_uo67a")
+sprite_frames = SubResource("SpriteFrames_2o6vq")
 
 [node name="staticBackground" parent="texture" index="0"]
 position = Vector2(0, -2)
