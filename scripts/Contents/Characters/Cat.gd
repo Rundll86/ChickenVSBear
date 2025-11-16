@@ -4,7 +4,7 @@ class_name Maodie
 func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 75
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = randf_range(0.5, 0.8)
-	attackCooldownMap[0] = randi_range(3500, 8000)
+	attackCooldownMap[0] = randi_range(2500, 6000)
 	sprintMultiplier = randf_range(10, 35)
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss)
