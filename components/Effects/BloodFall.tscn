@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bh6u8paviqwpi"]
+
+[ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_mkxf8"]
+[ext_resource type="Texture2D" uid="uid://cy4u4bvvv4r2n" path="res://resources/effects/flood.png" id="2_quyoi"]
+
+[sub_resource type="Curve" id="Curve_quyoi"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iyojt"]
+curve = SubResource("Curve_quyoi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_quyoi"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 200, 0)
+scale_min = 0.049999997
+scale_max = 0.049999997
+alpha_curve = SubResource("CurveTexture_iyojt")
+
+[node name="BloodFall" instance=ExtResource("1_mkxf8")]
+
+[node name="particles" parent="." index="1"]
+amount = 5
+texture = ExtResource("2_quyoi")
+lifetime = 2.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_quyoi")

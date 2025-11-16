@@ -5,8 +5,11 @@ func register():
 	attackCooldownMap[0] = 200
 	attackCooldownMap[1] = 6000
 	hit.connect(
-		func(_damage: float, _bullet: BulletBase, _crit: bool):
-			EffectController.create(ComponentManager.getEffect("FeatherFall"), texture.global_position).shot()
+		func(_damage: float, bullet: BulletBase, _crit: bool):
+			if bullet is DogCircle:
+				EffectController.create(ComponentManager.getEffect("FeatherFall"), texture.global_position).shot()
+			elif bullet is FoxZhua:
+				EffectController.create(ComponentManager.getEffect("BloodFall"), texture.global_position).shot()
 	)
 func ai():
 	texture.play("walk")

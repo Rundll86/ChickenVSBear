@@ -1,4 +1,5 @@
 extends BulletBase
+class_name FoxZhua
 
 @export var canTrace: bool = true
 
