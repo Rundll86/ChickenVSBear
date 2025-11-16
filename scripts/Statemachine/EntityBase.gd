@@ -224,7 +224,15 @@ func getSprintInitialDisplace():
 	return displace(velocity) * sprintMultiplier
 func getSprintProgress():
 	return velocity.length() / getSprintInitialDisplace().length()
-func takeDamage(bullet: BulletBase, crit: bool):
+func takeDamage(baseDamage: float, crit: bool = false, perfectMiss: bool = false):
+	var resultDamage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
+	health -= resultDamage
+	healthChanged.emit(health)
+	DamageLabel.create(resultDamage, crit || perfectMiss, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
+	if health <= 0:
+		tryDie(null)
+	return resultDamage
+func bulletHit(bullet: BulletBase, crit: bool):
 	# 当受伤时
 	hurtAnimator.play("hurt")
 	var baseDamage: float = bullet.damage * bullet.launcher.fields.get(FieldStore.Entity.DAMAGE_MULTIPILER) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)

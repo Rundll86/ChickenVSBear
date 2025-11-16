@@ -11,4 +11,4 @@ func ai():
 		tryDestroy()
 func destroy(beacuseMap: bool):
 	if beacuseMap:
-		launcher.takeDamage(self, MathTool.rate(0.5))
+		launcher.bulletHit(self, MathTool.rate(0.5))

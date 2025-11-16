@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgka15811lrrj"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_fhedw"]
+[ext_resource type="Script" uid="uid://1u8t36atj041" path="res://scripts/Contents/Weapons/Bow.gd" id="2_bou5i"]
+[ext_resource type="Texture2D" uid="uid://7us1po711e3o" path="res://resources/weapons/鸡毛弓.png" id="2_ex3jl"]
+
+[node name="Bow" instance=ExtResource("1_fhedw")]
+script = ExtResource("2_bou5i")
+avatarTexture = ExtResource("2_ex3jl")
+displayName = "鸡毛弓"
+quality = 2
+costBeachball = 50
+store = {
+"atk": 3,
+"count": 1,
+"self": 0.5
+}
+storeType = {
+"atk": 2,
+"count": 1,
+"self": 0
+}
+descriptionTemplate = "消耗$self点生命值，发射$count支[b]鸡毛箭[/b]，每支造成当前飞行速度的$atk伤害。"
+needEnergy = 20.0
+cooldown = 500.0
+debugRebuild = true
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_ex3jl")
+
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
+text = "20.0"
+
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 50
+
+[node name="soul" parent="container/info/infos" index="2"]
+count = 1
+
+[node name="name" parent="container/info" index="2"]
+displayName = "鸡毛弓"
+quality = 2
+
+[node name="description" parent="container" index="2"]
+text = "[center]消耗[color=cyan]0.50[/color]点生命值，发射[color=cyan]1[/color]支[b]鸡毛箭[/b]，每支造成当前飞行速度的[color=cyan]300%[/color]伤害。[/center]"

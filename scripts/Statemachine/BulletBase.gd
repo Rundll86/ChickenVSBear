@@ -88,7 +88,7 @@ func hit(target: Node):
 	var entity: EntityBase = EntityTool.fromHurtbox(target)
 	if !entity || !launcher: return
 	if !BulletTool.canDamage(self, entity): return
-	var resultDamage = entity.takeDamage(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE) + GameRule.critRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]))
+	var resultDamage = entity.bulletHit(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE) + GameRule.critRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]))
 	succeedToHit(resultDamage, entity)
 	if MathTool.rate(fullPenerate()):
 		penerate -= entity.fields[FieldStore.Entity.PENARATION_RESISTANCE]

@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2ga3ktbxdfc5"]
+[gd_scene load_steps=4 format=3 uid="uid://c2ga3ktbxdfc5"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_t0pyo"]
 [ext_resource type="Texture2D" uid="uid://7us1po711e3o" path="res://resources/weapons/鸡毛弓.png" id="2_two1a"]
+[ext_resource type="Script" uid="uid://dnnxxqpbpwohf" path="res://scripts/Contents/Bullets/Bow.gd" id="2_wtwgr"]
 
 [node name="Bow" instance=ExtResource("1_t0pyo")]
+script = ExtResource("2_wtwgr")
+metadata/_edit_vertical_guides_ = [88.0]
 
 [node name="static" type="Sprite2D" parent="texture" index="1"]
+position = Vector2(150, 0)
 scale = Vector2(0.055427626, 0.055427626)
 texture = ExtResource("2_two1a")
 

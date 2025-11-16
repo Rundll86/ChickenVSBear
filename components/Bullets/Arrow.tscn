@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://wy8wqwhwr4fb"]
+[gd_scene load_steps=5 format=3 uid="uid://wy8wqwhwr4fb"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_0wuio"]
 [ext_resource type="Texture2D" uid="uid://dadbn306owsy3" path="res://resources/bullets/arrow/arrow.png" id="2_b2ohg"]
+[ext_resource type="Script" uid="uid://u5x40y0cvqq2" path="res://scripts/Contents/Bullets/Arrow.gd" id="2_qddg0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b2ohg"]
 
 [node name="Arrow" instance=ExtResource("1_0wuio")]
+script = ExtResource("2_qddg0")
 displayName = "鸡毛箭"
+speed = 20.0
+damage = 50.0
 penerate = 1.0
+lifeDistance = 1200.0
 
 [node name="static" type="Sprite2D" parent="texture" index="1"]
 scale = Vector2(0.06775362, 0.06775362)
