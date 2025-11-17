@@ -12,7 +12,7 @@ quality = 2
 costBeachball = 50
 store = {
 "atk": 3,
-"count": 2,
+"count": 1,
 "self": 0.5
 }
 storeType = {
@@ -42,4 +42,4 @@ displayName = "鸡毛弓"
 quality = 2
 
 [node name="description" parent="container" index="2"]
-text = "[center]消耗[color=cyan]0.50[/color]点生命值，发射[color=cyan]2[/color]支[b]鸡毛箭[/b]，每支造成当前飞行速度的[color=cyan]300%[/color]伤害。[/center]"
+text = "[center]消耗[color=cyan]0.50[/color]点生命值，发射[color=cyan]1[/color]支[b]鸡毛箭[/b]，每支造成当前飞行速度的[color=cyan]300%[/color]伤害。[/center]"
