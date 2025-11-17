@@ -13,15 +13,15 @@ costBeachball = 50
 store = {
 "atk": 3,
 "count": 1,
-"self": 0.5
+"self": 1.0
 }
 storeType = {
 "atk": 2,
 "count": 1,
-"self": 0
+"self": 1
 }
 descriptionTemplate = "消耗$self点生命值，发射$count支[b]鸡毛箭[/b]，每支造成当前飞行速度的$atk伤害。"
-needEnergy = 20.0
+needEnergy = 40.0
 cooldown = 500.0
 debugRebuild = true
 
@@ -29,7 +29,7 @@ debugRebuild = true
 texture = ExtResource("2_ex3jl")
 
 [node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "20.0"
+text = "40.0"
 
 [node name="beachball" parent="container/info/infos" index="1"]
 count = 50
@@ -42,4 +42,4 @@ displayName = "鸡毛弓"
 quality = 2
 
 [node name="description" parent="container" index="2"]
-text = "[center]消耗[color=cyan]0.50[/color]点生命值，发射[color=cyan]1[/color]支[b]鸡毛箭[/b]，每支造成当前飞行速度的[color=cyan]300%[/color]伤害。[/center]"
+text = "[center]消耗[color=cyan]1[/color]点生命值，发射[color=cyan]1[/color]支[b]鸡毛箭[/b]，每支造成当前飞行速度的[color=cyan]300%[/color]伤害。[/center]"

@@ -4,7 +4,7 @@ extends Weapon
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["atk"] += 0.05 * to * soulLevel
 	origin["count"] = 1 * soulLevel
-	origin["self"] += 0.1 * to
+	origin["self"] += 0.05 * to
 	return origin
 func attack(entity: EntityBase):
 	entity.takeDamage(readStore("self"))
