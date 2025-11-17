@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvbb7js8qbqpn"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_4sj0n"]
+[ext_resource type="Texture2D" uid="uid://dy4op6n6vxef3" path="res://resources/bullets/laser-circle/circle.svg" id="2_wqt4c"]
+[ext_resource type="Texture2D" uid="uid://7us1po711e3o" path="res://resources/weapons/鸡毛弓.png" id="2_xshuk"]
+[ext_resource type="PackedScene" uid="uid://dgka15811lrrj" path="res://components/Weapons/Bow.tscn" id="3_s6lci"]
+
+[node name="Bow" instance=ExtResource("1_4sj0n")]
+avatarTexture = ExtResource("2_xshuk")
+displayName = "鸡毛弓"
+quality = 2
+topic = 8
+fields = Array[int]([7])
+fieldValues = Array[float]([-2.0])
+weapons = Array[PackedScene]([ExtResource("3_s6lci")])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([500, 1000])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_wqt4c")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "湮灭激光"
+quality = 2
+topic = 8
