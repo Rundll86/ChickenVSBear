@@ -3,9 +3,9 @@ class_name Bow
 
 var count: int = 0
 var atk: float = 0
+var waitTime: float = 1000
 
 func spawn():
-	await TickTool.millseconds(1000)
 	var startAngle = rotation - deg_to_rad(count * 10.0 / 2)
 	for c in count:
 		for i in BulletBase.generate(
@@ -16,6 +16,8 @@ func spawn():
 		):
 			var bullet: Arrow = i
 			bullet.atk = atk
+			bullet.waitTime = waitTime
+	await TickTool.millseconds(waitTime)
 	tryDestroy()
 func ai():
 	PresetBulletAI.lockLauncher(self, launcher, true)
