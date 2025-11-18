@@ -3,7 +3,7 @@ class_name Bow
 
 var count: int = 0
 var atk: float = 0
-var waitTime: float = 1000
+var waitTime: float = 2000
 
 func spawn():
 	var startAngle = rotation - deg_to_rad(count * 10.0 / 2)

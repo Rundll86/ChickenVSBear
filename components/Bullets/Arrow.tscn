@@ -39,14 +39,15 @@ emission_shape = 1
 emission_sphere_radius = 150.0
 direction = Vector3(-1, 0, 0)
 spread = 20.0
-initial_velocity_max = 2500.0
+initial_velocity_max = 1500.0
 gravity = Vector3(0, 0, 0)
 scale_min = 20.0
 scale_max = 60.0
 color_initial_ramp = SubResource("GradientTexture1D_afwvr")
 alpha_curve = SubResource("CurveTexture_uu3a4")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b2ohg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qddg0"]
+size = Vector2(174, 20)
 
 [node name="Arrow" instance=ExtResource("1_0wuio")]
 script = ExtResource("2_qddg0")
@@ -71,11 +72,11 @@ process_material = SubResource("ParticleProcessMaterial_afwvr")
 
 [node name="fire" type="GPUParticles2D" parent="texture/static" index="1"]
 position = Vector2(1328.3423, 44.278076)
-amount = 300
+amount = 200
 preprocess = 1.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_qddg0")
 
 [node name="hitbox" parent="." index="1"]
-position = Vector2(85, 0)
-shape = SubResource("CircleShape2D_b2ohg")
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_qddg0")
