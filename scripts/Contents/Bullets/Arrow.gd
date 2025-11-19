@@ -13,7 +13,6 @@ func ai():
 	if timeLived() < waitTime:
 		PresetBulletAI.lockLauncher(self, launcher, true)
 		rotation = position.angle_to_point(get_global_mouse_position())
-		position += Vector2.from_angle(rotation) * 200
 		return
 	else:
 		trail.emitting = true
