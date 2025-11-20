@@ -4,6 +4,31 @@
 [ext_resource type="Texture2D" uid="uid://dadbn306owsy3" path="res://resources/bullets/arrow/arrow.png" id="2_b2ohg"]
 [ext_resource type="Script" uid="uid://u5x40y0cvqq2" path="res://scripts/Contents/Bullets/Arrow.gd" id="2_qddg0"]
 
+[sub_resource type="Animation" id="Animation_qddg0"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("static:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%hitbox:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_oinqg"]
 resource_name = "destroy"
 length = 0.5
@@ -49,31 +74,6 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 2),
 "points": PackedFloat32Array(8, -0.25, 0, 0.25, 0, 208, -0.16666667, -33.333336, 0, 0),
 "times": PackedFloat32Array(0, 1)
-}
-
-[sub_resource type="Animation" id="Animation_qddg0"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("static:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%hitbox:position:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(8, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qddg0"]
@@ -166,3 +166,5 @@ process_material = SubResource("ParticleProcessMaterial_qddg0")
 [node name="hitbox" parent="." index="1"]
 position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_qddg0")
+
+[node name="hit" type="AudioStreamPlayer2D" parent="." index="2"]

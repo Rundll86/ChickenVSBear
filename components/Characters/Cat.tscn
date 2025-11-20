@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfkg40awgniv"]
+[gd_scene load_steps=11 format=3 uid="uid://bfkg40awgniv"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_hw4g4"]
 [ext_resource type="Texture2D" uid="uid://cs6se8dighfgj" path="res://resources/characters/cat/cat.png" id="2_q30ge"]
@@ -17,6 +17,14 @@ animations = [{
 "frames": [],
 "loop": true,
 "name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hmu5t"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -50,6 +58,7 @@ texture = ExtResource("2_q30ge")
 
 [node name="staticAnimation" parent="texture" index="1"]
 scale = Vector2(1, 1.289)
+sprite_frames = SubResource("SpriteFrames_hmu5t")
 animation = &"idle"
 
 [node name="hitbox" parent="texture/hurtbox" index="0"]

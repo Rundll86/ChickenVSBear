@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://crtdkysmnkith"]
 
-[ext_resource type="Script" path="res://scripts/Statemachine/BulletBase.gd" id="1_pklpq"]
+[ext_resource type="Script" uid="uid://dp7c02tob106n" path="res://scripts/Statemachine/BulletBase.gd" id="1_pklpq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vypy3"]
 
@@ -31,9 +31,9 @@ resource_name = "spawn"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dxweq"]
 _data = {
-"destroy": SubResource("Animation_oinqg"),
-"loop": SubResource("Animation_ynxlt"),
-"spawn": SubResource("Animation_kmogx")
+&"destroy": SubResource("Animation_oinqg"),
+&"loop": SubResource("Animation_ynxlt"),
+&"spawn": SubResource("Animation_kmogx")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ecl7m"]
@@ -48,7 +48,7 @@ sprite_frames = SubResource("SpriteFrames_vypy3")
 [node name="animator" type="AnimationPlayer" parent="texture"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_dxweq")
+&"": SubResource("AnimationLibrary_dxweq")
 }
 
 [node name="hitbox" type="CollisionShape2D" parent="."]

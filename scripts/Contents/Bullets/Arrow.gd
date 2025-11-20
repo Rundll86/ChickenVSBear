@@ -22,3 +22,6 @@ func ai():
 	PresetBulletAI.forward(self, rotation)
 	if speed < 1:
 		tryDestroy()
+func succeedToHit(_dmg: float, _entity: EntityBase):
+	var effect = EffectController.create(ComponentManager.getEffect("ShootBlood"), position)
+	effect.shot()
