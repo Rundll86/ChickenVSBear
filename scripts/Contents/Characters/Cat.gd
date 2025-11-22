@@ -13,7 +13,7 @@ func attack(type: int):
 	if type == 0:
 		for bullet in BulletBase.generate(ComponentManager.getBullet("ChickSprint"), self, position, 0):
 			if bullet is ChickSprint:
-				bullet.atk = 0.2
+				bullet.atk = 0.01
 		trySprint()
 	return true
 func sprint():
