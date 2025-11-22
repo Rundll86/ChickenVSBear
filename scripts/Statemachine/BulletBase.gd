@@ -32,11 +32,11 @@ var destroying: bool = false
 var isChildSplit: bool = false
 var isChildRefract: bool = false
 var initialSpeed: float = 0
-var originalDamage: float = 0
+var initialDamage: float = 0
 
 func _ready():
 	initialSpeed = speed
-	originalDamage = baseDamage
+	initialDamage = baseDamage
 	if launcher.isSummon():
 		launcherSummoned = launcher
 		launcher = launcher.myMaster
@@ -87,7 +87,7 @@ func _physics_process(_delta: float) -> void:
 		tryDestroy()
 
 func getDamage():
-	return originalDamage * damageMultipliers[usingDamageMultiplier]
+	return initialDamage * damageMultipliers[usingDamageMultiplier]
 func hit(target: Node):
 	var entity: EntityBase = EntityTool.fromHurtbox(target)
 	if !entity || !launcher: return
