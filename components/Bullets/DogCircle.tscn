@@ -103,7 +103,7 @@ height = 138.0
 [node name="DogCircle" instance=ExtResource("1_yfqj6")]
 script = ExtResource("2_qyd4u")
 displayName = "吼叫声波"
-damage = 2.0
+baseDamage = 2.0
 autoSpawnAnimation = true
 freeAfterSpawn = true
 

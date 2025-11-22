@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://8ayxqglkc2nm"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_h0611"]
-[ext_resource type="Script" path="res://scripts/Contents/Bullets/BossAttack/Bear/SunDance.gd" id="2_0kdtj"]
+[ext_resource type="Script" uid="uid://s4x12fc67qyf" path="res://scripts/Contents/Bullets/BossAttack/Bear/SunDance.gd" id="2_0kdtj"]
 [ext_resource type="Texture2D" uid="uid://0w8sebsqjb7a" path="res://resources/bullets/light-express/Sun_Dance.webp" id="2_rqhmg"]
 
 [sub_resource type="Gradient" id="Gradient_ep4dl"]
@@ -109,10 +109,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fv2s4"]
 _data = {
-"RESET": SubResource("Animation_n0ppl"),
-"destroy": SubResource("Animation_oinqg"),
-"loop": SubResource("Animation_ynxlt"),
-"spawn": SubResource("Animation_kmogx")
+&"RESET": SubResource("Animation_n0ppl"),
+&"destroy": SubResource("Animation_oinqg"),
+&"loop": SubResource("Animation_ynxlt"),
+&"spawn": SubResource("Animation_kmogx")
 }
 
 [node name="SunDance" instance=ExtResource("1_h0611")]
@@ -121,12 +121,14 @@ scale = Vector2(1e-05, 1e-05)
 script = ExtResource("2_0kdtj")
 allColor = SubResource("GradientTexture1D_ikq3n")
 displayName = "太阳舞"
+baseDamage = 1.0
+penerate = 1.0
 autoSpawnAnimation = true
 freeAfterSpawn = true
 
 [node name="animator" parent="texture" index="0"]
 libraries = {
-"": SubResource("AnimationLibrary_fv2s4")
+&"": SubResource("AnimationLibrary_fv2s4")
 }
 
 [node name="leave1" type="Sprite2D" parent="texture" index="1"]

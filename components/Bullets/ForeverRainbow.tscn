@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_sltl7"]
 [ext_resource type="Texture2D" uid="uid://bkiaaucejquik" path="res://resources/bullets/light-express/Everlasting_Rainbow.png" id="2_3w4yo"]
-[ext_resource type="Script" path="res://scripts/Contents/Bullets/BossAttack/Bear/ForeverRainbow.gd" id="2_wwmq8"]
-[ext_resource type="Shader" path="res://shaders/Light.gdshader" id="4_tms7p"]
-[ext_resource type="Script" path="res://scripts/Statemachine/ShaderStage.gd" id="5_ulipy"]
+[ext_resource type="Script" uid="uid://crbn487ovawao" path="res://scripts/Contents/Bullets/BossAttack/Bear/ForeverRainbow.gd" id="2_wwmq8"]
+[ext_resource type="Shader" uid="uid://le5wwd7wfwnj" path="res://shaders/Light.gdshader" id="4_tms7p"]
+[ext_resource type="Script" uid="uid://cgb01lelfg73p" path="res://scripts/Statemachine/ShaderStage.gd" id="5_ulipy"]
 
 [sub_resource type="Gradient" id="Gradient_wd04q"]
 offsets = PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8, 1)
@@ -78,13 +78,13 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_edsep"]
 _data = {
-"RESET": SubResource("Animation_vt8tg"),
-"destroy": SubResource("Animation_oinqg"),
-"loop": SubResource("Animation_ynxlt"),
-"spawn": SubResource("Animation_kmogx")
+&"RESET": SubResource("Animation_vt8tg"),
+&"destroy": SubResource("Animation_oinqg"),
+&"loop": SubResource("Animation_ynxlt"),
+&"spawn": SubResource("Animation_kmogx")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rigqa"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nukpm"]
 shader = ExtResource("4_tms7p")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/mixProgress = 1.0
@@ -97,6 +97,7 @@ height = 224.0
 script = ExtResource("2_wwmq8")
 allColor = SubResource("GradientTexture1D_gcnu1")
 displayName = "永恒彩虹"
+speed = 2.0
 lifeTime = 11000.0
 indisDamage = true
 autoSpawnAnimation = true
@@ -108,11 +109,11 @@ sprite_frames = SubResource("SpriteFrames_vtg2m")
 
 [node name="animator" parent="texture" index="0"]
 libraries = {
-"": SubResource("AnimationLibrary_edsep")
+&"": SubResource("AnimationLibrary_edsep")
 }
 
 [node name="light" type="Node2D" parent="texture" index="1"]
-material = SubResource("ShaderMaterial_rigqa")
+material = SubResource("ShaderMaterial_nukpm")
 position = Vector2(75, 0)
 script = ExtResource("5_ulipy")
 size = Vector2(50, 50)

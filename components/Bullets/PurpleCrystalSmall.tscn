@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c6wjncfsm2rxw"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_7tnrb"]
-[ext_resource type="Script" path="res://scripts/Contents/Bullets/PurpleCrystal.gd" id="2_it0pa"]
+[ext_resource type="Script" uid="uid://t1q1eq8fk0ro" path="res://scripts/Contents/Bullets/PurpleCrystal.gd" id="2_it0pa"]
 [ext_resource type="Texture2D" uid="uid://c7hyatbuieaj" path="res://resources/bullets/purple-crystal/frames/0.svg" id="3_3f3gq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r86b3"]
@@ -23,7 +23,7 @@ modulate = Color(1.5, 1.5, 1.5, 1)
 script = ExtResource("2_it0pa")
 displayName = "微型水晶"
 speed = 15.0
-damage = 0.5
+baseDamage = 1.0
 lifeTime = 1000.0
 
 [node name="texture" parent="." index="0"]

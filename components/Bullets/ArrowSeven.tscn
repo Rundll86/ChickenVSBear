@@ -1,11 +1,11 @@
 [gd_scene load_steps=24 format=3 uid="uid://bjskq2m1rrlks"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_dvf35"]
-[ext_resource type="Script" path="res://scripts/Contents/Bullets/BossAttack/Bear/ArrowSeven.gd" id="2_uqsop"]
-[ext_resource type="Shader" path="res://shaders/Light.gdshader" id="3_j0g0m"]
+[ext_resource type="Script" uid="uid://dqeyybijpnr7d" path="res://scripts/Contents/Bullets/BossAttack/Bear/ArrowSeven.gd" id="2_uqsop"]
+[ext_resource type="Shader" uid="uid://le5wwd7wfwnj" path="res://shaders/Light.gdshader" id="3_j0g0m"]
 [ext_resource type="Texture2D" uid="uid://chq2rnqi00nbj" path="res://resources/bullets/light-express/Prismatic_Bolt.webp" id="3_tmrnu"]
-[ext_resource type="Shader" path="res://shaders/SuperLight.gdshader" id="5_lyybq"]
-[ext_resource type="Script" path="res://scripts/Statemachine/ShaderStage.gd" id="5_ppdpf"]
+[ext_resource type="Shader" uid="uid://cduo4glknpowr" path="res://shaders/SuperLight.gdshader" id="5_lyybq"]
+[ext_resource type="Script" uid="uid://cgb01lelfg73p" path="res://scripts/Statemachine/ShaderStage.gd" id="5_ppdpf"]
 
 [sub_resource type="Gradient" id="Gradient_wd04q"]
 offsets = PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8, 1)
@@ -73,19 +73,19 @@ resource_name = "spawn"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f7cx6"]
 _data = {
-"RESET": SubResource("Animation_usqjd"),
-"destroy": SubResource("Animation_oinqg"),
-"loop": SubResource("Animation_ynxlt"),
-"spawn": SubResource("Animation_kmogx")
+&"RESET": SubResource("Animation_usqjd"),
+&"destroy": SubResource("Animation_oinqg"),
+&"loop": SubResource("Animation_ynxlt"),
+&"spawn": SubResource("Animation_kmogx")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k643k"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_68scy"]
 shader = ExtResource("5_lyybq")
 shader_parameter/k = -0.223
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/scale = 10.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bv2k"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1wdb2"]
 shader = ExtResource("3_j0g0m")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/mixProgress = 0.5
@@ -125,6 +125,7 @@ z_index = 1
 script = ExtResource("2_uqsop")
 allColor = SubResource("GradientTexture1D_e0qv5")
 displayName = "七彩矢"
+baseDamage = 1.0
 autoLoopAnimation = true
 
 [node name="texture" parent="." index="0"]
@@ -134,19 +135,19 @@ sprite_frames = SubResource("SpriteFrames_q4xus")
 
 [node name="animator" parent="texture" index="0"]
 libraries = {
-"": SubResource("AnimationLibrary_f7cx6")
+&"": SubResource("AnimationLibrary_f7cx6")
 }
 
 [node name="superlight" type="Node2D" parent="texture" index="1"]
 unique_name_in_owner = true
 z_index = -1
-material = SubResource("ShaderMaterial_k643k")
+material = SubResource("ShaderMaterial_68scy")
 script = ExtResource("5_ppdpf")
 size = Vector2(100, 200)
 
 [node name="frontlight" type="Node2D" parent="texture" index="2"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_0bv2k")
+material = SubResource("ShaderMaterial_1wdb2")
 scale = Vector2(0.968786, 0.968786)
 script = ExtResource("5_ppdpf")
 size = Vector2(40, 40)
