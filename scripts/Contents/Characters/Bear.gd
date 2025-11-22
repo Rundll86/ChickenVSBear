@@ -18,7 +18,8 @@ func register():
 	attackCooldownMap[7] = 9000
 	healthChanged.connect(
 		func(newHealth):
-			setStage(1 if newHealth < fields[FieldStore.Entity.MAX_HEALTH] * 0.5 else 0)
+			if currentStage != 2:
+				setStage(1 if newHealth < fields[FieldStore.Entity.MAX_HEALTH] * 0.5 else 0)
 	)
 func spawn():
 	texture.play("walk")
@@ -26,7 +27,7 @@ func spawn():
 	if MathTool.rate(0.01):
 		setStage(2)
 func ai():
-	PresetEntityAI.follow(self, currentFocusedBoss, 400)
+	PresetEntityAI.follow(self, currentFocusedBoss, 250)
 	for i in len(attackCooldownMap.keys()):
 		tryAttack(i)
 func enterStage(stage):
@@ -36,9 +37,9 @@ func enterStage(stage):
 		fields[FieldStore.Entity.DAMAGE_MULTIPILER] = 1
 		fields[FieldStore.Entity.ATTACK_SPEED] = 1
 	elif stage == 1:
-		fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.6
-		fields[FieldStore.Entity.DAMAGE_MULTIPILER] = 1.15
-		fields[FieldStore.Entity.ATTACK_SPEED] = 1.15
+		fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.55
+		fields[FieldStore.Entity.DAMAGE_MULTIPILER] = 2.5
+		fields[FieldStore.Entity.ATTACK_SPEED] = 0.6
 	elif stage == 2:
 		fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.25
 		fields[FieldStore.Entity.DAMAGE_MULTIPILER] = 9999
