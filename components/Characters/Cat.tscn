@@ -37,6 +37,7 @@ radius = 19.026299
 [node name="Cat" instance=ExtResource("1_hw4g4")]
 script = ExtResource("2_uo67a")
 displayName = "猫"
+hurtAudioRate = 0.1
 
 [node name="hurt" parent="sounds" index="3"]
 stream = ExtResource("3_2o6vq")

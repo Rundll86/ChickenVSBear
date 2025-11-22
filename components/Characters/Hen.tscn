@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_twxai"]
 [ext_resource type="Script" uid="uid://dsfht8qodraln" path="res://scripts/Contents/Characters/Hen.gd" id="2_8u5a0"]
 [ext_resource type="AudioStream" uid="uid://cougu5tprpf8d" path="res://resources/sounds/effect/Growl.wav" id="3_1stll"]
-[ext_resource type="Texture2D" uid="uid://ylvq4hek5qem" path="res://resources/characters/hen/hsl.png" id="4_1stll"]
+[ext_resource type="Texture2D" uid="uid://o0t3oma5l6tu" path="res://resources/characters/hen/hen.png" id="4_1stll"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xwexj"]
 animations = [{
@@ -19,7 +19,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1stll"]
-size = Vector2(114.5, 43)
+size = Vector2(85.25, 46.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwj47"]
 radius = 19.026299
@@ -29,6 +29,7 @@ script = ExtResource("2_8u5a0")
 displayName = "母鸡"
 drops = Array[int]([0, 1])
 dropCounts = Array[Vector2]([Vector2(6, 12), Vector2(4, 8)])
+hurtAudioRate = 0.1
 
 [node name="hurt" parent="sounds" index="3"]
 stream = ExtResource("3_1stll")
@@ -38,19 +39,19 @@ volume_db = 10.0
 sprite_frames = SubResource("SpriteFrames_xwexj")
 
 [node name="staticBackground" parent="texture" index="0"]
-scale = Vector2(-0.452, 0.452)
+scale = Vector2(0.29643428, 0.29643428)
 texture = ExtResource("4_1stll")
 
 [node name="hitbox" parent="texture/hurtbox" index="0"]
-position = Vector2(7, 4)
+position = Vector2(-7.625, 2.25)
 shape = SubResource("RectangleShape2D_1stll")
 
 [node name="hitbox2" type="CollisionShape2D" parent="texture/hurtbox" index="1"]
-position = Vector2(72, -28)
+position = Vector2(37, -28)
 shape = SubResource("CircleShape2D_rwj47")
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 
 [node name="statebar" parent="." index="4" node_paths=PackedStringArray("entity")]
-position = Vector2(0, -114)
+position = Vector2(0, -107)
 entity = NodePath("..")

@@ -1,27 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5q7djx12phem"]
+[gd_scene load_steps=6 format=3 uid="uid://c5q7djx12phem"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_3ohuq"]
-[ext_resource type="Texture2D" uid="uid://lorraj4pe2lt" path="res://resources/characters/kukechild/KukeChild.png" id="2_7vbs6"]
-[ext_resource type="Script" path="res://scripts/Contents/Characters/KukeChild.gd" id="2_ywxbd"]
+[ext_resource type="Script" uid="uid://cnkiruxkx0qgu" path="res://scripts/Contents/Characters/KukeChild.gd" id="2_ywxbd"]
+[ext_resource type="Texture2D" uid="uid://ds3k7aigfrghw" path="res://resources/characters/kukechild/huan.png" id="3_eg8un"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_5rcbd"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_lfsw4"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_7vbs6")
-}],
+"frames": [],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_7vbs6")
-}],
+"frames": [],
 "loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r35n4"]
+radius = 84.05355
 
 [node name="KukeChild" instance=ExtResource("1_3ohuq")]
 script = ExtResource("2_ywxbd")
@@ -30,11 +27,17 @@ displayName = "酷可小弟"
 [node name="collect" parent="sounds" index="4"]
 stream = null
 
-[node name="texture" parent="." index="2"]
-sprite_frames = SubResource("SpriteFrames_5rcbd")
-animation = &"walk"
+[node name="texture" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_lfsw4")
+
+[node name="staticBackground" parent="texture" index="0"]
+scale = Vector2(0.2531443, 0.2531443)
+texture = ExtResource("3_eg8un")
+
+[node name="hitbox" parent="texture/hurtbox" index="0"]
+shape = SubResource("CircleShape2D_r35n4")
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 
-[node name="statebar" parent="." index="3"]
-position = Vector2(0, -125)
+[node name="statebar" parent="." index="4"]
+position = Vector2(0, -106)

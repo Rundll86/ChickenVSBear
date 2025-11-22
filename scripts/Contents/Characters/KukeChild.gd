@@ -4,7 +4,7 @@ class_name KukeChild
 var masterMine: KukeMC
 
 func register():
-	fields[FieldStore.Entity.MAX_HEALTH] = 25
+	fields[FieldStore.Entity.MAX_HEALTH] = 20
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.35
 	attackCooldownMap[0] = 100
 	attackCooldownMap[1] = 8000
