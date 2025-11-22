@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://8uepi7uql314"]
+[gd_scene load_steps=14 format=3 uid="uid://8uepi7uql314"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_gd3m7"]
 [ext_resource type="Script" uid="uid://ci5hswfhck5as" path="res://scripts/Contents/Bullets/Volcano.gd" id="2_w1utg"]
@@ -189,7 +189,7 @@ tracks/5/loop_wrap = true
 tracks/5/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1e-05, -0.033333343, 0.16666502, 0, 0),
-"times": PackedFloat32Array(1.8, 2)
+"times": PackedFloat32Array(1.75, 2)
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false
@@ -200,7 +200,7 @@ tracks/6/loop_wrap = true
 tracks/6/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1e-05, -0.033333343, 0.16666502, 0, 0),
-"times": PackedFloat32Array(1.8, 2)
+"times": PackedFloat32Array(1.75, 2)
 }
 tracks/7/type = "bezier"
 tracks/7/imported = false
@@ -211,47 +211,27 @@ tracks/7/loop_wrap = true
 tracks/7/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.033333343, 0.16666669, 0, 0),
-"times": PackedFloat32Array(1.8, 2)
+"times": PackedFloat32Array(1.75, 2)
 }
-tracks/8/type = "method"
+tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("%texture/..")
+tracks/8/path = NodePath("%texture/..:usingDamageMultiplier")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(1.2, 1.22, 1.24),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"generateShadow"
-}, {
-"args": [],
-"method": &"generateShadow"
-}, {
-"args": [],
-"method": &"generateShadow"
-}]
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
-tracks/9/type = "value"
+tracks/9/type = "audio"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("%texture/..:usingDamageMultiplier")
+tracks/9/path = NodePath("%textureSword/audio")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.6, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-tracks/10/type = "audio"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("%textureSword/audio")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -271,7 +251,7 @@ tracks/10/keys = {
 }],
 "times": PackedFloat32Array(0, 0.6, 1.2, 1.45)
 }
-tracks/10/use_blend = true
+tracks/9/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w1utg"]
 _data = {
@@ -279,49 +259,6 @@ _data = {
 &"destroy": SubResource("Animation_oinqg"),
 &"spawn": SubResource("Animation_o5h0y")
 }
-
-[sub_resource type="Curve" id="Curve_w1utg"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_o5h0y"]
-curve = SubResource("Curve_w1utg")
-
-[sub_resource type="Curve" id="Curve_21ih7"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_6sp0s"]
-curve = SubResource("Curve_21ih7")
-
-[sub_resource type="Gradient" id="Gradient_1sgli"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 0.79906744, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_b5nxd"]
-gradient = SubResource("Gradient_1sgli")
-
-[sub_resource type="Curve" id="Curve_o5h0y"]
-_data = [Vector2(0.85, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_21ih7"]
-curve = SubResource("Curve_o5h0y")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xrrxo"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(10, 1, 1)
-angle_min = 1.0728835e-05
-angle_max = 360.00003
-angle_curve = SubResource("CurveTexture_6sp0s")
-spread = 180.0
-initial_velocity_max = 20.0
-gravity = Vector3(0, 0, 0)
-scale_min = 2.0
-scale_max = 9.0
-scale_curve = SubResource("CurveTexture_21ih7")
-color_initial_ramp = SubResource("GradientTexture1D_b5nxd")
-alpha_curve = SubResource("CurveTexture_o5h0y")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1utg"]
 size = Vector2(328, 34)
@@ -355,14 +292,7 @@ rotation = 0.7853982
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_wwxm2")
 
-[node name="trail" type="GPUParticles2D" parent="texture/anchor/textureSword" index="0"]
-position = Vector2(27.341467, -27.341467)
-rotation = -0.7853982
-scale = Vector2(0.9999999, 0.9999999)
-amount = 200
-process_material = SubResource("ParticleProcessMaterial_xrrxo")
-
-[node name="audio" type="AudioStreamPlayer2D" parent="texture/anchor/textureSword" index="1"]
+[node name="audio" type="AudioStreamPlayer2D" parent="texture/anchor/textureSword" index="0"]
 
 [node name="hitbox" parent="." index="1"]
 position = Vector2(412, 0)
