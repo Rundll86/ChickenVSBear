@@ -13,10 +13,11 @@ quality = 4
 typeTopic = 2
 costBeachball = 300
 store = {
-"atk": 15.0,
+"atk": 10.0,
 "dmg1": 1.0,
 "dmg2": 0.75,
-"dmg3": 3.0,
+"dmg3": 1.5,
+"dmg4": 1.25,
 "rotate": 0.05
 }
 storeType = {
@@ -24,9 +25,10 @@ storeType = {
 "dmg1": 2,
 "dmg2": 2,
 "dmg3": 2,
+"dmg4": 2,
 "rotate": 2
 }
-descriptionTemplate = "召唤1支[b]火山[/b]，以$rotate的效率跟随鼠标指向，进行3段攻击。基础接触伤害为$atk，三段造成的伤害分别为$dmg1，$dmg2，$dmg3。"
+descriptionTemplate = "召唤1支[b]火山[/b]，以$rotate的效率跟随鼠标指向，进行基础伤害为$atk的4段挥舞攻击。造成的伤害分别为$dmg1，$dmg2，$dmg3，$dmg4。"
 cooldown = 1750.0
 debugRebuild = true
 
@@ -45,4 +47,4 @@ quality = 4
 typeTopic = 2
 
 [node name="description" parent="container" index="2"]
-text = "[center]召唤1支[b]火山[/b]，以[color=cyan]5%[/color]的效率跟随鼠标指向，进行3段攻击。基础接触伤害为[color=cyan]15[/color]，三段造成的伤害分别为[color=cyan]100%[/color]，[color=cyan]75%[/color]，[color=cyan]300%[/color]。[/center]"
+text = "[center]召唤1支[b]火山[/b]，以[color=cyan]5%[/color]的效率跟随鼠标指向，进行基础伤害为[color=cyan]10[/color]的4段挥舞攻击。造成的伤害分别为[color=cyan]100%[/color]，[color=cyan]75%[/color]，[color=cyan]150%[/color]，[color=cyan]125%[/color]。[/center]"

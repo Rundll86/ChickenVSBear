@@ -120,7 +120,7 @@ step = 0.1
 
 [sub_resource type="Animation" id="Animation_o5h0y"]
 resource_name = "stab"
-length = 1.7
+length = 2.0
 step = 0.05
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -129,9 +129,9 @@ tracks/0/path = NodePath("anchor/textureSword:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(150, -0.25, 0, 0.25, 0, 300, -0.083333336, -8.333334, 0, 0),
-"times": PackedFloat32Array(0, 0.25)
+"handle_modes": PackedInt32Array(0, 0, 2),
+"points": PackedFloat32Array(150, -0.25, 0, 0.25, 0, 500, -0.083333336, -8.333334, 0, 0, 300, -0.01666667, 83.333336, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3)
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -152,9 +152,9 @@ tracks/2/path = NodePath("anchor:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 2, 2, 2),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.7853982, -0.06585455, -0.14365458, 0.2, 0, -0.7853982, -0.06666666, 0.2617994, 0, 0, -0.7853982, -0.033333343, 0, 0, 0, 5.497787, -0.049999993, -1.0471975, 0, 0),
-"times": PackedFloat32Array(0, 0.3, 0.6, 1, 1.2, 1.5)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 2, 1, 1),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.7853982, -0.06585455, -0.14365458, 0.2, 0, -0.7853982, -0.06666666, 0.2617994, 0, 0, -0.7853982, -0.033333343, 0, 0, 0, 5.497787, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.888264, 1.2, 1.45, 1.7079643)
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -175,10 +175,10 @@ tracks/4/path = NodePath("%texture/../hitbox3:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.2, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1.2, 1.4, 1.45, 1.7106247),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, false, true]
+"values": [true, false, true, false, true]
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -187,9 +187,9 @@ tracks/5/path = NodePath("anchor:scale:x")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 2),
+"handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1e-05, -0.033333343, 0.16666502, 0, 0),
-"times": PackedFloat32Array(1.5, 1.7)
+"times": PackedFloat32Array(1.8, 2)
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false
@@ -198,9 +198,9 @@ tracks/6/path = NodePath("anchor:scale:y")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"handle_modes": PackedInt32Array(0, 2),
+"handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1e-05, -0.033333343, 0.16666502, 0, 0),
-"times": PackedFloat32Array(1.5, 1.7)
+"times": PackedFloat32Array(1.8, 2)
 }
 tracks/7/type = "bezier"
 tracks/7/imported = false
@@ -209,9 +209,9 @@ tracks/7/path = NodePath("anchor:modulate:a")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"handle_modes": PackedInt32Array(0, 2),
+"handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.033333343, 0.16666669, 0, 0),
-"times": PackedFloat32Array(1.5, 1.7)
+"times": PackedFloat32Array(1.8, 2)
 }
 tracks/8/type = "method"
 tracks/8/imported = false
@@ -264,8 +264,12 @@ tracks/10/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("5_b5nxd")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_b5nxd")
 }],
-"times": PackedFloat32Array(0, 0.6, 1.2)
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.45)
 }
 tracks/10/use_blend = true
 
@@ -320,7 +324,7 @@ color_initial_ramp = SubResource("GradientTexture1D_b5nxd")
 alpha_curve = SubResource("CurveTexture_o5h0y")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1utg"]
-size = Vector2(273.5, 34)
+size = Vector2(328, 34)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w1utg"]
 radius = 66.75
@@ -361,7 +365,7 @@ process_material = SubResource("ParticleProcessMaterial_xrrxo")
 [node name="audio" type="AudioStreamPlayer2D" parent="texture/anchor/textureSword" index="1"]
 
 [node name="hitbox" parent="." index="1"]
-position = Vector2(245.25, 0)
+position = Vector2(412, 0)
 shape = SubResource("RectangleShape2D_w1utg")
 
 [node name="hitbox2" type="CollisionShape2D" parent="." index="2"]
