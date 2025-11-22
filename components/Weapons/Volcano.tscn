@@ -15,9 +15,9 @@ costBeachball = 300
 store = {
 "atk": 15.0,
 "dmg1": 1.0,
-"dmg2": 0.5,
-"dmg3": 2.0,
-"rotate": 0.1
+"dmg2": 0.75,
+"dmg3": 3.0,
+"rotate": 0.05
 }
 storeType = {
 "atk": 1,
@@ -45,4 +45,4 @@ quality = 4
 typeTopic = 2
 
 [node name="description" parent="container" index="2"]
-text = "[center]召唤1支[b]火山[/b]，以[color=cyan]10%[/color]的效率跟随鼠标指向，进行3段攻击。基础接触伤害为[color=cyan]15[/color]，三段造成的伤害分别为[color=cyan]100%[/color]，[color=cyan]50%[/color]，[color=cyan]200%[/color]。[/center]"
+text = "[center]召唤1支[b]火山[/b]，以[color=cyan]5%[/color]的效率跟随鼠标指向，进行3段攻击。基础接触伤害为[color=cyan]15[/color]，三段造成的伤害分别为[color=cyan]100%[/color]，[color=cyan]75%[/color]，[color=cyan]300%[/color]。[/center]"

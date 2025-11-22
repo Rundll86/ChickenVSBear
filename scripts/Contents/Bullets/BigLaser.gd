@@ -9,7 +9,7 @@ func register():
 func spawn():
 	CameraManager.shake(5000, 100) # 激光会运行5秒（5000毫秒），期间震屏超高强度
 	CameraManager.playAnimation("bigLaser")
-	damage *= launcher.fields[FieldStore.Entity.ATTACK_SPEED]
+	baseDamage *= launcher.fields[FieldStore.Entity.ATTACK_SPEED]
 func ai():
 	rotation = lerp_angle(rotation, ((get_global_mouse_position() - position).angle()), 0.1)
 	position = launcher.texture.global_position

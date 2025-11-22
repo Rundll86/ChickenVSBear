@@ -25,4 +25,4 @@ func generateShadow():
 		false, false, true, true
 	):
 		if i is VolcanoShadow:
-			i.damage = damage
+			i.baseDamage = baseDamage

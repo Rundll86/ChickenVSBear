@@ -18,7 +18,7 @@ func ai():
 		trail.emitting = true
 		hitbox.disabled = false
 	speed = (1 - lifeDistancePercent()) * initialSpeed
-	damage = speed * atk
+	baseDamage = speed * atk
 	PresetBulletAI.forward(self, rotation)
 	if speed < 1:
 		tryDestroy()

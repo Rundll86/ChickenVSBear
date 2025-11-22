@@ -4,7 +4,7 @@ class_name Diamond
 const traceTime = 1500
 
 func register():
-	damage = 2
+	baseDamage = 2
 func ai():
 	PresetBulletAI.forward(self, rotation)
 	if timeLived() < traceTime:

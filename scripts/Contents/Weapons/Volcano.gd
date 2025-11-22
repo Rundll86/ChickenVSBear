@@ -2,7 +2,11 @@
 extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-	origin["rotate"] += 0.015 * to * soulLevel
+	origin["rotate"] += 0.005 * to * soulLevel
+	origin["dmg1"] += 0.03 * to * soulLevel
+	origin["dmg2"] += 0.03 * to * soulLevel
+	origin["dmg3"] += 0.03 * to * soulLevel
+	origin["atk"] += 1 * to * soulLevel
 	return origin
 func attack(entity: EntityBase):
 	for j in BulletBase.generate(
@@ -12,5 +16,6 @@ func attack(entity: EntityBase):
 		entity.position.angle_to_point(entity.get_global_mouse_position()), false, false, true, true
 	):
 		var bullet: Volcano = j
-		bullet.damage = readStore("atk")
+		bullet.baseDamage = readStore("atk")
 		bullet.rotates = readStore("rotate")
+		bullet.damageMultipliers = [readStore("dmg1"), readStore("dmg2"), readStore("dmg3")]

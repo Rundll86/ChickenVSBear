@@ -11,5 +11,5 @@ func attack(entity: EntityBase):
 	for bullet in BulletBase.generate(ComponentManager.getBullet("BigLaser"), entity, weaponPos, (get_global_mouse_position() - weaponPos).angle()):
 		var bigLaser: BigLaser = bullet
 		bigLaser.dotTime = readStore("time") * 1000
-		bigLaser.damage = readStore("atk")
+		bigLaser.baseDamage = readStore("atk")
 	return true

@@ -3,7 +3,9 @@ class_name BulletBase
 
 @export var displayName: String = "未知子弹"
 @export var speed: float = 10.0
-@export var damage: float = 10.0
+@export var baseDamage: float = 10.0
+@export var damageMultipliers: Array[float] = [1.0]
+@export var usingDamageMultiplier: int = 0
 @export var penerate: float = 0.0
 @export var penerateDamageReduction: float = 0.0
 @export var lifeDistance: float = -1 # -1表示无限距离
@@ -31,12 +33,10 @@ var isChildSplit: bool = false
 var isChildRefract: bool = false
 var initialSpeed: float = 0
 var originalDamage: float = 0
-var damageMultiplier: Array[float] = [1.0]
-var usingDamageMultiplier: int = 0
 
 func _ready():
 	initialSpeed = speed
-	originalDamage = damage
+	originalDamage = baseDamage
 	if launcher.isSummon():
 		launcherSummoned = launcher
 		launcher = launcher.myMaster
@@ -87,7 +87,7 @@ func _physics_process(_delta: float) -> void:
 		tryDestroy()
 
 func getDamage():
-	return originalDamage * damageMultiplier[usingDamageMultiplier]
+	return originalDamage * damageMultipliers[usingDamageMultiplier]
 func hit(target: Node):
 	var entity: EntityBase = EntityTool.fromHurtbox(target)
 	if !entity || !launcher: return
@@ -96,7 +96,7 @@ func hit(target: Node):
 	succeedToHit(resultDamage, entity)
 	if MathTool.rate(fullPenerate()):
 		penerate -= entity.fields[FieldStore.Entity.PENARATION_RESISTANCE]
-		damage *= 1.0 - penerateDamageReduction
+		baseDamage *= 1.0 - penerateDamageReduction
 	else:
 		tryDestroy()
 func forward(direction: Vector2):

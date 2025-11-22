@@ -20,7 +20,7 @@ func register():
 		func(area):
 			var bullet = BulletTool.fromArea(area)
 			if bullet and BulletTool.canDamage(bullet, launcher):
-				launcher.storeEnergy(damage * 2)
+				launcher.storeEnergy(baseDamage * 2)
 	)
 func spawn():
 	modulate = Color(colors[index % colors.size()])

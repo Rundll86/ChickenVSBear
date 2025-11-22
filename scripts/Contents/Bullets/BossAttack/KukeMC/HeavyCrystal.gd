@@ -15,5 +15,5 @@ func ai():
 		track.visible = false
 		hitbox.disabled = false
 		PresetBulletAI.forward(self, rotation)
-		damage = speed / 5
+		baseDamage = speed / 5
 		speed *= 1.15

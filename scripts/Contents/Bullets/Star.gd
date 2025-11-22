@@ -2,6 +2,6 @@ extends BulletBase
 class_name Star
 
 func register():
-	damage = 1
+	baseDamage = 1
 func ai():
 	PresetBulletAI.forward(self, rotation)
