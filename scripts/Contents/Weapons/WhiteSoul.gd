@@ -13,5 +13,6 @@ func attack(entity: EntityBase):
 			myPos,
 			myPos.angle_to_point(get_global_mouse_position() + MathTool.randv2_range(readStore("radius")))
 		):
-			j.damage = readStore("atk")
+			if j is BulletBase:
+				j.baseDamage = readStore("atk")
 	return true

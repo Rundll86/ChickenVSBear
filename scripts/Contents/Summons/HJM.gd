@@ -24,4 +24,5 @@ func attack(type):
 			findWeaponAnchor("normal"),
 			0
 		):
-			bullet.damage = atk
+			if bullet is BulletBase:
+				bullet.baseDamage = atk

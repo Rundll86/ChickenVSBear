@@ -23,8 +23,9 @@ func attack(type):
 				findWeaponAnchor("normal"),
 				startAngle + deg_to_rad(i * angle)
 			):
-				bullet.tracer = tracer
-				bullet.damage = atk
-				bullet.maxTraceTime = maxTraceTime
-				bullet.tracePower = tracePower
+				if bullet is LGBTBullet:
+					bullet.tracer = tracer
+					bullet.baseDamage = atk
+					bullet.maxTraceTime = maxTraceTime
+					bullet.tracePower = tracePower
 			await TickTool.millseconds(50)

@@ -10,8 +10,10 @@ func update(to, origin, _entity):
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")
 	for i in BulletBase.generate(ComponentManager.getBullet("Meowmere"), entity, weaponPos, weaponPos.angle_to_point(get_global_mouse_position())):
-		i.damage = readStore("atk")
+		if i is BulletBase:
+			i.baseDamage = readStore("atk")
 	for i in readStore("count"):
 		for j in BulletBase.generate(ComponentManager.getBullet("RainbowCat"), entity, weaponPos, weaponPos.angle_to_point(get_global_mouse_position())):
-			j.damage = readStore("childatk")
-			j.penerateDamageReduction = readStore("reduce")
+			if j is BulletBase:
+				j.baseDamage = readStore("childatk")
+				j.penerateDamageReduction = readStore("reduce")

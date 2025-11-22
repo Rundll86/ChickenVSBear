@@ -40,12 +40,6 @@ func _ready():
 	cooldownTimer = CooldownTimer.new()
 	cooldownTimer.cooldown = cooldown
 	originalStore = store
-	updateBtn.mouse_entered.connect(func(): rebuildInfo(true))
-	updateBtn.mouse_exited.connect(func(): rebuildInfo())
-	extractBtn.mouse_entered.connect(func(): rebuildInfo(true))
-	extractBtn.mouse_exited.connect(func(): rebuildInfo())
-	inlayBtn.mouse_entered.connect(func(): rebuildInfo(true))
-	inlayBtn.mouse_exited.connect(func(): rebuildInfo())
 	updateBtn.pressed.connect(
 		func():
 			apply(UIState.player)
