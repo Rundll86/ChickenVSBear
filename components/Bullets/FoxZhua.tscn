@@ -150,7 +150,7 @@ tracks/3/path = NodePath("%hitbox:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.4, 1.6, 2),
+"times": PackedFloat32Array(0, 1.45, 1.6, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [true, false, false, true]
@@ -174,7 +174,7 @@ tracks/5/path = NodePath("%texture/..:canTrace")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -189,14 +189,13 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45k2a"]
-radius = 174.0
-height = 524.0
+radius = 91.0
+height = 290.0
 
 [node name="FoxZhua" instance=ExtResource("1_461id")]
 script = ExtResource("2_rl21b")
 canTrace = true
 displayName = "爪"
-damage = 15.0
 penerate = 1.0
 autoSpawnAnimation = true
 freeAfterSpawn = true
@@ -217,7 +216,6 @@ position = Vector2(50, 0)
 texture = ExtResource("2_45k2a")
 
 [node name="hitbox" parent="." index="1"]
-position = Vector2(267, -1)
-rotation = 1.5707964
+position = Vector2(369, -1)
 shape = SubResource("CapsuleShape2D_45k2a")
 disabled = true

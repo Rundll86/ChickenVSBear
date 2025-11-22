@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://8uepi7uql314"]
+[gd_scene load_steps=20 format=3 uid="uid://8uepi7uql314"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_gd3m7"]
 [ext_resource type="Script" uid="uid://ci5hswfhck5as" path="res://scripts/Contents/Bullets/Volcano.gd" id="2_w1utg"]
@@ -9,7 +9,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("anchor/texture:position:x")
+tracks/0/path = NodePath("anchor/textureSword:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -17,28 +17,85 @@ tracks/0/keys = {
 "points": PackedFloat32Array(150, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%hitbox:position:x")
+tracks/1/path = NodePath("%hitbox:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(167.5, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%hitbox:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("anchor:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%texture/../hitbox2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%texture/../hitbox3:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("anchor:scale:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("anchor:scale:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("anchor:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_oinqg"]
@@ -48,53 +105,125 @@ step = 0.1
 
 [sub_resource type="Animation" id="Animation_o5h0y"]
 resource_name = "stab"
-length = 0.5
-loop_mode = 1
+length = 1.7
 step = 0.05
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("anchor/texture:position:x")
+tracks/0/path = NodePath("anchor/textureSword:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(150, -0.25, 0, 0.25, 0, 300, -0.083333336, -8.333334, 0, 0, 150, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.25, 0.5)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(150, -0.25, 0, 0.25, 0, 300, -0.083333336, -8.333334, 0, 0),
+"times": PackedFloat32Array(0, 0.25)
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%hitbox:position:x")
+tracks/1/path = NodePath("%hitbox:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 2, 0),
-"points": PackedFloat32Array(165, -0.25, 0, 0.25, 0, 315, -0.041666668, 0, 0.041666668, 0, 165, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.25, 0.5)
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
-tracks/2/type = "value"
+tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%hitbox:disabled")
+tracks/2/path = NodePath("anchor:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.25, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [true, false, true, false]
+"handle_modes": PackedInt32Array(0, 0, 0, 2, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.7853982, -0.06585455, -0.14365458, 0.2, 0, -0.7853982, -0.06666666, 0.2617994, 0, 0, -0.7853982, -0.033333343, 0, 0, 0, 5.497787, -0.049999993, -1.0471975, 0, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6, 1, 1.2, 1.5)
 }
-
-[sub_resource type="Animation" id="Animation_kmogx"]
-resource_name = "spawn"
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%texture/../hitbox2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%texture/../hitbox3:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("anchor:scale:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1e-05, -0.033333343, 0.16666502, 0, 0),
+"times": PackedFloat32Array(1.5, 1.7)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("anchor:scale:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1e-05, -0.033333343, 0.16666502, 0, 0),
+"times": PackedFloat32Array(1.5, 1.7)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("anchor:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.033333343, 0.16666669, 0, 0),
+"times": PackedFloat32Array(1.5, 1.7)
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("%texture/..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.2, 1.22, 1.24),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"generateShadow"
+}, {
+"args": [],
+"method": &"generateShadow"
+}, {
+"args": [],
+"method": &"generateShadow"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w1utg"]
 _data = {
 &"RESET": SubResource("Animation_w1utg"),
 &"destroy": SubResource("Animation_oinqg"),
-&"loop": SubResource("Animation_o5h0y"),
-&"spawn": SubResource("Animation_kmogx")
+&"spawn": SubResource("Animation_o5h0y")
 }
 
 [sub_resource type="Curve" id="Curve_w1utg"]
@@ -141,14 +270,21 @@ color_initial_ramp = SubResource("GradientTexture1D_b5nxd")
 alpha_curve = SubResource("CurveTexture_o5h0y")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1utg"]
-size = Vector2(113, 34)
+size = Vector2(273.5, 34)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w1utg"]
+radius = 66.75
+height = 322.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w1utg"]
+radius = 390.2512
 
 [node name="Volcano" instance=ExtResource("1_gd3m7")]
 script = ExtResource("2_w1utg")
+displayName = "火山"
 penerate = 1.0
-lifeTime = 6000.0
-autoLoopAnimation = true
-recoil = 1.0
+autoSpawnAnimation = true
+freeAfterSpawn = true
 
 [node name="animator" parent="texture" index="0"]
 libraries = {
@@ -156,14 +292,16 @@ libraries = {
 }
 
 [node name="anchor" type="Node2D" parent="texture" index="1"]
+unique_name_in_owner = true
 
-[node name="texture" type="Sprite2D" parent="texture/anchor" index="0"]
+[node name="textureSword" type="Sprite2D" parent="texture/anchor" index="0"]
+unique_name_in_owner = true
 position = Vector2(150, 0)
 rotation = 0.7853982
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_wwxm2")
 
-[node name="trail" type="GPUParticles2D" parent="texture/anchor/texture" index="0"]
+[node name="trail" type="GPUParticles2D" parent="texture/anchor/textureSword" index="0"]
 position = Vector2(27.341467, -27.341467)
 rotation = -0.7853982
 scale = Vector2(0.9999999, 0.9999999)
@@ -171,5 +309,14 @@ amount = 200
 process_material = SubResource("ParticleProcessMaterial_xrrxo")
 
 [node name="hitbox" parent="." index="1"]
-position = Vector2(167.5, 0)
+position = Vector2(245.25, 0)
 shape = SubResource("RectangleShape2D_w1utg")
+
+[node name="hitbox2" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(314, 0)
+shape = SubResource("CapsuleShape2D_w1utg")
+disabled = true
+
+[node name="hitbox3" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CircleShape2D_w1utg")
+disabled = true

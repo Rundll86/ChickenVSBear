@@ -5,4 +5,4 @@ class_name FoxZhua
 
 func ai():
 	if canTrace:
-		PresetBulletAI.lerpPosition(self, launcher.currentFocusedBoss.getTrackingAnchor() - Vector2(0, 200), 0.1)
+		PresetBulletAI.lerpPosition(self, launcher.currentFocusedBoss.getTrackingAnchor() - Vector2(0, 200), 0.07)
