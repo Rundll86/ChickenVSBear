@@ -33,6 +33,7 @@ var isChildSplit: bool = false
 var isChildRefract: bool = false
 var initialSpeed: float = 0
 var initialDamage: float = 0
+var speedScale: float = 1
 
 func _ready():
 	initialSpeed = speed
@@ -86,6 +87,19 @@ func _physics_process(_delta: float) -> void:
 	else:
 		tryDestroy()
 
+func setupCuttable(cutSpeed: float):
+	body_entered.connect(
+		func(body):
+			var entity = EntityTool.fromHurtbox(body)
+			if entity:
+				speedScale = cutSpeed
+	)
+	body_exited.connect(
+		func(body):
+			var entity = EntityTool.fromHurtbox(body)
+			if entity:
+				speedScale = 1
+	)
 func getDamage():
 	return initialDamage * damageMultipliers[usingDamageMultiplier]
 func hit(target: Node):

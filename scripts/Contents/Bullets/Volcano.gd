@@ -10,8 +10,9 @@ var dmg5: float = 0
 var splitAngle: float = 10
 
 func register():
-	animator.speed_scale = launcher.fields.get(FieldStore.Entity.ATTACK_SPEED)
+	setupCuttable(0.1)
 func ai():
+	animator.speed_scale = launcher.fields.get(FieldStore.Entity.ATTACK_SPEED) * speedScale
 	PresetBulletAI.lockLauncher(self, launcher, true)
 	rotation = lerp_angle(
 		rotation,
