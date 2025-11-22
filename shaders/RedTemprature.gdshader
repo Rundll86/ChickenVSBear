@@ -1,5 +1,5 @@
 shader_type canvas_item;
 void fragment() {
 	COLOR.r=1.0;
-	COLOR.a*=0.5;
+	COLOR.a*=0.7;
 }
