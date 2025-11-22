@@ -1,8 +1,6 @@
 extends EntityBase
 class_name Chick
 
-@onready var firepot = $"%firepot"
-
 var played: bool = false
 
 func register():
@@ -43,10 +41,7 @@ func attack(type):
 			BulletBase.generate(ComponentManager.getBullet("ChickLaser"), self, texture.global_position, deg_to_rad(360.0 / laserCount * i))
 	elif type == 2:
 		var weaponPos = findWeaponAnchor("normal")
-		var target = weaponPos.angle_to_point(currentFocusedBoss.getTrackingAnchor())
-		firepot.global_rotation = target
-		firepot.shot()
-		BulletBase.generate(ComponentManager.getBullet("FireScan"), self, weaponPos, target)
+		BulletBase.generate(ComponentManager.getBullet("FireScan"), self, weaponPos, weaponPos.angle_to_point(currentFocusedBoss.getTrackingAnchor()))
 	elif type == 3:
 		BulletBase.generate(ComponentManager.getBullet("ChickSprint"), self, position, 0)
 		trySprint()

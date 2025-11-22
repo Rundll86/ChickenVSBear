@@ -31,6 +31,8 @@ var isChildSplit: bool = false
 var isChildRefract: bool = false
 var initialSpeed: float = 0
 var originalDamage: float = 0
+var damageMultiplier: Array[float] = [1.0]
+var usingDamageMultiplier: int = 0
 
 func _ready():
 	initialSpeed = speed
@@ -84,6 +86,8 @@ func _physics_process(_delta: float) -> void:
 	else:
 		tryDestroy()
 
+func getDamage():
+	return originalDamage * damageMultiplier[usingDamageMultiplier]
 func hit(target: Node):
 	var entity: EntityBase = EntityTool.fromHurtbox(target)
 	if !entity || !launcher: return

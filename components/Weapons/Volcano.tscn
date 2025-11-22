@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cbihum34xs8ev" path="res://scripts/Contents/Weapons/Volcano.gd" id="2_ihngx"]
 
 [node name="Volcano" instance=ExtResource("1_3uhfa")]
+clip_contents = true
 script = ExtResource("2_ihngx")
 avatarTexture = ExtResource("2_hh01t")
 displayName = "火山"
@@ -12,15 +13,21 @@ quality = 4
 typeTopic = 2
 costBeachball = 300
 store = {
-"atk": 20,
+"atk": 15.0,
+"dmg1": 1.0,
+"dmg2": 0.5,
+"dmg3": 2.0,
 "rotate": 0.1
 }
 storeType = {
 "atk": 1,
+"dmg1": 2,
+"dmg2": 2,
+"dmg3": 2,
 "rotate": 2
 }
-descriptionTemplate = "召唤1支[b]火山[/b]，以$rotate的效率跟随鼠标指向，接触时造成$atk点伤害。"
-cooldown = 2000.0
+descriptionTemplate = "召唤1支[b]火山[/b]，以$rotate的效率跟随鼠标指向，进行3段攻击。基础接触伤害为$atk，三段造成的伤害分别为$dmg1，$dmg2，$dmg3。"
+cooldown = 1750.0
 debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
@@ -38,4 +45,4 @@ quality = 4
 typeTopic = 2
 
 [node name="description" parent="container" index="2"]
-text = "[center]召唤1支[b]火山[/b]，以[color=cyan]10%[/color]的效率跟随鼠标指向，接触时造成[color=cyan]20[/color]点伤害。[/center]"
+text = "[center]召唤1支[b]火山[/b]，以[color=cyan]10%[/color]的效率跟随鼠标指向，进行3段攻击。基础接触伤害为[color=cyan]15[/color]，三段造成的伤害分别为[color=cyan]100%[/color]，[color=cyan]50%[/color]，[color=cyan]200%[/color]。[/center]"

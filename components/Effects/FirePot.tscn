@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_k7ukc"]
 
 [sub_resource type="Curve" id="Curve_ohc88"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_6awim"]
@@ -37,10 +37,10 @@ emission_shape = 1
 emission_sphere_radius = 50.0
 angle_min = 1.07288e-05
 angle_max = 360.0
-spread = 5.0
-initial_velocity_min = 10.0
-initial_velocity_max = 500.0
-gravity = Vector3(980, 0, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 750.0
+gravity = Vector3(0, 0, 0)
 linear_accel_min = -2.23517e-06
 linear_accel_max = -2.23517e-06
 linear_accel_curve = SubResource("CurveTexture_1flsn")
@@ -54,6 +54,6 @@ alpha_curve = SubResource("CurveTexture_6awim")
 metadata/_edit_vertical_guides_ = [808.0]
 
 [node name="particles" parent="." index="1"]
-amount = 100
+amount = 150
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_pah3d")
