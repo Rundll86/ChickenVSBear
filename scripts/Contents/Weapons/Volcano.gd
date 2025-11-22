@@ -7,6 +7,8 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["dmg2"] += 0.03 * to * soulLevel
 	origin["dmg3"] += 0.03 * to * soulLevel
 	origin["dmg4"] += 0.03 * to * soulLevel
+	origin["dmg5"] += 0.04 * to * soulLevel
+	origin["count"] = 1 * soulLevel + 1
 	origin["atk"] += 1 * to * soulLevel
 	return origin
 func attack(entity: EntityBase):
@@ -20,3 +22,5 @@ func attack(entity: EntityBase):
 		bullet.baseDamage = readStore("atk")
 		bullet.rotates = readStore("rotate")
 		bullet.damageMultipliers = [readStore("dmg1"), readStore("dmg2"), readStore("dmg3"), readStore("dmg4")]
+		bullet.count = readStore("count")
+		bullet.dmg5 = readStore("dmg5")

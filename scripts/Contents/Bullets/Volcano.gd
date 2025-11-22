@@ -5,6 +5,9 @@ class_name Volcano
 @onready var anchor: Node2D = $%anchor
 
 var rotates: float = 0
+var count: int = 0
+var dmg5: float = 0
+var splitAngle: float = 10
 
 func register():
 	animator.speed_scale = launcher.fields.get(FieldStore.Entity.ATTACK_SPEED)
@@ -17,12 +20,14 @@ func ai():
 	)
 
 func generateShadow():
-	for i in BulletBase.generate(
-		ComponentManager.getBullet("VolcanoShadow"),
-		launcher,
-		textureSword.global_position,
-		anchor.global_rotation,
-		false, false, true, true
-	):
-		if i is VolcanoShadow:
-			i.baseDamage = baseDamage
+	var startAngle = rotation - deg_to_rad(count * splitAngle / 2)
+	for i in count:
+		for bullet in BulletBase.generate(
+			ComponentManager.getBullet("VolcanoShadow"),
+			launcher,
+			position,
+			startAngle + i * deg_to_rad(splitAngle),
+			false, false, true, true
+		):
+			if bullet is VolcanoShadow:
+				bullet.baseDamage = baseDamage * dmg5
