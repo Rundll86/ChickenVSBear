@@ -196,7 +196,10 @@ height = 290.0
 script = ExtResource("2_rl21b")
 canTrace = true
 displayName = "爪"
+speed = 0.07
 penerate = 1.0
+indisDamage = true
+canDamageSelf = true
 autoSpawnAnimation = true
 freeAfterSpawn = true
 
