@@ -10,7 +10,7 @@ var dmg5: float = 0
 var splitAngle: float = 10
 
 func register():
-	setupCuttable(0.1)
+	setupCuttable(0.7)
 func ai():
 	animator.speed_scale = launcher.fields.get(FieldStore.Entity.ATTACK_SPEED) * speedScale
 	PresetBulletAI.lockLauncher(self, launcher, true)

@@ -88,13 +88,13 @@ func _physics_process(_delta: float) -> void:
 		tryDestroy()
 
 func setupCuttable(cutSpeed: float):
-	body_entered.connect(
+	area_entered.connect(
 		func(body):
 			var entity = EntityTool.fromHurtbox(body)
 			if entity:
 				speedScale = cutSpeed
 	)
-	body_exited.connect(
+	area_exited.connect(
 		func(body):
 			var entity = EntityTool.fromHurtbox(body)
 			if entity:
