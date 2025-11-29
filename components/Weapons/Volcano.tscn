@@ -34,7 +34,6 @@ storeType = {
 }
 descriptionTemplate = "召唤1支[b]火山[/b]，以$rotate的效率跟随鼠标指向，进行基础伤害为$atk的4段挥舞攻击。造成的伤害分别为$dmg1，$dmg2，$dmg3，$dmg4，第4段攻击时发射$count支[b]火山幻影[/b]，造成$dmg5伤害。"
 cooldown = 1750.0
-debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_hh01t")

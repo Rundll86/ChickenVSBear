@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://8uepi7uql314"]
+[gd_scene load_steps=15 format=3 uid="uid://8uepi7uql314"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_gd3m7"]
 [ext_resource type="Script" uid="uid://ci5hswfhck5as" path="res://scripts/Contents/Bullets/Volcano.gd" id="2_w1utg"]
@@ -78,39 +78,29 @@ tracks/5/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/6/type = "bezier"
+tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("anchor:scale:y")
+tracks/6/path = NodePath("%texture/..:usingDamageMultiplier")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("anchor:modulate:a")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("%texture/..:usingDamageMultiplier")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%texture/../hitbox4:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_oinqg"]
@@ -152,9 +142,9 @@ tracks/2/path = NodePath("anchor:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 2, 1, 1),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.7853982, -0.06585455, -0.14365458, 0.2, 0, -0.7853982, -0.06666666, 0.2617994, 0, 0, -0.7853982, -0.033333343, 0, 0, 0, 5.497787, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.888264, 1.2, 1.45, 1.7079643)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.7853982, -0.06585455, -0.14365458, 0.2, 0, -0.7853982, -0.06666666, 0.2617994, 0, 0, -0.7853982, -0.033333343, 0, 0, 0, 3.142, -0.041666668, 0.91629785, 0, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.888264, 1.2, 1.45)
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -175,7 +165,7 @@ tracks/4/path = NodePath("%texture/../hitbox3:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.2, 1.4, 1.45, 1.7106247),
+"times": PackedFloat32Array(0, 1.2, 1.4, 1.45, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [true, false, true, false, true]
@@ -188,50 +178,28 @@ tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1e-05, -0.033333343, 0.16666502, 0, 0),
-"times": PackedFloat32Array(1.75, 2)
+"points": PackedFloat32Array(1, 0, 0, 0.2, 0, -1, 0, 0, 0, 0),
+"times": PackedFloat32Array(1.45, 1.7)
 }
-tracks/6/type = "bezier"
+tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("anchor:scale:y")
+tracks/6/path = NodePath("%texture/..:usingDamageMultiplier")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1e-05, -0.033333343, 0.16666502, 0, 0),
-"times": PackedFloat32Array(1.75, 2)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("anchor:modulate:a")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.033333343, 0.16666669, 0, 0),
-"times": PackedFloat32Array(1.75, 2)
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("%texture/..:usingDamageMultiplier")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.6, 1.2, 1.45),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
 }
-tracks/9/type = "audio"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("%textureSword/audio")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%textureSword/audio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -251,20 +219,32 @@ tracks/9/keys = {
 }],
 "times": PackedFloat32Array(0, 0.6, 1.2, 1.45)
 }
-tracks/9/use_blend = true
-tracks/10/type = "method"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("%texture/..")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(1.45),
+tracks/7/use_blend = true
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("%texture/..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.65),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"generateShadow"
 }]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("%texture/../hitbox4:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w1utg"]
@@ -283,6 +263,9 @@ height = 322.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w1utg"]
 radius = 390.2512
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sp0s"]
+size = Vector2(191, 66)
 
 [node name="Volcano" instance=ExtResource("1_gd3m7")]
 script = ExtResource("2_w1utg")
@@ -319,4 +302,9 @@ disabled = true
 
 [node name="hitbox3" type="CollisionShape2D" parent="." index="3"]
 shape = SubResource("CircleShape2D_w1utg")
+disabled = true
+
+[node name="hitbox4" type="CollisionShape2D" parent="." index="4"]
+position = Vector2(308.5, -1)
+shape = SubResource("RectangleShape2D_6sp0s")
 disabled = true
