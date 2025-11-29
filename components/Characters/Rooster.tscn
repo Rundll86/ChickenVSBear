@@ -60,6 +60,7 @@ process_mode = 4
 [node name="LGBT" parent="weaponStore" index="0" instance=ExtResource("3_0omr3")]
 
 [node name="HJM" parent="weaponStore" index="1" instance=ExtResource("4_joj4g")]
+debugRebuild = false
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")
