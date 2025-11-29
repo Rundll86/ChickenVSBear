@@ -101,7 +101,7 @@ func setupCuttable(cutSpeed: float):
 				speedScale = 1
 	)
 func getDamage():
-	return initialDamage * damageMultipliers[usingDamageMultiplier]
+	return baseDamage * damageMultipliers[usingDamageMultiplier]
 func hit(target: Node):
 	var entity: EntityBase = EntityTool.fromHurtbox(target)
 	if !entity || !launcher: return
