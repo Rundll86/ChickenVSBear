@@ -3,11 +3,11 @@ extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["rotate"] += 0.005 * to * soulLevel
-	origin["dmg1"] += 0.015 * to * soulLevel
-	origin["dmg2"] += 0.015 * to * soulLevel
-	origin["dmg3"] += 0.015 * to * soulLevel
-	origin["dmg4"] += 0.015 * to * soulLevel
-	origin["dmg5"] += 0.015 * to * soulLevel
+	origin["dmg1"] += 0.025 * to * soulLevel
+	origin["dmg2"] += 0.025 * to * soulLevel
+	origin["dmg3"] += 0.025 * to * soulLevel
+	origin["dmg4"] += 0.025 * to * soulLevel
+	origin["dmg5"] += 0.025 * to * soulLevel
 	origin["count"] = 1 * soulLevel
 	origin["atk"] += 1 * to * soulLevel
 	return origin
