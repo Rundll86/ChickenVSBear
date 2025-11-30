@@ -7,6 +7,7 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
 	return origin
 func attack(entity: EntityBase):
 	var summon = entity.summon(ComponentManager.getSummon("HJM"))
+	if !summon: return true
 	summon.atk = readStore("atk")
 	summon.attackTime = readStore("time") * 1000
 	return true

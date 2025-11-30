@@ -35,7 +35,8 @@ enum Entity {
 	BULLET_REFRACTION,
 	BULLET_TRACE,
 	GRAVITY,
-	PERFECT_MISS_WINDOW
+	PERFECT_MISS_WINDOW,
+	SUMMON_MAX
 }
 static var entityMap = {
 	Entity.MAX_HEALTH: "生命上限",
@@ -65,6 +66,7 @@ static var entityMap = {
 	Entity.BULLET_TRACE: "追踪",
 	Entity.GRAVITY: "引力",
 	Entity.PERFECT_MISS_WINDOW: "闪避窗口",
+	Entity.SUMMON_MAX: "召唤上限"
 }
 static var entityMapType = {
 	Entity.MAX_HEALTH: DataType.VALUE,
@@ -94,6 +96,7 @@ static var entityMapType = {
 	Entity.BULLET_TRACE: DataType.PERCENT,
 	Entity.GRAVITY: DataType.VALUE,
 	Entity.PERFECT_MISS_WINDOW: DataType.PERCENT,
+	Entity.SUMMON_MAX: DataType.INTEGER
 }
 static var entityMaxValueMap = {
 	Entity.CRIT_RATE: 0.9,

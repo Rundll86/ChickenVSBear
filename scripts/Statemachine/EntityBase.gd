@@ -16,6 +16,8 @@ var fields = {
 	FieldStore.Entity.EXTRA_APPLE_MAX: 0,
 	FieldStore.Entity.DROP_APPLE_RATE: 0,
 	FieldStore.Entity.PENARATION_RESISTANCE: 0,
+	"召唤": TITLE_FLAG,
+	FieldStore.Entity.SUMMON_MAX: 1,
 	"储能": TITLE_FLAG,
 	FieldStore.Entity.MAX_ENERGY: 200,
 	FieldStore.Entity.SAVE_ENERGY: 1,
@@ -398,7 +400,15 @@ func useItem(items: Dictionary):
 func getItem(items: Dictionary):
 	for item in items:
 		inventory[item] = clamp(inventory[item] + items[item], 0, inventoryMax[item])
+func getMySummons() -> Array[SummonBase]:
+	var result: Array[SummonBase] = []
+	for entity in get_tree().get_nodes_in_group("players" if isPlayer() else "mobs"):
+		if entity is SummonBase && entity.myMaster == self:
+				result.append(entity)
+	return result
 func summon(who: PackedScene, syncFields: bool = true, lockValue: bool = true) -> SummonBase:
+	if len(getMySummons()) >= fields.get(FieldStore.Entity.SUMMON_MAX):
+		return null
 	var instance: SummonBase = who.instantiate()
 	instance.position = position
 	instance.myMaster = self

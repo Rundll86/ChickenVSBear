@@ -11,6 +11,7 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
 	return origin
 func attack(entity: EntityBase):
 	var summon = entity.summon(ComponentManager.getSummon("LGBTFlag"))
+	if !summon: return true
 	summon.atk = readStore("atk")
 	summon.maxTraceTime = readStore("trace") * 1000
 	summon.tracePower = readStore("power")

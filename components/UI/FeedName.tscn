@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bt370a1djjg5p"]
 
-[ext_resource type="Script" path="res://scripts/Statemachine/FeedName.gd" id="1_wfxme"]
+[ext_resource type="Script" uid="uid://qllscdsldcpq" path="res://scripts/Statemachine/FeedName.gd" id="1_wfxme"]
 [ext_resource type="Theme" uid="uid://bje5cd08dyok7" path="res://themes/bigTextAndBold.tres" id="2_k71he"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_8o8ly"]
+[sub_resource type="LabelSettings" id="LabelSettings_j8acg"]
 font_size = 12
 font_color = Color(1, 0.442751, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_6f4ri"]
+[sub_resource type="LabelSettings" id="LabelSettings_268ry"]
 font_size = 12
 font_color = Color(1, 0, 0.585938, 1)
 
@@ -33,7 +33,8 @@ topicColorMap = {
 5: Color(1, 0.421875, 0, 1),
 6: Color(1, 1, 1, 1),
 7: Color(0.449219, 0.449219, 0.449219, 1),
-8: Color(1, 0.816993, 0, 1)
+8: Color(1, 0.816993, 0, 1),
+9: Color(0, 1, 0.7435255, 1)
 }
 metadata/_edit_horizontal_guides_ = [25.0]
 
@@ -42,7 +43,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 text = "[传说]"
-label_settings = SubResource("LabelSettings_8o8ly")
+label_settings = SubResource("LabelSettings_j8acg")
 
 [node name="label" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
@@ -58,4 +59,4 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 text = "[生存]"
-label_settings = SubResource("LabelSettings_6f4ri")
+label_settings = SubResource("LabelSettings_268ry")

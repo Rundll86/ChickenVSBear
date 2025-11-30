@@ -19,6 +19,7 @@ enum Topic {
 	FEED,
 	DROP,
 	WEAPON,
+	SUMMON,
 }
 
 @export var displayName: String = "未命名饲料"
@@ -62,6 +63,7 @@ enum Topic {
 	Topic.FEED: "饲料",
 	Topic.DROP: "掉落物",
 	Topic.WEAPON: "武器",
+	Topic.SUMMON: "召唤",
 }
 @export var topicColorMap = {
 	Topic.SURVIVAL: Color(),
@@ -73,6 +75,7 @@ enum Topic {
 	Topic.FEED: Color(),
 	Topic.DROP: Color(),
 	Topic.WEAPON: Color(),
+	Topic.SUMMON: Color(),
 }
 
 @onready var qualityLabel: Label = $"%quality"
