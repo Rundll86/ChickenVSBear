@@ -4,7 +4,7 @@ class_name Chick
 var played: bool = false
 
 func register():
-	fields[FieldStore.Entity.MAX_HEALTH] = 1500
+	fields[FieldStore.Entity.MAX_HEALTH] = 2500
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.4
 	attackCooldownMap[0] = 400
 	attackCooldownMap[1] = 12000
