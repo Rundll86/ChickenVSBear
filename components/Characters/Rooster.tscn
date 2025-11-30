@@ -57,6 +57,8 @@ metadata/_edit_vertical_guides_ = [71.0]
 process_mode = 4
 
 [node name="SevenSoul" parent="weaponStore" index="0" instance=ExtResource("3_0omr3")]
+cooldown = 2000.0
+debugRebuild = false
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")

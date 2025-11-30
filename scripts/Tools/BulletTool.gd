@@ -6,6 +6,7 @@ static func fromArea(area: Area2D) -> BulletBase:
 	else:
 		return null
 static func canDamage(bullet: BulletBase, target: EntityBase) -> bool:
+	if !bullet or !target: return false
 	if target.currentInvinsible: return false
 	if !bullet.canDamageSelf && target == bullet.launcher: return false
 	if !GameRule.allowFriendlyFire:

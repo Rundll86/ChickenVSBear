@@ -1,4 +1,5 @@
 extends BulletBase
+class_name SevenSoulBullet
 
 var colors = [
 	"#2BEAFF",
@@ -11,27 +12,19 @@ var colors = [
 var index = 0
 var generationDuration: float = 15000
 var pingAfterGeneration: float = 5000
+var energyCollect: float = 0
+var healAmount: float = 0
 
 @onready var heart = $"%heart"
 @onready var effect: GPUParticles2D = $"%effect"
 
-func register():
-	area_entered.connect(
-		func(area):
-			var bullet = BulletTool.fromArea(area)
-			if bullet and BulletTool.canDamage(bullet, launcher):
-				launcher.storeEnergy(baseDamage * 2)
-	)
 func spawn():
 	modulate = Color(colors[index % colors.size()])
 	effect.emitting = true
-	
 func ai():
 	rotation_degrees = 360.0 / colors.size() * index + timeLived() / generationDuration * 360 - index / 6.0 * 360.0
 	heart.global_rotation_degrees = 0
 	PresetBulletAI.lockLauncher(self, launcher, true)
-func applyDot():
-	if timeLived() > generationDuration * ((6.0 - index) / 6.0) + pingAfterGeneration:
-		BulletBase.generate(ComponentManager.getBullet("SoulBall"), launcher, heart.global_position, heart.global_position.angle_to_point(get_global_mouse_position()))
-	await TickTool.millseconds(100)
-	return true
+func succeedToHit(_dmg: float, _entity: EntityBase):
+	launcher.storeEnergy(getDamage() * energyCollect)
+	launcher.tryHeal(healAmount)

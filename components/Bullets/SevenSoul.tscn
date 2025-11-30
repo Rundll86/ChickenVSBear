@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bymprh2qel2oj"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_c4fl5"]
-[ext_resource type="Script" path="res://scripts/Contents/Bullets/SevenSoul.gd" id="2_egs34"]
+[ext_resource type="Script" uid="uid://tkgkjb7v65j8" path="res://scripts/Contents/Bullets/SevenSoul.gd" id="2_egs34"]
 [ext_resource type="Texture2D" uid="uid://wy10fc3bqppg" path="res://resources/bullets/seven-soul/soul.png" id="2_itucu"]
 
 [sub_resource type="Curve" id="Curve_0y25k"]
@@ -12,7 +12,7 @@ point_count = 3
 curve = SubResource("Curve_0y25k")
 
 [sub_resource type="Curve" id="Curve_acuqr"]
-max_value = 4.0
+_limits = [0.0, 4.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 3.0, 0, 1, Vector2(1, 4), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -32,8 +32,7 @@ size = Vector2(30, 100)
 
 [node name="SevenSoul" instance=ExtResource("1_c4fl5")]
 script = ExtResource("2_egs34")
-speed = 0.0
-damage = 0.0
+baseDamage = 2.0
 penerate = 1.0
 lifeTime = 112000.0
 
@@ -48,11 +47,11 @@ unique_name_in_owner = true
 position = Vector2(100, 0)
 emitting = false
 amount = 1
-process_material = SubResource("ParticleProcessMaterial_4d30u")
 texture = ExtResource("2_itucu")
 lifetime = 0.5
 one_shot = true
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_4d30u")
 
 [node name="hitbox" parent="." index="1"]
 position = Vector2(100, 0)

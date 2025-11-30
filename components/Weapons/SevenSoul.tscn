@@ -12,14 +12,16 @@ displayName = "bilioicik"
 quality = 2
 typeTopic = 3
 store = {
+"atk": 2.0,
 "dmg": 0.1,
 "heal": 1.0
 }
 storeType = {
+"atk": 1,
 "dmg": 2,
 "heal": 1
 }
-descriptionTemplate = "召唤7条人类灵魂，敌人子弹命中灵魂时将伤害的$dmg转换为能量并提供$heal点治疗。"
+descriptionTemplate = "召唤7条灵魂，每条造成$atk点伤害，命中敌人时将伤害的$dmg转换为能量并提供$heal点治疗。"
 needEnergy = 150.0
 cooldown = 180000.0
 debugRebuild = true
@@ -46,4 +48,4 @@ quality = 2
 typeTopic = 3
 
 [node name="description" parent="container" index="2"]
-text = "[center]召唤7条人类灵魂，敌人子弹命中灵魂时将伤害的[color=cyan]10%[/color]转换为能量并提供[color=cyan]1[/color]点治疗。[/center]"
+text = "[center]召唤7条灵魂，每条造成[color=cyan]2[/color]点伤害，命中敌人时将伤害的[color=cyan]10%[/color]转换为能量并提供[color=cyan]1[/color]点治疗。[/center]"
