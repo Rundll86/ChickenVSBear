@@ -12,11 +12,12 @@ func spawn():
 			ComponentManager.getBullet("Arrow"),
 			launcher,
 			position,
-			startAngle + deg_to_rad(c * 10.0)
+			startAngle
 		):
 			var bullet: Arrow = i
 			bullet.atk = atk
 			bullet.waitTime = waitTime
+			bullet.offsetRotation = deg_to_rad(c * 10.0)
 	await TickTool.millseconds(waitTime)
 	tryDestroy()
 func ai():

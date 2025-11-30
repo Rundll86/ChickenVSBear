@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5y4g70evwy46"]
 
 [ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_0f84s"]
-[ext_resource type="Script" path="res://scripts/Contents/Weapons/SevenSoul.gd" id="2_n7gtb"]
+[ext_resource type="Script" uid="uid://bxcyflpnuajnn" path="res://scripts/Contents/Weapons/SevenSoul.gd" id="2_n7gtb"]
 [ext_resource type="Texture2D" uid="uid://ckqfe3a61hw7" path="res://resources/weapons/bill.webp" id="3_nq3bo"]
 [ext_resource type="AudioStream" uid="uid://dy4k5mni7d7wo" path="res://resources/sounds/weapon/Finale - Toby Fox.wav" id="4_tmgox"]
 
@@ -12,11 +12,17 @@ displayName = "bilioicik"
 quality = 2
 typeTopic = 3
 store = {
-"atk": 3
+"dmg": 0.1,
+"heal": 1.0
 }
-descriptionTemplate = "召唤7条人类灵魂，每条以10Hz的频率造成$atk点伤害。"
+storeType = {
+"dmg": 2,
+"heal": 1
+}
+descriptionTemplate = "召唤7条人类灵魂，敌人子弹命中灵魂时将伤害的$dmg转换为能量并提供$heal点治疗。"
 needEnergy = 150.0
-cooldown = 2000.0
+cooldown = 180000.0
+debugRebuild = true
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_tmgox")
@@ -25,6 +31,14 @@ volume_db = 20.0
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("3_nq3bo")
 
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
+text = "150.0"
+
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 500
+
+[node name="soul" parent="container/info/infos" index="2"]
+count = 1
 
 [node name="name" parent="container/info" index="2"]
 displayName = "bilioicik"
@@ -32,4 +46,4 @@ quality = 2
 typeTopic = 3
 
 [node name="description" parent="container" index="2"]
-text = "[center]召唤7条人类灵魂，每条以10Hz的频率造成[color=cyan]1[/color]→[color=yellow]2[/color]点伤害。[/center]"
+text = "[center]召唤7条人类灵魂，敌人子弹命中灵魂时将伤害的[color=cyan]10%[/color]转换为能量并提供[color=cyan]1[/color]点治疗。[/center]"

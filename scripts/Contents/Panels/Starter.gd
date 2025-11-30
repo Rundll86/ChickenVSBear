@@ -71,6 +71,7 @@ func _ready():
 	historyStack = Composables.useHistoryStack(playerNameInput)
 	diffEdit.min_value = GameRule.difficultyRange.x
 	diffEdit.max_value = GameRule.difficultyRange.y
+	diffEdit.value = GameRule.difficulty
 	multiplayer.connection_failed.connect(
 		func():
 			setState(MultiplayerState.ConnectionState.DISCONNECTED)

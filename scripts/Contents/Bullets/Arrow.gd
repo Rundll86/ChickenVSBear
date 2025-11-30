@@ -5,6 +5,7 @@ class_name Arrow
 
 var atk: float = 0
 var waitTime: float = 0
+var offsetRotation: float = 0
 
 func register():
 	trail.emitting = false
@@ -12,7 +13,7 @@ func register():
 func ai():
 	if timeLived() < waitTime:
 		PresetBulletAI.lockLauncher(self, launcher, true)
-		rotation = position.angle_to_point(get_global_mouse_position())
+		rotation = position.angle_to_point(get_global_mouse_position()) + offsetRotation
 		return
 	else:
 		trail.emitting = true

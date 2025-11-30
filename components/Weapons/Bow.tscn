@@ -21,14 +21,14 @@ storeType = {
 "self": 1
 }
 descriptionTemplate = "消耗$self点生命值，发射$count支[b]鸡毛箭[/b]，每支造成当前飞行速度的$atk伤害。"
-needEnergy = 15.0
-cooldown = 500.0
+needEnergy = 50.0
+cooldown = 2000.0
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_ex3jl")
 
 [node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "40.0"
+text = "15.0"
 
 [node name="beachball" parent="container/info/infos" index="1"]
 count = 50

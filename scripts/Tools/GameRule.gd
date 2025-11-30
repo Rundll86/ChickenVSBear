@@ -1,8 +1,8 @@
 class_name GameRule
 
 static var deadReasons: Array = JsonTool.parseJson("res://resources/constants/deadReasons.json")
-static var difficultyRange: Vector2 = Vector2(-5, 10) # 难度倍数范围，包括最小值和最大值，负数则降低难度
-static var difficulty: float = 10 # 难度倍数，可以写小数
+static var difficultyRange: Vector2 = Vector2(-20, 50) # 难度倍数范围，包括最小值和最大值，负数则降低难度
+static var difficulty: float = 1 # 难度倍数，可以写小数
 static var allowFriendlyFire: bool = false # 是否允许友军伤害
 static var bulletSpeedMultiplier: float = 1 # 子弹速度倍率
 static var damageOffset: float = MathTool.percent(20) # 伤害随机浮动比例
