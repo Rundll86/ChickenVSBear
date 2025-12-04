@@ -13,7 +13,7 @@ quality = 4
 typeTopic = 2
 costBeachball = 200
 store = {
-"atk": 10.0,
+"atk": 20.0,
 "count": 1.0,
 "dmg1": 1.0,
 "dmg2": 0.5,
@@ -39,7 +39,7 @@ cooldown = 1750.0
 texture = ExtResource("2_hh01t")
 
 [node name="beachball" parent="container/info/infos" index="1"]
-count = 300
+count = 200
 
 [node name="soul" parent="container/info/infos" index="2"]
 count = 1

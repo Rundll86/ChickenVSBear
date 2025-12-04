@@ -7,7 +7,7 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["dmg2"] += 0.03 * to * soulLevel
 	origin["dmg3"] += 0.03 * to * soulLevel
 	origin["dmg4"] += 0.03 * to * soulLevel
-	origin["dmg5"] += 0.03 * to * soulLevel
+	origin["dmg5"] += 0.025 * to * soulLevel
 	origin["count"] = 1 * soulLevel
 	origin["atk"] += 2 * to * soulLevel
 	return origin
