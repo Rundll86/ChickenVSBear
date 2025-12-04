@@ -214,7 +214,7 @@ func setStage(stage: int):
 	currentInvinsible = false
 func applyLevel():
 	fields[FieldStore.Entity.MAX_HEALTH] *= (1 + GameRule.entityHealthIncreasePerWave * (GameRule.difficulty - GameRule.difficultyRange.x + 1)) ** level
-	fields[FieldStore.Entity.DAMAGE_MULTIPILER] *= sqrt((1 + GameRule.entityDamageIncreasePerWave * (GameRule.difficulty - GameRule.difficultyRange.x))) ** level
+	fields[FieldStore.Entity.DAMAGE_MULTIPILER] *= (1 + GameRule.entityDamageIncreasePerWave * GameRule.difficulty) ** level
 func displace(direction: Vector2, isSprinting: bool = false):
 	return (direction if isSprinting else direction.normalized()) * fields.get(FieldStore.Entity.MOVEMENT_SPEED) * 400 * abs(animatree.get("parameters/blend_position"))
 func move(direction: Vector2, isSprinting: bool = false):
