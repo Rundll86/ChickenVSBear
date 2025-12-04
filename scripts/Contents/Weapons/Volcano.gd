@@ -9,7 +9,7 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["dmg4"] += 0.03 * to * soulLevel
 	origin["dmg5"] += 0.025 * to * soulLevel
 	origin["count"] = 1 * soulLevel
-	origin["atk"] += 2 * to * soulLevel
+	origin["atk"] += 3 * to * soulLevel
 	return origin
 func attack(entity: EntityBase):
 	for j in BulletBase.generate(
