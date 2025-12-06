@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjr2xwsjlka3l"]
+
+[ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_ncu2n"]
+[ext_resource type="AudioStream" uid="uid://bj0nwb3nxmtot" path="res://resources/sounds/effect/cut.mp3" id="2_8pjoy"]
+
+[node name="SwordCut" instance=ExtResource("1_ncu2n")]
+spawnSound = "spawn"
+
+[node name="spawn" parent="sounds" index="0"]
+stream = ExtResource("2_8pjoy")

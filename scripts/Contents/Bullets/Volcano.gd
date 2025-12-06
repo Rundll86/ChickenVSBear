@@ -9,16 +9,15 @@ var count: int = 0
 var dmg5: float = 0
 var splitAngle: float = 10
 
-func register():
-	setupCuttable(0.7)
 func ai():
-	animator.speed_scale = launcher.fields.get(FieldStore.Entity.ATTACK_SPEED) * speedScale
 	PresetBulletAI.lockLauncher(self, launcher, true)
 	rotation = lerp_angle(
 		rotation,
 		position.angle_to_point(get_global_mouse_position()),
 		rotates
 	)
+func succeedToHit(_dmg: float, _entity: EntityBase):
+	EffectController.create(ComponentManager.getEffect("SwordCut"), textureSword.global_position).shot()
 
 func generateShadow():
 	var startAngle = rotation - deg_to_rad(count * splitAngle / 2)
