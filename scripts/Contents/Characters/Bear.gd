@@ -5,7 +5,7 @@ class_name Bear
 @onready var mask: Sprite2D = $"%mask"
 
 func register():
-	fields[FieldStore.Entity.MAX_HEALTH] = 5000
+	fields[FieldStore.Entity.MAX_HEALTH] = 4000
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.5
 	fields[FieldStore.Entity.OFFSET_SHOOT] = 0
 	attackCooldownMap[0] = 3000
