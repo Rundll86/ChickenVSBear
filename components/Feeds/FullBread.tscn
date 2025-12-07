@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://csscps7cn5aug"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_3nv8e"]
+[ext_resource type="Texture2D" uid="uid://cd5ngm5c44yb6" path="res://resources/feeds/full-bread.png" id="2_6lkfe"]
+[ext_resource type="Texture2D" uid="uid://b7vxserbhskol" path="res://resources/feeds/banana.svg" id="2_8r38l"]
+
+[node name="FullBread" instance=ExtResource("1_3nv8e")]
+avatarTexture = ExtResource("2_6lkfe")
+displayName = "全麦三明治"
+quality = 0
+topic = 3
+fields = Array[int]([2])
+fieldValues = Array[float]([0.04])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([125, 50])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_8r38l")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "香蕉"
+topic = 3

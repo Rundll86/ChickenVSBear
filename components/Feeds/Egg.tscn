@@ -9,7 +9,7 @@ displayName = "鸡蛋"
 quality = 3
 topic = 3
 fields = Array[int]([3, 7])
-fieldValues = Array[float]([0.3, 20.0])
+fieldValues = Array[float]([0.2, 5.0])
 costs = Array[int]([0, 1])
 costCounts = Array[int]([500, 300])
 

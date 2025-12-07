@@ -11,7 +11,7 @@ topic = 5
 fields = Array[int]([7])
 fieldValues = Array[float]([-5.0])
 costs = Array[int]([0, 1])
-costCounts = Array[int]([500, 1000])
+costCounts = Array[int]([300, 650])
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_u65vk")

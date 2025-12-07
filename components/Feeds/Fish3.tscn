@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://pumjscgt5b1s"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_4u06l"]
+[ext_resource type="Texture2D" uid="uid://dsamh2u7a2bmw" path="res://resources/feeds/carrot.png" id="2_341bf"]
+[ext_resource type="Texture2D" uid="uid://cf7sknxtrba4c" path="res://resources/feeds/three-fish.png" id="2_j0h7o"]
+
+[node name="Fish3" instance=ExtResource("1_4u06l")]
+avatarTexture = ExtResource("2_j0h7o")
+displayName = "三文鱼片"
+quality = 3
+topic = 1
+fields = Array[int]([26, 0])
+fieldValues = Array[float]([0.02, -3.0])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([700, 1500])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_341bf")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "胡萝卜"
+quality = 2
+topic = 5

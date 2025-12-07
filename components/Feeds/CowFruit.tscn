@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtd6t24hrqwqh"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_4087t"]
+[ext_resource type="Texture2D" uid="uid://d2tt5qma8nwt4" path="res://resources/feeds/cow-fruit.png" id="2_k6bqk"]
+[ext_resource type="Texture2D" uid="uid://pvcwt58hsg5i" path="res://resources/feeds/Taco.svg" id="2_nriyf"]
+
+[node name="CowFruit" instance=ExtResource("1_4087t")]
+avatarTexture = ExtResource("2_k6bqk")
+displayName = "牛油果"
+topic = 4
+fields = Array[int]([1, 5])
+fieldValues = Array[float]([0.03, 0.05])
+costs = Array[int]([0])
+costCounts = Array[int]([600])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_nriyf")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "塔克"
+quality = 3
+topic = 2
