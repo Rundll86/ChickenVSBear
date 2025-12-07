@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://digr2lvarxtvf"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_pwer0"]
+[ext_resource type="Script" uid="uid://dqgbohkdj8rbj" path="res://scripts/Contents/Bullets/MTYSprint.gd" id="2_rion0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rion0"]
+radius = 40.0
+height = 150.0
+
+[node name="MTYSprint" instance=ExtResource("1_pwer0")]
+script = ExtResource("2_rion0")
+displayName = "猛冲"
+baseDamage = 5.0
+penerate = 1.0
+
+[node name="hitbox" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_rion0")

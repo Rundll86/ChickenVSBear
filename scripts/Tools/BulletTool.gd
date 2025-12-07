@@ -12,3 +12,20 @@ static func canDamage(bullet: BulletBase, target: EntityBase) -> bool:
 	if !GameRule.allowFriendlyFire:
 		if target.isPlayer() == bullet.launcher.isPlayer() and bullet.launcher.currentFocusedBoss != target: return false
 	return true
+static func findClosetBullet(to: Vector2, fromTree: SceneTree) -> BulletBase:
+	var result: BulletBase = null
+	var lastDistance = INF
+	for bullet in fromTree.get_nodes_in_group("bullets"):
+		if to.distance_to(bullet.position) < lastDistance:
+			lastDistance = to.distance_to(bullet.position)
+			result = bullet
+	return result
+static func findClosetBulletCanDamage(to: Vector2, fromTree: SceneTree, target: EntityBase) -> BulletBase:
+	var result: BulletBase = null
+	var lastDistance = INF
+	for bullet in fromTree.get_nodes_in_group("bullets"):
+		if canDamage(bullet, target):
+			if to.distance_to(bullet.position) < lastDistance:
+				lastDistance = to.distance_to(bullet.position)
+				result = bullet
+	return result
