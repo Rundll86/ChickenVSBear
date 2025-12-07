@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnf21065jlduj"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_eled5"]
+[ext_resource type="Texture2D" uid="uid://dsamh2u7a2bmw" path="res://resources/feeds/carrot.png" id="2_u65vk"]
+
+[node name="Carrot" instance=ExtResource("1_eled5")]
+avatarTexture = ExtResource("2_u65vk")
+displayName = "胡萝卜"
+quality = 2
+topic = 5
+fields = Array[int]([7])
+fieldValues = Array[float]([-5.0])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([500, 1000])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_u65vk")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "胡萝卜"
+quality = 2
+topic = 5

@@ -55,11 +55,11 @@ enum Topic {
 }
 @export var topicNameMap = {
 	Topic.SURVIVAL: "生存",
-	Topic.ENERGY: "储能",
+	Topic.ENERGY: "能量",
 	Topic.BULLET: "子弹",
 	Topic.SPEED: "速度",
 	Topic.DAMAGE: "伤害",
-	Topic.PROBABILITY: "概率",
+	Topic.PROBABILITY: "幸运",
 	Topic.FEED: "饲料",
 	Topic.DROP: "掉落物",
 	Topic.WEAPON: "武器",
