@@ -13,7 +13,7 @@ costBeachball = 300
 store = {
 "atk": 10,
 "count": 1.0,
-"radius": 200.0
+"radius": 100.0
 }
 storeType = {
 "atk": 1,
@@ -21,7 +21,6 @@ storeType = {
 "radius": 0.0
 }
 descriptionTemplate = "从天而降$count支目标位于鼠标位置半径$radius内的怪物灵魂，造成$atk点伤害。"
-debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_kcegs")
