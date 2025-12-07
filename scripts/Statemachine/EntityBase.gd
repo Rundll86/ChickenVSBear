@@ -334,7 +334,7 @@ func tryDie(by: BulletBase = null):
 			var item = drops[drop]
 			var count = ceil(randf_range(dropCounts[drop].x, dropCounts[drop].y))
 			for i in range(count):
-				ItemDropped.generate(item, randi_range(1, int(sqrt(count) * (GameRule.difficulty - GameRule.difficultyRange.x + 1))), position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
+				ItemDropped.generate(item, randi_range(1, 2 * round(sqrt(GameRule.difficulty - GameRule.difficultyRange.x + 1))), position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
 		if MathTool.rate(
 			GameRule.appleDropRate +
 			by.launcher.fields.get(FieldStore.Entity.DROP_APPLE_RATE) +

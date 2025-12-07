@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdbmedn8pnys3"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_vp4rj"]
+[ext_resource type="Texture2D" uid="uid://b7vxserbhskol" path="res://resources/feeds/banana.svg" id="2_bkn40"]
+[ext_resource type="Texture2D" uid="uid://dx2jadvyxxmbl" path="res://resources/feeds/diamond.png" id="2_sxbst"]
+
+[node name="Diamond" instance=ExtResource("1_vp4rj")]
+avatarTexture = ExtResource("2_sxbst")
+displayName = "钻石巧克力"
+topic = 2
+fields = Array[int]([22])
+fieldValues = Array[float]([0.15])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([300, 250])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_bkn40")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "香蕉"
+topic = 3
