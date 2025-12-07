@@ -37,6 +37,8 @@ radius = 19.026299
 [node name="Cat" instance=ExtResource("1_hw4g4")]
 script = ExtResource("2_uo67a")
 displayName = "猫"
+drops = Array[int]([0])
+dropCounts = Array[Vector2]([Vector2(8, 16)])
 hurtAudioRate = 0.1
 
 [node name="hurt" parent="sounds" index="3"]
