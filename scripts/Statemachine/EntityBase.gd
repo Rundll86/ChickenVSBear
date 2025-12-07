@@ -43,7 +43,7 @@ var fields = {
 	"饲料": TITLE_FLAG,
 	FieldStore.Entity.PRICE_REDUCTION: 0,
 	FieldStore.Entity.FEED_COUNT_SHOW: 3,
-	FieldStore.Entity.FEED_COUNT_CAN_MADE: 1,
+	FieldStore.Entity.FEED_COUNT_CAN_MADE: 2,
 	"掉落物": TITLE_FLAG,
 	FieldStore.Entity.DROPPED_ITEM_COLLECT_RADIUS: 60,
 	FieldStore.Entity.GRAVITY: 10,

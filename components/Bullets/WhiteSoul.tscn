@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://gnenrlcspjuq"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_k41ea"]
-[ext_resource type="Script" path="res://scripts/Contents/Bullets/WhiteSoul.gd" id="2_ld7n7"]
+[ext_resource type="Script" uid="uid://iylhd18nf5a1" path="res://scripts/Contents/Bullets/WhiteSoul.gd" id="2_ld7n7"]
 [ext_resource type="Texture2D" uid="uid://wy10fc3bqppg" path="res://resources/bullets/seven-soul/soul.png" id="2_mqva0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3yyb4"]
@@ -46,7 +46,7 @@ texture_filter = 1
 script = ExtResource("2_ld7n7")
 displayName = "怪物灵魂"
 speed = 20.0
-damage = 5.0
+autoDestroyOnHitMap = false
 
 [node name="texture" parent="." index="0"]
 rotation = -1.5708
@@ -54,7 +54,8 @@ sprite_frames = SubResource("SpriteFrames_3yyb4")
 
 [node name="trail" type="GPUParticles2D" parent="texture" index="1"]
 amount = 10
-process_material = SubResource("ParticleProcessMaterial_u4kq5")
 texture = ExtResource("2_mqva0")
+preprocess = 1.0
 speed_scale = 2.0
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_u4kq5")

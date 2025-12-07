@@ -2,7 +2,7 @@
 extends FullscreenPanelBase
 
 var selectedCount: int = 0
-var refreshNeedBaseballCount = 100
+var refreshNeedBaseballCount = 10
 
 @onready var avaliableFeeds: Node2D = $"%avaliableFeeds"
 @onready var feedCards: HBoxContainer = $"%feedcards"
@@ -21,7 +21,7 @@ func _ready():
 		func():
 			if UIState.player.inventory[ItemStore.ItemType.BASEBALL] >= refreshNeedBaseballCount:
 				UIState.player.inventory[ItemStore.ItemType.BASEBALL] -= refreshNeedBaseballCount
-				refreshNeedBaseballCount *= 1 + randf_range(GameRule.refreshCountIncreasePercent.x, GameRule.refreshCountIncreasePercent.y)
+				refreshNeedBaseballCount += randi_range(GameRule.refreshCountIncreaseCount.x, GameRule.refreshCountIncreaseCount.y)
 				regenerateCards()
 	)
 	ComponentManager.init()
