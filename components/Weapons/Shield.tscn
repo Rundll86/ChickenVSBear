@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://sp8f50c5mxyc"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_rax6s"]
+[ext_resource type="Texture2D" uid="uid://b6tr2k13qog0j" path="res://resources/weapons/shield.png" id="2_gcjwh"]
+[ext_resource type="Script" uid="uid://dcacy48pcfci3" path="res://scripts/Contents/Weapons/Shield.gd" id="2_s74sn"]
+
+[node name="Shield" instance=ExtResource("1_rax6s")]
+script = ExtResource("2_s74sn")
+avatarTexture = ExtResource("2_gcjwh")
+displayName = "音元水晶"
+store = {
+"atk": 200
+}
+descriptionTemplate = "召唤一个可抵挡$atk点伤害的[b]音元护盾[/b]。"
+debugRebuild = true
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_gcjwh")
+
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 500
+
+[node name="soul" parent="container/info/infos" index="2"]
+count = 1
+
+[node name="name" parent="container/info" index="2"]
+displayName = "音元水晶"
+
+[node name="description" parent="container" index="2"]
+text = "[center]召唤一个可抵挡[color=cyan]200[/color]点伤害的[b]音元护盾[/b]。[/center]"
