@@ -26,6 +26,7 @@ class_name BulletBase
 
 var launcher: EntityBase = null
 var launcherSummoned: EntityBase = null
+var parent: BulletBase = null
 var spawnInWhen: float = 0
 var spawnInWhere: Vector2 = Vector2.ZERO
 var destroying: bool = false

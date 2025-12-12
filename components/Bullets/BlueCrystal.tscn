@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://b15v8csigsx5s"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_flng1"]
+[ext_resource type="Script" uid="uid://d1031p38h24tw" path="res://scripts/Contents/Bullets/BlueCrystal.gd" id="2_0q2lw"]
+[ext_resource type="Texture2D" uid="uid://c7hyatbuieaj" path="res://resources/bullets/purple-crystal/frames/0.svg" id="3_7v6qk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4h7m0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7v6qk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_7v6qk"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4h7m0"]
+curve = SubResource("Curve_7v6qk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u2ooq"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+color = Color(1.353256, 1.353256, 1.353256, 1)
+alpha_curve = SubResource("CurveTexture_4h7m0")
+
+[node name="BlueCrystal" instance=ExtResource("1_flng1")]
+script = ExtResource("2_0q2lw")
+displayName = "蓝水晶"
+speed = 5.0
+lifeTime = 5000.0
+
+[node name="texture" parent="." index="0"]
+modulate = Color(0.8283318, 1.529841, 1.548706, 1)
+sprite_frames = SubResource("SpriteFrames_4h7m0")
+
+[node name="trail" type="GPUParticles2D" parent="texture" index="1"]
+unique_name_in_owner = true
+z_index = -1
+position = Vector2(-23, 0)
+amount = 10
+texture = ExtResource("3_7v6qk")
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_u2ooq")

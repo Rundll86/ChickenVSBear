@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3crr8r7y3oho"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_rlc3s"]
+[ext_resource type="Texture2D" uid="uid://cp4ypuarjoshp" path="res://resources/skillIcons/purple-crystal.png" id="2_4qqa7"]
+[ext_resource type="Script" uid="uid://8xlc5upq36n7" path="res://scripts/Contents/Weapons/BlueCrystal.gd" id="2_jbcf8"]
+
+[node name="BlueCrystal" instance=ExtResource("1_rlc3s")]
+script = ExtResource("2_jbcf8")
+avatarTexture = ExtResource("2_4qqa7")
+displayName = "蓝水晶簇"
+quality = 2
+store = {
+"atk": 5,
+"count": 2.0
+}
+storeType = {
+"atk": 1,
+"count": 1,
+"distance": 0
+}
+descriptionTemplate = "发射[b]蓝水晶[/b]，可无限追踪，命中造成$atk点伤害，飞行过程中有$count颗[b]钻石[/b]环绕。"
+cooldown = 175.0
+
+[node name="avatar" parent="container/info" index="0"]
+modulate = Color(0.828, 1.53, 1.549, 1)
+texture = ExtResource("2_4qqa7")
+
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 500
+
+[node name="soul" parent="container/info/infos" index="2"]
+count = 1
+
+[node name="name" parent="container/info" index="2"]
+displayName = "蓝水晶簇"
+quality = 2
+
+[node name="description" parent="container" index="2"]
+text = "[center]发射[b]蓝水晶[/b]，可无限追踪，命中造成[color=cyan]5[/color]点伤害，飞行过程中有[color=cyan]2[/color]颗[b]钻石[/b]环绕，在运动$distance秒后逃逸。[/center]"

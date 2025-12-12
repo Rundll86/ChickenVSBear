@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://chqclu0q4ew46"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_slk7q"]
+[ext_resource type="Script" uid="uid://c1ywds8xwerm3" path="res://scripts/Contents/Bullets/Diamond2.gd" id="2_i4qda"]
+[ext_resource type="Texture2D" uid="uid://dfptmc7clhtx7" path="res://resources/bullets/diamond/frames/0.svg" id="3_pkqnc"]
+
+[sub_resource type="Animation" id="Animation_pkqnc"]
+resource_name = "spawn"
+
+[sub_resource type="Animation" id="Animation_0d4xv"]
+resource_name = "loop"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_g4uh6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v5jve"]
+_data = {
+&"RESET": SubResource("Animation_g4uh6"),
+&"loop": SubResource("Animation_0d4xv"),
+&"spawn": SubResource("Animation_pkqnc")
+}
+
+[node name="Diamond2" instance=ExtResource("1_slk7q")]
+script = ExtResource("2_i4qda")
+displayName = "钻石"
+lifeTime = 5000.0
+autoLoopAnimation = true
+
+[node name="texture" parent="." index="0"]
+scale = Vector2(0.6, 0.6)
+
+[node name="animator" parent="texture" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_v5jve")
+}
+
+[node name="static" type="Sprite2D" parent="texture" index="1"]
+position = Vector2(70, 0)
+rotation = 1.5707964
+texture = ExtResource("3_pkqnc")
+
+[node name="hitbox" parent="." index="1"]
+position = Vector2(43, 0)
