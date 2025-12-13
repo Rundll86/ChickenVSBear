@@ -10,7 +10,7 @@ offset_bottom = 302.0
 script = ExtResource("2_0xgcv")
 avatarTexture = ExtResource("2_wgtcw")
 displayName = "紫水晶簇"
-costBeachball = 250
+costBeachball = 200
 descriptionTemplate = "撞击造成$atk点伤害。"
 cooldown = 200.0
 
@@ -22,9 +22,6 @@ texture = ExtResource("2_wgtcw")
 
 [node name="beachball" parent="container/info/infos" index="1"]
 count = 250
-
-[node name="soul" parent="container/info/infos" index="2"]
-count = 1
 
 [node name="name" parent="container/info" index="2"]
 displayName = "紫水晶簇"

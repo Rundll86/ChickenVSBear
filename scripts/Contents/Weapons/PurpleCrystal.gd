@@ -3,7 +3,7 @@ extends Weapon
 class_name PurpleCrystalWeapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-	origin["atk"] += 3 * to * soulLevel
+	origin["atk"] += 1 * to * soulLevel
 	return origin
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")
