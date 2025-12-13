@@ -47,10 +47,10 @@ animations = [{
 
 [node name="HJM" instance=ExtResource("1_06nhw")]
 script = ExtResource("2_7ry3q")
-attraction = 0.0
+attraction = 0.1
 useStatic = true
 
-[node name="texture" parent="." index="2"]
+[node name="texture" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_p863a")
 animation = &"default"
 

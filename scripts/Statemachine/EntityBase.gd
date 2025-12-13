@@ -407,10 +407,11 @@ func getMySummons() -> Array[SummonBase]:
 				result.append(entity)
 	return result
 func summon(who: PackedScene, syncFields: bool = true, lockValue: bool = true) -> SummonBase:
-	if len(getMySummons()) >= fields.get(FieldStore.Entity.SUMMON_MAX):
-		return null
+	var existSummons: Array[SummonBase] = getMySummons()
+	while len(existSummons) >= fields.get(FieldStore.Entity.SUMMON_MAX):
+		existSummons.pop_at(0).tryKill()
 	var instance: SummonBase = who.instantiate()
-	instance.position = position
+	instance.position = get_global_mouse_position()
 	instance.myMaster = self
 	if isPlayer(): instance.add_to_group("players")
 	if syncFields:

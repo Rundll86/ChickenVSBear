@@ -14,6 +14,7 @@ enum TypeTopic {
 	ENERGY,
 	TEMPERATURE,
 	MAGIC,
+	SUMMON
 }
 enum SoulLevel {
 	NORMALIZE = 1,
@@ -61,12 +62,14 @@ enum SoulLevel {
 	TypeTopic.ENERGY: "能量",
 	TypeTopic.TEMPERATURE: "熔融",
 	TypeTopic.MAGIC: "魔法",
+	TypeTopic.SUMMON: "召唤",
 }
 @export var typeTopicColorMap = {
 	TypeTopic.IMPACT: Color(),
 	TypeTopic.ENERGY: Color(),
 	TypeTopic.TEMPERATURE: Color(),
 	TypeTopic.MAGIC: Color(),
+	TypeTopic.SUMMON: Color(),
 }
 @export var soulLevelNameMap = {
 	SoulLevel.NORMALIZE: "归一",

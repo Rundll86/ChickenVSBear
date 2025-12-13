@@ -7,24 +7,31 @@
 [node name="Shield" instance=ExtResource("1_rax6s")]
 script = ExtResource("2_s74sn")
 avatarTexture = ExtResource("2_gcjwh")
-displayName = "音元水晶"
+displayName = "回响水晶"
+quality = 3
+typeTopic = 4
+costBeachball = 1000
 store = {
-"atk": 200
+"atk": 100
 }
-descriptionTemplate = "召唤一个可抵挡$atk点伤害的[b]音元护盾[/b]。"
+descriptionTemplate = "召唤一个可抵挡$atk点伤害的[b]音元盾[/b]。"
+needEnergy = 50.0
+cooldown = 30000.0
 debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_gcjwh")
 
-[node name="beachball" parent="container/info/infos" index="1"]
-count = 500
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
+text = "50.0"
 
-[node name="soul" parent="container/info/infos" index="2"]
-count = 1
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 1000
 
 [node name="name" parent="container/info" index="2"]
-displayName = "音元水晶"
+displayName = "回响水晶"
+quality = 3
+typeTopic = 4
 
 [node name="description" parent="container" index="2"]
-text = "[center]召唤一个可抵挡[color=cyan]200[/color]点伤害的[b]音元护盾[/b]。[/center]"
+text = "[center]召唤一个可抵挡[color=cyan]100[/color]点伤害的[b]音元盾[/b]。[/center]"
