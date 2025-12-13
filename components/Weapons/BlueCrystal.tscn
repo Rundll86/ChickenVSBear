@@ -10,7 +10,7 @@ avatarTexture = ExtResource("2_4qqa7")
 displayName = "蓝水晶簇"
 quality = 2
 store = {
-"atk": 5,
+"atk": 3,
 "count": 2.0
 }
 storeType = {
@@ -19,7 +19,7 @@ storeType = {
 "distance": 0
 }
 descriptionTemplate = "发射[b]蓝水晶[/b]，可无限追踪，命中造成$atk点伤害，飞行过程中有$count颗[b]钻石[/b]环绕。"
-cooldown = 175.0
+cooldown = 200.0
 
 [node name="avatar" parent="container/info" index="0"]
 modulate = Color(0.828, 1.53, 1.549, 1)
@@ -36,4 +36,4 @@ displayName = "蓝水晶簇"
 quality = 2
 
 [node name="description" parent="container" index="2"]
-text = "[center]发射[b]蓝水晶[/b]，可无限追踪，命中造成[color=cyan]5[/color]点伤害，飞行过程中有[color=cyan]2[/color]颗[b]钻石[/b]环绕，在运动$distance秒后逃逸。[/center]"
+text = "[center]发射[b]蓝水晶[/b]，可无限追踪，命中造成[color=cyan]5[/color]点伤害，飞行过程中有[color=cyan]2[/color]颗[b]钻石[/b]环绕。[/center]"

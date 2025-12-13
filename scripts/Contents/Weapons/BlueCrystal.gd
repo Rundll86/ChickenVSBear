@@ -3,7 +3,7 @@ extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["atk"] += 1 * to * soulLevel
-	origin["count"] = 1 * soulLevel
+	origin["count"] = 1 + 1 * soulLevel
 	return origin
 func attack(entity: EntityBase):
 	for i in BulletBase.generate(ComponentManager.getBullet("BlueCrystal"), entity, entity.findWeaponAnchor("normal"), deg_to_rad(randf_range(0, 360))):
