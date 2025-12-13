@@ -2,7 +2,7 @@
 extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-	origin["atk"] += 1 * to * soulLevel
+	origin["atk"] += 2 * to * soulLevel
 	origin["count"] = 1 + 1 * soulLevel
 	return origin
 func attack(entity: EntityBase):
@@ -15,3 +15,4 @@ func attack(entity: EntityBase):
 					if j is Diamond2Bullet:
 						j.baseDamage = readStore("atk")
 						j.parent = i
+	return true

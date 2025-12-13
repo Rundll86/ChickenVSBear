@@ -35,6 +35,7 @@ var isChildRefract: bool = false
 var initialSpeed: float = 0
 var initialDamage: float = 0
 var speedScale: float = 1
+var scene: PackedScene = null
 
 func _ready():
 	initialSpeed = speed
@@ -163,10 +164,24 @@ func succeedToHit(_dmg: float, _entity: EntityBase):
 	pass
 func register():
 	pass
-func split(_index: int, _total: int, _lastBullet: float):
-	pass
-func refract(_entity: EntityBase, _index: int, _total: int, _lastBullet: float):
-	pass
+func split(index: int, total: int, _lastBullet: float):
+	BulletBase.generate(
+		scene,
+		launcher,
+		position,
+		rotation + deg_to_rad(360.0 / total * index),
+		true,
+		isChildRefract
+	)
+func refract(entity: EntityBase, _index: int, _total: int, _lastBullet: float):
+	BulletBase.generate(
+		scene,
+		launcher,
+		position,
+		position.angle_to_point(entity.position) if is_instance_valid(entity) else randf_range(0, deg_to_rad(360)),
+		isChildSplit,
+		true
+	)
 
 static func generate(
 		bullet: PackedScene,
@@ -187,6 +202,7 @@ static func generate(
 		instance.isChildRefract = asChildRefract
 		instance.launcher = launchBy
 		instance.position = spawnPosition
+		instance.scene = bullet
 		instance.rotation = spawnRotation + deg_to_rad(launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT) * randf_range(-1, 1) * int(!ignoreOffset))
 		if addToWorld:
 			WorldManager.rootNode.call_deferred("add_child", instance)
