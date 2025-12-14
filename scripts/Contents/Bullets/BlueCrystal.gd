@@ -14,3 +14,7 @@ func ai():
 		trail.rotation = 0
 	speed += 0.1
 	PresetBulletAI.forward(self, rotation)
+func destroy(_beacuseMap: bool):
+	var eff = EffectController.create(ComponentManager.getEffect("BlueCrystalExplosion"), global_position)
+	eff.rotation = rotation
+	eff.shot()

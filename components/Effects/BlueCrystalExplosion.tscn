@@ -1,47 +1,48 @@
-[gd_scene load_steps=14 format=3 uid="uid://dn0iwwnq3n8e2"]
+[gd_scene load_steps=14 format=3 uid="uid://dg0pqoys62fjk"]
 
-[ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_sqdwd"]
+[ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_evyr8"]
 
-[sub_resource type="Curve" id="Curve_jf41v"]
+[sub_resource type="Curve" id="Curve_evyr8"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_8rfho"]
-curve = SubResource("Curve_jf41v")
+[sub_resource type="CurveTexture" id="CurveTexture_0rujw"]
+curve = SubResource("Curve_evyr8")
 
-[sub_resource type="Curve" id="Curve_cxxkf"]
+[sub_resource type="Curve" id="Curve_44fku"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_fp3qe"]
-curve = SubResource("Curve_cxxkf")
+[sub_resource type="CurveTexture" id="CurveTexture_gv4mv"]
+curve = SubResource("Curve_44fku")
 
-[sub_resource type="Gradient" id="Gradient_v1v0w"]
-colors = PackedColorArray(0.3125, 0, 1, 1, 1, 0, 0.867188, 1)
+[sub_resource type="Gradient" id="Gradient_s1ueo"]
+colors = PackedColorArray(0.23693943, 0.75172913, 1, 1, 0.4848321, 0.23693943, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7jhwh"]
-gradient = SubResource("Gradient_v1v0w")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qc3wg"]
+gradient = SubResource("Gradient_s1ueo")
 
-[sub_resource type="Gradient" id="Gradient_jbp28"]
+[sub_resource type="Gradient" id="Gradient_231oy"]
+offsets = PackedFloat32Array(0.5, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_30y3h"]
-gradient = SubResource("Gradient_jbp28")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_460m2"]
+gradient = SubResource("Gradient_231oy")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w52ko"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g7c62"]
 particle_flag_disable_z = true
 angle_min = 1.07288e-05
 angle_max = 360.0
-angle_curve = SubResource("CurveTexture_fp3qe")
+angle_curve = SubResource("CurveTexture_gv4mv")
 direction = Vector3(-1, 0, 0)
-spread = 75.0
+spread = 180.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 scale_min = 3.0
 scale_max = 8.0
-color_ramp = SubResource("GradientTexture1D_30y3h")
-color_initial_ramp = SubResource("GradientTexture1D_7jhwh")
-alpha_curve = SubResource("CurveTexture_8rfho")
+color_ramp = SubResource("GradientTexture1D_460m2")
+color_initial_ramp = SubResource("GradientTexture1D_qc3wg")
+alpha_curve = SubResource("CurveTexture_0rujw")
 
 [sub_resource type="Animation" id="Animation_rcc6g"]
 length = 0.001
@@ -79,12 +80,11 @@ _data = {
 &"explosion": SubResource("Animation_pa4et")
 }
 
-[node name="Explosion" instance=ExtResource("1_sqdwd")]
+[node name="Explosion" instance=ExtResource("1_evyr8")]
 
 [node name="particles" parent="." index="1"]
-amount = 10
-lifetime = 0.5
-process_material = SubResource("ParticleProcessMaterial_w52ko")
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_g7c62")
 
 [node name="animator" parent="stage" index="0"]
 libraries = {

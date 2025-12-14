@@ -41,7 +41,7 @@ func _physics_process(_delta):
 		refindPlayer()
 
 func canICollect():
-	return targetPlayer.inventoryMax[item] > targetPlayer.inventory[item]
+	return is_instance_valid(targetPlayer) && targetPlayer.inventoryMax[item] > targetPlayer.inventory[item]
 func collect():
 	collecting = true
 	animator.play("collect")
@@ -65,7 +65,10 @@ static func generate(
 		instance.add_to_group("drops")
 	return instance
 static func getDrops() -> Array[ItemDropped]:
-	return WorldManager.tree.get_nodes_in_group("drops") as Array[ItemDropped]
+	var result: Array[ItemDropped] = []
+	for drop in WorldManager.tree.get_nodes_in_group("drops"):
+		result.append(drop)
+	return result
 static func getDropsCanCollet() -> Array[ItemDropped]:
 	var result: Array[ItemDropped] = []
 	for drop in getDrops():
