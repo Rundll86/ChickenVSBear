@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://hutbnesqb8ql"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_b0uqe"]
+[ext_resource type="Texture2D" uid="uid://dwmw3is7s486j" path="res://resources/feeds/crystal-block.png" id="2_8e2d0"]
+[ext_resource type="PackedScene" uid="uid://c0n3igy4hucrg" path="res://components/Weapons/PurpleCrystal.tscn" id="3_2mapt"]
+[ext_resource type="PackedScene" uid="uid://c3crr8r7y3oho" path="res://components/Weapons/BlueCrystal.tscn" id="3_8e2d0"]
+
+[node name="BlueCrystal" instance=ExtResource("1_b0uqe")]
+avatarTexture = ExtResource("2_8e2d0")
+displayName = "水晶母岩"
+quality = 2
+topic = 8
+fields = Array[int]([8])
+fieldValues = Array[float]([0.1])
+weapons = Array[PackedScene]([ExtResource("3_2mapt"), ExtResource("3_8e2d0")])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([2000, 3000])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_8e2d0")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "水晶母岩"
+quality = 2
+topic = 8
