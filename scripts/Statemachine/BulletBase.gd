@@ -142,16 +142,18 @@ func trySplit():
 	if is_instance_valid(launcher) and !isChildSplit:
 		var value = launcher.fields.get(FieldStore.Entity.BULLET_SPLIT)
 		var total = MathTool.shrimpRate(value)
+		var last = value - floor(value)
 		for i in total:
-			split(i, total, total - floor(total))
+			split(i, total, last)
 func tryRefract():
 	if is_instance_valid(launcher) and !isChildRefract:
 		var value = launcher.fields.get(FieldStore.Entity.BULLET_REFRACTION)
 		var total = MathTool.shrimpRate(value)
+		var last = value - floor(value)
 		for i in total:
 			var entity = EntityTool.findClosetEntity(position, get_tree(), !launcher.isPlayer(), launcher.isPlayer(), [launcher])
 			if is_instance_valid(entity):
-				refract(entity, i, total, value - floor(total))
+				refract(entity, i, total, last)
 
 # 抽象方法
 func ai():
