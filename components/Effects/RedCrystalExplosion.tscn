@@ -1,0 +1,57 @@
+[gd_scene load_steps=12 format=3 uid="uid://cbmleuw8a2mlg"]
+
+[ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_cy5kq"]
+[ext_resource type="AudioStream" uid="uid://dnv73q6g00vuo" path="res://resources/sounds/effect/crystal.mp3" id="2_elo1m"]
+
+[sub_resource type="Curve" id="Curve_cy5kq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_elo1m"]
+curve = SubResource("Curve_cy5kq")
+
+[sub_resource type="Curve" id="Curve_n2oaw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_t885a"]
+curve = SubResource("Curve_n2oaw")
+
+[sub_resource type="Gradient" id="Gradient_a655c"]
+colors = PackedColorArray(1, 0.39999998, 0.39999998, 1, 0.6, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_thnw7"]
+gradient = SubResource("Gradient_a655c")
+
+[sub_resource type="Curve" id="Curve_bapde"]
+_data = [Vector2(0.6, 0.5), 0.0, 1.2500001, 0, 0, Vector2(1, 1), 1.2500001, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0c4j8"]
+curve = SubResource("Curve_bapde")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w17p2"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+angle_curve = SubResource("CurveTexture_t885a")
+spread = 180.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+damping_min = 1000.00006
+damping_max = 1000.00006
+damping_curve = SubResource("CurveTexture_0c4j8")
+scale_min = 3.0
+scale_max = 10.0
+color_initial_ramp = SubResource("GradientTexture1D_thnw7")
+alpha_curve = SubResource("CurveTexture_elo1m")
+
+[node name="RedCrystalExplosion" instance=ExtResource("1_cy5kq")]
+spawnSound = "spawn"
+
+[node name="spawn" parent="sounds" index="0"]
+stream = ExtResource("2_elo1m")
+
+[node name="particles" parent="." index="1"]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_w17p2")

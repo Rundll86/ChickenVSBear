@@ -9,9 +9,9 @@
 script = ExtResource("2_jbcf8")
 avatarTexture = ExtResource("3_fewtg")
 displayName = "蓝水晶簇"
-quality = 2
+typeTopic = 3
 store = {
-"atk": 5,
+"atk": 3,
 "count": 2.0
 }
 storeType = {
@@ -30,7 +30,7 @@ texture = ExtResource("3_fewtg")
 
 [node name="name" parent="container/info" index="2"]
 displayName = "蓝水晶簇"
-quality = 2
+typeTopic = 3
 
 [node name="description" parent="container" index="2"]
-text = "[center]发射[b]蓝水晶[/b]，可无限追踪，命中造成[color=cyan]2[/color]点伤害，飞行过程中有[color=cyan]2[/color]颗[b]钻石[/b]环绕。[/center]"
+text = "[center]发射[b]蓝水晶[/b]，可无限追踪，命中造成[color=cyan]5[/color]点伤害，飞行过程中有[color=cyan]2[/color]颗[b]钻石[/b]环绕。[/center]"

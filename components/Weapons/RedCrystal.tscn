@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt8w2w816tsj0"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_88g2h"]
+[ext_resource type="Texture2D" uid="uid://s8r37cmth6o8" path="res://resources/weapons/red-crystal.png" id="2_3e8g7"]
+[ext_resource type="Script" uid="uid://dmsjasfucknxq" path="res://scripts/Contents/Weapons/RedCrystal.gd" id="2_wfewu"]
+[ext_resource type="AudioStream" uid="uid://dclinyhu256xi" path="res://resources/sounds/effect/Low Whoosh.mp3" id="4_qt0vq"]
+
+[node name="RedCrystal" instance=ExtResource("1_88g2h")]
+script = ExtResource("2_wfewu")
+avatarTexture = ExtResource("2_3e8g7")
+displayName = "红水晶簇"
+typeTopic = 1
+store = {
+"atk": 40,
+"radius": 150.0
+}
+storeType = {
+"atk": 1,
+"radius": 1
+}
+descriptionTemplate = "发射[b]红水晶[/b]，在3秒后以$radius的半径爆炸，造成$atk点伤害。"
+cooldown = 2000.0
+debugRebuild = true
+
+[node name="attack" parent="sounds" index="0"]
+stream = ExtResource("4_qt0vq")
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_3e8g7")
+
+[node name="name" parent="container/info" index="2"]
+displayName = "红水晶簇"
+typeTopic = 1
+
+[node name="description" parent="container" index="2"]
+text = "[center]发射[b]红水晶[/b]，在3秒后以[color=cyan]150[/color]的半径爆炸，造成[color=cyan]40[/color]点伤害。[/center]"

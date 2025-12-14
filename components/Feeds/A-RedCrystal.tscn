@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqlig553oovpn"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_66pmg"]
+[ext_resource type="Texture2D" uid="uid://s8r37cmth6o8" path="res://resources/weapons/red-crystal.png" id="2_0kdox"]
+[ext_resource type="PackedScene" uid="uid://dt8w2w816tsj0" path="res://components/Weapons/RedCrystal.tscn" id="3_aumml"]
+
+[node name="RedCrystal" instance=ExtResource("1_66pmg")]
+avatarTexture = ExtResource("2_0kdox")
+displayName = "红水晶簇"
+quality = 2
+topic = 8
+fields = Array[int]([9])
+fieldValues = Array[float]([-1.0])
+weapons = Array[PackedScene]([ExtResource("3_aumml")])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([100, 150])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_0kdox")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "红水晶簇"
+quality = 2
+topic = 8

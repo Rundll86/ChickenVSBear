@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0oc8aqfef0tt"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_k4d80"]
+[ext_resource type="Script" uid="uid://bv848wj2ko0y0" path="res://scripts/Contents/Bullets/RedCrystal.gd" id="2_llvlo"]
+[ext_resource type="Texture2D" uid="uid://c7hyatbuieaj" path="res://resources/bullets/purple-crystal/frames/0.svg" id="3_hx3mn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ns31y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hx3mn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RedCrystal" instance=ExtResource("1_k4d80")]
+script = ExtResource("2_llvlo")
+displayName = "红水晶"
+speed = 8.0
+lifeTime = 3000.0
+metadata/_edit_vertical_guides_ = [150.0]
+
+[node name="texture" parent="." index="0"]
+modulate = Color(1.2892731, 0.44830602, 0.44830602, 1)
+sprite_frames = SubResource("SpriteFrames_ns31y")

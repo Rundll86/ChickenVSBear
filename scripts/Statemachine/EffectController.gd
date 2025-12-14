@@ -24,6 +24,10 @@ func shot():
 	if oneShot:
 		await cloned.finished
 		cloned.queue_free()
+		if spawnSound:
+			var sound: AudioStreamPlayer2D = sounds.get_node(spawnSound)
+			if sound.playing:
+				await sound.finished
 		queue_free()
 
 static func create(scene: PackedScene, spawnPosition: Vector2, parent: Node2D = null) -> EffectController:

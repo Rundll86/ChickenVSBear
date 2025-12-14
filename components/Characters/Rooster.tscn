@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=14 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" uid="uid://cthtupc6dtbav" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
+[ext_resource type="PackedScene" uid="uid://dt8w2w816tsj0" path="res://components/Weapons/RedCrystal.tscn" id="3_0omr3"]
 [ext_resource type="PackedScene" uid="uid://c0n3igy4hucrg" path="res://components/Weapons/PurpleCrystal.tscn" id="3_jluqw"]
 [ext_resource type="PackedScene" uid="uid://c3crr8r7y3oho" path="res://components/Weapons/BlueCrystal.tscn" id="4_0omr3"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
@@ -55,10 +56,14 @@ metadata/_edit_vertical_guides_ = [71.0]
 [node name="weaponStore" parent="." index="1"]
 process_mode = 4
 
-[node name="PurpleCrystal" parent="weaponStore" index="0" instance=ExtResource("3_jluqw")]
+[node name="RedCrystal" parent="weaponStore" index="0" instance=ExtResource("3_0omr3")]
+offset_bottom = 374.0
+debugRebuild = false
+
+[node name="PurpleCrystal" parent="weaponStore" index="1" instance=ExtResource("3_jluqw")]
 offset_bottom = 350.0
 
-[node name="BlueCrystal" parent="weaponStore" index="1" instance=ExtResource("4_0omr3")]
+[node name="BlueCrystal" parent="weaponStore" index="2" instance=ExtResource("4_0omr3")]
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")

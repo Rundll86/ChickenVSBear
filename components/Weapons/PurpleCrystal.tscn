@@ -11,8 +11,9 @@ script = ExtResource("2_0xgcv")
 avatarTexture = ExtResource("2_wgtcw")
 displayName = "紫水晶簇"
 costBeachball = 200
-descriptionTemplate = "撞击造成$atk点伤害。"
+descriptionTemplate = "发射[b]紫水晶[/b]，撞击时造成$atk点伤害。"
 cooldown = 200.0
+debugRebuild = true
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_16daa")
@@ -21,10 +22,10 @@ stream = ExtResource("4_16daa")
 texture = ExtResource("2_wgtcw")
 
 [node name="beachball" parent="container/info/infos" index="1"]
-count = 250
+count = 200
 
 [node name="name" parent="container/info" index="2"]
 displayName = "紫水晶簇"
 
 [node name="description" parent="container" index="2"]
-text = "[center]撞击造成[color=cyan]10[/color]点伤害。[/center]"
+text = "[center]发射[b]紫水晶[/b]，撞击时造成[color=cyan]10[/color]点伤害。[/center]"

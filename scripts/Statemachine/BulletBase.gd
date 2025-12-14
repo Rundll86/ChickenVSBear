@@ -36,6 +36,7 @@ var initialSpeed: float = 0
 var initialDamage: float = 0
 var speedScale: float = 1
 var parentScene: PackedScene = null
+var isFirstFrame: bool = true
 
 func _ready():
 	initialSpeed = speed
@@ -85,6 +86,9 @@ func _physics_process(_delta: float) -> void:
 				targetEntity.getTrackingAnchor(),
 				launcher.fields.get(FieldStore.Entity.BULLET_TRACE) / 10
 			)
+		if isFirstFrame:
+			firstFrame()
+			isFirstFrame = false
 		ai()
 	else:
 		tryDestroy()
@@ -122,6 +126,8 @@ func timeLived():
 	return WorldManager.getTime() - spawnInWhen
 func distanceLived():
 	return position.distance_to(spawnInWhere)
+func lifeTimePercent():
+	return timeLived() / lifeTime
 func lifeDistancePercent():
 	return distanceLived() / lifeDistance
 func dotLoop():
@@ -156,6 +162,8 @@ func tryRefract():
 				refract(entity, i, total, last)
 
 # 抽象方法
+func firstFrame():
+	pass
 func ai():
 	pass
 func destroy(_beacuseMap: bool):

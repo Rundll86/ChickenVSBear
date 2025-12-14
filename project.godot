@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ChickenVSBear"
-run/main_scene="res://components/Scenes/World.tscn"
+run/main_scene="uid://dmxi1ikn6avig"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
