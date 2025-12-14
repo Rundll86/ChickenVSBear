@@ -9,9 +9,10 @@ height = 150.0
 
 [node name="MTYSprint" instance=ExtResource("1_pwer0")]
 script = ExtResource("2_rion0")
-displayName = "猛冲"
+displayName = "撕咬"
 baseDamage = 5.0
 penerate = 1.0
+lifeTime = 500.0
 
 [node name="hitbox" parent="." index="1"]
 shape = SubResource("CapsuleShape2D_rion0")
