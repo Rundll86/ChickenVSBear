@@ -7,7 +7,7 @@ static func frame(count: int = 1):
 		await WorldManager.tree.physics_frame
 static func until(predicate: Callable):
 	while not predicate.call():
-		await frame()
+		await frame.unbind(1).call(0)
 static func modifyAnimationKey(animator: AnimationPlayer, name: String, track: NodePath, trackType: Animation.TrackType, time: float, value: Variant):
 	var animation = animator.get_animation(name)
 	var trackIdx = animation.find_track(track, trackType)

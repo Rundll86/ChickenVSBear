@@ -122,8 +122,8 @@ func attack(type):
 		return false
 	return true
 func sprint():
-	var dir = sign((currentFocusedBoss.position - position).x)
-	velocity = Vector2(dir, 0)
+	if is_instance_valid(currentFocusedBoss):
+		velocity = Vector2(sign((currentFocusedBoss.position - position).x), 0)
 func sprintAi():
 	velocity.x *= 1.2
 	return abs(velocity.x) >= 1000000
