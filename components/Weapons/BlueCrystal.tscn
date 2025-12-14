@@ -1,17 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3crr8r7y3oho"]
 
 [ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_rlc3s"]
-[ext_resource type="Texture2D" uid="uid://cp4ypuarjoshp" path="res://resources/skillIcons/purple-crystal.png" id="2_4qqa7"]
 [ext_resource type="Script" uid="uid://8xlc5upq36n7" path="res://scripts/Contents/Weapons/BlueCrystal.gd" id="2_jbcf8"]
+[ext_resource type="Texture2D" uid="uid://dl1tawdvnlsux" path="res://resources/weapons/blue-crystal.png" id="3_fewtg"]
 [ext_resource type="AudioStream" uid="uid://dclinyhu256xi" path="res://resources/sounds/effect/Low Whoosh.mp3" id="4_fewtg"]
 
 [node name="BlueCrystal" instance=ExtResource("1_rlc3s")]
 script = ExtResource("2_jbcf8")
-avatarTexture = ExtResource("2_4qqa7")
+avatarTexture = ExtResource("3_fewtg")
 displayName = "蓝水晶簇"
 quality = 2
 store = {
-"atk": 2,
+"atk": 5,
 "count": 2.0
 }
 storeType = {
@@ -20,20 +20,13 @@ storeType = {
 "distance": 0
 }
 descriptionTemplate = "发射[b]蓝水晶[/b]，可无限追踪，命中造成$atk点伤害，飞行过程中有$count颗[b]钻石[/b]环绕。"
-cooldown = 200.0
+cooldown = 250.0
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_fewtg")
 
 [node name="avatar" parent="container/info" index="0"]
-modulate = Color(0.828, 1.53, 1.549, 1)
-texture = ExtResource("2_4qqa7")
-
-[node name="beachball" parent="container/info/infos" index="1"]
-count = 500
-
-[node name="soul" parent="container/info/infos" index="2"]
-count = 1
+texture = ExtResource("3_fewtg")
 
 [node name="name" parent="container/info" index="2"]
 displayName = "蓝水晶簇"

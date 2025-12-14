@@ -38,7 +38,7 @@ alpha_curve = SubResource("CurveTexture_4h7m0")
 script = ExtResource("2_0q2lw")
 displayName = "蓝水晶"
 speed = 5.0
-lifeTime = 5000.0
+lifeTime = 2500.0
 
 [node name="texture" parent="." index="0"]
 modulate = Color(0.8283318, 1.529841, 1.548706, 1)

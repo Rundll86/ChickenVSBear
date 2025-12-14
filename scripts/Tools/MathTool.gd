@@ -22,7 +22,7 @@ static func signBeforeStr(value: float):
 static func percent(value: float):
 	return value / 100
 static func shrimpRate(value: float):
-	return randi_range(0, floor(value)) + int(rate(value - floor(value)))
+	return floor(value) + int(rate(value - floor(value)))
 static func getClosestIntersection(a: Vector2, b: Vector2, r: float) -> Vector2:
 	var ab = b - a
 	var distance = ab.length()
