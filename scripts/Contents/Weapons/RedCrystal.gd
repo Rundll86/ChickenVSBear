@@ -3,7 +3,7 @@ extends Weapon
 class_name RedCrystalWeapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-	origin["atk"] += 2 * to * soulLevel
+	origin["atk"] += 5 * to * soulLevel
 	origin["radius"] += 4 * to * soulLevel
 	return origin
 func attack(entity: EntityBase):
