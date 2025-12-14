@@ -24,6 +24,7 @@ func shot():
 	if oneShot:
 		await cloned.finished
 		cloned.queue_free()
+		queue_free()
 
 static func create(scene: PackedScene, spawnPosition: Vector2, parent: Node2D = null) -> EffectController:
 	var cloned = scene.instantiate() as EffectController

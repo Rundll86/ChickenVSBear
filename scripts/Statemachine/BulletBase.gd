@@ -35,7 +35,7 @@ var isChildRefract: bool = false
 var initialSpeed: float = 0
 var initialDamage: float = 0
 var speedScale: float = 1
-var scene: PackedScene = null
+var parentScene: PackedScene = null
 
 func _ready():
 	initialSpeed = speed
@@ -146,8 +146,8 @@ func trySplit():
 func tryRefract():
 	if is_instance_valid(launcher) and !isChildRefract:
 		var value = launcher.fields.get(FieldStore.Entity.BULLET_REFRACTION)
-		var entity = EntityTool.findClosetEntity(position, get_tree(), !launcher.isPlayer(), launcher.isPlayer())
 		for i in range(MathTool.shrimpRate(value)):
+			var entity = EntityTool.findClosetEntity(position, get_tree(), !launcher.isPlayer(), launcher.isPlayer(), [launcher])
 			if is_instance_valid(entity):
 				refract(entity, i, value, value - floor(value))
 
@@ -166,7 +166,7 @@ func register():
 	pass
 func split(index: int, total: int, _lastBullet: float):
 	BulletBase.generate(
-		scene,
+		parentScene,
 		launcher,
 		position,
 		rotation + deg_to_rad(360.0 / total * index),
@@ -175,7 +175,7 @@ func split(index: int, total: int, _lastBullet: float):
 	)
 func refract(entity: EntityBase, _index: int, _total: int, _lastBullet: float):
 	BulletBase.generate(
-		scene,
+		parentScene,
 		launcher,
 		position,
 		position.angle_to_point(entity.position) if is_instance_valid(entity) else randf_range(0, deg_to_rad(360)),
@@ -202,7 +202,7 @@ static func generate(
 		instance.isChildRefract = asChildRefract
 		instance.launcher = launchBy
 		instance.position = spawnPosition
-		instance.scene = bullet
+		instance.parentScene = bullet
 		instance.rotation = spawnRotation + deg_to_rad(launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT) * randf_range(-1, 1) * int(!ignoreOffset))
 		if addToWorld:
 			WorldManager.rootNode.call_deferred("add_child", instance)

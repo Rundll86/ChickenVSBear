@@ -8,7 +8,7 @@ func ai():
 	if is_instance_valid(tracer):
 		var tracker = tracer.getTrackingAnchor()
 		var targetAngle = position.angle_to_point(tracker)
-		trail.rotation = - Vector2.from_angle(rotation).angle_to(Vector2.from_angle(targetAngle)) * 0.75 / (speed / initialSpeed)
+		trail.rotation = - Vector2.from_angle(rotation).angle_to(Vector2.from_angle(targetAngle)) / (speed / initialSpeed)
 		PresetBulletAI.trace(self, tracker, 0.07)
 	else:
 		trail.rotation = 0

@@ -400,6 +400,8 @@ func useItem(items: Dictionary):
 func getItem(items: Dictionary):
 	for item in items:
 		inventory[item] = clamp(inventory[item] + items[item], 0, inventoryMax[item])
+func getHealthPercent():
+	return health / fields[FieldStore.Entity.MAX_HEALTH]
 func getMySummons() -> Array[SummonBase]:
 	var result: Array[SummonBase] = []
 	for entity in get_tree().get_nodes_in_group("players" if isPlayer() else "mobs"):
