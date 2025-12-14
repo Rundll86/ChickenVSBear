@@ -10,13 +10,12 @@ offset_bottom = 346.0
 script = ExtResource("2_0tyah")
 avatarTexture = ExtResource("2_ou6jo")
 displayName = "彩虹旗"
-quality = 4
-typeTopic = 3
+typeTopic = 4
 costBeachball = 200
 store = {
 "angle": 35.0,
 "atk": 15.0,
-"count": 2.0,
+"count": 1.0,
 "power": 0.02,
 "trace": 1.0
 }
@@ -28,8 +27,9 @@ storeType = {
 "trace": 0.0
 }
 descriptionTemplate = "召唤[b]彩虹旗[/b]，每$angle发射1/$count条以$power效率追踪$trace秒的[b]七彩光标[/b]，每条造成$atk点伤害。"
-needEnergy = 35.0
+needEnergy = 95.0
 cooldown = 1000.0
+debugRebuild = true
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_c5xse")
@@ -38,20 +38,16 @@ stream = ExtResource("4_c5xse")
 texture = ExtResource("2_ou6jo")
 
 [node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "75.0"
+text = "95.0"
 
 [node name="beachball" parent="container/info/infos" index="1"]
 count = 200
 
-[node name="soul" parent="container/info/infos" index="2"]
-count = 1
-
 [node name="name" parent="container/info" index="2"]
 displayName = "彩虹旗"
-quality = 4
-typeTopic = 3
+typeTopic = 4
 
 [node name="description" parent="container" index="2"]
 size_flags_vertical = 3
-text = "[center]召唤[b]彩虹旗[/b]，每[color=cyan]35.0°[/color]发射1/[color=cyan]2[/color]条以[color=cyan]2%[/color]效率追踪[color=cyan]1.00[/color]秒的[b]七彩光标[/b]，每条造成[color=cyan]15[/color]点伤害。[/center]"
+text = "[center]召唤[b]彩虹旗[/b]，每[color=cyan]35.0°[/color]发射1/[color=cyan]1[/color]条以[color=cyan]2%[/color]效率追踪[color=cyan]1.00[/color]秒的[b]七彩光标[/b]，每条造成[color=cyan]15[/color]点伤害。[/center]"
 autowrap_mode = 2

@@ -9,18 +9,18 @@ script = ExtResource("2_2in6n")
 avatarTexture = ExtResource("2_74sfb")
 displayName = "耄耋"
 quality = 0
-typeTopic = 3
+typeTopic = 4
 costBeachball = 600
 store = {
-"atk": 5,
-"time": 0.3
+"atk": 7,
+"time": 0.25
 }
 storeType = {
 "atk": 1,
 "time": 0
 }
 descriptionTemplate = "召唤[b]抓狂的哈基米[/b]，跟踪敌人，每$time秒造成$atk点伤害。"
-needEnergy = 60.0
+needEnergy = 75.0
 cooldown = 1000.0
 debugRebuild = true
 
@@ -28,18 +28,15 @@ debugRebuild = true
 texture = ExtResource("2_74sfb")
 
 [node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "60.0"
+text = "75.0"
 
 [node name="beachball" parent="container/info/infos" index="1"]
 count = 600
 
-[node name="soul" parent="container/info/infos" index="2"]
-count = 1
-
 [node name="name" parent="container/info" index="2"]
 displayName = "耄耋"
 quality = 0
-typeTopic = 3
+typeTopic = 4
 
 [node name="description" parent="container" index="2"]
-text = "[center]召唤[b]抓狂的哈基米[/b]，跟踪敌人，每[color=cyan]0.30[/color]秒造成[color=cyan]5[/color]点伤害。[/center]"
+text = "[center]召唤[b]抓狂的哈基米[/b]，跟踪敌人，每[color=cyan]0.25[/color]秒造成[color=cyan]7[/color]点伤害。[/center]"

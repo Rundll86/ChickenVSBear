@@ -12,12 +12,11 @@ quality = 3
 typeTopic = 4
 costBeachball = 1000
 store = {
-"atk": 100
+"atk": 70
 }
 descriptionTemplate = "召唤一个可抵挡$atk点伤害的[b]音元盾[/b]。"
 needEnergy = 50.0
 cooldown = 30000.0
-debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_gcjwh")
@@ -34,4 +33,4 @@ quality = 3
 typeTopic = 4
 
 [node name="description" parent="container" index="2"]
-text = "[center]召唤一个可抵挡[color=cyan]100[/color]点伤害的[b]音元盾[/b]。[/center]"
+text = "[center]召唤一个可抵挡[color=cyan]70[/color]点伤害的[b]音元盾[/b]。[/center]"

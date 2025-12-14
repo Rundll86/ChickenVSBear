@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://3j68tvkgjvoh"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_xh0pv"]
+[ext_resource type="Texture2D" uid="uid://b6tr2k13qog0j" path="res://resources/weapons/shield.png" id="2_kj8gf"]
+[ext_resource type="PackedScene" uid="uid://sp8f50c5mxyc" path="res://components/Weapons/Shield.tscn" id="3_ken6r"]
+
+[node name="Shield" instance=ExtResource("1_xh0pv")]
+avatarTexture = ExtResource("2_kj8gf")
+displayName = "回响水晶"
+quality = 4
+topic = 8
+fields = Array[int]([0, 10, 7])
+fieldValues = Array[float]([-5.0, -0.07, 3.0])
+weapons = Array[PackedScene]([ExtResource("3_ken6r")])
+costs = Array[int]([0, 1, 2, 3])
+costCounts = Array[int]([500, 750, 1, 4000])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_kj8gf")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "回响水晶"
+quality = 4
+topic = 8

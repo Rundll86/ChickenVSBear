@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmhlrmx06ip07"]
+[gd_scene load_steps=4 format=3 uid="uid://bmhlrmx06ip07"]
 
 [ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_bjcwe"]
 [ext_resource type="Texture2D" uid="uid://bv7iu8qylxp70" path="res://resources/weapons/hjm.png" id="2_bjcwe"]
-[ext_resource type="Texture2D" uid="uid://cwfyi61xkt4bt" path="res://resources/weapons/lgbt.jpeg" id="2_f6m0e"]
 [ext_resource type="PackedScene" uid="uid://dbxu15g1pd3cx" path="res://components/Weapons/HJM.tscn" id="3_f6m0e"]
 
 [node name="LGBT" instance=ExtResource("1_bjcwe")]
@@ -11,15 +10,15 @@ displayName = "耄耋"
 quality = 2
 topic = 8
 fields = Array[int]([0])
-fieldValues = Array[float]([25.0])
+fieldValues = Array[float]([10.0])
 weapons = Array[PackedScene]([ExtResource("3_f6m0e")])
 costs = Array[int]([1, 2])
 costCounts = Array[int]([150, 1])
 
 [node name="avatar" parent="container/info" index="0"]
-texture = ExtResource("2_f6m0e")
+texture = ExtResource("2_bjcwe")
 
 [node name="name" parent="container/info" index="1"]
-displayName = "彩虹旗"
+displayName = "耄耋"
 quality = 2
 topic = 8
