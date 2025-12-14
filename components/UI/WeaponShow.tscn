@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c7747qr83iojj"]
 
 [ext_resource type="Theme" uid="uid://b6nox1qqh50ub" path="res://themes/smallText.tres" id="1_ua7kx"]
-[ext_resource type="Script" path="res://scripts/Statemachine/WeaponShow.gd" id="2_cojxr"]
+[ext_resource type="Script" uid="uid://ohfsaaweoxpb" path="res://scripts/Statemachine/WeaponShow.gd" id="2_cojxr"]
 [ext_resource type="PackedScene" uid="uid://bbm8l3hr4ihar" path="res://components/UI/ItemShow.tscn" id="2_yqc2h"]
 [ext_resource type="PackedScene" uid="uid://b2qhes4apaxsj" path="res://components/Weapons/NuclearBomb.tscn" id="3_gh1wm"]
 [ext_resource type="Texture2D" uid="uid://cp57lmeohvo3o" path="res://resources/weapons/nuclear-bomb.png" id="4_yyc4p"]
@@ -16,11 +16,10 @@ weapon = ExtResource("3_gh1wm")
 [node name="operation" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-text = "提炼"
+text = "获得武器"
 
 [node name="avatar" type="TextureRect" parent="."]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -31,7 +30,6 @@ stretch_mode = 5
 
 [node name="name" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "核弹控制器"
 

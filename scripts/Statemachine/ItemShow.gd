@@ -16,7 +16,7 @@ func _ready():
 	if autoFree:
 		animator.play("show")
 		await animator.animation_finished
-		await TickTool.millseconds(GameRule.itemShowLifetime) # 等待几秒后自动隐藏
+		await TickTool.millseconds(GameRule.itemShowLifetime)
 		animator.play("hide")
 		await animator.animation_finished
 		queue_free()

@@ -22,11 +22,7 @@ func _ready():
 	soulShow.count = weaponInstance.soulLevel
 	if operation == Operation.GET:
 		operationLabel.text = "获得武器"
-		avatarRect.visible = true
-		nameLabel.visible = true
 		soulShow.visible = false
 	else:
 		operationLabel.text = "提炼灵魂"
-		avatarRect.visible = false
-		nameLabel.visible = false
 		soulShow.visible = true
