@@ -466,7 +466,7 @@ func kill():
 	pass
 
 static func findPlayer(playerName: String) -> EntityBase:
-	for i in WorldManager.tree.get_nodes_in_group("players"):
+	for i in getPlayers():
 		if i.displayName == playerName:
 			return i
 	return null
@@ -493,5 +493,15 @@ static func generate(
 	if addToWorld:
 		WorldManager.rootNode.spawn(instance)
 	return instance
-static func getMobs():
-	return WorldManager.tree.get_nodes_in_group("mobs")
+static func getMobs() -> Array[EntityBase]:
+	var result: Array[EntityBase] = []
+	for entity in WorldManager.tree.get_nodes_in_group("mobs"):
+		if entity:
+			result.append(entity)
+	return result
+static func getPlayers() -> Array[EntityBase]:
+	var result: Array[EntityBase] = []
+	for entity in WorldManager.tree.get_nodes_in_group("players"):
+		if entity:
+			result.append(entity)
+	return result

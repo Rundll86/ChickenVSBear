@@ -19,16 +19,16 @@ func _physics_process(delta):
 		UIState.setPanel("MakeFeed")
 
 @rpc("authority")
-func nextWave(waves: Array):
+func doNextWave(waves: Array):
 	Wave.next(waves)
 
 func canNextWave():
 	return len(EntityBase.getMobs()) == 0 and len(ItemDropped.getDropsCanCollet()) == 0
-func spawnWave():
-	var waves = Wave.spawn()
-	nextWave(waves)
+func spawnWave(center: Vector2):
+	var waves = Wave.spawn(center)
+	doNextWave(waves)
 	if MultiplayerState.isMultiplayer and multiplayer.is_server():
-		nextWave.rpc(waves)
+		doNextWave.rpc(waves)
 func spawn(node: Node):
 	if MultiplayerState.isMultiplayer:
 		if multiplayer.is_server():
