@@ -140,16 +140,18 @@ func tryDestroy(becauseMap: bool = false):
 	queue_free()
 func trySplit():
 	if is_instance_valid(launcher) and !isChildSplit:
-		var launcherSplit = launcher.fields.get(FieldStore.Entity.BULLET_SPLIT)
-		for i in range(MathTool.shrimpRate(launcherSplit)):
-			split(i, launcherSplit, launcherSplit - floor(launcherSplit))
+		var value = launcher.fields.get(FieldStore.Entity.BULLET_SPLIT)
+		var total = MathTool.shrimpRate(value)
+		for i in total:
+			split(i, total, total - floor(total))
 func tryRefract():
 	if is_instance_valid(launcher) and !isChildRefract:
 		var value = launcher.fields.get(FieldStore.Entity.BULLET_REFRACTION)
-		for i in range(MathTool.shrimpRate(value)):
+		var total = MathTool.shrimpRate(value)
+		for i in total:
 			var entity = EntityTool.findClosetEntity(position, get_tree(), !launcher.isPlayer(), launcher.isPlayer(), [launcher])
 			if is_instance_valid(entity):
-				refract(entity, i, value, value - floor(value))
+				refract(entity, i, total, value - floor(total))
 
 # 抽象方法
 func ai():
