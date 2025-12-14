@@ -36,9 +36,9 @@ func _physics_process(_delta):
 					targetPlayer.collectItem(item, stackCount)
 					collect()
 		else:
-			refindPlayer()
+			refindPlayer(get_tree())
 	else:
-		refindPlayer()
+		refindPlayer(get_tree())
 
 func canICollect():
 	return is_instance_valid(targetPlayer) && targetPlayer.inventoryMax[item] > targetPlayer.inventory[item]
@@ -47,8 +47,8 @@ func collect():
 	animator.play("collect")
 	await animator.animation_finished
 	queue_free()
-func refindPlayer():
-	targetPlayer = EntityTool.findClosetPlayer(position, get_tree())
+func refindPlayer(tree: SceneTree):
+	targetPlayer = EntityTool.findClosetPlayer(position, tree)
 
 static func generate(
 		itemType: ItemStore.ItemType,
@@ -63,6 +63,7 @@ static func generate(
 	if addToWorld:
 		WorldManager.rootNode.call_deferred("add_child", instance)
 		instance.add_to_group("drops")
+		instance.refindPlayer(WorldManager.tree)
 	return instance
 static func getDrops() -> Array[ItemDropped]:
 	var result: Array[ItemDropped] = []
