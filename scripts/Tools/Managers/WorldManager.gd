@@ -42,3 +42,5 @@ static func getTime():
 	return runningTime
 static func spawnNode(node: Node):
 	rootNode.spawn(node)
+static func isRelease() -> bool:
+	return !OS.is_debug_build()

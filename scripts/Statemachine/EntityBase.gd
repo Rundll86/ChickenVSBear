@@ -122,7 +122,7 @@ func _ready():
 	if isPlayer():
 		if displayName == MultiplayerState.playerName:
 			UIState.player = self
-		if !OS.is_debug_build():
+		if WorldManager.isRelease():
 			for i in weaponStore.get_children():
 				i.free()
 			weaponStore.add_child(ComponentManager.getWeapon("PurpleCrystal").instantiate())
