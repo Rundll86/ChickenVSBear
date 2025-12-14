@@ -52,11 +52,11 @@ func attack(type):
 			if !is_instance_valid(currentFocusedBoss): return false
 			for bullet in BulletBase.generate(ComponentManager.getBullet("ArrowSeven"), self, findWeaponAnchor("normal"), deg_to_rad(randf_range(0, 360))):
 				bullet.tracer = currentFocusedBoss
-				bullet.position += MathTool.randv2_range(50)
+				bullet.position += MathTool.randomVector2In(50)
 			await TickTool.millseconds(50)
 		return false
 	elif type == 1:
-		await sprintTo(currentFocusedBoss.position - Vector2(MathTool.randc_from([-300, 300]), 300), 0.25)
+		await sprintTo(currentFocusedBoss.position - Vector2(MathTool.randomChoiceFrom([-300, 300]), 300), 0.25)
 		var count = randi_range(6, 8)
 		for i in range(count):
 			BulletBase.generate(ComponentManager.getBullet("SunDance"), self, weaponPos, deg_to_rad(360.0 / count * i))
@@ -66,7 +66,7 @@ func attack(type):
 				bullet.rotation = 360 / 13.0 * i
 	elif type == 3:
 		if !is_instance_valid(currentFocusedBoss): return false
-		await sprintTo(currentFocusedBoss.position - Vector2(MathTool.randc_from([500, -500]), 0), 0.25)
+		await sprintTo(currentFocusedBoss.position - Vector2(MathTool.randomChoiceFrom([500, -500]), 0), 0.25)
 		sprintParticle.emitting = true
 		canRunAi = false
 		currentInvinsible = true
@@ -76,7 +76,7 @@ func attack(type):
 		await trySprint()
 		sprintParticle.emitting = false
 		canRunAi = true
-		await sprintTo(currentFocusedBoss.position + MathTool.randv2_range(400), 0.25)
+		await sprintTo(currentFocusedBoss.position + MathTool.randomVector2In(400), 0.25)
 		currentInvinsible = false
 		return false
 	elif type == 4:
@@ -102,8 +102,8 @@ func attack(type):
 		for i in 16:
 			if !is_instance_valid(currentFocusedBoss): return false
 			for bullet in BulletBase.generate(ComponentManager.getBullet("LightGun"), self, currentFocusedBoss.position, 0):
-				bullet.position += MathTool.randv2_range(600)
-				bullet.look_at(currentFocusedBoss.position + MathTool.randv2_range(50))
+				bullet.position += MathTool.randomVector2In(600)
+				bullet.look_at(currentFocusedBoss.position + MathTool.randomVector2In(50))
 			await TickTool.millseconds(100)
 		return false
 	elif type == 7:

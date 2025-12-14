@@ -17,5 +17,5 @@ static func distanceAction(entity: EntityBase, target: EntityBase, minDistance: 
 	if minDistance <= distance and distance <= maxDistance:
 		action.call()
 static func weightAttack(entity: EntityBase, indexes: Array[int], weight: Array[int], chargeUp: Callable):
-	var method = MathTool.randc_from_weights(indexes, weight)
+	var method = MathTool.randChoiceWeightsFrom(indexes, weight)
 	entity.tryAttack(method, chargeUp.call(method))

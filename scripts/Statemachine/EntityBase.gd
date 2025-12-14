@@ -171,7 +171,7 @@ func _process(_delta):
 		statebar.levelLabel.text = str(level)
 func _physics_process(_delta: float) -> void:
 	if !isPlayer() && !currentFocusedBoss:
-		currentFocusedBoss = MathTool.randc_from(get_tree().get_nodes_in_group("players"))
+		currentFocusedBoss = MathTool.randomChoiceFrom(get_tree().get_nodes_in_group("players"))
 	animatree.set("parameters/blend_position", lerpf(animatree.get("parameters/blend_position"), lastDirection, 0.2))
 	if sprinting:
 		if sprintAi():
@@ -234,7 +234,7 @@ func takeDamage(baseDamage: float, crit: bool = false, perfectMiss: bool = false
 	var resultDamage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
 	health -= resultDamage
 	healthChanged.emit(health)
-	DamageLabel.create(resultDamage, crit || perfectMiss, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
+	DamageLabel.create(resultDamage, crit || perfectMiss, damageAnchor.global_position + MathTool.randomVector2In(GameRule.damageLabelSpawnOffset))
 	if health <= 0:
 		tryDie(null)
 	return resultDamage
@@ -261,7 +261,7 @@ func bulletHit(bullet: BulletBase, crit: bool):
 	hit.emit(damage, bullet, crit)
 	health -= damage
 	healthChanged.emit(health)
-	DamageLabel.create(damage, crit || perfectMiss, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
+	DamageLabel.create(damage, crit || perfectMiss, damageAnchor.global_position + MathTool.randomVector2In(GameRule.damageLabelSpawnOffset))
 	if isBoss and bullet.launcher.isPlayer():
 		bullet.launcher.setBoss(self)
 	if health <= 0:
@@ -338,24 +338,24 @@ func tryDie(by: BulletBase = null):
 			var item = drops[drop]
 			var count = ceil(randf_range(dropCounts[drop].x, dropCounts[drop].y))
 			for i in range(count):
-				ItemDropped.generate(item, randi_range(1, 2 * round(sqrt(GameRule.difficulty - GameRule.difficultyRange.x + 1))), position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
+				ItemDropped.generate(item, randi_range(1, 2 * round(sqrt(GameRule.difficulty - GameRule.difficultyRange.x + 1))), position + MathTool.randomVector2In(GameRule.itemDroppedSpawnOffset))
 		if MathTool.rate(
 			GameRule.appleDropRate +
 			by.launcher.fields.get(FieldStore.Entity.DROP_APPLE_RATE) +
 			GameRule.appleDropRateInfluenceByLuckValue * by.launcher.fields[FieldStore.Entity.LUCK_VALUE]
 		) or isBoss:
 			for i in randi_range(appleCount.x, appleCount.y):
-				ItemDropped.generate(ItemStore.ItemType.APPLE, 1, position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset))
+				ItemDropped.generate(ItemStore.ItemType.APPLE, 1, position + MathTool.randomVector2In(GameRule.itemDroppedSpawnOffset))
 		ItemDropped.generate(
 			ItemStore.ItemType.BEACHBALL,
 			fields[FieldStore.Entity.MAX_HEALTH] * randf_range(1 - GameRule.beachballOffset, 1 + GameRule.beachballOffset),
-			position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset)
+			position + MathTool.randomVector2In(GameRule.itemDroppedSpawnOffset)
 		)
 	if isBoss:
 		ItemDropped.generate(
 			ItemStore.ItemType.SOUL,
 			randi_range(1, 2),
-			position + MathTool.randv2_range(GameRule.itemDroppedSpawnOffset)
+			position + MathTool.randomVector2In(GameRule.itemDroppedSpawnOffset)
 		)
 	if isPlayer():
 		if UIState.player == self:
@@ -452,7 +452,7 @@ func sprint():
 	pass
 func heal(count: float):
 	health += count
-	DamageLabel.create(-count, false, damageAnchor.global_position + MathTool.randv2_range(GameRule.damageLabelSpawnOffset))
+	DamageLabel.create(-count, false, damageAnchor.global_position + MathTool.randomVector2In(GameRule.damageLabelSpawnOffset))
 	return count
 func register():
 	pass

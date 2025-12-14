@@ -34,7 +34,7 @@ func attack(type):
 	if type == 0:
 		var weaponPos = findWeaponAnchor("normal")
 		for i in randi_range(7, 16):
-			BulletBase.generate(ComponentManager.getBullet("Diamond"), self, weaponPos + MathTool.randv2_range(20), rotation + deg_to_rad(randf_range(-90, 90)))
+			BulletBase.generate(ComponentManager.getBullet("Diamond"), self, weaponPos + MathTool.randomVector2In(20), rotation + deg_to_rad(randf_range(-90, 90)))
 	elif type == 1:
 		var laserCount = randi_range(2, 4)
 		for i in laserCount:

@@ -18,5 +18,5 @@ func attack(type: int):
 func sprint():
 	var target = BulletTool.findClosetBulletCanDamage(position, get_tree(), self)
 	if is_instance_valid(target):
-		var dir = (target.position - position).rotated(MathTool.randc_from([-1, 1]) * deg_to_rad(90))
+		var dir = (target.position - position).rotated(MathTool.randomChoiceFrom([-1, 1]) * deg_to_rad(90))
 		move(dir.normalized() * sprintMultiplier, true)

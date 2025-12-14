@@ -6,5 +6,5 @@ extends FullscreenPanelBase
 
 func beforeOpen(args: Array = []):
 	audio.play()
-	var reasonTemplate = MathTool.randc_from(GameRule.deadReasons)
+	var reasonTemplate = MathTool.randomChoiceFrom(GameRule.deadReasons)
 	deadreason.text = ("[color=gray]" + reasonTemplate + "凶手是[b]%s[/b]的[b]%s[/b]。[/color]") % args

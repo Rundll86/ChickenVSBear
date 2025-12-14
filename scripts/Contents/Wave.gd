@@ -88,7 +88,7 @@ static func spawn(center: Vector2) -> Array:
 		var wave: Wave = data[i]
 		for j in range(entityCountOf(wave)):
 			var currentWave = wave.duplicate()
-			currentWave.entityPosition = MathTool.randv2_range(500) + center
+			currentWave.entityPosition = MathTool.randomRingPoint(200, 1000) + center
 			result.append(currentWave)
 	return result
 static func next(waves: Array):

@@ -13,7 +13,7 @@ func _ready():
 func _physics_process(_delta):
 	if is_instance_valid(UIState.player):
 		position = UIState.player.position
-		position += MathTool.randv2_range(shakeIntensity)
+		position += MathTool.randomVector2In(shakeIntensity)
 
 static func shake(millseconds: float, intensity: float = 10, steper: Callable = func(currentValue, _totalValue, _restPercent): return currentValue):
 	var startTime = WorldManager.getTime()
