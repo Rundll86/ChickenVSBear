@@ -21,12 +21,10 @@ func _ready():
 func _process(_delta):
 	texture.texture = ItemStore.getTexture(item)
 func _physics_process(_delta):
-	if !is_instance_valid(targetPlayer):
-		targetPlayer = EntityTool.findClosetPlayer(position, WorldManager.tree)
 	if is_instance_valid(targetPlayer):
 		if collecting:
 			linear_velocity = Vector2.ZERO
-		elif targetPlayer.inventoryMax[item] > targetPlayer.inventory[item]:
+		elif canICollect():
 			var direction = (targetPlayer.position - position).normalized()
 			var speed = 1000.0 * targetPlayer.fields.get(FieldStore.Entity.GRAVITY) / ((targetPlayer.position - position).length() ** (1 / 3.0))
 			apply_central_force(direction * speed)
@@ -37,12 +35,20 @@ func _physics_process(_delta):
 				else:
 					targetPlayer.collectItem(item, stackCount)
 					collect()
+		else:
+			refindPlayer()
+	else:
+		refindPlayer()
 
+func canICollect():
+	return targetPlayer.inventoryMax[item] > targetPlayer.inventory[item]
 func collect():
 	collecting = true
 	animator.play("collect")
 	await animator.animation_finished
 	queue_free()
+func refindPlayer():
+	targetPlayer = EntityTool.findClosetPlayer(position, get_tree())
 
 static func generate(
 		itemType: ItemStore.ItemType,
@@ -56,4 +62,15 @@ static func generate(
 	instance.position = spawnPosition
 	if addToWorld:
 		WorldManager.rootNode.call_deferred("add_child", instance)
+		instance.add_to_group("drops")
 	return instance
+static func getDrops() -> Array[ItemDropped]:
+	return WorldManager.tree.get_nodes_in_group("drops") as Array[ItemDropped]
+static func getDropsCanCollet() -> Array[ItemDropped]:
+	var result: Array[ItemDropped] = []
+	for drop in getDrops():
+		if drop.canICollect():
+			result.append(drop)
+	return result
+static func itemCount():
+	return len(getDrops())

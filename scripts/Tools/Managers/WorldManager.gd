@@ -15,13 +15,15 @@ func _ready():
 	spawner.spawn_function = justReturn
 func _physics_process(delta):
 	runningTime += delta * 1000
-	if EntityBase.mobCount() == 0 and runningTime > 1000:
+	if canNextWave() and runningTime > 1000:
 		UIState.setPanel("MakeFeed")
 
 @rpc("authority")
 func nextWave(waves: Array):
 	Wave.next(waves)
 
+func canNextWave():
+	return len(EntityBase.getMobs()) == 0 and len(ItemDropped.getDropsCanCollet()) == 0
 func spawnWave():
 	var waves = Wave.spawn()
 	nextWave(waves)
@@ -34,7 +36,6 @@ func spawn(node: Node):
 	else:
 		add_child(node)
 func justReturn(data):
-	print(ArrayTool.parseEncodedObject(data))
 	return ArrayTool.parseEncodedObject(data)[0]
 
 static func getTime():

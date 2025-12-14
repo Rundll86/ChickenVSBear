@@ -489,5 +489,5 @@ static func generate(
 	if addToWorld:
 		WorldManager.rootNode.spawn(instance)
 	return instance
-static func mobCount():
-	return len(WorldManager.tree.get_nodes_in_group("mobs"))
+static func getMobs():
+	return WorldManager.tree.get_nodes_in_group("mobs")
