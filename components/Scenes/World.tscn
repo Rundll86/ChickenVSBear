@@ -80,10 +80,10 @@ spawn_path = NodePath("..")
 
 [node name="camera" type="Camera2D" parent="."]
 process_mode = 3
-offset = Vector2(0, -80)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("5_mk7bv")
+constantOffset = Vector2(0, -80)
 
 [node name="animator" type="AnimationPlayer" parent="camera"]
 unique_name_in_owner = true

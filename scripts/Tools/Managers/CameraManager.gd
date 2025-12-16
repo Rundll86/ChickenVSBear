@@ -2,6 +2,8 @@
 extends Camera2D
 class_name CameraManager
 
+@export var constantOffset: Vector2 = Vector2.ZERO
+
 @onready var animator: AnimationPlayer = $"%animator"
 
 var shakeIntensity: float = 0
@@ -12,8 +14,9 @@ func _ready():
 	instance = self
 func _physics_process(_delta):
 	if is_instance_valid(UIState.player):
-		position = UIState.player.position
+		position = UIState.player.position + constantOffset
 		position += MathTool.randomVector2In(shakeIntensity)
+		offset += ((get_global_mouse_position() - UIState.player.position).clampf(0, 100) - offset) * 0.15
 
 static func shake(millseconds: float, intensity: float = 10, steper: Callable = func(currentValue, _totalValue, _restPercent): return currentValue):
 	var startTime = WorldManager.getTime()

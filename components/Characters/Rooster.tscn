@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=17 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" uid="uid://cthtupc6dtbav" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
@@ -46,6 +46,24 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_h1v0q"]
 radius = 61.204575
 
+[sub_resource type="Curve" id="Curve_0omr3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_joj4g"]
+curve = SubResource("Curve_0omr3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0omr3"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 20.0
+alpha_curve = SubResource("CurveTexture_joj4g")
+
 [node name="Rooster" instance=ExtResource("1_e5pl8")]
 script = ExtResource("2_oqdqd")
 displayName = "公鸡"
@@ -58,10 +76,10 @@ process_mode = 4
 
 [node name="RedCrystal" parent="weaponStore" index="0" instance=ExtResource("3_0omr3")]
 offset_bottom = 374.0
-debugRebuild = false
 
 [node name="PurpleCrystal" parent="weaponStore" index="1" instance=ExtResource("3_jluqw")]
 offset_bottom = 350.0
+debugRebuild = false
 
 [node name="BlueCrystal" parent="weaponStore" index="2" instance=ExtResource("4_0omr3")]
 
@@ -94,6 +112,12 @@ shape = SubResource("CircleShape2D_h1v0q")
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 position = Vector2(54, -45)
+
+[node name="stepParticle" type="GPUParticles2D" parent="texture" index="9"]
+z_index = -1
+position = Vector2(23, 58)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_0omr3")
 
 [node name="statebar" parent="." index="4" node_paths=PackedStringArray("entity")]
 position = Vector2(0, -202)
