@@ -5,6 +5,8 @@ class_name RedCrystalWeapon
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["atk"] += 5 * to * soulLevel
 	origin["radius"] += 1 * to * soulLevel
+	origin["count"] = 1 * soulLevel
+	origin["percent"] += 0.02 * to * soulLevel
 	return origin
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")

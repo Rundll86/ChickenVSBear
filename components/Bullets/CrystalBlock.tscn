@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3anl1y0phmdv"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_wqonw"]
+[ext_resource type="Script" uid="uid://2fv75mmhvjuc" path="res://scripts/Contents/Bullets/CrystalBlock.gd" id="2_42ni1"]
+[ext_resource type="Texture2D" uid="uid://c7hyatbuieaj" path="res://resources/bullets/purple-crystal/frames/0.svg" id="3_ktit7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1xf7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ktit7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CrystalBlock" instance=ExtResource("1_wqonw")]
+script = ExtResource("2_42ni1")
+displayName = "水晶碎块"
+lifeTime = 1000.0
+
+[node name="texture" parent="." index="0"]
+modulate = Color(1.2888849, 0.4489804, 0.4489804, 0.5)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_1xf7i")
