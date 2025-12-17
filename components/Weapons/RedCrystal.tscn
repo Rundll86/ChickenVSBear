@@ -10,6 +10,7 @@ script = ExtResource("2_wfewu")
 avatarTexture = ExtResource("2_3e8g7")
 displayName = "红水晶簇"
 typeTopic = 1
+costBeachball = 400
 store = {
 "atk": 45,
 "count": 3,
@@ -31,6 +32,9 @@ stream = ExtResource("4_qt0vq")
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_3e8g7")
+
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 400
 
 [node name="name" parent="container/info" index="2"]
 displayName = "红水晶簇"
