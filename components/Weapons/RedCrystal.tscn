@@ -12,7 +12,7 @@ displayName = "红水晶簇"
 typeTopic = 1
 store = {
 "atk": 45,
-"count": 1,
+"count": 3,
 "percent": 0.5,
 "radius": 150.0
 }
@@ -22,7 +22,7 @@ storeType = {
 "percent": 2,
 "radius": 1
 }
-descriptionTemplate = "发射[b]红水晶[/b]，在3秒后以$radius的半径爆炸，造成$atk点伤害并向随机方向发射$count个[b]水晶碎片[/b]，造成$percent基础伤害。"
+descriptionTemplate = "发射[b]红水晶[/b]，在3秒后以$radius的半径爆炸，造成$atk点伤害并向随机方向发射1~$count个[b]水晶碎片[/b]，造成$percent基础伤害。"
 cooldown = 1000.0
 debugRebuild = true
 
@@ -37,4 +37,4 @@ displayName = "红水晶簇"
 typeTopic = 1
 
 [node name="description" parent="container" index="2"]
-text = "[center]发射[b]红水晶[/b]，在3秒后以[color=cyan]150[/color]的半径爆炸，造成[color=cyan]45[/color]点伤害并向随机方向发射[color=cyan]1[/color]个[b]水晶碎片[/b]，造成[color=cyan]50%[/color]基础伤害。[/center]"
+text = "[center]发射[b]红水晶[/b]，在3秒后以[color=cyan]150[/color]的半径爆炸，造成[color=cyan]45[/color]点伤害并向随机方向发射1~[color=cyan]3[/color]个[b]水晶碎片[/b]，造成[color=cyan]50%[/color]基础伤害。[/center]"
