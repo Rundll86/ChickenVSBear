@@ -11,7 +11,7 @@ avatarTexture = ExtResource("2_3e8g7")
 displayName = "红水晶簇"
 typeTopic = 1
 store = {
-"atk": 60,
+"atk": 45,
 "radius": 150.0
 }
 storeType = {
@@ -19,7 +19,7 @@ storeType = {
 "radius": 1
 }
 descriptionTemplate = "发射[b]红水晶[/b]，在3秒后以$radius的半径爆炸，造成$atk点伤害。"
-cooldown = 2000.0
+cooldown = 1000.0
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_qt0vq")
@@ -32,4 +32,4 @@ displayName = "红水晶簇"
 typeTopic = 1
 
 [node name="description" parent="container" index="2"]
-text = "[center]发射[b]红水晶[/b]，在3秒后以[color=cyan]150[/color]的半径爆炸，造成[color=cyan]40[/color]点伤害。[/center]"
+text = "[center]发射[b]红水晶[/b]，在3秒后以[color=cyan]150[/color]的半径爆炸，造成[color=cyan]60[/color]点伤害。[/center]"
