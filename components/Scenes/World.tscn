@@ -63,8 +63,8 @@ _data = {
 &"bigLaser": SubResource("Animation_kii8h")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4hkht"]
-radius = 57.3149
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lu72f"]
+normal = Vector2(0, 1)
 
 [node name="world" type="Node2D"]
 y_sort_enabled = true
@@ -100,9 +100,21 @@ scale = Vector2(5, 5)
 texture = ExtResource("4_oy4jj")
 metadata/_edit_lock_ = true
 
-[node name="star1" type="CollisionShape2D" parent="map"]
-position = Vector2(-2057, 1298)
-shape = SubResource("CircleShape2D_4hkht")
+[node name="borderTop" type="CollisionShape2D" parent="map"]
+position = Vector2(0, -1800)
+shape = SubResource("WorldBoundaryShape2D_lu72f")
 
-[node name="shan2" type="CollisionPolygon2D" parent="map"]
-polygon = PackedVector2Array(-2419, 1803, 2429, 1825, 2392, -366, 2867, -318, 2723, 2241, -2879, 2193, -2797, -2582, 2959, -2528, 2858, -347, 2420, -337, 2441, -1834, -2438, -1792)
+[node name="borderTop2" type="CollisionShape2D" parent="map"]
+position = Vector2(0, 1800)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_lu72f")
+
+[node name="borderTop3" type="CollisionShape2D" parent="map"]
+position = Vector2(2400, 0)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_lu72f")
+
+[node name="borderTop4" type="CollisionShape2D" parent="map"]
+position = Vector2(-2400, 0)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_lu72f")

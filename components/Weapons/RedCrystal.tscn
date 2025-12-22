@@ -12,8 +12,8 @@ displayName = "红水晶簇"
 typeTopic = 1
 costBeachball = 400
 store = {
-"atk": 45,
-"count": 3,
+"atk": 30,
+"count": 2,
 "percent": 0.5,
 "radius": 150.0
 }
@@ -25,7 +25,6 @@ storeType = {
 }
 descriptionTemplate = "发射[b]红水晶[/b]，在3秒后以$radius的半径爆炸，造成$atk点伤害并向随机方向发射1~$count个[b]水晶碎片[/b]，造成$percent基础伤害。"
 cooldown = 1000.0
-debugRebuild = true
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_qt0vq")
