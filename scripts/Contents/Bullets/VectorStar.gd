@@ -12,9 +12,7 @@ func ai():
 	PresetBulletAI.forward(self, rotation)
 	if timeLived() <= forwardTime:
 		speed = 10 * ((forwardTime - timeLived()) / forwardTime)
-	elif forwarded:
-		speed = (timeLived() - forwardTime) / 30
 	else:
-		forwarded = true
+		speed = (timeLived() - forwardTime) / 30
 		if is_instance_valid(tracer):
 			rotation = position.angle_to_point(tracer.getTrackingAnchor())
