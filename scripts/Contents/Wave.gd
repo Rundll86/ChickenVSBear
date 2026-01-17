@@ -25,9 +25,9 @@ func duplicate() -> Wave:
 static var current: int = startWith(1) if WorldManager.isRelease() else startWith(1)
 static var WAVE_NORMAL = [
 	Wave.create("Hen", 1, 3, false, 0, INF, 1),
-	Wave.create("Cat", 1, 3, false, 0, INF, 1),
-	Wave.create("Dog", 1, 3, false, 0, INF, 1),
-	Wave.create("MTY", 0, 1, false, 4, INF, 5),
+	Wave.create("Cat", 1, 5, false, 0, INF, 1),
+	Wave.create("Dog", 1, 2, false, 0, INF, 1),
+	Wave.create("MTY", 0, 1, false, 4, INF, 4),
 	Wave.create("Chick", 0, 0, true, 9, INF, 20),
 	Wave.create("KukeMC", 0, 0, true, 19, INF, 20),
 	Wave.create("Bear", 0, 0, true, 29, INF, 20),

@@ -52,7 +52,7 @@ script = ExtResource("2_r6bub")
 isBoss = true
 displayName = "狐狸"
 drops = Array[int]([0, 1])
-dropCounts = Array[Vector2]([Vector2(10, 30), Vector2(15, 50)])
+dropCounts = Array[Vector2]([Vector2(15, 30), Vector2(20, 40)])
 appleCount = Vector2i(2, 4)
 
 [node name="attack1" type="AudioStreamPlayer2D" parent="sounds" index="6"]
