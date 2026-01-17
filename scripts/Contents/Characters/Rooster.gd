@@ -12,8 +12,7 @@ func register():
 				EffectController.create(ComponentManager.getEffect("BloodFall"), texture.global_position).shot()
 	)
 	if !WorldManager.isRelease():
-		fields[FieldStore.Entity.BULLET_SPLIT] = 2
-		fields[FieldStore.Entity.BULLET_REFRACTION] = 2
+		fields[FieldStore.Entity.BULLET_REFRACTION] = 3
 func ai():
 	texture.play("walk")
 	var direction = Vector2(

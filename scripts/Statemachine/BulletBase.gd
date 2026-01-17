@@ -152,19 +152,30 @@ func trySplit():
 			var cloned = duplicate() as BulletBase
 			cloned.rotation = deg_to_rad(360.0 / total * i)
 			cloned.isChildSplit = true
-			get_parent().add_child(split(cloned, i, total, last))
+			cloned.launcher = launcher
+			cloned.parent = parent
+			get_parent().add_child.call_deferred(split(cloned, i, total, last))
 func tryRefract():
 	if is_instance_valid(launcher) and !isChildRefract:
 		var value = launcher.fields.get(FieldStore.Entity.BULLET_REFRACTION)
 		var total = MathTool.shrimpRate(value)
 		var last = value - floor(value)
+		var aimed: Array[EntityBase] = []
 		for i in total:
-			var entity = EntityTool.findClosetEntity(position, get_tree(), !launcher.isPlayer(), launcher.isPlayer(), [launcher])
+			var entity = EntityTool.findClosetEntity(
+				position, get_tree(),
+				!launcher.isPlayer(),
+				launcher.isPlayer(),
+				[launcher] + aimed
+			)
 			if is_instance_valid(entity):
+				aimed.append(entity)
 				var cloned = duplicate() as BulletBase
 				cloned.look_at(entity.position)
 				cloned.isChildRefract = true
-				get_parent().add_child(refract(cloned, entity, i, total, last))
+				cloned.launcher = launcher
+				cloned.parent = parent
+				get_parent().add_child.call_deferred(refract(cloned, entity, i, total, last))
 
 # 抽象方法
 func firstFrame():

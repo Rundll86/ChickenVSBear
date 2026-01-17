@@ -8,7 +8,7 @@ static func fromHurtbox(node: Node) -> EntityBase:
 			if entity is EntityBase:
 				return entity as EntityBase
 	return null
-static func findClosetEntity(to: Vector2, fromTree: SceneTree, player: bool = false, mob: bool = false, excludes: Array[EntityBase] = [], allowSummon: bool = false) -> EntityBase:
+static func findClosetEntity(to: Vector2, fromTree: SceneTree, player: bool = false, mob: bool = false, excludes: Array = [], allowSummon: bool = false) -> EntityBase:
 	var result = null
 	var lastDistance = INF
 	var nodes = []
