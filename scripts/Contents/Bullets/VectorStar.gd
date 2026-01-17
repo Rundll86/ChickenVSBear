@@ -19,3 +19,6 @@ func ai():
 func split(newBullet: BulletBase, _index: int, _total: int, _lastBullet: float):
 	if newBullet is VectorStar:
 		newBullet.forwarded = false
+func refract(newBullet: BulletBase, _entity: EntityBase, _index: int, _total: int, _lastBullet: float):
+	if newBullet is VectorStar:
+		newBullet.forwarded = false
