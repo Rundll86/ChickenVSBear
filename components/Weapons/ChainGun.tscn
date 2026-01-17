@@ -10,7 +10,7 @@ avatarTexture = ExtResource("2_ghn43")
 displayName = "链式机枪"
 costBeachball = 400
 store = {
-"atk": 10,
+"atk": 3,
 "count": 1,
 "split": 30
 }
@@ -20,23 +20,20 @@ storeType = {
 "split": 1
 }
 descriptionTemplate = "以$split单位的间隔发射$count个[b]微型水晶[/b]，可造成$atk点伤害。"
-needEnergy = 0.3
+needEnergy = 1.0
 cooldown = 50.0
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_ghn43")
 
 [node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "0.5"
+text = "1.0"
 
 [node name="beachball" parent="container/info/infos" index="1"]
 count = 400
-
-[node name="soul" parent="container/info/infos" index="2"]
-count = 1
 
 [node name="name" parent="container/info" index="2"]
 displayName = "链式机枪"
 
 [node name="description" parent="container" index="2"]
-text = "[center]以[color=cyan]30[/color]单位的间隔发射[color=cyan]1[/color]个[b]微型水晶[/b]，可造成[color=cyan]10[/color]点伤害。[/center]"
+text = "[center]以[color=cyan]30[/color]单位的间隔发射[color=cyan]1[/color]个[b]微型水晶[/b]，可造成[color=cyan]3[/color]点伤害。[/center]"
