@@ -152,7 +152,7 @@ func trySplit():
 			var cloned = duplicate() as BulletBase
 			cloned.rotation = deg_to_rad(360.0 / total * i)
 			cloned.isChildSplit = true
-			split(cloned, i, total, last)
+			get_parent().add_child(split(cloned, i, total, last))
 func tryRefract():
 	if is_instance_valid(launcher) and !isChildRefract:
 		var value = launcher.fields.get(FieldStore.Entity.BULLET_REFRACTION)
@@ -164,7 +164,7 @@ func tryRefract():
 				var cloned = duplicate() as BulletBase
 				cloned.look_at(entity.position)
 				cloned.isChildRefract = true
-				refract(cloned, entity, i, total, last)
+				get_parent().add_child(refract(cloned, entity, i, total, last))
 
 # 抽象方法
 func firstFrame():
@@ -181,10 +181,10 @@ func succeedToHit(_dmg: float, _entity: EntityBase):
 	pass
 func register():
 	pass
-func split(_newBullet: BulletBase, _index: int, _total: int, _lastBullet: float):
-	pass
-func refract(_newBullet: BulletBase, _entity: EntityBase, _index: int, _total: int, _lastBullet: float):
-	pass
+func split(newBullet: BulletBase, _index: int, _total: int, _lastBullet: float):
+	return newBullet
+func refract(newBullet: BulletBase, _entity: EntityBase, _index: int, _total: int, _lastBullet: float):
+	return newBullet
 
 static func generate(
 		bullet: PackedScene,
