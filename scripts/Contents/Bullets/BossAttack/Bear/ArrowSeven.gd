@@ -1,4 +1,5 @@
 extends BulletBase
+class_name ArrowSevenBullet
 
 @export var allColor: GradientTexture1D = null
 
@@ -16,8 +17,6 @@ func spawn():
 	superlight.material = superlight.material.duplicate()
 	trail.process_material = trail.process_material.duplicate()
 	setColor(myColor)
-
-
 func ai():
 	superlight.global_rotation_degrees = 90
 	PresetBulletAI.forward(self, rotation)
@@ -30,7 +29,6 @@ func ai():
 				PresetBulletAI.trace(self, tracer.position, 0.1 * (traceTime - (timeLived() - forwardTime)) / traceTime)
 	else:
 		forwarded = true
-
 
 func setColor(color: Color):
 	texture.self_modulate = color

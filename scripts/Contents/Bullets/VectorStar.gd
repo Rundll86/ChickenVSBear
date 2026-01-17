@@ -16,3 +16,6 @@ func ai():
 		speed = (timeLived() - forwardTime) / 30
 		if is_instance_valid(tracer):
 			rotation = position.angle_to_point(tracer.getTrackingAnchor())
+func split(newBullet: BulletBase, _index: int, _total: int, _lastBullet: float):
+	if newBullet is VectorStar:
+		newBullet.forwarded = false
