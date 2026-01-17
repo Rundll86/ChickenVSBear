@@ -3,9 +3,6 @@ class_name BigLaser
 
 var dotTime: float = 100
 
-func register():
-	speed = 0
-	penerate = 1
 func spawn():
 	CameraManager.shake(5000, 100) # 激光会运行5秒（5000毫秒），期间震屏超高强度
 	CameraManager.playAnimation("bigLaser")

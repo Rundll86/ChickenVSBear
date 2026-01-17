@@ -5,8 +5,6 @@ var tracer: EntityBase = null
 var maxTraceTime: float = 0
 var tracePower: float = 0
 
-func register():
-	speed = 1
 func ai():
 	speed *= 1.05
 	speed = clamp(speed, 0, 20)

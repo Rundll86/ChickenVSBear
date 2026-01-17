@@ -11,9 +11,6 @@ var traceTime: float = 2000
 var forwardTime: float = 500
 var forwarded: bool = false
 
-func register():
-	speed = 1
-	baseDamage = 1
 func spawn():
 	myColor = allColor.gradient.sample(randf())
 	superlight.material = superlight.material.duplicate()

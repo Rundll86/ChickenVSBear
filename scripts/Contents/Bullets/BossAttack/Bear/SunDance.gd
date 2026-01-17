@@ -6,13 +6,8 @@ extends BulletBase
 @onready var leave2: Sprite2D = $"%leave2"
 @onready var leave3: Sprite2D = $"%leave3"
 @onready var leave4: Sprite2D = $"%leave4"
-
 var myColor: Color
 
-func register():
-	speed = 0
-	baseDamage = 1
-	penerate = 1
 func spawn():
 	myColor = allColor.gradient.sample(randf())
 	setColor(myColor)

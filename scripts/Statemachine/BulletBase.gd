@@ -151,6 +151,7 @@ func trySplit():
 		for i in total:
 			var cloned = duplicate() as BulletBase
 			cloned.rotation = deg_to_rad(360.0 / total * i)
+			cloned.isChildSplit = true
 			split(cloned, i, total, last)
 func tryRefract():
 	if is_instance_valid(launcher) and !isChildRefract:
@@ -162,6 +163,7 @@ func tryRefract():
 			if is_instance_valid(entity):
 				var cloned = duplicate() as BulletBase
 				cloned.look_at(entity.position)
+				cloned.isChildRefract = true
 				refract(cloned, entity, i, total, last)
 
 # 抽象方法

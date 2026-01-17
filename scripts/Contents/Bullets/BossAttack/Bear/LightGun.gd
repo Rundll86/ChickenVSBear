@@ -6,12 +6,8 @@ extends BulletBase
 @onready var track: ShaderStage = $"%track"
 @onready var sword: Sprite2D = $"%sword"
 @onready var points: GPUParticles2D = $"%points"
-
 var myColor: Color
-func register():
-	speed = 1
-	baseDamage = 1
-	penerate = 1
+
 func spawn():
 	myColor = allColor.gradient.sample(randf())
 	track.material = track.material.duplicate()

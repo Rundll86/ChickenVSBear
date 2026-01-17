@@ -4,8 +4,6 @@ extends BulletBase
 
 var readyTime: float = 1000
 
-func register():
-	speed = 10
 func ai():
 	if timeLived() < readyTime:
 		PresetBulletAI.lockLauncher(self, launcher, true)

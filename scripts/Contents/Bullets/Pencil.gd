@@ -1,8 +1,6 @@
 extends BulletBase
 class_name Pencil
 
-func register():
-	baseDamage = 20
 func spawn():
 	await TickTool.millseconds(1000)
 	hitbox.disabled = false
