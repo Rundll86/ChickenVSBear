@@ -48,7 +48,7 @@ func apply(entity: EntityBase):
 			var applier = FieldStore.entityApplier.get(field)
 			if !applier or applier.call(entity, value):
 				entity.fields[field] += value
-				entity.fields[field] = clamp(entity.fields[field], 0, FieldStore.entityMaxValueMap.get(field, INF))
+				entity.fields[field] = clamp(entity.fields[field], FieldStore.entityMinValueMap.get(field, 0), FieldStore.entityMaxValueMap.get(field, INF))
 		for i in weapons:
 			var instance = i.instantiate() as Weapon
 			if UIState.player.weaponBag.has(instance.displayName):

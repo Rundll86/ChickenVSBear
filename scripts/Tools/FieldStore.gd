@@ -108,6 +108,10 @@ static var entityMaxValueMap = {
 	Entity.BULLET_TRACE: 1,
 	Entity.PERFECT_MISS_WINDOW: 0.8
 }
+static var entityMinValueMap = {
+	Entity.ATTACK_SPEED: 0.05,
+	Entity.DAMAGE_MULTIPILER: 0.01
+}
 static var entityApplier = {
 	Entity.MAX_HEALTH: func(entity, value):
 		entity.health += value
