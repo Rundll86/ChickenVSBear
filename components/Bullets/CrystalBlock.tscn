@@ -18,6 +18,7 @@ animations = [{
 [node name="CrystalBlock" instance=ExtResource("1_wqonw")]
 script = ExtResource("2_42ni1")
 displayName = "水晶碎块"
+penerate = 0.2
 lifeTime = 1000.0
 
 [node name="texture" parent="." index="0"]

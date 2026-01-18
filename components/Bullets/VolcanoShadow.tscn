@@ -71,7 +71,7 @@ size = Vector2(76, 12)
 [node name="VolcanoShadow" instance=ExtResource("1_4oiyn")]
 script = ExtResource("2_i7b6y")
 speed = 25.0
-penerate = 1.0
+penerate = 0.35
 penerateDamageReduction = 0.2
 autoSpawnAnimation = true
 freeAfterSpawn = true

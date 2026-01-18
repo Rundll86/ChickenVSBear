@@ -48,6 +48,7 @@ size = Vector2(150, 250)
 
 [node name="Meowmere" instance=ExtResource("1_newpt")]
 script = ExtResource("2_eoimw")
+penerate = 1.0
 autoSpawnAnimation = true
 freeAfterSpawn = true
 

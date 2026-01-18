@@ -8,7 +8,7 @@ size = Vector2(200, 200)
 
 [node name="HJMA" instance=ExtResource("1_i8ntk")]
 script = ExtResource("2_ml2df")
-damage = 5.0
+penerate = 1.0
 lifeTime = 50.0
 
 [node name="hitbox" parent="." index="1"]

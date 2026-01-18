@@ -211,6 +211,7 @@ allColor = SubResource("GradientTexture1D_aqmnp")
 length = 1000.0
 displayName = "空灵长枪"
 baseDamage = 2.0
+penerate = 1.0
 autoSpawnAnimation = true
 freeAfterSpawn = true
 

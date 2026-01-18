@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://ct8ijxg7ftypd"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_vvwmq"]
-[ext_resource type="Script" path="res://scripts/Contents/Bullets/RainbowCat.gd" id="2_4c1xc"]
+[ext_resource type="Script" uid="uid://cqljq5nyy7sgu" path="res://scripts/Contents/Bullets/RainbowCat.gd" id="2_4c1xc"]
 [ext_resource type="Texture2D" uid="uid://ceqhttm1urmk3" path="res://resources/bullets/rainbow-cat/1.webp" id="2_bt3cu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0xq5p"]
@@ -51,6 +51,7 @@ alpha_curve = SubResource("CurveTexture_pwojl")
 
 [node name="RainbowCat" instance=ExtResource("1_vvwmq")]
 script = ExtResource("2_4c1xc")
+penerate = 1.0
 lifeTime = 3000.0
 
 [node name="texture" parent="." index="0"]

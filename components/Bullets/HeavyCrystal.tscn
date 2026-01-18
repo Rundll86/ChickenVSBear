@@ -1,15 +1,16 @@
 [gd_scene load_steps=20 format=3 uid="uid://dxd6ikymj0fge"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_mf7ha"]
-[ext_resource type="Script" path="res://scripts/Statemachine/ShaderStage.gd" id="2_75div"]
+[ext_resource type="Script" uid="uid://cgb01lelfg73p" path="res://scripts/Statemachine/ShaderStage.gd" id="2_75div"]
 [ext_resource type="Texture2D" uid="uid://c7hyatbuieaj" path="res://resources/bullets/purple-crystal/frames/0.svg" id="2_ghoc2"]
-[ext_resource type="Shader" path="res://shaders/Ring.gdshader" id="2_utujj"]
-[ext_resource type="Script" path="res://scripts/Contents/Bullets/BossAttack/KukeMC/HeavyCrystal.gd" id="2_ygemv"]
+[ext_resource type="Shader" uid="uid://cnc1n2042ntv5" path="res://shaders/Ring.gdshader" id="2_utujj"]
+[ext_resource type="Script" uid="uid://fbrwaknikai8" path="res://scripts/Contents/Bullets/BossAttack/KukeMC/HeavyCrystal.gd" id="2_ygemv"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_41i4d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygwl5"]
 shader = ExtResource("2_utujj")
 shader_parameter/inner = 0.95
 shader_parameter/outer = 1.0
+shader_parameter/alpha = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e150r"]
 animations = [{
@@ -98,8 +99,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mdce7"]
 _data = {
-"RESET": SubResource("Animation_dwk2v"),
-"spawn": SubResource("Animation_qobcv")
+&"RESET": SubResource("Animation_dwk2v"),
+&"spawn": SubResource("Animation_qobcv")
 }
 
 [sub_resource type="Curve" id="Curve_g11yl"]
@@ -153,13 +154,13 @@ scale = Vector2(2, 2)
 script = ExtResource("2_ygemv")
 displayName = "动力水晶"
 speed = 0.0
-damage = 40.0
+penerate = 1.0
 lifeTime = 2000.0
 autoSpawnAnimation = true
 
 [node name="track" type="Node2D" parent="." index="0"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_41i4d")
+material = SubResource("ShaderMaterial_ygwl5")
 script = ExtResource("2_75div")
 size = Vector2(300, 300)
 color = Color(0.869998, 0.686414, 0.917359, 1)
@@ -171,7 +172,7 @@ sprite_frames = SubResource("SpriteFrames_e150r")
 
 [node name="animator" parent="texture" index="0"]
 libraries = {
-"": SubResource("AnimationLibrary_mdce7")
+&"": SubResource("AnimationLibrary_mdce7")
 }
 
 [node name="trail" type="GPUParticles2D" parent="texture" index="1"]
@@ -179,8 +180,8 @@ unique_name_in_owner = true
 z_index = -1
 position = Vector2(11.3333, 0)
 amount = 150
-process_material = SubResource("ParticleProcessMaterial_hgwnm")
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_hgwnm")
 
 [node name="hitbox" parent="." index="2"]
 position = Vector2(60, 0)

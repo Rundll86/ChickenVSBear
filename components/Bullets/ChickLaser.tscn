@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://bvri0nv1jrigf"]
 
 [ext_resource type="PackedScene" uid="uid://8gjjfju6p3fh" path="res://components/Bullets/LaserSummoner.tscn" id="1_eb54j"]
-[ext_resource type="Script" path="res://scripts/Contents/Bullets/ChickLaser.gd" id="2_7g0f0"]
-[ext_resource type="Shader" path="res://shaders/BigLaser.gdshader" id="3_4y0mm"]
+[ext_resource type="Script" uid="uid://nygobyigq5sp" path="res://scripts/Contents/Bullets/ChickLaser.gd" id="2_7g0f0"]
+[ext_resource type="Shader" uid="uid://d3aopn2f23pmi" path="res://shaders/BigLaser.gdshader" id="3_4y0mm"]
 [ext_resource type="Texture2D" uid="uid://cv8yl3ncek4ap" path="res://resources/bullets/laser-circle/blue-circle.svg" id="4_cws6l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x6ivr"]
@@ -15,6 +15,7 @@ shader_parameter/wave_frequency = 1.0
 shader_parameter/wave_amplitude = 0.5
 shader_parameter/wave_width = 0.5
 shader_parameter/edge_nonalpha = 0.6
+shader_parameter/alpha = 1.0
 
 [sub_resource type="Curve" id="Curve_4f20s"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -195,8 +196,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7qqtc"]
 _data = {
-"RESET": SubResource("Animation_1rif1"),
-"spawn": SubResource("Animation_ep0ow")
+&"RESET": SubResource("Animation_1rif1"),
+&"spawn": SubResource("Animation_ep0ow")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sg52j"]
@@ -206,6 +207,7 @@ height = 500.0
 [node name="ChickLaser" instance=ExtResource("1_eb54j")]
 script = ExtResource("2_7g0f0")
 displayName = "冷冻激光"
+penerate = 1.0
 metadata/_edit_vertical_guides_ = [688.0, 189.0]
 
 [node name="rect" parent="texture" index="0"]
@@ -217,9 +219,9 @@ offset_bottom = 500.0
 [node name="particles" parent="texture/rect" index="0"]
 position = Vector2(25, 250)
 amount = 100
-process_material = SubResource("ParticleProcessMaterial_vb8yw")
 lifetime = 0.1
 visibility_rect = Rect2(-50, -250, 100, 500)
+process_material = SubResource("ParticleProcessMaterial_vb8yw")
 
 [node name="launcher" parent="texture/rect" index="1"]
 position = Vector2(25, -13.9999)
@@ -228,7 +230,7 @@ color = Color(0, 0.701961, 1, 1)
 
 [node name="animator" parent="texture" index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_7qqtc")
+&"": SubResource("AnimationLibrary_7qqtc")
 }
 
 [node name="circle" parent="texture" index="2"]

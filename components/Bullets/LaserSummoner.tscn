@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://8gjjfju6p3fh"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_pnxoq"]
-[ext_resource type="Script" path="res://scripts/Contents/Bullets/BigLaser.gd" id="2_nk2p8"]
-[ext_resource type="Shader" path="res://shaders/BigLaser.gdshader" id="3_ow2gn"]
+[ext_resource type="Script" uid="uid://b74jed1hoi0r6" path="res://scripts/Contents/Bullets/BigLaser.gd" id="2_nk2p8"]
+[ext_resource type="Shader" uid="uid://d3aopn2f23pmi" path="res://shaders/BigLaser.gdshader" id="3_ow2gn"]
 [ext_resource type="Texture2D" uid="uid://dy4op6n6vxef3" path="res://resources/bullets/laser-circle/circle.svg" id="4_sewyb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yip5k"]
@@ -17,6 +17,7 @@ shader_parameter/wave_frequency = 1.0
 shader_parameter/wave_amplitude = 0.5
 shader_parameter/wave_width = 0.5
 shader_parameter/edge_nonalpha = 0.6
+shader_parameter/alpha = 1.0
 
 [sub_resource type="Curve" id="Curve_itlbo"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -197,8 +198,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s7tee"]
 _data = {
-"RESET": SubResource("Animation_1rif1"),
-"spawn": SubResource("Animation_ep0ow")
+&"RESET": SubResource("Animation_1rif1"),
+&"spawn": SubResource("Animation_ep0ow")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x66th"]
@@ -207,6 +208,7 @@ height = 2000.0
 
 [node name="LaserSummoner" instance=ExtResource("1_pnxoq")]
 script = ExtResource("2_nk2p8")
+penerate = 1.0
 autoSpawnAnimation = true
 autoDestroyOnHitMap = false
 freeAfterSpawn = true
@@ -225,9 +227,9 @@ scale = Vector2(1e-05, 1)
 [node name="particles" type="GPUParticles2D" parent="texture/rect" index="0"]
 position = Vector2(50, 1000)
 amount = 400
-process_material = SubResource("ParticleProcessMaterial_m7jvq")
 lifetime = 0.25
 visibility_rect = Rect2(-100, -1000, 200, 2000)
+process_material = SubResource("ParticleProcessMaterial_m7jvq")
 
 [node name="launcher" type="Polygon2D" parent="texture/rect" index="1"]
 position = Vector2(50, -21)
@@ -237,7 +239,7 @@ polygon = PackedVector2Array(-50, -25, 0, 0, -50, 25)
 
 [node name="animator" parent="texture" index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_s7tee")
+&"": SubResource("AnimationLibrary_s7tee")
 }
 
 [node name="circle" type="Sprite2D" parent="texture" index="2"]
