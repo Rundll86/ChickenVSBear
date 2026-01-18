@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://m60bwhdpbem8"]
+[gd_scene load_steps=38 format=3 uid="uid://m60bwhdpbem8"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_3ves7"]
 [ext_resource type="Script" uid="uid://cgmnlpa2w6n72" path="res://scripts/Contents/Characters/Bear.gd" id="2_kh2af"]
@@ -8,25 +8,60 @@
 [ext_resource type="AudioStream" uid="uid://cqh2yvwcy83gg" path="res://resources/sounds/bossAttack/Bear/Sprint.ogg" id="6_x3jmu"]
 [ext_resource type="AudioStream" uid="uid://ce8xjsh68momv" path="res://resources/sounds/bossAttack/Bear/Arrow7-2.ogg" id="7_0r2df"]
 [ext_resource type="AudioStream" uid="uid://dd18jfva1knwm" path="res://resources/sounds/bossAttack/Bear/LightGun.ogg" id="8_qagkm"]
-[ext_resource type="Texture2D" uid="uid://c0mfcs7x1r6jn" path="res://resources/characters/bear/bear.png" id="9_p5kxp"]
+[ext_resource type="Texture2D" uid="uid://54vaedgxog4i" path="res://resources/characters/bear/bear-walk-h.svg" id="9_tfpii"]
+[ext_resource type="Texture2D" uid="uid://cmapkmo8ck3g7" path="res://resources/characters/bear/bear-walk-a.svg" id="10_vby4r"]
 [ext_resource type="Texture2D" uid="uid://c3pa0vooogyqx" path="res://resources/characters/bear/bear-mask.png" id="11_gg3xf"]
+[ext_resource type="Texture2D" uid="uid://b8j8ee5jrcdlq" path="res://resources/characters/bear/bear-walk-b.svg" id="11_og7es"]
+[ext_resource type="Texture2D" uid="uid://olok886lpghg" path="res://resources/characters/bear/bear-walk-c.svg" id="12_3j64k"]
 [ext_resource type="Shader" uid="uid://6upc63ouwf6q" path="res://shaders/RedTemprature.gdshader" id="12_j8sas"]
+[ext_resource type="Texture2D" uid="uid://xka0dvhh8hhq" path="res://resources/characters/bear/bear-walk-d.svg" id="13_v7r73"]
+[ext_resource type="Texture2D" uid="uid://vm1drbho5j4t" path="res://resources/characters/bear/bear-walk-e.svg" id="14_mw54f"]
+[ext_resource type="Texture2D" uid="uid://c46b6dsltjglj" path="res://resources/characters/bear/bear-walk-f.svg" id="15_2q2wq"]
+[ext_resource type="Texture2D" uid="uid://vaglbapaj4e0" path="res://resources/characters/bear/bear-walk-g.svg" id="16_paalv"]
+[ext_resource type="Texture2D" uid="uid://b57o6dx0gm5t6" path="res://resources/characters/bear/bear-mask.svg" id="18_vby4r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6tgxs"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_tfpii")
+}],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_vby4r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_og7es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3j64k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_v7r73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mw54f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2q2wq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_paalv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tfpii")
+}],
 "loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akdh6"]
-size = Vector2(237, 198)
+size = Vector2(224, 152)
 
 [sub_resource type="Animation" id="Animation_sxh2u"]
 length = 0.001
@@ -163,15 +198,20 @@ stream = ExtResource("8_qagkm")
 stream = ExtResource("3_n5dji")
 
 [node name="texture" parent="." index="3"]
+position = Vector2(0, -71)
 sprite_frames = SubResource("SpriteFrames_6tgxs")
+animation = &"walk"
+frame = 7
+frame_progress = 0.5584955
 
 [node name="staticBackground" parent="texture" index="0"]
 position = Vector2(0, -48)
 scale = Vector2(0.58843344, 0.5364395)
-texture = ExtResource("9_p5kxp")
+
+[node name="hurtbox" parent="texture" index="2"]
+position = Vector2(2, 0)
 
 [node name="hitbox" parent="texture/hurtbox" index="0"]
-position = Vector2(0.5, -49)
 shape = SubResource("RectangleShape2D_akdh6")
 
 [node name="animator" parent="texture" index="3"]
@@ -184,9 +224,8 @@ libraries = {
 [node name="mask" type="Sprite2D" parent="texture" index="7"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_gg3xf")
-position = Vector2(81, -79)
-scale = Vector2(0.588, 0.536)
-texture = ExtResource("11_gg3xf")
+position = Vector2(65, -42)
+texture = ExtResource("18_vby4r")
 
 [node name="sprintParticle" type="GPUParticles2D" parent="texture" index="8"]
 unique_name_in_owner = true
@@ -197,7 +236,7 @@ texture = ExtResource("11_gg3xf")
 process_material = SubResource("ParticleProcessMaterial_nv4nf")
 
 [node name="statebar" parent="." index="4"]
-position = Vector2(0, -209)
+position = Vector2(0, -160)
 
 [node name="movebox" parent="." index="5"]
 disabled = true

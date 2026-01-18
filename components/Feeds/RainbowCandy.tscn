@@ -9,7 +9,7 @@ displayName = "彩虹糖"
 quality = 3
 topic = 4
 fields = Array[int]([1, 5, 6, 13, 7, 3])
-fieldValues = Array[float]([0.3, 0.35, 0.1, 2.0, 30.0, -0.8])
+fieldValues = Array[float]([0.3, 0.35, 0.1, 2.0, 30.0, -0.9])
 costs = Array[int]([0, 3])
 costCounts = Array[int]([700, 100])
 

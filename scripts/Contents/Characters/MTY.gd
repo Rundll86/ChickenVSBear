@@ -4,9 +4,11 @@ class_name MTY
 func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 400
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.9
-	attackCooldownMap[0] = 1500
-	attackCooldownMap[1] = 500
+	attackCooldownMap[0] = 1000
+	attackCooldownMap[1] = 250
 	sprintMultiplier = 5
+func spawn():
+	texture.play("walk")
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss)
 	tryAttack(0)

@@ -6,6 +6,8 @@ func register():
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = randf_range(0.5, 0.8)
 	attackCooldownMap[0] = randi_range(5000, 8000)
 	sprintMultiplier = randf_range(5, 15)
+func spawn():
+	texture.play("walk")
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss)
 	tryAttack(0, true)

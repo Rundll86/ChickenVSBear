@@ -5,7 +5,8 @@ func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 100
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.3
 	fields[FieldStore.Entity.OFFSET_SHOOT] = 10
-
+func spawn():
+	texture.play("walk")
 func ai():
 	attackCooldownMap[0] = randi_range(1500, 4000)
 	PresetEntityAI.follow(self, currentFocusedBoss, 300)

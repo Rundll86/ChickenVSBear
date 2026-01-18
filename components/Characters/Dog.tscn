@@ -1,13 +1,17 @@
 [gd_scene load_steps=9 format=3 uid="uid://bb363wvwvs7m4"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_cbgnh"]
-[ext_resource type="Texture2D" uid="uid://cew1kecisufy4" path="res://resources/characters/dog/hsq.png" id="2_oospf"]
 [ext_resource type="Script" uid="uid://soehdxfbpmc0" path="res://scripts/Contents/Characters/Dog.gd" id="2_pb36u"]
 [ext_resource type="AudioStream" uid="uid://llx2exxpf6k6" path="res://resources/sounds/effect/Dog1.wav" id="3_tn3v8"]
+[ext_resource type="Texture2D" uid="uid://c6afkgd0p7fpa" path="res://resources/characters/dog/dog2-a.png" id="4_tn3v8"]
+[ext_resource type="Texture2D" uid="uid://bl55w8y7uyy1d" path="res://resources/characters/dog/dog2-b.png" id="5_e644g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pb36u"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tn3v8")
+}],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
@@ -15,55 +19,64 @@ animations = [{
 "frames": [],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tn3v8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_oospf")
+"texture": ExtResource("4_tn3v8")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tn3v8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e644g")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 2.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e644g"]
-size = Vector2(118, 64)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_s2gll"]
-radius = 27.018513
+size = Vector2(140, 91)
 
 [node name="Dog" instance=ExtResource("1_cbgnh")]
 script = ExtResource("2_pb36u")
 displayName = "哈士奇"
 drops = Array[int]([3])
 dropCounts = Array[Vector2]([Vector2(1, 1)])
+useStatic = true
 hurtAudioRate = 0.1
 
 [node name="hurt" parent="sounds" index="3"]
 stream = ExtResource("3_tn3v8")
 
 [node name="texture" parent="." index="3"]
+position = Vector2(0, -62)
 sprite_frames = SubResource("SpriteFrames_pb36u")
+animation = &"walk"
+frame_progress = 0.39797485
 
 [node name="staticAnimation" parent="texture" index="1"]
-position = Vector2(0, -19.999998)
-scale = Vector2(0.35093215, 0.35093215)
+position = Vector2(7, 17)
+scale = Vector2(0.6004001, 0.6004001)
 sprite_frames = SubResource("SpriteFrames_tn3v8")
-animation = &"idle"
+animation = &"walk"
+frame_progress = 0.6540908
 
 [node name="hitbox" parent="texture/hurtbox" index="0"]
-position = Vector2(-14, -22)
+position = Vector2(1, 12.5)
 shape = SubResource("RectangleShape2D_e644g")
-
-[node name="hitbox2" type="CollisionShape2D" parent="texture/hurtbox" index="1"]
-position = Vector2(46, -51)
-shape = SubResource("CircleShape2D_s2gll")
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 position = Vector2(53, -35)
 
 [node name="statebar" parent="." index="4"]
-position = Vector2(0, -150)
+position = Vector2(11, -122)

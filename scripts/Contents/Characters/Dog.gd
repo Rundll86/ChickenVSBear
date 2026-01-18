@@ -5,7 +5,8 @@ func register():
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.2
 	fields[FieldStore.Entity.OFFSET_SHOOT] = 0
 	attackCooldownMap[0] = randi_range(3000, 5000)
-
+func spawn():
+	texture.play("walk")
 func ai():
 	PresetEntityAI.follow(self, currentFocusedBoss, 300)
 	tryAttack(0)

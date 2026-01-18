@@ -1,25 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8h1abpbe6cww"]
+[gd_scene load_steps=9 format=3 uid="uid://c8h1abpbe6cww"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_twxai"]
 [ext_resource type="Script" uid="uid://dsfht8qodraln" path="res://scripts/Contents/Characters/Hen.gd" id="2_8u5a0"]
 [ext_resource type="AudioStream" uid="uid://cougu5tprpf8d" path="res://resources/sounds/effect/Growl.wav" id="3_1stll"]
-[ext_resource type="Texture2D" uid="uid://o0t3oma5l6tu" path="res://resources/characters/hen/hen.png" id="4_1stll"]
+[ext_resource type="Texture2D" uid="uid://b5m0fpg3ewfum" path="res://resources/characters/hen/hen-a.svg" id="4_rwj47"]
+[ext_resource type="Texture2D" uid="uid://3o0oqobnr3b2" path="res://resources/characters/hen/hen-b.svg" id="5_j6cvf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xwexj"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rwj47")
+}],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rwj47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j6cvf")
+}],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1stll"]
-size = Vector2(85.25, 46.5)
+size = Vector2(101, 49.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwj47"]
 radius = 19.026299
@@ -37,21 +47,23 @@ volume_db = 10.0
 
 [node name="texture" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_xwexj")
+animation = &"walk"
+frame = 1
+frame_progress = 0.51495796
 
 [node name="staticBackground" parent="texture" index="0"]
 scale = Vector2(0.29643428, 0.29643428)
-texture = ExtResource("4_1stll")
 
 [node name="hitbox" parent="texture/hurtbox" index="0"]
-position = Vector2(-7.625, 2.25)
+position = Vector2(-13.5, 0.75)
 shape = SubResource("RectangleShape2D_1stll")
 
 [node name="hitbox2" type="CollisionShape2D" parent="texture/hurtbox" index="1"]
-position = Vector2(37, -28)
+position = Vector2(49, -28)
 shape = SubResource("CircleShape2D_rwj47")
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 
 [node name="statebar" parent="." index="4" node_paths=PackedStringArray("entity")]
-position = Vector2(0, -107)
+position = Vector2(0, -118)
 entity = NodePath("..")

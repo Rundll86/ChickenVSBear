@@ -11,7 +11,7 @@ avatarTexture = ExtResource("2_ghn43")
 displayName = "链式机枪"
 costBeachball = 400
 store = {
-"atk": 3,
+"atk": 5,
 "count": 1,
 "split": 15
 }
@@ -23,7 +23,6 @@ storeType = {
 descriptionTemplate = "超高速发射$count个[b]微型水晶[/b]，可造成$atk点伤害，散射+$split。"
 needEnergy = 0.75
 cooldown = 66.0
-debugRebuild = true
 
 [node name="attack" parent="sounds" index="0"]
 stream = ExtResource("4_g38si")
