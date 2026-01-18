@@ -152,7 +152,8 @@ func trySplit():
 			cloned.rotation += deg_to_rad(360.0 / total * i + 180)
 			cloned.canDuplicateSelf = false
 			cloned.launcher = launcher
-			cloned.parent = parent
+			if is_instance_valid(parent):
+				cloned.parent = parent
 			get_parent().add_child.call_deferred(split(cloned, i, total, last))
 func tryRefract():
 	if is_instance_valid(launcher) and canDuplicateSelf:
@@ -173,7 +174,8 @@ func tryRefract():
 				cloned.look_at(entity.position)
 				cloned.canDuplicateSelf = false
 				cloned.launcher = launcher
-				cloned.parent = parent
+				if is_instance_valid(parent):
+					cloned.parent = parent
 				get_parent().add_child.call_deferred(refract(cloned, entity, i, total, last))
 
 # 抽象方法
