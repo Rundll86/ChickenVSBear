@@ -126,7 +126,7 @@ func _ready():
 			for i in weaponStore.get_children():
 				i.free()
 			weaponStore.add_child(ComponentManager.getWeapon("PurpleCrystal").instantiate())
-			weaponStore.add_child(MathTool.randomChoiceFrom(ComponentManager.weapons).instantiate())
+			weaponStore.add_child(MathTool.randomChoiceFrom(ComponentManager.weapons.values()).instantiate())
 		for i in weaponStore.get_children():
 			i.hide()
 			weapons.append(i)
