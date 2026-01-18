@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4y1kq7yger4h"]
+[gd_scene load_steps=12 format=3 uid="uid://b4y1kq7yger4h"]
 
 [ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_fwc1i"]
+[ext_resource type="AudioStream" uid="uid://s2ves404aifr" path="res://resources/sounds/effect/catreflect.wav" id="2_pg5a4"]
 
 [sub_resource type="Curve" id="Curve_snh3o"]
 _data = [Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -48,6 +49,11 @@ color_initial_ramp = SubResource("GradientTexture1D_5ra8e")
 alpha_curve = SubResource("CurveTexture_tr6r8")
 
 [node name="CatBoom" instance=ExtResource("1_fwc1i")]
+spawnSound = "spawn"
+
+[node name="spawn" parent="sounds" index="0"]
+stream = ExtResource("2_pg5a4")
+volume_db = 5.0
 
 [node name="particles" parent="." index="1"]
 z_index = 1

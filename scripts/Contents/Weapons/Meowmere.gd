@@ -2,9 +2,9 @@
 extends Weapon
 
 func update(to, origin, _entity):
-	origin["atk"] += 3 * to * soulLevel
+	origin["atk"] += 1.5 * to * soulLevel
 	origin["count"] = 1 * soulLevel
-	origin["childatk"] += 1.25 * origin["atk"]
+	origin["childatk"] = 1.25 * origin["atk"]
 	origin["reduce"] /= 1 + 0.05 * to * soulLevel
 	return origin
 func attack(entity: EntityBase):
@@ -17,3 +17,4 @@ func attack(entity: EntityBase):
 			if j is BulletBase:
 				j.baseDamage = readStore("childatk")
 				j.penerateDamageReduction = readStore("reduce")
+	return true
