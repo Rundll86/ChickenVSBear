@@ -27,7 +27,8 @@ func generateShadow():
 			launcher,
 			position,
 			startAngle + i * deg_to_rad(splitAngle),
-			false, false, true, true
+			true,
+			true
 		):
 			if bullet is VolcanoShadow:
 				bullet.baseDamage = baseDamage * dmg5

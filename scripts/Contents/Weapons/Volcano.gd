@@ -16,7 +16,7 @@ func attack(entity: EntityBase):
 		ComponentManager.getBullet("Volcano"),
 		entity,
 		entity.findWeaponAnchor("normal"),
-		entity.position.angle_to_point(entity.get_global_mouse_position()), false, false, true, true
+		entity.position.angle_to_point(entity.get_global_mouse_position()), true, true
 	):
 		var bullet: Volcano = j
 		bullet.baseDamage = readStore("atk")

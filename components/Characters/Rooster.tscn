@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=13 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" uid="uid://cthtupc6dtbav" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
-[ext_resource type="PackedScene" uid="uid://c0n3igy4hucrg" path="res://components/Weapons/PurpleCrystal.tscn" id="3_s7kxe"]
+[ext_resource type="PackedScene" uid="uid://dlaks67h2osms" path="res://components/Weapons/ChainGun.tscn" id="3_s7kxe"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
 [ext_resource type="AudioStream" uid="uid://benyec5bqni0b" path="res://resources/sounds/effect/Chomp.wav" id="4_k0yme"]
 [ext_resource type="AudioStream" uid="uid://dmxh3bpk8vyy5" path="res://resources/sounds/effect/Coin.mp3" id="5_xnbhq"]
 [ext_resource type="AudioStream" uid="uid://4wuuf1osk0yv" path="res://resources/sounds/effect/Low Boing.wav" id="6_m5px1"]
-[ext_resource type="Texture2D" uid="uid://x7ic6wm22jv4" path="res://resources/characters/cock/rooster.png" id="11_joj4g"]
+[ext_resource type="Texture2D" uid="uid://fn8qx72clh38" path="res://resources/characters/cock/rooster-a.svg" id="8_da2ca"]
+[ext_resource type="Texture2D" uid="uid://ci2ik43ce82uy" path="res://resources/characters/cock/rooster-b.svg" id="9_0omr3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4v2ol"]
 animations = [{
@@ -26,7 +27,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_joj4g")
+"texture": ExtResource("8_da2ca")
 }],
 "loop": true,
 "name": &"idle",
@@ -34,7 +35,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_joj4g")
+"texture": ExtResource("8_da2ca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0omr3")
 }],
 "loop": true,
 "name": &"walk",
@@ -54,7 +58,7 @@ metadata/_edit_vertical_guides_ = [71.0]
 [node name="weaponStore" parent="." index="1"]
 process_mode = 4
 
-[node name="PurpleCrystal" parent="weaponStore" index="0" instance=ExtResource("3_s7kxe")]
+[node name="ChainGun" parent="weaponStore" index="0" instance=ExtResource("3_s7kxe")]
 debugRebuild = false
 
 [node name="sprint" parent="sounds" index="0"]
@@ -70,15 +74,14 @@ stream = ExtResource("5_xnbhq")
 stream = ExtResource("6_m5px1")
 
 [node name="texture" parent="." index="3"]
-position = Vector2(0, -70)
+position = Vector2(0, -47)
 sprite_frames = SubResource("SpriteFrames_4v2ol")
 animation = &"walk"
 
 [node name="staticAnimation" parent="texture" index="1"]
 position = Vector2(0, -24)
-scale = Vector2(0.32309517, 0.32309517)
 sprite_frames = SubResource("SpriteFrames_jluqw")
-animation = &"walk"
+animation = &"idle"
 
 [node name="hitbox" parent="texture/hurtbox" index="0"]
 position = Vector2(8, -28)
@@ -88,5 +91,5 @@ shape = SubResource("CircleShape2D_h1v0q")
 position = Vector2(54, -45)
 
 [node name="statebar" parent="." index="4" node_paths=PackedStringArray("entity")]
-position = Vector2(0, -202)
+position = Vector2(0, -150)
 entity = NodePath("..")

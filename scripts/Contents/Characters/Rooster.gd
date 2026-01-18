@@ -11,8 +11,10 @@ func register():
 			elif bullet is FoxZhua:
 				EffectController.create(ComponentManager.getEffect("BloodFall"), texture.global_position).shot()
 	)
-	if !WorldManager.isRelease():
-		fields[FieldStore.Entity.BULLET_REFRACTION] = 3
+	# if !WorldManager.isRelease():
+	# 	fields[FieldStore.Entity.BULLET_REFRACTION] = 3
+	# 	fields[FieldStore.Entity.BULLET_SPLIT] = 3
+	# 	fields[FieldStore.Entity.EXTRA_BULLET_COUNT] = 3
 func ai():
 	texture.play("walk")
 	var direction = Vector2(

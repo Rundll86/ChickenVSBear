@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlaks67h2osms"]
+[gd_scene load_steps=5 format=3 uid="uid://dlaks67h2osms"]
 
 [ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_x1nyl"]
 [ext_resource type="Texture2D" uid="uid://ccxdfsg5071t4" path="res://resources/bullets/chain-gun/Chain_Gun.webp" id="2_ghn43"]
 [ext_resource type="Script" uid="uid://dev0urlc13rxc" path="res://scripts/Contents/Weapons/ChainGun.gd" id="2_ponmu"]
+[ext_resource type="AudioStream" uid="uid://bdcyao3e6xs63" path="res://resources/sounds/effect/chainshoot.wav" id="4_g38si"]
 
 [node name="ChainGun" instance=ExtResource("1_x1nyl")]
 script = ExtResource("2_ponmu")
@@ -12,22 +13,26 @@ costBeachball = 400
 store = {
 "atk": 3,
 "count": 1,
-"split": 30
+"split": 15
 }
 storeType = {
 "atk": 1,
 "count": 1,
-"split": 1
+"split": 3
 }
-descriptionTemplate = "以$split单位的间隔发射$count个[b]微型水晶[/b]，可造成$atk点伤害。"
-needEnergy = 1.0
-cooldown = 50.0
+descriptionTemplate = "超高速发射$count个[b]微型水晶[/b]，可造成$atk点伤害，散射+$split。"
+needEnergy = 0.75
+cooldown = 66.0
+debugRebuild = true
+
+[node name="attack" parent="sounds" index="0"]
+stream = ExtResource("4_g38si")
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_ghn43")
 
 [node name="energy" parent="container/info/infos/energyInfo" index="1"]
-text = "1.0"
+text = "0.8"
 
 [node name="beachball" parent="container/info/infos" index="1"]
 count = 400
@@ -36,4 +41,4 @@ count = 400
 displayName = "链式机枪"
 
 [node name="description" parent="container" index="2"]
-text = "[center]以[color=cyan]30[/color]单位的间隔发射[color=cyan]1[/color]个[b]微型水晶[/b]，可造成[color=cyan]3[/color]点伤害。[/center]"
+text = "[center]超高速发射[color=cyan]1[/color]个[b]微型水晶[/b]，可造成[color=cyan]3[/color]点伤害，散射+[color=cyan]15.0°[/color]。[/center]"

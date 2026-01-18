@@ -30,8 +30,7 @@ var parent: BulletBase = null
 var spawnInWhen: float = 0
 var spawnInWhere: Vector2 = Vector2.ZERO
 var destroying: bool = false
-var isChildSplit: bool = false
-var isChildRefract: bool = false
+var canDuplicateSelf: bool = true
 var initialSpeed: float = 0
 var initialDamage: float = 0
 var speedScale: float = 1
@@ -144,19 +143,19 @@ func tryDestroy(becauseMap: bool = false):
 		await animator.animation_finished
 	queue_free()
 func trySplit():
-	if is_instance_valid(launcher) and !isChildSplit:
+	if is_instance_valid(launcher) and canDuplicateSelf:
 		var value = launcher.fields.get(FieldStore.Entity.BULLET_SPLIT)
 		var total = MathTool.shrimpRate(value)
 		var last = value - floor(value)
 		for i in total:
 			var cloned = duplicate() as BulletBase
-			cloned.rotation = deg_to_rad(360.0 / total * i)
-			cloned.isChildSplit = true
+			cloned.rotation += deg_to_rad(360.0 / total * i + 180)
+			cloned.canDuplicateSelf = false
 			cloned.launcher = launcher
 			cloned.parent = parent
 			get_parent().add_child.call_deferred(split(cloned, i, total, last))
 func tryRefract():
-	if is_instance_valid(launcher) and !isChildRefract:
+	if is_instance_valid(launcher) and canDuplicateSelf:
 		var value = launcher.fields.get(FieldStore.Entity.BULLET_REFRACTION)
 		var total = MathTool.shrimpRate(value)
 		var last = value - floor(value)
@@ -172,7 +171,7 @@ func tryRefract():
 				aimed.append(entity)
 				var cloned = duplicate() as BulletBase
 				cloned.look_at(entity.position)
-				cloned.isChildRefract = true
+				cloned.canDuplicateSelf = false
 				cloned.launcher = launcher
 				cloned.parent = parent
 				get_parent().add_child.call_deferred(refract(cloned, entity, i, total, last))
@@ -202,8 +201,6 @@ static func generate(
 	 	launchBy: EntityBase,
 	  	spawnPosition: Vector2,
 	  	spawnRotation: float,
-		asChildSplit: bool = false,
-		asChildRefract: bool = false,
 	   	addToWorld: bool = true,
 		ignoreOffset: bool = false
 	):
@@ -212,8 +209,6 @@ static func generate(
 	var instances = []
 	for i in range(count):
 		var instance: BulletBase = bullet.instantiate()
-		instance.isChildSplit = asChildSplit
-		instance.isChildRefract = asChildRefract
 		instance.launcher = launchBy
 		instance.position = spawnPosition
 		instance.rotation = spawnRotation + deg_to_rad(launchBy.fields.get(FieldStore.Entity.OFFSET_SHOOT) * randf_range(-1, 1) * int(!ignoreOffset))
