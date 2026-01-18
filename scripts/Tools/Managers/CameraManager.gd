@@ -15,7 +15,7 @@ func _ready():
 func _physics_process(_delta):
 	if is_instance_valid(UIState.player):
 		position = UIState.player.position + constantOffset
-		position += MathTool.randomVector2In(shakeIntensity)
+		position += MathTool.sampleInCircle(shakeIntensity)
 		offset += ((get_global_mouse_position() - UIState.player.position).clampf(-100, 100) - offset) * 0.15
 
 static func shake(millseconds: float, intensity: float = 10, steper: Callable = func(currentValue, _totalValue, _restPercent): return currentValue):

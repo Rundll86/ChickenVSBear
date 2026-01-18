@@ -34,7 +34,7 @@ func attack(type):
 			await TickTool.millseconds(randi_range(10, 50))
 	elif type == 1 and health < fields[FieldStore.Entity.MAX_HEALTH] * 0.5 and canSummon:
 		for i in randi_range(1, 2):
-			var child = EntityBase.generate(ComponentManager.getCharacter("KukeChild"), position + MathTool.randomVector2In(500))
+			var child = EntityBase.generate(ComponentManager.getCharacter("KukeChild"), position + MathTool.sampleInCircle(500))
 			child.currentFocusedBoss = currentFocusedBoss
 			child.masterMine = self
 	elif type == 2:

@@ -11,7 +11,7 @@ func attack(entity: EntityBase):
 		var myPos = get_global_mouse_position() + QuickUI.getWindowSize() * Vector2(randf_range(-1, 1) * 0.25, -1)
 		for j in BulletBase.generate(ComponentManager.getBullet("WhiteSoul"), entity,
 			myPos,
-			myPos.angle_to_point(get_global_mouse_position() + MathTool.randomVector2In(readStore("radius")))
+			myPos.angle_to_point(get_global_mouse_position() + MathTool.sampleInCircle(readStore("radius")))
 		):
 			if j is BulletBase:
 				j.baseDamage = readStore("atk")

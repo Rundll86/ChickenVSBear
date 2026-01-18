@@ -24,13 +24,13 @@ func _ready():
 	var formattedValue: String
 	var dataType = FieldStore.entityMapType[field]
 	if dataType == FieldStore.DataType.VALUE:
-		formattedValue = "%s" % (MathTool.signBeforeStr(value) if showSign else str(value))
+		formattedValue = "%s" % (MathTool.toSigned(value) if showSign else str(value))
 	elif dataType == FieldStore.DataType.INTEGER:
-		formattedValue = "%s" % (MathTool.signBeforeStr(int(value)) if showSign else str(int(value)))
+		formattedValue = "%s" % (MathTool.toSigned(int(value)) if showSign else str(int(value)))
 	elif dataType == FieldStore.DataType.ANGLE:
-		formattedValue = "%s°" % (MathTool.signBeforeStr(value) if showSign else str(value))
+		formattedValue = "%s°" % (MathTool.toSigned(value) if showSign else str(value))
 	elif dataType == FieldStore.DataType.PERCENT:
-		formattedValue = (MathTool.signBeforeStr(value * 100) if showSign else str(value * 100)) + "%"
+		formattedValue = (MathTool.toSigned(value * 100) if showSign else str(value * 100)) + "%"
 	valueLabel.label_settings = valueLabel.label_settings.duplicate()
 	valueLabel.text = formattedValue
 	if maxed:

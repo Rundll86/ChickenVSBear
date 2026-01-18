@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwsyn746hr25d"]
 
 [ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_aoaad"]
-[ext_resource type="Script" path="res://scripts/Contents/Weapons/MushroomPickaxe.gd" id="2_5dp3e"]
+[ext_resource type="Script" uid="uid://bmmf864uc3atu" path="res://scripts/Contents/Weapons/MushroomPickaxe.gd" id="2_5dp3e"]
 [ext_resource type="Texture2D" uid="uid://cqg0aluvegqfe" path="res://resources/bullets/MushroomPickaxe/frames/Shroomite_Digging_Claw.webp" id="2_u2d30"]
 
 [node name="MushroomPickaxe" instance=ExtResource("1_aoaad")]
@@ -11,8 +11,8 @@ displayName = "蘑菇矿挖爪"
 costBeachball = 750
 store = {
 "atk": 1,
-"count": 5.0,
-"rate": 0.15
+"count": 3.0,
+"rate": 0.1
 }
 storeType = {
 "atk": 1,
@@ -26,10 +26,14 @@ debugRebuild = true
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_u2d30")
 
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
+text = "2.0"
 
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 750
 
 [node name="name" parent="container/info" index="2"]
 displayName = "蘑菇矿挖爪"
 
 [node name="description" parent="container" index="2"]
-text = "[center]命中时造成[color=cyan]1[/color]→[color=yellow]2[/color]点伤害，有[color=cyan]15%[/color]→[color=yellow]19%[/color]概率挖出1~[color=cyan]5[/color]→[color=yellow]6[/color]个随机物品。[/center]"
+text = "[center]命中时造成[color=cyan]1[/color]点伤害，有[color=cyan]10%[/color]概率挖出1~[color=cyan]3[/color]个随机物品。[/center]"
