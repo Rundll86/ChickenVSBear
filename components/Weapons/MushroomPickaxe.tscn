@@ -20,8 +20,6 @@ storeType = {
 "rate": 2
 }
 descriptionTemplate = "命中时造成$atk点伤害，有$rate概率挖出1~$count个随机物品。"
-needEnergy = 2.0
-debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_u2d30")

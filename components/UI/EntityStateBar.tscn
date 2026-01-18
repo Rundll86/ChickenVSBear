@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dcjqjqere8ets"]
 
 [ext_resource type="PackedScene" uid="uid://d1ulrvupa76ap" path="res://components/UI/ColorBar.tscn" id="1_0ngbn"]
-[ext_resource type="Script" path="res://scripts/Statemachine/EntityStateBar.gd" id="1_ovbjr"]
+[ext_resource type="Script" uid="uid://cvrkf1f5ke6rh" path="res://scripts/Statemachine/EntityStateBar.gd" id="1_ovbjr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w56p2"]
 bg_color = Color(0, 0, 0, 0.5)
@@ -41,8 +41,9 @@ anchor_top = -2.0
 anchor_right = 0.5
 anchor_bottom = -2.0
 offset_left = -25.0
+offset_top = -4.0
 offset_right = 26.0
-offset_bottom = 19.0
+offset_bottom = 20.0
 grow_horizontal = 2
 alignment = 1
 
