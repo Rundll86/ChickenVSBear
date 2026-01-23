@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cinubc5yvt2y8"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_lbf6s"]
+[ext_resource type="Texture2D" uid="uid://ckr8tw7fsa7qx" path="res://resources/weapons/AcidWind.png" id="2_tvrwp"]
+[ext_resource type="PackedScene" uid="uid://yq7vmijwvgx1" path="res://components/Weapons/AcidWind.tscn" id="3_ke57a"]
+
+[node name="AcidWind" instance=ExtResource("1_lbf6s")]
+avatarTexture = ExtResource("2_tvrwp")
+displayName = "酸蚀风暴"
+quality = 2
+topic = 8
+fields = Array[int]([7])
+fieldValues = Array[float]([10.0])
+weapons = Array[PackedScene]([ExtResource("3_ke57a")])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([100, 200])
