@@ -7,9 +7,9 @@ enum AcidType {
 }
 @export var acidType: AcidType = AcidType.STRONG
 
-var arg1: float = 0
-var arg2: float = 0
-var arg3: float = 0
+var arg1 = 0
+var arg2 = 0
+var arg3 = 0
 
 func register():
     scale.y *= MathTool.randomChoiceFrom([-1, 1])

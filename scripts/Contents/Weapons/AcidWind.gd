@@ -14,11 +14,14 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
     origin["weakatk"] = 0.05 * soulLevel
     return origin
 func attack(entity: EntityBase):
+    var acid = MathTool.randomChoiceFrom(acids)
     for bullet in BulletBase.generate(
-        ComponentManager.getBullet(MathTool.randomChoiceFrom(acids)),
+        ComponentManager.getBullet(acid),
         entity,
         entity.findWeaponAnchor("normal"),
-        (get_global_mouse_position() - entity.findWeaponAnchor("normal")).angle()
+        (get_global_mouse_position() - entity.findWeaponAnchor("normal")).angle(),
+        true,
+        acid == "AcidC"
     ):
         if bullet is AcidBulletBase:
             if bullet.acidType == AcidBulletBase.AcidType.STRONG:
@@ -34,5 +37,6 @@ func attack(entity: EntityBase):
                 bullet.arg2 = readStore("cl-atkspeed")
             if bullet is AcidP:
                 bullet.arg1 = readStore("p-offset")
+                bullet.arg2 = EntityTool.findClosetEntity(get_global_mouse_position(), get_tree(), !entity.isPlayer(), entity.isPlayer())
             if bullet is AcidC:
-                bullet.rotation += deg_to_rad(randf_range(-1, 1) * 15)
+                pass

@@ -18,7 +18,7 @@ store = {
 "cl-speed": 0.001,
 "n-atk": 1.0,
 "p-offset": 0.1,
-"s-count-max": 3.0,
+"s-count-max": 4.0,
 "weakatk": 0.25
 }
 storeType = {
@@ -35,8 +35,8 @@ descriptionTemplate = "高速随机喷射以下五种[b]酸[/b]之一，强酸�
 [color=green][b]硫酸[/b][/color]：命中时溅射1~$s-count-max滴[b]硫酸[/b]。
 [color=lightblue][b]硝酸[/b][/color]：额外造成$n-atk点伤害。
 [color=lightyellow][b]盐酸[/b][/color]：使敌人 [i]移动速度[/i] 降低$cl-speed，[i]攻击速度[/i] 降低$cl-atkspeed。
-[color=pink][b]碳酸[/b][/color]：可无限穿透，碰撞体积会越来越大，但飞行速度稍慢且有额外散射。
-[color=orange][b]磷酸[/b][/color]：使敌人 [i]散射角[/i] 增加$p-offset。"
+[color=pink][b]碳酸[/b][/color]：不会发生散射，可无限穿透，碰撞体积会越来越大，但飞行速度稍慢。
+[color=orange][b]磷酸[/b][/color]：使敌人 [i]散射角[/i] 增加$p-offset，可无限追踪。"
 cooldown = 0.0
 debugRebuild = true
 
@@ -53,8 +53,8 @@ typeTopic = 3
 
 [node name="description" parent="container" index="2"]
 text = "[center]高速随机喷射以下五种[b]酸[/b]之一，强酸可造成[color=cyan]0.50[/color]点伤害，弱酸造成[color=cyan]0.25[/color]点伤害。
-[color=green][b]硫酸[/b][/color]：命中时溅射1~[color=cyan]3[/color]滴[b]硫酸[/b]。
+[color=green][b]硫酸[/b][/color]：命中时溅射1~[color=cyan]4[/color]滴[b]硫酸[/b]。
 [color=lightblue][b]硝酸[/b][/color]：额外造成[color=cyan]1[/color]点伤害。
 [color=lightyellow][b]盐酸[/b][/color]：使敌人 [i]移动速度[/i] 降低[color=cyan]0.1%[/color]，[i]攻击速度[/i] 降低[color=cyan]0.1%[/color]。
-[color=pink][b]碳酸[/b][/color]：可无限穿透，碰撞体积会越来越大，但飞行速度稍慢且有额外散射。
-[color=orange][b]磷酸[/b][/color]：使敌人 [i]散射角[/i] 增加[color=cyan]0.1°[/color]。[/center]"
+[color=pink][b]碳酸[/b][/color]：不会发生散射，可无限穿透，碰撞体积会越来越大，但飞行速度稍慢。
+[color=orange][b]磷酸[/b][/color]：使敌人 [i]散射角[/i] 增加[color=cyan]0.1°[/color]，可无限追踪。[/center]"
