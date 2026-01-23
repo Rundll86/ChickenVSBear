@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://di00g0wvglc8f"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_oxen4"]
+[ext_resource type="Texture2D" uid="uid://ckr8tw7fsa7qx" path="res://resources/weapons/AcidWind.png" id="2_nvjyi"]
+
+[node name="AcidWind" instance=ExtResource("1_oxen4")]
+avatarTexture = ExtResource("2_nvjyi")
+displayName = "酸蚀风暴"
+quality = 4
+typeTopic = 3
+costBeachball = 200
+store = {
+"atk": 5,
+"c-atk": 1.0,
+"cl-atkspeed": 0.02,
+"cl-speed": 0.03,
+"n-atk": 5.0,
+"p-offset": 2.0,
+"s-count-max": 3.0,
+"weakatk": 1.0
+}
+storeType = {
+"atk": 1,
+"c-atk": 1,
+"cl-atkspeed": 2,
+"cl-speed": 2,
+"n-atk": 1,
+"p-offset": 3,
+"s-count-max": 1,
+"weakatk": 1
+}
+descriptionTemplate = "高速随机喷射以下五种[b]酸[/b]之一，强酸可造成$atk点伤害，弱酸造成$weakatk点伤害。
+[color=green][b]硫酸[/b][/color]：命中时溅射1~$s-count-max滴[b]硫酸[/b]。
+[color=lightblue][b]硝酸[/b][/color]：额外造成$n-atk点伤害。
+[color=lightyellow][b]盐酸[/b][/color]：使敌人 [i]移动速度[/i] 降低$cl-speed，[i]攻击速度[/i] 降低$cl-atkspeed。
+[color=pink][b]碳酸[/b][/color]：命中时挥发为气体向前扩散，敌人接触造成$c-atk点伤害，可无限穿透。
+[color=orange][b]磷酸[/b][/color]：使敌人 [i]散射角[/i] 增加$p-offset。"
+cooldown = 10.0
+debugRebuild = true
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_nvjyi")
+
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 200
+
+[node name="name" parent="container/info" index="2"]
+displayName = "酸蚀风暴"
+quality = 4
+typeTopic = 3
+
+[node name="description" parent="container" index="2"]
+text = "[center]高速随机喷射以下五种[b]酸[/b]之一，强酸可造成[color=cyan]5[/color]点伤害，弱酸造成[color=cyan]1[/color]点伤害。
+[color=green][b]硫酸[/b][/color]：命中时溅射1~[color=cyan]3[/color]滴[b]硫酸[/b]。
+[color=lightblue][b]硝酸[/b][/color]：额外造成[color=cyan]5[/color]点伤害。
+[color=lightyellow][b]盐酸[/b][/color]：使敌人 [i]移动速度[/i] 降低[color=cyan]3%[/color]，[i]攻击速度[/i] 降低[color=cyan]2%[/color]。
+[color=pink][b]碳酸[/b][/color]：命中时挥发为气体向前扩散，敌人接触造成[color=cyan]1[/color]点伤害，可无限穿透。
+[color=orange][b]磷酸[/b][/color]：使敌人 [i]散射角[/i] 增加[color=cyan]2.0°[/color]。[/center]"

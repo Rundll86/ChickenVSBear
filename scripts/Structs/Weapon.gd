@@ -14,7 +14,7 @@ class_name Weapon
 @export var storeType: Dictionary = {
 	"atk": FieldStore.DataType.INTEGER
 }
-@export var descriptionTemplate: String = "造成$atk点伤害。"
+@export_multiline var descriptionTemplate: String = "造成$atk点伤害。"
 @export var needEnergy: float = 0
 @export var cooldown: float = 100
 @export var debugRebuild: bool = false
