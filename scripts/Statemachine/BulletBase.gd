@@ -19,6 +19,7 @@ class_name BulletBase
 @export var freeAfterSpawn: bool = false
 @export var knockback: float = 0 # 击退力，物理引擎单位
 @export var recoil: float = 0 # 后坐力，物理引擎单位
+@export var canDoDuplicate: bool = true # 是否可以分裂、折射
 
 @onready var animator: AnimationPlayer = $"%animator"
 @onready var hitbox: CollisionShape2D = $"%hitbox"
@@ -135,8 +136,9 @@ func dotLoop():
 func tryDestroy(becauseMap: bool = false):
 	if destroying: return
 	destroying = true
-	trySplit()
-	tryRefract()
+	if canDoDuplicate:
+		trySplit()
+		tryRefract()
 	await destroy(becauseMap)
 	if autoDestroyAnimation:
 		animator.play("destroy")
