@@ -4,14 +4,14 @@ extends Weapon
 var acids: Array[String] = ["AcidS", "AcidN", "AcidCl", "AcidP", "AcidC"]
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-    origin["atk"] += 0.05 * to * soulLevel
+    origin["atk"] += 0.075 * to * soulLevel
     origin["c-atk"] *= soulLevel
     origin["cl-atkspeed"] *= soulLevel
     origin["cl-speed"] *= soulLevel
     origin["n-atk"] *= soulLevel
     origin["p-offset"] *= soulLevel
     origin["s-count-max"] *= soulLevel
-    origin["weakatk"] = 0.025 * soulLevel
+    origin["weakatk"] = 0.05 * soulLevel
     return origin
 func attack(entity: EntityBase):
     for bullet in BulletBase.generate(
