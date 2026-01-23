@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://qx8h1dcbyy1j"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_hfsul"]
+[ext_resource type="Script" uid="uid://wt1fn2vjtlen" path="res://scripts/Contents/Bullets/AcidBulletBase.gd" id="2_y4hkm"]
+[ext_resource type="Texture2D" uid="uid://b47ixncbxcs4u" path="res://resources/bullets/acids/template.png" id="3_rku1t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3gf7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rku1t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AcidBulletBase" instance=ExtResource("1_hfsul")]
+script = ExtResource("2_y4hkm")
+acidType = 0
+displayName = "酸液"
+lifeTime = 2000.0
+
+[node name="texture" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_3gf7s")
+
+[node name="hitbox" parent="." index="1"]
+visible = false

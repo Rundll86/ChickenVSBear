@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1pjay8rhvwap"]
+
+[ext_resource type="PackedScene" uid="uid://qx8h1dcbyy1j" path="res://components/Bullets/AcidBulletBase.tscn" id="1_l70ci"]
+[ext_resource type="Script" uid="uid://8h8e35gwre27" path="res://scripts/Contents/Bullets/AcidC.gd" id="2_nxpf5"]
+
+[node name="AcidC" instance=ExtResource("1_l70ci")]
+script = ExtResource("2_nxpf5")
+speed = 5.0
+penerate = 1.0
+lifeTime = 4000.0
+
+[node name="texture" parent="." index="0"]
+modulate = Color(1, 0.7075234, 0.6972954, 1)

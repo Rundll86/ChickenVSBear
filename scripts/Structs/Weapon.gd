@@ -130,7 +130,7 @@ func formatValue(value: Variant, type: FieldStore.DataType) -> String:
 	elif type == FieldStore.DataType.INTEGER:
 		return "%d" % value
 	elif type == FieldStore.DataType.PERCENT:
-		return ("%d" % (value * 100)) + "%"
+		return ("%.1f" % (value * 100)) + "%"
 	elif type == FieldStore.DataType.ANGLE:
 		return "%.1f°" % value
 	elif type == FieldStore.DataType.FREQUENCY:
