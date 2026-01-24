@@ -1,15 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0ncrvm8u4pox"]
+[gd_scene load_steps=14 format=3 uid="uid://b0ncrvm8u4pox"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_goqmy"]
 [ext_resource type="Script" uid="uid://b2gg1fh0bflu7" path="res://scripts/Contents/Characters/Chick.gd" id="2_r6bub"]
+[ext_resource type="AudioStream" uid="uid://b7pxuov1id0ho" path="res://resources/sounds/effect/Pew.mp3" id="3_w0sit"]
 [ext_resource type="AudioStream" uid="uid://bgo8p1l77xrbe" path="res://resources/sounds/effect/Magic Spell.wav" id="4_2qabh"]
 [ext_resource type="AudioStream" uid="uid://b10u6iir6uvqn" path="res://resources/sounds/effect/BigLaser.wav" id="4_mrsne"]
 [ext_resource type="AudioStream" uid="uid://bf34p3xnsosgj" path="res://resources/sounds/effect/Dun Dun Dunnn.wav" id="4_w0sit"]
 [ext_resource type="AudioStream" uid="uid://cee6rxv2uqynh" path="res://resources/sounds/effect/Flame.ogg" id="5_vcsbb"]
 [ext_resource type="AudioStream" uid="uid://dn6bijr513wyp" path="res://resources/sounds/effect/Drum Boing.wav" id="7_qjhwc"]
-[ext_resource type="Texture2D" uid="uid://k0hcr5u2xlk6" path="res://resources/characters/chick/fox.png" id="8_k8ox8"]
+[ext_resource type="Texture2D" uid="uid://7pkplcqqxvnp" path="res://resources/characters/chick/chick-a.svg" id="8_x766l"]
+[ext_resource type="Texture2D" uid="uid://dj5dvqb8gsedr" path="res://resources/characters/chick/chick-b.svg" id="9_w0sit"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xji3d"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_k8ox8"]
 animations = [{
 "frames": [],
 "loop": true,
@@ -22,11 +24,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_x766l"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_17ekt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_k8ox8")
+"texture": ExtResource("8_x766l")
 }],
 "loop": true,
 "name": &"idle",
@@ -34,26 +36,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_k8ox8")
+"texture": ExtResource("8_x766l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_w0sit")
 }],
 "loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x766l"]
-size = Vector2(57, 114)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_w0sit"]
-radius = 61.03278
+[sub_resource type="CircleShape2D" id="CircleShape2D_x766l"]
+radius = 106.66888
 
 [node name="Chick" instance=ExtResource("1_goqmy")]
 script = ExtResource("2_r6bub")
 isBoss = true
-displayName = "狐狸"
+displayName = "小鸡"
 drops = Array[int]([0, 1])
 dropCounts = Array[Vector2]([Vector2(15, 30), Vector2(20, 40)])
 appleCount = Vector2i(2, 4)
+useStatic = true
+hurtAudioRate = 0.2
+
+[node name="hurt" parent="sounds" index="3"]
+stream = ExtResource("3_w0sit")
 
 [node name="attack1" type="AudioStreamPlayer2D" parent="sounds" index="6"]
 stream = ExtResource("4_mrsne")
@@ -74,32 +81,28 @@ volume_db = 10.0
 
 [node name="texture" parent="." index="3"]
 position = Vector2(0, -37)
-sprite_frames = SubResource("SpriteFrames_xji3d")
-animation = &"walk"
+sprite_frames = SubResource("SpriteFrames_k8ox8")
 
 [node name="staticAnimation" parent="texture" index="1"]
-position = Vector2(0, -94)
-scale = Vector2(0.72807497, 0.72807497)
-sprite_frames = SubResource("SpriteFrames_x766l")
+position = Vector2(0, -74)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_17ekt")
 animation = &"idle"
+frame_progress = 0.3176048
 
 [node name="hitbox" parent="texture/hurtbox" index="0"]
-position = Vector2(-0.5, -113)
-shape = SubResource("RectangleShape2D_x766l")
-
-[node name="hitbox2" type="CollisionShape2D" parent="texture/hurtbox" index="1"]
-position = Vector2(117, -149)
-shape = SubResource("CircleShape2D_w0sit")
+position = Vector2(-0.5, -67)
+shape = SubResource("CircleShape2D_x766l")
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
-position = Vector2(134, -130)
+position = Vector2(93, -113)
 
 [node name="foot" type="Node2D" parent="texture/weapons" index="1"]
-position = Vector2(56, 28)
+position = Vector2(-8, 30)
 
 [node name="trailParticle" parent="texture" index="7"]
-position = Vector2(1, -107)
+position = Vector2(-84, -72)
 
 [node name="statebar" parent="." index="4" node_paths=PackedStringArray("entity")]
-position = Vector2(0, -227)
+position = Vector2(0, -236)
 entity = NodePath("..")

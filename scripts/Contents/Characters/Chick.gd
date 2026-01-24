@@ -7,10 +7,10 @@ func register():
 	fields[FieldStore.Entity.MAX_HEALTH] = 2500
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 0.4
 	attackCooldownMap[0] = 400
-	attackCooldownMap[1] = 12000
-	attackCooldownMap[2] = 2000
-	attackCooldownMap[3] = 3000
-	attackCooldownMap[4] = 4000
+	attackCooldownMap[1] = 10000
+	attackCooldownMap[2] = 3000
+	attackCooldownMap[3] = 2000
+	attackCooldownMap[4] = 2500
 	sprintMultiplier = 50
 	healthChanged.connect(
 		func(h):
@@ -36,7 +36,7 @@ func attack(type):
 		for i in randi_range(7, 16):
 			BulletBase.generate(ComponentManager.getBullet("Diamond"), self, weaponPos + MathTool.sampleInCircle(20), rotation + deg_to_rad(randf_range(-90, 90)))
 	elif type == 1:
-		var laserCount = randi_range(2, 4)
+		var laserCount = randi_range(3, 4)
 		for i in laserCount:
 			BulletBase.generate(ComponentManager.getBullet("ChickLaser"), self, texture.global_position, deg_to_rad(360.0 / laserCount * i))
 	elif type == 2:
