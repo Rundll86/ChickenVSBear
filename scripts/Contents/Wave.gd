@@ -22,7 +22,7 @@ func duplicate() -> Wave:
 	wave.per = per
 	return wave
 
-static var current: int = startWith(1) if WorldManager.isRelease() else startWith(10)
+static var current: int = startWith(1) if WorldManager.isRelease() else startWith(20)
 static var WAVE_NORMAL = [
 	Wave.create("Hen", 1, 3, false, 0, INF, 1),
 	Wave.create("Cat", 1, 5, false, 0, INF, 1),
