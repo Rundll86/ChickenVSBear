@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4lfjwy0hkidu"]
+[gd_scene load_steps=11 format=3 uid="uid://d4lfjwy0hkidu"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_r4q7y"]
 [ext_resource type="Script" uid="uid://cekuqnfohprpb" path="res://scripts/Contents/Characters/KukeMC.gd" id="2_s2dg5"]
 [ext_resource type="Texture2D" uid="uid://mnockp3ai4ju" path="res://resources/characters/kukemc/pico-a.svg" id="3_1s5d7"]
+[ext_resource type="AudioStream" uid="uid://23ttwefh4ej2" path="res://resources/sounds/effect/arrowshot.mp3" id="3_xjfsq"]
 [ext_resource type="Texture2D" uid="uid://fsiyiwek5awa" path="res://resources/characters/kukemc/pico-b.svg" id="4_xjfsq"]
 [ext_resource type="Texture2D" uid="uid://dem14qyqmrp52" path="res://resources/characters/kukemc/pico-c.svg" id="5_rfpp4"]
 [ext_resource type="Texture2D" uid="uid://cvig26vtcyqmd" path="res://resources/characters/kukemc/pico-d.svg" id="6_kcxk2"]
@@ -56,8 +57,13 @@ script = ExtResource("2_s2dg5")
 displayName = "酷可mc"
 drops = Array[int]([0, 1])
 dropCounts = Array[Vector2]([Vector2(20, 40), Vector2(25, 50)])
+appleCount = Vector2i(3, 6)
 useStatic = true
+hurtAudioRate = 0.1
 metadata/_edit_vertical_guides_ = [76.0]
+
+[node name="hurt" parent="sounds" index="3"]
+stream = ExtResource("3_xjfsq")
 
 [node name="collect" parent="sounds" index="4"]
 stream = null
@@ -80,7 +86,7 @@ position = Vector2(0, -49)
 shape = SubResource("RectangleShape2D_farlp")
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
-position = Vector2(-22, 18)
+position = Vector2(29, -38)
 
 [node name="statebar" parent="." index="4"]
 position = Vector2(0, -217)
