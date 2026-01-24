@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://caogpc2fnlrin"]
+[gd_scene load_steps=8 format=3 uid="uid://caogpc2fnlrin"]
 
 [ext_resource type="Script" uid="uid://c1gqcwr6say6f" path="res://scripts/Statemachine/TipBox.gd" id="1_7vuk3"]
+[ext_resource type="Theme" uid="uid://bje5cd08dyok7" path="res://themes/bigTextAndBold.tres" id="2_5pngc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nooq4"]
 content_margin_left = 10.0
@@ -101,13 +102,20 @@ _data = {
 }
 
 [node name="TipBox" type="PanelContainer"]
+offset_right = 79.0
+offset_bottom = 34.0
+scale = Vector2(1, 2)
 theme_override_styles/panel = SubResource("StyleBoxFlat_nooq4")
 script = ExtResource("1_7vuk3")
 
-[node name="label" type="Label" parent="."]
+[node name="label" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("2_5pngc")
+bbcode_enabled = true
 text = "nothing"
+fit_content = true
+autowrap_mode = 0
 
 [node name="animator" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

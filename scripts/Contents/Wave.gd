@@ -82,6 +82,18 @@ static func entityCountOf(wave: Wave) -> int:
 		elif !hasBoss():
 			return randi_range(ceil(wave.minCount), floor(wave.maxCount * (1 + GameRule.entityCountBoostPerWave * current)))
 	return 0
+static func getNextBossInfo() -> Array:
+	var nextBossName = ""
+	var minWavesLeft = INF
+	for wave in data:
+		if wave.isBoss:
+			var wavesLeft = wave.from - current
+			if wavesLeft > 0 and wavesLeft < minWavesLeft:
+				minWavesLeft = wavesLeft
+				nextBossName = ComponentManager.getCharacter(wave.entity).instantiate().displayName
+	if minWavesLeft < INF:
+		return [nextBossName, minWavesLeft]
+	return []
 static func spawn(center: Vector2) -> Array:
 	var result: Array = []
 	for i in range(len(data)):
@@ -97,6 +109,15 @@ static func next(waves: Array):
 			wave = instance_from_id(wave.get_instance_id())
 		EntityBase.generate(ComponentManager.getCharacter(wave.entity), wave.entityPosition, true, wave.isBoss)
 	current += 1
-	UIState.showTip("第%d波开始！" % current, true)
+	UIState.showTip("第%d波开始！" % current, 500)
+	showNextBossReminder()
+static func showNextBossReminder():
+	var nextBossInfo = getNextBossInfo()
+	if nextBossInfo:
+		var bossName = nextBossInfo[0]
+		var wavesLeft = nextBossInfo[1]
+		if wavesLeft > 0:
+			UIState.showTip("Boss [b]%s[/b] 将在[b]%d[/b]波后到来！" % [bossName, wavesLeft], 500)
+
 static func startWith(wave: int):
 	return wave - 1

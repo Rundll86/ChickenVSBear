@@ -74,11 +74,11 @@ static func setPanel(targetName: String = "", args: Array = []):
 				panel.hidePanel()
 static func closeCurrentPanel():
 	setPanel()
-static func showTip(text: String, destroyAfter: bool = false):
+static func showTip(text: String, destroyAfter: float = -1):
 	var box = TipBox.create(text)
 	tips.add_child(box)
-	if destroyAfter:
-		await TickTool.millseconds(len(text) * 500)
+	if destroyAfter > 0:
+		await TickTool.millseconds(destroyAfter * len(text))
 		box.destroy()
 	else:
 		return box

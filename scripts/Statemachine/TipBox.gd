@@ -4,7 +4,7 @@ class_name TipBox
 
 @export var text: String = "nothing"
 
-@onready var label: Label = $%label
+@onready var label: RichTextLabel = $%label
 @onready var animator: AnimationPlayer = $%animator
 
 func _ready():
