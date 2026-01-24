@@ -1,18 +1,17 @@
 [gd_scene load_steps=12 format=3 uid="uid://ufl4kek8hrmt"]
 
-[ext_resource type="Shader" path="res://shaders/CooldownProgress.gdshader" id="1_jaivk"]
-[ext_resource type="Script" path="res://scripts/Statemachine/SkillIcon.gd" id="1_l7say"]
+[ext_resource type="Shader" uid="uid://u6weu6llk46k" path="res://shaders/CooldownProgress.gdshader" id="1_jaivk"]
+[ext_resource type="Script" uid="uid://bp8catom6i0ul" path="res://scripts/Statemachine/SkillIcon.gd" id="1_l7say"]
 [ext_resource type="Texture2D" uid="uid://cp4ypuarjoshp" path="res://resources/skillIcons/purple-crystal.png" id="2_hh1bl"]
 [ext_resource type="Texture2D" uid="uid://chqmaeivt84b5" path="res://resources/common/attackstar.svg" id="4_50rim"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3fyf3"]
 shader = ExtResource("1_jaivk")
 shader_parameter/progress = 0.5
-shader_parameter/backAlpha = 0.2
-shader_parameter/edgeHeight = 0.05
+shader_parameter/backAlpha = 0.0
+shader_parameter/edgeHeight = 0.06
 shader_parameter/edgeColor = Color(1, 1, 1, 1)
-shader_parameter/trailHeight = 0.3
-shader_parameter/trailColor = Color(1, 1, 1, 0.5)
+shader_parameter/trailHeight = 0.4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a60wd"]
 content_margin_left = 5.0
@@ -33,7 +32,7 @@ point_count = 3
 curve = SubResource("Curve_rgp6n")
 
 [sub_resource type="Curve" id="Curve_h7g2c"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -69,6 +68,6 @@ unique_name_in_owner = true
 position = Vector2(20, 20)
 emitting = false
 amount = 1
-process_material = SubResource("ParticleProcessMaterial_7cgpa")
 texture = ExtResource("4_50rim")
 one_shot = true
+process_material = SubResource("ParticleProcessMaterial_7cgpa")
