@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4lfjwy0hkidu"]
+[gd_scene load_steps=10 format=3 uid="uid://d4lfjwy0hkidu"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_r4q7y"]
 [ext_resource type="Script" uid="uid://cekuqnfohprpb" path="res://scripts/Contents/Characters/KukeMC.gd" id="2_s2dg5"]
-[ext_resource type="Texture2D" uid="uid://c6thlmj566h82" path="res://resources/characters/kukemc/cy.png" id="3_wafrb"]
+[ext_resource type="Texture2D" uid="uid://mnockp3ai4ju" path="res://resources/characters/kukemc/pico-a.svg" id="3_1s5d7"]
+[ext_resource type="Texture2D" uid="uid://fsiyiwek5awa" path="res://resources/characters/kukemc/pico-b.svg" id="4_xjfsq"]
+[ext_resource type="Texture2D" uid="uid://dem14qyqmrp52" path="res://resources/characters/kukemc/pico-c.svg" id="5_rfpp4"]
+[ext_resource type="Texture2D" uid="uid://cvig26vtcyqmd" path="res://resources/characters/kukemc/pico-d.svg" id="6_kcxk2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x576j"]
 animations = [{
@@ -17,14 +20,43 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_bxbcp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1s5d7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1s5d7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xjfsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rfpp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kcxk2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_farlp"]
-size = Vector2(221, 150)
+size = Vector2(148, 194)
 
 [node name="KukeMC" instance=ExtResource("1_r4q7y")]
 script = ExtResource("2_s2dg5")
 displayName = "酷可mc"
 drops = Array[int]([0, 1])
 dropCounts = Array[Vector2]([Vector2(20, 40), Vector2(25, 50)])
+useStatic = true
 metadata/_edit_vertical_guides_ = [76.0]
 
 [node name="collect" parent="sounds" index="4"]
@@ -36,14 +68,19 @@ sprite_frames = SubResource("SpriteFrames_x576j")
 [node name="staticBackground" parent="texture" index="0"]
 position = Vector2(0, -19.999998)
 scale = Vector2(0.61562973, 0.61562973)
-texture = ExtResource("3_wafrb")
+
+[node name="staticAnimation" parent="texture" index="1"]
+position = Vector2(0, -49)
+scale = Vector2(1.507288, 1.507288)
+sprite_frames = SubResource("SpriteFrames_bxbcp")
+animation = &"walk"
 
 [node name="hitbox" parent="texture/hurtbox" index="0"]
-position = Vector2(70, -25)
+position = Vector2(0, -49)
 shape = SubResource("RectangleShape2D_farlp")
 
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 position = Vector2(-22, 18)
 
 [node name="statebar" parent="." index="4"]
-position = Vector2(75, -169)
+position = Vector2(0, -217)
