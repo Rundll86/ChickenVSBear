@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bm7ymrri6pykb"]
+[gd_scene load_steps=13 format=3 uid="uid://bm7ymrri6pykb"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" uid="uid://cthtupc6dtbav" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
+[ext_resource type="PackedScene" uid="uid://b2qhes4apaxsj" path="res://components/Weapons/NuclearBomb.tscn" id="3_da2ca"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
 [ext_resource type="AudioStream" uid="uid://benyec5bqni0b" path="res://resources/sounds/effect/Chomp.wav" id="4_k0yme"]
 [ext_resource type="AudioStream" uid="uid://dmxh3bpk8vyy5" path="res://resources/sounds/effect/Coin.mp3" id="5_xnbhq"]
@@ -56,6 +57,8 @@ metadata/_edit_vertical_guides_ = [71.0]
 
 [node name="weaponStore" parent="." index="1"]
 process_mode = 4
+
+[node name="NuclearBomb" parent="weaponStore" index="0" instance=ExtResource("3_da2ca")]
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")
