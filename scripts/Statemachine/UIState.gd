@@ -1,24 +1,25 @@
 extends CanvasLayer
 class_name UIState
 
-@onready var items = $"%items"
-@onready var fields: VBoxContainer = $"%fields"
-@onready var fieldsAnimator: AnimationPlayer = $"%fieldsAnimator"
-
-static var player: EntityBase = null
+static var items: PanelContainer
+static var fields: VBoxContainer
+static var fieldsAnimator: AnimationPlayer
+static var player: EntityBase
 static var bossbar: EntityStateBar
-static var currentPanel: FullscreenPanelBase = null
+static var currentPanel: FullscreenPanelBase
 static var panels: Control
 static var energyPercent: ColorBar
 static var itemCollect: VBoxContainer
 static var skillIconContainer: VBoxContainer
+static var tips: VBoxContainer
 
 func _ready():
-	bossbar = $"%bossbar"
-	panels = $"%panels"
-	energyPercent = $"%percent"
-	itemCollect = $"%itemCollect"
-	skillIconContainer = $"%skillContainer"
+	bossbar = $%bossbar
+	panels = $%panels
+	energyPercent = $%percent
+	itemCollect = $%itemCollect
+	skillIconContainer = $%skillContainer
+	tips = $%tips
 	setPanel("Starter")
 func _process(_delta):
 	bossbar.visible = !!bossbar.entity
@@ -70,3 +71,11 @@ static func setPanel(targetName: String = "", args: Array = []):
 				panel.hidePanel()
 static func closeCurrentPanel():
 	setPanel()
+static func showTip(text: String, destroyAfter: float = -1):
+	var box = TipBox.create(text)
+	tips.add_child(box)
+	if destroyAfter > 0:
+		await TickTool.millseconds(destroyAfter * 1000)
+		box.destroy()
+	else:
+		return box

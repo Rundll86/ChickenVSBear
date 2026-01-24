@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://dfwg750a47ggx"]
 
 [ext_resource type="PackedScene" uid="uid://ofpg5s3j7esv" path="res://components/UI/BossBar.tscn" id="1_2pe58"]
-[ext_resource type="Script" path="res://scripts/Statemachine/UIState.gd" id="1_f00a6"]
+[ext_resource type="Script" uid="uid://bph6blsdbiklk" path="res://scripts/Statemachine/UIState.gd" id="1_f00a6"]
 [ext_resource type="StyleBox" uid="uid://dx0udq8nv2ec0" path="res://styleboxes/topPanel.tres" id="3_kep0k"]
 [ext_resource type="PackedScene" uid="uid://bbm8l3hr4ihar" path="res://components/UI/ItemShow.tscn" id="3_o2oi4"]
 [ext_resource type="PackedScene" uid="uid://1n28ji5sl6bx" path="res://components/Scenes/FullscreenPanels/MakeFeed.tscn" id="4_kkki3"]
@@ -116,9 +116,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_37e4s"]
 _data = {
-"RESET": SubResource("Animation_nqiiw"),
-"hide": SubResource("Animation_5hjs3"),
-"show": SubResource("Animation_2xajo")
+&"RESET": SubResource("Animation_nqiiw"),
+&"hide": SubResource("Animation_5hjs3"),
+&"show": SubResource("Animation_2xajo")
 }
 
 [node name="UI" type="CanvasLayer"]
@@ -265,7 +265,7 @@ theme_override_constants/separation = 1
 [node name="fieldsAnimator" type="AnimationPlayer" parent="root/fields"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_37e4s")
+&"": SubResource("AnimationLibrary_37e4s")
 }
 
 [node name="itemCollect" type="VBoxContainer" parent="root"]
@@ -282,6 +282,14 @@ offset_right = -80.8
 offset_bottom = 0.400024
 grow_vertical = 0
 theme_override_constants/separation = 10
+
+[node name="tips" type="VBoxContainer" parent="root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
 
 [node name="panels" type="Control" parent="root"]
 unique_name_in_owner = true
@@ -310,8 +318,6 @@ layout_mode = 1
 [node name="Weapon" parent="root/panels" instance=ExtResource("13_bmc24")]
 visible = false
 layout_mode = 1
-offset_top = 0.0
-offset_bottom = 0.0
 
 [node name="Thanks" parent="root/panels" instance=ExtResource("14_gp8lx")]
 visible = false
