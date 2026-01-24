@@ -1,7 +1,7 @@
 extends CanvasLayer
 class_name UIState
 
-static var items: PanelContainer
+static var items: HBoxContainer
 static var fields: VBoxContainer
 static var fieldsAnimator: AnimationPlayer
 static var player: EntityBase
@@ -20,6 +20,9 @@ func _ready():
 	itemCollect = $%itemCollect
 	skillIconContainer = $%skillContainer
 	tips = $%tips
+	items = $%items
+	fields = $%fields
+	fieldsAnimator = $%fieldsAnimator
 	setPanel("Starter")
 func _process(_delta):
 	bossbar.visible = !!bossbar.entity
@@ -71,11 +74,11 @@ static func setPanel(targetName: String = "", args: Array = []):
 				panel.hidePanel()
 static func closeCurrentPanel():
 	setPanel()
-static func showTip(text: String, destroyAfter: float = -1):
+static func showTip(text: String, destroyAfter: bool = false):
 	var box = TipBox.create(text)
 	tips.add_child(box)
-	if destroyAfter > 0:
-		await TickTool.millseconds(destroyAfter * 1000)
+	if destroyAfter:
+		await TickTool.millseconds(len(text) * 500)
 		box.destroy()
 	else:
 		return box

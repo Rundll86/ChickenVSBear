@@ -8,17 +8,17 @@ class_name TipBox
 @onready var animator: AnimationPlayer = $%animator
 
 func _ready():
-    label.text = text
-    animator.play("show")
+	label.text = text
+	animator.play("show")
 func _process(_delta):
-    label.text = text
+	label.text = text
 
 func destroy():
-    animator.play("hide")
-    await animator.animation_finished
-    queue_free()
+	animator.play("hide")
+	await animator.animation_finished
+	queue_free()
 
 static func create(applyText: String) -> TipBox:
-    var box = ComponentManager.getUIComponent("TipBox")
-    box.text = applyText
-    return box
+	var box = ComponentManager.getUIComponent("TipBox").instantiate()
+	box.text = applyText
+	return box

@@ -97,5 +97,6 @@ static func next(waves: Array):
 			wave = instance_from_id(wave.get_instance_id())
 		EntityBase.generate(ComponentManager.getCharacter(wave.entity), wave.entityPosition, true, wave.isBoss)
 	current += 1
+	UIState.showTip("第%d波开始！" % current, true)
 static func startWith(wave: int):
 	return wave - 1

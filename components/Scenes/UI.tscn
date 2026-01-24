@@ -286,9 +286,10 @@ theme_override_constants/separation = 10
 [node name="tips" type="VBoxContainer" parent="root"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_bottom = -100.0
 grow_vertical = 0
 
 [node name="panels" type="Control" parent="root"]
