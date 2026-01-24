@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://u6weu6llk46k" path="res://shaders/CooldownProgress.gdshader" id="1_jaivk"]
 [ext_resource type="Script" uid="uid://bp8catom6i0ul" path="res://scripts/Statemachine/SkillIcon.gd" id="1_l7say"]
 [ext_resource type="Texture2D" uid="uid://cp4ypuarjoshp" path="res://resources/skillIcons/purple-crystal.png" id="2_hh1bl"]
-[ext_resource type="Texture2D" uid="uid://chqmaeivt84b5" path="res://resources/common/attackstar.svg" id="4_50rim"]
+[ext_resource type="Texture2D" uid="uid://bmpo06vnnywim" path="res://resources/common/whitecircle.svg" id="4_blv04"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3fyf3"]
 shader = ExtResource("1_jaivk")
@@ -33,7 +33,7 @@ curve = SubResource("Curve_rgp6n")
 
 [sub_resource type="Curve" id="Curve_h7g2c"]
 _limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.4), 0.0, 0.0, 0, 0, Vector2(1, 0.6), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_05v0d"]
@@ -66,8 +66,6 @@ stretch_mode = 5
 [node name="particle" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(20, 20)
-emitting = false
-amount = 1
-texture = ExtResource("4_50rim")
-one_shot = true
+amount = 2
+texture = ExtResource("4_blv04")
 process_material = SubResource("ParticleProcessMaterial_7cgpa")

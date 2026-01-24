@@ -13,11 +13,11 @@ func _ready():
 func _physics_process(_delta):
 	if is_instance_valid(weapon):
 		textureRect.texture = weapon.avatarTexture
-		var progress = min(weapon.cooldownTimer.timeSinceLastStart() / weapon.cooldownTimer.cooldown, UIState.player.energy / weapon.needEnergy)
+		var progress = min(weapon.cooldownTimer.percent(), UIState.player.fillingProgress(weapon.needEnergy))
 		material.set_shader_parameter("progress", progress)
+		particle.emitting = progress >= 1
 		if progress >= 1:
 			if !showed:
 				showed = true
-				particle.emitting = true
 		else:
 			showed = false

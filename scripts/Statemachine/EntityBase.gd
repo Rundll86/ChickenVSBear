@@ -277,8 +277,12 @@ func collectItem(itemType: ItemStore.ItemType, amount: int):
 func storeEnergy(value: float, dontChangeDirection: bool = false):
 	energy += value * fields.get(FieldStore.Entity.ENERGY_MULTIPILER)
 	energyChanged.emit(energy, dontChangeDirection)
+func finalEnergy(base: float):
+	return base / fields.get(FieldStore.Entity.SAVE_ENERGY)
+func fillingProgress(base: float):
+	return energy / finalEnergy(base)
 func useEnergy(value: float):
-	value /= fields.get(FieldStore.Entity.SAVE_ENERGY)
+	value = finalEnergy(value)
 	var state = energy >= value
 	if state:
 		energy -= value

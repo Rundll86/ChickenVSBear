@@ -18,3 +18,5 @@ func start():
 	return state
 func timeSinceLastStart():
 	return WorldManager.getTime() - lastStart
+func percent():
+	return timeSinceLastStart() / centralTime()
