@@ -368,6 +368,10 @@ func tryDie(by: BulletBase = null):
 	EffectController.create(ComponentManager.getEffect("DeadBlood"), texture.global_position).shot()
 	await die()
 	died.emit()
+	if isBoss:
+		UIState.showTip("[b]%s[/b] 已被打败！" % displayName, 500)
+	elif isPlayer():
+		UIState.showTip("[b]%s[/b] 似了😭。" % displayName, 500)
 	queue_free()
 func tryHeal(count: float):
 	playSound("heal")
