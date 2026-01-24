@@ -15,11 +15,9 @@ static func modifyAnimationKey(animator: AnimationPlayer, name: String, track: N
 	var animation = animator.get_animation(name)
 	var trackIdx = animation.find_track(track, trackType)
 	var keyIdx = animation.track_find_key(trackIdx, time)
-	var inHandle
-	var outHandle
 	if trackType == Animation.TrackType.TYPE_BEZIER:
-		inHandle = animation.bezier_track_get_key_in_handle(trackIdx, keyIdx)
-		outHandle = animation.bezier_track_get_key_out_handle(trackIdx, keyIdx)
+		var inHandle = animation.bezier_track_get_key_in_handle(trackIdx, keyIdx)
+		var outHandle = animation.bezier_track_get_key_out_handle(trackIdx, keyIdx)
 		animation.track_set_key_value(trackIdx, keyIdx, [value, inHandle.x, inHandle.y, outHandle.x, outHandle.y])
 	else:
 		animation.track_set_key_value(trackIdx, keyIdx, [value])
