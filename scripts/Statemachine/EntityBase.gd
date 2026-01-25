@@ -369,7 +369,7 @@ func tryDie(by: BulletBase = null):
 	await die()
 	died.emit()
 	if isBoss:
-		UIState.showTip("[b]%s[/b] 已被打败！" % displayName, TipBox.MessageType.INFO)
+		UIState.showTip("[b]%s[/b] 已被打败！" % displayName, TipBox.MessageType.CONGRATULATION)
 	elif isPlayer():
 		UIState.showTip("[b]%s[/b] 似了😭。" % displayName, TipBox.MessageType.ERROR)
 	queue_free()

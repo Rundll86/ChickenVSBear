@@ -6,14 +6,16 @@ enum MessageType {
 	INFO,
 	WARNING,
 	ERROR,
+	CONGRATULATION,
 }
 
 @export var text: String = "nothing"
 @export var messageType: MessageType = MessageType.INFO
 @export var colorMap = {
-	MessageType.INFO: Color.BLUE,
-	MessageType.WARNING: Color.ORANGE,
-	MessageType.ERROR: Color.RED,
+	MessageType.INFO: Color.BLACK,
+	MessageType.WARNING: Color.BLACK,
+	MessageType.ERROR: Color.BLACK,
+	MessageType.CONGRATULATION: Color.BLACK,
 }
 
 @onready var label: RichTextLabel = $%label
