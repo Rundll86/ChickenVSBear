@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5ebx8duvgtt5"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_8jd12"]
+[ext_resource type="Script" uid="uid://bjraoa0lwchon" path="res://scripts/Contents/Weapons/Oxygener.gd" id="2_thqd2"]
+[ext_resource type="Texture2D" uid="uid://gpwxs56alc7m" path="res://resources/weapons/oxygener.png" id="2_xmkcx"]
+
+[node name="Oxygener" instance=ExtResource("1_8jd12")]
+script = ExtResource("2_thqd2")
+avatarTexture = ExtResource("2_xmkcx")
+displayName = "氧化加农炮"
+quality = 0
+typeTopic = 2
+store = {
+"atk": 10,
+"fireatk": 2.0,
+"max-n": 7.0,
+"min-n": 3.0
+}
+storeType = {
+"atk": 1,
+"fireatk": 1,
+"max-n": 1,
+"min-n": 1
+}
+descriptionTemplate = "大概率高速喷出火焰，造成$fireatk点伤害。小概率喷出$min-n~$max-n滴[b]浓硝酸[/b]，每滴造成$atk点伤害。"
+cooldown = 50.0
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_xmkcx")
+
+[node name="name" parent="container/info" index="2"]
+displayName = "氧化加农炮"
+quality = 0
+typeTopic = 2
+
+[node name="description" parent="container" index="2"]
+text = "[center]大概率高速喷出火焰，造成[color=cyan]2[/color]点伤害。小概率喷出[color=cyan]3[/color]~[color=cyan]7[/color]滴[b]浓硝酸[/b]，每滴造成[color=cyan]10[/color]点伤害。[/center]"
