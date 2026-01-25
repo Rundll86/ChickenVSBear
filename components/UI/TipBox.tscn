@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://c1gqcwr6say6f" path="res://scripts/Statemachine/TipBox.gd" id="1_7vuk3"]
 [ext_resource type="Theme" uid="uid://bje5cd08dyok7" path="res://themes/bigTextAndBold.tres" id="2_5pngc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nooq4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pngc"]
 content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-bg_color = Color(1, 0, 0, 1)
+bg_color = Color(0, 0, 1, 1)
 corner_radius_top_right = 100
 corner_radius_bottom_right = 100
 
@@ -104,8 +104,13 @@ _data = {
 [node name="TipBox" type="PanelContainer"]
 offset_right = 79.0
 offset_bottom = 34.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_nooq4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5pngc")
 script = ExtResource("1_7vuk3")
+colorMap = {
+0: Color(0, 0.5265789, 1, 1),
+1: Color(1, 0.48120707, 0, 1),
+2: Color(1, 0, 0, 1)
+}
 
 [node name="label" type="RichTextLabel" parent="."]
 unique_name_in_owner = true

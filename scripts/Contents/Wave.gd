@@ -109,7 +109,7 @@ static func next(waves: Array):
 			wave = instance_from_id(wave.get_instance_id())
 		EntityBase.generate(ComponentManager.getCharacter(wave.entity), wave.entityPosition, true, wave.isBoss)
 	current += 1
-	UIState.showTip("第%d波开始！" % current, 500)
+	UIState.showTip("第%d波开始！" % current, TipBox.MessageType.INFO)
 	showNextBossReminder()
 static func showNextBossReminder():
 	var nextBossInfo = getNextBossInfo()
@@ -117,7 +117,7 @@ static func showNextBossReminder():
 		var bossName = nextBossInfo[0]
 		var wavesLeft = nextBossInfo[1]
 		if wavesLeft > 0:
-			UIState.showTip("Boss [b]%s[/b] 将在[b]%d[/b]波后到来！" % [bossName, wavesLeft], 500)
+			UIState.showTip("Boss [b]%s[/b] 将在[b]%d[/b]波后到来！" % [bossName, wavesLeft], TipBox.MessageType.WARNING)
 
 static func startWith(wave: int):
 	return wave - 1

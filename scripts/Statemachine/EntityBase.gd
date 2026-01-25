@@ -369,9 +369,9 @@ func tryDie(by: BulletBase = null):
 	await die()
 	died.emit()
 	if isBoss:
-		UIState.showTip("[b]%s[/b] 已被打败！" % displayName, 500)
+		UIState.showTip("[b]%s[/b] 已被打败！" % displayName, TipBox.MessageType.INFO)
 	elif isPlayer():
-		UIState.showTip("[b]%s[/b] 似了😭。" % displayName, 500)
+		UIState.showTip("[b]%s[/b] 似了😭。" % displayName, TipBox.MessageType.ERROR)
 	queue_free()
 func tryHeal(count: float):
 	playSound("heal")
