@@ -2,8 +2,8 @@
 extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-    origin["atk"] += 0.75 * to * soulLevel
-    origin["fireatk"] += 0.35 * to * soulLevel
+    origin["atk"] += 0.3 * to * soulLevel
+    origin["fireatk"] += 0.1 * to * soulLevel
     origin["max-n"] *= soulLevel
     return origin
 func attack(entity: EntityBase):
