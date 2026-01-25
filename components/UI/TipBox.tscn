@@ -110,7 +110,7 @@ colorMap = {
 0: Color(0, 0.55724907, 1, 1),
 1: Color(1, 0.4649545, 0, 1),
 2: Color(1, 0, 0, 1),
-3: Color(1, 0.88726026, 0, 1)
+3: Color(0, 0.7919124, 0.08514291, 1)
 }
 
 [node name="label" type="RichTextLabel" parent="."]
