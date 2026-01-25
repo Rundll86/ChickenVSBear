@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://uanf7op0gi87"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_160qq"]
+[ext_resource type="Texture2D" uid="uid://ckr8tw7fsa7qx" path="res://resources/weapons/AcidWind.png" id="2_ip83f"]
+[ext_resource type="Texture2D" uid="uid://gpwxs56alc7m" path="res://resources/weapons/oxygener.png" id="2_o63q1"]
+[ext_resource type="PackedScene" uid="uid://b5ebx8duvgtt5" path="res://components/Weapons/Oxygener.tscn" id="3_vt41c"]
+
+[node name="Oxygener" instance=ExtResource("1_160qq")]
+avatarTexture = ExtResource("2_o63q1")
+displayName = "氧化加农炮"
+quality = 2
+topic = 8
+weapons = Array[PackedScene]([ExtResource("3_vt41c")])
+costs = Array[int]([0])
+costCounts = Array[int]([3000])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_ip83f")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "酸蚀风暴"
+quality = 2
+topic = 8
