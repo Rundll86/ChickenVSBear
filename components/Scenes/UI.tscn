@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dfwg750a47ggx"]
+[gd_scene load_steps=26 format=3 uid="uid://dfwg750a47ggx"]
 
 [ext_resource type="PackedScene" uid="uid://ofpg5s3j7esv" path="res://components/UI/BossBar.tscn" id="1_2pe58"]
 [ext_resource type="Script" uid="uid://bph6blsdbiklk" path="res://scripts/Statemachine/UIState.gd" id="1_f00a6"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dekcqdhrjs07u" path="res://components/Scenes/FullscreenPanels/Weapon.tscn" id="13_bmc24"]
 [ext_resource type="PackedScene" uid="uid://w2o3klbsssq3" path="res://components/Scenes/FullscreenPanels/Thanks.tscn" id="14_gp8lx"]
 [ext_resource type="PackedScene" uid="uid://c0r1i5tdbwljj" path="res://components/Scenes/FullscreenPanels/Starter.tscn" id="14_pjwgj"]
+[ext_resource type="PackedScene" uid="uid://dxs5j0km0n2n4" path="res://components/Scenes/FullscreenPanels/CompilingTip.tscn" id="15_scul2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_12otr"]
 
@@ -327,4 +328,8 @@ layout_mode = 1
 [node name="Starter" parent="root/panels" instance=ExtResource("14_pjwgj")]
 visible = false
 z_index = 2
+layout_mode = 1
+
+[node name="CompilingTip" parent="root/panels" instance=ExtResource("15_scul2")]
+visible = false
 layout_mode = 1

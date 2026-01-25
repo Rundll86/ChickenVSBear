@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxs5j0km0n2n4"]
+
+[ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_vd4qa"]
+[ext_resource type="Script" uid="uid://dubab2jnii6et" path="res://scripts/Contents/Panels/CompilingTip.gd" id="2_3guax"]
+[ext_resource type="Texture2D" uid="uid://bgrjcmcsg1okc" path="res://resources/comics/start.svg" id="2_64ee7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64ee7"]
+content_margin_top = 60.0
+content_margin_bottom = 60.0
+
+[node name="CompilingTip" instance=ExtResource("1_vd4qa")]
+offset_top = 0.0
+offset_bottom = 0.0
+script = ExtResource("2_3guax")
+
+[node name="PanelContainer" type="PanelContainer" parent="content/wrapper" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_64ee7")
+
+[node name="TextureRect" type="TextureRect" parent="content/wrapper/PanelContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_64ee7")
+expand_mode = 1
+stretch_mode = 5

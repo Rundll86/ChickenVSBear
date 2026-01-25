@@ -65,7 +65,7 @@ func startSingleplayerGame():
 	MultiplayerState.playerName = playerNameInput.text
 	EntityBase.generatePlayer(playerNameInput.text)
 	WorldManager.rootNode.spawnWave(Vector2.ZERO)
-	UIState.closeCurrentPanel()
+	UIState.setPanel("CompilingTip")
 
 func _ready():
 	historyStack = Composables.useHistoryStack(playerNameInput)
