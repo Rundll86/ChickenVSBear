@@ -146,6 +146,7 @@ penerate = 1.0
 lifeTime = 1000.0
 autoSpawnAnimation = true
 freeAfterSpawn = true
+knockback = 10.0
 
 [node name="animator" parent="texture" index="0"]
 libraries = {

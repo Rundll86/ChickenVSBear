@@ -30,7 +30,7 @@ func shot():
 				await sound.finished
 		queue_free()
 
-static func create(scene: PackedScene, spawnPosition: Vector2, parent: Node2D = null) -> EffectController:
+static func create(scene: PackedScene, spawnPosition: Vector2, parent: Node = null) -> EffectController:
 	var cloned = scene.instantiate() as EffectController
 	cloned.global_position = spawnPosition
 	if parent:
