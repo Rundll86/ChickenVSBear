@@ -2,8 +2,8 @@
 extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-    origin["atk"] += 0.3 * to * soulLevel
-    origin["fireatk"] += 0.1 * to * soulLevel
+    origin["atk"] += 0.5 * to * soulLevel
+    origin["fireatk"] += 0.25 * to * soulLevel
     origin["max-n"] *= soulLevel
     return origin
 func attack(entity: EntityBase):
@@ -19,3 +19,4 @@ func attack(entity: EntityBase):
                 bullet.baseDamage = readStore("fireatk")
             elif bullet is AcidN:
                 bullet.baseDamage = readStore("atk")
+                bullet.lifeTime *= 0.5

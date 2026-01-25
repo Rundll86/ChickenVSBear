@@ -22,7 +22,7 @@ storeType = {
 "max-n": 1,
 "min-n": 1
 }
-descriptionTemplate = "大概率高速喷出火焰，造成$fireatk点伤害。小概率喷出$min-n~$max-n滴[b]浓硝酸[/b]，每滴造成$atk点伤害。火焰具有高额击退效果。"
+descriptionTemplate = "大概率高速喷出火焰，造成$fireatk点伤害。小概率喷出$min-n~$max-n滴[b]浓硝酸[/b]，每滴造成$atk点伤害。[b]火焰[/b]具有高额击退效果，[b]浓硝酸[/b]液滴的射程较短。"
 cooldown = 50.0
 debugRebuild = true
 
@@ -35,4 +35,4 @@ quality = 0
 typeTopic = 2
 
 [node name="description" parent="container" index="2"]
-text = "[center]大概率高速喷出火焰，造成[color=cyan]1.00[/color]点伤害。小概率喷出[color=cyan]3[/color]~[color=cyan]7[/color]滴[b]浓硝酸[/b]，每滴造成[color=cyan]3.00[/color]点伤害。火焰具有高额击退效果。[/center]"
+text = "[center]大概率高速喷出火焰，造成[color=cyan]1.00[/color]点伤害。小概率喷出[color=cyan]3[/color]~[color=cyan]7[/color]滴[b]浓硝酸[/b]，每滴造成[color=cyan]3.00[/color]点伤害。[b]火焰[/b]具有高额击退效果，[b]浓硝酸[/b]液滴的射程较短。[/center]"
