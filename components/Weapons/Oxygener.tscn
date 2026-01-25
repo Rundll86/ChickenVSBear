@@ -11,8 +11,8 @@ displayName = "氧化加农炮"
 quality = 0
 typeTopic = 2
 store = {
-"atk": 10,
-"fireatk": 2.0,
+"atk": 5,
+"fireatk": 1.0,
 "max-n": 7.0,
 "min-n": 3.0
 }
@@ -34,4 +34,4 @@ quality = 0
 typeTopic = 2
 
 [node name="description" parent="container" index="2"]
-text = "[center]大概率高速喷出火焰，造成[color=cyan]2[/color]点伤害。小概率喷出[color=cyan]3[/color]~[color=cyan]7[/color]滴[b]浓硝酸[/b]，每滴造成[color=cyan]10[/color]点伤害。[/center]"
+text = "[center]大概率高速喷出火焰，造成[color=cyan]1[/color]点伤害。小概率喷出[color=cyan]3[/color]~[color=cyan]7[/color]滴[b]浓硝酸[/b]，每滴造成[color=cyan]5[/color]点伤害。[/center]"

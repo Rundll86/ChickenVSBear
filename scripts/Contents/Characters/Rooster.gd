@@ -11,11 +11,11 @@ func register():
 			elif bullet is FoxZhua:
 				EffectController.create(ComponentManager.getEffect("BloodFall"), texture.global_position).shot()
 	)
-	if !WorldManager.isRelease():
-		getItem({
-			ItemStore.ItemType.BEACHBALL: INF,
-			ItemStore.ItemType.SOUL: INF
-		})
+	# if !WorldManager.isRelease():
+	# 	getItem({
+	# 		ItemStore.ItemType.BEACHBALL: INF,
+	# 		ItemStore.ItemType.SOUL: INF
+	# 	})
 func ai():
 	texture.play("walk")
 	var direction = Vector2(

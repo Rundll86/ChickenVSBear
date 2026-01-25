@@ -7,7 +7,7 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
     origin["max-n"] *= soulLevel
     return origin
 func attack(entity: EntityBase):
-    var bulletName = MathTool.randomChoiceFromWeights(["OxygenFire", "AcidN"], [100, 1])
+    var bulletName = MathTool.randomChoiceFromWeights(["OxygenFire", "AcidN"], [75, 1])
     for i in randi_range(readStore("min-n"), readStore("max-n")) if bulletName == "AcidN" else 1:
         for bullet in BulletBase.generate(
             ComponentManager.getBullet(bulletName),
