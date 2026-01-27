@@ -8,6 +8,10 @@ signal died()
 
 signal energyChanged(energy: float, dontChangeDirection: bool)
 
+enum Layers {
+	PLAYER = 1 << 2,
+	ENEMY = 1 << 1,
+}
 const TITLE_FLAG = INF
 var fields = {
 	"生存": TITLE_FLAG,
@@ -143,8 +147,12 @@ func _ready():
 		)
 		if displayName == MultiplayerState.playerName:
 			rebuildWeaponIcons()
+		collision_layer = Layers.PLAYER
+		collision_mask = Layers.PLAYER
 	else:
 		applyLevel()
+		collision_layer = Layers.ENEMY
+		collision_mask = Layers.ENEMY
 	health = fields.get(FieldStore.Entity.MAX_HEALTH)
 	energy = fields.get(FieldStore.Entity.MAX_ENERGY)
 	if is_instance_valid(statebar):
@@ -242,8 +250,7 @@ func takeDamage(baseDamage: float, crit: bool = false, perfectMiss: bool = false
 func bulletHit(bullet: BulletBase, crit: bool):
 	# 当受伤时
 	hurtAnimator.play("hurt")
-	var baseDamage: float = bullet.getDamage() * bullet.launcher.fields.get(FieldStore.Entity.DAMAGE_MULTIPILER) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)
-	var damage = baseDamage + baseDamage * int(crit) * fields.get(FieldStore.Entity.CRIT_DAMAGE)
+	var damage = bullet.calculateDamage(crit)
 	var perfectMiss = false
 	if sprinting:
 		playSound("miss")

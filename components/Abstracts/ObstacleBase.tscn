@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwydudqawsiqi"]
+
+[ext_resource type="Texture2D" uid="uid://dwwpkn4q07ja2" path="res://icon.svg" id="1_4helc"]
+[ext_resource type="Script" uid="uid://bj26s4i47bw0a" path="res://scripts/Statemachine/ObstacleBase.gd" id="1_b4dgm"]
+[ext_resource type="PackedScene" uid="uid://copkyentuuxpt" path="res://components/UI/ObstacleStateBar.tscn" id="3_esd5c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b4dgm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4helc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1gjhb"]
+radius = 70.00714
+
+[node name="ObstacleBase" type="StaticBody2D"]
+script = ExtResource("1_b4dgm")
+healthMax = null
+penerateResistance = null
+blockPlayer = null
+blockEnemy = null
+
+[node name="texture" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_b4dgm")
+
+[node name="statebar" parent="texture" node_paths=PackedStringArray("obstacle") instance=ExtResource("3_esd5c")]
+unique_name_in_owner = true
+position = Vector2(0, -86)
+obstacle = NodePath("../..")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_1gjhb")
+debug_color = Color(1, 0.09928554, 0, 0.41960785)

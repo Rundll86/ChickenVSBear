@@ -44,7 +44,8 @@ func _ready():
 		launcherSummoned = launcher
 		launcher = launcher.myMaster
 	register()
-	area_entered.connect(hit)
+	area_entered.connect(hitEntity)
+	body_entered.connect(hitObstacle)
 	spawnInWhen = WorldManager.getTime()
 	spawnInWhere = position
 	spawn()
@@ -107,16 +108,31 @@ func setupCuttable(cutSpeed: float):
 	)
 func getDamage():
 	return baseDamage * damageMultipliers[usingDamageMultiplier]
-func hit(target: Node):
+func calculateDamage(crit: bool):
+	var baseDmg = getDamage() * launcher.fields.get(FieldStore.Entity.DAMAGE_MULTIPILER) * randf_range(1 - GameRule.damageOffset, 1 + GameRule.damageOffset)
+	var damage = baseDmg + baseDmg * int(crit) * launcher.fields.get(FieldStore.Entity.CRIT_DAMAGE)
+	return damage
+func determineCrit():
+	return MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE) + GameRule.critRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE])
+func hitEntity(target: Node):
 	var entity: EntityBase = EntityTool.fromHurtbox(target)
 	if !BulletTool.canDamage(self, entity): return
-	var resultDamage = entity.bulletHit(self, MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE) + GameRule.critRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE]))
+	var resultDamage = entity.bulletHit(self, determineCrit())
 	succeedToHit(resultDamage, entity)
-	if MathTool.rate(fullPenerate()):
-		penerate -= entity.fields[FieldStore.Entity.PENARATION_RESISTANCE]
+	if MathTool.rate(fullPenerate() - entity.fields[FieldStore.Entity.PENARATION_RESISTANCE]):
 		baseDamage *= 1.0 - penerateDamageReduction
 	else:
 		tryDestroy()
+func hitObstacle(target: Node):
+	if target is ObstacleBase:
+		var obstacle = target as ObstacleBase
+		if is_instance_valid(obstacle.launcher):
+			if not BulletTool.canDamage(self, obstacle.launcher): return
+		obstacle.takeDamage(calculateDamage(determineCrit()))
+		if MathTool.rate(fullPenerate() - obstacle.penerateResistance):
+			baseDamage *= 1.0 - penerateDamageReduction
+		else:
+			tryDestroy()
 func forward(direction: Vector2):
 	position += direction.normalized() * speed * GameRule.bulletSpeedMultiplier
 func fullPenerate():

@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dldnbpubu2jgm"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_wvaxu"]
+[ext_resource type="Texture2D" uid="uid://bbv5j71jkdo42" path="res://resources/weapons/grass-wall.png" id="2_kh4xg"]
+[ext_resource type="Script" uid="uid://7bmrk88b4ipd" path="res://scripts/Contents/Weapons/GrassWall.gd" id="2_us6b7"]
+
+[node name="GrassWall" instance=ExtResource("1_wvaxu")]
+script = ExtResource("2_us6b7")
+avatarTexture = ExtResource("2_kh4xg")
+displayName = "草方块菌落"
+typeTopic = 4
+costBeachball = 10
+store = {
+"atk": 200
+}
+descriptionTemplate = "分泌一堵[b]肽聚墙[/b]，可抵挡$atk点伤害，敌人更有可能瞄准你。"
+needEnergy = 35.0
+cooldown = 2000.0
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_kh4xg")
+
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
+text = "35.0"
+
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 10
+
+[node name="name" parent="container/info" index="2"]
+displayName = "草方块菌落"
+typeTopic = 4
+
+[node name="description" parent="container" index="2"]
+text = "[center]分泌一堵[b]肽聚墙[/b]，可抵挡[color=cyan]10[/color]点伤害，敌人更有可能瞄准你。[/center]"

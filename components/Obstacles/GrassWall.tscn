@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu2qnw81241wv"]
+
+[ext_resource type="PackedScene" uid="uid://dwydudqawsiqi" path="res://components/Abstracts/ObstacleBase.tscn" id="1_76v8o"]
+[ext_resource type="Texture2D" uid="uid://vmd6kegvbs31" path="res://resources/characters/grass-wall/grasswall.png" id="2_7gks2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pu7bs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7gks2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvy1c"]
+size = Vector2(700, 60)
+
+[node name="GrassWall" instance=ExtResource("1_76v8o")]
+healthMax = 100.0
+penerateResistance = 0.0
+blockPlayer = false
+blockEnemy = true
+
+[node name="texture" parent="." index="0"]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_pu7bs")
+
+[node name="statebar" parent="texture" index="0"]
+position = Vector2(-374, 0)
+rotation = -1.5707964
+
+[node name="hitbox" parent="." index="1"]
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_qvy1c")

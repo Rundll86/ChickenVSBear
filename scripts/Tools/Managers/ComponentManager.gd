@@ -8,6 +8,7 @@ static var weapons = {}
 static var summons = {}
 static var effects = {}
 static var feeds = []
+static var obstacles = {}
 static var uiComponents = {}
 static var themes = {}
 static var fieldTextures = {}
@@ -26,6 +27,8 @@ static func init():
 		effects[DirTool.getBasenameWithoutExtension(i)] = load(i)
 	for i in DirTool.listdir("res://components/Feeds"):
 		feeds.append(load(i))
+	for i in DirTool.listdir("res://components/Obstacles"):
+		obstacles[DirTool.getBasenameWithoutExtension(i)] = load(i)
 	for i in DirTool.listdir("res://components/UI"):
 		uiComponents[DirTool.getBasenameWithoutExtension(i)] = load(i)
 	for i in DirTool.listdir("res://themes"):
@@ -48,6 +51,8 @@ static func getFeed(i: int) -> PackedScene:
 	if i >= 0 and i < feeds.size():
 		return feeds[i]
 	return null
+static func getObstacle(t: String) -> PackedScene:
+	return MathTool.priority(obstacles.get(t, false), load("res://components/Obstacles/%s.tscn" % t))
 static func getUIComponent(t: String) -> PackedScene:
 	return MathTool.priority(uiComponents.get(t, false), load("res://components/UI/%s.tscn" % t))
 static func getTheme(t: String) -> Theme:

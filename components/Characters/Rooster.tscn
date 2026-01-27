@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dky8574uqc18r"]
+[gd_scene load_steps=14 format=3 uid="uid://dky8574uqc18r"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" uid="uid://cthtupc6dtbav" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
+[ext_resource type="PackedScene" uid="uid://dldnbpubu2jgm" path="res://components/Weapons/GrassWall.tscn" id="3_0omr3"]
 [ext_resource type="PackedScene" uid="uid://b5ebx8duvgtt5" path="res://components/Weapons/Oxygener.tscn" id="3_da2ca"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
 [ext_resource type="AudioStream" uid="uid://benyec5bqni0b" path="res://resources/sounds/effect/Chomp.wav" id="4_k0yme"]
@@ -58,7 +59,10 @@ metadata/_edit_vertical_guides_ = [71.0]
 [node name="weaponStore" parent="." index="1"]
 process_mode = 4
 
-[node name="Oxygener" parent="weaponStore" index="0" instance=ExtResource("3_da2ca")]
+[node name="GrassWall" parent="weaponStore" index="0" instance=ExtResource("3_0omr3")]
+offset_bottom = 374.0
+
+[node name="Oxygener" parent="weaponStore" index="1" instance=ExtResource("3_da2ca")]
 debugRebuild = false
 
 [node name="sprint" parent="sounds" index="0"]

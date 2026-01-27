@@ -1,4 +1,4 @@
-extends Node
+extends CanvasItem
 class_name EntityStateBar
 
 @export var entity: EntityBase
