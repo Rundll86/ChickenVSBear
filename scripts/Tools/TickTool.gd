@@ -6,8 +6,7 @@ static func frame(count: int = 1):
 	for i in range(count):
 		await WorldManager.tree.physics_frame
 static func until(predicate: Callable):
-	var obj = predicate.get_object()
-	while is_instance_valid(obj):
+	while is_instance_valid(predicate.get_object()):
 		if predicate.call():
 			break
 		await frame()
