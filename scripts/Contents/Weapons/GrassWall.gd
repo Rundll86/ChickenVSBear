@@ -2,7 +2,7 @@
 extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-    origin["atk"] += 3 * to * soulLevel
+    origin["atk"] += 1 * to * soulLevel
     return origin
 func attack(entity: EntityBase):
     var wall = ObstacleBase.generate(

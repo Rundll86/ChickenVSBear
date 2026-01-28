@@ -11,11 +11,11 @@ displayName = "草方块菌落"
 typeTopic = 4
 costBeachball = 10
 store = {
-"atk": 200
+"atk": 100
 }
 descriptionTemplate = "分泌一堵[b]肽聚墙[/b]，可抵挡$atk点伤害，敌人更有可能瞄准你。"
 needEnergy = 35.0
-cooldown = 2000.0
+cooldown = 1000.0
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_kh4xg")
@@ -31,4 +31,4 @@ displayName = "草方块菌落"
 typeTopic = 4
 
 [node name="description" parent="container" index="2"]
-text = "[center]分泌一堵[b]肽聚墙[/b]，可抵挡[color=cyan]10[/color]点伤害，敌人更有可能瞄准你。[/center]"
+text = "[center]分泌一堵[b]肽聚墙[/b]，可抵挡[color=cyan]200[/color]点伤害，敌人更有可能瞄准你。[/center]"
