@@ -8,9 +8,9 @@ static func frame(count: int = 1):
 static func until(predicate: Callable):
 	var obj = predicate.get_object()
 	while is_instance_valid(obj):
-		await frame()
 		if predicate.call():
 			break
+		await frame()
 static func modifyAnimationKey(animator: AnimationPlayer, name: String, track: NodePath, trackType: Animation.TrackType, time: float, value: Variant):
 	var animation = animator.get_animation(name)
 	var trackIdx = animation.find_track(track, trackType)
