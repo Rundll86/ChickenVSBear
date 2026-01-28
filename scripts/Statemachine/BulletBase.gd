@@ -10,7 +10,7 @@ class_name BulletBase
 @export var penerateDamageReduction: float = 0.0
 @export var lifeDistance: float = -1 # -1表示无限距离
 @export var lifeTime: float = -1 # -1表示无限时间
-@export var indisDamage: bool = false # 是否无差别伤害（不区分敌我）
+@export var allowFriendlyDamage: bool = false # 是否无差别伤害（不区分敌我）
 @export var canDamageSelf: bool = false # 是否可以伤害发射者
 @export var autoSpawnAnimation: bool = false
 @export var autoLoopAnimation: bool = false

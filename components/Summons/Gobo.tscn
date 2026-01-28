@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2ilo4ag801m2"]
+
+[ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_hgynr"]
+[ext_resource type="Texture2D" uid="uid://xen2edbhf052" path="res://resources/characters/gobo/gobo-a.svg" id="2_e0tdx"]
+[ext_resource type="Script" uid="uid://cqax27sw0wlme" path="res://scripts/Contents/Summons/Gobo.gd" id="2_ftr65"]
+[ext_resource type="Texture2D" uid="uid://s12imwmfics6" path="res://resources/characters/gobo/gobo-b.svg" id="3_ftr65"]
+[ext_resource type="Texture2D" uid="uid://d38bjxoowbg7t" path="res://resources/characters/gobo/gobo-c.svg" id="4_w2qsx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xeeo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e0tdx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e0tdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ftr65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w2qsx")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Gobo" instance=ExtResource("1_hgynr")]
+script = ExtResource("2_ftr65")
+attraction = 0.0
+displayName = "Gobo"
+
+[node name="texture" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_0xeeo")
+animation = &"walk"
+frame = 2
+frame_progress = 0.92641157
+
+[node name="statebar" parent="." index="4"]
+position = Vector2(0, -122)

@@ -200,6 +200,10 @@ func _physics_process(_delta: float) -> void:
 	trailParticle.emitting = trailing
 
 # 通用方法
+func initHealth(maxHealth: float):
+	fields[FieldStore.Entity.MAX_HEALTH] = maxHealth
+	health = maxHealth
+	statebar.forceSync()
 func rebuildWeaponIcons():
 	if isPlayer():
 		for i in UIState.skillIconContainer.get_children():
