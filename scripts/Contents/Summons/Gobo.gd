@@ -3,6 +3,8 @@ class_name GoboSummon
 
 var percent: float = 0.0
 var healthSinceLastLaunch: float = 0
+var targetDamage: float = 0.0
+var count: int = 0
 
 func initHealth(maxHealth: float):
 	super.initHealth(maxHealth)
@@ -12,7 +14,7 @@ func register():
 	fields[FieldStore.Entity.MOVEMENT_SPEED] = 1.5
 	healthChanged.connect(
 		func(newHealth):
-			if healthSinceLastLaunch - newHealth >= 1:
+			if healthSinceLastLaunch - newHealth >= targetDamage:
 				launch()
 				healthSinceLastLaunch = newHealth
 	)
@@ -22,11 +24,4 @@ func ai():
 		move(target.position - position)
 
 func launch():
-	for bullet in BulletBase.generate(
-		ComponentManager.getBullet("HealingMissle"),
-		self,
-		position,
-		position.angle_to_point(EntityTool.findClosetEntity(myMaster.position, get_tree(), isPlayer(), !isPlayer(), [self]).position)
-	):
-		if bullet is HealingMissleBullet:
-			bullet.baseDamage = health * percent * -1
+	ItemDropped.generate(ItemStore.ItemType.APPLE, count, position)

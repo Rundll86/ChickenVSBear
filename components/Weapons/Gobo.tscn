@@ -11,19 +11,20 @@ displayName = "Gobo"
 quality = 4
 typeTopic = 4
 store = {
-"atk": 50,
+"atk": 100,
+"count": 1,
 "health": 200,
 "percent": 0.1
 }
 storeType = {
 "atk": 1,
+"count": 1,
 "health": 1,
 "percent": 2
 }
-descriptionTemplate = "召唤[b]Gobo[/b]，Gobo会自主行动，每受到$atk点伤害后会发射一枚[b]疗愈导弹[/b]。
-[b]疗愈导弹[/b]命中障碍物或友军时对其产生Gobo剩余生命值×$percent点的治疗。
-Gobo初始拥有$health点生命值。"
+descriptionTemplate = "召唤[b]Gobo[/b]，Gobo会自主行动，每受到$atk点伤害后会生产$count颗[b]苹果[/b]。Gobo初始拥有$health点生命值。"
 cooldown = 1000.0
+debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_tw58e")
@@ -34,6 +35,4 @@ quality = 4
 typeTopic = 4
 
 [node name="description" parent="container" index="2"]
-text = "[center]召唤[b]Gobo[/b]，Gobo会自主行动，每受到[color=cyan]50[/color]点伤害后会发射一枚[b]疗愈导弹[/b]。
-[b]疗愈导弹[/b]命中障碍物或友军时对其产生Gobo剩余生命值×[color=cyan]10.0%[/color]点的治疗。
-Gobo初始拥有[color=cyan]200[/color]点生命值。[/center]"
+text = "[center]召唤[b]Gobo[/b]，Gobo会自主行动，每受到[color=cyan]100[/color]点伤害后会生产[color=cyan]1[/color]颗[b]苹果[/b]。Gobo初始拥有[color=cyan]200[/color]点生命值。[/center]"
