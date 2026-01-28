@@ -8,8 +8,13 @@ static func fromArea(area: Area2D) -> BulletBase:
 static func canDamage(bullet: BulletBase, target: EntityBase) -> bool:
 	if !bullet or !target or !bullet.launcher: return false
 	if target.currentInvinsible: return false
-	if !GameRule.allowFriendlyFire:
-		if target.isPlayer() == bullet.launcher.isPlayer() and bullet.launcher.currentFocusedBoss != target and !bullet.allowFriendlyDamage:
+	var launcherIsPlayer = bullet.launcher.isPlayer()
+	if bullet.launcher is SummonBase:
+		var summon = bullet.launcher as SummonBase
+		if is_instance_valid(summon.myMaster):
+			launcherIsPlayer = summon.myMaster.isPlayer()
+	if !GameRule.allowFriendlyFire and !bullet.allowFriendlyDamage:
+		if target.isPlayer() == launcherIsPlayer and bullet.launcher.currentFocusedBoss != target:
 			return false
 	if !bullet.canDamageSelf:
 		if target == bullet.launcher:
