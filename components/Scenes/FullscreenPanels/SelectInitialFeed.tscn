@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://db6srdvtd8gfx"]
+
+[ext_resource type="PackedScene" uid="uid://d3qojeqa3difn" path="res://components/Abstracts/FullscreenPanelBase.tscn" id="1_xc345"]
+[ext_resource type="Script" uid="uid://d02nijqx4oagh" path="res://scripts/Contents/Panels/SelectIntialFeed.gd" id="2_eugsq"]
+
+[node name="SelectInitialFeed" instance=ExtResource("1_xc345")]
+offset_top = 0.0
+offset_bottom = 0.0
+script = ExtResource("2_eugsq")
+
+[node name="wrapper" parent="content" index="1"]
+theme_override_constants/separation = 40
+
+[node name="title" type="Label" parent="content/wrapper" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "在游戏开始前，你可以选择一项初始增益。"
+
+[node name="container" type="ScrollContainer" parent="content/wrapper" index="1"]
+layout_mode = 2
+follow_focus = true
+vertical_scroll_mode = 0
+
+[node name="initialFeedSelection" type="HBoxContainer" parent="content/wrapper/container" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1

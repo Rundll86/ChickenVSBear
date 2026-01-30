@@ -13,12 +13,12 @@ offset_top = 0.0
 offset_bottom = 0.0
 script = ExtResource("2_3guax")
 
-[node name="PanelContainer" type="PanelContainer" parent="content/wrapper" index="0"]
+[node name="container" type="PanelContainer" parent="content/wrapper" index="0"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_64ee7")
 
-[node name="TextureRect" type="TextureRect" parent="content/wrapper/PanelContainer" index="0"]
+[node name="comic" type="TextureRect" parent="content/wrapper/container" index="0"]
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("2_64ee7")

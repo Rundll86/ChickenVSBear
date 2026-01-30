@@ -9,4 +9,5 @@ func afterOpen(_args: Array = []):
 			(effect.sounds.get_node("spawn") as AudioStreamPlayer2D).volume_db = - INF
 			effect.shot()
 		await TickTool.millseconds(3000)
-	UIState.closeCurrentPanel()
+	await TickTool.frame()
+	UIState.setPanel("SelectInitialFeed")

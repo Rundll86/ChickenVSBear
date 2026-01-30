@@ -23,6 +23,11 @@ func _ready():
 	items = $%items
 	fields = $%fields
 	fieldsAnimator = $%fieldsAnimator
+	await get_tree().process_frame
+	for panel in ComponentManager.panels:
+		panel = ComponentManager.getPanel(panel).instantiate() as FullscreenPanelBase
+		panel.hide()
+		panels.add_child(panel)
 	setPanel("Starter")
 func _process(_delta):
 	bossbar.visible = !!bossbar.entity
@@ -72,6 +77,8 @@ static func setPanel(targetName: String = "", args: Array = []):
 				panel.showPanel(args)
 			else:
 				panel.hidePanel()
+	if !currentPanel:
+		print("没有叫%s的面板" % targetName)
 static func closeCurrentPanel():
 	setPanel()
 static func showTip(text: String, messageType: TipBox.MessageType = TipBox.MessageType.INFO):
