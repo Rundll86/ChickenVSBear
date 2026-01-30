@@ -20,6 +20,7 @@ signal selected(applied: bool)
 @onready var weaponsBox: VBoxContainer = $"%weapons"
 @onready var costsBox: GridContainer = $"%costs"
 @onready var selectButton: Button = $"%selectBtn"
+var freeToBuy: bool = false
 
 func _ready():
 	selectButton.pressed.connect(
@@ -29,6 +30,8 @@ func _ready():
 	rebuildInfo()
 
 func allHad(entity: EntityBase) -> bool:
+	if freeToBuy:
+		return true
 	for i in range(min(costs.size(), costCounts.size())):
 		var item = costs[i]
 		var count = countOf(i)
@@ -103,11 +106,12 @@ func rebuildInfo():
 		weaponsBox.add_child(weaponShow)
 	for i in costsBox.get_children():
 		i.queue_free()
-	for i in range(min(costs.size(), costCounts.size())):
-		var cost = costs[i]
-		var count = countOf(i)
-		var costShow: ItemShow = ComponentManager.getUIComponent("ItemShow").instantiate()
-		costShow.enough = is_instance_valid(UIState.player) and UIState.player.inventory[cost] >= count
-		costShow.type = cost
-		costShow.count = count
-		costsBox.add_child(costShow)
+	if !freeToBuy:
+		for i in range(min(costs.size(), costCounts.size())):
+			var cost = costs[i]
+			var count = countOf(i)
+			var costShow: ItemShow = ComponentManager.getUIComponent("ItemShow").instantiate()
+			costShow.enough = is_instance_valid(UIState.player) and UIState.player.inventory[cost] >= count
+			costShow.type = cost
+			costShow.count = count
+			costsBox.add_child(costShow)

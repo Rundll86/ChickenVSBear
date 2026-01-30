@@ -8,4 +8,5 @@ func beforeOpen(_args: Array = []):
 		feed.queue_free()
 	for feed in ComponentManager.feeds:
 		var card = feed.instantiate() as Feed
+		card.freeToBuy = true
 		initialFeedSelection.add_child(card)

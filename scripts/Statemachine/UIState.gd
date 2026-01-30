@@ -77,8 +77,6 @@ static func setPanel(targetName: String = "", args: Array = []):
 				panel.showPanel(args)
 			else:
 				panel.hidePanel()
-	if !currentPanel:
-		print("没有叫%s的面板" % targetName)
 static func closeCurrentPanel():
 	setPanel()
 static func showTip(text: String, messageType: TipBox.MessageType = TipBox.MessageType.INFO):
