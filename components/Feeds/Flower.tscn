@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce5dd3yjwdsl0"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_7j382"]
+[ext_resource type="Texture2D" uid="uid://ccmcnmt3b60k5" path="res://resources/feeds/flower.png" id="2_bj1le"]
+
+[node name="Flower" instance=ExtResource("1_7j382")]
+avatarTexture = ExtResource("2_bj1le")
+displayName = "百合花冠"
+quality = 4
+topic = 2
+fields = Array[int]([7, 3, 13, 1])
+fieldValues = Array[float]([180.0, -0.35, 10.0, 0.1])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([500, 500])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_bj1le")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "百合花冠"
+quality = 4
+topic = 2

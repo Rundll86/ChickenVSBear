@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://riqkaxail0gj"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_ou8vj"]
+[ext_resource type="Texture2D" uid="uid://cjuwnp221i7cs" path="res://resources/feeds/choclate.png" id="2_8d6qo"]
+
+[node name="Choclate" instance=ExtResource("1_ou8vj")]
+avatarTexture = ExtResource("2_8d6qo")
+displayName = "巧克力"
+quality = 0
+topic = 2
+fields = Array[int]([6])
+fieldValues = Array[float]([0.04])
+costs = Array[int]([0])
+costCounts = Array[int]([750])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_8d6qo")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "巧克力"
+quality = 0
+topic = 2

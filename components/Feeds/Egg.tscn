@@ -8,8 +8,8 @@ avatarTexture = ExtResource("2_4crt5")
 displayName = "鸡蛋"
 quality = 3
 topic = 3
-fields = Array[int]([3, 7])
-fieldValues = Array[float]([0.2, 5.0])
+fields = Array[int]([3, 7, 1])
+fieldValues = Array[float]([1.0, -360.0, -0.45])
 costs = Array[int]([0, 1])
 costCounts = Array[int]([500, 300])
 
