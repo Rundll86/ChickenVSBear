@@ -11,17 +11,39 @@ script = ExtResource("2_eugsq")
 [node name="wrapper" parent="content" index="1"]
 theme_override_constants/separation = 40
 
-[node name="title" type="Label" parent="content/wrapper" index="0"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "在游戏开始前，你可以选择一项初始增益。"
-
-[node name="container" type="ScrollContainer" parent="content/wrapper" index="1"]
+[node name="container" type="ScrollContainer" parent="content/wrapper" index="0"]
 layout_mode = 2
 follow_focus = true
 vertical_scroll_mode = 0
 
-[node name="initialFeedSelection" type="HBoxContainer" parent="content/wrapper/container" index="0"]
+[node name="wrapper" type="VBoxContainer" parent="content/wrapper/container" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="title1" type="Label" parent="content/wrapper/container/wrapper" index="0"]
 unique_name_in_owner = true
 layout_mode = 2
-alignment = 1
+size_flags_horizontal = 0
+text = "在游戏开始前，你可以选择一项初始增益。"
+
+[node name="initialFeedSelection" type="HBoxContainer" parent="content/wrapper/container/wrapper" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="title2" type="Label" parent="content/wrapper/container/wrapper" index="2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "在游戏开始前，你可以选择一个初始武器。"
+
+[node name="initialWeaponSelection" type="HBoxContainer" parent="content/wrapper/container/wrapper" index="3"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="startBtn" type="Button" parent="content/wrapper" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "开始游戏"
