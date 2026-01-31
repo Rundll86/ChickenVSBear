@@ -2,9 +2,9 @@
 extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-    origin["atk"] += 0.5 * to * soulLevel
-    origin["fireatk"] += 0.25 * to * soulLevel
-    origin["max-n"] *= soulLevel
+    origin["atk"] += 1 * to * soulLevel
+    origin["fireatk"] += 0.5 * to * soulLevel
+    origin["max-n"] += 2 * soulLevel
     return origin
 func attack(entity: EntityBase):
     var bulletName = MathTool.randomChoiceFromWeights(["OxygenFire", "AcidN"], [10, 1])
