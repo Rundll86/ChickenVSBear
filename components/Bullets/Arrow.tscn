@@ -134,7 +134,7 @@ script = ExtResource("2_qddg0")
 displayName = "鸡毛箭"
 speed = 50.0
 penerate = 1.0
-lifeDistance = 2000.0
+lifeTime = 2000.0
 autoSpawnAnimation = true
 
 [node name="animator" parent="texture" index="0"]
