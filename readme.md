@@ -13,9 +13,9 @@
 
 ## boss清单
 
-- 狐狸【**原创**】
-- 臭鼬【[**CCW**](https://www.ccw.site/student/610b508176415b2f27e0f851)】
-- 狗熊【[**CCW**](https://www.ccw.site/student/672a23df6a88e30e6e0d4c9c)】
+- 小鸡【**原创**】
+- 酷可mc【[**CCW**](https://www.ccw.site/student/610b508176415b2f27e0f851)】
+- 熊谷凌【[**CCW**](https://www.ccw.site/student/672a23df6a88e30e6e0d4c9c)】
 
 - ~~感觉不如**SCLAWLET** × **HORGAN**~~
 
@@ -26,6 +26,6 @@
 | 母鸡   | 1        | 3        | ×        | 1        | +INF     | 1        |
 | 猫     | 1        | 3        | ×        | 1        | +INF     | 1        |
 | 狗     | 1        | 3        | ×        | 1        | +INF     | 1        |
-| 狗熊   | 0        | 0        | √        | 20       | +INF     | 10       |
-| 狐狸   | 0        | 0        | √        | 10       | +INF     | 15       |
-| 臭鼬   | 0        | 0        | √        | 15       | +INF     | 20       |
+| 熊谷凌 | 0        | 0        | √        | 30       | +INF     | 10       |
+| 小鸡   | 0        | 0        | √        | 10       | +INF     | 15       |
+| 酷可mc | 0        | 0        | √        | 20       | +INF     | 20       |
