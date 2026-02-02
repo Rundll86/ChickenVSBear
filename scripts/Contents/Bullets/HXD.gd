@@ -12,7 +12,7 @@ func succeedToHit(_dmg: float, entity: EntityBase):
 	if bouncedTime < maxBouncedTime:
 		var newEntity = EntityTool.findClosetEntity(position, get_tree(), !launcher.isPlayer(), launcher.isPlayer(), [entity])
 		if is_instance_valid(newEntity):
-			look_at(newEntity.position)
+			look_at(newEntity.getTrackingAnchor())
 			bouncedTime += 1
 	var effect = EffectController.create(ComponentManager.getEffect("HXDBoom"), position)
 	var textureId = randi_range(0, 4)
