@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgavs5ecxtnsj"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_ce312"]
+[ext_resource type="Texture2D" uid="uid://xen2edbhf052" path="res://resources/characters/gobo/gobo-a.svg" id="2_ce312"]
+[ext_resource type="PackedScene" uid="uid://blwoev5sencdh" path="res://components/Weapons/Gobo.tscn" id="3_wdbqo"]
+
+[node name="Gobo" instance=ExtResource("1_ce312")]
+avatarTexture = ExtResource("2_ce312")
+displayName = "Gobo"
+quality = 2
+topic = 8
+fields = Array[int]([25])
+fieldValues = Array[float]([-8.0])
+weapons = Array[PackedScene]([ExtResource("3_wdbqo")])
+costs = Array[int]([1])
+costCounts = Array[int]([1000])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_ce312")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "Gobo"
+quality = 2
+topic = 8

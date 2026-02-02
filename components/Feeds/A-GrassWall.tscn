@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://3rt0enh28jo6"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_xo8b8"]
+[ext_resource type="Texture2D" uid="uid://cwfyi61xkt4bt" path="res://resources/weapons/lgbt.jpeg" id="2_chkna"]
+[ext_resource type="Texture2D" uid="uid://bbv5j71jkdo42" path="res://resources/weapons/grass-wall.png" id="2_xo8b8"]
+[ext_resource type="PackedScene" uid="uid://dldnbpubu2jgm" path="res://components/Weapons/GrassWall.tscn" id="3_chkna"]
+
+[node name="GrassWall" instance=ExtResource("1_xo8b8")]
+avatarTexture = ExtResource("2_xo8b8")
+displayName = "草方块菌落"
+quality = 2
+topic = 8
+weapons = Array[PackedScene]([ExtResource("3_chkna")])
+costs = Array[int]([2, 3])
+costCounts = Array[int]([1, 500])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_chkna")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "彩虹旗"
+quality = 2
+topic = 8
