@@ -10,6 +10,7 @@ class_name EffectController
 @onready var animator: AnimationPlayer = $"%animator"
 
 func _ready():
+	register()
 	particles.emitting = false
 	particles.one_shot = oneShot
 	var sound = sounds.get_node_or_null(spawnSound)
@@ -29,6 +30,9 @@ func shot():
 			if sound.playing:
 				await sound.finished
 		queue_free()
+
+func register():
+	pass
 
 static func create(scene: PackedScene, spawnPosition: Vector2, parent: Node = null) -> EffectController:
 	var cloned = scene.instantiate() as EffectController

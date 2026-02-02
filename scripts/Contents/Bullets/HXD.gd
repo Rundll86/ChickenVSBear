@@ -14,6 +14,7 @@ func succeedToHit(_dmg: float, entity: EntityBase):
 		if is_instance_valid(newEntity):
 			look_at(newEntity.position)
 			bouncedTime += 1
+		EffectController.create(ComponentManager.getEffect("HXDBoom"), position).shot()
 func split(newBullet: BulletBase, _index: int, _total: int, _lastBullet: float):
 	if newBullet is HXDBullet:
 		newBullet.bouncedTime = 0

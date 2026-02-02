@@ -43,7 +43,7 @@ penerate = 1.0
 lifeTime = 5000.0
 
 [node name="texture" parent="." index="0"]
-scale = Vector2(0.185, 0.185)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_lskjb")
 animation = &"2"
 
