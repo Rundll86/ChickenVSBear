@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0oppv5v8grnu"]
+[gd_scene load_steps=8 format=3 uid="uid://c0oppv5v8grnu"]
 
 [ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_41cv2"]
-[ext_resource type="Script" uid="uid://bxvgpyb3fyko1" path="res://scripts/Contents/Effects/HXDBoom.gd" id="2_uo6a0"]
 [ext_resource type="Texture2D" uid="uid://ctvlwl62ieuu6" path="res://resources/bullets/HXD/effect/4.png" id="3_4u6cx"]
 
 [sub_resource type="Curve" id="Curve_4u6cx"]
@@ -28,7 +27,6 @@ scale_curve = SubResource("CurveTexture_tkfx4")
 alpha_curve = SubResource("CurveTexture_rt83h")
 
 [node name="HXDBoom" instance=ExtResource("1_41cv2")]
-script = ExtResource("2_uo6a0")
 
 [node name="particles" parent="." index="1"]
 amount = 1

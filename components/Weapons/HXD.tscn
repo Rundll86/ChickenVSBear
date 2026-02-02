@@ -14,7 +14,7 @@ costBeachball = 4000
 store = {
 "atk": 4
 }
-descriptionTemplate = "发射$atk颗[b]茴香豆[/b]，在敌人间反弹，每颗茴香豆最多可以反弹$atk次，每次反弹对敌人造成$atk点伤害。散射+40°"
+descriptionTemplate = "发射$atk颗[b]茴香豆[/b]，在敌人间反弹，每颗茴香豆最多可以反弹$atk次，每次反弹对敌人造成$atk点伤害，有20%概率不计入反弹总次数。散射+20°，茴香豆每次反弹伤害-20%"
 cooldown = 1000.0
 debugRebuild = true
 
@@ -30,4 +30,4 @@ quality = 3
 typeTopic = 3
 
 [node name="description" parent="container" index="2"]
-text = "[center]发射[color=cyan]4[/color]颗[b]茴香豆[/b]，在敌人间反弹，每颗茴香豆最多可以反弹[color=cyan]4[/color]次，每次反弹对敌人造成[color=cyan]4[/color]点伤害。散射+40°[/center]"
+text = "[center]发射[color=cyan]4[/color]颗[b]茴香豆[/b]，在敌人间反弹，每颗茴香豆最多可以反弹[color=cyan]4[/color]次，每次反弹对敌人造成[color=cyan]4[/color]点伤害，有20%概率不计入反弹总次数。散射+20°，茴香豆每次反弹伤害-20%[/center]"

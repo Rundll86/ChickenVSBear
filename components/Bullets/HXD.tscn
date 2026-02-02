@@ -40,6 +40,7 @@ size = Vector2(32, 20)
 script = ExtResource("2_4lnkm")
 displayName = "茴香豆"
 penerate = 1.0
+penerateDamageReduction = 0.2
 lifeTime = 5000.0
 
 [node name="texture" parent="." index="0"]

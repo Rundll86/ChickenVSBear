@@ -2,7 +2,7 @@
 extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-    origin["atk"] += 1.5 * to * soulLevel
+    origin["atk"] += 1 * to * soulLevel
     return origin
 func attack(entity: EntityBase):
     for i in readStore("atk"):
@@ -10,7 +10,7 @@ func attack(entity: EntityBase):
             ComponentManager.getBullet("HXD"),
             entity,
             entity.findWeaponAnchor("normal"),
-            entity.findWeaponAnchor("normal").angle_to_point(get_global_mouse_position()) + deg_to_rad(randf_range(-1, 1) * 40)
+            entity.findWeaponAnchor("normal").angle_to_point(get_global_mouse_position()) + deg_to_rad(randf_range(-1, 1) * 20)
         ):
             if bullet is HXDBullet:
                 bullet.maxBouncedTime = readStore("atk")
