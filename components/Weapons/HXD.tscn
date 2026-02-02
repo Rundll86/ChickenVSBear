@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm5sw6mr71acq"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_h4ls7"]
+[ext_resource type="Script" uid="uid://0xfj35jvi7ym" path="res://scripts/Contents/Weapons/HXD.gd" id="2_7tnwq"]
+[ext_resource type="Texture2D" uid="uid://cvvtr2mmwo18r" path="res://resources/weapons/HXD.png" id="2_d5bd0"]
+
+[node name="HXD" instance=ExtResource("1_h4ls7")]
+script = ExtResource("2_7tnwq")
+avatarTexture = ExtResource("2_d5bd0")
+displayName = "咸亨记账簿"
+quality = 3
+typeTopic = 3
+costBeachball = 4000
+store = {
+"atk": 4
+}
+descriptionTemplate = "发射$atk颗[b]茴香豆[/b]，在敌人间反弹，每颗茴香豆最多可以反弹$atk次，每次反弹对敌人造成$atk点伤害。散射+40°"
+cooldown = 1000.0
+debugRebuild = true
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_d5bd0")
+
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 4000
+
+[node name="name" parent="container/info" index="2"]
+displayName = "咸亨记账簿"
+quality = 3
+typeTopic = 3
+
+[node name="description" parent="container" index="2"]
+text = "[center]发射[color=cyan]4[/color]颗[b]茴香豆[/b]，在敌人间反弹，每颗茴香豆最多可以反弹[color=cyan]4[/color]次，每次反弹对敌人造成[color=cyan]4[/color]点伤害。散射+40°[/center]"
