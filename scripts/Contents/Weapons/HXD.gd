@@ -2,7 +2,7 @@
 extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-    origin["atk"] += 1 * to * soulLevel
+    origin["atk"] += 2 * to * soulLevel
     return origin
 func attack(entity: EntityBase):
     for i in readStore("atk"):
