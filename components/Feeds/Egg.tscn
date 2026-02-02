@@ -6,17 +6,17 @@
 [node name="Egg" instance=ExtResource("1_pda12")]
 avatarTexture = ExtResource("2_4crt5")
 displayName = "鸡蛋"
-quality = 3
+quality = 4
 topic = 3
-fields = Array[int]([3, 7, 1])
-fieldValues = Array[float]([1.0, -360.0, -0.45])
-costs = Array[int]([0, 1])
-costCounts = Array[int]([500, 300])
+fields = Array[int]([3, 7])
+fieldValues = Array[float]([2.0, -360.0])
+costs = Array[int]([2, 4])
+costCounts = Array[int]([5, 5])
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_4crt5")
 
 [node name="name" parent="container/info" index="1"]
 displayName = "鸡蛋"
-quality = 3
+quality = 4
 topic = 3

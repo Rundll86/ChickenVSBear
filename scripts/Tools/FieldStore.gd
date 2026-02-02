@@ -113,8 +113,9 @@ static var entityMinValueMap = {
 	Entity.DAMAGE_MULTIPILER: 0.01
 }
 static var entityApplier = {
-	Entity.MAX_HEALTH: func(entity, value):
+	Entity.MAX_HEALTH: func(entity: EntityBase, value):
 		entity.health += value
+		entity.statebar.forceSync()
 		return true
 		,
 	Entity.EXTRA_APPLE_MAX: func(entity, value):
