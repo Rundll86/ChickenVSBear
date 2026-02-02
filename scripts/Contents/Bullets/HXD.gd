@@ -13,12 +13,10 @@ func succeedToHit(_dmg: float, entity: EntityBase):
 		var newEntity = EntityTool.findClosetEntity(position, get_tree(), !launcher.isPlayer(), launcher.isPlayer(), [entity])
 		if is_instance_valid(newEntity):
 			look_at(newEntity.getTrackingAnchor())
-			bouncedTime += 1
+			if !MathTool.rate(0.25):
+				bouncedTime += 1
 	var effect = EffectController.create(ComponentManager.getEffect("HXDBoom"), position)
-	var textureId = randi_range(0, 4)
-	if textureId == 1:
-		bouncedTime -= 1
-	effect.particles.texture = load("res://resources/bullets/HXD/effect/%d.png" % textureId)
+	effect.particles.texture = load("res://resources/bullets/HXD/effect/%d.png" % randi_range(0, 4))
 	effect.shot()
 func split(newBullet: BulletBase, _index: int, _total: int, _lastBullet: float):
 	if newBullet is HXDBullet:
