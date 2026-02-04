@@ -5,7 +5,7 @@ var bouncedTime: int = 0
 var maxBouncedTime: int = 0
 var lastHit: EntityBase
 var addTimes = 0
-var delta = 0.01
+var delta = 0.001
 
 func spawn():
 	texture.play(str(randi_range(0, 2)))
