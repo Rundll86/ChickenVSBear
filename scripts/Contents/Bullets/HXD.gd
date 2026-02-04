@@ -15,7 +15,7 @@ func destroy(_beacuseMap: bool):
 	launcher.fields[FieldStore.Entity.DAMAGE_MULTIPILER] -= addTimes * delta
 func succeedToHit(_dmg: float, entity: EntityBase):
 	if entity.isBoss:
-		launcher.fields[FieldStore.Entity.ATTACK_SPEED] += delta
+		launcher.fields[FieldStore.Entity.DAMAGE_MULTIPILER] += delta
 		addTimes += 1
 	if is_instance_valid(lastHit):
 		if lastHit.get_class() == entity.get_class():
