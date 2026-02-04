@@ -3,12 +3,17 @@ class_name HXDBullet
 
 var bouncedTime: int = 0
 var maxBouncedTime: int = 0
+var lastHit: EntityBase
 
 func spawn():
 	texture.play(str(randi_range(0, 2)))
 func ai():
 	PresetBulletAI.forward(self, rotation)
 func succeedToHit(_dmg: float, entity: EntityBase):
+	if is_instance_valid(lastHit):
+		if lastHit.get_class() == entity.get_class():
+			entity.bulletHit(self, true)
+	lastHit = entity
 	if bouncedTime < maxBouncedTime:
 		var newEntity = EntityTool.findClosetEntity(position, get_tree(), !launcher.isPlayer(), launcher.isPlayer(), [entity])
 		if is_instance_valid(newEntity):
