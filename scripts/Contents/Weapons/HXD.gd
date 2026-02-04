@@ -2,11 +2,11 @@
 extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
-    origin["atk"] += 1.5 * to * soulLevel
-    origin["count"] += 2 * (soulLevel - 1)
+    origin["atk"] += 2 * to * soulLevel
+    origin["count"] += 3 * (soulLevel - 1)
     return origin
 func attack(entity: EntityBase):
-    for i in readStore("atk"):
+    for i in readStore("count"):
         for bullet in BulletBase.generate(
             ComponentManager.getBullet("HXD"),
             entity,
