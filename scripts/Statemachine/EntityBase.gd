@@ -292,11 +292,12 @@ func finalEnergy(base: float):
 	return base / fields.get(FieldStore.Entity.SAVE_ENERGY)
 func fillingProgress(base: float):
 	return energy / finalEnergy(base)
+func isEnergyEnough(base: float):
+	return energy >= finalEnergy(base)
 func useEnergy(value: float):
-	value = finalEnergy(value)
-	var state = energy >= value
+	var state = isEnergyEnough(value)
 	if state:
-		energy -= value
+		energy -= finalEnergy(value)
 		energyChanged.emit(energy, false)
 	return state
 func tryAttack(type: int, needChargeUp: bool = false):

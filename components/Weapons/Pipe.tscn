@@ -21,7 +21,7 @@ storeType = {
 descriptionTemplate = "按住蓄力扔出钢管，蓄力越久伤害越高。
 基础伤害：$atk，蓄力倍率：$charge"
 needEnergy = 2.0
-cooldown = 1000.0
+cooldown = 3000.0
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_mmtf8")
