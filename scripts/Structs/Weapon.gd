@@ -175,7 +175,7 @@ func tryAttack(entity: EntityBase):
 			entity.useEnergy(needEnergy)
 		return result
 func charged(base: float, percent: float):
-	return base * (1 + chargedTime / 50 * percent)
+	return base * (1 + chargedTime / 75 * percent)
 
 # 抽象
 func update(_to: int, origin: Dictionary, _entity: EntityBase):

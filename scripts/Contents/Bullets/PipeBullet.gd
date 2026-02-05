@@ -7,3 +7,5 @@ func ai():
 	PresetBulletAI.forward(self, rotation)
 	texture.rotation += energy * (1 - lifeTimePercent()) / 100
 	speed = initialSpeed * (1 - lifeTimePercent())
+func destroy(_beacuseMap: bool):
+	EffectController.create(ComponentManager.getEffect("PipeFall"), position).shot()

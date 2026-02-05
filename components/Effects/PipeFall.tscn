@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ukta2xq1l32k"]
+
+[ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_qau47"]
+[ext_resource type="AudioStream" uid="uid://7k43qbbcim2l" path="res://resources/sounds/weapon/pipefall.mp3" id="2_4ds2m"]
+
+[node name="PipeFall" instance=ExtResource("1_qau47")]
+spawnSound = "spawn"
+
+[node name="spawn" parent="sounds" index="0"]
+stream = ExtResource("2_4ds2m")

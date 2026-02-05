@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dky8574uqc18r"]
+[gd_scene load_steps=20 format=3 uid="uid://dky8574uqc18r"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" uid="uid://cthtupc6dtbav" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
@@ -9,6 +9,43 @@
 [ext_resource type="AudioStream" uid="uid://4wuuf1osk0yv" path="res://resources/sounds/effect/Low Boing.wav" id="6_m5px1"]
 [ext_resource type="Texture2D" uid="uid://fn8qx72clh38" path="res://resources/characters/cock/rooster-a.svg" id="8_da2ca"]
 [ext_resource type="Texture2D" uid="uid://ci2ik43ce82uy" path="res://resources/characters/cock/rooster-b.svg" id="9_0omr3"]
+
+[sub_resource type="Curve" id="Curve_da2ca"]
+_data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0omr3"]
+curve = SubResource("Curve_da2ca")
+
+[sub_resource type="Curve" id="Curve_joj4g"]
+_limits = [-360.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jluqw"]
+curve = SubResource("Curve_joj4g")
+
+[sub_resource type="Curve" id="Curve_0omr3"]
+_data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_joj4g"]
+curve = SubResource("Curve_0omr3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_joj4g"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 300.0
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+angle_curve = SubResource("CurveTexture_jluqw")
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -200.0
+radial_accel_max = -100.0
+scale_min = 7.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_joj4g")
+alpha_curve = SubResource("CurveTexture_0omr3")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4v2ol"]
 animations = [{
@@ -55,7 +92,13 @@ useStatic = true
 metadata/_edit_horizontal_guides_ = [-188.0]
 metadata/_edit_vertical_guides_ = [71.0]
 
-[node name="weaponStore" parent="." index="1"]
+[node name="chargeParticle" type="GPUParticles2D" parent="." index="0"]
+unique_name_in_owner = true
+position = Vector2(0, -54)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_joj4g")
+
+[node name="weaponStore" parent="." index="2"]
 process_mode = 4
 
 [node name="Pipe" parent="weaponStore" index="0" instance=ExtResource("3_da2ca")]
@@ -72,7 +115,7 @@ stream = ExtResource("5_xnbhq")
 [node name="hurt" parent="sounds" index="3"]
 stream = ExtResource("6_m5px1")
 
-[node name="texture" parent="." index="3"]
+[node name="texture" parent="." index="4"]
 position = Vector2(0, -47)
 sprite_frames = SubResource("SpriteFrames_4v2ol")
 animation = &"walk"
@@ -89,6 +132,6 @@ shape = SubResource("CircleShape2D_h1v0q")
 [node name="normal" type="Node2D" parent="texture/weapons" index="0"]
 position = Vector2(56, -69)
 
-[node name="statebar" parent="." index="4" node_paths=PackedStringArray("entity")]
+[node name="statebar" parent="." index="5" node_paths=PackedStringArray("entity")]
 position = Vector2(0, -150)
 entity = NodePath("..")

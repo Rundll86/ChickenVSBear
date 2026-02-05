@@ -15,8 +15,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5ir5"]
-size = Vector2(162, 12)
+[sub_resource type="CircleShape2D" id="CircleShape2D_vcs8c"]
+radius = 83.00603
 
 [node name="Pipe" instance=ExtResource("1_3h25n")]
 script = ExtResource("2_vcs8c")
@@ -29,4 +29,4 @@ scale = Vector2(0.27, 0.27)
 sprite_frames = SubResource("SpriteFrames_vcs8c")
 
 [node name="hitbox" parent="." index="1"]
-shape = SubResource("RectangleShape2D_j5ir5")
+shape = SubResource("CircleShape2D_vcs8c")

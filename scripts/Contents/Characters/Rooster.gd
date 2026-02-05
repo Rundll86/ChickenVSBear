@@ -1,6 +1,8 @@
 extends EntityBase
 class_name Rooster
 
+@onready var chargeParticle: GPUParticles2D = $%chargeParticle
+
 func register():
 	attackCooldownMap[0] = 200
 	attackCooldownMap[1] = 6000
@@ -11,6 +13,7 @@ func register():
 			elif bullet is FoxZhua:
 				EffectController.create(ComponentManager.getEffect("BloodFall"), texture.global_position).shot()
 	)
+	chargeParticle.emitting = false
 var chargeStartTime = {}
 
 func ai():
@@ -62,6 +65,7 @@ func startCharge(weaponIndex: int):
 		var weapon = weapons[weaponIndex]
 		if weapon.chargable:
 			chargeStartTime[weaponIndex] = Time.get_ticks_msec()
+			chargeParticle.emitting = true
 func endCharge(weaponIndex: int):
 	if chargeStartTime.has(weaponIndex):
 		var startTime = chargeStartTime[weaponIndex]
@@ -73,3 +77,4 @@ func endCharge(weaponIndex: int):
 			if weapon.chargable:
 				weapon.chargedTime = chargedTime
 				tryAttack(weaponIndex)
+				chargeParticle.emitting = false
