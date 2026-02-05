@@ -9,9 +9,9 @@ displayName = "鸡蛋"
 quality = 4
 topic = 3
 fields = Array[int]([3, 7])
-fieldValues = Array[float]([2.0, -360.0])
+fieldValues = Array[float]([5.0, -360.0])
 costs = Array[int]([2, 4])
-costCounts = Array[int]([5, 5])
+costCounts = Array[int]([5, 10])
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_4crt5")
