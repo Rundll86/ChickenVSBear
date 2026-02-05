@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://07lpwkusvvy4"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_3h25n"]
+[ext_resource type="Texture2D" uid="uid://ds5htlg14wm3y" path="res://resources/bullets/pipe/pipe.png" id="2_3ntcm"]
+[ext_resource type="Script" uid="uid://c4w0f18nj4qhk" path="res://scripts/Contents/Bullets/PipeBullet.gd" id="2_vcs8c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vcs8c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3ntcm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5ir5"]
+size = Vector2(162, 12)
+
+[node name="Pipe" instance=ExtResource("1_3h25n")]
+script = ExtResource("2_vcs8c")
+penerate = 1.0
+lifeTime = 1000.0
+
+[node name="texture" parent="." index="0"]
+rotation = -1.5707964
+scale = Vector2(0.27, 0.27)
+sprite_frames = SubResource("SpriteFrames_vcs8c")
+
+[node name="hitbox" parent="." index="1"]
+shape = SubResource("RectangleShape2D_j5ir5")

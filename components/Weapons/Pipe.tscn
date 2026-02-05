@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://jq8oatmpoesj"]
+[gd_scene load_steps=4 format=3 uid="uid://dyanyf044boxp"]
 
 [ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_sqbqm"]
 [ext_resource type="Texture2D" uid="uid://7yeb0e4ahcee" path="res://resources/weapons/pipe.png" id="2_mmtf8"]
+[ext_resource type="Script" uid="uid://l1v3boq8ei12" path="res://scripts/Contents/Weapons/Pipe.gd" id="2_p67v7"]
 
 [node name="Pipe" instance=ExtResource("1_sqbqm")]
+script = ExtResource("2_p67v7")
 avatarTexture = ExtResource("2_mmtf8")
 displayName = "钢管"
 costBeachball = 350
+chargable = true
 store = {
 "atk": 5,
 "charge": 0.1
@@ -17,7 +20,6 @@ storeType = {
 }
 descriptionTemplate = "按住蓄力扔出钢管，蓄力越久伤害越高。
 基础伤害：$atk，蓄力倍率：$charge"
-debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_mmtf8")

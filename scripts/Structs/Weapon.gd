@@ -8,6 +8,7 @@ class_name Weapon
 @export var typeTopic: WeaponName.TypeTopic = WeaponName.TypeTopic.IMPACT
 @export var soulLevel: int = 1
 @export var costBeachball: int = 500
+@export var chargable: bool = false
 @export var store: Dictionary = {
 	"atk": 10
 }
@@ -35,6 +36,7 @@ class_name Weapon
 
 var cooldownTimer: CooldownTimer = null
 var originalStore: Dictionary = {}
+var chargedTime: float = 0
 
 func _ready():
 	cooldownTimer = CooldownTimer.new()
@@ -166,9 +168,14 @@ func playSound(sound: String):
 		cloned.queue_free()
 func tryAttack(entity: EntityBase):
 	cooldownTimer.speedScale = entity.fields.get(FieldStore.Entity.ATTACK_SPEED)
-	if cooldownTimer.start():
-		if entity.useEnergy(needEnergy):
-			return await attack(entity)
+	if cooldownTimer.isCooldowned():
+		var result = await attack(entity)
+		if result:
+			cooldownTimer.start()
+			entity.useEnergy(needEnergy)
+		return result
+func charged(base: float, percent: float):
+	return base * (1 + chargedTime / 50 * percent)
 
 # 抽象
 func update(_to: int, origin: Dictionary, _entity: EntityBase):
