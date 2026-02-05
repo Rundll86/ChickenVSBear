@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://r670cp2cjtjk"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_ob5wt"]
+[ext_resource type="Texture2D" uid="uid://7yeb0e4ahcee" path="res://resources/weapons/pipe.png" id="2_wljmc"]
+[ext_resource type="PackedScene" uid="uid://dyanyf044boxp" path="res://components/Weapons/Pipe.tscn" id="3_qkqst"]
+
+[node name="Pipe" instance=ExtResource("1_ob5wt")]
+avatarTexture = ExtResource("2_wljmc")
+displayName = "钢管"
+quality = 2
+topic = 8
+weapons = Array[PackedScene]([ExtResource("3_qkqst")])
+costs = Array[int]([1])
+costCounts = Array[int]([500])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_wljmc")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "钢管"
+quality = 2
+topic = 8

@@ -1,8 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://dky8574uqc18r"]
+[gd_scene load_steps=19 format=3 uid="uid://dky8574uqc18r"]
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" uid="uid://cthtupc6dtbav" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
-[ext_resource type="PackedScene" uid="uid://dyanyf044boxp" path="res://components/Weapons/Pipe.tscn" id="3_da2ca"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
 [ext_resource type="AudioStream" uid="uid://benyec5bqni0b" path="res://resources/sounds/effect/Chomp.wav" id="4_k0yme"]
 [ext_resource type="AudioStream" uid="uid://dmxh3bpk8vyy5" path="res://resources/sounds/effect/Coin.mp3" id="5_xnbhq"]
@@ -11,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ci2ik43ce82uy" path="res://resources/characters/cock/rooster-b.svg" id="9_0omr3"]
 
 [sub_resource type="Curve" id="Curve_da2ca"]
-_data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_0omr3"]
@@ -41,8 +40,8 @@ angle_max = 360.00003
 angle_curve = SubResource("CurveTexture_jluqw")
 gravity = Vector3(0, 0, 0)
 radial_accel_min = -200.0
-radial_accel_max = -100.0
-scale_min = 7.0
+radial_accel_max = -200.0
+scale_min = 5.0
 scale_max = 10.0
 scale_curve = SubResource("CurveTexture_joj4g")
 alpha_curve = SubResource("CurveTexture_0omr3")
@@ -100,8 +99,6 @@ process_material = SubResource("ParticleProcessMaterial_joj4g")
 
 [node name="weaponStore" parent="." index="2"]
 process_mode = 4
-
-[node name="Pipe" parent="weaponStore" index="0" instance=ExtResource("3_da2ca")]
 
 [node name="sprint" parent="sounds" index="0"]
 stream = ExtResource("4_66s6c")
