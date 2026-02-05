@@ -52,8 +52,11 @@ func tryLaunch(action: String, weaponIndex: int):
 			if weapon.chargable and weapon.canAttackBy(self):
 				chargeStartTime[weaponIndex] = Time.get_ticks_msec()
 				chargeParticle.emitting = true
+				chargeParticle.speed_scale = 1
 	if Input.is_action_pressed(action):
-		if !chargeStartTime.has(weaponIndex):
+		if chargeStartTime.has(weaponIndex):
+			chargeParticle.speed_scale += 0.01
+		else:
 			tryAttack(weaponIndex)
 	if Input.is_action_just_released(action):
 		if chargeStartTime.has(weaponIndex):

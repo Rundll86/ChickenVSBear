@@ -86,8 +86,18 @@ radius = 61.204575
 
 [node name="Rooster" instance=ExtResource("1_e5pl8")]
 script = ExtResource("2_oqdqd")
+defaultCooldownUnit = null
+isBoss = null
 displayName = "公鸡"
+sprintMultiplier = null
+drops = null
+dropCounts = null
+appleCount = null
+level = null
+currentInvinsible = null
 useStatic = true
+hurtAudioRate = null
+health = null
 metadata/_edit_horizontal_guides_ = [-188.0]
 metadata/_edit_vertical_guides_ = [71.0]
 
