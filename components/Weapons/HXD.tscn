@@ -19,7 +19,7 @@ storeType = {
 "atk": 1,
 "count": 1
 }
-descriptionTemplate = "发射$count颗[b]茴香豆[/b]，在敌人间反弹，每颗茴香豆最多可以反弹$atk次，每次反弹对敌人造成$atk点伤害，有[color=yellow]1/4[/color]的概率反弹次数[color=yellow]+1[/color]。散射[color=red]+4°[/color]，反弹时伤害[color=red]-4%[/color]，命中同类敌人时额外造成一次[color=yellow]必定暴击[/color]的伤害，命中Boss时，[color=orange]伤害倍率+0.1%[/color]。"
+descriptionTemplate = "发射$count颗[b]茴香豆[/b]，在敌人间反弹，每颗茴香豆最多可以反弹$atk次，每次反弹对敌人造成$atk点伤害，有[color=yellow]1/4[/color]的概率反弹次数[color=yellow]+1[/color]。散射[color=red]+4°[/color]，反弹时伤害[color=red]-4%[/color]，命中同类敌人时额外造成一次[color=yellow]必定暴击[/color]的伤害，命中Boss时，[color=orange]伤害倍率+1%[/color]。"
 cooldown = 1000.0
 debugRebuild = true
 
@@ -35,4 +35,4 @@ quality = 3
 typeTopic = 3
 
 [node name="description" parent="container" index="2"]
-text = "[center]发射[color=cyan]4[/color]颗[b]茴香豆[/b]，在敌人间反弹，每颗茴香豆最多可以反弹[color=cyan]4[/color]次，每次反弹对敌人造成[color=cyan]4[/color]点伤害，有[color=yellow]1/4[/color]的概率反弹次数[color=yellow]+1[/color]。散射[color=red]+4°[/color]，反弹时伤害[color=red]-4%[/color]，命中同类敌人时额外造成一次[color=yellow]必定暴击[/color]的伤害，命中Boss时，[color=orange]伤害倍率+0.1%[/color]。[/center]"
+text = "[center]发射[color=cyan]4[/color]颗[b]茴香豆[/b]，在敌人间反弹，每颗茴香豆最多可以反弹[color=cyan]4[/color]次，每次反弹对敌人造成[color=cyan]4[/color]点伤害，有[color=yellow]1/4[/color]的概率反弹次数[color=yellow]+1[/color]。散射[color=red]+4°[/color]，反弹时伤害[color=red]-4%[/color]，命中同类敌人时额外造成一次[color=yellow]必定暴击[/color]的伤害，命中Boss时，[color=orange]伤害倍率+1%[/color]。[/center]"

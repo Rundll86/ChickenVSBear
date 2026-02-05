@@ -5,7 +5,7 @@ var bouncedTime: int = 0
 var maxBouncedTime: int = 0
 var lastHit: EntityBase
 var addTimes = 0
-var delta = 0.001
+var delta = 0.01
 
 func spawn():
 	texture.play(str(randi_range(0, 2)))
@@ -13,7 +13,7 @@ func ai():
 	PresetBulletAI.forward(self, rotation)
 func succeedToHit(_dmg: float, entity: EntityBase):
 	if entity.isBoss:
-		launcher.fields[FieldStore.Entity.DAMAGE_MULTIPILER] += delta
+		launcher.fields[FieldStore.Entity.DAMAGE_MULTIPILER] *= 1 + delta
 		addTimes += 1
 	if is_instance_valid(lastHit):
 		if lastHit.get_class() == entity.get_class():
