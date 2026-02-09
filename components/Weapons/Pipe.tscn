@@ -18,13 +18,17 @@ storeType = {
 "atk": 1,
 "charge": 2
 }
-descriptionTemplate = "按住蓄力扔出钢管，蓄力越久伤害越高。
+descriptionTemplate = "按住蓄力扔出钢管，蓄力越久伤害越高，发射钢管后继续按住鼠标可继续蓄力。
 基础伤害：$atk，蓄力倍率：$charge"
 needEnergy = 2.0
 cooldown = 3000.0
+debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_mmtf8")
+
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
+text = "2.0"
 
 [node name="beachball" parent="container/info/infos" index="1"]
 count = 350
@@ -33,5 +37,5 @@ count = 350
 displayName = "钢管"
 
 [node name="description" parent="container" index="2"]
-text = "[center]按住蓄力扔出钢管，蓄力越久伤害越高。
+text = "[center]按住蓄力扔出钢管，蓄力越久伤害越高，发射钢管后继续按住鼠标可继续蓄力。
 基础伤害：[color=cyan]5[/color]，蓄力倍率：[color=cyan]10.0%[/color][/center]"
