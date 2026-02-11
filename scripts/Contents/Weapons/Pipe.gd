@@ -16,5 +16,5 @@ func attack(entity: EntityBase):
 			var e = charged(readStore("atk"), 0.1)
 			bullet.baseDamage = e
 			bullet.energy = e
-			bullet.speed = sqrt(e)
+			bullet.speed = clamp(e, 0, 30)
 	return true
