@@ -3,7 +3,6 @@ extends Weapon
 
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["atk"] += 1 * to * soulLevel
-	origin["charge"] += 0.05 * (soulLevel - 1)
 	return origin
 func attack(entity: EntityBase):
 	var weaponPos = entity.findWeaponAnchor("normal")
@@ -14,7 +13,7 @@ func attack(entity: EntityBase):
 			weaponPos.angle_to_point(get_global_mouse_position())
 		):
 		if bullet is PipeBullet:
-			var e = charged(readStore("atk"), readStore("charge"))
+			var e = charged(readStore("atk"), 0.1)
 			bullet.baseDamage = e
 			bullet.energy = e
 			bullet.speed = e
