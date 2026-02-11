@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b45312iwke12t"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_74srx"]
+[ext_resource type="Texture2D" uid="uid://dnr1kckji14al" path="res://resources/feeds/hotdog-evil.png" id="2_bgn3j"]
+
+[node name="HotdogEvil" instance=ExtResource("1_74srx")]
+avatarTexture = ExtResource("2_bgn3j")
+displayName = "诡异的芝士热狗"
+quality = 4
+topic = 3
+fields = Array[int]([28, 0, 8])
+fieldValues = Array[float]([0.1, -10.0, -0.4])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_bgn3j")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "诡异的芝士热狗"
+quality = 4
+topic = 3

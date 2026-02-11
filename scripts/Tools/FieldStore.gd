@@ -37,7 +37,7 @@ enum Entity {
 	GRAVITY,
 	PERFECT_MISS_WINDOW,
 	SUMMON_MAX,
-    CHARGE_SPEED
+	CHARGE_SPEED
 }
 static var entityMap = {
 	Entity.MAX_HEALTH: "生命上限",
@@ -68,7 +68,7 @@ static var entityMap = {
 	Entity.GRAVITY: "引力",
 	Entity.PERFECT_MISS_WINDOW: "闪避窗口",
 	Entity.SUMMON_MAX: "召唤上限",
-    Entity.CHARGE_SPEED: "蓄力"
+	Entity.CHARGE_SPEED: "蓄力"
 }
 static var entityMapType = {
 	Entity.MAX_HEALTH: DataType.VALUE,
@@ -99,7 +99,7 @@ static var entityMapType = {
 	Entity.GRAVITY: DataType.VALUE,
 	Entity.PERFECT_MISS_WINDOW: DataType.PERCENT,
 	Entity.SUMMON_MAX: DataType.INTEGER,
-    Entity.CHARGE_SPEED: DataType.VALUE
+	Entity.CHARGE_SPEED: DataType.VALUE
 }
 static var entityMaxValueMap = {
 	Entity.CRIT_RATE: 0.9,

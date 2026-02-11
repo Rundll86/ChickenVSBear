@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://27jsyk3ysb7l"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_eesrp"]
+[ext_resource type="Texture2D" uid="uid://5mi6cypw3pi8" path="res://resources/feeds/hotdog.png" id="2_wg2ms"]
+
+[node name="Hotdog" instance=ExtResource("1_eesrp")]
+avatarTexture = ExtResource("2_wg2ms")
+displayName = "芝士热狗"
+quality = 4
+topic = 3
+fields = Array[int]([28])
+fieldValues = Array[float]([0.04])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([2000, 1])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_wg2ms")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "芝士热狗"
+quality = 4
+topic = 3
