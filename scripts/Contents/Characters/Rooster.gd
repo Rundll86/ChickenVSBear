@@ -55,7 +55,7 @@ func tryLaunch(action: String, weaponIndex: int):
 				chargeParticle.speed_scale = 1
 	if Input.is_action_pressed(action):
 		if chargeStartTime.has(weaponIndex):
-			chargeParticle.speed_scale += 0.01 * self.fields.get(FieldStore.Entity.ATTACK_SPEED)
+			chargeParticle.speed_scale += 0.01 * self.fields.get(FieldStore.Entity.CHARGE_SPEED)
 		else:
 			tryAttack(weaponIndex)
 	if Input.is_action_just_released(action):
@@ -67,6 +67,6 @@ func tryLaunch(action: String, weaponIndex: int):
 			if len(weapons) > weaponIndex:
 				var weapon = weapons[weaponIndex]
 				if weapon.chargable:
-					weapon.chargedTime = chargedTime * self.fields.get(FieldStore.Entity.ATTACK_SPEED)
+					weapon.chargedTime = chargedTime * self.fields.get(FieldStore.Entity.CHARGE_SPEED)
 					tryAttack(weaponIndex)
 					chargeParticle.emitting = false

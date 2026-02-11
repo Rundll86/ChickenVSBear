@@ -38,6 +38,7 @@ var fields = {
 	"速度": TITLE_FLAG,
 	FieldStore.Entity.ATTACK_SPEED: 1,
 	FieldStore.Entity.MOVEMENT_SPEED: 1,
+    FieldStore.Entity.CHARGE_SPEED: 1,
 	"伤害": TITLE_FLAG,
 	FieldStore.Entity.DAMAGE_MULTIPILER: 1,
 	FieldStore.Entity.CRIT_RATE: 0.05,
