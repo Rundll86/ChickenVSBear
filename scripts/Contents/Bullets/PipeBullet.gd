@@ -11,4 +11,4 @@ func ai():
 func destroy(_beacuseMap: bool):
 	EffectController.create(ComponentManager.getEffect("PipeFall"), position).shot()
 func succeedToHit(_dmg: float, _entity: EntityBase):
-	energy *= 0.8
+	energy *= 0.6
