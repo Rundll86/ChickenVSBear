@@ -29,16 +29,17 @@ tracks/0/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
 "times": PackedFloat32Array(0, 0.5)
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%texture/..:scale:x")
+tracks/1/path = NodePath("%texture/../trails:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(2, 0),
-"points": PackedFloat32Array(1, 0, 0, 0.083333336, -0.16666667, 0, -0.07777778, 0.16666667, 0, 0),
-"times": PackedFloat32Array(0, 0.5)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_d8ajx"]
@@ -54,16 +55,17 @@ tracks/0/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%texture/..:scale:x")
+tracks/1/path = NodePath("%texture/../trails:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d8ajx"]
@@ -105,23 +107,9 @@ alpha_curve = SubResource("CurveTexture_d8ajx")
 script = ExtResource("2_cjmf3")
 displayName = "齿轮"
 speed = 20.0
-baseDamage = null
-damageMultipliers = null
-usingDamageMultiplier = null
 penerate = 1.0
-penerateDamageReduction = null
-lifeDistance = null
 lifeTime = 5000.0
-allowFriendlyDamage = null
-canDamageSelf = null
-autoSpawnAnimation = null
-autoLoopAnimation = null
 autoDestroyAnimation = true
-autoDestroyOnHitMap = null
-freeAfterSpawn = null
-knockback = null
-recoil = null
-canDoDuplicate = null
 
 [node name="texture" parent="." index="0"]
 scale = Vector2(0.2, 0.2)

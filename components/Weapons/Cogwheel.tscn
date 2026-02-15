@@ -10,7 +10,7 @@ avatarTexture = ExtResource("2_qs30c")
 displayName = "齿轮回旋镖"
 quality = 3
 store = {
-"atk": 5,
+"atk": 2,
 "rotate": 15.0
 }
 storeType = {
@@ -34,5 +34,5 @@ quality = 3
 [node name="description" parent="container" index="2"]
 text = "[center]发射[b]齿轮[/b]，在飞行一定距离后回旋。
 齿轮的伤害频率与转速成正比。
-锋利度：[color=cyan]5[/color]，初始转速：[color=cyan]15.0°[/color]，
+锋利度：[color=cyan]2[/color]，初始转速：[color=cyan]15.0°[/color]，
 齿轮的转速随时间逐渐降低。[/center]"
