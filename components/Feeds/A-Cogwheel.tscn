@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://u25embstfnui"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_gkg51"]
+[ext_resource type="Texture2D" uid="uid://d0d1t8ch1lolp" path="res://resources/bullets/cogwheel/cogwheel.png" id="2_pcy67"]
+[ext_resource type="PackedScene" uid="uid://dqywctcj4y2xi" path="res://components/Weapons/Cogwheel.tscn" id="3_am7m4"]
+
+[node name="Cogwheel" instance=ExtResource("1_gkg51")]
+avatarTexture = ExtResource("2_pcy67")
+displayName = "齿轮回旋镖"
+quality = 2
+topic = 8
+fields = Array[int]([13])
+fieldValues = Array[float]([0.25])
+weapons = Array[PackedScene]([ExtResource("3_am7m4")])
+costs = Array[int]([0, 1])
+costCounts = Array[int]([1000, 200])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_pcy67")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "齿轮回旋镖"
+quality = 2
+topic = 8
