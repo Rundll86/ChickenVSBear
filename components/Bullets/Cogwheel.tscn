@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdv7drkq43mfe"]
+[gd_scene load_steps=14 format=3 uid="uid://cdv7drkq43mfe"]
 
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_mt0uq"]
 [ext_resource type="Script" uid="uid://cfe4nv832olhp" path="res://scripts/Contents/Bullets/Cogwheel.gd" id="2_cjmf3"]
@@ -14,6 +14,63 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_cjmf3"]
+resource_name = "destroy"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%texture/..:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%texture/..:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(1, 0, 0, 0.083333336, -0.16666667, 0, -0.07777778, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_d8ajx"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%texture/..:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%texture/..:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d8ajx"]
+_data = {
+&"RESET": SubResource("Animation_d8ajx"),
+&"destroy": SubResource("Animation_cjmf3")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cjmf3"]
 radius = 47.0
@@ -59,7 +116,7 @@ allowFriendlyDamage = null
 canDamageSelf = null
 autoSpawnAnimation = null
 autoLoopAnimation = null
-autoDestroyAnimation = null
+autoDestroyAnimation = true
 autoDestroyOnHitMap = null
 freeAfterSpawn = null
 knockback = null
@@ -69,6 +126,11 @@ canDoDuplicate = null
 [node name="texture" parent="." index="0"]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_cjmf3")
+
+[node name="animator" parent="texture" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_d8ajx")
+}
 
 [node name="hitbox" parent="." index="1"]
 visible = false

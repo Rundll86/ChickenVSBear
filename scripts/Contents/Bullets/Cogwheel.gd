@@ -28,5 +28,11 @@ func applyDot():
 
 func refract(newBullet: BulletBase, _entity: EntityBase, _index: int, _total: int, _lastBullet: float):
 	if newBullet is CogwheelBullet:
+		newBullet.initialRotate = initialRotate
+		newBullet.rotateSpeed = initialRotate
+	return newBullet
+func split(newBullet: BulletBase, _index: int, _total: int, _lastBullet: float):
+	if newBullet is CogwheelBullet:
+		newBullet.initialRotate = initialRotate
 		newBullet.rotateSpeed = initialRotate
 	return newBullet
