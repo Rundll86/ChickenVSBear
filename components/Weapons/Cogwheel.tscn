@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqywctcj4y2xi"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_ga2jk"]
+[ext_resource type="Script" uid="uid://nm2xleunwf4r" path="res://scripts/Contents/Weapons/Cogwheel.gd" id="2_c1bcd"]
+[ext_resource type="Texture2D" uid="uid://d0d1t8ch1lolp" path="res://resources/bullets/cogwheel/cogwheel.png" id="2_qs30c"]
+
+[node name="Cogwheel" instance=ExtResource("1_ga2jk")]
+script = ExtResource("2_c1bcd")
+avatarTexture = ExtResource("2_qs30c")
+displayName = "齿轮回旋镖"
+quality = 3
+store = {
+"atk": 5,
+"rotate": 15.0
+}
+storeType = {
+"atk": 1,
+"rotate": 3
+}
+descriptionTemplate = "发射[b]齿轮[/b]，在飞行一定距离后回旋。
+齿轮的伤害频率与转速成正比。
+锋利度：$atk，初始转速：$rotate，
+齿轮的转速随时间逐渐降低。"
+cooldown = 1000.0
+debugRebuild = true
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_qs30c")
+
+[node name="name" parent="container/info" index="2"]
+displayName = "齿轮回旋镖"
+quality = 3
+
+[node name="description" parent="container" index="2"]
+text = "[center]发射[b]齿轮[/b]，在飞行一定距离后回旋。
+齿轮的伤害频率与转速成正比。
+锋利度：[color=cyan]5[/color]，初始转速：[color=cyan]15.0°[/color]，
+齿轮的转速随时间逐渐降低。[/center]"

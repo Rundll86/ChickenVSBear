@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://cdv7drkq43mfe"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_mt0uq"]
+[ext_resource type="Script" uid="uid://cfe4nv832olhp" path="res://scripts/Contents/Bullets/Cogwheel.gd" id="2_cjmf3"]
+[ext_resource type="Texture2D" uid="uid://d0d1t8ch1lolp" path="res://resources/bullets/cogwheel/cogwheel.png" id="2_jis23"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cjmf3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jis23")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cjmf3"]
+radius = 47.0
+
+[sub_resource type="Curve" id="Curve_cjmf3"]
+_data = [Vector2(0, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_d8ajx"]
+curve = SubResource("Curve_cjmf3")
+
+[sub_resource type="Curve" id="Curve_gidgr"]
+_data = [Vector2(0, 1), 0.0, -0.35000002, 0, 1, Vector2(1, 0.65), -0.35000002, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qlov4"]
+curve = SubResource("Curve_gidgr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d26hc"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 700.0
+initial_velocity_max = 700.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.9
+scale_max = 0.9
+scale_curve = SubResource("CurveTexture_qlov4")
+alpha_curve = SubResource("CurveTexture_d8ajx")
+
+[node name="Cogwheel" instance=ExtResource("1_mt0uq")]
+script = ExtResource("2_cjmf3")
+displayName = "齿轮"
+speed = 20.0
+baseDamage = null
+damageMultipliers = null
+usingDamageMultiplier = null
+penerate = 1.0
+penerateDamageReduction = null
+lifeDistance = null
+lifeTime = 5000.0
+allowFriendlyDamage = null
+canDamageSelf = null
+autoSpawnAnimation = null
+autoLoopAnimation = null
+autoDestroyAnimation = null
+autoDestroyOnHitMap = null
+freeAfterSpawn = null
+knockback = null
+recoil = null
+canDoDuplicate = null
+
+[node name="texture" parent="." index="0"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_cjmf3")
+
+[node name="hitbox" parent="." index="1"]
+visible = false
+shape = SubResource("CircleShape2D_cjmf3")
+
+[node name="trails" type="GPUParticles2D" parent="." index="2"]
+z_index = -1
+scale = Vector2(0.2, 0.2)
+amount = 5
+texture = ExtResource("2_jis23")
+preprocess = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_d26hc")
