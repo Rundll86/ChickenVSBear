@@ -29,7 +29,7 @@ var fields = {
 	FieldStore.Entity.ENERGY_REGENERATION: 1,
 	FieldStore.Entity.PERFECT_MISS_WINDOW: 0.05,
 	"子弹": TITLE_FLAG,
-	FieldStore.Entity.OFFSET_SHOOT: 3,
+	FieldStore.Entity.OFFSET_SHOOT: 5,
 	FieldStore.Entity.PENERATE: 0,
 	FieldStore.Entity.EXTRA_BULLET_COUNT: 0,
 	FieldStore.Entity.BULLET_SPLIT: 0,

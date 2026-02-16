@@ -1,6 +1,7 @@
 extends EntityBase
 class_name Rooster
 
+var chargeStartTime = {}
 @onready var chargeParticle: GPUParticles2D = $%chargeParticle
 
 func register():
@@ -14,7 +15,8 @@ func register():
 				EffectController.create(ComponentManager.getEffect("BloodFall"), texture.global_position).shot()
 	)
 	chargeParticle.emitting = false
-var chargeStartTime = {}
+	if !WorldManager.isRelease():
+		fields[FieldStore.Entity.EXTRA_BULLET_COUNT] = 3
 
 func ai():
 	texture.play("walk")

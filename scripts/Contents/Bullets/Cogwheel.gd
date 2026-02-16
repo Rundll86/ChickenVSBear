@@ -6,6 +6,8 @@ var rotateSpeed: float = 0
 var dotTime: float = 0
 var slow: float = 0.2
 
+func spawn():
+	slow *= initialRotate / 15.0
 func ai():
 	PresetBulletAI.forward(self, rotation)
 	texture.rotation_degrees += rotateSpeed
@@ -16,6 +18,8 @@ func ai():
 			tryDestroy()
 	else:
 		speed = initialSpeed * (rotateSpeed / initialRotate)
+	if rotateSpeed >= 0 and rotateSpeed / slow <= 0:
+		slow *= 2
 	dotTime = 1000 / (rotateSpeed)
 	rotateSpeed -= slow
 func applyDot():
