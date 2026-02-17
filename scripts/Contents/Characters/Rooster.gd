@@ -15,8 +15,6 @@ func register():
 				EffectController.create(ComponentManager.getEffect("BloodFall"), texture.global_position).shot()
 	)
 	chargeParticle.emitting = false
-	if !WorldManager.isRelease():
-		fields[FieldStore.Entity.EXTRA_BULLET_COUNT] = 3
 
 func ai():
 	texture.play("walk")

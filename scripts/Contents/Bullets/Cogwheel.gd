@@ -19,7 +19,7 @@ func ai():
 	else:
 		speed = initialSpeed * (rotateSpeed / initialRotate)
 	if rotateSpeed >= 0 and rotateSpeed / slow <= 0:
-		slow *= 2
+		slow = 0.5
 	dotTime = 1000 / (rotateSpeed)
 	rotateSpeed -= slow
 func applyDot():
