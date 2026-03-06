@@ -19,10 +19,7 @@ animations = [{
 script = ExtResource("2_y4hkm")
 acidType = 0
 displayName = "酸液"
-lifeTime = 2000.0
+lifeTime = 1000.0
 
 [node name="texture" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_3gf7s")
-
-[node name="hitbox" parent="." index="1"]
-visible = false

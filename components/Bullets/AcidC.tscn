@@ -7,7 +7,6 @@
 script = ExtResource("2_nxpf5")
 speed = 5.0
 penerate = 1.0
-lifeTime = 4000.0
 canDoDuplicate = false
 
 [node name="texture" parent="." index="0"]

@@ -12,36 +12,42 @@ quality = 4
 typeTopic = 3
 costBeachball = 200
 store = {
-"atk": 0.5,
-"c-atk": 1.0,
+"atk": 1.0,
+"c-atk": 0.01,
 "cl-atkspeed": 0.001,
 "cl-speed": 0.001,
-"n-atk": 1.0,
+"f": 30.0,
+"n-atk": 5.0,
 "p-offset": 0.1,
 "s-count-max": 4.0,
-"weakatk": 0.25
+"weakatk": 0.5
 }
 storeType = {
 "atk": 0,
-"c-atk": 1,
+"c-atk": 2,
 "cl-atkspeed": 2,
 "cl-speed": 2,
-"n-atk": 1,
+"f": 4,
+"n-atk": 2,
 "p-offset": 3,
 "s-count-max": 1,
 "weakatk": 0
 }
-descriptionTemplate = "高速随机喷射以下五种[b]酸[/b]之一，强酸可造成$atk点伤害，弱酸造成$weakatk点伤害。
+descriptionTemplate = "发射一个[b]酸蚀风暴[/b]，以$f的频率吸引一下五种[b]酸[/b]到风暴中心，强酸可造成$atk点伤害，弱酸造成$weakatk点伤害。
 [color=green][b]硫酸[/b][/color]：命中时溅射1~$s-count-max滴[b]硫酸[/b]。
-[color=lightblue][b]硝酸[/b][/color]：额外造成$n-atk点伤害。
+[color=lightblue][b]硝酸[/b][/color]：额外造成$n-atk伤害。
 [color=lightyellow][b]盐酸[/b][/color]：使敌人 [i]移动速度[/i] 降低$cl-speed，[i]攻击速度[/i] 降低$cl-atkspeed。
-[color=pink][b]碳酸[/b][/color]：不会发生散射，可无限穿透，碰撞体积会越来越大，但飞行速度稍慢。
-[color=orange][b]磷酸[/b][/color]：使敌人 [i]散射角[/i] 增加$p-offset，可无限追踪。"
-cooldown = 0.0
+[color=pink][b]碳酸[/b][/color]：降低敌人$c-atk伤害。
+[color=orange][b]磷酸[/b][/color]：使敌人 [i]散射角[/i] 增加$p-offset。"
+needEnergy = 10.0
+cooldown = 2000.0
 debugRebuild = true
 
 [node name="avatar" parent="container/info" index="0"]
 texture = ExtResource("2_pnd3r")
+
+[node name="energy" parent="container/info/infos/energyInfo" index="1"]
+text = "10.0"
 
 [node name="beachball" parent="container/info/infos" index="1"]
 count = 200
@@ -52,9 +58,9 @@ quality = 4
 typeTopic = 3
 
 [node name="description" parent="container" index="2"]
-text = "[center]高速随机喷射以下五种[b]酸[/b]之一，强酸可造成[color=cyan]0.50[/color]点伤害，弱酸造成[color=cyan]0.25[/color]点伤害。
+text = "[center]发射一个[b]酸蚀风暴[/b]，以[color=cyan]30.0Hz[/color]的频率吸引一下五种[b]酸[/b]到风暴中心，强酸可造成[color=cyan]1.00[/color]点伤害，弱酸造成[color=cyan]0.50[/color]点伤害。
 [color=green][b]硫酸[/b][/color]：命中时溅射1~[color=cyan]4[/color]滴[b]硫酸[/b]。
-[color=lightblue][b]硝酸[/b][/color]：额外造成[color=cyan]1[/color]点伤害。
+[color=lightblue][b]硝酸[/b][/color]：额外造成[color=cyan]500.0%[/color]伤害。
 [color=lightyellow][b]盐酸[/b][/color]：使敌人 [i]移动速度[/i] 降低[color=cyan]0.1%[/color]，[i]攻击速度[/i] 降低[color=cyan]0.1%[/color]。
-[color=pink][b]碳酸[/b][/color]：不会发生散射，可无限穿透，碰撞体积会越来越大，但飞行速度稍慢。
-[color=orange][b]磷酸[/b][/color]：使敌人 [i]散射角[/i] 增加[color=cyan]0.1°[/color]，可无限追踪。[/center]"
+[color=pink][b]碳酸[/b][/color]：降低敌人[color=cyan]1.0%[/color]伤害。
+[color=orange][b]磷酸[/b][/color]：使敌人 [i]散射角[/i] 增加[color=cyan]0.1°[/color]。[/center]"
