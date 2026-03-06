@@ -12,7 +12,7 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["p-offset"] *= soulLevel
 	origin["s-count-max"] *= soulLevel
 	origin["weakatk"] += 0.075 * to * soulLevel
-	origin["f"] += 25 * (soulLevel - 1)
+	origin["f"] += 15 * (soulLevel - 1)
 	return origin
 func attack(entity: EntityBase):
 	for bullet in BulletBase.generate(
