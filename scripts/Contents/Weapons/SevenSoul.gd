@@ -1,6 +1,11 @@
 @tool
 extends Weapon
 
+func update(to, origin, _entity):
+	origin["atk"] += 1 * to * soulLevel
+	origin["dmg"] += 0.02 * to * soulLevel
+	origin["heal"] += 0.1 * to * soulLevel
+	return origin
 func attack(entity: EntityBase):
 	playSound("attack")
 	for i in 6:
@@ -11,8 +16,4 @@ func attack(entity: EntityBase):
 				bullet.energyCollect = readStore("dmg")
 				bullet.healAmount = readStore("heal")
 		await TickTool.millseconds(15000 / 6.0)
-func update(to, origin, _entity):
-	origin["atk"] += 1 * to * soulLevel
-	origin["dmg"] += 0.02 * to * soulLevel
-	origin["heal"] += 0.1 * to * soulLevel
-	return origin
+	return true

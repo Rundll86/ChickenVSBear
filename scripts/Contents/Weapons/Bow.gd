@@ -18,3 +18,4 @@ func attack(entity: EntityBase):
 			var bullet: Bow = i
 			bullet.count = readStore("count")
 			bullet.atk = readStore("atk")
+	return true

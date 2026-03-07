@@ -24,3 +24,4 @@ func attack(entity: EntityBase):
 		bullet.damageMultipliers = [readStore("dmg1"), readStore("dmg2"), readStore("dmg3"), readStore("dmg4")]
 		bullet.count = readStore("count")
 		bullet.dmg5 = readStore("dmg5")
+	return true
