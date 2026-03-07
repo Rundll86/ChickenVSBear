@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://uu0s26ehdr4h"]
+
+[ext_resource type="PackedScene" uid="uid://bykwevnv7keeh" path="res://components/Abstracts/FeedCardBase.tscn" id="1_cwqpr"]
+[ext_resource type="Texture2D" uid="uid://ckr8tw7fsa7qx" path="res://resources/weapons/AcidWind.png" id="2_cq26m"]
+[ext_resource type="Texture2D" uid="uid://c2q4cf4ivu7o7" path="res://resources/feeds/apple.png" id="2_l1ph2"]
+[ext_resource type="PackedScene" uid="uid://dgxvgsipl0gr1" path="res://components/Weapons/CursorKnife.tscn" id="3_powvs"]
+
+[node name="Applr" instance=ExtResource("1_cwqpr")]
+avatarTexture = ExtResource("2_l1ph2")
+displayName = "焦糖苹果"
+quality = 2
+topic = 8
+fields = Array[int]([14])
+fieldValues = Array[float]([0.01])
+weapons = Array[PackedScene]([ExtResource("3_powvs")])
+costs = Array[int]([0, 2])
+costCounts = Array[int]([500, 1])
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("2_cq26m")
+
+[node name="name" parent="container/info" index="1"]
+displayName = "酸蚀风暴"
+quality = 2
+topic = 8

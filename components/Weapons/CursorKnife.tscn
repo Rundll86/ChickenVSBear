@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgxvgsipl0gr1"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_bri6r"]
+[ext_resource type="Script" uid="uid://jyalew2bgcnk" path="res://scripts/Contents/Weapons/CursorKnife.gd" id="2_sn7uu"]
+[ext_resource type="Texture2D" uid="uid://blnryfwabfo5v" path="res://resources/weapons/CursorKnife.png" id="3_mdipf"]
+[ext_resource type="AudioStream" uid="uid://b3y226i1875iq" path="res://resources/sounds/effect/cursor.wav" id="4_vttri"]
+
+[node name="CursorKnife" instance=ExtResource("1_bri6r")]
+script = ExtResource("2_sn7uu")
+avatarTexture = ExtResource("3_mdipf")
+displayName = "光标刃轮"
+typeTopic = 1
+costBeachball = 350
+store = {
+"atk": 10,
+"speed": 0.004
+}
+storeType = {
+"atk": 1,
+"speed": 2
+}
+descriptionTemplate = "造成$atk点伤害，攻击速度+$speed。"
+cooldown = 300.0
+debugRebuild = true
+
+[node name="attack" parent="sounds" index="0"]
+stream = ExtResource("4_vttri")
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("3_mdipf")
+
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 350
+
+[node name="name" parent="container/info" index="2"]
+displayName = "光标刃轮"
+typeTopic = 1
+
+[node name="description" parent="container" index="2"]
+text = "[center]造成[color=cyan]10[/color]点伤害，攻击速度+[color=cyan]0.4%[/color]。[/center]"

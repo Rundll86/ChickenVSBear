@@ -16,6 +16,7 @@ class_name BulletBase
 @export var autoLoopAnimation: bool = false
 @export var autoDestroyAnimation: bool = false
 @export var autoDestroyOnHitMap: bool = true
+@export var autoPlayTexture: bool = false
 @export var freeAfterSpawn: bool = false
 @export var knockback: float = 0 # 击退力，物理引擎单位
 @export var recoil: float = 0 # 后坐力，物理引擎单位
@@ -57,6 +58,8 @@ func _ready():
 			tryDestroy()
 	if autoLoopAnimation:
 		animator.play("loop")
+	if autoPlayTexture:
+		texture.play("default")
 	body_entered.connect(
 		func(body):
 			if body.is_in_group("map"):
@@ -82,7 +85,7 @@ func _physics_process(_delta: float) -> void:
 		[launcher])
 		if is_instance_valid(targetEntity):
 			PresetBulletAI.trace(
-				self,
+				self ,
 				targetEntity.getTrackingAnchor(),
 				launcher.fields.get(FieldStore.Entity.BULLET_TRACE) / 10
 			)
@@ -116,8 +119,8 @@ func determineCrit():
 	return MathTool.rate(launcher.fields.get(FieldStore.Entity.CRIT_RATE) + GameRule.critRateInfluenceByLuckValue * launcher.fields[FieldStore.Entity.LUCK_VALUE])
 func hitEntity(target: Node):
 	var entity: EntityBase = EntityTool.fromHurtbox(target)
-	if !BulletTool.canDamage(self, entity): return
-	var resultDamage = entity.bulletHit(self, determineCrit())
+	if !BulletTool.canDamage(self , entity): return
+	var resultDamage = entity.bulletHit(self , determineCrit())
 	succeedToHit(resultDamage, entity)
 	if MathTool.rate(fullPenerate() - entity.fields[FieldStore.Entity.PENARATION_RESISTANCE]):
 		baseDamage *= 1.0 - penerateDamageReduction
@@ -127,7 +130,7 @@ func hitObstacle(target: Node):
 	if target is ObstacleBase:
 		var obstacle = target as ObstacleBase
 		if is_instance_valid(obstacle.launcher):
-			if not BulletTool.canDamage(self, obstacle.launcher): return
+			if not BulletTool.canDamage(self , obstacle.launcher): return
 		obstacle.takeDamage(calculateDamage(determineCrit()))
 		if MathTool.rate(fullPenerate() - obstacle.penerateResistance):
 			baseDamage *= 1.0 - penerateDamageReduction

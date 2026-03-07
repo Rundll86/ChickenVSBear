@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_e5pl8"]
 [ext_resource type="Script" uid="uid://cthtupc6dtbav" path="res://scripts/Contents/Characters/Rooster.gd" id="2_oqdqd"]
-[ext_resource type="PackedScene" uid="uid://yq7vmijwvgx1" path="res://components/Weapons/AcidWind.tscn" id="3_0omr3"]
+[ext_resource type="PackedScene" uid="uid://dgxvgsipl0gr1" path="res://components/Weapons/CursorKnife.tscn" id="3_0omr3"]
 [ext_resource type="PackedScene" uid="uid://c0n3igy4hucrg" path="res://components/Weapons/PurpleCrystal.tscn" id="4_0omr3"]
 [ext_resource type="AudioStream" uid="uid://cdrevrq7n6yqa" path="res://resources/sounds/effect/Boing.mp3" id="4_66s6c"]
 [ext_resource type="AudioStream" uid="uid://benyec5bqni0b" path="res://resources/sounds/effect/Chomp.wav" id="4_k0yme"]
@@ -88,18 +88,8 @@ radius = 61.204575
 
 [node name="Rooster" instance=ExtResource("1_e5pl8")]
 script = ExtResource("2_oqdqd")
-defaultCooldownUnit = null
-isBoss = null
 displayName = "公鸡"
-sprintMultiplier = null
-drops = null
-dropCounts = null
-appleCount = null
-level = null
-currentInvinsible = null
 useStatic = true
-hurtAudioRate = null
-health = null
 metadata/_edit_horizontal_guides_ = [-188.0]
 metadata/_edit_vertical_guides_ = [71.0]
 
@@ -112,8 +102,8 @@ process_material = SubResource("ParticleProcessMaterial_joj4g")
 [node name="weaponStore" parent="." index="2"]
 process_mode = 4
 
-[node name="AcidWind" parent="weaponStore" index="0" instance=ExtResource("3_0omr3")]
-offset_bottom = 566.0
+[node name="CursorKnife" parent="weaponStore" index="0" instance=ExtResource("3_0omr3")]
+offset_bottom = 350.0
 
 [node name="PurpleCrystal" parent="weaponStore" index="1" instance=ExtResource("4_0omr3")]
 debugRebuild = false

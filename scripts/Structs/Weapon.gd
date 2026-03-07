@@ -37,6 +37,7 @@ class_name Weapon
 var cooldownTimer: CooldownTimer = null
 var originalStore: Dictionary = {}
 var chargedTime: float = 0
+var attackSpeed: float = 1
 
 func _ready():
 	cooldownTimer = CooldownTimer.new()
@@ -71,7 +72,7 @@ func _ready():
 			if get_parent():
 				var myIndex = get_index()
 				var leftIndex = max(myIndex - 1, 0)
-				get_parent().move_child(self, leftIndex)
+				get_parent().move_child(self , leftIndex)
 				ArrayTool.swap(UIState.player.weapons, myIndex, leftIndex)
 				UIState.player.rebuildWeaponIcons()
 	)
@@ -80,7 +81,7 @@ func _ready():
 			if get_parent():
 				var myIndex = get_index()
 				var rightIndex = min(myIndex + 1, get_parent().get_child_count() - 1)
-				get_parent().move_child(self, rightIndex)
+				get_parent().move_child(self , rightIndex)
 				ArrayTool.swap(UIState.player.weapons, myIndex, rightIndex)
 				UIState.player.rebuildWeaponIcons()
 	)
@@ -167,7 +168,7 @@ func playSound(sound: String):
 		await cloned.finished
 		cloned.queue_free()
 func canAttackBy(entity: EntityBase):
-	cooldownTimer.speedScale = entity.fields.get(FieldStore.Entity.ATTACK_SPEED)
+	cooldownTimer.speedScale = entity.fields.get(FieldStore.Entity.ATTACK_SPEED) * attackSpeed
 	return cooldownTimer.isCooldowned() and entity.isEnergyEnough(needEnergy)
 func tryAttack(entity: EntityBase):
 	if canAttackBy(entity):
