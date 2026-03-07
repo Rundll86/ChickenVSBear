@@ -7,17 +7,23 @@ func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["max-n"] += 2 * soulLevel
 	return origin
 func attack(entity: EntityBase):
-	var bulletName = MathTool.randomChoiceFromWeights(["OxygenFire", "AcidN"], [10, 1])
-	for i in randi_range(readStore("min-n"), readStore("max-n")) if bulletName == "AcidN" else 1:
-		for bullet in BulletBase.generate(
-			ComponentManager.getBullet(bulletName),
-			entity,
-			entity.findWeaponAnchor("normal"),
-			entity.position.angle_to_point(get_global_mouse_position()),
-		):
-			if bullet is OxygenFire:
-				bullet.baseDamage = readStore("fireatk")
-			elif bullet is AcidN:
-				bullet.baseDamage = readStore("atk")
-				bullet.lifeTime *= 0.5
+	for bullet in BulletBase.generate(
+		ComponentManager.getBullet("OxygenFire"),
+		entity,
+		entity.findWeaponAnchor("normal"),
+		entity.position.angle_to_point(get_global_mouse_position()),
+	):
+		if bullet is OxygenFire:
+			bullet.baseDamage = readStore("fireatk")
+			if MathTool.rate(0.1):
+				for i in randi_range(readStore("min-n"), readStore("max-n")):
+					for n in BulletBase.generate(
+						ComponentManager.getBullet("AcidN"),
+						entity,
+						bullet.position,
+						0,
+					):
+						if n is AcidN:
+							n.baseDamage = readStore("atk")
+							n.storm = bullet
 	return true

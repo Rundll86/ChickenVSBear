@@ -12,7 +12,7 @@ var arg2 = 0
 var arg3 = 0
 
 var randomPercent: float = 0
-var storm: AcidStormBullet = null
+var storm: Node2D = null
 
 func register():
 	scale.y *= MathTool.randomChoiceFrom([-1, 1])
