@@ -169,7 +169,7 @@ func playSound(sound: String):
 		cloned.queue_free()
 func canAttackBy(entity: EntityBase):
 	cooldownTimer.speedScale = entity.fields.get(FieldStore.Entity.ATTACK_SPEED) * attackSpeed
-	return cooldownTimer.isCooldowned() and entity.isEnergyEnough(needEnergy)
+	return cooldownTimer.isCooldowned() and entity.isEnergyEnough(needEnergy) and checkAttack(entity)
 func tryAttack(entity: EntityBase):
 	if canAttackBy(entity):
 		var result = await attack(entity)
@@ -183,5 +183,7 @@ func charged(base: float, percent: float):
 # 抽象
 func update(_to: int, origin: Dictionary, _entity: EntityBase):
 	return origin
+func checkAttack(_entity: EntityBase) -> bool:
+	return true
 func attack(_entity: EntityBase):
 	pass

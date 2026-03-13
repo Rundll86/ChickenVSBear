@@ -4,8 +4,11 @@ extends Weapon
 func update(to: int, origin: Dictionary, _entity: EntityBase):
 	origin["atk"] += 1 * to * soulLevel
 	origin["fireatk"] += 0.5 * to * soulLevel
-	origin["max-n"] += 2 * soulLevel
+	origin["max-n"] += 2 * (soulLevel - 1)
+	origin["count"] *= soulLevel
 	return origin
+func checkAttack(entity: EntityBase) -> bool:
+	return entity.useItem({ItemStore.ItemType.BASKETBALL: 1.0 / readStore("count")})
 func attack(entity: EntityBase):
 	for bullet in BulletBase.generate(
 		ComponentManager.getBullet("OxygenFire"),
