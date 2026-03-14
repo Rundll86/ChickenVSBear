@@ -16,7 +16,7 @@ func spawn():
 	anchor.global_rotation = 0
 func ai():
 	speed *= 0.99
-	PresetBulletAI.forward(self, rotation)
+	PresetBulletAI.forward(self , rotation)
 	if timeLived() > countdown:
 		tryDestroy()
 	else:
