@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx7nogfnv7s8t"]
+
+[ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_0lbwr"]
+[ext_resource type="Script" uid="uid://bqdyhwcd4jwmj" path="res://scripts/Contents/Weapons/Tree.gd" id="2_jsuc8"]
+
+[node name="Tree" instance=ExtResource("1_0lbwr")]
+script = ExtResource("2_jsuc8")
+cooldown = 500.0

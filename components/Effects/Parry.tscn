@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://bwbhxnuhmkwww"]
+
+[ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_vc7s4"]
+[ext_resource type="Texture2D" uid="uid://bdvyebq7sepqf" path="res://resources/effects/parry/ParrySparkAccurate0.png" id="2_kic6n"]
+[ext_resource type="AudioStream" uid="uid://caxopva6lrlm3" path="res://resources/sounds/effect/swordhit.ogg" id="2_l0pl0"]
+[ext_resource type="Texture2D" uid="uid://bsq0s07h5u6fp" path="res://resources/effects/parry/ParrySparkAccurate1.png" id="3_l0pl0"]
+[ext_resource type="Texture2D" uid="uid://myolsnuud6jk" path="res://resources/effects/parry/ParrySparkAccurate2.png" id="4_buxs5"]
+[ext_resource type="Texture2D" uid="uid://cu72mlaga1ge4" path="res://resources/effects/parry/ParrySparkAccurate3.png" id="5_471em"]
+[ext_resource type="Texture2D" uid="uid://25kjjcrbbm70" path="res://resources/effects/parry/ParrySparkAccurate4.png" id="6_tu1jt"]
+[ext_resource type="Texture2D" uid="uid://2jjv833hjn0o" path="res://resources/effects/parry/ParrySparkAccurate5.png" id="7_f5km5"]
+[ext_resource type="Texture2D" uid="uid://cvommbyvqfp1p" path="res://resources/effects/parry/ParrySparkAccurate6.png" id="8_molrd"]
+[ext_resource type="Texture2D" uid="uid://rv10oe25rb6c" path="res://resources/effects/parry/ParrySparkAccurate.png" id="9_76bi2"]
+
+[sub_resource type="Animation" id="Animation_kic6n"]
+resource_name = "spawn"
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%stage/../texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"default", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l0pl0"]
+_data = {
+&"spawn": SubResource("Animation_kic6n")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qcypm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kic6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_l0pl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_buxs5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_471em")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tu1jt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f5km5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_molrd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_76bi2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Parry" instance=ExtResource("1_vc7s4")]
+spawnSound = "spawn"
+spawnAnimation = "spawn"
+
+[node name="spawn" parent="sounds" index="0"]
+stream = ExtResource("2_l0pl0")
+
+[node name="animator" parent="stage" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_l0pl0")
+}
+
+[node name="texture" type="AnimatedSprite2D" parent="." index="3"]
+modulate = Color(0.5922946, 1, 0.5, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_qcypm")
+frame = 7
+frame_progress = 1.0

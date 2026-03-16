@@ -51,11 +51,6 @@ func _ready():
 	spawnInWhere = position
 	spawn()
 	dotLoop()
-	if autoSpawnAnimation:
-		animator.play("spawn")
-		await animator.animation_finished
-		if freeAfterSpawn:
-			tryDestroy()
 	if autoLoopAnimation:
 		animator.play("loop")
 	if autoPlayTexture:
@@ -66,7 +61,18 @@ func _ready():
 				if autoDestroyOnHitMap:
 					tryDestroy(true)
 	)
+	area_entered.connect(
+		func(body):
+			var bullet = BulletTool.fromArea(body)
+			if is_instance_valid(bullet):
+				hitBullet(bullet)
+	)
 	ai()
+	if autoSpawnAnimation:
+		animator.play("spawn")
+		await animator.animation_finished
+		if freeAfterSpawn:
+			tryDestroy()
 func _process(_delta: float) -> void:
 	if destroying: return
 	if lifeTime > 0:
@@ -218,6 +224,8 @@ func split(newBullet: BulletBase, _index: int, _total: int, _lastBullet: float):
 	return newBullet
 func refract(newBullet: BulletBase, _entity: EntityBase, _index: int, _total: int, _lastBullet: float):
 	return newBullet
+func hitBullet(_bullet: BulletBase):
+	pass
 
 static func generate(
 		bullet: PackedScene,
