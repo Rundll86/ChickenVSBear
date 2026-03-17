@@ -10,3 +10,13 @@ func hitBullet(bullet: BulletBase):
 			eff.modulate = bullet.modulate.blend(bullet.texture.modulate)
 			eff.shot()
 			bullet.tryDestroy()
+			var cycler = launcher.getOrCreateCycleTimer("parry", 2000, 100)
+			if len(cycler.bullets) < 5:
+				for b in BulletBase.generate(
+					ComponentManager.getBullet("ParryBall"),
+					launcher,
+					position,
+					0
+				):
+					if b is ParryBallBullet:
+						pass

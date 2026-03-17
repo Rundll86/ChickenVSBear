@@ -112,6 +112,7 @@ var weaponBag: Array[String] = []
 var canRunAi: bool = true
 var currentStage: int = 0
 var spawnTime: float = 0
+var cycleTimers: Dictionary = {}
 
 func _ready():
 	if useStatic:
@@ -199,8 +200,19 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	storeEnergy(randf_range(0.01, 0.05 + fields.get(FieldStore.Entity.ENERGY_REGENERATION) - 1), true)
 	trailParticle.emitting = trailing
+	for cycler in cycleTimers.values():
+		if cycler is CycleTimer:
+			cycler.apply()
 
 # 通用方法
+func getOrCreateCycleTimer(timerName: String, period: float = 1000, distance: float = 200, start: bool = true) -> CycleTimer:
+	if !cycleTimers.has(timerName):
+		var newTimer = CycleTimer.new()
+		newTimer.period = period
+		newTimer.distance = distance
+		if start: newTimer.start()
+		cycleTimers[timerName] = newTimer
+	return cycleTimers[timerName]
 func initHealth(maxHealth: float):
 	fields[FieldStore.Entity.MAX_HEALTH] = maxHealth
 	health = maxHealth
@@ -276,7 +288,7 @@ func bulletHit(bullet: BulletBase, crit: bool):
 	healthChanged.emit(health)
 	DamageLabel.create(damage, crit || perfectMiss, damageAnchor.global_position + MathTool.sampleInCircle(GameRule.damageLabelSpawnOffset))
 	if isBoss and bullet.launcher.isPlayer():
-		bullet.launcher.setBoss(self)
+		bullet.launcher.setBoss(self )
 	if health <= 0:
 		if isBoss:
 			bullet.launcher.storeEnergy(energy * 0.35)
@@ -324,7 +336,7 @@ func tryAttack(type: int, needChargeUp: bool = false):
 			await EffectController.create(ComponentManager.getEffect("AttackStar"), damageAnchor.global_position).shot()
 			charginup = false
 		if isPlayer() and !isSummon():
-			if await weapon.tryAttack(self):
+			if await weapon.tryAttack(self ):
 				weapon.playSound("attack")
 		else:
 			if await attack(type):
