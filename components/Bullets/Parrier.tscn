@@ -40,17 +40,16 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-tracks/3/type = "value"
+tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath("%texture/..:parryRate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_ksxds"]
@@ -63,9 +62,9 @@ tracks/0/path = NodePath(".:scale:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 2, 0, 2),
-"points": PackedFloat32Array(0.8, -0.25, 0, 0, 0, 1, -0.1, 0, 0.8, 0, 1, -0.1, 0, 0.8, 0, 0, 0, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.2, 0.5, 1)
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0, 0.5, 0, 0, 0.8, 0, 0),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -74,9 +73,9 @@ tracks/1/path = NodePath(".:scale:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(2, 2, 0, 2),
-"points": PackedFloat32Array(0.8, 0, 0, 0, 0, 1, -0.1, 0, 0.8, 0, 1, -0.1, 0, 0.8, 0, 0, 0, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.2, 0.5, 1)
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0.8, 0, 0, 0, 0.5, 0, 0, 0.8, 0, 0),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -90,17 +89,16 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/3/type = "value"
+tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath("%texture/..:parryRate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(1, 0, 0, 0.3, 0, 0, -1, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k4ctn"]
@@ -114,7 +112,7 @@ size = Vector2(54, 204)
 
 [node name="Parrier" instance=ExtResource("1_57y3f")]
 script = ExtResource("2_li4th")
-parryRate = 1.0
+parryRate = 0.0
 baseDamage = 0.0
 penerate = 1.0
 autoSpawnAnimation = true
