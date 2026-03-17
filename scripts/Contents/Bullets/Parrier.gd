@@ -6,7 +6,7 @@ class_name ParrierBullet
 func hitBullet(bullet: BulletBase):
 	if BulletTool.canDamage(bullet, launcher):
 		if MathTool.rate(parryRate):
-			var eff = EffectController.create(ComponentManager.getEffect("Parry"), position + (bullet.position - position).normalized() * 120)
-			eff.modulate = bullet.modulate
+			var eff = EffectController.create(ComponentManager.getEffect("Parry"), position + (bullet.position - position).normalized() * 150)
+			eff.modulate = bullet.modulate.blend(bullet.texture.modulate)
 			eff.shot()
 			bullet.tryDestroy()
