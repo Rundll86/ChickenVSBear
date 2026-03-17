@@ -18,6 +18,9 @@ func apply():
 	bullets = bullets.filter(is_instance_valid)
 	for index in len(bullets):
 		var bullet = bullets[index]
-		bullet.position = bullet.launcher.position + Vector2.from_angle(periodPercent(index)) * distance
+		var offset = Vector2.from_angle(periodPercent(index))
+		offset.y *= 0.5
+		bullet.position = bullet.launcher.position + offset * distance
+		bullet.scale = Vector2.ONE * (1 + offset.y)
 func host(bullet: BulletBase):
 	bullets.append(bullet)
