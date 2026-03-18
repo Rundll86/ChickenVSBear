@@ -19,7 +19,7 @@ func apply():
 	for index in len(bullets):
 		var bullet = bullets[index]
 		var offset = Vector2.from_angle(periodPercent(index))
-		offset.y *= 0.5
+		offset.y *= 0.25
 		bullet.position = bullet.launcher.position + offset * distance
 		bullet.scale = Vector2.ONE * (1 + offset.y)
 func host(bullet: BulletBase):

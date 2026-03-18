@@ -71,6 +71,7 @@ func _ready():
 	if autoSpawnAnimation:
 		animator.play("spawn")
 		await animator.animation_finished
+		afterSpawn()
 		if freeAfterSpawn:
 			tryDestroy()
 func _process(_delta: float) -> void:
@@ -213,6 +214,8 @@ func ai():
 func destroy(_beacuseMap: bool):
 	pass
 func spawn():
+	pass
+func afterSpawn():
 	pass
 func applyDot():
 	pass

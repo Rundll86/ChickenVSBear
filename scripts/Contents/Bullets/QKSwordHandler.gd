@@ -1,14 +1,6 @@
 extends BulletBase
-class_name ParryBallBullet
+class_name QKSwordHandler
 
-var cycler: CycleTimer
-
-func spawn():
-	cycler = launcher.getOrCreateCycleTimer("parry")
-	cycler.host(self )
-func ai():
-	PresetBulletAI.selfRotate(self , 5)
-	hitbox.disabled = !launcher.sprinting
 func succeedToHit(_dmg: float, entity: EntityBase):
 	for bullet in BulletBase.generate(
 		ComponentManager.getBullet("QKSword"),
