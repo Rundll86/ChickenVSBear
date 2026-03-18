@@ -5,4 +5,5 @@
 
 [node name="Tree" instance=ExtResource("1_0lbwr")]
 script = ExtResource("2_jsuc8")
-cooldown = 200.0
+oneShoot = true
+cooldown = 0.0

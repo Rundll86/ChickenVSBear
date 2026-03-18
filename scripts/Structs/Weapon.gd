@@ -9,6 +9,7 @@ class_name Weapon
 @export var soulLevel: int = 1
 @export var costBeachball: int = 500
 @export var chargable: bool = false
+@export var oneShoot: bool = false
 @export var store: Dictionary = {
 	"atk": 10
 }
