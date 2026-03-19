@@ -6,10 +6,13 @@ var cycler: CycleTimer
 func spawn():
 	cycler = launcher.getOrCreateCycleTimer("parry")
 	cycler.host(self )
+	launcher.sprintMultiplier += 1
+func destroy(_beacuseMap: bool):
+	launcher.sprintMultiplier -= 1
 func ai():
 	PresetBulletAI.selfRotate(self , 5)
-	hitbox.disabled = !launcher.sprinting
-func succeedToHit(_dmg: float, entity: EntityBase):
+	hitbox.disabled = !launcher.sprinting # 玩家在冲刺时气的碰撞箱才生效
+func succeedToHit(_dmg: float, entity: EntityBase): # 当撞到敌人时
 	for bullet in BulletBase.generate(
 		ComponentManager.getBullet("QKSword"),
 		launcher,
@@ -19,4 +22,4 @@ func succeedToHit(_dmg: float, entity: EntityBase):
 		if bullet is QKSwordBullet:
 			bullet.position = entity.texture.global_position + MathTool.sampleInRing(50, 200)
 			bullet.tracer = entity
-			bullet.look_at(entity.position)
+			bullet.look_at(entity.getTrackingAnchor()) # 生成的乾坤剑面向敌人

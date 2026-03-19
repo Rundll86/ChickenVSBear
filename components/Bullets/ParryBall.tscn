@@ -44,6 +44,7 @@ radius = 100.0
 
 [node name="ParryBall" instance=ExtResource("1_xeuh5")]
 script = ExtResource("2_cc0al")
+baseDamage = 0.0
 
 [node name="texture" parent="." index="0"]
 scale = Vector2(0.5, 0.5)

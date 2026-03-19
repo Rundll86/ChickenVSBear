@@ -113,7 +113,7 @@ size = Vector2(54, 204)
 [node name="Parrier" instance=ExtResource("1_57y3f")]
 script = ExtResource("2_li4th")
 parryRate = 0.0
-baseDamage = 0.0
+baseDamage = 1.0
 penerate = 1.0
 autoSpawnAnimation = true
 freeAfterSpawn = true
