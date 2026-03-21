@@ -8,6 +8,7 @@ var spawnSpeed: float = 1
 func register():
 	spawnSpeed = randf_range(0.25, 1.75)
 	animator.speed_scale = spawnSpeed
+	lifeTime /= spawnSpeed
 func ai():
 	if is_instance_valid(tracer) && !attackedTracer:
 		look_at(tracer.getTrackingAnchor())

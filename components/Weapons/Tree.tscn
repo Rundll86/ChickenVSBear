@@ -9,25 +9,28 @@ script = ExtResource("2_jsuc8")
 avatarTexture = ExtResource("3_nwamk")
 displayName = "扶桑元神"
 quality = 4
+typeTopic = 3
 costBeachball = 900
 oneShoot = true
 store = {
-"atk": 10,
+"atk": 20,
 "count": 1.0,
-"foo": 1.0
+"max": 3.0
 }
 storeType = {
 "atk": 1,
 "count": 1,
-"foo": 1
+"max": 1
 }
 descriptionTemplate = "进行[b]格挡[/b]，化解飞来的子弹。
 每成功格挡一次，获得一点[b]气力[/b]。
-每拥有一点气力，闪避穿过敌人时对其贴上$foo层[b]符咒[/b]，一段时间后符咒自动引爆，
+每拥有一点气力，闪避穿过敌人时对其贴上一层[b]符咒[/b]，一段时间后符咒自动引爆，
 召唤[b]乾坤剑[/b]穿透敌人。
 
 乾坤剑造成$atk点伤害，
-每次格挡最多化解$count个子弹。"
+每次格挡最多化解$count个子弹，
+体内最多储存$max点气力，
+格挡时机越精确，成功率越高。"
 cooldown = 0.0
 debugRebuild = true
 
@@ -40,12 +43,15 @@ count = 900
 [node name="name" parent="container/info" index="2"]
 displayName = "扶桑元神"
 quality = 4
+typeTopic = 3
 
 [node name="description" parent="container" index="2"]
 text = "[center]进行[b]格挡[/b]，化解飞来的子弹。
 每成功格挡一次，获得一点[b]气力[/b]。
-每拥有一点气力，闪避穿过敌人时对其贴上[color=cyan]1[/color]层[b]符咒[/b]，一段时间后符咒自动引爆，
+每拥有一点气力，闪避穿过敌人时对其贴上一层[b]符咒[/b]，一段时间后符咒自动引爆，
 召唤[b]乾坤剑[/b]穿透敌人。
 
-乾坤剑造成[color=cyan]10[/color]点伤害，
-每次格挡最多化解[color=cyan]1[/color]个子弹。[/center]"
+乾坤剑造成[color=cyan]20[/color]点伤害，
+每次格挡最多化解[color=cyan]1[/color]个子弹，
+体内最多储存[color=cyan]3[/color]点气力，
+格挡时机越精确，成功率越高。[/center]"

@@ -5,6 +5,8 @@ class_name ParrierBullet
 
 var parryiedTimes: int = 0
 var maxParryTimes: int = 1
+var maxBallCount: int = 3
+var atk: float = 0
 
 func hitBullet(bullet: BulletBase): # 当前子弹与其他子弹相撞
 	if BulletTool.canDamage(bullet, launcher): # 其他子弹可以使当前子弹的发射者受伤吗？
@@ -17,7 +19,7 @@ func hitBullet(bullet: BulletBase): # 当前子弹与其他子弹相撞
 			# 摧毁其他子弹
 			bullet.tryDestroy()
 			var cycler = launcher.getOrCreateCycleTimer("parry", 2000, 100)
-			if len(cycler.bullets) < 5: # 玩家最多只能拥有5点气
+			if len(cycler.bullets) < maxBallCount: # 玩家最多只能拥有5点气
 				for b in BulletBase.generate(
 					ComponentManager.getBullet("ParryBall"), # 生成气的子弹
 					launcher,
@@ -25,4 +27,4 @@ func hitBullet(bullet: BulletBase): # 当前子弹与其他子弹相撞
 					0
 				):
 					if b is ParryBallBullet:
-						pass
+						b.atk = atk
