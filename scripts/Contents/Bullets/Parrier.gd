@@ -38,4 +38,4 @@ func hitBullet(bullet: BulletBase): # 当前子弹与其他子弹相撞
 					0
 				):
 					if b is ParryBallBullet:
-						b.atk = atk
+						b.atk = atk * bullet.baseDamage
