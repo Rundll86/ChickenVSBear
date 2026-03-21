@@ -2,7 +2,6 @@ extends BulletBase
 class_name QKSwordBullet
 
 var tracer: EntityBase
-var attackedTracer: bool = false
 var spawnSpeed: float = 1
 
 func register():
@@ -10,7 +9,7 @@ func register():
 	animator.speed_scale = spawnSpeed
 	lifeTime /= spawnSpeed
 func ai():
-	if is_instance_valid(tracer) && !attackedTracer:
+	if is_instance_valid(tracer):
 		look_at(tracer.getTrackingAnchor())
 	if timeLived() > 1000 / spawnSpeed:
 		PresetBulletAI.forward(self , rotation) # 前进
@@ -19,7 +18,7 @@ func ai():
 		hitbox.disabled = true
 func succeedToHit(_dmg: float, entity: EntityBase):
 	if entity == tracer:
-		attackedTracer = true # 只需要命中一次目标就不需要继续前进了
+		tryDestroy() # 只需要命中一次目标就不需要继续前进了
 	EffectController.create(
 		ComponentManager.getEffect("FooExplosion"),
 		entity.texture.global_position
