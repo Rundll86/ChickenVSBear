@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://33prhoaffs8x"]
+
+[ext_resource type="Texture2D" uid="uid://drcp0del8rgsh" path="res://resources/effects/parrier/1/Effect_AttackB0.png" id="1_0m4hx"]
+[ext_resource type="Texture2D" uid="uid://c14m2xoe7wlbh" path="res://resources/effects/parrier/1/Effect_AttackB1.png" id="2_veosc"]
+[ext_resource type="Texture2D" uid="uid://dprrvyaxj0o31" path="res://resources/effects/parrier/1/Effect_AttackB2.png" id="3_pjoe6"]
+[ext_resource type="Texture2D" uid="uid://7m7q6ja1n7jj" path="res://resources/effects/parrier/1/Effect_AttackB3.png" id="4_6wwba"]
+[ext_resource type="Texture2D" uid="uid://ddexadx6o6exi" path="res://resources/effects/parrier/1/Effect_AttackB4.png" id="5_851jf"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0m4hx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_veosc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pjoe6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6wwba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_851jf")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 15.0
+}]

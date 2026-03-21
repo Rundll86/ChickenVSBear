@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cgdnkey2fhla4"]
+[gd_scene load_steps=17 format=3 uid="uid://cgdnkey2fhla4"]
 
 [ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_vi6cv"]
 [ext_resource type="Texture2D" uid="uid://cq80y83edetx3" path="res://resources/effects/fooExplosion/Lv1_FooExplosion00.png" id="2_1ukt2"]
@@ -15,16 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://dm4ih65h45qi8" path="res://resources/effects/fooExplosion/Lv1_FooExplosion10.png" id="12_dhm5g"]
 [ext_resource type="Texture2D" uid="uid://bpr2j2jed4yxm" path="res://resources/effects/fooExplosion/Lv1_FooExplosion11.png" id="13_41cg7"]
 
-[sub_resource type="Animation" id="Animation_1ukt2"]
-resource_name = "spawn"
-length = 0.4
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8b1u1"]
-_data = {
-&"spawn": SubResource("Animation_1ukt2")
-}
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kn8g0"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8b1u1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -75,6 +68,9 @@ spawnTexture = "spawn"
 [node name="spawn" parent="sounds" index="0"]
 stream = ExtResource("2_8b1u1")
 
+[node name="particles" parent="." index="1"]
+lifetime = 0.01
+
 [node name="animator" parent="stage" index="0"]
 libraries = {
 &"": SubResource("AnimationLibrary_8b1u1")
@@ -82,6 +78,6 @@ libraries = {
 
 [node name="texture" parent="stage" index="1"]
 scale = Vector2(0.4, 0.4)
-sprite_frames = SubResource("SpriteFrames_kn8g0")
+sprite_frames = SubResource("SpriteFrames_8b1u1")
 frame = 11
 frame_progress = 1.0

@@ -8,12 +8,23 @@ var maxParryTimes: int = 1
 var maxBallCount: int = 3
 var atk: float = 0
 
+func spawn():
+	var varians = randi_range(0, 1)
+	var inverts = []
+	var frames = load("res://resources/effects/parrier/%d/%d.tres" % [varians, varians])
+	var eff = EffectController.create(ComponentManager.getEffect("Parrier"), position)
+	eff.rotation = rotation
+	eff.scale.y *= MathTool.randomChoiceFrom([-1, 1])
+	if varians in inverts:
+		eff.scale.x *= -1
+	eff.texture.sprite_frames = frames
+	eff.shot()
 func hitBullet(bullet: BulletBase): # 当前子弹与其他子弹相撞
 	if BulletTool.canDamage(bullet, launcher): # 其他子弹可以使当前子弹的发射者受伤吗？
 		if parryiedTimes < maxParryTimes && MathTool.rate(parryRate): # 一个刀光最多格挡多少个敌方子弹？
 			parryiedTimes += 1
 			# 生成格挡特效
-			var eff = EffectController.create(ComponentManager.getEffect("Parry"), position + (bullet.position - position).normalized() * 150) # 从子弹位置，面向其他子弹的方向前进150
+			var eff = EffectController.create(ComponentManager.getEffect("Parry"), position + (bullet.position - position).normalized() * 200) # 从子弹位置，面向其他子弹的方向前进150
 			eff.modulate = bullet.modulate.blend(bullet.texture.modulate)
 			eff.shot()
 			# 摧毁其他子弹

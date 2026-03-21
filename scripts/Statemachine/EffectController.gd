@@ -15,6 +15,10 @@ func _ready():
 	register()
 	particles.emitting = false
 	particles.one_shot = oneShot
+func shot():
+	var childParticle = particles.duplicate() as GPUParticles2D
+	childParticle.emitting = true
+	add_child(childParticle)
 	var sound = sounds.get_node_or_null(spawnSound)
 	if sound and sound.stream:
 		sound.play()
@@ -22,23 +26,20 @@ func _ready():
 		animator.play(spawnAnimation)
 	if spawnTexture:
 		texture.play(spawnTexture)
-func shot():
-	var childParticle = particles.duplicate() as GPUParticles2D
-	childParticle.emitting = true
-	add_child(childParticle)
 	if oneShot:
-		await childParticle.finished
-		childParticle.queue_free()
+		if childParticle.emitting:
+			await childParticle.finished
+			childParticle.queue_free()
+		if spawnTexture:
+			if texture.is_playing():
+				await texture.animation_finished
+				texture.hide()
 		if spawnSound:
-			var sound: AudioStreamPlayer2D = sounds.get_node(spawnSound)
 			if sound.playing:
 				await sound.finished
 		if spawnAnimation:
 			if animator.is_playing():
 				await animator.animation_finished
-		if spawnTexture:
-			if texture.is_playing():
-				await texture.animation_finished
 		queue_free()
 
 func register():

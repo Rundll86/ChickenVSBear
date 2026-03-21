@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://12ubhs2p8a27"]
+
+[ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_yftgy"]
+[ext_resource type="SpriteFrames" uid="uid://cegxrhkf6na6t" path="res://resources/effects/parrier/2/2.tres" id="2_7outc"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6cpy3"]
+
+[node name="Parrier" instance=ExtResource("1_yftgy")]
+spawnTexture = "spawn"
+
+[node name="particles" parent="." index="1"]
+lifetime = 0.01
+
+[node name="animator" parent="stage" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_6cpy3")
+}
+
+[node name="texture" parent="stage" index="1"]
+position = Vector2(150, 50)
+scale = Vector2(-0.4, 0.4)
+sprite_frames = ExtResource("2_7outc")
+frame = 6
+frame_progress = 1.0

@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://cegxrhkf6na6t"]
+
+[ext_resource type="Texture2D" uid="uid://bjhe3vik4tryq" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA2.png" id="1_yo7e3"]
+[ext_resource type="Texture2D" uid="uid://bwkgdff32o7g1" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA3.png" id="2_kfcht"]
+[ext_resource type="Texture2D" uid="uid://mufrpnnomkpk" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA4.png" id="3_log7y"]
+[ext_resource type="Texture2D" uid="uid://csclv5al0on2k" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA5.png" id="4_1d1ae"]
+[ext_resource type="Texture2D" uid="uid://cxt56ccdugqg3" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA6.png" id="5_k7vdj"]
+[ext_resource type="Texture2D" uid="uid://dmcm4rljstsb8" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA7.png" id="6_d81w8"]
+[ext_resource type="Texture2D" uid="uid://biod5vk0jqn7q" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA8.png" id="7_6h3wu"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yo7e3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kfcht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_log7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1d1ae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k7vdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d81w8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6h3wu")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 20.0
+}]

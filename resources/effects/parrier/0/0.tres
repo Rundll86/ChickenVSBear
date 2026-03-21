@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://cr71etd0eeule"]
+
+[ext_resource type="Texture2D" uid="uid://dqni3jvd1v40d" path="res://resources/effects/parrier/0/AttackEffect_ThrustDelay0.png" id="1_aedkl"]
+[ext_resource type="Texture2D" uid="uid://cic3h2mcbfbkv" path="res://resources/effects/parrier/0/AttackEffect_ThrustDelay1.png" id="2_qk6hk"]
+[ext_resource type="Texture2D" uid="uid://bt3d4r3jcexwx" path="res://resources/effects/parrier/0/AttackEffect_ThrustDelay2.png" id="3_nqrx7"]
+[ext_resource type="Texture2D" uid="uid://d3cpxixdnhprt" path="res://resources/effects/parrier/0/AttackEffect_ThrustDelay3.png" id="4_x8cs1"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aedkl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qk6hk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nqrx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x8cs1")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 15.0
+}]
