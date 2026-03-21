@@ -19,7 +19,10 @@ func ai():
 func succeedToHit(_dmg: float, entity: EntityBase):
 	if entity == tracer:
 		tryDestroy() # 只需要命中一次目标就不需要继续前进了
-	EffectController.create(
+	var eff = EffectController.create(
 		ComponentManager.getEffect("FooExplosion"),
 		entity.texture.global_position
-	).shot()
+	)
+	var varians = randi_range(0, 2)
+	eff.texture.sprite_frames = load("res://resources/effects/FooExplosion/%d/%d.tres" % [varians, varians])
+	eff.shot()

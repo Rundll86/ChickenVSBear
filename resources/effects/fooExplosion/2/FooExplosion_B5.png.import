@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq80y83edetx3"
-path="res://.godot/imported/Lv1_FooExplosion00.png-0df356b41f41f6092a9bb1652b63c922.ctex"
+uid="uid://cxbhuw0th3ntt"
+path="res://.godot/imported/FooExplosion_B5.png-997f87ac30ba25c79409910883a360dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/effects/fooExplosion/Lv1_FooExplosion00.png"
-dest_files=["res://.godot/imported/Lv1_FooExplosion00.png-0df356b41f41f6092a9bb1652b63c922.ctex"]
+source_file="res://resources/effects/fooExplosion/2/FooExplosion_B5.png"
+dest_files=["res://.godot/imported/FooExplosion_B5.png-997f87ac30ba25c79409910883a360dd.ctex"]
 
 [params]
 
