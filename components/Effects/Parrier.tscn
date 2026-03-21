@@ -20,5 +20,5 @@ libraries = {
 position = Vector2(150, 50)
 scale = Vector2(-0.4, 0.4)
 sprite_frames = ExtResource("2_7outc")
-frame = 6
+frame = 8
 frame_progress = 1.0

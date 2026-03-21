@@ -1,0 +1,57 @@
+[gd_scene load_steps=12 format=3 uid="uid://b7bbfnw28lfv5"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_cpy11"]
+[ext_resource type="Texture2D" uid="uid://4x5llpjk6roc" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA0.png" id="2_nitan"]
+[ext_resource type="Texture2D" uid="uid://nuf41by5qav3" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA1.png" id="3_uqpvp"]
+[ext_resource type="Texture2D" uid="uid://cn3jub5bbs10s" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA2.png" id="4_5okru"]
+[ext_resource type="Texture2D" uid="uid://cuxujj0yo03cw" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA3.png" id="5_oqbka"]
+[ext_resource type="Texture2D" uid="uid://bnk7e6vdm73t" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA4.png" id="6_ufvya"]
+[ext_resource type="Texture2D" uid="uid://bd2asjjnvg2s1" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA5.png" id="7_tuckf"]
+[ext_resource type="Texture2D" uid="uid://qfx7cdpxl6gt" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA6.png" id="8_23j3h"]
+[ext_resource type="Texture2D" uid="uid://bqryprhlv6pmn" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA7.png" id="9_dkwch"]
+[ext_resource type="Texture2D" uid="uid://de56iexewtrdm" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA8.png" id="10_paddf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmfl0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nitan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uqpvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5okru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oqbka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ufvya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tuckf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_23j3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dkwch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_paddf")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="YeeA" instance=ExtResource("1_cpy11")]
+
+[node name="texture" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_qmfl0")
+frame = 9
+frame_progress = 1.0

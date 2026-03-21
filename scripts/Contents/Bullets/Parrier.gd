@@ -9,14 +9,14 @@ var maxBallCount: int = 3
 var atk: float = 0
 
 func spawn():
-	var varians = randi_range(0, 1)
-	var inverts = []
+	var varians = randi_range(0, 2)
+	var inverts = [2]
 	var frames = load("res://resources/effects/parrier/%d/%d.tres" % [varians, varians])
 	var eff = EffectController.create(ComponentManager.getEffect("Parrier"), position)
 	eff.rotation = rotation
-	eff.scale.y *= MathTool.randomChoiceFrom([-1, 1])
+	eff.texture.scale.y *= MathTool.randomChoiceFrom([-1, 1])
 	if varians in inverts:
-		eff.scale.x *= -1
+		eff.texture.scale.x *= -1
 	eff.texture.sprite_frames = frames
 	eff.shot()
 func hitBullet(bullet: BulletBase): # 当前子弹与其他子弹相撞

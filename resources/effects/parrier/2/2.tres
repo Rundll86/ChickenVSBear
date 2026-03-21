@@ -1,36 +1,44 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://cegxrhkf6na6t"]
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://cegxrhkf6na6t"]
 
-[ext_resource type="Texture2D" uid="uid://bjhe3vik4tryq" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA2.png" id="1_yo7e3"]
-[ext_resource type="Texture2D" uid="uid://bwkgdff32o7g1" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA3.png" id="2_kfcht"]
-[ext_resource type="Texture2D" uid="uid://mufrpnnomkpk" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA4.png" id="3_log7y"]
-[ext_resource type="Texture2D" uid="uid://csclv5al0on2k" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA5.png" id="4_1d1ae"]
-[ext_resource type="Texture2D" uid="uid://cxt56ccdugqg3" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA6.png" id="5_k7vdj"]
-[ext_resource type="Texture2D" uid="uid://dmcm4rljstsb8" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA7.png" id="6_d81w8"]
-[ext_resource type="Texture2D" uid="uid://biod5vk0jqn7q" path="res://resources/effects/parrier/2/Effect_HoHoYee_AttackA8.png" id="7_6h3wu"]
+[ext_resource type="Texture2D" uid="uid://4x5llpjk6roc" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA0.png" id="1_log7y"]
+[ext_resource type="Texture2D" uid="uid://nuf41by5qav3" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA1.png" id="2_1d1ae"]
+[ext_resource type="Texture2D" uid="uid://cn3jub5bbs10s" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA2.png" id="3_k7vdj"]
+[ext_resource type="Texture2D" uid="uid://cuxujj0yo03cw" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA3.png" id="4_d81w8"]
+[ext_resource type="Texture2D" uid="uid://bnk7e6vdm73t" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA4.png" id="5_6h3wu"]
+[ext_resource type="Texture2D" uid="uid://bd2asjjnvg2s1" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA5.png" id="6_w73yo"]
+[ext_resource type="Texture2D" uid="uid://qfx7cdpxl6gt" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA6.png" id="7_pvgal"]
+[ext_resource type="Texture2D" uid="uid://bqryprhlv6pmn" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA7.png" id="8_8wq1v"]
+[ext_resource type="Texture2D" uid="uid://de56iexewtrdm" path="res://resources/bullets/yee-abc/Effect_HoHoYee_AttackA8.png" id="9_ijejs"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_yo7e3")
+"texture": ExtResource("1_log7y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_kfcht")
+"texture": ExtResource("2_1d1ae")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_log7y")
+"texture": ExtResource("3_k7vdj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_1d1ae")
+"texture": ExtResource("4_d81w8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_k7vdj")
+"texture": ExtResource("5_6h3wu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_d81w8")
+"texture": ExtResource("6_w73yo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_6h3wu")
+"texture": ExtResource("7_pvgal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8wq1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ijejs")
 }],
 "loop": false,
 "name": &"spawn",
