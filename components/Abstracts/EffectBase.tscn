@@ -1,8 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcvuuy2m0pke0"]
+[gd_scene load_steps=4 format=3 uid="uid://bcvuuy2m0pke0"]
 
 [ext_resource type="Script" uid="uid://0iwnvhdh645p" path="res://scripts/Statemachine/EffectController.gd" id="1_pt2rk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7cv4k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44wuf"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"spawn",
+"speed": 5.0
+}]
 
 [node name="EffectBase" type="Node2D"]
 z_index = 1
@@ -29,3 +37,9 @@ color = Color(1, 1, 1, 0)
 
 [node name="animator" type="AnimationPlayer" parent="stage"]
 unique_name_in_owner = true
+
+[node name="texture" type="AnimatedSprite2D" parent="stage"]
+unique_name_in_owner = true
+position = Vector2(50, 50)
+sprite_frames = SubResource("SpriteFrames_44wuf")
+animation = &"spawn"

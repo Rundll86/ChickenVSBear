@@ -1,0 +1,87 @@
+[gd_scene load_steps=18 format=3 uid="uid://cgdnkey2fhla4"]
+
+[ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_vi6cv"]
+[ext_resource type="Texture2D" uid="uid://cq80y83edetx3" path="res://resources/effects/fooExplosion/Lv1_FooExplosion00.png" id="2_1ukt2"]
+[ext_resource type="AudioStream" uid="uid://dkm4rld5hsevd" path="res://resources/sounds/effect/baozha.mp3" id="2_8b1u1"]
+[ext_resource type="Texture2D" uid="uid://cehkdqa85b0ad" path="res://resources/effects/fooExplosion/Lv1_FooExplosion01.png" id="3_8b1u1"]
+[ext_resource type="Texture2D" uid="uid://d2pg5hqpe2cp2" path="res://resources/effects/fooExplosion/Lv1_FooExplosion02.png" id="4_5pi6y"]
+[ext_resource type="Texture2D" uid="uid://bykjgvhsf2dsu" path="res://resources/effects/fooExplosion/Lv1_FooExplosion03.png" id="5_k87jx"]
+[ext_resource type="Texture2D" uid="uid://d0uq64amohrs7" path="res://resources/effects/fooExplosion/Lv1_FooExplosion04.png" id="6_arn3m"]
+[ext_resource type="Texture2D" uid="uid://b2ywi78d7lg21" path="res://resources/effects/fooExplosion/Lv1_FooExplosion05.png" id="7_7ocvl"]
+[ext_resource type="Texture2D" uid="uid://bihj346dfshj3" path="res://resources/effects/fooExplosion/Lv1_FooExplosion06.png" id="8_qdlyj"]
+[ext_resource type="Texture2D" uid="uid://c1b3gnamtn2rn" path="res://resources/effects/fooExplosion/Lv1_FooExplosion07.png" id="9_bcn35"]
+[ext_resource type="Texture2D" uid="uid://bo7cih0s2hx3g" path="res://resources/effects/fooExplosion/Lv1_FooExplosion08.png" id="10_4wpfv"]
+[ext_resource type="Texture2D" uid="uid://cgisg4urhvrah" path="res://resources/effects/fooExplosion/Lv1_FooExplosion09.png" id="11_pg82r"]
+[ext_resource type="Texture2D" uid="uid://dm4ih65h45qi8" path="res://resources/effects/fooExplosion/Lv1_FooExplosion10.png" id="12_dhm5g"]
+[ext_resource type="Texture2D" uid="uid://bpr2j2jed4yxm" path="res://resources/effects/fooExplosion/Lv1_FooExplosion11.png" id="13_41cg7"]
+
+[sub_resource type="Animation" id="Animation_1ukt2"]
+resource_name = "spawn"
+length = 0.4
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8b1u1"]
+_data = {
+&"spawn": SubResource("Animation_1ukt2")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kn8g0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1ukt2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8b1u1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5pi6y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k87jx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_arn3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7ocvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qdlyj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bcn35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4wpfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_pg82r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_dhm5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_41cg7")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 30.0
+}]
+
+[node name="Foo" instance=ExtResource("1_vi6cv")]
+spawnSound = "spawn"
+spawnTexture = "spawn"
+
+[node name="spawn" parent="sounds" index="0"]
+stream = ExtResource("2_8b1u1")
+
+[node name="animator" parent="stage" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_8b1u1")
+}
+
+[node name="texture" parent="stage" index="1"]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_kn8g0")
+frame = 11
+frame_progress = 1.0

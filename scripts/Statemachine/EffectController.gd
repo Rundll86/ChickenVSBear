@@ -4,10 +4,12 @@ class_name EffectController
 @export var oneShot: bool = true
 @export var spawnSound: String = ""
 @export var spawnAnimation: String = ""
+@export var spawnTexture: String = ""
 
 @onready var particles: GPUParticles2D = $"%particles"
 @onready var sounds: Node2D = $"%sounds"
 @onready var animator: AnimationPlayer = $"%animator"
+@onready var texture: AnimatedSprite2D = $"%texture"
 
 func _ready():
 	register()
@@ -18,17 +20,25 @@ func _ready():
 		sound.play()
 	if spawnAnimation:
 		animator.play(spawnAnimation)
+	if spawnTexture:
+		texture.play(spawnTexture)
 func shot():
-	var cloned = particles.duplicate() as GPUParticles2D
-	cloned.emitting = true
-	add_child(cloned)
+	var childParticle = particles.duplicate() as GPUParticles2D
+	childParticle.emitting = true
+	add_child(childParticle)
 	if oneShot:
-		await cloned.finished
-		cloned.queue_free()
+		await childParticle.finished
+		childParticle.queue_free()
 		if spawnSound:
 			var sound: AudioStreamPlayer2D = sounds.get_node(spawnSound)
 			if sound.playing:
 				await sound.finished
+		if spawnAnimation:
+			if animator.is_playing():
+				await animator.animation_finished
+		if spawnTexture:
+			if texture.is_playing():
+				await texture.animation_finished
 		queue_free()
 
 func register():

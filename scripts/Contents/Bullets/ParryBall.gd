@@ -20,6 +20,6 @@ func succeedToHit(_dmg: float, entity: EntityBase): # 当撞到敌人时
 		0
 	):
 		if bullet is QKSwordBullet:
-			bullet.position = entity.texture.global_position + MathTool.sampleInRing(50, 200)
+			bullet.position = entity.texture.global_position + MathTool.sampleInRing(200, 500)
 			bullet.tracer = entity
 			bullet.look_at(entity.getTrackingAnchor()) # 生成的乾坤剑面向敌人

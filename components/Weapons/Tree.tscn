@@ -1,9 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://cx7nogfnv7s8t"]
+[gd_scene load_steps=4 format=3 uid="uid://cx7nogfnv7s8t"]
 
 [ext_resource type="PackedScene" uid="uid://ckq2cq6m23hq3" path="res://components/Abstracts/WeaponCardBase.tscn" id="1_0lbwr"]
 [ext_resource type="Script" uid="uid://bqdyhwcd4jwmj" path="res://scripts/Contents/Weapons/Tree.gd" id="2_jsuc8"]
+[ext_resource type="Texture2D" uid="uid://74n7umby4d4w" path="res://resources/weapons/ParryCounter.png" id="3_nwamk"]
 
 [node name="Tree" instance=ExtResource("1_0lbwr")]
 script = ExtResource("2_jsuc8")
+avatarTexture = ExtResource("3_nwamk")
+displayName = "扶桑元神"
+quality = 4
+costBeachball = 900
 oneShoot = true
+store = {
+"atk": 10,
+"count": 1.0,
+"foo": 1.0
+}
+storeType = {
+"atk": 1,
+"count": 1,
+"foo": 1
+}
+descriptionTemplate = "进行[b]格挡[/b]，化解飞来的子弹。
+每成功格挡一次，获得一点[b]气力[/b]。
+每拥有一点气力，闪避穿过敌人时对其贴上$foo层[b]符咒[/b]，一段时间后符咒自动引爆，
+召唤[b]乾坤剑[/b]穿透敌人。
+
+乾坤剑造成$atk点伤害，
+每次格挡最多化解$count个子弹。"
 cooldown = 0.0
+debugRebuild = true
+
+[node name="avatar" parent="container/info" index="0"]
+texture = ExtResource("3_nwamk")
+
+[node name="beachball" parent="container/info/infos" index="1"]
+count = 900
+
+[node name="name" parent="container/info" index="2"]
+displayName = "扶桑元神"
+quality = 4
+
+[node name="description" parent="container" index="2"]
+text = "[center]进行[b]格挡[/b]，化解飞来的子弹。
+每成功格挡一次，获得一点[b]气力[/b]。
+每拥有一点气力，闪避穿过敌人时对其贴上[color=cyan]1[/color]层[b]符咒[/b]，一段时间后符咒自动引爆，
+召唤[b]乾坤剑[/b]穿透敌人。
+
+乾坤剑造成[color=cyan]10[/color]点伤害，
+每次格挡最多化解[color=cyan]1[/color]个子弹。[/center]"

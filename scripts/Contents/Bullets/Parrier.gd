@@ -3,9 +3,13 @@ class_name ParrierBullet
 
 @export var parryRate: float = 1
 
+var parryiedTimes: int = 0
+var maxParryTimes: int = 1
+
 func hitBullet(bullet: BulletBase): # 当前子弹与其他子弹相撞
 	if BulletTool.canDamage(bullet, launcher): # 其他子弹可以使当前子弹的发射者受伤吗？
-		if MathTool.rate(parryRate):
+		if parryiedTimes < maxParryTimes && MathTool.rate(parryRate): # 一个刀光最多格挡多少个敌方子弹？
+			parryiedTimes += 1
 			# 生成格挡特效
 			var eff = EffectController.create(ComponentManager.getEffect("Parry"), position + (bullet.position - position).normalized() * 150) # 从子弹位置，面向其他子弹的方向前进150
 			eff.modulate = bullet.modulate.blend(bullet.texture.modulate)

@@ -122,7 +122,7 @@ size = Vector2(146, 26)
 [node name="QKSword" instance=ExtResource("1_1ke2b")]
 script = ExtResource("2_x26jp")
 speed = 20.0
-baseDamage = 20.0
+baseDamage = 25.0
 penerate = 1.0
 penerateDamageReduction = 0.2
 lifeTime = 3000.0
