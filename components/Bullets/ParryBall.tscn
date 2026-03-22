@@ -40,7 +40,7 @@ scale_curve = SubResource("CurveTexture_yhjlb")
 alpha_curve = SubResource("CurveTexture_la26q")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3wdex"]
-radius = 100.0
+radius = 50.0
 
 [node name="ParryBall" instance=ExtResource("1_xeuh5")]
 script = ExtResource("2_cc0al")
