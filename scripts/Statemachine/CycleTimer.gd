@@ -12,13 +12,15 @@ func start():
 	running = true
 func lifetime():
 	return Time.get_ticks_msec() - startTime
-func periodPercent(count: int):
-	return lifetime() / period * deg_to_rad(360) - deg_to_rad(360.0 * count / len(bullets))
+func getStateAngle(index: int):
+	return lifetime() / period * deg_to_rad(360) - deg_to_rad(360.0 * index / len(bullets))
 func apply():
 	bullets = bullets.filter(is_instance_valid)
 	for index in len(bullets):
 		var bullet = bullets[index]
-		var offset = Vector2.from_angle(periodPercent(index))
+		var newStateAngle = lerp_angle(bullet.cycleStateAngle, getStateAngle(index), 0.1)
+		var offset = Vector2.from_angle(newStateAngle)
+		bullet.cycleStateAngle = newStateAngle
 		offset.y *= 0.25
 		bullet.position = bullet.launcher.position + offset * distance
 		bullet.scale = Vector2.ONE * (1 + offset.y)

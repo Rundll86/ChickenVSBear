@@ -13,6 +13,7 @@ func destroy(_beacuseMap: bool):
 func ai():
 	PresetBulletAI.selfRotate(self , 5)
 	hitbox.disabled = !launcher.sprinting # 玩家在冲刺时气的碰撞箱才生效
+	hitbox.global_position = launcher.position
 func succeedToHit(_dmg: float, entity: EntityBase): # 当撞到敌人时
 	for bullet in BulletBase.generate(
 		ComponentManager.getBullet("QKSword"),

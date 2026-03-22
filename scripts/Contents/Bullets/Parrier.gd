@@ -39,3 +39,7 @@ func hitBullet(bullet: BulletBase): # 当前子弹与其他子弹相撞
 				):
 					if b is ParryBallBullet:
 						b.atk = atk * bullet.baseDamage
+func refract(_newBullet: BulletBase, _entity: EntityBase, _index: int, _total: int, _lastBullet: float):
+	return null
+func split(_newBullet: BulletBase, _index: int, _total: int, _lastBullet: float):
+	return null

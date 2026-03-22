@@ -37,6 +37,7 @@ var initialSpeed: float = 0
 var initialDamage: float = 0
 var speedScale: float = 1
 var isFirstFrame: bool = true
+var cycleStateAngle: float = 0
 
 func _ready():
 	initialSpeed = speed
@@ -182,7 +183,9 @@ func trySplit():
 			cloned.launcher = launcher
 			if is_instance_valid(parent):
 				cloned.parent = parent
-			get_parent().add_child.call_deferred(split(cloned, i, total, last))
+			var splited = split(cloned, i, total, last)
+			if !is_instance_valid(splited): continue
+			get_parent().add_child.call_deferred(splited)
 func tryRefract():
 	if is_instance_valid(launcher) and canDuplicateSelf:
 		var value = launcher.fields.get(FieldStore.Entity.BULLET_REFRACTION)
@@ -204,7 +207,9 @@ func tryRefract():
 				cloned.launcher = launcher
 				if is_instance_valid(parent):
 					cloned.parent = parent
-				get_parent().add_child.call_deferred(refract(cloned, entity, i, total, last))
+				var refracted = refract(cloned, entity, i, total, last)
+				if !is_instance_valid(refracted): continue
+				get_parent().add_child.call_deferred(refracted)
 
 # 抽象方法
 func firstFrame():
