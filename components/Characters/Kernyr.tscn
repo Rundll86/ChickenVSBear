@@ -22,7 +22,7 @@ size = Vector2(118, 98)
 
 [node name="Kernyr" instance=ExtResource("1_bha5j")]
 script = ExtResource("2_vkls3")
-displayName = "口势咯"
+displayName = "TestBoss"
 drops = Array[int]([0, 1])
 dropCounts = Array[Vector2]([Vector2(30, 50), Vector2(20, 40)])
 appleCount = Vector2i(2, 5)

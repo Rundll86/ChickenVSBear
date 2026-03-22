@@ -3,6 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_57y3f"]
 [ext_resource type="Script" uid="uid://bi7nde2rs0w4m" path="res://scripts/Contents/Bullets/Parrier.gd" id="2_li4th"]
 
+[sub_resource type="Animation" id="Animation_ksxds"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%texture/..:parryRate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_li4th"]
 resource_name = "spawn"
 length = 0.5
@@ -19,20 +33,6 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5)
 }
 
-[sub_resource type="Animation" id="Animation_ksxds"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%texture/..:parryRate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k4ctn"]
 _data = {
 &"RESET": SubResource("Animation_ksxds"),
@@ -46,7 +46,6 @@ height = 200.0
 [node name="Parrier" instance=ExtResource("1_57y3f")]
 script = ExtResource("2_li4th")
 parryRate = 0.0
-baseDamage = 0.0
 penerate = 1.0
 autoSpawnAnimation = true
 freeAfterSpawn = true
