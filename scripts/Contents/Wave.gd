@@ -46,8 +46,11 @@ static var WAVE_TESTBOSS_BEAR = [
 static var WAVE_TESTBOSS_CHICK = [
 	Wave.create("Chick", 0, 0, true, 0, INF, 10),
 ]
+static var WAVE_JUSTJOKE = [
+	Wave.create("Kernyr", 0, 0, true, 0, INF, 1),
+]
 static var WAVE_EMPTY = []
-static var data = WAVE_NORMAL if WorldManager.isRelease() else WAVE_NORMAL
+static var data = WAVE_NORMAL if WorldManager.isRelease() else WAVE_JUSTJOKE
 
 static func create(
 		entity_: String,

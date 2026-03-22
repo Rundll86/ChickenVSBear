@@ -1,0 +1,105 @@
+[gd_scene load_steps=12 format=3 uid="uid://mo3t1r3ydrx4"]
+
+[ext_resource type="PackedScene" uid="uid://crtdkysmnkith" path="res://components/Abstracts/BulletBase.tscn" id="1_i51w8"]
+[ext_resource type="Script" uid="uid://c3ax35jdfjqox" path="res://scripts/Contents/Bullets/Yangyi.gd" id="2_sku1m"]
+[ext_resource type="Texture2D" uid="uid://7hofo0ihj7sh" path="res://resources/bullets/yangyi/0.jpg" id="3_c3irh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_peenw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_c3irh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_c3irh"]
+resource_name = "loop"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_peenw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x2cof"]
+_data = {
+&"RESET": SubResource("Animation_peenw"),
+&"loop": SubResource("Animation_c3irh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2cof"]
+size = Vector2(94, 94)
+
+[sub_resource type="Curve" id="Curve_c3irh"]
+_data = [Vector2(0, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_peenw"]
+curve = SubResource("Curve_c3irh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c3irh"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 1500.0
+initial_velocity_max = 1500.0
+angular_velocity_min = -100.000015
+angular_velocity_max = 99.999985
+gravity = Vector3(0, 0, 0)
+scale_min = 0.79999995
+scale_max = 0.79999995
+alpha_curve = SubResource("CurveTexture_peenw")
+
+[node name="Yangyi" instance=ExtResource("1_i51w8")]
+script = ExtResource("2_sku1m")
+displayName = "超级导弹"
+speed = 20.0
+lifeTime = 3000.0
+autoLoopAnimation = true
+
+[node name="texture" parent="." index="0"]
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_peenw")
+
+[node name="animator" parent="texture" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_x2cof")
+}
+
+[node name="hitbox" parent="." index="1"]
+shape = SubResource("RectangleShape2D_x2cof")
+
+[node name="trail" type="GPUParticles2D" parent="." index="2"]
+z_index = -1
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_c3irh")
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_c3irh")

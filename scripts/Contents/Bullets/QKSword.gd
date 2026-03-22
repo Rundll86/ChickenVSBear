@@ -5,7 +5,7 @@ var tracer: EntityBase
 var spawnSpeed: float = 1
 
 func register():
-	spawnSpeed = randf_range(0.25, 1.75)
+	spawnSpeed = randf_range(0.75, 2)
 	animator.speed_scale = spawnSpeed
 	lifeTime /= spawnSpeed
 func ai():
@@ -26,3 +26,4 @@ func succeedToHit(_dmg: float, entity: EntityBase):
 	var varians = randi_range(0, 2)
 	eff.texture.sprite_frames = load("res://resources/effects/FooExplosion/%d/%d.tres" % [varians, varians])
 	eff.shot()
+	CameraManager.shake(300, 500)

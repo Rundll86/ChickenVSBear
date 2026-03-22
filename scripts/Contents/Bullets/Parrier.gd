@@ -28,6 +28,7 @@ func hitBullet(bullet: BulletBase): # 当前子弹与其他子弹相撞
 			eff.modulate = bullet.modulate.blend(bullet.texture.modulate)
 			eff.rotation = position.angle_to_point(bullet.position)
 			eff.shot()
+			CameraManager.shake(200, 250)
 			# 摧毁其他子弹
 			bullet.tryDestroy()
 			var cycler = launcher.getOrCreateCycleTimer("parry", 2000, 100)

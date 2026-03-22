@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://47ek7kev66gj"]
+
+[ext_resource type="PackedScene" uid="uid://cvogxi7mktumf" path="res://components/Abstracts/EntityBase.tscn" id="1_afsds"]
+[ext_resource type="Script" uid="uid://m28dwfwmmhmh" path="res://scripts/Contents/Characters/Kernyr.gd" id="2_pixbe"]
+[ext_resource type="Texture2D" uid="uid://5o6446vmerf5" path="res://resources/bullets/yangyi/cat.jpg" id="3_afsds"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkls3"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="CyberCat" instance=ExtResource("1_afsds")]
+script = ExtResource("2_pixbe")
+displayName = "赛博猫猫🥵"
+
+[node name="texture" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_vkls3")
+
+[node name="staticBackground" parent="texture" index="0"]
+position = Vector2(0, -10)
+scale = Vector2(0.37199643, 0.37199643)
+texture = ExtResource("3_afsds")
+
+[node name="statebar" parent="." index="4"]
+position = Vector2(0, -135)
