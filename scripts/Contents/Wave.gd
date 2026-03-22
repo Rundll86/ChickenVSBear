@@ -50,7 +50,7 @@ static var WAVE_JUSTJOKE = [
 	Wave.create("Kernyr", 0, 0, true, 0, INF, 1),
 ]
 static var WAVE_EMPTY = []
-static var data = WAVE_NORMAL if WorldManager.isRelease() else WAVE_JUSTJOKE
+static var data = WAVE_NORMAL if WorldManager.isRelease() else WAVE_NORMAL
 
 static func create(
 		entity_: String,
