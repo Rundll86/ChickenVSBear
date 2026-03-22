@@ -5,6 +5,7 @@ class_name EffectController
 @export var spawnSound: String = ""
 @export var spawnAnimation: String = ""
 @export var spawnTexture: String = ""
+@export var lockTexture: bool = false
 
 @onready var particles: GPUParticles2D = $"%particles"
 @onready var sounds: Node2D = $"%sounds"
@@ -15,6 +16,9 @@ func _ready():
 	register()
 	particles.emitting = false
 	particles.one_shot = oneShot
+func _physics_process(_delta):
+	if lockTexture:
+		texture.global_rotation = 0
 func shot():
 	var childParticle = particles.duplicate() as GPUParticles2D
 	childParticle.emitting = true
@@ -27,13 +31,13 @@ func shot():
 	if spawnTexture:
 		texture.play(spawnTexture)
 	if oneShot:
-		if childParticle.emitting:
-			await childParticle.finished
-			childParticle.queue_free()
 		if spawnTexture:
 			if texture.is_playing():
 				await texture.animation_finished
 				texture.hide()
+		if childParticle.emitting:
+			await childParticle.finished
+			childParticle.queue_free()
 		if spawnSound:
 			if sound.playing:
 				await sound.finished

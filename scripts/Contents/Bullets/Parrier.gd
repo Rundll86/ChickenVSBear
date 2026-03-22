@@ -26,11 +26,12 @@ func hitBullet(bullet: BulletBase): # 当前子弹与其他子弹相撞
 			# 生成格挡特效
 			var eff = EffectController.create(ComponentManager.getEffect("Parry"), position + (bullet.position - position).normalized() * 200) # 从子弹位置，面向其他子弹的方向前进150
 			eff.modulate = bullet.modulate.blend(bullet.texture.modulate)
+			eff.rotation = position.angle_to_point(bullet.position)
 			eff.shot()
 			# 摧毁其他子弹
 			bullet.tryDestroy()
 			var cycler = launcher.getOrCreateCycleTimer("parry", 2000, 100)
-			if len(cycler.bullets) < maxBallCount: # 玩家最多只能拥有5点气
+			if len(cycler.bullets) < maxBallCount: # 玩家最多只能拥有多少气
 				for b in BulletBase.generate(
 					ComponentManager.getBullet("ParryBall"), # 生成气的子弹
 					launcher,

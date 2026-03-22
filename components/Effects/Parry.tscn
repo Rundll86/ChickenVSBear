@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwbhxnuhmkwww"]
+[gd_scene load_steps=25 format=3 uid="uid://bwbhxnuhmkwww"]
 
 [ext_resource type="PackedScene" uid="uid://bcvuuy2m0pke0" path="res://components/Abstracts/EffectBase.tscn" id="1_vc7s4"]
 [ext_resource type="Texture2D" uid="uid://bdvyebq7sepqf" path="res://resources/effects/parry/ParrySparkAccurate0.png" id="2_kic6n"]
 [ext_resource type="AudioStream" uid="uid://caxopva6lrlm3" path="res://resources/sounds/effect/swordhit.ogg" id="2_l0pl0"]
+[ext_resource type="Texture2D" uid="uid://7jhhyoinptns" path="res://resources/items/soul.svg" id="3_buxs5"]
 [ext_resource type="Texture2D" uid="uid://bsq0s07h5u6fp" path="res://resources/effects/parry/ParrySparkAccurate1.png" id="3_l0pl0"]
 [ext_resource type="Texture2D" uid="uid://myolsnuud6jk" path="res://resources/effects/parry/ParrySparkAccurate2.png" id="4_buxs5"]
 [ext_resource type="Texture2D" uid="uid://cu72mlaga1ge4" path="res://resources/effects/parry/ParrySparkAccurate3.png" id="5_471em"]
@@ -11,33 +12,60 @@
 [ext_resource type="Texture2D" uid="uid://cvommbyvqfp1p" path="res://resources/effects/parry/ParrySparkAccurate6.png" id="8_molrd"]
 [ext_resource type="Texture2D" uid="uid://rv10oe25rb6c" path="res://resources/effects/parry/ParrySparkAccurate.png" id="9_76bi2"]
 
-[sub_resource type="Animation" id="Animation_kic6n"]
-resource_name = "spawn"
-step = 0.1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%stage/../texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.53),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [&"default", 1.0, false],
-"method": &"play"
-}, {
-"args": [],
-"method": &"hide"
-}]
-}
+[sub_resource type="Curve" id="Curve_471em"]
+_data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tu1jt"]
+curve = SubResource("Curve_471em")
+
+[sub_resource type="Curve" id="Curve_f5km5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_molrd"]
+curve = SubResource("Curve_f5km5")
+
+[sub_resource type="Gradient" id="Gradient_76bi2"]
+colors = PackedColorArray(0, 0.9955722, 0.5778714, 1, 1, 0.9554942, 0.47369397, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qcypm"]
+gradient = SubResource("Gradient_76bi2")
+
+[sub_resource type="Gradient" id="Gradient_ce4q1"]
+colors = PackedColorArray(0.5254902, 1, 0.7294118, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7q881"]
+gradient = SubResource("Gradient_ce4q1")
+
+[sub_resource type="Curve" id="Curve_pg3k8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tys76"]
+curve = SubResource("Curve_pg3k8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v0dfw"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 22.49
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+angle_curve = SubResource("CurveTexture_molrd")
+direction = Vector3(-1, 0, 0)
+spread = 60.0
+initial_velocity_max = 2000.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_tys76")
+color_ramp = SubResource("GradientTexture1D_7q881")
+color_initial_ramp = SubResource("GradientTexture1D_qcypm")
+alpha_curve = SubResource("CurveTexture_tu1jt")
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l0pl0"]
-_data = {
-&"spawn": SubResource("Animation_kic6n")
-}
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qcypm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_l0pl0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -65,24 +93,32 @@ animations = [{
 "texture": ExtResource("9_76bi2")
 }],
 "loop": false,
-"name": &"default",
-"speed": 15.0
+"name": &"spawn",
+"speed": 20.0
 }]
 
 [node name="Parry" instance=ExtResource("1_vc7s4")]
 spawnSound = "spawn"
-spawnAnimation = "spawn"
+spawnTexture = "spawn"
+lockTexture = true
 
 [node name="spawn" parent="sounds" index="0"]
 stream = ExtResource("2_l0pl0")
+
+[node name="particles" parent="." index="1"]
+texture = ExtResource("3_buxs5")
+lifetime = 0.5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_v0dfw")
 
 [node name="animator" parent="stage" index="0"]
 libraries = {
 &"": SubResource("AnimationLibrary_l0pl0")
 }
 
-[node name="texture" type="AnimatedSprite2D" parent="." index="3"]
+[node name="texture" parent="stage" index="1"]
+modulate = Color(0.5254902, 1, 0.7294118, 1)
 scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_qcypm")
+sprite_frames = SubResource("SpriteFrames_l0pl0")
 frame = 7
 frame_progress = 1.0
